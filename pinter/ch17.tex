@@ -1,0 +1,194 @@
+\subsection*{Chapter 17. Rings: definitions and elementary properties}
+\addcontentsline{toc}{subsection}{Chapter 17. Rings: definitions and elementary properties}
+
+
+\begin{exercise}{A Examples of rings}
+ Prove that $A$ satisfies all the axioms to be a commutative ring with unity. Indicate the zero element, the unity, and the negative of an arbitrary $a$.
+ 
+ 4. $A=\{y+y\sqrt{2}:x,y\in \mathbb{Z}\}$ with conventional addition and multiplication.
+\end{exercise}
+\begin{proof}
+ $(A, +)$ is an abelian group. Let $a,b\in A$, such that $a=a_{1}+a_{2}\sqrt{2}$ and $b=b_{1}+b_{2}\sqrt{2}$.
+
+ i) We have $a+b= a_{1}+a_{2}\sqrt{2}+b_{1}+b_{2}\sqrt{2}= (a_{1}+b_{1})+(a_{2}+b_{2})\sqrt{2}$, so that $a+b\in A$.
+
+ ii) The zero element in $A$ is $0= 0+0\sqrt{2}$: $a+0= a_{1}+a_{2}\sqrt{2}+0 = 0+a_{1}+a_{2}\sqrt{2}= a$. Then the negative of $a$ is $-a= -a_{1}-a_{2}\sqrt{2}$, so that $a-a= a_{1}+a_{2}\sqrt{2}-a_{1}-a_{2}\sqrt{2}= 0$.
+
+ iii) Since the usual addition is commutative, addition in $A$ is commutative too.
+
+ $(A, +, \cdot)$ has the commutative ring properties. Let $c= c_{1}+c_{2}\sqrt{2}$.
+
+ i) Consider $a(bc)=(a_{1}+a_{2}\sqrt{2})[(b_{1}+b_{2}\sqrt{2})(c_{1}+c_{2}\sqrt{2})]= (a_{1}+a_{2}\sqrt{2})(b_{1}+b_{2}\sqrt{2})(c_{1}+c_{2}\sqrt{2})= [(a_{1}+a_{2}\sqrt{2})(b_{1}+b_{2}\sqrt{2})](c_{1}+c_{2}\sqrt{2})= (ab)c$, so that multiplication is associative.
+
+ ii) We have $ab= (a_{1}+a_{2}\sqrt{2})(b_{1}+b_{2}\sqrt{2})= (b_{1}+b_{2}\sqrt{2})(a_{1}+a_{2}\sqrt{2})= ba$, so multiplication is commutative.
+
+ iii) Consider $a(b+c)= (a_{1}+a_{2}\sqrt{2})[(b_{1}+b_{2}\sqrt{2})+(c_{1}+c_{2}\sqrt{2})]= (a_{1}+a_{2}\sqrt{2})[(b_{1}+c_{1})+(b_{2}+c_{2})\sqrt{2}]= a_{1}(b_{1}+c_{1})+a_{1}(b_{2}+c_{2})\sqrt{2}] +a_{2}\sqrt{2}(b_{1}+c_{1})+2a_{2}(b_{2}+c_{2})= a_{1}b_{1}+a_{1}c_{1})+a_{1}b_{2}\sqrt{2}+a_{1}c_{2}\sqrt{2}+a_{2}b_{1}\sqrt{2}+a_{2}c_{1}\sqrt{2}+2a_{2}b_{2}+2a_{2}c_{2})= a_{1}b_{1}+a_{1}b_{2}\sqrt{2}+a_{2}b_{1}\sqrt{2}+2a_{2}b_{2}+ a_{1}c_{1})+a_{1}c_{2}\sqrt{2}+a_{2}c_{1}\sqrt{2}+2a_{2}c_{2})= (a_{1}b_{1}+2a_{2}b_{2})+(a_{1}b_{2}+a_{2}b_{1})\sqrt{2}+ (a_{1}c_{1}+2a_{2}c_{2})+(a_{1}c_{2}+a_{2}c_{1})\sqrt{2}= ab+ac$,
+
+ The second condition, $(b+c)a=ba+ca$ follows using a similar argument.
+
+ iv) Unity is the element given by $1=1+0\sqrt{2}$, so that $a1=(a_{1}+a_{2}\sqrt{2})1=1(a_{1}+a_{2}\sqrt{2})=1a=a$.
+\end{proof}
+
+
+\begin{exercise}{B Rings of real functions}
+    \begin{enumerate}
+        \item Verify that $\mathcal{F}(\mathbb{R})$ satisfies all the axioms to be a commutative ring with unity. Indicate the zero and unity, and describe the negative of any $f$.
+        \item Describe the divisors of zero in $\mathcal{F}(\mathbb{R})$.
+        \item Describe the invertible elements in $\mathcal{F}(\mathbb{R})$.
+        \item Explain why $\mathcal{F}(\mathbb{R})$ is neither a field nor an integral domain.
+    \end{enumerate}
+\end{exercise}
+\begin{proof}
+ 1. $(\mathcal{F}(\mathbb{R}),+)$ is an abelian group. This was proven in chapter 5. The zero element was proven to be $0(x)=0$, for all $x$. The negative of an arbitrary element $f(x)$ was proven to be $-f(x)$.
+
+ $(\mathcal{F}(\mathbb{R}),+,\cdot)$ has the commutative ring properties. Let $f,g,h\in\mathcal{F}(\mathbb{R})$.
+
+ i) Consider $f[gh](x)=[fgh](x)=[fg]h(x)$, so multiplication is associative.
+
+ ii) We have $(fg)(x)=f(x)g(x)=g(x)f(x)=(gf)(x)$ so multiplication is commutative.
+
+ iii) For distributivity we have $f[g+h](x)=f(x)[g(x)+h(x)]= f(x)g(x)+f(x)h(x)=(fg)(x)+(fh)(x)$, as required. The second condition follows using a similar argument.
+
+ iv) Unity is the element given by $1(x)=1$ for all $x$. We have $(f1)(x)=f(x)1(x)=1(x)f(x)=(1f)(x)=f(x)$.
+
+ 2. The divisors of zero are all those functions that equal zero in at least one $x\in\mathbb{R}$. This is true because we can take a function so that it is zero everywhere but $x$ and the product of those functions would give us the 0 function.
+
+ 3. The invertible elements in this ring are those functions that are different from zero for all $x$. For $f(x)$, we can simply take the function equal to the reciprocal $1/f(x)$ for all $x$. Then $f(x)(1/f(x))=1(x)$.
+
+ 4. This ring cannot be a field because not all of its non-zero elements are invertible. Take any function from point (2), those are not invertible. Likewise, the ring cannot be an integral domain because it contains divisors of zero. To see this, take any element from point (2).
+\end{proof}
+
+
+\begin{exercise}{G Direct product of rings}
+If $A$ and $B$ are rings, their direct product is a new ring, denoted by $A\times B$, and defined as follows: $A\times B$ consists of all the ordered pairs $(x,y)$ where $x\in A$ and $y\in B$. Addition in $A\times B$ consists of adding corresponding components: $(x_{1}, y_{1}) + (x_{2}, y_{2}) = (x_{1}+x_{2}, y_{1}+y_{2})$. Multiplication in $A\times B$ consists of multiplying corresponding components: $(x_{1}, y_{1})(x_{2}, y_{2}) = (x_{1}x_{2}, y_{1}y_{2})$.
+    \begin{enumerate}
+        \item If $A$ and $B$ are rings, verify that $A\times B$ is a ring. 
+        \item If $A$ and $B$ are commutative, show that $A\times B$ is commutative. If $A$ and $B$ each has unity, show that $A\times B$ has a unity. 
+        \item Describe carefully the divisors of zero in $A\times B$.
+        \item Describe the invertible elements of $A\times B$.
+        \item Explain why $A\times B$ can never be an integral domain or a field. (Assume $A$ and $B$ each have more than one element.)
+    \end{enumerate}
+\end{exercise}
+\begin{proof}
+ 1. $A\times B$ is an abelian group. We proved this in chapter 4 exercise G. The zero element is $(0,0)$.
+
+ We proceed to prove that $A\times B$ has the ring properties. Let $(a_{1},b_{1}),(a_{2},b_{2}),\\(a_{3},b_{3})\in A\times B$. 
+
+ i) We have $(a_{1},b_{1})[(a_{2},b_{2})(a_{3},b_{3})]= (a_{1},b_{1})[(a_{2}a_{3},b_{2}b_{3})]= (a_{1}a_{2}a_{3},b_{1}b_{2}b_{3})= [a_{1}a_{2},b_{1}b_{2}](a_{3},b_{3})$, as required.
+
+ ii) For distributivity, we have $(a_{1},b_{1})[(a_{2},b_{2})+(a_{3},b_{3})]= (a_{1},b_{1})(a_{2}+a_{3},b_{2}+b_{3})= (a_{1}[a_{2}+a_{3}],b_{1}[b_{2}+b_{3}])= (a_{1}a_{2}+a_{1}a_{3},b_{1}b_{2}+b_{1}b_{3})= (a_{1}a_{2},b_{1}b_{2})+(a_{1}a_{3}, b_{1}b_{3})= (a_{1}, b_{1})(a_{2},b_{2})+(a_{1}, b_{1})(a_{3}, b_{3})$, as required. The other condition can be proved in a similar way.
+
+ 2. Suppose $A$ and $B$ are commutative. Let $(a,b), (c,d)\in A\times B$. Then $(a,b)(c,d)=(ac,bd)=(ca,db)=(c,d)(a,b)$ so that $A\times B$ is a multiplicative ring. 
+ 
+ Now suppose both $A$ and $B$ have unity. Then the element $(1,1)$ is the unity of $A\times B$. To see this, we have $(1,1)(a,b)=(1a,1b)=(a1,b1)=(a,b)$.
+
+ 3. The divisors of zero of $A\times B$ are all those elements $(a,b)$ where both $a$ and $b$ are divisors of zero.
+
+ 4. The invertible elements of $A\times B$ are all those elements $(a,b)$ were both $a$ and $b$ are invertible.
+
+ 5. $A\times B$ cannot be a field because not all its non-zero elements are invertible, as an example, take $(a,0)$. Likewise, it cannot be an integral domain because it contains divisors of zero, like $(a,0)$.
+\end{proof}
+
+
+\begin{exercise}{H Elementary properties of rings}
+\begin{enumerate}
+    \item In any ring, $a(b-c)=ab-ac$ and $(b-c)a=ba-ca$.
+    \item In any ring, if $ab=-ba$, then $(a+b)^{2} =(a-b)^{2} =a^{2}+b^{2}$
+    \item In any integral domain, if $a^{2}=b^{2}$, then $a=\pm b$
+    \item In any integral domain, only 1 and $-1$ are their own multiplicative inverses. (Note that $x=-x$ iff $x^{2}=1$).
+    \item Show that the commutative law for addition need not be assumed in defining a ring with unity: it may be proved from the other axioms. [Hint: Use the distributive law to expand $(a+b)(1+1)$ in two different ways].
+    \item Let $A$ be any ring. Prove that if the additive group of $A$ is cyclic, then $A$ is a commutative ring.
+    \item Prove: In any integral domain, if $a^{n}=0$ for some integer $n$, then $a=0$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ 1. This is a result of the distributive property using $-c$ instead of $c$. We have $a(b-c)=ab+a(-c)$. By Theorem 1, $a(-c)=-ac$, so we get the desired result.
+
+ 2. We have $(a+b)^{2}=(a+b)(a+b)=a^{2}+ab+ba+b^{2}=a^{2}-ba+ba+b^{2}=a^{2}+b^{2}$. In addition, $(a-b)^{2}=(a-b)(a-b)=a^{2}-ab-ba+b^{2}=a^{2}+b^{2}$, as desired.
+
+ 3. Suppose $a^{2}=b^{2}$, then we have that $a^{2}-b^{2}=(a+b)(a-b)=0$, but this implies that $a+b=0$, so $a=-b$ or $a-b=0$ and $a=b$, thus we have that $a=\pm b$.
+
+ 4. This is an application of the previous result. Let $x$ be an arbitrary element of the integral domain such that it is its own multiplicative inverse, that is, $x^{2}=1$, then $x^{2}-1=(x+1)(x-1)=0$ and so $x=\pm 1$.
+
+ 5. Using the hint, we have $a+b+a+b=(a+b)(1+1)=a+a+b+b$, by subtracting $a$ at the left hand side of both equations and $b$ at the right hand side of both equations, we obtain $b+a=a+b$ as required.
+
+ 6. The elements of a cyclic group are all generated by an element, say $a: \langle a\rangle=\{0, a, 2a,\dots,na\}$. Let $a_{1},a_{2}\in A$. Consider $a_{1}a_{2} = (na)(ma) = \underbrace{(a+\dots+a)}_{\text{n times}}\underbrace{(a+\dots+a)}_{\text{m times}} = (mn)a^{2} = \underbrace{(a+\dots+a)}_{\text{m times}}\underbrace{(a+\dots+a)}_{\text{n times}} = (ma)(na)=a_{2}a_{1}$.
+
+ 7. We know that $a^{n}=0$ implies at least one power of $a$ (for a power less than $n$) is a divisor of zero or itself zero. But we can reason in a similar way to conclude that decreasingly lower powers of $a$ have to be either divisors of zero or zero, until we arrive to $n=1$. However, integral domains have no divisors of zero, so it must be the case that $a=0$, as required.
+\end{proof}
+
+
+\begin{exercise}{I Properties of invertible elements}
+Prove that parts 1-5 are true in a nontrivial ring with unity.
+\begin{enumerate}
+    \item If $a$ is invertible and $ab=ac$, then $b=c$.
+    \item An element $a$ can have no more than one multiplicative inverse.
+    \item If $a^{2}=0$ then $a+1$ and $a-1$ are invertible.
+    \item If $a$ and $b$ are invertible, their product $ab$ is invertible.
+    \item The set $S$ of all the invertible elements in a ring is a multiplicative group.
+    \item By part 5, the set of all the nonzero elements in a field is a multiplicative group. Now use Lagrange's theorem to prove that in a finite field with $m$ elements, $x^{m-1}=1$ for every $x\neq 0$.
+    \item If $ax=1$, $x$ is a right inverse of $a$; if $ya=1$, $y$ is a left inverse of $a$. Prove that if $a$ has a right inverse $x$ and a left inverse $y$, then $a$ is invertible, and its inverse is equal to $x$ and $y$.
+    \item Prove: in a commutative ring, if $ab$ is invertible, then $a$ and $b$ are both invertible.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+1. Since $a$ is invertible, there exists an $x$ in the ring such that $xa=1$. We then have $xab=xac$ so that $1b=1c$ and $b=c$, as required.
+
+2. Suppose $x$ and $y$ are multiplicative inverses of $a$. Then $x=xay=1y=y$, so that $x=y$.
+
+3. We have $(a+1)(a-1)(-1)= -a^{2}+a-a+1= 1$, so that $(a+1)(-1)$ is the inverse of $(a-1)$ and $(a-1)(-1)$ is the inverse of $(a+1)$.
+
+4. Because $a$ and $b$ are invertible, there exist $x$ and $y$ in the ring such that $xa=ax=1$ and $yb=by=1$. Then $(ab)(yx)=a1x=ax=1$, and $(yx)(ab)=y1b=1$ so that $ab$ is invertible.
+
+5. i) Let $a,b$ be invertible, then by (4), $ab$ is invertible.
+
+ii) Because $a$ is invertible, there exists $x$ in the ring with $ax=xa=1$. But $a$ is precisely the inverse of $x$ so $x\in S$.
+
+6. If the size of the field is $m$, the size of the multiplicative group is $m-1$ because the zero element is not an invertible element. By Lagrange’s theorem, the order of any element is a factor of the order of the group. Then let $x$ be an element of this group with $ord(x)=n$ and $m-1=np$ for some integer $p$. We have $x^{m-1}=x^{np}=(x^{n})^{p}=1^{p}=1$.
+
+7. As in (2), we have $x=xay=1y=y$, so that $x=y$. As a result, $a$ has a unique left and right inverse so $a$ is invertible.
+
+8. Suppose $ab$ is invertible. Then there exists an $x$ such that $xab=abx=1$. To see $b$ is invertible, we have $abx=(ax)b=b(ax)=1$, so that $ax$ is the inverse of $b$. We can use the same reasoning to prove that $bx$ is the inverse of $a$.
+\end{proof}
+
+
+\begin{exercise}{J Properties of divisors of zero}
+Prove that each of the following is true in a nontrivial ring.
+\begin{enumerate}
+    \item If $a\neq \pm1$, and $a^{2}=1$, then $a+1$ and $a-1$ are divisors of zero.
+    \item If $ab$ is a divisor of zero, then $a$ or $b$ is a divisor of zero.
+    \item In a commutative ring with unity, a divisor of zero cannot be invertible.
+    \item Suppose $ab\neq 0$ in a commutative ring. If either $a$ or $b$ is a divisor of zero, so is $ab$.
+    \item Suppose $a$ is neither 0 nor a divisor of zero. If $ab=ac$, then $b=c$.
+    \item $A\times B$ always has divisors of zero.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ 1. We have $(a+1)(a-1)=a^{2}-a+a-1=a^{2}-1=0$, as required.
+ 
+ 2. Suppose $ab$ is a divisor of zero. Then there exists and element, $x$, in the ring, such that $abx=0$ or $xab=0$. In the first case, $a(bx)=0$ so that $a$ is a divisor of zero, in the second case, $(xa)b=0$ so that $b$ is a divisor of zero. If $xa$ or $bx$ are zero, then $a$ and $b$ are both divisors of zero.
+ 
+ 3. Let $a,b$ be different from zero, such that $ab=0$. If $a$ was invertible, then there would exist an element $a^{-1}$ such that $a^{-1}a=1$. But this implies $a^{-1}ab=a^{-1}0$, so that $b=0$ which contradicts our hypothesis.
+ 
+ 4. Suppose $a$ is a divisor of 0, so that there exists an element $x$ with $ax=xa=0$. We have $x(ab)=0b=0$ so $ab$ is a divisor of zero.
+ 
+ 5. We have $ab=ac$ implies $ab-ac=a(b-c)=0$, because $a$ is not a divisor of zero, then it must be the case that $b-c=0$, but this implies $b=c$, as required.
+
+ 6. See G.3.
+\end{proof}
+
+
+\begin{exercise}{L The binomial formula}
+An important fomula in elementary algebra is the binomial expansion formula for an expression $(a+b)^{n}$. The formula is as follows: $(a+b)^{n}=\sum_{k=0}^{n}{n\choose k}a^{n-k}b^{k}$ where the binomial coefficient ${n\choose k}=\frac{n(n-1)(n-2)\dots(n-k1+1)}{k!}$.
+
+This theorem is true in every commutative ring. (If $k$ is any positive integer and $a$ is an element of a ring, $ka$ refers to the sum $a+a+\dots+a$ with $k$ terms, as in elementary algebra). The proof of the binomial theorem in a commutative ring is no different from the proof in elementary algebra. We shall review it here. 
+
+The proof of the binomial formula is by induction on the exponent $n$. The formula is trivially true for $n=1$. In the induction step, we assume the expansion for $(a+b)^{n}$ is as above and we must prove that $(a+b)^{n+1}=\sum_{k=0}^{n+1}{n+1\choose k}a^{n+1-k}b^{k}$. Now $(a+b)^{n+1}= (a+b)(a+b)^{n}= (a+b)\sum_{k=0}^{n}{n\choose k}a^{n-k}b^{k}= \sum_{k=0}^{n}{n\choose k}a^{n+1-k}b^{k}+\sum_{k=0}^{n}{n\choose k}a^{n-k}b^{k+1}$. Collecting terms, we find that the coefficient of $a^{n+1-k}b^{k}$ is ${n\choose k}+{n\choose k-1}$.
+
+By direct computation show that ${n\choose k}+{n\choose k-1}= {n+1\choose k}$. It will follow that $(a+b)^{n+1}$ as claimed, and the proof is complete.
+\end{exercise}
+\begin{proof}
+ We have ${n\choose k}+{n\choose k-1} =\frac{n(n-1)\dots(n-k+1)}{k!} + \frac{n(n-1)\dots(n-k+2)}{(k-1)!} \\
+ =\frac{n(n-1)\dots(n-k+1)}{k!} + \frac{n(n-1)\dots(n-k+2)k}{k!} =\frac{[n(n-1)\dots(n-k+2)][(n-k+1)+k]}{k!} 
+ \\=\frac{[n(n-1)\dots(n+1+k+1)](n+1)}{k!} = {n+1\choose k}$ 
+\end{proof}

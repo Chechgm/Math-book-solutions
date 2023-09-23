@@ -1,0 +1,161 @@
+\subsection*{Chapter 3.D. Invertibility and isomorphic vector spaces}
+\addcontentsline{toc}{subsection}{Chapter 3.D. Invertibility and isomorphic vector spaces}
+
+
+\begin{exercise}{1}
+  Suppose $T\in\mathcal{L}(U,V)$ and $S\in\mathcal{L}(V,W)$ are both invertible linear maps. Prove that $ST\in\mathcal{L}(U,W)$ is invertible and that $(ST)^{-1}=T^{-1}S^{-1}$.
+\end{exercise}
+\begin{proof}
+ For the first part, notice that if $T$ and $S$ are linear maps, then the composition, $ST$ is a linear map in $\mathcal{L}(U,W)$ too. Dy definition, $S$ and $T$ are both injective and surjective, since they are invertible. From basic set theory, we know that the composition of injective functions is injective and the composition of surjective functions is surjective. As a result, $ST$ is both injective and surjective, so $ST$ is invertible.
+ 
+ For the second part, we have $(ST)(ST)^{-1}=I \implies T(ST)^{-1}=S^{-1} \implies (ST)^{-1}=S^{-1}T^{-1}$, as required.
+\end{proof}
+
+
+\begin{exercise}{2}
+  Suppose $V$ is finite-dimensional and $\dim V>1$. Prove that the set of noninvertible operators on $V$ is not a subspace of $\mathcal{L}(V)$.
+\end{exercise}
+\begin{proof}
+ Let $\dim V=n$. From Proposition 3.60, we know that $\mathcal{L}(V)\cong\mathbf{F}^{n,n}$. Now we have to find two n-by-n noninvertible matrices whose sum is invertible. Take the first matrix to be such that the entry of the first row and first column is 1, and the second matrix to be such that the entry of the $i$'th row and $i$'th column (with the exception of the $i=1$). Then both of these matrices are not invertible, as they they are not-surjective. However, their sum is the identity matrix which is invertible. As a result, the set of noninvertible operators is not closed under addition and, thus, not a subspace.
+\end{proof}
+
+
+\begin{exercise}{4}
+  Suppose $W$ is finite-dimensional and $T_{1},T_{2}\in\mathcal{L}(V,W)$. Prove that $\nullspace T_{1}=\nullspace T_{2}$ if and only if there exists an invertible operator $S\in\mathcal{L}(W)$ such that $T_{1}=ST_{2}$.
+\end{exercise}
+\begin{proof}
+ ($\Rightarrow$) Suppose $\nullspace T_{1}=\nullspace T_{2}$. We consider a basis $v_{1},\dots, v_{n}$ of $\nullspace T_{1}$, and extend it to a basis $v_{1},\dots, v_{n}, v_{n+1},\dots, v_{m}$ of $V$. We know that if $v_{1},\dots,v_{m}$ span $V$, then $T_{1}v{1},\dots, T_{1}v_{m}$ span $\range T_{1}$, so $T_{1}v_{n+1},\dots, T_{1}v_{m}$ span $\range T_{1}$, since $v_{1},\dots,v_{n}\in\nullspace T_{1}$. Furthermore, from the Fundamental Theorem of Linear maps, $\dim V = \dim\range T_{1} +\dim\nullspace T_{1}$, so the list $T_{1}v_{n+1},\dots, T_{1}v_{m}$ is a basis of $\range T_{1}$. 
+ 
+ From the Fundamental Theorem of Linear Maps, we have that $\dim\range T_{1}=\dim\range T_{2}$ and by Theorem 3.59, $\range T_{1}\cong\range T_{2}$. We  can define an operator $S^{*}\in\mathcal{L}(\range T_{1})$ so that, for the basis $T_{1}v_{n+1},\dots,T_{1}v_{m}$ of $\range T_{1}$ we found above, we have $T_{1}(v_{i})=S^{*}T_{2}(v_{i})$. Because $T_{1}v_{n+1},\dots,T_{1}v_{m}$ is a basis of $\range T_{1}$, $S^{*}T_{1}v_{n+1},\dots,S^{*}T_{1}v_{m}$ spans $\range S^{*}$. This operator is invertible because, by the Fundamental Theorem of linear maps, $\dim\range T_{1}= \dim\nullspace S^{*} + \dim\range S^{*}$ and $\dim\range T_{1}= \dim\range S^{*}$, so $\dim\nullspace S^{*}=0$.
+ 
+ Now we extend $T_{1}(v_{n+1}),\dots,T_{1}(v_{m})$ to a basis $T_{1}(v_{n+1}),\dots,T_{1}(v_{m}), w_{m+1}\\ \dots,w_{l}$ of $W$ and linearly extend $S^{*}$ to $S\in\mathcal{L}(W)$ so that $Sw=S^{*}w$ for $w\in\range T_{1}$ and $Sw_{i}=w_{i}$ if $w_{i}\notin \range T_{1}$. The resulting linear map has all the desired properties.
+ 
+ ($\Leftarrow$) Suppose there exists an invertible operator $S\in\mathcal{L}(W)$ such that $T_{1}=ST_{2}$. Because $S$ is invertible, it is injective so $\nullspace S=\{0\}$. But this implies $\nullspace T_{1}=\nullspace ST_{2}=\nullspace T_{2}$, as required.
+\end{proof}
+
+
+\begin{exercise}{5}
+  Suppose $V$ is finite-dimensional and $T_{1},T_{2}\in\mathcal{L}(V,W)$. Prove that $\range T_{1}=\range T_{2}$ if and only if there exists an invertible operator $S\in\mathcal{L}(V)$ such that $T_{1}=T_{2}S$.
+\end{exercise}
+\begin{proof}
+ ($\Rightarrow$) Consider a basis $v_{1},\dots,v_{n}$ of $\nullspace T_{1}$. We extend this basis to a basis $v_{1},\dots,v_{n},v_{n+1},\dots,v_{m}$ of $V$. In addition, let $w_{1},\dots,w_{n}$ be a basis of $\nullspace T_{2}$. Consider the operator $S\in\LLL(V)$ given by $Sv_{i}=w_{i}$, if $v_{i}$ is in $\nullspace T_{1}$ and $w_{i}$ is in $\nullspace T_{2}$. This is possible because from the Fundamental Theorem of Linear Maps, we know that $\nullspace T_{1}$ has the same dimensionality as $\nullspace T_{2}$.
+ 
+ We still have to define $S$ for $v_{n+1},\dots,v_{m}$. First, we find $w_{k}$ such that $T_{1}v_{i}=T_{2}w_{i}$. We know such $w_{k}$ exists given that $\range T_{1}=\range T_{2}$. Then define $Sv_{i}=w_{i}$ for $v_{i}$ not in $\nullspace T_{1}$. To finish the proof, we need to prove that $w_{1},\dots,w_{m}$ is a basis of $V$, as then $S$ would be an invertible operator with the desired characteristics.
+
+ Because $w_{1},\dots,w_{m}$ has the ``right'' dimensionality (the same as $v_{1},\dots,v_{m}$), we have to prove that $w_{1},\dots,w_{m}$ is either linearly independent or that it spans $V$. Let $0=a_{1}w_{1}+\dots+a_{m}w_{m}$, we apply $T_{2}S$ on both sides of the equation to obtain $0= T_{2}S(a_{1}w_{1}+\dots+a_{m}w_{m})= a_{1}T_{2}Sw_{1}+\dots+a_{m}T_{2}Sw_{m}= a_{1}T_{2}v_{1}+\dots+a_{m}T_{2}v_{m}= $
+ 
+ Consider $w\in V$. We have $T_{2}w=T_{1}v$ for some $v\in V$ since the ranges of $T_{1}$ and $T_{2}$ are equal. We then have $T_{2}w= T_{1}(a_{1}v_{1}+\dots+a_{m}v_{m})= T_{2}(a_{1}w_{1}+\dots+a_{m}w_{m})$ so that $T_{2}(w-a_{1}w_{1}-\dots-a_{m}w_{m})=0$ implying $w-a_{1}w_{1}-\dots-a_{m}w_{m}$ is in the kernel of $T_{2}$ but the kernel of $T_{2}$ is spanned by $w_{1},\dots,w_{m}$, so $w$ is spanned too.
+ 
+ ($\Leftarrow$) Suppose there exists an invertible operator $S\in\mathcal{L}(V)$ such that $T_{1}=T_{2}S$. Because $S$ is invertible, then it is surjective, so that for all $v\in V$, there exists $v'\in V$ with $Sv'=v$. But that means that $\range T_{1} = \range T_{2}S=\range T_{2}$, as required.
+\end{proof}
+
+
+\begin{exercise}{7}
+  Suppose $V$ and $W$ are finite-dimensional. let $v\in V$. Let $E=\{T\in\mathcal{L}(V,W):Tv=0\}$.\\
+  a) Show that $E$ is a subspace of $\mathcal{L}(V,W)$.\\
+  b) Suppose $v\neq0$. What is $\dim E$?
+\end{exercise}
+\begin{proof}
+ a) To prove $E$ is a subspace, we need to prove three conditions: i) $E$ contains the zero element, ii) $E$ is closed under addition, iii) $E$ is closed under scalar multiplication. 
+ 
+ For i), notice that $0\in\mathcal{L}(V,W)$ is the function such that for all $v\in V$, we have $0(v)=0$, where the 0 in the right hand side of the equality is the 0 in $W$. So certainly i) holds. 
+ 
+ For ii), let $T,S\in E$. Then $(T+S)(v)=Tv+Sv=0+0=0$, so $T+S\in E$ and ii) holds. Finally, let $\lambda\in\mathbf{F}$ and consider $(\lambda T)v=\lambda (Tv)=\lambda 0=0$, so $E$ is closed under scalar multiplication. As a result, $E$ is a subspace.
+ 
+ b) For this exercise it is illustrative to think about the matrices associated to the linear maps in $E$. Let $v, v_{2},\dots,v_{n}$ be a basis of $V$ and $w_{1},\dots,w_{m}$ a basis of $W$. For any linear map in $E$, the matrix with respect to the bases of $V$ and $W$ will have zeros in the first column, and no restrictions in the rest of the matrix. Hence, a basis of $E$ are all the matrices with zeroes in all entries besides one entry (except the first column, due to the restriction). There are $(n-1)m$ of these matrices and this is the dimension of $E$.
+\end{proof}
+
+
+\begin{exercise}{8}
+  Suppose $V$ is finite-dimensional and $T:V\rightarrow W$ is a surjective linear map of $V$ onto $W$. Prove that there is a subspace $U$ of $V$ such that $T\vert_{U}$ is an isomorphism of $U$ onto $W$. (Here $T\vert_{U}$ means the function $T$ restricted to $U$. In other words, $T\vert_{U}$ is the function whose domain is $U$ with $T\vert_{U}$ defined by $T\vert_{U}(u)=Tu$ for every $u\in U$).
+\end{exercise}
+\begin{proof}
+ Let $w_{1},\dots,w_{m}$ be a basis of $\range T$. Let $u_{i}$ be defined as one (of the possibly many) vectors in $V$ with $Tu_{i}=w_{i}$. We then let $U=\vecspan(u_{1},\dots,u_{m})$.
+ 
+ We know prove $U$ is a subspace of $V$. i) $T0=0\in\range T$. ii) Let $u,u'\in U$, then $T(u+u')=Tu+Tu'$ which is in $\range T$ because both $Tu$ and $Tu'$ are, so $u+u'\in U$. iii) Let $\lambda\in\mathbf{F}$, then $T(\lambda u)=\lambda Tu$ which belongs to $\range T$ because $Tu$ does and $\lambda u\in U$.
+ 
+ By the way we defined $u_{i}$, we have that $T\vert_{U}$ is an isomorphism between $U$ and $W$.
+\end{proof}
+
+
+\begin{exercise}{9}
+  Suppose $V$ is finite-dimensional and $S,T\in\mathcal{L}(V)$. Prove that $ST$ is invertible if and only if both $S$ and $T$ are invertible.
+\end{exercise}
+\begin{proof}
+ ($\Rightarrow$) Suppose $ST$ is invertible. Then $ST$ is both injective and surjective. Injectivity is defined so that for $v,v'\in V$, if $ST(v)=ST(v')$, then $v=v'$. Surjectivity is defined so that for all $v\in V$, there exists a $v'\in V$ with $STv'=v$. 
+ 
+ Because $ST$ is surjective, it must also be the case that $S$ is surjective as, otherwise, there would be a $v\in V$ not mapped by $ST$. On the other hand, let $Tv=Tv'$, and apply $S$ on both sides of the equation: $STv=STv'$, from the injectivity of $ST$, $v=STv=STv'=v'$ and so $T$ is injective too. Because $V$ is finite-dimensional, by Theorem 3.69, both $S$ and $T$ are invertible.
+ 
+ ($\Leftarrow$) Suppose $S$ and $T$ are both invertible. Then both $S$ and $T$ are injective. Because $V$ is finite-dimensional, by Theorem 3.69 it suffices to show that $ST$ is injective to prove its invertibility. The injectivity of $ST$ follows from the composition of injective functions and, as a result, $ST$ is invertible.
+\end{proof}
+
+
+\begin{exercise}{10}
+  Suppose $V$ is finite-dimensional and $S,T\in\mathcal{L}(V)$. Prove that $ST=I$ if and only if $TS=I$.
+\end{exercise}
+\begin{proof}
+ ($\Rightarrow$) Suppose $ST=I$, let $v, v'\in V$. We will prove that $ST$ is injective, so assume $STv=STv'$, because $ST=I$, then $v=v'$. From the Fundamental Theorem of linear maps, and the fact $V$ is finite-dimensional, $ST$ is invertible and by exercise 9, both $S$ and $T$ are invertible. Additionally, we know inverses are unique and that $S$ is the inverse of $T$, then $TS=I$, as required.
+ 
+ ($\Leftarrow$) The argument is the same as above, starting from the proof of the injectivity of $TS$.
+\end{proof}
+
+
+\begin{exercise}{15}
+  Prove that every linear map from $\mathbf{F^{n,1}}$ to $\mathbf{F^{m,1}}$ is given by a matrix multiplication. In other words, prove that if $T\in\mathcal{L}(\mathbf{F^{n,1}}, \mathbf{F^{m,1}})$, then there exists an m-by-n matrix $A$ such that $Tx=Ax$ for every $x\in\mathbf{F^{n,1}}$.
+\end{exercise}
+\begin{proof}
+ Let $T\in\LLL(\mathbf{F^{n,1}}, \mathbf{F^{m,1}})$, let the list $w_{1},\dots,w_{n}$ be a basis of $\mathbf{F^{n, 1}}$ and the list $v_{1},\dots,v_{m}$ a basis of  $\mathbf{F^{m,1}}$, such that $Tw_{i}=v_{i}$ for all $i$ and 0 otherwise.
+ 
+ Now consider an arbitrary $x\in \mathbf{F^{n,1}}$. We can write $x$ uniquely as $x= a_{1}w_{1}+\dots+a_{n}w_{n}$ for some $a_{i}\in\bF$. Hence, $Tx= T(a_{1}w_{1}+\dots+a_{n}w_{n})= T(a_{1}w_{1})+\dots+T(a_{n}w_{n})= a_{1}T(w_{1})+\dots+a_{n}T(w_{n})= a_{1}v_{1}+\dots+a_{n}v_{n}$. Then the matrix given by $a_{i}$ in the $i-i$ entry is our desired matrix.
+\end{proof}
+
+
+\begin{exercise}{16}
+  Suppose $V$ is finite-dimensional and $ST\in\mathcal{L}(V)$. Prove that $T$ is a scalar multiple of the identity if and only if $ST=TS$ for every $S\in\mathcal{L}(V)$.
+\end{exercise}
+\begin{proof}
+ ($\Rightarrow$) Let $\lambda\in\mathbf{F}$ and suppose $T=\lambda I$. Let $S\in\mathcal{L}(V)$ be arbitrary. Then, $ST=S(\lambda I)=\lambda SI=(\lambda I)S=TS$.
+ 
+ ($\Leftarrow$) Suppose $ST=TS$ for every $S\in\mathcal{L}(V)$. Let $v_{1},\dots,v_{n}$ be a basis of $V$. In general, we can write $Tv_{i}=A_{1,i}v_{1}+\dots+A_{n,i}v_{n}$. We want to prove that $A_{i,j}=0$ if $i\neq j$ and $A_{i,i}$ is the same for all $i$. 
+
+ Consider $S\in\LLL(V)$ given by $Sv_{i}=v_{i}$ and 0 otherwise. For $v_{i}$ we have $TSv_{i}=Tv_{i}= A_{1,i}v_{1}+\dots+A_{n,i}v_{n}$, and $STv_{i}= S(A_{1,i}v_{1}+\dots+A_{n,i}v_{n})= A_{i,i}v_{i}$. For $v_{j}$ with $j\neq i$, we have $TSv_{j}= T0= 0$ and $STv_{j}= S(A_{1,j}v_{1}+\dots+A_{n,j}v_{n})= A_{i,j}v_{i}$. Because $v_{1},\dots, v_{n}$ is a basis of $V$, then if $A_{i,j}v_{i}=0$, it must be that $A_{i,j}=0$ for all $i\neq j$. If we reason in a similar way for all $i=1,\dots n$, we can conclude that the matrix associated with $T$ with respect to the basis $v_{1},\dots,v_{n}$ is diagonal.
+
+ To connect $A_{i,i}$ to $A_{j,j}$, consider the linear map $S\in\LLL(V)$ given by $Sv_{i}=v_{j}$ and 0 otherwise. Then $STv_{i}= S(A_{1,i}v_{1}+\dots+A_{n,i}v_{n})= A_{i,i}v_{j}$, and $TSv_{i}= Tv_{j}= A_{1,j}v_{1}+\dots+A_{n,j}v_{n}= A_{j,j}v_{j}$ (because of the result in the previous paragraph).
+ As a result, $T$ is diagonal, and in addition, $A_{i,i}=A_{j,j}$ for all $i$ and $j$. In words, $T$ is a scalar multiple of the identity.
+\end{proof}
+
+
+\begin{exercise}{18}
+  Show that $V$ and $\mathcal{L}(\mathbf{F}, V)$ are isomorphic vector spaces.
+\end{exercise}
+\begin{proof}
+ From Theorem 3.61, $\dim\mathcal{L}(\mathbf{F},V)=(\dim \mathbf{F})(\dim V)$, but $\dim\mathbf{F}=1$, so $\dim\mathcal{L}(\mathbf{F},V)=\dim V$. By Theorem 3.59, we know that two vector spaces are isomorphic if they have the same dimension, hence $\mathcal{L}(\mathbf{F},V)$ is isomorphic to $V$.
+\end{proof}
+
+
+\begin{exercise}{20}
+  Suppose $n$ is a positive integer and $A_{i,j}\in\mathbf{F}$ for $i,j=1,\dots,n$. Prove that the following are equivalent (note that in both parts below, the number of equations equals the number of variables):
+  
+  a) The trivial solution $x_{1}=\dots=x_{n}=0$ is the only solution to the homogeneous system of equations\\
+  $\begin{matrix}
+  \sum_{k=1}^{n}A_{1,k}x_{k}=0\\
+  \vdots\\
+  \sum_{k=1}^{n}A_{n,k}x_{k}=0.
+  \end{matrix}
+  $
+  
+  b) For every $c_{1},\dots,c_{n}\in\mathbf{F}$, there exists a solution to the system of equations\\
+  $\begin{matrix}
+  \sum_{k=1}^{n}A_{1,k}x_{k}=c_{1}\\
+  \vdots\\
+  \sum_{k=1}^{n}A_{n,k}x_{k}=c_{n}.
+  \end{matrix}
+  $
+\end{exercise}
+\begin{proof}
+ a) is the same as saying that the linear transformation given by $T(x_{1},\dots,x_{n})\\ =\left(\sum_{i}^{n}A_{1,i}x_{i},\dots,\sum_{i}^{n}A_{n,i}x_{i}\right)$ is injective, and hence, invertible. The injectivity comes from the nullspace of $T$ being $\{0\}$.
+
+ b) is the same as saying that the linear transformation $S(x_{1},\dots,x_{n})\\ =\left(\sum_{i}^{n}A_{1,i}x_{i},\dots,\sum_{i}^{n}A_{n,i}x_{i}\right)$ is surjective, because for every $(c_{1},\dots,c_{n})\in\mathbf{F}^{n}$, there exists $(x_{1},\dots,x_{n})$ with $S(x_{1},\dots,x_{n})=(c_{1},\dots,c_{n})$. So that $S$ is invertible.
+
+ Because we are working with finite-dimensional vector spaces, then a) and b) are equivalent.
+\end{proof}

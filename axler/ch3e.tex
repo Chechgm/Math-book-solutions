@@ -1,0 +1,146 @@
+\subsection*{Chapter 3.E. Products of quotient vector spaces}
+\addcontentsline{toc}{subsection}{Chapter 3.E. Products of quotient vector spaces}
+
+
+\begin{exercise}{1}
+  Suppose $T$ is a function from $V$ to $W$. The \textbf{graph} of $T$ is the subset of $V\times W$ defined by $\text{graph of }T=\{(v,Tv)\in V\times W:v\in V\}$. Prove that $T$ is a linear map if and only if the graph of $T$ is a subspace of $V\times W$. 
+  
+  [Formally, a function $T$ from $V$ to $W$ is a subset $T$ of $V\times W$ such that for each $v\in V$, there exists exactly one element $(v,w)\in T$. In other words, formally a function is what is called above its graph. We do not usually think of functions in this formal manner. However, if we do become formal, then the exercise above could be rephrased as follows: Prove that a function $T$ from $V$ to $W$ is a linear map if and only if $T$ is a subspace of $V\times W$.]
+\end{exercise}
+\begin{proof}
+ ($\Rightarrow$) Suppose $T$ is a linear map. Now let $(v,Tv),(w,Tw)\in\text{graph of }T$. We have $(v,Tv)+(w,Tw)= (v+w, Tv+Tw)= (v+w, T(v+w))$, so that $\text{graph of }T$ is closed under addition. Furthermore, suppose $\lambda\in\bF$. We then have $\lambda(v,Tv)= (\lambda v, \lambda Tv)= (\lambda v, T(\lambda v))$, so that $\text{graph of }T$ is closed under scalar mutliplication. Finally, we know that $T$ maps $0$ to $0$, so that $(0, T0)=(0,0)\in\text{graph of T}$.
+
+ ($\Leftarrow$) Suppose $\text{graph of }T$ is a subspace of $V\times W$. Then if $(v,Tv),(w,Tw)\in\text{graph of }T$, we have that $(v+w,Tv+Tw)\in\text{graph of }T$. In other words, there is an $x\in V$ so that $x=v+w$, and $(x,Tx)\in\text{graph of }T$, but this is the same as $(v+w, Tv+Tw)=(v+w, T(v+w)$. Furthermore, we know that if $\lambda\in\bF$, we have that $(\lambda v, \lambda Tv)\in\text{graph of }T$. As above, we have that there is $x\in V$ so that $x=\lambda x$ and $(x,Tx)\in\text{graph of }T$. This is the same as $(\lambda v, \lambda Tv)=(\lambda v, T(\lambda v))$. in both cases the equality with $Tx$ follows because $T$ is a function so that $Tx$ is unique. Hence $T$ is a linear map.
+\end{proof}
+
+\begin{exercise}{4}
+  Suppose $V_1,\dots,V_m$ are vector spaces. Prove that $\LLL(V_1\times\dots\times V_m, W)$ and $\LLL(V_1,W)\times\dots\times \LLL(V_m, W)$ are isomorphic vector spaces.
+\end{exercise}
+\begin{proof}
+ In the following three exercises we will use the following results:
+
+ 3.59: Dimensions show whether vector spaces are isomorphic.
+
+ 3.61: $\dim\LLL(V,W)=(\dim V)(\dim W)$
+
+ 3.76: Dimension of a product is the sum of dimensions.
+
+ We have 
+ \begin{align*}
+ \dim\LLL(V_1,\times,V_m, W) &=
+ (\dim V_1\times V_m)(\dim W)\\
+ &=(\dim V_1+\dots +\dim V_m)(\dim W)\\
+ &=(\dim V_1)(\dim W)+\dots+(\dim V_m)(\dim W)\\
+ &=\dim\LLL(V_1,W)+\dots+\dim\LLL(V_m,W).
+ \end{align*}
+      By 3.59, $\LLL(V_1,\dots,V_m,W)$ and $\dim\LLL(V_1,W)+\dots+\dim\LLL(V_m,W)$ are isomorphic.
+\end{proof}
+
+\begin{exercise}{5}
+  Suppose $W_1,\dots,W_m$ are vector spaces. Prove that $\LLL(V,W_1\times\dots\times W_m)$ and $\LLL(V,W_1)\times\dots\times\LLL(V,W_m)$ are isomorphic vector spaces.
+\end{exercise}
+\begin{proof}
+ \begin{align*}
+ \dim\LLL(V,W_1,\times,W_m) &=
+ (\dim V)(\dim W_1\times W_m)\\
+ &=(\dim V)(\dim W_1+\dots +\dim W_m)\\
+ &=(\dim V)(\dim W_1)+\dots+(\dim V)(\dim W_m)\\
+ &=\dim\LLL(V,W_1)+\dots+\dim\LLL(V,W_m).
+ \end{align*}
+ By 3.59, $\dim\LLL(V,W_1,\times,W_m)$ and $\dim\LLL(V,W_1)+\dots+\dim\LLL(V,W_m)$ are isomorphic.
+\end{proof}
+
+\begin{exercise}{6}
+  For $n$ a positive integer, define $V^n$ by $V^n=\underbrace{V\times V}_{n\text{ times}}$. Prove that $V^n$ and $\LLL(\mathbf{F^n}, V)$ are isomorphic vector spaces.
+\end{exercise}
+\begin{proof}
+ We have
+ \begin{align*}
+     \dim V^n &= n\dim V\\
+     &= (\underbrace{\dim F+\dots+\dim F}_{n\text{ times}})(\dim V)\\
+     &= \dim(\underbrace{F\times\dots\times F}_{n\text{ times}})(\dim V)\\
+     &= (\dim F^n)(\dim V)\\
+     &= \LLL(F^n, V).
+ \end{align*}
+The result follows from 3.59.
+\end{proof}
+
+\begin{exercise}{7}
+  Suppose $v, x$ are vectors in $V$ and $U,W$ are subspaces of $V$ such that $v+U=x+W$. Prove that $U=W$.
+\end{exercise}
+\begin{proof}
+ Consider $0\in U$. Then there exists $w\in W$ so that $v=x+w$ and $x-v\in W$. Now let $u\in U$. We have that there exists $w\in W$ with $v+u=x+w$, so that $u=w+x-v$ implying $u\in W$ and $U\subseteq W$. We can reason in a similar way to conclude that $W\subseteq U$. Hence $U=W$, as required.
+\end{proof}
+
+\begin{exercise}{8}
+  Prove that a nonempty subset $A$ of $V$ is an affine subset of $V$ if and only if $\lambda v+(1-\lambda)w\in A$ for all $v,w\in A$ and all $\lambda\in\mathbf{F}$.
+\end{exercise}
+\begin{proof}
+ ($\Rightarrow$) Suppose $A$ is an affine subset of $V$, so that $A=x+U$ for some vector $x\in V$ and some subspace $U$ of $V$. Now consider $v,w\in A$, we can express $v=x+u$ and $w=x+u'$ for some $u,u'\in U$. Let $\lambda\in\bF$. We have, $\lambda v+(1-\lambda)w= \lambda(x+u)+(1-\lambda)(x+u')=x+\lambda u+(1-\lambda)u'\in A$, as required.
+
+ ($\Leftarrow$) Let $x\in A$. We will prove that $U=-x+A$ is a subspace.
+
+ Zero: Since $x\in A$, then for $v=w=x$ and $\lambda=1$, we have $-x+x=0\in U$.
+
+ Scalar multiplication: Let $a,b\in U$, so that $a=-x+a'$ and $b=-x+b'$, and let $\lambda\in\bF$. We have $\lambda a=-\lambda x+\lambda a'= -\lambda x+x-x+\lambda a'= -x + (1-\lambda)x+\lambda a'\in U$.
+
+ Addition: We have $(a+b)/2= (-x+a'-x+b')/2= -x+(a'+b')/2\in U$, since $a',b'\in A$ and choosing $\lambda=1/2$.
+\end{proof}
+
+\begin{exercise}{10}
+  Prove that the intersection of every collection of affine subsets of $V$ is either an affine subset of $V$ or the empty set.
+\end{exercise}
+\begin{proof}
+ Let $\{A_1,A_2,\dots\}$ be a collection of affine subsets of $V$. So that, by exercise 8, $\lambda v_i+(1-\lambda)w_i\in A_i$ for all $v_i,w_i\in A_i$ and all $\lambda\in\bF$. 
+
+ Consider $a,b\in A=\bigcap_{i\in\mathcal{I}}A_i$ and $\lambda\in\bF$. Then $a,b\in A_i$ for all $i$, and so $\lambda a+(1-\lambda)b\in A_i$ for all $i$, so that $\lambda a+(1-\lambda)b\in A$.
+\end{proof}
+
+\begin{exercise}{11}
+  Suppose $v_1,\dots,v_m\in V$. Let\\ $A=\{\lambda_1v_1+\dots+\lambda_mv_m:\lambda_1,\dots,\lambda_m \in \bF\text{ and }\lambda_1+\dots+\lambda_m=1\}$.
+  \begin{enumerate}
+      \item Prove that $A$ is an affine subset of $V$.
+      \item Prove that every affine subset of $V$ that contains $v_1,\dots,v_m$ also contains $A$.
+      \item Prove that $A=v+U$ for some $v\in V$ and some subspace $U$ of $V$ with $\dim U\leq m-1$.
+  \end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item Let $v_i$ be one of the given vectors. We will tackle this problem by proving that $U=-v_i+A$ is a subspace of $V$.
+
+     Zero: Choose $\lambda_i=1$, then $-v_i+0v_1+\dots+v_i+\dots+v_m=0\in U$.
+
+     Scalar multiplication: Let $a\in U$, so that $a=-v_i+a'=-v_i+\lambda_1v_1+\dots+\lambda_mv_m$ and $\gamma\in\bF$. We have 
+     \begin{align*}
+         \gamma a &= \gamma(-v_i+\lambda_1v_1+\dots+\lambda_mv_m)\\
+         &= -v_i+v_i+\gamma(-v_i+\lambda_1v_1+\dots+\lambda_mv_m)\\
+         &= -v_i+(1-\gamma)v_i+\gamma(\lambda_1v_1+\dots+\lambda_mv_m).
+     \end{align*}
+     Now consider the sum of the coefficients of the second and third terms. We obtain $1-\gamma+\gamma(\lambda_1+\dots+\lambda_m)=1-\gamma+\gamma$, so that $\gamma a\in U$.
+     
+     Vector addition: Let $b=-v_i+b'\in U$. From scalar multiplication, we have that $a/2,b/2\in U$. Adding these together gives us the desired result.
+     \item Suppose $B$ is an affine subset of $V$, so that $B=u+W$ for some vector $w\in V$ and a subspace of $W$ of $V$. Furthermore, suppose that $v_1,\dots,v_m\in B$, so that $v_i=u+w_i$ for $w_i\in W$.
+
+    Let $a\in A$. We can write $a=\lambda_1v_1+\dots+\lambda_mv_m$ with $\lambda_1+\dots+\lambda_m=1$. Then $\lambda_1v_1+\dots+\lambda_mv_m= \lambda_1(u+w_1)+\dots+\lambda_m(u+w_m)= u+\lambda_1w_1+\dots+\lambda_mw_m= u+w'$ for some $w'\in W$, since $W$ is closed under linear combinations. Hence $a\in B$ and $A\subseteq B$, as required.
+     
+     \item We proved in 1. that $U$ is a subspace of $V$. There are at most $m$ independent vectors in $v_1,\dots,v_m$. To realize that $\dim U\leq m-1$, observe that any vector $v$ in $U$ must be of the form $-v_i+a$, where $a\in A$. This implies that for any linear combination of $m$ vectors in $U$, say using the scalars $\gamma_1,\dots,\gamma_m$ one of the scalars must be determined by the rest of them as $1-\gamma_1-\dots-\gamma_m=\gamma_j$.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{13}
+  Suppose $U$ is a subspace of $V$ and $v_1+U,\dots,v_m+U$ is a basis of $\quot{V}{U}$ and $u_1,\dots,u_n$ is a basis of $U$. Prove that $v_1,\dots,v_m,u_1,\dots,u_n$ is a basis of $V$.
+\end{exercise}
+\begin{proof}
+ Because $v_1+U,\dots,v_m+U$ is a basis of $\quot{V}{U}$, the vectors $v_1,\dots,v_m$ must be linearly independent. From 3.89 we have that $\dim\quot{V}{U}=\dim V-\dim U$, so that $\dim(v_1+U,\dots,v_m+U)=\dim(v_1,\dots,v_m)=\dim V-\dim U$. Furthermore, $\dim(u_1,\dots,u_n)=\dim U$.
+ 
+ Now we claim that $\dim(v_1,\dots,v_m,u_1,\dots,u_n)=\\\dim(v_1,\dots,v_m)+\dim(u_1,\dots,u_n)$. Suppose, for the sake of contradiction, this is not true. Then there exists a $v_i$ so that $v_i+U$ is a linear combination of $v_1,\dots,v_m,u_1,\dots,u_n$. If there are $v_j$ in the linear combination, then $v_1+U,\dots,v_m+U$ cannot be a basis of $\quot{V}{U}$ from the definition of affine subset. On the other hand, if only $u_j$ compose the linear combination, then $v_i+U$ is the zero vector in $\quot{V}{U}$, which is not linearly independent.
+
+ Since $\dim(v_1,\dots,v_m,u_1,\dots,u_n)=\dim(v_1,\dots,v_m)+\dim(u_1,\dots,u_n)$, by 3.89 we get the desired result.
+\end{proof}
+
+\begin{exercise}{15}
+  Suppose $\varphi\in\LLL(V,\bF)$ and $\varphi\neq 0$. Prove that $\dim\quot{V}{(\nullspace\varphi)}=1$
+\end{exercise}
+\begin{proof}
+ From 3.91, we know that $\quot{V}{(\nullspace\varphi)}\cong\range\varphi$. Since isomorphic vector space have the same dimension, and $\varphi\neq 0$, then $\dim\quot{V}{(\nullspace\varphi)}=1$, as required.
+\end{proof}

@@ -1,0 +1,212 @@
+\subsection*{Chapter 27. Extensions of Fields}
+\addcontentsline{toc}{subsection}{Chapter 27. Extensions of Fields}
+
+
+\begin{exercise}{A Recognizing algebraic elements}
+\begin{enumerate}
+    \item Prove that each of the following numbers is algebraic over $\Q$.
+    \begin{enumerate}
+        \item  $i$.
+        \item $\sqrt{2}$.
+        \item $2+3i$.
+    \end{enumerate}
+    \item Prove that each of the following numbers is algebraic over the given field.
+    \begin{enumerate}
+        \item $\sqrt{\pi}$ over $\Q(\pi)$.
+        \item $\sqrt{\pi}$ over $\Q(\pi^2)$.
+    \end{enumerate}
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \begin{enumerate}
+         \item $i$ is a root of the polynomial $x^2+1\in\Q[x]$.
+         \item $\sqrt{2}$ is a root of the polynomial $x^2-2\in\Q[x]$.
+         \item Let $a=2+3i$, then $a^2=-5+12i$, so that $a^2+5=12i$ and $(a^2+5)^2=12^2i^2=-144$, then $2+3i$ is a root of the polynomial $a^4+10a^2+169\in\Q[x]$.
+     \end{enumerate}
+     \begin{enumerate}
+         \item $\sqrt{\pi}$ is a root of the polynomial $x^2-\pi\in\Q(\pi)[x]$.
+         \item $\sqrt{\pi}$ is a root of the polynomial $a^4-\pi^2\in\Q(\pi^2)[x]$.
+     \end{enumerate}
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{B Finding the minimum polynomial}
+\begin{enumerate}
+    \item Find the minimum polynomial of each of the following numbers over $\Q$. (Where appropriate use the methods of Chapter 26, Exercises D, E and F to ensure that your polynomial is irreducible).
+    \begin{enumerate}
+        \item $1+2i$.
+        \item $1+\sqrt{2}$.
+        \item $1+\sqrt{2i}$.
+    \end{enumerate}
+    \item Show that the minimum polynomial of $\sqrt{2}+i$ is
+    \begin{enumerate}
+        \item $x^2-2\sqrt{2x}+3$ over $\R$.
+        \item $x^4-2x^2+9$ over $\Q$.
+        \item $x^2-2ix-3$ over $\Q(i)$.
+    \end{enumerate}
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+    \item 
+        \begin{enumerate}
+            \item The minimum polynomial of $1+2i$ is $a^4+6a^2+25$. Consider the change of variable $x=a^2$, which gives us $x^2+6x^2+25$, we can prove that this polynomial is irreducible by using the result of 26.E.1. To do so, notice that $x^2+6x+25$ has no roots in $\Q$ implying the desired result.
+            \item The minimum polynomial of $1+\sqrt{2}$ is $a^2-2a-1$. We can see this polynomial is irreducible by considering the change of variable $a=x+1$, which gives us $(x+1)^2-2(x+1)-1=x^2+2x+1-2x-2-1=x^2-2$. By 26.D.2, of this polynomial is irreducible, then we can conclude that the original polynomial is irreducible too. We now apply Eisenstein's criterion. Taking $p=2$, which divides $a_0$, but $a_0$ is not divided by $p^2=4$, then the polynomial is irreducible over $\Q$.
+            \item The minimum polynomial of $1+\sqrt{2i}$ is $a^4-4a^3+6a^2-4a+1$. To see this, consider the change of variable given by $a=x-1$ giving us $(x-1)^4+4(x-1)^3+6(x-1)^2-4(x-1)+1= x^4-8x^3+24x^2-32x+16$. We have that $p=8$ divides all but the coefficient of $x^4$ and $p^2=64$ does not divide the constant coefficient. Then by 26.D.2. paired with Eisenstein's criterion, the original polynomial is irreducible.
+        \end{enumerate}
+    \item 
+        \begin{enumerate}
+            \item Since $x^2-2\sqrt{2x}+3$ has no roots in $\R$, then by 26.E.1. it is irreducible in $\R$.
+            \item Consider the change of variable $a=x^2$, we then obtain $a^2-2a^2+9$. This equation has no roots in $\Q$, so that by 26.D.2 and 26.E.1. it is irreducible in $\Q$.
+            \item Since $x^2-2ix-3$ has no roots in $\Q(i)$ (in particular its roots are $\pm\sqrt{2}+i$, then by 26.E.1 it is irreducible in $\Q(i)$.
+        \end{enumerate}
+    \end{enumerate}
+
+\end{proof}
+
+\begin{exercise}{C The structure of field $\quot{F[x]}{\langle p(x)\rangle}$}
+Let $p(x)$ be an irreducible polynomial of degree $n$ over $F$. Let $c$ denote a root of $p(x)$ in some extension of $F$ (as in the basic theorem on field extensions).
+\begin{enumerate}
+    \item Prove: every element in $F(c)$ can be written as $r(c)$, for some $r(x)$ of degree less than $n$ in $F[x]$. [Hint:given any element $t(c)\in F(c)$, use the division algorithm to divide $t(x)$ by $p(x)$].
+    \item If $s(c)=t(c)$ in $F(c)$, where $s(x)$ and $t(x)$ have degree less than $n$, prove that $s(x)=t(x)$.
+    \item Conclude from parts 1 and 2 that every element in $F(c)$ can be written uniquely as $r(c)$ with $\deg r(x)<n$.
+    \item Using part 3, explain why there are exactly four elements in \\$
+    \quot{\Z_2[x]}{\langle x^2+x+1\rangle}$. List there four elements, and give their addition and multiplication tables. [Hint: Identify $\quot{\Z_2[x]}{\langle x^2+x+1\rangle}$ with $\Z_2(c)$ where $c$ is a root of $x^2+x+1$. Write the elements of $\Z_2(c)$ as in part 2. When computing the multiplication table, use the fact that $c^2+c+1=0$].
+    \item Describe $\quot{\Z_2[x]}{\langle x^3+x+1\rangle}$, as in part 4.
+    \item Describe $\quot{\Z_3[x]}{\langle x^3+x^2+1\rangle}$, as in part 4.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item Let $t(c)\in F(c)$. Consider the division of $p(x)$ by $t(x)$, given by $t(x)=p(x)q(x)+r(x)$ for some $q(x),r(x)\in F[x]$ with $\deg r(x)<n$. We have that $t(c)=p(c)q(c)+r(c)=r(c)$, as required.
+     \item By contradiction, suppose $s(x)\neq t(x)$, $s(c)=t(c)$ and both $s(x)$ and $t(x)$ have degree less than $n$.
+
+     Because $s(c)=t(c)$, then $s(x)-t(x)$ is divided by $p(x)$ because $p(x)$ generates the kernel of $\sigma_c$ where $s(x)-t(x)$ is included. Hence, $s(x)-t(x)=p(x)r(x)$ for some $r(x)$. If $r(x)$ is not equal to $0$, then $p(x)r(x)$ has degree greater than $n$ which contradicts that both $s(x)$ and $t(x)$ have degree less than $n$. On the other hand, if $r(x)=0$, then $s(x)=t(x)$, which contradicts our hypothesis. This proves the desired result.
+     \item From 1 we know that any element in $F(c)$ can be written as $r(c)$ with $\deg r(x)< n$, moreover, from part 2 we know that if there is another element $s(c)$, such that $s(c)=r(c)$, then it must be the case that $s(x)=r(x)$, which proves uniqueness.
+    \item Because there are $4$ polynomials of degree less than 2 in $\Z_2[x]$, in particular $x+1,x,1$ and $0$, then there must be $4$ elements in $\Z_2(c)$. These elements are then $0,1,c$ and $c+1$. $0$ and $1$ have the usual addition and multiplication and $c^2=c+1$ because $c^2+c+1=0$, and $1=-1$ and $c=-c$ because $\Z_2$ has characteristic $2$. These equalities fully characterise the multiplication and addition table of $\Z_2(c)$.
+    \item In addition to the $4$ polynomials of degree less than 2 in $\Z_2[x]$ we have $x^2+x+1, x^2+x, x^2+1$ and $x^2$ so that there are $8$ elements in $\Z_2(c)$. Furthermore, we have the following equations that characterise the multiplication and addition tables: $c^3+c+1=0$ so that $c^3=c+1$. For example, we have the product $(c^2+c)(c^2+1)= c^4+c^2+c^3+c= c(c+1)+c^2+(c+1)+c= c^2+c+c^2+c+1+c= 1+c$.
+    \item For this field we have $3^3$ different elements which will not be listed here. As above, the defining equation for the multiplication an addition tables is $c^3+c^2+1=0$ so that $c^3=2c^2+2$, the last equality following from the fact that $\Z_3$ has characteristic 3. 
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{D Short questions relating of field extensions}
+Let $F$ be any field. Prove parts 1-5.
+\begin{enumerate}
+    \item If $c$ is algebraic over $F$, so are $c+1$ and $kc$ (where $k\in F$).
+    \item If $c\neq 0$ and $c$ is algebraic over $F$, so is $1/c$.
+    \item If $cd$ is algebraic over $F$, then $c$ is algebraic over $F(d)$. If $c+d$ is algebraic over $F$, then $c$ is algebraic over $F(d)$ (Assume $c\neq 0$ and $d\neq 0$).
+    \item If the minimum polynomial of $a$ over $F$ is of degree 1, then $a\in F$, and conversely.
+    \item Suppose $F\subseteq K$ and $a\in K$. If $p(x)$ is a monic irreducible polynomial in $F[x]$, and $p(a)=0$, then $p(x)$ is the minimum polynomial of $a$ over $F$.
+    \item Name a field (different from $\R$ or $\C$) which contains a root of $x^5+2x^3+4x^2+6$.
+    \item Prove: $\Q(1+i)\cong\Q(1-i)$. However, $\Q(\sqrt{2})\not\cong\Q(\sqrt{3})$.
+    \item If $p(x)$ is irreducible and has degree 2, prove that $\quot{F[x]}{\langle p(x)\rangle}$ contains both roots of $p(x)$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item For $kc$, consider $q(x)$ where $b_j=a_j/k^j$, we have then $q(kc)= b_n(kc)^n+\dots+b_j(kc)^j+\dots+b_0= (a_n/k^n)k^nc^n+\dots+(a_j/k^j)k^jc^j+\dots+a_0= a_nc^n+\dots+a_0= 0$, as required.
+     
+     For $c+1$, consider $q(x)=p(x-1)$. We have that $q(c+1)=p(c+1-1)=p(c)=0$, as required.
+     \item Consider $q(x)$ with $b_j=a_jc^{j+1}$, we then have $q(1/c)= b_n(1/c)^n+\dots+b_j(1/c)^j+\dots+b_0= (a_nc^{n+1})(1/c)^n+\dots+(a_jc^{j+1})(1/c)^j+\dots+a_0= a_nc^n+\dots+a_0$, as required.
+     \item We can follow a process similar to 1. Suppose $p(x)\in F[x]$ is a polynomial such that $p(cd)=0$, consider the polynomial given by $p'(x)=p(x/d)\in F(d)[x]$, then $p'(cd)=p(cd/d)=0$. 
+     
+     Now suppose that $p(x)\in F[x]$ is a polynomial such that $p(c+d)=0$, then consider the polynomial $p'(x)=p(x-d)\in F(d)[x]$. We know that $p'(x)\in F(d)[x]$ by writing down the polynomial and collecting terms using the binomial theorem, for example. Then we have that $p'(c+d)=p(c+d-d)=0$, as required.
+    \item ($\Rightarrow$) The minimum polynomial of $a$ is the unique monic polynomial of lowest degree in the ideal of polynomials where $a$ is a root. If the minimum polynomial has degree 1, then we must have $p(x)=x-a$, so that $p(a)=a-a=$. But then the constant coefficient is $a$, so that $a\in F$.
+
+    ($\Leftarrow$) If $a\in F$, then consider $p(x)=x-a$. We have $p(a)=a-a=0$ so that $p(x)$ is the minimum polynomial of $a$ over $F$ and it has degree 1, as required.
+    \item By definition, an irreducible polynomial $p(x)$ cannot be divided by other polynomials, and furthermore, it is the generator of the ideal that contains it. Hence, if $a$ is a root of $p(x)$, $p(x)$ is the polynomial with lowest degree such that $p(a)=0$, as required.
+    \item A field with a root of $x^5+2x^3+4x^2+6$ could be $\quot{\Z}{\langle p(x)\rangle}$ where $p(x)$ is the minimum polynomial of the root $c$ over $\Z$.
+    \item Following a similar approach to B, we have that if $x=1+i$, then $x^2=2i$ and $x^4=-4$ so that (we could prove) that $x^4+4$ is the minimum polynomial of $1+i$ over $\Q$. This gives us $\Q(1+i)\cong\quot{\Q[x]}{\langle x^4+4\rangle}$. If we follow the same process, but using $1-i$ we find that $\Q(1-i)\cong\quot{\Q[x]}{\langle x^4+4\rangle}$, as desired.
+
+    Notice that $\Q(\sqrt{2})$ is not isomorphic to $\Q(\sqrt{3})$ because 2 has a square root in the former while it does not have it in the latter. Furthermore, we cannot find an isomorphism from $\Q(\sqrt{2})$ to $\Q(\sqrt{3})$ because $\Q$ has to be preserved in such isomorphism. Hence, $\Q(\sqrt{2})\not\cong\Q(\sqrt{3})$
+    \item We can write a second degree polynomial in general as $p(x)=ax^2+bx+c$. Now suppose $d$ is a root of $p(x)$, and consider the division of $p(x)$ by $(x-d)$: $p(x)=a(x-d)(x-e)+r(x)$, with $\deg r(x)<2$. If $r(d)=0$, then we can combine the first and second terms on the right hand side of the equation by dividing $r(x)$ by $x-d$, so that the division of $p(x)$ has no residual. If, on the other hand $r(d)\neq 0$, then $d$ cannot be a root of $p(x)$.
+
+    Since the division of $p(x)$ contains only elements in $F$, then $e\in F$ is another root of $p(x)$, as required.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{E Simple extensions}
+Recall the definition of $F(a)$. It is a field such that (i) $F\subseteq F(a)$; (ii) $a\in F(a)$; (iii) any field containing $F$ containing $F$ and $a$ contains $F(a)$.
+
+Use this definition to prove parts 1-5, where $F\subseteq K,\, c\in F$ and $a\in K$.
+\begin{enumerate}
+    \item $F(a)=F(a+c)$ and $F(a)=F(ca)$. (Assume $c\neq 0$).
+    \item $F(a^2)\subseteq F(a)$ and $F(a+b)\subseteq F(a,b)$. [$F(a,b)$ is the filed containing $F,a$ and $b$, and containined in any other field containing $F,a$ and $b$]. Why are the reverse inclusions not necessarily true?
+    \item $a+c$ is a root of $p(x)$ if and only if $a$ is a root of $p(x+c)$; $ca$ is a root of $p(x)$ if and only if $a$ is a root of $p(cx)$.
+    \item Let $p(x)$ be irreducible, and let $a$ be a root of $p(x+c)$. Then $\quot{F[x]}{\langle p(x+c)\rangle}\cong F(a)$ and $\quot{F[x]}{\langle p(x)\rangle}\cong F(a+c)$. Conclude that $\quot{F[x]}{\langle p(x+c)\rangle}\cong\quot{F[x]}{\langle p(x)\rangle}$
+    \item Let $p(x)$ be irreducible and let $a$ be a root of $p(cx)$. Then $\quot{F[x]}{\langle p(cx)\rangle}\cong F(a)$ and $\quot{F[x]}{\langle p(x)\rangle}\cong F(ca)$. Conclude that $\quot{F[x]}{\langle p(cx)\rangle}\cong\quot{F[x]}{\langle p(x)\rangle}$.
+    \item Use parts 4 and 5 to prove the following:
+        \begin{enumerate}
+            \item $\quot{\Z_{11}[x]}{\langle x^2+1\rangle}\cong\quot{Z_{11}[x]}{\langle x^2+x+4\rangle}$.
+            \item If $a$ is a root of $x^2-2$ and $b$ is a root of $x^2-4x+2$, then $\Q(a)\cong\Q(b)$.
+            \item If $a$ is a root of $x^2-2$ and $b$ is a root of $x^2-1/2$, then $\Q(a)\cong\Q(b)$.
+        \end{enumerate}
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item  Because $F(a)$ is a field and $F\subset F(a)$, then $a+c,ac\in F(a)$, likewise, (i) since $F(a+c)$ is a field with $F\subset F(a+c)$, then $a+c-c=a\in F(a)$, and (ii) since $F(ca)$ is a field with $F\subset F(ca)$, then $ca/c=a\in F(a)$, proving both assertions.
+     \item $F(a)$ is closed under multiplication, and $a\in F(a)$, then $aa=a^2\in F(a)$. To see that the reverse inclusion is not necessarily true, consider $\Q(i)$ and $\Q(i^2)=\Q(-1)=\Q$, we have $\Q(i)\not\subset\Q$.
+     
+     On the other hand, $a,b\in F(a,b)$, so that $a+b\in F(a,b)$. To see the reverse inclusion does not necessarily hold, consider $a$ and $b$ trascendental. Then both $a,b\in F(a,b)$ but $a,b\notin F(a+b)$.
+     \item We have $a+c$ is a root of $p(x)$ if and only if $p(a+c)=0$ if and only if $a$ is a root of $p(x+c)$.
+
+     On the other hand, $ca$ is a root of $p(x)$ if and only if $p(ca)=0$ if and only if $a$ is a root of $p(cx)$.
+    \item Since $p(x)$, then $p(x+c)$ is irreducible (as otherwise $p(x+c-c)=p(x)$ would be reducible, producing a contradiction). Now because $a$ is a root of $p(x+c)$, then $p(x+c)$ is a constant product of the minimal polynomial of $a$ over $F$ giving us $F(a)\cong\quot{F[x]}{\langle p(x+c)\rangle}$. Using the result in exercise 3, we can reason analogously with $p(x)$ and $a+c$ to conclude that $F(a+c)\cong\quot{F[x]}{\langle p(x)\rangle}$. From exercise 1, we know that $F(a)=F(a+c)$ giving us the desired result.
+    \item The proof of this result is virtually the same as exercise 4.
+    \item
+    \begin{enumerate}
+        \item In 4, consider $F=\Z_11\,,p(x)=x^2+1$ and $c=6$. Then we have $(x+6)^2+1=x^2+x+4$, as required.
+        \item In 4, consider $F=\Q\,,p(x)=x^2-2$ and $c=-2$. Then we have $(x-2)^2-2=x^2-4x+4-2=x^2-4x+2$ and we get the desired result.
+        \item In 5, consider $F=\Q\,,p(x)=x^2-2$ and $c=2$ then we would have $(2x)^2-2=4x^2-2=4(x^2-1/2)$ but since $x^2-2$ is a constant product away from $x^2-1/2$, we get the desired result.
+    \end{enumerate}
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{F Quadratic extensions}
+If the minimum polynomial of $a$ over $F$ has degree 2, we call $F(a)$ a quadratic extension of $F$.
+\begin{enumerate}
+    \item Prove that, if $F$ is a field whose characteristic is different from 2, any quadratic extension of $F$ is of the form $F(\sqrt{a})$, for some $a\in F$. [Hint: complete the square and use E.4].
+
+    Let $F$ be a finite field, and $F^\ast$ be the multiplicative group of nonzero elements of $F$. Obviously $H=\{x^2:x\in F^\ast\}$ is a subgroup of $F^\ast$, since every square $x^2$ in $F^\ast$ is the square of only two different elements, namely $\pm x$, exactly half the elements of $F^\ast$ are in $H$. Thus, $H$ has exactly two cosets, $H$ itself, containing all the squares and $aH$ (where $a\notin H$), containing all the nonsquares. If $a$ and $b$ are nonsquares, then by Chapter 15, Theorem 5 (i), $ab^{-1}=a/b\in H$. Thus: if $a$ and $b$ are nonsquares, $a/b$ is a square. Use these remarks in the following:
+    \item Let $F$ be a finite field. If $a,b\in F$, let $p(x)=x^2-a$ and $q(x)=x^2-b$ be irreducible in $F[x]$, and let $\sqrt{a}$ and $\sqrt{b}$ denote roots of $p(x)$ and $q(x)$ in an extension of $F$. Explain why $a/b$ is a square, say $a/b=c^2$ for some $c\in F$. Prove that $\sqrt{b}$ is a root of $p(cx)$.
+    \item Use part 2 to prove that $\quot{F[x]}{\langle p(cx)\rangle}\cong F(\sqrt{b})$; then use E.5. to conclude that $F(\sqrt{a})\cong F(\sqrt{b})$.
+    \item Use part 3 to prove: any two quadratic extensions of a finite field are isomorphic.
+    \item If $a$ and $b$ are nonsquares in $\R$, $a/b$ is a square (why?). Use the same argument as in part 4 to prove that any two simple extensions of $\R$ are isomorphic (hence isomorphic to $\C$).
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item Any polynomial of degree 2 in $F[x]$ can be written $ax^2+bx+c$, this in turn, can be written as $(ux-v)^2+w$, for a suitable choice of $u,v$ and $w$. Thus, using E.4, we have that $F(\sqrt{w})\cong\quot{F[x]}{\langle x^2+w\rangle}$, as desired.
+     \item We know $a$ and $b$ are nonsquares, as otherwise $a=c^2$ for some $c\in F$ and $x^2-c^2=(x+c)(x-c)$ so that $p(x)$ would be reducible. Since both $a$ and $b$ are nonsquares, then $a/b$ is a square. To see $\sqrt{b}$ is a root of $p(cx)$, take $p(c\sqrt{b})= p((\sqrt{a}/\sqrt{b})\sqrt{b})=p(\sqrt{a})=0$.
+     \item Since $p(x)$ is irreducible, then it is the minimum polynomial of $\sqrt{a}$ in $F$. Then we have that $F(\sqrt{a})\cong\quot{F[x]}{\langle p(x)\rangle}$. On the other hand, because $\sqrt{b}$ is a root of $p(cx)$, by E.5., we have that $F(\sqrt{b})\cong\quot{F[x]}{\langle p(cx)\rangle}$, by E.5., we have that $F(\sqrt{a})\cong F(\sqrt{b})$.
+    \item Since $\sqrt{a}$ and $\sqrt{b}$ were chosen arbitrarily, the desired result follows directly from 3, given a suitable construction of $c$.
+    \item For any positive real number, its square root is contained in the reals. On the other hand, all negative numbers have no square roots in the reals. Then, if we divide two non squares in the reals, we are dividing two negative numbers, which gives us a positive real number, with a square root, as argued above. Since these two numbers are chosen arbitrarily, the proof of part three can be followed \textit{verbatim} to prove the desired result. 
+
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{G Questions relating to trascendental elements}
+Let $F$ be a field, and let $c$ be trascendental over $F$. Prove the following:
+\begin{enumerate}
+    \item $\{a(c):a(x)\in F[x]\}$ is an integral domain isomorphic to $F[x]$.
+    \item $F(c)$ is the field of quotients of $\{a(c):a(x)\in F[x]\}$, and is isomorphic to $F(x)$, the field of quotients of $F[x]$.
+    \item If $c$ is trascendental over $F$, so are $c+1,kc$ (where $k\in F$ and $k\neq0$) and $c^2$.
+    \item If $c$ is trascendental over $F$, every element in $F(c)$ but not in $F$ is trascendental over $F$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item By definition, $F(c)=\{p(c):p(x)\in F[x]\}$. Consider the map $\phi:F[x]\rightarrow F(c)$ given by $p(x)\rightarrow p(c)$. $\phi$ is surjective by definition. For injectivity, let $p(x)\in \ker\phi$, then $p(c)=0$, but $c$ is trascendental, so $p(x)=0$ and $\ker\phi=\{0\}$ which implies injectivity.
+
+     Since $F$ is a field, so is $F(c)$ and hence they are both integral domains.
+     \item For simplicity, denote with $U$ the field of quotients of $\{a(c):a(x)\in F[x]\}$. Suppose $c'\in F(c)$, then $c$ can be written as sums and products of elements in $F\cup\{c\}$. But this is the same as saying that $c'=a(c)$ for some $a(x)\in F[x]$. Likewise, let $c'\in U$. Then $c'=a(c)$ for $a(x)\in F[x]$. But any $a(x)$ is the result of multiplication and addition of elements in $F$ and $c$, so that $c'\in F(c)$. It follows that $F(c)$ is an isomorphism with $F(x)$ because, given that $c$ is trascendental, it does not matter whether we use $c$ or $x$ which in the second case is a free variable.
+     \item If $c$ is trascendental, then for all $p(x)\in F[x]$, $p(c)\neq 0$. For the following, recall that $p(x)$ can be written as $a_nx^n+\dots+a_0$. 
+     
+     Consider $p(c+1)=a_n(c+1)^n+\dots+a_0=p(c)+q(c)$, since we know there is no $p(x),q(x)\in F[x]$ such that $p(c)=0$ or $q(c)=0$, then $p(c+1)\neq 0$. In this case we exclude the possibility that $p(c)+q(c)=0$ because $p(x)+q(x)\in F[x]$.
+
+     Furthermore, $p(kc)=a_nk^nc^n+\dots+a_0=b_nc^n+\dots+b_0=q(c)\neq 0$. Since $k,c\in F$, for $c^2$, take $k=c$.
+     \item We have that any element in $F(c)$ can be written as $c'=a_nc^n+\dots+a_0$ for $a_i\in F$. From 3, we know that if $c$ is trascendental, then $c+1,c^2$ and $kc$ are trascendental too. Since $c'$ can be written as a series of such operations, then $c'$ is trascendental, with the exception of those $c'$ where all $a_i$ but $a_0$ are 0.
+ \end{enumerate}
+\end{proof}

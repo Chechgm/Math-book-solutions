@@ -1,0 +1,162 @@
+\subsection*{Chapter 19. Quotient rings}
+\addcontentsline{toc}{subsection}{Chapter 19. Quotient rings}
+
+
+\begin{exercise}{B Examples of the use of the FHT}
+In each of the following, use the FHT (Fundamental Homomorphism Theorem) to prove that the two given groups are isomorphic. Then display their tables
+  \begin{enumerate}
+      \item $\mathbb{Z}_{5}$ and $\quot{\mathbb{Z}_{20}}{\langle 5\rangle}$
+      \item $\mathbb{Z}_{3}$ and $\quot{\mathbb{Z}_{6}}{\langle 3\rangle}$
+  \end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item Let $f:\Z_{20}\rightarrow\Z_{5}$ be defined as $f(a)=[a]$. $\ker f$ is $\langle 5\rangle$. Hence, $\quot{\Z_{20}}{\langle 5\rangle}\cong\Z_{5}$ by the FHT.
+     \item Let $f:\Z_{6}\rightarrow\Z_{3}$ be defined as $f=
+     \begin{pmatrix}
+     0 & 1 & 2 & 3 & 4 & 5\\
+     0 & 1 & 2 & 0 & 1 & 2
+     \end{pmatrix}$, we have $\ker f=\langle 3 \rangle$ so that $\quot{\Z_{6}}{\langle 3\rangle}\cong\Z_{3}$ by the FHT.
+ \end{enumerate}
+\end{proof}
+
+
+\begin{exercise}{E Properties of quotient rings $\quot{A}{J}$ in relation to properties of $J$}
+Let $A$ be a ring and $J$ an ideal of $A$. Use conditions (1), (2) and (3) of this chapter. Prove each of the following
+  \begin{enumerate}
+      \item Every element of $\quot{A}{J}$ has a square root iff for every $x\in A$, there is some $y\in A$ such that $x-y^{2}\in J$.
+      \item Every element of $\quot{A}{J}$ is its own negative iff $x+x\in J$ for every $x\in A$.
+      \item $\quot{A}{J}$ is a boolean ring iff $x^{2}-x\in J$ for every $x\in A$. (A ring $S$ is called a boolean ring iff $s^{2}=s$ for every $s\in S$).
+      \item If J is an ideal of all the nilpotent elements of a commutative ring $A$, then $\quot{A}{J}$ has no nilpotent elements (except zero). (Nilpotent elements from Chapter 17 M.: ``An element $a$ of a ring is nilpotent if $a^{n}=0$ for some positive integer $n$'').
+      \item Every element of $\quot{A}{J}$ is nilpotent iff $J$ has the following property: for every $x\in A$, there is a positive integer $n$ such that $x^{n}\in J$.
+      \item $\quot{A}{J}$ has unity element iff there exists an element $a\in A$ such that $ax-x\in J$ and $xa-x\in J$ for every $x\in A$.
+ \end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item ($\Rightarrow$) Suppose every element of $\quot{A}{J}$ has a square root. Then for all $x\in A$, there exists a $y\in A$ with $(J+y)^{2}=J+y^{2}=J+x$. By property (2), $x-y^{2}\in J$, as required.
+
+     ($\Leftarrow$) Suppose that for every $x\in A$, there exists a $y\in A$ such that $x-y^{2}\in J$. Then by (2), we have $J+x=J+y^{2}=(J+y)^{2}$ so that $y$ is the square root of $x$.
+     \item ($\Rightarrow$) Suppose every element of $\quot{A}{J}$ is its own inverse, then for every $x\in A$, $(J+x)+(J+x)=J+x+x=J$, by property (3), $x+x\in J$.
+
+     ($\Leftarrow$) Suppose $x+x\in J$ for all $x\in A$. By property (3), we have $J+x+x=(J+x)+(J+x)=J$ so that $(J+x)$ is its own negative.
+     \item ($\Rightarrow$) Suppose $\quot{A}{J}$ is a boolean ring, so that $(J+x)^{2}=(J+x)$ for all $x\in A$. Then $J+x^{2}=J+x$ and by property (2), $x^{2}-x\in J$.
+
+     ($\Leftarrow$) Suppose that for all $x\in A$, $x^{2}-x\in A$ holds. Then by property (2) $J+x^{2}=(J+x)^{2}=J+x$, hence $\quot{A}{J}$ is a boolean ring.
+     \item Suppose, $(J+x)$ is nilpotent. Then there exists a positive integer $n$ such that $(J+x)^{n}=J+x^{n}=J$. By property (3), $x^{n}\in J$, so that there is a $y\in J$ such that $x^{n}=y$, but $y$ is nilpotent, so that there exists a positive integer, $m$, such that $y^{m}=0$, hence $y^{m}=(x^{n})^{m}=x^{nm}=0$ and $x$ is nilpotent and $x\in J$. But this implies that the only nilpotent element in $\quot{A}{J}$ is $J$, as required.
+     \item ($\Rightarrow$) Suppose every element of $\quot{A}{J}$ nilpotent. Then there exists a positive integer $n$, such that $(J+x)^{n}=J+x^{n}=J$. By property (3), $x^{n}\in J$.
+
+     ($\Leftarrow$) Suppose for every $x\in A$, there is a positive integer $n$ such that $x^{n}\in J$. By property (3), $J+x^{n}=(J+x)^{n}=J$, so that $(J+x)$ is nilpotent.
+     \item ($\Rightarrow$) Suppose $\quot{A}{J}$ has a unity, $J+a$. Then for every $x\in A$, $(J+a)(J+x)=J+ax=J+x$, so by property (2), $ax-x\in J$. Likewise, $(J+x)(J+a)=J+xa=J+x$, and, $xa-x\in J$, as required.
+
+     ($\Leftarrow$) Suppose there exists an $a\in A$ such that $ax-x, xa-x\in J$ for all $x\in A$. By property (2), we have $J+ax=(J+a)(J+x)=J+x$ and $J+xa=(J+x)(J+a)=J+x$, but this is the same as saying $J+a$ is the unity of $\quot{A}{J}$.
+ \end{enumerate}
+\end{proof}
+
+
+\begin{exercise}{F Prime and maximal ideals}
+Let $A$ be a commutative ring with unity, and $J$ an ideal of $A$. Prove each of the following:
+  \begin{enumerate}
+      \item $\quot{A}{J}$ is a commutative ring with unity.
+      \item $J$ is a prime ideal iff $\quot{A}{J}$ is an integral domain.
+      \item Every maximal ideal of $A$ is a prime ideal. (Hint: Use the fact, proved in this chapter, that if $J$ is a maximal ideal then $\quot{A}{J}$ is a field).
+      \item If $\quot{A}{J}$ is a field, then $J$ is a maximal ideal. (Hint: See exercise I2 of Chapter 18: ``If $f:A\rightarrow B$ is a homomorphism from $A$ onto $B$, and $B$ is a field, then the kernel of $f$ is a maximal ideal'').
+  \end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item We know that $\quot{A}{J}$ is a ring. It is left to prove i) that it is commutative and ii) it has unity
+
+     i) Commutativity: Let $J+a, J+b\in\quot{A}{J}$. We have $(J+a)(J+b)=J+ab=J+ba=(J+b)(J+a)$, as required.
+
+     ii) Unity: Let $a$ be the unity of $A$, so that for all $x\in A$, $xa=ax=x$. Let $J+x\in\quot{A}{J}$. We have $(J+a)(J+x)=J+ax=J+x$ and $(J+x)(J+a)=J+xa=J+x$, so that $J+a$ is the unity of $\quot{A}{J}$.
+     \item ($\Rightarrow$) Suppose $J$ is a prime ideal. Since $A$ is a commutative ring $\quot{A}{J}$ is a commutative ring with unity. It is only left to prove that $\quot{A}{J}$ has the cancellation property. Let $a,b,c\in A$. Suppose $(J+a)(J+b)=J+ab=J+ac=(J+a)(J+c)$. By property (2), $ab-ac=a(b-c)\in J$. 
+
+     Since $J$ is a prime ideal, either $a\in J$ or $b-c\in J$. If $a\in J$, then $(J+a)(J+b)=J+b=J+c=(J+a)(J+c)$. If $b-c\in J$, then by property (2), $J+b=J+c$. In both cases, $\quot{A}{J}$ has the cancellation property and it is an integral domain.
+
+     ($\Leftarrow$) Suppose $\quot{A}{J}$ is an integral domain. Let $ab\in J$, then by property (3), $J+ab=(J+a)(J+b)=J$. Integral domains have no divisors of zero. Because the zero element in $\quot{A}{J}$ is $J$, then either $J+a=J$ or $J+b=J$ which implies that either $a$ or $b$ are in $J$, and $J$ is prime.
+     \item Let $J$ be a maximal ideal of $A$. Then $\quot{A}{J}$ is a field, and because all fields are integral domains, $\quot{A}{J}$ is an integral domain. By 3), $J$ is a prime ideal.
+     \item Consider the natural homomorphism $f:A\rightarrow\quot{A}{J}$ given by $f(a)=J+a$, we know $\ker f=J$. Exercise Ch.18.I.2 tells us that if $\quot{A}{J}$ is a field, then $\ker f$ is a maximal ideal, so $J$ is a maximal ideal, as required.
+ \end{enumerate}
+\end{proof}
+
+
+\begin{exercise}{G Further properties of quotient rings in relation to their ideals}
+Let $A$ be a ring and $J$ an ideal of $A$. (In parts 1-3 and 5 assume that $A$ is a commutative ring with unity).
+  \begin{enumerate}
+      \item Prove that $\quot{A}{J}$ is a field iff for every element $a\in A$, where $a\notin J$, there is some $b\in A$ such that $ab-1\in J$.
+      \item Prove that every nonzero element of $\quot{A}{J}$ is either invertible or a divisor of zero iff the following property holds, where $a,x\in A$: For every $a\notin J$, there is some $x\notin J$ such that either $ax\in J$ or $ax-1\in J$.
+      \item An ideal $J$ of a ring is called primary iff for all $a,b\in A$, if $ab\in J$, then either $a\in J$ or $b^{n}\in J$ for some positive integer $n$. Prove that every zero divisor in $\quot{A}{J}$ is nilpotent iff $J$ is primary.
+      \item An ideal $J$ of a ring $A$ is called semiprime iff it has the following property: For every $a\in A$, if $a^{n}\in J$ for some positive integer $n$, then necessarily $a\in J$. Prove that $J$ is semiprime iff $\quot{A}{J}$ has no nilpotent elements (except zero).
+      \item Prove that an integral domain can have no nonzero nilpotent elements. Then use part 4, together with Exercise F2 to prove that every prime ideal in a commutative ring is semiprime.
+  \end{enumerate}
+\end{exercise}
+\begin{proof}
+\begin{enumerate}
+ \item ($\Leftarrow$) From F.1, we know $\quot{A}{J}$ is a commutative ring with unity. It remains to be proven that every element of $\quot{A}{J}$ is invertible. Let $a\in A$, with $a\notin J$. By hypothesis, there exists $b\in A$ such that $ab-1\in J$. By property (2), we have $J+ab=(J+a)(J+b)=J+1$. Because $\quot{A}{J}$ is commutative, then $(J+a)(J+b)=(J+b)(J+a)$ and $J+a$ and $J+b$ are inverses of each other.
+
+ ($\Rightarrow$) Let $\quot{A}{J}$ be a field, that is, a commutative ring with unity and all its elements are invertible. Then for any $J+a\in\quot{A}{J}$, there exists a $J+b$ such that $(J+a)(J+b)=J+ab=J+1$. By property (2), this implies $ab-1\in J$ Since this is true for all $J+a$, then it is true for all $a\in A$.
+ \item ($\Leftarrow$) Let $a\in A$ with $a\notin J$. Then there exists $x\in A$ with $x\notin J$ such that either: 
+ 
+ i) $ax\in J$, which by property (3) implies $J+ax=(J+a)(J+b)=J$, that is $J+a$ and $J+b$ are divisors of zero. 
+ 
+ Or ii) $ax-1\in J$, which by property (2) implies $J+ax=(J+a)(J+x)=J+1$, and because $\quot{A}{J}$ is a commutative ring, $J+a$ and $J+x$ are inverses. 
+
+ ($\Rightarrow$) Suppose every nonzero element of $\quot{A}{J}$ is either i) invertible or ii) a divisor of zero. Let $J+a\in\quot{A}{J}$. If $J+a$ is:
+
+ i) Invertible, then there exists $J+x$ such that $(J+a)(J+x)=J+ax=J+1$. By property (2) this implies $ax-1\in J$.
+
+ ii) Divisor of zero, then there exists $J+x$ such that $(J+a)(J+x)=J+ax=J$, which by property (3) implies $ax\in J$.
+ \item ($\Rightarrow$) Suppose every zero divisor in $\quot{A}{J}$ is nilpotent. Then for any divisor of zero, say $J+a$, in $\quot{A}{J}$, there exists a positive integer $n$ such that $(J+a)^{n}=J+a^{n}=J$. Suppose $ab\in J$, then by property (3), $J+ab=(J+a)(J+b)=J$ so that $J+a$ and $J+b$ are divisors of zero. This means either $a$ or $b$ are in $J$ or, by the nilpotent property, $a^{n}$ or $b^{m}$ belong to $J$ for some positive integers $n$ and $m$.
+
+ ($\Rightarrow$) Suppose $J$ is primary. Let $J+a, J+b$ be divisors of zero in $\quot{A}{J}$ so that $(J+a)(J+b)=J+ab=J$. By property (3) this implies $ab\in J$. Because $J$ is primary, then $a^{n},b^{m}$ for some positive integers $n$ and $m$. By property (3) we have $J+a^{n}=(J+a)^{n}=J$, and $J+b^{m}=(J+b)^{m}=J$ so that $J+a$ and $J+b$ are nilpotent.
+ \item ($\Rightarrow$) Suppose $J$ is semiprime. Then for all $a\in A$, if $a^{n}\in J$ for some positive integer $n$, then necessarily $a\in J$. But $a^{n}\in J$ is the same as $J+a^{n}=(J+a)^{n}=J$ because of property (3), thus $J+a=J$ and $\quot{A}{J}$ has no nilpotent elements.
+
+ ($\Leftarrow$) Suppose $\quot{A}{J}$ has no nilpotent elements. So that if $(J+a)^{n}=J$ for any $a\in A$ and some positive integer $n$, then $a\in J$. Notice that $(J+a)^{n}=J+a^{n}=J$ implies $a^{n}\in J$ by property (3) but this means $J$ is a semiprime, as required.
+ \item i) Let $A$ be an integral domain. Suppose $a\in A$ is a nonzero nilpotent element of $A$. Then there exists a positive integer $n$ such that $a^{n}=0$. But this implies $aa^{n-1}=0$ so that $a$ and $a^{n-1}$ are divisors of zero, which is a contradiction.
+
+ ii) Let $J$ be a prime ieal in a commutative ring $A$. Then by F.2, $\quot{A}{J}$ is an integral domain. We just proved that integral domains have no nonzero nilpotent elements, hence, by 4), $J$ is semiprime, as required.
+\end{enumerate}
+\end{proof}
+
+
+\begin{exercise}{H $\Z_{n}$ as a homomorphic image of $\mathbb{Z}$}
+Recall that the function $f(a)=\bar{a}$ is the natural homomorphism from $\Z$ onto $\Z_{n}$. If a polynomiaal equation $p=0$ is satisfied in $\Z$, necessarily $f(p)=f(0)$ is true in $\Z_{n}$. Let us take a specific example; there are integers $x$ and $y$ satisfying $11x^{2}-8y^{2}+29=0$ (we may take $x=3$ and $y=4$). It follows that there must be elements $\bar{x}$ and $\bar{y}$ in $\Z_{6}$ which satisfy $\bar{11}\bar{x}^{2}-\bar{8}\bar{y}^{2}+\bar{29}=\bar{0}$ in $\Z_{6}$, that is $\bar{5}\bar{x}^{2}-\bar{2}\bar{y}^{2}+\bar{5}=0$. (We take $\bar{x}=\bar{3}$ and $\bar{y}=\bar{4}$). The problems which follow are based on this observation.
+  \begin{enumerate}
+      \item Prove that the equation $x^{2}-7y^{2}-24=0$ has no integer solutions. (Hint: if there are integers $x$ and $y$ satisfying this equation, what equation will $\bar{x}$ and $\bar{y}$ satisfy in $\Z_{7}$?)
+      \item Prove that $x^{2}+(x+1)^{2}+(x+2)^{2}=y^{2}$ has no integer solutions.
+      \item Prove that $x^{2}+10y^{2}=n$ (where $n$ is an integer) has no integer solutions if the last digit of $n$ is 2, 3, 7, or 8.
+      \item Prove that the sequence 3, 8, 13, 18, 23,\dots. does not include the square of any integer. (Hint: the image of each number on this list, under the natural homomorphism from $\Z$ to $\Z_{5}$, is $\bar{3}$).
+      \item Prove that the sequence 2, 10, 18, 26,\dots does not include the cube of any integer.
+      \item Prove that the sequence 3, 11, 19, 27,\dots does not include the sum of two squares of integers.
+      \item Prove that if $n$ is a product of two consecutive integers, its units digit must be 0, 2, or 6.
+      \item Prove that if $n$ is the product of three consecutive integers, its units digit must be 0, 4, or 6.
+  \end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item In $\Z_{7}$, $x^{2}-7y^{2}-24=0$ becomes $\bar{x}^{2}=\bar{24}=\bar{3}$. Since this equation cannot be satisfied in $\Z_{7}$, then the equation has no integer solutions.
+     \item First, we simplify the expression: $x^{2}+(x+1)^{2}+(x+2)^{2}=x^{2}+x^{2}+2x+1+x^{2}+4x+4=3x^{2}+6x+5=y^{2}$. In $Z_{3}$ the expression becomes $\bar{y}^{2}=\bar{5}=\bar{2}$. Since this equation cannot be satisfied in $Z_{3}$, then it has no integer solutions.
+     \item For this exercise we consider $\Z_{10}$. Any integer $n$ modulo 10 will belong to the congruence class of the value of its last digit. For the equation, we have that $x^{2}+10y^{2}=n$ becomes $\bar{x}^{2}=\bar{n}$. We then check all possibilities: $\bar{0}^{2}=\bar{0}, \bar{1}^{2}=\bar{1}, \bar{2}^{2}=\bar{2}, \bar{3}^{2}=\bar{3}, \bar{4}^{2}=\bar{6}, \bar{5}^{2}=\bar{5}, \bar{6}^{2}=\bar{6}, \bar{7}^{2}=\bar{9}, \bar{8}^{2}=\bar{4}, \bar{9}^{2}=\bar{1}$. Since 2,3,7 or 8 do not appear on the right hand side of these equalities, then the equation cannot be satisfied when $n$ has any of these numbers as last digit.
+     \item Using the natural homomorphism, we have that in $\Z_{5}$ we want to satisfy the equation $\bar{x}^{2}=\bar{3}$. However, this is not possible, so the equation cannot hold in $\Z$.
+     \item As above, we want to satisfy $\bar{x}^{3}=\bar{2}$ in $\Z_{8}$. If we try this equation for all congruence classes in $\Z_{8}$ we find that the equation cannot be satisfied. Thus, it has no integer solutions.
+     \item Consider $\Z_{8}$, then the sequence should fulfill the following equation, if any of those numbers were a sum of two square integers: $\bar{x}^{2}+\bar{y}^{2}=\bar{3}$, using the following algorithm, I verified on Python that the equation cannot be satisfied:
+     \begin{algorithmic}
+        \FOR{$x=0,\dots,7$}
+        \STATE{
+            \FOR{$y=0,\dots,7$}
+            \STATE{
+                    \IF{$\bar{x}^{2}+\bar{y}^{2}=\bar{3}$}
+                        \STATE{Break}
+                    \ELSE 
+                        \STATE{Continue}
+                    \ENDIF
+            }
+            \ENDFOR
+        }
+        \ENDFOR
+    \end{algorithmic}
+    \item Using a similar algorithm as above, I verified that in $\Z_{10}$, the product of two consecutive integers must have unit digit 0, 2 or 6. Because $\Z_{10}$ is the quotient ring of $\Z$ that preserves the information of the last digit of every integer, then if the statement is true in $\Z_{10}$, it is also true for all integers.
+    \item As above.
+ \end{enumerate}
+\end{proof}

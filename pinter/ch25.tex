@@ -1,0 +1,162 @@
+\subsection*{Chapter 25. Factoring Polynomials}
+\addcontentsline{toc}{subsection}{Chapter 25. Factoring Polynomials}
+
+
+\begin{exercise}{A Examples of factoring into irreducible factors}
+\begin{enumerate}
+    \item Factor $x^4-4$ into irreducible factors over $\Q$, over $\R$ and over $\C$.
+    \item Factor $x^6-16$ into irreducible factors over $\Q$, over $\R$ and over $\C$.
+    \item Find all the irreducible polynomials of degree $\leq 4$ in $\Z_2[x]$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item $\Q: (x^2+2)(x^2-2)$,
+     
+     $\R: (x^2+2)(x^2-2)=(x^2+2)(x+\sqrt{2})(x-\sqrt{2})$, 
+     
+     $\C: (x^2+2)(x+\sqrt{2})(x-\sqrt{2})=(x+i\sqrt{2})(x-i\sqrt{2})(x+\sqrt{2})(x-\sqrt{2})$.
+     \item $\Q: (x^4+4)(x^4-4)=(x^4+4)(x^2+2)(x^2-2)$,
+     
+     $\R: (x^4+4)(x^2+2)(x+\sqrt{2})(x-\sqrt{2})$,
+     
+     $\C:(x^4+4)(x^2+2)(x+\sqrt{2})(x-\sqrt{2})=(x^2+2)(x+\sqrt{2})(x-\sqrt{2})(x^2+i2)(x^2-i2)$.
+     \item $x, 1+x, 1+x+x^2, 1+x+x^3, 1+x^2+x^3, 1+x+x^4, 1+x+x^2+x^3+x^4, 1+x^3+x^4$.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{B Short questions relating to irreducible polynomials}
+Let $F$ be a field. Explain why each of the following is true in $F[x]$:
+\begin{enumerate}
+    \item Every polynomial of degree $1$ is irreducible.
+    \item If $a(x)$ and $b(x)$ are distinct monic polynomials, they cannot be associates.
+    \item Any two distinct irreducible polynomials are relatively prime.
+    \item If $a(x)$ is irreducible, any associate of $a(x)$ is irreducible.
+    \item If $a(x)\neq 0$, $a(x)$ cannot be an associate of $0$.
+    \item In $\Z_p[x]$, every nonzero polynomial has exactly $p-1$ associates.
+    \item $x^2-1$ is irreducible in $\Z_p[x]$ iff $p=a+b$ where $ab\cong 1\pmod{p}$
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+    \item A polynomial $a(x)$ is reducible if there are polynomials $b(x)$ and $c(x)$ both with positive degree such that $a(x)=b(x)c(x)$. Since $F$ is a field, it is an integral domain so that $\deg[b(x)c(x)]=\deg[b(x)]+\deg[c(x)]>1$. Hence, it cannot be the case that $a(x)=b(x)c(x)$.
+    \item We know $F[x]$ is an integral domain. In the chaper, we concluded that in $F[x], a(x)$ and $b(x)$ are associates if and only if they are constant multiples of each other. But if they are distinct monic polynomials, they cannot be constant multiples of each other, as for any $c\in F$, $ca(x)$ would result in a non-monic polynomial.
+    \item  Let $a(x),b(x)$ be two distinct irreducible polynomials. Then $a(x)$ and $b(x)$ have as common divisor a constant polynomial, so that their $\gcd$ is 1, and they are relatively prime.
+    \item We concluded that $F[x]$ two polynomials are associate if and only if they are constant multiples of each other. Hence, any associate of $a(x)$ is going to be a constant multiple of $a(x)$, and also irreducible.
+    \item If $a(x)\neq 0$, then $a(x)$ cannot be a constant multiple of $0$, as it is required in $F[x]$.
+    \item Two polynomials are associate of each other if they are constant multiples of each other. But in $\Z_p[x]$ there are $p-1$ different constants, so that each polynomial has $p-1$ associates, as required.
+    \item ($\Rightarrow$) Suppose $x^2+1$ is reducible in $
+    Z_p[x]$, then the factors of $x^2+1$ must be of the form $x+a$ and $x+b$, so that $x^2+1=(x+a)(x+b)=x^2+(a+b)x+ab$. By the definition of equality of polynomials, we must have $a+b\equiv 0\pmod{p}$ and $ab\equiv 1\pmod{p}$, as required.
+
+    ($\Leftarrow$) We have $(x+a)(x+b)=x^2+(a+b)x+ab=x^2+1$, so that $(x+a)$ and $(x+b)$ are factors of $x^2+1$.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{D Ideals in domains of polynomials}
+Let $F$ be a field and let $J$ designate any ideal of $F[x]$. Prove parts $1-4$.
+\begin{enumerate}
+    \item Any two generators of $J$ are associates.
+    \item $J$ has a unique monic generator of $m(x)$. An arbitrary polynomial $a(x)\in F[x]$ is in $J$ iff $m(x)\mid a(x)$.
+    \item $J$ is a prime ideal iff it has an irreducible generator.
+    \item If $p(x)$ is irreducible, then $\brackets{p(x)}$ is a maximal ideal of $F[x]$. (See Chapter 18, exercise H5).
+    \item Let $S$ be the set of all polynomials $a_0+a_1x+\dots+a_nx^n$ in $F[x]$ which satisfy $a_0+a_1+\dots+a_n=0$. It has been shown (Chapter 24, exercise F4) that $S$ is an ideal of $F[x]$ Prove that $x-1\in S$, and explain why it follows that $S=\brackets{x-1}$.
+    \item Conclude from part $5$ that $\quot{F[x]}{\brackets{x-1}}\cong F$. (See chapter 24, Exercise F4).
+    \item Let $F[x,y]$ denote the domain of all the polynomials $\sum a_{ij}x^iy^j$ in two letters $x$ and $y$, with coefficients in $F$. Let $J$ be the ideal of $F[x,y]$ which contains all the polynomials whose constant coefficient is zero. Prove that $J$ is not a principal ideal. Conclude that Theorem 1 is not true in $F[x,y]$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+    \item Let $a(x)$ and $b(x)$ be generators of $J$. Then $a(x)=b(x)c(x)$ and $b(x)=a(x)d(x)$ for $c(x),d(x)\in F[x]$. As a result, $\deg[a(x)]=\deg[b(x)]+\deg[c(x)]$, and $\deg[b(x)]=\deg[a(x)]+\deg[d(x)]$. But then $\deg[a(x)]=\deg[a(x)]+\deg[c(x)]+\deg[d(x)]$, so that $\deg[c(x)]=\deg[d(x)]=0$. This implies $a(x)$ and $b(x)$ are constant multiples of each other, that is, associates.
+    \item The fact that $m(x)$ is unique is a Corollary of exercise 1.
+
+    ($\Rightarrow$) If $m(x)$ generates $J$, then for any $a(x)\in J$, $a(x)=b(x)m(x)$ for some $b(x)\in F[x]$, hence $m(x)\mid a(x)$.
+
+    ($\Leftarrow$) Suppose $m(x)\mid a(x)$, then there exists a $b(x)\in J$ so that $a(x)=b(x)m(x)$. But $m(x)$ generates $J$ so that $a(x)\in J$.
+    \item ($\Rightarrow$) Suppose $J=\brackets{p(x)}$ is a prime ideal. Furthermore, suppose $p(x)=a(x)b(x)$. Because $J$ is prime, then either $a(x)\in J$ or $b(x)\in J$. But this implies that either $a(x)$ or $b(x)$ are constants, as otherwise $p(x)$ could not be the generator of $J$ while either $a(x)\in J$ or $b(x)\in J$. Hence, either $a(x)=kp(x)$ or $b(x)=lp(x)$ so that $p(x)$ is irreducible. 
+
+    ($\Leftarrow$) Suppose $J$ has an irreducible generator $p(x)$. Suppose $a(x)b(x)\in J$, then $r(x)p(x)=a(x)b(x)$. By Euclid's lemma, either $p(x)\mid a(x)$ or $p(x)\mid b(x)$. But this implies $a(x)\in\brackets{p(x)}$ or $b(x)\in\brackets{p(x)}$, as required.
+    \item Suppose $J$ is not irreducible, so that there exists a proper ideal $K=\brackets{q(x)}$ with $q(x)\notin J$. By definition, $p(x)=q(x)a(x)$ for some $a(x)\in F[x]$. If $q(x)$ is a multiple of $p(x)$, then $J=K$. If $q(x)$ is constant, then because $F$ is a field, $q(x)$ is invertible and by 18.D.5 it must be the case that $K=F[x]$.
+    \item For $x-1$, we have $1-1=0$, so that $x-1\in S$. It follows that $S=\brackets{x-1}$ because $x-1$ is the monic polynomial of lowest degree greater than 0 in $S$.
+    \item Consider the surjective homomorphism from $F[x]$ to $F$ given by the sum of the coefficients of the polynomial. The kernel of such homomorphism is precisely $S$. By the fundamental homomorphism theorem, $\quot{F[x]}{\brackets{x-1}}\cong F$.
+    \item We have that $xy,x$ and $y$ are in $J$. However, none two of them are generated by a single polynomial in $J$. As a result, not all ideals in $F[x,y]$ are principal.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{E Proof of the unique factorization theorem}
+\begin{enumerate}
+    \item Prove Euclid's lemma for polynomials.
+    \item Prove the two corollaries of Euclid's lemma.
+    \item Prove the unique factorization theorem for polynomials.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item Euclid's lemma for polynomials: Let $p(x)$ be irreducible. If ${p(x)\mid a(x)b(x)}$, then $p(x)\mid a(x)$ or $p(x)\mid b(x)$.
+
+     Proof: If $p(x)\mid a(x)$, then we are done, so suppose $p(x)\nmid a(x)$. The only divisors of $p(x)$ are $\pm 1$ and $\pm p(x)$. Since we assume $p(x)\nmid a(x)$, then both $p(x)$ and $-p(x)$ are ruled out as common divisors of $p(x)$ and $a(x)$. It follows that their only common divisors are $1$ and $-1$. Then $\gcd[p(x),a(x)]=1$, so by Theorem 1, $r(x)a(x)+s(x)p(x)=1$ for some polynomials $r(x), s(x)$. Thus $r(x)a(x)b(x)+s(x)p(x)b(x)=b(x)$. But $p(x)\mid a(x)b(x)$ so there exists a polynomial $c(x)$ with $a(x)b(x)=c(x)p(x)$ which implies $p(x)[r(x)c(x)+s(x)b(x)]=b(x)$, as required.
+     \item Corollary 1: Let $p(x)$ be irreducible if $p(x)\mid a_1(x)\dots a_n(x)$, then $p(x)\mid a_i(x)$ for one of the factors $a_i(x)$ among $a_1(x),\dots,a_n(x)$.
+
+     Proof: We may write $a_1(x)\dots a_n(x)$ as $a_1(x)[a_2(x)\dots a_n(x)]$. We then apply Euclid's lemma so that $p(x)\mid a_1(x)$ or $p(x)\mid a_2(x)\dots a_n(x)$, if $p(x)\mid a_1(x)$ we are done, otherwise we apply the same technique on $a_2(x)\dots a_n(x)$ up to $n$ times. 
+
+     Corollary 2: Let $q_1(x),\dots,q_r(x)$ and $p(x)$ be monic irreducible polynomials. If $p(x)\mid q_1(x)\dots q_r(x)$, then $p(x)$ is equal to one of the factors $q_1(x),\dots,q_r(x)$.
+
+     Proof: By Corollary 1, $p(x)$ divides $q_i(x)$ for some $i$. But $q_i(x)$ is irreducible, so its only divisors are are $\pm 1$ and $\pm q_i(x)$. Since $p(x)$ and $q_i(x)$ are monic and $p(x)\neq 1$, then $p(x)$ must be $q_i(x)$, as desired.
+     \item Theorem 4 (Unique factorization): If $a(x)$ can be written in two ways as a product of monic irreducibles, say $a(x)=kp_1(x)\dots p_r(x)=lq_1(x)\dots q_s(x)$, then $k=l$. $r=s$ and each $p_i(x)$ is equal to a $q_i(x)$.
+
+     Proof: Since $a(x)$ is a product of monic irreducibles, then $a(x)$ is itself monic. Hence $k=l$. Now in the equation $p_1(x)\dots p_r(x)=q_1(x)\dots q_s(x)$ cancel common factors from each side. If all the factors are canceled, we are done. Otherwise, we are left with another equality $p_i(x)\dots p_n(x)=q_j(x)\dots q_m(x)$. Now $p_i(x)$ is a factor of $p_i(x)\dots p_n(x)$ so $p_i(x)\mid q_j(x)\dots q_m(x)$. By Corollary 2 to Euclid's lemma, $p_i(x)$ is equal to one of the factors $q_j(x),\dots,q_m(x)$, which is impossible because we assumed we ccan do no more cancellation.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{F A method for computing the gcd}
+Let $a(x)$ and $b(x)$ be polynomials of positive degree. By the division algorithm, we may divide $a(x)$ by $b(x)$: $a(x)=b(x)q_1(x)+r_1(x)$
+\begin{enumerate}
+    \item Prove that every common divisor of $a(x)$ and $b(x)$ is a common divisor of $b(x)$ and $r_1(x)$.
+
+    It follows from part 1 that the gcd of $a(x)$ and $b(x)$ is the same as the gcd of $b(x)$ and $r_1(x)$. This procedure can now be repeated on $b(x)$ and $r_1(x)$; divide $b(x)$ by $r_1(x)$: $b(x)=r_1(x)q_2(x)+r_2(x)$.
+
+    Next
+    \begin{align*}
+        r_1(x) &= r_2(x)q_3(x)+r_3(x)\\
+        &\;\;\vdots
+    \end{align*}
+    Finally, $r_{n-1}(x)=r_n(x)q_{n+1}(x)+0$.
+
+    In other words, we continue to divide each remainder by the succeeding remainder. Since the remainders continually decrease in degree, there must ultimately be a zero remainder. But we have seen that $\gcd[a(x),b(x)]=\gcd[b(x),r_1(x)]=\dots=\gcd[r_{n-1}(x),r_n(x)]$. 
+    
+    Since $r_n(x)$ is a divisor of $r_{n-1}(x)$, it must be the gcd of $r_n(x)$ and $r_{n-1}(x)$. Thus, $r_n(x)=\gcd[a(x), b(x)]$. This method is called the euclidean algorithm for finding the gcd.
+    \item Find the gcd $x^3+1$ and $x^4+x^3+2x^2+x-1$. Express this gcd as a linear combination of the two polynomials.
+    \item Do the same for $x^{24}-1$ and $x^{15}-1$.
+    \item Find the gcd of $x^3+x^2+x+1$ and $x^4+x^3+2x^2+2x$ in $\Z_3[x]$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item Suppose $c(x)$ is a common divisor of $a(x)$ and $b(x)$, so that $a(x)=c(x)a'(x)$ and $b(x)=c(x)b'(x)$ for some polynomials $a'(x)$ and $b'(x)$.We have $c(x)a'(x)=c(x)b'(x)q_1(x)+r_1(x)$, which implies $r_1(x)=c(x)[a'(x)-b'(x)q_1(x)]$, as required.
+     \item If we divide $x^4+x^3+2x^2+x-1$ by $x^3+1$, we obtain $x+1$. If we now divide $x^3+1$ by $x+1$ we get $0$. Hence, the $\gcd$ between those polynomials is $x+1$.
+
+     We can use 
+
+     \texttt{PolynomialExtendedGCD[$x^3+x^2+x+1, x^4+x^3+2x^2+2x$]}
+
+     On Wolfram alpha to find the following linear combination:
+
+     $x+1 = (x^3+1)[\frac{1}{4}(2x^2+2x+4)]-\frac{x}{2}(x^4+x^3+2x^2+x-1)$
+     \item If we divide $x^{24}-1$ by $x^{15}-1$ we get $x^9$ as a factor and $x^9-1$ as residual. If we further divide $x^15-1$ by $x^9-1$, we get $x^6$ as factor and $x^6-1$ as residual. Dividing $x^9-1$ by $x^6-1$ gives us $x^3$ as factor and $x^3-1$ as residual. Finally, if we divide $x^6-1$ by $x^3-1$ gives us $x^3$ as factor and $x^3-1$ as residual. Since there is no residual left after dividing $x^3-1$ by itself, then we have that $x^3-1$ is $\gcd[x^{15}-1, x^{24}-1]$.
+
+     We can use 
+
+     \texttt{PolynomialExtendedGCD[$x^{24}-1, x^{15}-1$]}
+
+     On Wolfram alpha to find the following linear combination:
+
+     $x^3-1 = (x^{24}-1)(x^9-1)-(x^{15}-1)(x^{18}+x^9+x^3)$
+
+     \item Using 
+     
+     \texttt{PolynomialExtendedGCD[$x^3+x^2+x+1, x^4+x^3+2x^2+2x$, Modulus -> 3]} 
+     
+     on Wolfram alpha we find the following $\gcd$ (on the left hand side of the equation) and linear combination: 
+     
+     $x+1 = (x^3+x^2+x+1)(x^2+1) + (x^4+x^3+2x^2+2x)(2x)$.
+ \end{enumerate}
+\end{proof}

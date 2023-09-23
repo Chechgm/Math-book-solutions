@@ -1,0 +1,50 @@
+\subsection*{Chapter 4 Polynomials}
+\addcontentsline{toc}{subsection}{Chapter 4 Polynomials}
+
+
+\begin{exercise}{4}
+  Suppose $m$ and $n$ are positive integers with $m\leq n$, and suppose $\lambda_1,\dots,\\ \lambda_m\in\bF$. Prove that there exists a polynomial $p\in\PPP(\bF)$ with $\deg p=n$ such that $0=p(\lambda_1)=\dots=p(\lambda_m)$ and such that $p$ has no other zeros.
+\end{exercise}
+\begin{proof}
+ Consider the polynomial $p(x)\in\PPP(\bF)$ given by: $p(x)=(\lambda_1-x)^{k_1}\dots(\lambda_m-x)^{k_m}$, where $k_i$ represents how many times the root $i$ is repeated. Furthermore, $\sum k_i=n$, so that $\deg p=n$. By 4.14 this factorization is unique so that $p(x)$ has no other zeros than $\lambda_1,\dots,\lambda_m$.
+\end{proof}
+
+\begin{exercise}{5}
+  Suppose $m$ is a nonnegative integer, $z_1,\dots,z_{m+1}$ are distinct elements of $\bF$, and $w_1,\dots,w_{m+1}\in\bF$. Prove that there exists a unique polynomial $p\in\PPP_m(\bF)$ such that $p(z_j)=w_j$ for $j=1,\dots,m+1$.
+
+  [This result can be proved without using linear algebra. However, try to find the clearer, shorter proof that uses some linear algebra.]
+\end{exercise}
+\begin{proof}
+ Consider the linear map $T:\PPP_m(\bF)\rightarrow \bF^{m+1}$, given by \\$Tp=(p(z_1),\dots,p(z_{m+1}))$. Because the dimensions of the domain and the codomain of the linear map are equal, we need to prove that the linear map is either injective or surjective to prove the existence and uniqueness of the polynomial.
+
+ To see the map is injective, consider $0\in\bF^{m+1}$. By 4.12, we know that a polynomial with degree $m\geq 0$ has at most $m$ distinct zeros in $\bF$. Hence, if $Tp=0$, we must have that $p=0$. Furthrmore, we know that injectivity is equivalent to nullspace equal to $\{0\}$. Hence, $T$ is injective, as desired.
+\end{proof}
+
+\begin{exercise}{10}
+  Suppose $m$ is a nonnegative integer and $p\in\PPP_m(\C)$ is such that there exist distinct real numbers $x_0,x_1,\dots,x_m$ such that $p(x_j)\in\R$ for $j=0,1,\dots,m$. Prove that all the coefficients of $p$ are real.
+\end{exercise}
+\begin{proof}
+ Let $A=\{p\in\PPP_m(\C): p(x_0),\dots,p(x_m)\in\R\}$. To prove the desired result, we will show that $A$ is a subspace of $\PPP_m(\C)$ considered as a real vector space (with scalars in $\R$), that $\PPP_m(\R)\subseteq A$, and that it is isomorphic to $\PPP_m(\R)$ by comparing their dimensions.
+
+ To prove that $A$ is a subspace, consider $p,q\in A$ and $\lambda\in\R$. We have $(p+q)(x_i)=p(x_i)+q(x_i)\in\R$, also $(\lambda p)(x_i)=\lambda(p(x_i))\in\R$ and finally $0(x_i)=0\in\R$ so that $A$ is a subspace.
+
+ To see that $\PPP_m(\R)$, let $p\in\PPP_m(\R)$. Then certainly for all $x_i$ we have $p(x_i)\in\R$, so that $p\in A$. This also implies that $\dim A\geq m+i$
+
+ Finally, consider the linear map given $T:A\rightarrow \R^{m+1}$, given by $Tp\rightarrow (p(x_0),\dots,p(x_m))$. Consider $0\in\R^{m+1}$. We have $Tp=0$ whenever for all $x_i$, $p(x_i)=0$. But this is only possible for $p=0$, given that $p$ has degree $m$ and by 4.12 a polynomial can have at most as many zeros as its degree. Then $\nullspace T=\{0\}$ which is equivalent to $T$ being injective. By the Fundamental Theorem of Linear Maps, we have that $\dim\nullspace T+\dim\range T=\dim\range T=\dim A\geq m+1$, but $R^{m+1}$ has dimension $m+1$ so $\dim\range T= m+1$ implies that $T$ is an isomorphism between $A$ and $\R^{m+1}$. 
+ 
+ Finally, we have $\PPP_m(\R)\cong\R^{m+1}\cong A$, so that all the coefficients of $p$ are real, as desired.
+\end{proof}
+
+\begin{exercise}{11}
+Suppose $p\in\PPP(\bF)$ with $p\neq 0$. Let $U=\{pq:q\in\PPP(\bF)\}$.
+\begin{enumerate}
+    \item Show that $\dim\quot{\PPP(\bF)}{U}=\deg p$.
+    \item Find a basis of $\dim\quot{\PPP(\bF)}{U}$
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item Let $\deg p=n$, $p'\in\PPP(\bF)$, and consider the division of $p'$ by $p$ using the division algorithm: $p'=sp+r$, where $\deg r<n$. The coset of $p'$ is given by $p'+U=sp+r+U=r+U$. Since, depending on the choice of $p'$, the degree of $r$ is at most $n$, then $r$ can be written as a linear combination of $1,x,\dots,x^{n-1}$, so that $\dim\quot{\PPP(\bF)}{U}=n=\deg p$.
+     \item A basis of $\quot{\PPP(\bF)}{U}$ are the affine sets $1+U,x+U,\dots,x^{n-1}+U$. 
+ \end{enumerate}
+\end{proof}

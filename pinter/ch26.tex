@@ -1,0 +1,57 @@
+\subsection*{Chapter 26. Substitution in Polynomials}
+\addcontentsline{toc}{subsection}{Chapter 26. Substitution in Polynomials}
+
+
+\begin{exercise}{C Short questions relating to roots}
+Let $F$ be a field. Prove that parts 1-3 are true in $F[x]$.
+\begin{enumerate}
+    \item The remainder of $p(x)$, when divided by $x-c$ is $p(c)$.
+    \item Prove $(x-c)\mid(p(x)-p(c))$.
+    \item Any polynomial has the same roots as any of its associates.
+    \item If $a(x)$ and $b(x)$ have the same roots in $F$, are they necessarily associates? Explain
+    \item Prove: If $a(x)$ is a monic polynomial of degree $n$, and $a(x)$ has $n$ roots $c_1,\dots,c_n\in F$, then $a(x)=(x-c_1)\dots(x-c_n)$.
+    \item Suppose $a(x)$ and $b(x)$ have degree less than $n$. If $a(c)=b(c)$ for $n$ values of $c$, prove that $a(x)=b(x)$.
+    \item There are infinitely many irreducible polynomials in $\Z_5[x]$.
+    \item How many roots does $x^2-x$ have in $\Z_{10}$? In $\Z_{11}$? Explain the difference.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item We can see this is the case by considering the first steps of the division of $p(x)=a_nx^n+\dots+a_0$ by $x-c$. The first term of the division is $a_nx^{n-1}$, leaving as dividend $(a_{n-1}-a_nc)x^{n-1}+\dots+a_0$. The next term is $(a_{n-1}-a_nx)x^{n-2}$ which leaves $(a_{n-2}+a_{n-1}c+a_nc^2)x^{n-2}+\dots+a_0$. If we continue this process until no powers of $x$ are left, then we will be left with $a_0+\dots+a_nc^n=p(c)$, as required. 
+     \item This is a Corollary to the previous result. To see that, simply notice that what exercise 1 says is that $p(x)=(x-c)q(x)+p(c)$, subtracting $p(c)$ on both sides of the equation gives us the desired result.
+     \item Let $p(x)\in F[x]$. Suppose $c$ is a root of $p(x)$, so that $p(c)=0$. Since the associates of $p(x)$ are simply its constant multiples, then for any constant polynomial $a(x)=a$, $ap(c)=0$, as required.
+     \item No. Consider $x^5+1$ and $x-4$ in $\Z_5[x]$. They induce the same function and hence have the same roots. However they are not associates.
+     \item From Theorem 1, we know that for each root $c_i$ of $a(x)$, $x-c_i$ is a factor of $a(x)$. Then each of the $n$ roots of $a(x)$ has a factor of $a(x)$ as above, then we can write $a(x)=(x-c_1)\dots(x-c_n)$. We know there are no extra terms because there are $n$ factors, so if there was an extra factor, $a(x)$ would have a higher order. Furthermore, we know there is no constant factor because we assumed $a(x)$ is monic. 
+     \item Consider the polynomial given by $p(x)=a(x)-b(x)$. This polynomial has degree less than $n$ because both $a(x)$ and $b(x)$ have degree less than $n$. We have that $a(c)=b(c)$ for $n$ different values of $c$, which implies that $p(x)$ has $n$ roots. But by Theorem 3, this is only possible if $p(x)=0$, which gives us $a(x)=b(x)$, as required.
+     \item Suppose there are finitely many irreducible polynomials in $\Z_5[x]$. Consider the polynomial given by the product of all irreducible polynomials plus $1$: $s(x)=a_1(x)\dots a_n(x)+1$. If $s(x)$ is irreducible and not on our list, then we are done because that would contradict that $a_1(x)\dots a_n(x)$ are all the polynomials. Otherwise, $s(x)$ must have an irreducible polynomial, say $r(x)$. If $r(x)$ is not on our list, then we have a similar contradiction. If $r(x)$ is on our list, then $r(x)\mid s(x)$ and $r(x)\mid a_1(x)\dots a_n(x)$. But this implies $r(x)\mid s(x)-a_1(x)\dots a_n(x)= 1$, which is a contradiction, because when we consider reducibility we consider it with polynomials of positive degree.
+     \item In $\Z_{10}$, $x^2-x$ has $1,5$ and $6$ as roots. In $\Z_{11}$, only $1$. The difference is that $\Z_{11}$ is a field, while $Z_{10}$ is not.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{G Roots and factors in $A[x]$ when A is an integral domain}
+It is a useful fact that Theorem 1, 2 and 3 are still true in $A[x]$ when $A$ is not a field, but merely an integral domain. The proof of Theorem 1 must be altered a bit to avoid using the division algorithm. We proceed as follows: 
+
+If $a(x)=a_0+a_1x+\dots+a_nx^n$ and $c$ is a root of $a(x)$, consider $a(x)-a(c)=a_1(x-c)+a_2(x^2-c^2)+\dots+a_n(x^n-c^n)$.
+\begin{enumerate}
+    \item Prove that for $k=1,\dots n$: $a_k(x^k-c^k)=a_k(x-c)(x^{k-1}+x^{k-2}c+\dots+c^{k-1})$.
+    \item Conclude from part 1 that $a(x)-a(c)=(x-c)q(x)$ for some $q(x)$.
+    \item Complete the proof of Theorem 1, explaining why this particular proof is valid when $A$ is an integral domain, not necessarily a field.
+    \item Check that Theorems 2 and 3 are true in $A[x]$ when $A$ is an integral domain.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item We have 
+     \begin{align*}
+         (x-c)(x^{k-1}+ &x^{k-2}c+\dots+xc^{k-2}+c^{k-1})=\\
+               x^k+     &x^{k-1}c+\dots+xc^{k-1}\\
+                       -&x^{k-1}c-\dots-xc^{k-1}-c^k.
+     \end{align*}
+     Notice that all the terms cancel with the exception of $x^k$ and $-c^k$, giving us the desired result.
+     \item Using the results from the previous exercise, we have that $a(x)-a(c)= a_0+a_1x+\dots a_nx^n-a_0-a_1+\dots +a_nc^n= a_1(x-c)+\dots a_n(x^n-c^n)= a_1(x-c)+\dots +a_n(x-c)(x^{n-1}+\dots +c^{n-1})= (x-c)q(x)$, as required.
+     \item ($\Rightarrow$) This is the same proof for fields and integral domains.
+
+     ($\Leftarrow$) We assume that $c$ is a root of $a(x)$. By exercise 1 and 2, we have that $a(x)-a(c)=(x-c)q(x)$, but we are assuming $a(c)=0$, then $x-c$ is a factor of $a(x)$.
+     \item Neither Theorem 2 or 3 use properties of fields that are not also properties of integral domains. Hence, the proofs for integral domains are the same.
+ \end{enumerate}
+\end{proof}

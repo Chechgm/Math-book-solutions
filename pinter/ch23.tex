@@ -1,0 +1,220 @@
+\subsection*{Chapter 23. Elements of number theory}
+\addcontentsline{toc}{subsection}{Chapter 23. Elements of number theory}
+
+
+\begin{exercise}{B Solving sets of congruences}
+3) Use Theorems 3 and 4 to prove the following: suppose we are given $k$ congruences $x\equiv c_{1}\pmod{m_{1}},\ x\equiv c_{2}\pmod{m_{2}},\dots,x\equiv c_{k}\pmod{m_{k}}$. There is an $x$ satisfying all $k$ congruences simultaneously if for all $i,j\in \{1,\dots k\}, c_{i}\equiv c_{j}\pmod{d_{ij}}$, where $d_{ij}=\gcd(m_{i},m_{j})$. Moreover, the simultaneous solution is of the form $x\equiv c\pmod{t}$, where $t=\lcm(m_{1},\dots,m_{k})$.
+\end{exercise}
+\begin{proof}
+ Fill
+\end{proof}
+
+
+\begin{exercise}{C Elementary properties of congruence}
+Prove the following for all integers $a,b,c,d$ and all positive integers $m$ and $n$:
+ \begin{enumerate}
+     \item If $a\equiv b\pmod{n}$ and $b\equiv c\pmod{n}$, then $a\equiv c\pmod{n}$.
+     \item If $a\equiv b\pmod{n}$, then $a+c\equiv b+c \pmod{n}$.
+     \item If $a\equiv b\pmod{n}$, then $ac\equiv bc\pmod{n}$.
+     \item $a\equiv b\pmod{1}$.
+     \item If $ab\equiv 0\pmod{p}$, where $p$ is a prime, then $a\equiv 0\pmod{p}$ or $b\equiv 0\pmod{p}$.
+     \item If $a^{2}\equiv b^{2}\pmod{p}$, where $p$ is a prime, then $a\equiv \pm b\pmod{n}$.
+     \item If $a\equiv b\pmod{m}$, then $a+km\equiv b\pmod{m}$, for any integer $k$. In particular, $a+km\equiv a(\pmod m)$.
+     \item If $ac\equiv bc\pmod{n}$ and $\gcd(c,n)=1$, then $a\equiv b\pmod{n}$.
+     \item If $a\equiv b\pmod{n}$, then $a\equiv b\pmod{m}$ for any $m$ which is a factor of $n$.
+ \end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item Since $a\equiv b\pmod{n}$, there exist integers $q_{1},q_{2}$ and $r$, with $0\leq r<n$, such that $a=nq_{1}+r$ and $b=nq_{2}+r$. But $b\equiv c\pmod{n}$ implies there exists an integer $q_{3}$ such that $c=nq_{3}+r$. Since $a$ and $c$ leave the same remainder after division by $n$, $a\equiv c\pmod{n}$.
+     \item Since $a\equiv b\pmod{n}$, there exist $q_{1},q_{2},r\in\Z$ with $0\leq r<n$ such that $a=nq_{1}+r$ and $b=nq_{2}+r$. Adding $c$ to both equations gives us $a+c=nq_{1}+(r+c)$ and $b+c=nq_{1}+(r+c)$ so that $a+c$ and $b+c$ have the same remainder after division by $n$, $a+c\equiv b+c\pmod{n}$.
+     \item Since $a\equiv b\pmod{n}$, there exist integers $q_{1},q_{2}$ and $r$ with $0\leq r<0$, such that $a=nq_{1}+r$ and $b=nq_{2}+r$. Multiplying both equations by $c$, we get $ac=n(cq_{1})+(rc)$ and $bc=n(q_{1}c)+(rc)$ so that $ac$ and $bc$ have the same remainder after division by $n$. Hence, $ac\equiv bc\pmod{n}$.
+     \item We have $a=a1$ and $b=b1$, so that $a$ and $b$ leave the same remainder after division by $1$, implying $a\equiv b\pmod{1}$.
+     \item We have that there exists a $k\in\Z$ such that $ab=pk$. By the unique factorization of integers, either $p\vert a$, in which case $a\equiv 0\pmod{p}$, or $b\vert b$, in which case $b\equiv 0\pmod{p}$.
+     \item Because $a^{2}\equiv b^{b}\pmod{p}$, then $p\vert (a^{2}-b^{2})$ which is the same as ${p\vert (a+b)(a-b)}$. By the integer factorization, we have that either $p\vert (a+b)$ so that $a\equiv -b\pmod{p}$ or $p\vert (a-b)$ which implies $a\equiv b\pmod{p}$. Hence $a\equiv \pm b\pmod{p}$.
+     \item We have that there exist integers $q_{1},q_{2}$ and $r$, with $0\leq r<m$, such that $a=mq_{1}+r$ and $b=mq_{2}+r$. Adding $km$ to the first equation, for an arbitrary $k\in\Z$, we obtain $a+km=m(q_{1}+m)+r$, then $a+km$ and $b$ leave the same remainder after division by $m$: $a+km\equiv b\pmod{m}$.
+     \item Because $ac\equiv bc\pmod{n}$, then $n\vert ac-bc$ which is the same as $n\vert (a-b)c$. Because $\gcd(n,c)=1$, then by 22.C.2, $n\vert (a-b)$, which implies that $a\equiv b\pmod{n}$.
+     \item Because $a\equiv b\pmod{n}$, we have integers $q_{1},q_{2}$ and $r$ with $0\leq r<n$, such that $a=nq_{1}+r$ and $b=nq_{2}+r$ consider any factor, $m$ of $n$ so that $n=mk$ for any integer $k$. Then we have that $a=m(kq_{1})+r$ and $b=m(kq_{2})+r$, so that $a\equiv b\pmod{m}$.
+ \end{enumerate}
+\end{proof}
+
+
+\begin{exercise}{E Consequences of Fermat's Theorem}
+\begin{enumerate}
+    \item If $p$ is a prime, find $\phi(p)$. Use this to deduce Fermat's Theorem from Euler's Theorem.
+    \item If $p>2$ is a prime and $a\not\equiv 0\pmod{p}$, then $a^{(p-1)/2}\equiv \pm 1\pmod{p}$.
+    \item a) Let $p$ a prime greater than 2. If $p\equiv 3\pmod{4}$, then $(p-1)/2$ is odd.
+
+    b) Let $p>2$ be a prime such that $p\equiv 3\pmod{4}$. Then there is no solution to the congruence $x^{2}+1\equiv 0\pmod{p}$. [Hint: raise both sides of $x^{2}\equiv -1\pmod{p}$ to the power of $(p-1)/2$, and Use Fermat's little Theorem].
+    \end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item For any prime, $\phi(p)=p-1$ because every integer less than $p$ is relatively prime to $p$.
+
+     Euler's Theorem states that if $a$ and $p$ are relatively prime, then $a^{\phi(p)}\equiv 1\pmod{p}$, but we just concluded that $\phi(p)=p-1$ and because $a$ is congruent to an integer less than $p$, modulo $p$, then we have $a^{p-1}\equiv 1\pmod{p}$, as in Fermat's little Theorem.
+     \item By Fermat's little Theorem, $a^{p-1}\equiv 1\pmod{p}$. By C.6., we have that $x^{2}\equiv y^{2}\pmod{p}$, implies $x\equiv \pm y\pmod{p}$, then $a^{(p-1)/2}\equiv \pm 1\pmod{p}$.
+     \item a) There are integers $q_{1}, q_{2}$ and $r$, with $0\leq r< 4$, such that $p=4q_{1}+r$ and $3=4q_{1}+r$, then $p=4(q_{1}-q_{2})+3$, so that $p-1=4(q_{1}-q_{2})+2$ and $(p-1)/2=2(q_{1}-q_{2})+1$ and $(p-1)/2$ is odd.
+
+     b) Following the hint, by C.2. we know that $x^{2}+1\equiv 0\pmod{p}$ implies $x^{2}\equiv -1\pmod{p}$. Raising both sides both sides to the power of $(p-1)/2$, we get $x^{p-1}\equiv -1 \pmod{p}$, where $-1^{(p-1)/2}=-1$ because from a), $(p-1)/2$ is odd. But Fermat's little theorem says that such congruence is $x^{p-1}\equiv 1\pmod{p}$. Then there is no $x$ that satisfies such congruence.
+ \end{enumerate}
+\end{proof}
+
+
+\begin{exercise}{F Consequences of Euler's Theorem}
+\begin{enumerate}
+    \item If $\gcd(a,n)=1$, the solution modulo $n$ of $ax\equiv b\pmod{n}$ is $x\equiv a^{\phi(n)-1}b\pmod{n}$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+\begin{enumerate}
+    \item If $\gcd(a,n)$, then by Euler's Theorem, we have $a^{\phi(n)}\equiv 1\pmod{n}$. We now multiply $a^{\phi(n)-1}$ on both sides of $ax\equiv b\pmod{n}$ we obtain $a^{\phi(n)}x\equiv a^{\phi(n)-1}b\pmod{n}$.
+
+    We have that there exist integers $q_{1}, q_{2}$ and $r$, with $0\leq r<n$ and ${a^{\phi(n)}x=nq_{1}+r}$ and $a^{\phi(n)-1}b=nq_{2}+r$. Likewise, there exist integers $q_{3}, q_{4}$ and $s$, with $0\leq s<n$ such that $a^{\phi(n)}=nq_{3}+s$ and $1=nq_{4}+s$, so that $a^{\phi(n)}=n(q_{3}-q_{4})+1$ and replacing in a previous equation, $(n(q_{3}-q_{4})+1)x=nq_{1}+r$, so that $x=n(q_{1}+q_{4}x-q_{3}x)+r$ so that $x\equiv a^{\phi(n)-1}b\pmod{n}$, as required.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise}{H Quadratic residues}
+An integer $a$ is called a quadratic residue modulo $m$ if there is an integer $x$ such that $x^{2}\equiv a\pmod{m}$. This is the same as saying that $\bar{a}$ is a square in $\Z_{m}$. If $a$ is not a quadratic residue modulo $m$, then $a$ is called a quadratic nonresidue modulo $m$. Quadratic residues are important for solving quadratic congruences, for studying sums of squares, etc. Here we will examine quadratic residues modulo an arbitrary prime $p>2$. Let $h:\Z^{*}_{p}\rightarrow \Z^{*}_{p}$ be defined by $h(\bar{a})=\bar{a}^{2}$.
+ \begin{enumerate}
+     \item Prove $h$ is a homomorphism. Its kernel is $\{\pm\bar{1}\}$
+     \item The range of $h$ has $(p-1)/2$ elements. Prove: if $\range h=R, R$ is a subgroup of $\Z^{*}_{p}$ having two cosets. One contains all the residues, the other all the nonresidues.
+
+     The Legendre symbol is defined as follows: 
+     
+     $\left(\frac{a}{p}\right)=\begin{cases}
+         +1\ \text{if}\ p\not\vert a\ \text{and $a$ is a residue mod p}\\
+         -1\ \text{if}\ p\not\vert a\ \text{and $a$ is a nonresidue mod p}\\
+         0\ \text{if}\ p\vert a\
+     \end{cases}$
+     \item Referring to part 2), let the two cosets of $R$ be called $1$ and $-1$. Then $\quot{\Z^{*}_{p}}{R}=\{1,-1\}$. \textcolor{blue}{The original text had an incorrect question, this is what we believe should be correct}. Let $\pi:\Z^{*}_{p}\rightarrow\{-1,1\}$ be the quotient map to the cosets of $R$. Explain why $\left(\frac{a}{p}\right)=\pi(\bar{a})$ for every integer which is not a multiple of $p$.
+     \item Evaluate $\left(\frac{17}{23}\right), \left(\frac{3}{29}\right), \left(\frac{5}{11}\right), \left(\frac{8}{13}\right), \left(\frac{2}{23}\right)$.
+     \item Prove: if $a\equiv b\pmod{p}$, then $\parens{\frac{a}{b}}=\parens{\frac{b}{p}}$. In particular $\left(\frac{a+kp}{p}\right)=\left(\frac{a}{p}\right)$.
+     \item Prove 
+
+     (a) $\parens{\frac{a}{p}}\parens{\frac{b}{p}}=\parens{\frac{ab}{p}}$.
+
+     (b) $\parens{\frac{a^{2}}{p}}=$\textcolor{blue}{1, [I assume, since the book has a typo]} if $p\not\vert a$.
+     \item $\parens{\frac{-1}{p}}=
+     \begin{cases}
+        1  &\text{ if}\ p\equiv 1\pmod{4}\\
+        -1 &\text{ if}\ p\equiv 3\pmod{4}
+     \end{cases}$
+     [Hint: Use exercises G6 and G7].
+
+     The most important rule for computing $\parens{\frac{a}{p}}$ is the law of quadratic reciprocity, which asserts that for distinct primes $p,q>2$,
+     \begin{align*}
+        \parens{\frac{p}{q}}=
+            \begin{cases}
+                -\parens{\frac{q}{p}} \text{ if $p$ and $q$ are both }\equiv 3\pmod{4}\\
+                \parens{\frac{q}{p}} \text{ otherwise}
+            \end{cases}
+     \end{align*}
+     \item Use parts 5 to 7 and the law of quadratic reciprocity to find:
+     
+     $\parens{\frac{30}{101}}\quad \parens{\frac{10}{151}}\quad \parens{\frac{15}{41}}\quad \parens{\frac{14}{59}}\quad \parens{\frac{379}{401}}$.
+
+     Is $14$ a quadratic residue, modulo $59$?
+     \item Which of the following congruences is solvable? 
+
+     (a) $x^{2}\equiv 30\pmod{101}$
+
+     (b) $x^{2}\equiv 6\pmod{103}$
+
+     (c) $2x^{2}\equiv 70\pmod{106}$
+
+     Note: $x^{2}\equiv a\pmod{p}$ is solvable iff $a$ is a quadratic residue module $p$ iff $\parens{\frac{a}{p}}=1$.
+ \end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item Let $\bar{x},\bar{y}\in\Z^{*}_{n}$, then $h(\bar{x}\bar{y})= h(\bar{xy})= \bar{xy}^{2}= \bar{xy}\bar{xy}= \bar{x}\bar{y}\bar{x}\bar{y}= \bar{x}^{2}\bar{y}^{2}= h(\bar{x})h(\bar{y})$, hence $h$ is a homomorphism.
+
+     The fact that $\ker(h)=\{\pm\bar{1}\}$ follows from the fact that, in any integral domain, if $x^{2}=1$, then $x^{2}-1=(x+1)(x-1)=0$, hence $x=\pm1$, so that no element besides $1$ and $-1$ can be its own inverse. As a result, the only elements that $h$ maps to $1$ are $1$ and $-1$.
+     \item Let $x,y\in R$, such that $x=a^{2}$ and $y=b^{2}$ for some $a,b\in \Z^{*}_{p}$.
+
+     i) Multiplication: consider $xy=a^{2}b^{2}=(ab)^{2}$, then $xy\in R$.
+
+     ii) Inverse: we have $x^{-1}=a^{-2}=(a^{-1})^{2}$, so that $x^{-1}\in R$.
+
+     Moreover, because $\Z^{*}_{p}$ is abelian, then $R$ is a normal group.
+
+     By definition, $R$ contains all elements which are squares of an element in $\Z^{*}_{p}$, then it contains all quadratic residues. By Lagrange's Theorem, the index of $R$ in $\Z^{*}_{p}$ is a factor of the order of $\Z^{*}_{p}$. Because $\Z^{*}_{p}$ has order $p-1$ (as $\Z_{p}$ has $p$ elements and we take $0$ out), then it must be the case that $R$ has two cosets.
+     \item We have proved in 2) that $R$ has two cosets in $\Z^{*}_{p}$, the elements in $R$ which contain all the quadratic residues which we call $1$. The second coset refers to those elements which are quadratic nonresidues, which we call $-1$. Since the Legendre symbol has value $1$ if $a$ is quadratic residue and $-1$ otherwise, then $\pi(\bar{a})$ is equivalent to the Legendre symbol.  
+     \item To solve this problem, I wrote a Python program using the following pseudocode
+     \begin{algorithmic}
+        \FOR{$i=0,\dots,p-1$}
+        \STATE{
+            \IF{$i^{2} == a\pmod{p}$}
+                \STATE{Print $a=i^{2}\pmod{p}$}
+            \ELSE 
+                \STATE{Continue}
+            \ENDIF
+        }
+        \ENDFOR
+    \end{algorithmic}
+    With this, I found that only $\parens{\frac{5}{11}}$ and $\parens{\frac{2}{23}}$ evaluate to $1$, the rest to $-1$. 
+
+    An interesting observation is that those which evaluate to one had more than one element whose square maps to them. In the case of $\parens{\frac{5}{11}}$ both $4^{2}$ and $7^{2}$ are congruent to $5$ modulo $p$. In the case of $\parens{\frac{2}{23}}$ it was $5$ and $18$.
+     \item We know that if $a\equiv b\pmod{p}$, then $\bar{a}=\bar{b}$, but this also implies, from 3), that $\parens{\frac{a}{p}}=\pi(\bar{a})=\pi(\bar{b})=\parens{\frac{b}{p}}$, as desired.
+     
+     For the second equality, we have that it is a Corollary to the previous result, and C.7.
+     \item a) From 3) we concluded that $\pi$ is the quotient homomorphism that maps any element of $\Z^{*}_{p}$ to the coset of $R$, these cosets are isomorphic to the Legendre symbol (whenever $p$ is a prime and $a<p$). Then $\parens{\frac{ab}{p}}=\pi(ab)=\pi(a)\pi(b)=\parens{\frac{a}{p}}\parens{\frac{b}{p}}$, as required.
+
+     b) Since $\pi(\bar{a})$ equals $1$ or $-1$, then $\pi(\bar{a}^{2})=1$, regardless of the value of $\pi(\bar{a})$.
+     \item From G.9., we know that $x^{1}\equiv -1\pmod{p}$ has a solution if and only if $p\not\equiv 3\pmod{4}$. Hence $\parens{\frac{-1}{p}}=-1$ if $p\equiv 3\pmod{4}$. Likewise, by G.8., we know that $x^{2}+1\equiv 0\pmod{p}$ has a solution if $p\equiv 1\pmod{4}$ but by C.2., $x^{2}+1\equiv 0\pmod{p}$ is equivalent to $x^{2}\equiv 1\pmod{p}$, so $\parens{\frac{-1}{p}}=1$ if $p\equiv 1\pmod{4}$.
+     \item 
+     i) We have $\parens{\frac{30}{101}}= \parens{\frac{2\cdot 3\cdot 5}{101}}= \parens{\frac{2}{101}}\parens{\frac{3}{101}}\parens{\frac{5}{101}}$. Because $101$ is prime, we can use quadratic reciprocity to decide the value of $\parens{\frac{30}{101}}$. We have $\parens{\frac{101}{3}}= \parens{\frac{2+33\cdot 3}{3}}= \parens{\frac{2}{3}}=-1$; $\parens{\frac{101}{5}}= \parens{\frac{1+20\cdot 5}{5}}= \parens{\frac{1}{5}}=1$; and because the conditions of the law of quadratic reciprocity, we have to compute $\parens{\frac{2}{101}}=-1$ directly with the algorithm in 4). Furthermore, in none of the three cases, both primes are congruent modulo $4$, given that $101$ is congruent to $1$ modulo $4$. Then we have that $\parens{\frac{30}{101}}=1$.
+     
+
+     ii) We have $\parens{\frac{10}{151}}= \parens{\frac{2\cdot 5}{151}}= \parens{\frac{2}{151}}\parens{\frac{5}{151}}$. As above, we treat each case separately using the law of quadratic reciprocity, given that $151$ is prime. Because of the conditions of quadratic reciprocity, we have to compute $\parens{\frac{2}{151}}=-1$ with the algorithm in 4). Furthermore, we have that $\parens{\frac{151}{5}}= \parens{\frac{1+30\cdot 5}{5}}= \parens{\frac{1}{5}}= 1$. Then $\parens{\frac{10}{151}}=-1$.
+
+     iii) We have $\parens{\frac{15}{41}}= \parens{\frac{3\cdot 5}{41}}= \parens{\frac{3}{41}}\parens{\frac{5}{41}}$. We analyse each one as above. First, $\parens{\frac{41}{3}}= \parens{\frac{2+13\cdot 3}{3}}= \parens{\frac{2}{3}}=-1$. Second, $\parens{\frac{41}{5}}= \parens{\frac{1+8\cdot 5}{5}}= \parens{\frac{1}{5}}= 1$. Then,  $\parens{\frac{15}{41}}=-1$.
+
+     iv) We have $\parens{\frac{14}{59}}= \parens{\frac{2\cdot 7}{59}}= \parens{\frac{2}{59}}\parens{\frac{7}{59}}$. First, we can use the \textbf{second supplement to the quadratic reciprocity} which says that $x^{2}\equiv 2\pmod{p}$ if and only if $p$ is congruent to $\pm 1$ modulo $8$. Since $59$ is congruent to $3$ modulo $8$, then $\parens{\frac{2}{59}}=-1$. Furthermore, we have that $\parens{\frac{7}{59}}= \parens{\frac{59}{7}}= \parens{\frac{3+8\cdot 7}{7}}= \parens{\frac{3}{7}}= \parens{\frac{7}{3}}= \parens{\frac{1+2\cdot 3}{3}}= \parens{\frac{1}{3}}= 1$. The last one being $1$ because we used the law of quadratic reciprocity twice: $\parens{\frac{7}{59}}= \parens{\frac{59}{7}}$ and $\parens{\frac{3}{7}}= \parens{\frac{7}{3}}$. In both cases, both $p$ and $q$ are congruent to $3$ modulo $4$, so we ``flip'' the sign twice. Since $1$ is a quadratic residue modulo $3$, then we get the result as above. As a result, we have that $\parens{\frac{14}{59}}=-1$
+
+     v) In this last case, both $p$ and $q$ are prime, so we can use quadratic reciprocity directly: $\parens{\frac{379}{401}}= \parens{\frac{401}{379}}= \parens{\frac{22+379}{379}}= \parens{\frac{22}{379}}= \parens{\frac{2\cdot 11}{379}}= \parens{\frac{2}{379}}= \parens{\frac{11}{379}}$. In the case of $\parens{\frac{2}{379}}=-1$, because $379$ is congruent to $3$ modulo $8$. For $\parens{\frac{11}{379}}$, we have $\parens{\frac{379}{11}}= \parens{\frac{5+34\cdot 11}{11}}= \parens{\frac{5}{11}}= \parens{\frac{11}{5}}= \parens{\frac{1+2\cdot 5}{5}}= \parens{\frac{1}{5}}= -1$, this last being negative because both $11$ and $379$ are congruent to $3$ modulo $4$. Hence, $\parens{\frac{379}{401}}=1$.
+     \item i) From 8.i), we have that $\parens{\frac{30}{101}}=-1$, so the congruence is not solvable.
+
+     ii) We have $\parens{\frac{6}{103}}=\parens{\frac{2\cdot 3}{103}}= \parens{\frac{2}{103}}\parens{\frac{3}{103}}$. Moreover $\parens{\frac{2}{103}}=1$ because $103$ is congruent to $7=-1$ modulo $8$. Also, $\parens{\frac{3}{103}}=-\parens{\frac{103}{3}}= -\parens{\frac{1+34\cdot 3}{3}}= -\parens{\frac{1}{3}}= -1$. As a result, $\parens{\frac{6}{103}}=-1$ and the congruence is not solvable.
+
+     iii) First we simplify the equation we are interested in. We have that $106$ divides $2x^{2}-70$ so that there exists an integer $n$ with $106n=2x^{2}-70$, but this implies $53n=x^{2}-35$, so that $x^{2}\equiv 35\pmod{53}$. Having done this, we can use 5),6) and the law of quadratic reciprocity to check whether the equation of interest is solvable. We are interested in $\parens{\frac{35}{53}}$. We have $\parens{\frac{35}{53}}= \parens{\frac{5\cdot 7}{53}}= \parens{\frac{5}{53}}\parens{\frac{7}{53}}$. We analyse each one separately. We have  $\parens{\frac{5}{53}}= \parens{\frac{53}{5}}= \parens{\frac{3+10\cdot 5}{5}}= \parens{\frac{3}{5}}= \parens{\frac{5}{3}}= \parens{\frac{2+3}{3}}= \parens{\frac{2}{3}}= -1$. On the other hand, $\parens{\frac{7}{53}}= \parens{\frac{53}{7}}= \parens{\frac{4+7\cdot 7}{7}}= \parens{\frac{4}{7}}= \parens{\frac{2\cdot 2}{7}}$, since $7$ is congruent to $-1$ modulo $8$, then $\parens{\frac{2}{7}}=1$. As a result, the congruence $2x^{2}\equiv 70\pmod{106}$ is not solvable.
+ \end{enumerate}
+\end{proof}
+
+
+\begin{exercise}{I Primitive roots}
+Recall that $V_{n}$ is the multiplicative group of all the invertible elements in $\Z_{n}$. If $V_{n}$ happens to be cyclic, say $V_{n}=\brackets{m}$, then any integer $a\equiv m\pmod{n}$ is called a primitive root of $n$. \textcolor{blue}{Pinter's definition of primitive root here is not too precise. According to Wikipedia, an integer $a$ is a primitive root modulo $n$ if it generates $V_n$, that is, if $V_n=\brackets{a}$.}
+ \begin{enumerate}
+     \item Prove that $a$ is a primitive root of $n$ iff the order of $\bar{a}$ in $V_{n}$ is $\phi(n)$.
+     \item Prove that every prime number $p$ has a primitive root. (Hint: for every prime $p$, $\Z^{*}_{n}$ is a cyclic group. The simple proof of this fact is given as Theorem 1 in chapter 33).
+     \item Find primitive roots of the following integers (if there are none, say so): 6, 10, 12, 14, 15.
+     \item Suppose $a$ is a primitive root of $m$. Prove: if $b$ is any integer which is relatively prime to $m$, then $b\equiv a^{k}\pmod{m}$ for some $k\geq 1$.
+     \item Suppose $m$ has a primitive root, and let $n$ be relatively prime to $\phi(m)$. (Suppose $n>0$). Prove that if $a$ is relatively prime to $m$, then $x^{n}\equiv a\pmod{m}$ has a solution.
+     \item Let $p>2$ be a prime. Prove that every primitive root of $p$ is a quadratic nonresidue, modulo $p$. (Hint: suppose a primitive root $a$ is a residue; then every power of $a$ is a residue).
+     \item A prime $p$ of the form $p=2^{m}+1$ is called a Fermat prime. Let $p$ be a Fermat prime. Prove that every quadratic nonresidue $\mod{p}$ is a primitive root of $p$. (Hint: how many primitive roots are there? How many residues? Compare).
+ \end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item ($\Rightarrow$) Suppose $a$ is a primitive root of $n$. Then $a\equiv m\pmod{n}$. We have that $m\equiv a\pmod{n}$, and by D.4), $m^{\phi(n)}\equiv a^{\phi(n)}\pmod{n}$. By condition (4), the order of $V_{n}$, which is the same order of $m$ is $\phi(n)$. Hence, $1\equiv a^{\phi(n)}\pmod{n}$, which implies $a^{\phi(n)}\equiv 1\pmod{n}$, as required.
+
+     ($\Leftarrow$) Suppose $\ord(\bar{a})=\phi(n)$, then $a$ has $\phi(n)$ distinct powers. Since $V_n$ has $\phi(n)$ elements, then $a$ generates $V_n$, so $a$ is a primitive root of $n$. 
+     \item We have that $\Z^{*}_{p}= V_p= \brackets{m}$ for some $m\in\Z^{*}_{p}$. We know that $\ord(m)=\ord(m^{-1})$ in a cyclic group. Then $m^{-1}$ must generate $V_p$ and so $m^{-1}$ is a primitive root of $p$.
+     \item In all cases, we start by finding $\phi(n)$ and building $V_n$. Afterwards, we look for elements of $V_n$ congruent to $m$ modulo $n$.
+
+     We have $\phi(6)=2$ ($1,5$). Hence $V_6 =\brackets{5}$, and $5$ is a primitive root of $6$.
+
+     For $10$ we have $\phi(10)=4$ ($1,3,7,9$). In this case, $V_{10}$ is generated by $3$, hence $3$ is a primitive root of $10$. In addition, $\ord(7)=4=\phi(10)$ so by 1), $7$ is also a primitive root of $10$.
+
+     We have $\phi(12)=4$ ($1,5,7,11$). Since all elements are their own inverses, there is no element in $V_{12}$ that generates the other, so that $12$ has no primitive roots.
+
+     For $14$, we have that $\phi(14)=6$ ($1,3,5,9,11,13$). We have that $V_{14}$ is generated by both $3$ and $5$ but no other element of $V_{14}$. Then $3$ and $5$ are both primitive roots of $14$.
+
+     We have that $\phi(15)=8$ ($1,2,4,7,8,11,13,14$). It turns out that $V_{15}$ has no primitive roots as it is not generated by any of its elements.
+     \item Since $a$ is a primitive root of $m$, then $V_m =\brackets{a}$. Moreover, since $b$ is relatively prime to $m$, then $b$ is invertible in $\Z_m$, so that $b\in V_m$. Because $V_m =\brackets{a}$, then there exists a $k$ so that $a^{k}=b$, so that $b\equiv a^{k}\pmod{m}$.
+     \item 
+     \item Following the hint, we will suppose a primitive root, say $a$, of $p$ is a quadratic residue. Then we have both $V_p =\brackets{a}$ and there exists an integer $x$ such that $x^2 \equiv a\pmod{p}$. From H.6., we know that all powers of $a$ are quadratic residues. This implies $x^2 \equiv a^{\phi(n)}\pmod{p}$
+     \item 
+ \end{enumerate}
+\end{proof}

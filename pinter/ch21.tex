@@ -1,0 +1,52 @@
+\subsection*{Chapter 21. The Integers}
+\addcontentsline{toc}{subsection}{Chapter 21. The Integers}
+
+
+\begin{exercise}{A Properties of order relation in integral domains}
+Let $A$ be an ordered integral domain. Prove the following, for all $a,b$ and $c$ in $A$:
+\begin{enumerate}
+    \item If $a\leq b$ and $b\leq c$, then $a\leq c$.
+    \item If $a\leq b$, then $a+c\leq b+c$.
+    \item If $a\leq b$ and $c\geq 0$, then $ac\leq bc$.
+    \item If $a<b$ and $c<0$, then $bc<ac$.
+    \item $a<b$ iff $-b<-a$.
+    \item If $a+c<b+c$, then $a<b$.
+    \item If $ac<bc$ and $c>0$, then $a<b$.
+    \item If $a<b$ and $c<d$, then $a+c<b+d$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+    \item We have $a<b$ or $a=b$ and $b<c$ or $b=c$. If $a<b$ and $b<c$, then $a<c$. If $a<b$ and $b=c$, then $a<c$. If $a=b$ and $b<c$, then $a<c$. If $a=b$ and $b=c$, then $a=c$. Hence because $a<c$ or $a=c$, we have $a\leq c$.
+    \item We have $a<b$ or $a=b$. If $a<b$, then $a+c<b<c$. If $a=b$, then $a+c=b+c$. Hence $a+c\leq b+c$.
+    \item We have $a<b$ or $a=b$ and $c<0$ or $c=0$. If $a<b$ and $c>0$, then $ac<bc$. If $a<b$ and $c=0$, then $ac=bc$. If $a=b$ and $c\geq 0$, then $ac=bc$. Hence, $ac\leq bc$.
+    \item We have $-c>0$, then $a(-c)<b(-c)$ implies $-ac<-bc$, adding $ac+bc$ on both sides of the equations gives us $ac+bc-ac<ac+bc-bc$ which is $bc<ac$.
+    \item We have $a<c\iff -a-b+a<-a-b-b\iff -b<-a$.
+    \item We have $a+c-c<b+c-c$ which implies $a<b$.
+    \item If $ac<bc$, then $bc-ac=(b-a)c>0$. Since $c>0$, then $b-a>0$ so that $b>a$.
+    \item We have $a+c<b+c$ and $b+c<b+d$, then $a+c<b+d$.
+\end{enumerate}
+\end{proof}
+
+
+\begin{exercise}{F Problems on the division algorithm}
+Prove parts 1-3 where $k,m,n,q$ and $r$ designate integers.
+\begin{enumerate}
+    \item Let $n>0$ and $k>0$. If $q$ is the quotient and $r$ is the remainder when $m$ is divided by $n$, then $q$ is the quotient and $kr$ is the remainder when $km$ is divided by $kn$.
+    \item Let $n>0$ and $k>0$. If $q$ is the quotient when $m$ is divided $m$ by $n$, and $q_{1}$ is the quotient when $q$ is divided $k$, then $q_{1}$ is the quotient when $m$ is divided by $nk$.
+    \item If $n\neq 0$, there exists $q$ and $r$ such that $m=nq+r$ and $0\leq r<\lvert n\rvert$. (Use Theorem 3, and consider the case when $n<0$).
+    \item In Theorem 3, suppose $m=nq_{1}+r_{1}=nq_{2}+r_{2}$ where $0\leq r_{1},r_{2}<n$. Prove that $r_{1}-r_{2}=0$. [Hint: Consider the difference $(nq_{1}+r_{1})-(nq_{2}+r_{2})$].
+    \item Use part 4 to prove $q_{1}-q_{2}=0$. Conclude that the quotient and remainder, in the division algorithm, are unique. 
+    \item If $r$ is the remainder when $m$ is divided by $n$, prove that $m=n$ in $\Z_{n}$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+    \item We have $m=qn+r$ so that $km=k(qn+r)=q(kn)+kr$, as required.
+    \item If $m=qn+r$ and $q=kq_{1}+s$, then $m=(kq_{1}+s)n+r= kq_{1}n+(sn+r)$.
+    \item Suppose $n<0$, so that $-n>0$. By Theorem 3, there exist integers $q'$ and $r$ such that $m=(-n)q'+r$, with $0\leq r<n$. But this implies that $m=n(-q')+r$. Replacing $q=-q'$ gives us our desired result.
+    \item We have $(nq_{1}-r_{1})-(nq_{2}-r_{2})=0 = n(q_{1}-q_{2})+(r_{1}-r_{2})$, so that $n(q_{1}-q_{2})+r_{1}=r_{2}$. If $q_{1}-q_{2}>0$, then $r_{2}>n$, which is impossible. If $q_{1}-q_{2}<0$, then $r_{2}<0$, which is also impossible, so that $q_{1}-q_{2}=0$ which implies $q_{1}=q_{2}$. Likewise, $r_{1}=r_{2}$.
+    \item As above.
+    \item We have $qn\equiv 0\pmod{n}$ and $r\equiv r\pmod{n}$. Hence, $m=qn+r\equiv r\pmod{n}$, and $m=r$ in $\Z_{n}$.
+\end{enumerate}
+\end{proof}

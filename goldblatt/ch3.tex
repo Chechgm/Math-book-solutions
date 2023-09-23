@@ -1,0 +1,117 @@
+\subsection*{Chapter 3 Arrows instead of epsilon}
+
+\begin{exercise}{3.1 Monic arrows}
+In any category 
+\begin{enumerate}
+    \item $g\circ f$ is monic if both $f$ and $g$ are monic.
+    \item If $g\circ f$ is monic, then so is $f$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item Suppose both $f$ and $g$ are monic. Then for any morphisms $l, h$, both $f\circ l = f\circ h$ and $g\circ l= g\circ h$ imply $l=h$. We have $(g\circ f) \circ l = (g\circ f) \circ h\implies g\circ (f\circ l) = g\circ(f \circ h) \implies g \circ l = g\circ h\implies l=h$, so that $g\circ f$ is monic.
+     \item Suppose $g\circ f$ is monic. Then for any morphisms $l, h$, we have that $(g\circ f)\circ l=(g\circ f)\circ h$ implies $l=h$. Suppose now $f\circ l=f\circ h$, apply $g$ on both sides of the equation to get $(g\circ f)\circ l=(g\circ f)\circ h$, which implies $l=h$, as required.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{3.3 Iso arrows}
+\begin{enumerate}
+    \item Every identity arrow is iso.
+    \item If $f$ is iso, so is $f^{-1}$.
+    \item $f\circ g$ is iso if $f, g$ are, with $(f\circ g)^{-1}=g^{-1}\circ f^{-1}$. 
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item We have that $1\circ 1=1$, so that $1^{-1}=1$ is iso.
+     \item Suppose $f$ is iso. Then we have $f^{-1}\circ f= f\circ f^{-1}=1$, which is the same as saying that $f^{-1}$ is iso.
+     \item Suppose $f$ and $g$ are iso. We have, $(g^{-1}\circ f^{-1})\circ(f\circ g)= g^{-1}\circ (f^{-1}\circ f)\circ g= g^{-1}\circ g= 1$, and $(f\circ g)\circ(g^{-1}\circ f^{-1})= f^{-1}\circ (g^{-1}\circ g)\circ f= f^{-1}\circ f= 1$, as required.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{3.4 Isomorphic objects}
+\begin{enumerate}
+    \item For any $\CCC$-objects
+
+    i. $a\cong a$.
+    
+    ii. If $a\cong b$ then $b\cong a$.
+
+    iii. If $a\cong b$ and $b\cong c$, then $a\cong c$. 
+    \item \textbf{Finord} is a skeletal category.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item i. We proved that $1$ is an iso arrow. We have $1_a:a\rightarrow a$, so that $a\cong a$.
+
+     ii. Suppose $a\cong b$. Then there exists a morphism $f:a\rightarrow b$, so that $f$ is iso. Since $f$ is iso, then we have the morphism $f^{-1}:b\rightarrow a$, which we proved is an iso arrow too. Then $b\cong a$. 
+
+     iii. Suppose $a\cong b$ and $b\cong c$. Then there exist morphisms $f:a\rightarrow b$ and $g:b\rightarrow c$ so that $f$ and $g$ are iso. We have that $g\circ f:a\rightarrow c$ and, as we proved above, $g\circ f$ is iso, so that $a\cong c$.
+     \item Recall that \textbf{Finord} has as objects all the finite ordinals and all the functions between them as arrows. Let $a, b$ be an arbitrary objects in \textbf{Finord}, so that $a\cong b$. Then there exists a function $f:a\rightarrow b$ so that $f$ is bijective. But every set in \textbf{Finord} has different cardinality, then if $a\cong b$, it must be the case that $a=b$ as otherwise, $f$ would not be bijective.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{3.6 Terminal objects}
+\begin{enumerate}
+    \item Prove that all terminal $\CCC$-objects are isomorphic.
+    \item Find terminals in $\mathbf{Set}^2, \mathbf{Set}^\rightarrow$, and the poset \textbf{n}.
+    \item Show that an arrow $1\rightarrow a$ whose domain is a terminal object must be monic.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item Suppose $1$ and $1'$ are terminal objects. Then there exist unique arrows $I_{1'}:1'\rightarrow 1$ and $I_{1}:1\rightarrow 1'$. We have $I_{1'}\circ I_{1}=1_{1}$, as $1_{1}:1\rightarrow 1$ is unique. Likewise, $I_{1}\circ I_{1'}=1_{1'}$. Hence, both $I_{1}$ and $I_{1'}$ are bijections and inverse to each other, so that $1$ and $1'$ are isomorphic.
+     \item $\mathbf{Set}^{2}$: any pair of singletons.
+
+     $\mathbf{Set}^{\rightarrow}$: the identity function for any singleton.
+
+     poset \textbf{n}: n-1.
+     \item We say $f:1\rightarrow a$ is monic if the following diagram commutes implies $g=h$.
+     
+    \begin{tikzcd}[row sep=huge, column sep=huge]
+    b \arrow[r, "g"] \arrow[d, "h"] & 1 \arrow[d, "f"]\\
+    1 \arrow[r, "f"] & a
+    \end{tikzcd}
+
+    Since $1$ is terminal, then there exists only one arrow from $b$ to $1$. But this implies $g=h$, as required.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{3.8 Products}
+\begin{enumerate}
+    \item Prove $\brackets{pr_a, pr_b}=1_{a\times b}$
+
+    \begin{tikzcd}[row sep=huge, column sep=huge]
+    & b\\
+    a\times b \arrow[ur,"pr_b"] \arrow[dr,"pr_a"] \arrow[r,dashed,"\brackets{pr_a,pr_b}"] & a\times b \arrow[u,"pr_b"] \arrow[d,"pr_a"] \\
+    & a
+    \end{tikzcd}
+    \item If $\brackets{f,g}=\brackets{k,h}$, then $f=k$ and $g=h$.
+    \item Prove $\brackets{f\circ h,g\circ h}=\brackets{f,g}\circ h$
+
+    \begin{tikzcd}[row sep=huge, column sep=huge]
+    & & b\\
+    d \arrow[r,"h"] \arrow[bend left=30,urr,"g\circ h"] \arrow[bend right=30,drr,"f\circ h"] & c \arrow[ur,"g"] \arrow[dr,"f"] \arrow[r,dashed,"\brackets{f,g}"] & a\times b \arrow[u,"pr_b"] \arrow[d,"pr_a"] \\
+    & & a
+    \end{tikzcd}
+    \item We saw earlier that in \textbf{Set}, $A\cong A\times\{0\}$. Show that if category $\CCC$ has a terminal object $1$ and products, then for any $\CCC$-object $a$, $a\cong a\times 1$ and indeed $\brackets{1_a,I_a}$ is iso
+
+    \begin{tikzcd}[row sep=huge, column sep=huge]
+    & a \arrow[dl,"1_a"] \arrow[d,"\brackets{1_a,I_a}"] \arrow[dr,"I_a"] &\\
+    a & a\times 1 \arrow[l,"pr_a"] \arrow[r, "pr_1"] & 1
+    \end{tikzcd}
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item From the above diagram, we have $pr_a\circ\brackets{pr_a,pr_b}=pr_a$ and $pr_b\circ\brackets{pr_a,pr_b}=pr_b$. This is also true if we replace $\brackets{pr_a,pr_b}$ for $1_{a\times b}$. Since $\brackets{pr_a,pr_b}$ is unique, then $\brackets{pr_a,pr_b}= 1_{a\times b}$.
+     \item If $\brackets{f,g}=\brackets{k,h}$, then $pr_a\circ\brackets{f,g}=f=k=pr_a\circ\brackets{k,h}$, and $pr_b\circ\brackets{f,g}=g=h=pr_b\circ\brackets{k,h}$, as required.
+     \item From the above diagram, we know that $pr_a\circ\brackets{f\circ h, g\circ h}=pr_a\circ\brackets{f, g}\circ h= f\circ h$ and $pr_b\circ\brackets{f\circ h, g\circ h}=pr_b\circ\brackets{f, g}\circ h= g\circ h$. Because $\brackets{f,g}\circ h$ and $\brackets{f\circ h, g\circ h}$ are unique in the sense that they produce the same output under $pr_a$ and $pr_b$, then they must be the same.
+     \item We look for a function $f:a\times 1\rightarrow a$ so that $f\circ\brackets{1_a,I_1}=1_a$ and $\brackets{1_a,I_a}\circ f=1_{a\times b}$. We propose $f=pr_a$.
+
+     We have $pr_a\circ\brackets{1_a,I_1}=1_a$. Furthermore, for $\brackets{1_a,I_1}\circ pr_a$, we can use the uniqueness property of products, so that if $pr_a\circ\brackets{1_a,I_a}\circ pr_a = pr_a\circ 1_{a\times b}$ and  $pr_1\circ\brackets{1_a,I_a}\circ pr_a = pr_1\circ 1_{a\times b}$, then $\brackets{1_a,I_a}\circ pr_a=1_{a\times b}$. We have $pr_a\circ\brackets{1_a,I_a}\circ pr_a = 1_a\circ pr_a=pr_a$. On the other hand, notice that both $pr_1\circ\brackets{1_a,I_a}\circ pr_a$ and $pr_1$ are functions from $a\times 1$ to $1$. But because $1$ is terminal, then this function is unique, so that $pr_1\circ\brackets{1_a,I_a}\circ pr_a = pr_1$, as required.
+
+     As a result, $f$ is the inverse of $\brackets{1_a,I_a}$, so that $\brackets{1_a,I_a}$ is iso.
+ \end{enumerate}
+\end{proof}

@@ -1,0 +1,62 @@
+\subsection*{Chapter 5.B. Eigenvectors and Upper-triangular matrices}
+\addcontentsline{toc}{subsection}{Chapter 5.B. Eigenvectors and Upper-triangular matrices}
+
+
+\begin{exercise}{1}
+  Suppose $T\in\LLL(V)$ and there exists a positive integer $n$ such that $T^n=0$.
+  \begin{enumerate}
+      \item Prove that $I-T$ is invertible and that $(I-T)^{-1}=I+T+\dots+T^{n-1}$.
+      \item Explain how you would guess the formula above.
+  \end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item We have that $(I-T)(I+T+\dots+T^{n-1})= (I+T+\dots+T^{n-1})(I-T)= I-T^n= I$, so that $I+T+\dots+T^{n-1}$ is the inverse of $(I-T)$. The above equality also gives us that $(I-T)^{-1}=I+T+\dots+T^{n-1}$.
+     \item A good guess is to use the equation to the finite geometric series: $\sum_{k=1}^n T^k= I+T+\dots+T^{n}= (1-T^n)(1-T)^{-1}= (1-T)^{-1}$.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{5}
+  Suppose $S,T\in\LLL(V)$ and $S$ is invertible. Suppose $p\in\PPP(\bF)$ is a polynomial. Prove that $p(STS^{-1})=Sp(T)S^{-1}$.
+\end{exercise}
+\begin{proof}
+ Notice that for any integer $n$, $(STS^{-1})^n= \underbrace{STS^{-1}STS^{-1}\dots STS^{-1}}_{\text{$n$ times}}= ST^nS^{-1}$. Then, by definition, $p(STS^{-1})= a_0I+\dots+a_n(STS^{-1})^n= a_0I+a_1STS^{-1}+\dots+a_nST^nS^{-1}= S(a_0I+\dots+a_nT^n)S^{-1}= Sp(T)S^{-1}$, as required.
+
+ Contrast this with Exercise 5.A.15, where we proved that $T$ and $STS^{-1}$ have the same eigenvalues.
+\end{proof}
+
+\begin{exercise}{6}
+  Suppose $T\in\LLL(V)$ and $U$ is a subspace of $V$ invariant under $T$. Prove that $U$ is invariant under $p(T)$ for every polynomial $p\in\PPP(\bF)$.
+\end{exercise}
+\begin{proof}
+ Let $u\in U$ and $p\in\PPP(\bF)$. Notice that for every $n$, $T^n(u)\in U$, because $u$ is invariant under $T$ so every power of $T$ maps to some vector in $U$. We write $p(T)u=a_0u+\dots+a_nT^nu$, from the argument above, we get a linear combination of vectors in $U$, which belongs to $U$, as required.
+\end{proof}
+
+\begin{exercise}{10}
+  Suppose $T\in\LLL(V)$ and $v$ is an eigenvector of $T$ with eigenvalue $\lambda$. Suppose $p\in\PPP(\bF)$. Prove that $p(T)v=p(\lambda)v$.
+\end{exercise}
+\begin{proof}
+ Notice that if $\lambda$ is an eigenvalue of $T$ with corresponding eigenvector $v$, then $Tv=\lambda v$ and taking the $n$-th power on both sides of the equation gives us $T^nv=\lambda^nv$. In other words, with $T^n$ we scale $v$ by the $n$-th power of $\lambda$. We then have $p(T)v= (a_0+\dots+a_nT^n)v= a_0v+\dots+a_nT^nv= a_0v+\dots+a_n\lambda^nv= p(\lambda)v$, as required.
+\end{proof}
+
+\begin{exercise}{11}
+  Suppose $\bF=\C,\, T\in\LLL(V),\, p\in\PPP(\C)$ is a polynomial, and $\alpha\in\C$. Prove that $\alpha$ is an eigenvalue of $p(T)$ if and only if $\alpha =p(\lambda)$ for some eigenvalue $\lambda$ of $T$.
+\end{exercise}
+\begin{proof}
+ ($\Rightarrow$) Because $\bF=\C$, we know by 5.27 that $T$ has an upper-triangular matrix with respect to a basis $V$, where the elements of its diagonal are the eigenvalues of $T$. By 5.26, $\vecspan(v_1,\dots,v_j)$ is invariant under $T$ for each $j=1,\dots,n$. By exercise 6, we have that any subspace invariant under $T$, is also invariant under $p(T)$ for any polynomial $p\in\PPP(\bF)$. As a result, we can use 5.27 again to conclude that the matrix of $p(T)$ under $V$ is also upper-triangular where its diagonal elements, are $p(\lambda)$ for each eigenvalue of $T$. In summary, we have an upper-triangular matrix for $p(T)$ (say $\MMM$) that was constructed by an upper-triangular matrix of $T$, so that the diagonal of $\MMM$ has elements $p(\lambda)$, one of which will correspond to $\alpha$, as required.
+
+ ($\Leftarrow$) Suppose $\alpha =p(\lambda)$ for some eigenvalue $\alpha$ of $T$. Then if $v$ is the corresponding eigenvector of $\alpha$, we have $Tv=\lambda v$. Now compose both sides of the equation by $p$, we obtain $p(T)v= p(\lambda)v= \alpha v$, so that $\alpha$ is an eigenvalue of $p(T)$.
+\end{proof}
+
+\begin{exercise}{12}
+  Show that the result in the previous exercise does not hold if $\C$ is replaced with $\R$.
+\end{exercise}
+\begin{proof}
+ The hypothesis of 5.27 is that over $\C$ every operator has an upper-triangular matrix. This will make the solution of exercise 11 fail. A way to see why it would fail is to notice that in 5.32 we concluded that if there is an upper-triangular matrix of $T$ with respect to $V$, then it must be the case that its diagonal are its eigenvalues. The contrapositive tells us that if $T$ does not have eigenvalues, then we cannot find a basis $V$ so that a matrix with respect to $V$ will be upper-triangular. This could be the case if the roots of the characteristic polynomial of $T$ are complex and $\bF=\R$. An easy example is the following matrix, which has no real eigenvalues: 
+ $
+ \begin{pmatrix}
+ 1&-0.5\\
+ 0.5&1
+ \end{pmatrix}
+ $
+\end{proof}

@@ -1,0 +1,121 @@
+\subsection*{Chapter 6.A. Inner Products and Norms}
+\addcontentsline{toc}{subsection}{Chapter 6.A. Inner Products and Norms}
+
+
+\begin{exercise}{3}
+  Fill
+\end{exercise}
+\begin{proof}
+ Fill
+\end{proof}
+
+\begin{exercise}{4}
+  Suppose $V$ is a real inner product space.
+    \begin{enumerate}
+        \item Show that $\langle u+v,u-v\rangle=\lVert u\rVert^2-\lVert v\rVert^2$ for every $u,v\in V$.
+        \item Show that if $u,v\in V$ have the same norm, then $u+v$ is orthogonal to $u-v$.
+        \item Use part 2 to show that the diagonals of a rhombus are perpendicular to each other.
+    \end{enumerate}  
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item We have 
+     \begin{align*}
+        \langle u+v,u-v\rangle &= \langle u,u\rangle-\langle u,v\rangle+\langle v,u\rangle-\langle v,v\rangle\\
+        &= \lVert u\rVert^2-\lVert v\rVert^2 -\langle u,v\rangle+\overline{\langle u,v\rangle}
+        &= \lVert u\rVert^2-\lVert v\rVert^2.
+     \end{align*}
+     The second to third inequality follows because in a real vector space the complex conjugate of a number is itself.
+     \item If $\lVert u\rVert^2=\lVert v\rVert^2$, then $\langle u+v,u-v\rangle=\lVert u\rVert^2-\lVert v\rVert^2=0$, so that $u+v$ is orthogonal to $u-v$.
+     \item Since a rhombus is a special case of a parallelogram where all sides have the same length, then the conditions for exercise 2 hold, so that we can conclude that the diagonals of the rhombus are perpendicular.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{13}
+  Fill
+\end{exercise}
+\begin{proof}
+ Fill
+\end{proof}
+
+\begin{exercise}{14}
+  Fill
+\end{exercise}
+\begin{proof}
+ Fill
+\end{proof}
+
+\begin{exercise}{17}
+  Prove or disprove: there is an inner product on $\R^2$ such that the associated norm is given by $\lVert (x,y)\rVert=\max\{x,y\}$ for all $(x,y)\in\R^2$.
+\end{exercise}
+\begin{proof}
+ For ease, consider the square of the above norm: $\lVert (x,y)\rVert^2=\langle (x,y),(x,y)\rangle$.
+
+ Positivity: Since the square of any number is non-negative, then positivity holds. 
+
+ Definitieness: Since the square of any number is 0 if and only if the number is 0, then $\langle (x,y),(x,y)\rangle=0$ if and only if $(x,y)=(0,0)$.
+
+ Additivity in the first slot: Consider 
+\end{proof}
+
+\begin{exercise}{18}
+  Suppose $p>0$. Prove that there is an inner product on $\R^2$ such that the associated norm is given by $\lVert (x,y)\rVert =(x^p+y^p)^{1/p}$ for all $(x,y)\in\R^2$ if an only if $p=2$.
+\end{exercise}
+\begin{proof}
+ ($\Rightarrow$) Suppose there is an inner product on $\R^2$ with the mentioned characteristics. Then it must be the case that the square  of the norm of a vector with itself gives us a valid inner product of the same element with itself. That is, $\langle (x,y), (x,y)\rangle=\lVert (x,y)\rVert^2= (x^p+y^p)^{2/p}$. Now take $\lambda\in\R$. We have $\lVert\lambda(x,y)\rVert= ((\lambda x)^p+(\lambda y)^p)^{2/p}=(\lambda^p(x^p+y^p))^{2/p}$ this equals $\lambda^2(x^p+y^p)^{2/p}$ if and only if $p=2$.
+
+ ($\Leftarrow$) Suppose $p=2$. Then the norm is defined as $\lVert (x,y)\rVert =(x^2+y^2)^{1/2}$. We have that the dot product as in definition 6.2 for $\R^2$ is given by $\langle (x_1,y_1), (x_2,y_2)\rangle= x_1x_2+y_1y_2$. Considering the dot product of a vector in $\R^2$ with respect to itself and taking the square root of the resulting value gives us the norm $\lVert (x,y)\rVert$ as defined above.
+\end{proof}
+
+\begin{exercise}{19}
+  Suppose $V$ is a real inner product space. Prove that 
+  \[
+  \langle u,v\rangle=\frac{\lVert u+v\rVert^2-\lVert u-v\rVert^2}{4}
+  \]
+  for all $u,v\in V$.
+\end{exercise}
+\begin{proof}
+ We have
+ \begin{align*}
+     \lVert u+v\rVert^2-\lVert u-v\rVert^2 =& \langle u+v,u+v\rangle - \langle u-v,u-v\rangle\\
+     =&\lVert u\rVert^2+\lVert v\rVert^2+\langle u,v\rangle +\langle v,u\rangle\\
+     &-[\lVert u\rVert^2+\lVert v\rVert^2+\langle u,-v\rangle+\langle -v,u\rangle]\\
+     =& 2[\langle u,v\rangle+\langle v, u\rangle]\\
+     =& 4\langle u,v\rangle.
+ \end{align*}
+Where the last two inequalities follow from the fact that, in a real inner product space, $\langle u,v\rangle=\langle v,u\rangle$, and $\langle -v,u\rangle=\langle u,-v\rangle=-\langle u,v\rangle$.
+\end{proof}
+
+\begin{exercise}{20}
+  Suppose $V$ is a complex inner product space. Prove that
+  \[
+  \langle u,v\rangle =\frac{\lVert u+v\rVert^2-\lVert u-v\rVert^2+\lVert u+iv\rVert^2i-\lVert u-iv\rVert^2i}{4}
+  \]
+  for all $u,v\in V$.
+\end{exercise}
+\begin{proof}
+ Notice that in exercise 19 we worked out $\lVert u+v\rVert^2-\lVert u-v\rVert^2$ and used a property of real inner product spaces only on the last two steps. Now we will work out the rest of the numerator. We have 
+ \begin{align*}
+     \lVert u+iv\rVert^2-\lVert u-iv\rVert^2 =& \langle u+iv, u+iv\rangle- \langle u-iv,u-iv\rangle\\
+     =& \lVert u\rVert^2 +\langle u, iv\rangle +\langle iv,u\rangle +\lVert iv\rVert^2\\
+     &-[\lVert u\rVert^2+\langle u,-iv\rangle+\langle -iv,u\rangle+\lVert -iv\rVert^2]\\
+     =& \langle u, iv\rangle +\langle iv,u\rangle +\lvert i\rvert^2\lVert v\rVert^2\\
+     &-[\langle u,-iv\rangle+\langle -iv,u\rangle+\lvert -i\rvert^2\lVert v\rVert^2]\\
+     =& \langle u, iv\rangle +\langle iv,u\rangle -\langle u,-iv\rangle-\langle -iv,u\rangle\\
+     =& -i\langle u,v\rangle +i\langle v, u\rangle -i\langle u,v\rangle +i\langle v,u\rangle\\
+     =& 2i[\langle v,u\rangle-\langle u,v\rangle]
+ \end{align*}
+ Now we replace this in the total equation to obtain the following
+ \begin{align*}
+     \lVert u+v\rVert^2-&\lVert u-v\rVert^2+\lVert u+iv\rVert^2i-\lVert u-iv\rVert^2i\\ &= 2[\langle u,v\rangle +\langle v,u\rangle] + 2i^2[\langle v,u\rangle-\langle u,v\rangle]\\
+     &= 4\langle u,v\rangle,
+ \end{align*}
+ as required.
+\end{proof}
+
+\begin{exercise}{21}
+  Fill Ask for help
+\end{exercise}
+\begin{proof}
+ Fill
+\end{proof}

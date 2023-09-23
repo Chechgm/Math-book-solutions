@@ -1,0 +1,129 @@
+\subsection*{Chapter 32. Galois Theory: the Heart of the Matter}
+\addcontentsline{toc}{subsection}{Chapter 32. Galois Theory: the Heart of the Matter}
+
+
+\begin{exercise}{A Computing a Galois group}
+\begin{enumerate}
+    \item Show that $\Q(i,\sqrt{2})$ is the root field of $(x^2+1)(x^2-2)$ over $\Q$.
+    \item Find the degree of $\Q(i,\sqrt{2})$ over $\Q$.
+    \item List the elements of $Gal(\Q(i,\sqrt{2}):\Q)$ and exhibit its table.
+    \item Write the inclusion diagram for the subgroups of $Gal(\Q(i,\sqrt{2}):\Q)$, and the inclusion diagram for the fields intermediate between $\Q$ and $\Q(i,\sqrt{2})$. Indicate the Galois correspondence.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item The roots of $x^2+1$ are $\pm i$ and the roots of $x^2-2$ are $\pm\sqrt{2}$, so that $\Q(i,\sqrt{2})$ is the root field of $(x^2+1)(x^2-2)$.
+     \item We know that $[Q(i,\sqrt{2}:\Q]=[Q(i,\sqrt{2}):\Q(i)][\Q(i):\Q]=2\cdot 2=4$.
+     \item Following a similar approach to the example in the chapter, we have that $e$ is the transformation that leaves the roots invariant, $\alpha$ transforms $\sqrt{2}$ into $-\sqrt{2}$, $\beta$ transforms $i$ into $-i$ and $\gamma$ transforms both $\sqrt{2}$ and $i$ into their negative counterparts. The multiplication table is the same as $Gal(\Q(\sqrt{2},\sqrt{3}):\Q)$.
+     \item The Galois correspondence is the same as the correspondence between $Gal(\Q(\sqrt{2},\sqrt{3}):\Q)$ and the intermediate fields of $\Q(\sqrt{2},\sqrt{3})$. The main difference is that $\Q(\sqrt{6})$ is replaced by $\Q(i\sqrt{2})$, which is the fixfield of the subgroup $\{e,\gamma\}\in Gal(\Q(\sqrt{2},\sqrt{3}):\Q)$.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{B Computing a Galois group of eight elements}
+\begin{enumerate}
+    \item Show that $\Q(\sqrt{2},\sqrt{3},\sqrt{5})$ is the root field of $(x^2-2)(x^2-3)(x^2-5)$ over $\Q$.
+    \item Show that the degree of $\Q(\sqrt{2},\sqrt{3},\sqrt{5})$ over $\Q$ is 8.
+    \item List the 8 elements of $\mathbf{G}=Gal(\Q(\sqrt{2},\sqrt{3},\sqrt{5}):Q)$ and write its table.
+    \item List the subgroups of $\mathbf{G}$. (By Lagrange's Theorem, any proper subgroup of $\mathbf{G}$ has either two or four elements).
+     \item For each subgroup of $\mathbf{G}$ find its fixfield.
+     \item Indicate the Galois correspondence by means of a diagram like the one on page 329.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item We have that $\pm\sqrt{2}$ are the roots of $x^2-2$, $\pm\sqrt{3}$ the roots of $x^2-3$, and $\pm\sqrt{5}$ the roots of $x^2-5$, so that $\Q(\sqrt{2},\sqrt{3},\sqrt{5})$ is the root field of $(x^2-2)(x^2-3)(x^2-5)$ over $\Q$.
+     \item We know that 
+     \begin{align*}
+         [\Q(\sqrt{2}&,\sqrt{3},\sqrt{5}):\Q]\\
+         =& [\Q(\sqrt{2},\sqrt{3},\sqrt{5}):\Q(\sqrt{2},\sqrt{3})][\Q(\sqrt{2},\sqrt{3}):\Q]\\
+         =& [\Q(\sqrt{2},\sqrt{3},\sqrt{5}):\Q(\sqrt{2},\sqrt{3})][\Q(\sqrt{2},\sqrt{3}):\Q(\sqrt{2})][\Q(\sqrt{2}):\Q]\\
+         =& 2\cdot 2\cdot 2=8,
+     \end{align*}
+     as required.
+     \item The 8 elements of $\bG$ are the automorphisms that change the roots $\sqrt{2},\sqrt{3}$ and $\sqrt{5}$ for its negative counterparts. Since there are 3 square roots, there are $2^3$ automorphisms including the automorphism that changes no square roots (the identity) and the one that changes all. 
+     \item Taking the example on the book as reference, we can see that each element of $\bG$ with the identity element forms a subgroup of $\bG$, furthermore, that gives us 6 subgroups (and 8 if we count the trivial subgroups). Furthermore, for each pair in $\{2,3,5\}$, we can take the subgroup that includes the automorphism that send each square root to its negative and that takes their product to their negative. For example, the automorphisms that: take $\sqrt{2}$ to its negative, take $\sqrt{3}$ to its negative, and take $\sqrt{6}$ to its negative plus the identity form a subgroup of $\bG$. Since there are 3 elements in the set above, there are $C(3,2)=3$ such subgroups. Giving us a total of 11 subgroups of $\bG$.
+     \item For each subgroup of order 2, their fixfield is simply the field extension of the element which is taken to its negative: $\sqrt{2}, \sqrt{3}, \sqrt{5},\sqrt{6}, \sqrt{10},\dots$. For the subgroups of order 4, the  fixfields are the combinations of those roots that are changed: $\Q(\sqrt{2},\sqrt{3}), \Q(\sqrt{2},\sqrt{5}),\dots$. Notice that, for example $\Q(\sqrt{6})\subseteq\Q(\sqrt{2},\sqrt{3})$.
+     \item The correspondence follows directly from the previous exercise. The figure would have 4 hierarchies instead of 3 as in the book example.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{H The group of automorphisms of $\C$}
+\begin{enumerate}
+    \item Prove: the only automorphism of $\Q$ is the identity function. [Hint: if $h$ is an automorphism, $h(1)=1$; hence $h(2)=2$, and so on].
+    \item Prove: any automorphism of $\R$ sends squares of numbers to squares of numbers, hence positive numbers to positive numbers.
+    \item Using part 2, prove that if $h$ is any automorphism of $\R$, $a<b$ implies $h(a)<h(b)$.
+    \item Use parts 1 and 3 to prove that the only automorphism of $\R$ is the identity function.
+     \item List the elements of $Gal(\C:\R)$.
+     \item Prove that the identity function and the function $a+bi\rightarrow a-bi$ are the only autmorphisms of $\C$ which fix $\R$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item Let $h$ be an automorphism of $\Q$. We will first prove by induction that for all $n\in\N$, $h(n)=n$. For the base case, notice that $h(1)=1$ by the properties of homomorphisms. Now suppose the statement holds for $n$. We then have $h(n+1)=h(n)+h(1)=n+1$, as required. By the properties of ring homomorphisms, we have that $h(-n)=-h(n)=-n$, so that $h$ maps every integer to itself. Finally, by the properties of ring homomorphisms, $h(n^{-1})=h(n)^{-1}=n^{-1}$. Notice that any rational can be represented as $m/n$ for integers $m$ and $n$. So that $h(m/n)=h(m)h(n)^{-1}=m/n$. That is, $h$ is the identity.
+     \item Let $h$ be an automorphism of $\R$, and let $a\in\R$. We have $h(a^2)=h(aa)=h(a)h(a)=h(a)^2$, as required.
+     \item Because $b>a$, there exists an element $x\in\R$ so that $b-a=x^2$. From 2, we know that $h(x^2)=h(x)^2$ so that $h(b-a)=h(b)-h(a)$ is positive and hence $h(b)>h(a)$.
+     \item Suppose, for the sake of contradiction that there exists a real $x$ with $h(x)\neq x$. Suppose without loss of generality that $x>h(x)$. Then there exists a rational, $a$ so that $h(x)<a<x$. But notice that by 3, if $x>a$, then $h(x)>h(a)$, and by 1, $h(a)=a$, so that $h(x)<a<x$ is a contradiction.
+     \item By Theorem 1, the degree of $Gal(\C:\R)=2$. Then, we know that the automorphisms of $\C$ which fix $\R$ are simply those automorphisms that send $a+bi$ to itself or that send it to $a-bi$.
+     \item This is the same as the question above.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{I Further questions relating to Galois groups}
+Throughout this set of questions, let $K$ be a root field over $F$, let $\mathbf{G}=Gal(K:F)$, and let $I$ be any intermediate field. Prove the following:
+\begin{enumerate}
+    \item $I^\ast=Gal(K:I)$ is a subgroup of $\mathbf{G}$.
+    \item If $H$ is a subgroup of $\mathbf{G}$ and $H^\circ=\{a\in K: \pi(a)=a\text{ for every }\pi\in H\}$, then $H^\circ$ is a subfield of $K$, and $F\subseteq H^\circ$.
+    \item Let $H$ be the fixer of $I$, and $I'$ the fixfield of $H$. Then $I\subseteq I'$. Let $I$ be the fixfield of $H$, and $I^\ast$ the fixer of $I$. Then $H\subseteq I^\ast$.
+    \item Let $I$ be a normal extension of $F$ (that is, a root field of some polynomial over $F$). If $\mathbf{G}$ is abelian, then $Gal(K:I)$ and $Gal(I:F)$ are abelian. (Hint: Use Theorem 4).
+     \item Let $I$ be a normal extension of $F$. If $\mathbf{G}$ is a cyclic group, then $Gal(K:I)$ and $Gal(I:F)$ are cyclic groups.
+     \item If $\mathbf{G}$ is a cyclic group, there exists exactly one intermediate field $I$ of degree $k$, for each integer $k$ dividing $[K:F]$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item Let $g,h\in I^\ast$. We know that $I^\ast$ is closed under composition because if $g$ and $h$ fix $I$, then certainly $g\circ h$ and $h\circ g$ too. Furthermore, since $g$ moves only elements of $K$ that are not in $I$, then $g^{-1}$ moves only those elements that are originally moved, in other words, $g^{-1}$ fixes $I$, so that it is in $I^\ast$. Hence, $I^\ast$ is a subgroup of $\bG$.
+     \item Let $a,b\in H^\circ$. For all $\pi\in H$, we have that $\pi(a-b)=\pi(a)-\pi(b)=a-b$ so that $a-b$ is also fixed by the elements of $H$. Furthermore, $\pi(ab)=\pi(a)\pi(b)=ab$, so that $ab$ is also fixed by the elements of $H$. As a result, $H^\circ$ is a subfield of $K$.
+
+     To prove that $F\subseteq H^\circ$, notice that because $\bG=Gal(K:F)$, then $F$ is fixed by any element of $\bG$ and hence by any subgroup of $\bG$, so that $F$ is contained in $H^\circ$.
+     \item By definition, if $H$ is the fixer of $I$, all elements of $H$ fix $I$. On the other hand, $I'$ the fixfield of $H$, contains all the elements in $K$ that are not moved by all elements of $H$. Hence for $a\in I$, $a\in I'$ and $I\subseteq I'$.
+
+     If $I$ is the fixfield of $H$, then all the elements in $I$ are not moved by all the elements of $H$. Likewise, if $I^\ast$ is the fixer of $I$, then all the elements of $I^\ast$ fix $I$, as a result, $H\subseteq I^\ast$.
+     \item We know that $Gal(K:I)$ is abelian because from exercise 1, $Gal(K:I)\subseteq Gal(K:F)$ an any subgroup of an abelian group is abelian.
+
+     To conclude that $Gal(I:F)$ is abelian, notice that from Theorem 4, $Gal(I:F)\cong\quot{Gal(K:F)}{Gal(K:I)}$. But from group theory, we know that the quotient of an abelian group is abelian, then $Gal(I:F)$ is abelian as desired.
+     \item Since $Gal(K:I)$ is a subgroup of $Gal(K:F)$, and we know that the subgroup of a cyclic group is cyclic, then $Gal(K:I)$ is cyclic.
+
+     Again, by Theorem 4, we have that $Gal(I:F)\cong\quot{Gal(K:F)}{Gal(K:I)}$. But the quotient of a cyclic group is cyclic, so that $Gal(I:F)$ is cyclic, as desired.
+     \item First, we know that the intermediate fields between $K$ and $I$ are identified by the subgroups of $\bG$ by the Galois correspondence. Hence, we can write this question in its group-only form as: ``If $\bG$ is cyclic, there exists exactly one subgroup of order $k$ for each integer dividing the order of $\bG$''. But this is a result from group theory, so that the desired result is fulfilled.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{J Normal extensions and normal subgroups}
+Suppose $F\subseteq K$, where $K$ is a normal extension of $F$. (This means simply that $K$ is the root field of some polynomial in $F[x]$: see Chapter 31 exercise K). Let $I_1\subseteq I_2$ be intermediate fields.
+\begin{enumerate}
+    \item Deduce from Theorem 4 that, if $I_2$ is a normal extension of $I_1$, then $I^\ast_2$ is a normal subgroup of $I^\ast_1$.
+    \item Prove the following for any intermediate field $I$: Let ${h\in Gal(K:F)},\, g\in I^\ast,\, a\in I$, and $b=h(a)$. Then $[h\circ g\circ h^{-1}](b)=b$. Conclude that $hI^\ast h^{-1}\subseteq h(I)^\ast$.
+    \item Use part 2 to prove that $hI^\ast h^{-1}=h(I)^\ast$.
+
+    Two intermediate fields $I_1$ and $I_2$ are called conjugate if and only if there is an automorphism [i.e., an element $i\in Gal(K:F)$] such that $i(I_1)=I_2$.
+    \item Use part 3 to prove that $I_1$ and $I_2$ are conjugate if and only if $I^\ast_1$ and $I^\ast_2$ are conjugate subroups in the Galois group.
+    \item Use part 4 to prove that for any intermediate fields $I_1$ and $I_2$: if and only if $I^\ast_2$ is a normal subgroup of $I^\ast_1$, then $I_2$ is a normal extension of $I_1$.
+
+    Combining parts 1 and 5 we have: $I_2$ is a normal extension of $I_1$ if and only if $I^\ast_2$ is a normal subgroup of $I^\ast_1$. (Historically, this result is the origin of the word ``normal'' in the term ``normal subrgroup'').
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item We have that $I_1^\ast=Gal(K:I_1)$ and $I_2^\ast=Gal(K:I_2)$. Furthermore, if $I_1\subseteq I_2\subseteq K$, and $I_2$ is a normal extension of $I_1$ and $K$ is a normal extension of $I_1$ because $F\subseteq I_1\subseteq K$ and $K$ is a normal extension of $F$. Then by Theorem 4, we would have that $Gal(I_2:I_1)=\quot{Gal(K:I_1)}{Gal(K:I_2)}=\quot{I_1^\ast}{I_2^\ast}$ and $I_2^\ast$ is a normal subgroup of $I_1^\ast$.
+     \item By definition, $h^{-1}(b)=a$, but $a\in I$, and $g\in I^\ast$, so that $g(a)=a$. Finally, by definition $h(a)=b$. Putting all of these together, we have $[h\circ g\circ h^{-1}](b)=b$. 
+
+     Since the chosen $a, b$ and $g$ were arbitrary, that means that any element of $hI^\ast h^{-1}$ fixes any element of $I$ mapped by $h$, mathematically, $hI^\ast h^{-1}\subseteq h(I)^\ast$.
+     \item We already proved that $hI^\ast h^{-1}\subseteq h(I)^\ast$, we now need to prove the reverse containment. Let $b=h(a)$ for some $a\in I$, and $g\in h(I)^\ast$. Then $g(b)=b$
+
+     We will now prove that $hI^\ast h^{-1}$ has the same number of elements as $h(I)^\ast$. 
+     \item ($\Rightarrow$) Suppose $I_1$ and $I_2$ are conjugate. Then there exists $h\in Gal(K:F)$ such that $h(I_1)=I_2$, which implies $h(I_1)^\ast=I_2^\ast$. By 3, we have $I_2^\ast= h(I_1)^\ast= hI_1^\ast h^{-1}$, so that $I_1^\ast$ and $I_2^\ast$ are conjugate, as desired.
+
+     ($\Leftarrow$) Suppose $I_1^\ast$ and $I_2^\ast$ are conjugate. Then there exists $h\in Gal(K:F)$ such that $hI_1^\ast h^{-1}=I_2^\ast$
+    \item
+ \end{enumerate}
+\end{proof}

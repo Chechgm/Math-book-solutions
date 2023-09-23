@@ -1,0 +1,116 @@
+\subsection*{Chapter 20. Integral Domains}
+\addcontentsline{toc}{subsection}{Chapter 20. Integral Domains}
+
+
+\begin{exercise}{A Characteristic of an integral domain}
+Let $A$ be a finite integral domain. Prove each of the following
+  \begin{enumerate}
+      \item Let $a$ be any nonzero element of $A$. If $na=0$, where $n\neq0$, then $n$ is a multiple of the characteristic of $A$.
+      \item If $A$ has characteristic zero, $n\neq 0$ and $na=0$, then $a=0$.
+      \item If $A$ has characteristic 3 and $5a=0$, then $a=0$.
+      \item If there is a nonzero element $a$ in $A$ such that $256a=0$, then $A$ has characteristic 2.
+      \item If there are distinct nonzero elements $a$ and $b$ in $A$ such that $125a=125b$, then $A$ has characteristic 5.
+      \item If there are distinct nonzero elements $a$ and $b$ in $A$ such that $(a+b)^{2}=a^{2}+b^{2}$, then $A$ has characteristic 2.
+      \item If there are nonzero elements $a$ and $b$ in $A$ such that $10a=0$ and $14b=0$, then $A$ has characteristic 2.
+  \end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item Suppose $A$ has characteristic $m$. Then, by Theorem 1, $ma=0$. Now suppose $n$ is not a multiple of $m$, so that $n=km+r$ for some integers $k$ and $r$, and $0<r<m$. We have $na=(km+r)a=k(ma)+ra=ra$, because $m$ is the least positive integer such that $ma=0$. But this arises a contradiction, as $r<m$ so $ra\neq 0$ and $na=0$ by assumption. Hence, it must be the case that $r=0$ and $n=km$.
+     \item Suppose $a\neq 0$, then if $na=0$, it means that $n$ is a multiple of the characteristic of $A$ by 1) and Theorem 1. But the characteristic of $A$ is zero so we have a contradiction, as if $a\neq 0$, a zero characteristic implies there is no $n$ such that $na=0$.
+     \item Suppose $a\neq 0$ and $5a=0$, then by 1), $5$ is a multiple of 3, which is false. Hence $a=0$.
+     \item The prime decomposition of 256 is $2^{8}$. By theorem 2, we know the characteristic of an integral domain has to be prime, and by 1) we know that 256 has to be a multiple of the characteristic. Hence, the characteristic must be 2.
+     \item Since $a$ and $b$ are distinct elements, and $A$ is a commutative ring, we have that $125a=125b$ implies $125(a-b)=0$ where $a-b\neq 0$.
+
+     As above, the prime decomposition of 125 is $5^{3}$. By Theorem 2, the characteristic of $A$ must be a prime number, furthermore, by 1), 125 must be a multiple of the characteristic of $A$. Hence, the characteristic of $A$ is 5.
+     \item We have $(a+b)^{2}=a^{2}+2ab+b^{2}$. By assumption, $2ab=0$ and because $A$ is an integral domain, $ab\neq 0$. Because 2 must be a multiple of the characteristic of $A$, then $A$ has characteristic 2.
+     \item From 1), we know 10 and 14 must be multiples of the characteristic of $A$. From Theorem 2) we know the characteristic of $A$ must be a prime. Since the prime decomposition of 10 and 14 are $2\cdot 5$ and $2\cdot 7$, then the characteristic of $A$ must be 2.
+ \end{enumerate}
+\end{proof}
+
+
+\begin{exercise}{B Characteristic of a finite integral domain}
+Let $A$ be an integral domain. Prove each of the following:
+  \begin{enumerate}
+      \item If $A$ has characteristic $q$, then $q$ is a divisor of the order of $A$.
+      \item If the order of $A$ is a prime number $p$, then the characteristic of $A$ must be equal to $p$.
+      \item If the order of $A$ is $p^{m}$, where $p$ is a prime, the characteristic of $A$ must be equal to $p$.
+      \item If $A$ has 81 elements, its characteristic is 3.
+      \item If $A$, with addition alone, is a cyclic group, the order of $A$ is a prime number.
+  \end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item $q$ is the order of 1. By Lagrange's Theorem, the order of any element of a finite group divides the order of the group, so $q$ divides the order of $A$.
+     \item If the order of $A$ is prime, then all elements have prime order by Cauchy's Theorem. Hence, the unity has order $p$, and $A$ has characteristic $p$.
+     \item By Lagrange's Theorem, the order of all elements of $A$ must divide the order of $A$. By Theorem 2, the characteristic must be a prime number. As a result, the order of the unity must be exactly $p$ and hence the characteristic of $A$ is $p$.
+     \item This is a Corollary of 3), noticing that $p=3$ and $m=3$, so that $A$ has order $p^{m}=3^{3}$ and characteristic 3.
+     \item Suppose the order of $A$ is not a prime number, say $mn$ for some positive integers $m$ and $n$. By Cauchy's Theorem, $A$ has an element of order $m$ and an element of order $n$. But this contradicts Theorem 1, which says that all elements have the same additive order. Hence, the order of $A$ must be prime.
+ \end{enumerate}
+\end{proof}
+
+
+\begin{exercise}{D Field of quotients of an integral domain}
+The following questions refer to the construction of a field of quotients of $A$, as outlined on pages 203 to 205.
+  \begin{enumerate}
+      \item If $[a,b]=[r,s]$ and $[c,d]=[t,u]$, prove that $[a,b]+[c,d]=[r,s]+[t,u]$.
+      \item If $[a,b]=[r,s]$ and $[c,d]=[t,u]$, prove that $[a,b][c,d]=[r,s][t,u]$.
+      \item if $(a,b)\sim (c,d)$ means $ad=bc$, prove that $\sim$ is an equivalence relation on $S$.
+      \item Prove that addition in $A^{*}$ is associative and commutative.
+      \item Prove that multiplication in $A^{*}$ is associative and commutative.
+      \item Prove the distributive law in $A^{*}$.
+      \item Verify that $\phi:A\rightarrow A'$ is a homomorphism.
+  \end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item We are given that $[a,b]+[c,d]=[r,s]+[t,u]$ implies $(ad+bc)su= (ru+st)bd$, so we start from $(ad+bc)su$, and the given equalities $as=br$ and $cu=dt$. We then have $(ad+bc)su= adsu+bcsu= (as)du+bs(cu)= brdu+bsdt= rubd+stbd= (ru+st)bd$, as required.
+     \item We are given that $[a,b][c,d]=[r,s][t,u]$ implies $acsu=bdrt$, so we start from $acsu$, and the given equalities $as=br$ and $cu=dt$. We then have $acsu= (as)(cu)= brdt= bdrt$, as required.
+     \item Let $(a,b),(c,d),(x,y)\in S$.
+
+     i) We have $ab=ba$ because $A$ is a commutative ring, hence $(a,b)\sim(b,a)$.
+
+     ii) Suppose $(a,b)\sim(c,d)$, so that $ad=bc$, because $A$ is a commutative ring, we have $cb=da$ so that $(c,d)\sim(a,b)$.
+
+     iii) Suppose $(a,b)\sim(c,d)$ and $(c,d)\sim(x,y)$. We then have $ad=bc$ and $cy=dx$. This implies $ady=b(cy)=bdx$. Because $A$ is a commutative ring, we have $day=dbx$ which by the cancellation property of integral domains gives us $ay=bx$ so that $(a,b)\sim(x,y)$.
+     \item Let $[a,b],[c,d],[x,y]\in A^{*}$.
+
+     i) We have $([a,b]+[c,d])+[x,y]= [ad+bc,bd]+[x,y]= [(ad+bc)y+xbd,bdy]= [ady+bcy+xbd, bdy]$. Likewise, $[a,b]+([c,d]+[x,y])= [a,b]+[cy+dx,dy]= [ady+b(cy+dx),bdy]= [ady+bcy+bdx, bdy]$. So addition is associative.
+
+     ii) On the other hand, $[a,b]+[c,d]= [ad+bc,bd]= [da+cb,db]= [c,d]+[a,b]$, so addition is commutative.
+     \item Let $[a,b],[c,d],[x,y]\in A^{*}$.
+
+     i) We have $[a,b]([c,d][x,y])= [a,b][cx,dy]= [acx,bdy]= [ac,bd][x,y]= ([a,b][c,d])[x,y]$.
+
+     ii) Likewise, $[a,b][c,d]= [ac,bd]= [ca,db]= [c,d][a,b]$.
+     \item Let $[a,b],[c,d],[x,y]\in A^{*}$. We have $[a,b]([c,d]+[x,y])= [a,b][cy+dx,dy]= [a(cy+dx),bdy]= [acy+adx,bdy]$. Likewise, $[a,b][c,d]+[a,b][x,y]= [ac,bd]+[ax,by]= [acby+bdax,bdby]= [b(acy+adx).b(bdy)]= [acy+adx,bdy]$ because $b(bdy)(acy+adx)=b(bdy)(acy+adx)$.
+     \item Let $a,b\in A$.
+     
+     i) We have $\phi(a+b)= [a+b,1]= [a,1]+[b,1]= \phi(a)+\phi(b)$.
+
+     ii) Likewise, $\phi(ab)= [ab,1]= [a,1][b,1]= \phi(a)\phi(b)$.
+ \end{enumerate}
+\end{proof}
+
+
+\begin{exercise}{F Finite fields}
+By Theorem 4, ``finite integral domain'' and ``finite field'' are the same.
+  \begin{enumerate}
+      \item  Prove: every finite field has nonzero characteristic.
+      \item Prove that if $A$ is a finite field of characteristic $p$, the function $f(a)=a^{p}$ is an automorphism of $A$; that is, an isomorphism of $A$ to $A$. (Hint: Use exercise E4 and Exercise F7 of chapter 18. To show that $f$ is surjective, compare the number of elements in the domain and in the range of $f$). 
+      
+      The function $f(a)=a^{p}$ is called the \emph{Frobenius automorphism}
+      \item Use part 2 to prove: in a finite field of characteristic $p$ every element has a $p$-th root.
+  \end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item Let $m$ be the order of $A$, and suppose $A$ has characteristic zero. Then for all positive integers, $n\cdot 1$ is a distinct element of $A$. But this is a contradiction, as $A$ has only $m$ distinct elements, so there must exist a positive integer $n$, such that $n\cdot 1=0$.
+     \item E.4 tells us that if $A$ has characteristic $p$, then the function $f(a)=a^{p}$ is homomorphism from $A$ to $A$. It remains to prove that $f$ is bijective. 
+
+     18.F.7. says that if the domain $A$ of the homomorphism $f$ is a field, and if the range of $f$ has more than one element, then $f$ is injective. Furthermore, in chapter 6.F.2 we proved that an injective function from a finite set to itself is surjective. 
+     
+     Hence, $f$ is a bijective homomoprhism from $A$ to $A$, that is, an automorphism.
+     \item In 2) we proved that $f(a)=a^{p}$ is a valid automorphism. That is, for every $a\in A$, there exists a $b=a^{p}$, so that $b$ is the $p$'th root of $a$.
+ \end{enumerate}
+\end{proof}

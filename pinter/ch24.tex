@@ -1,0 +1,195 @@
+\subsection*{Chapter 24. Rings of Polynomials}
+\addcontentsline{toc}{subsection}{Chapter 24. Rings of Polynomials}
+
+
+\begin{exercise}{B Problems involving concepts and definitions}
+
+1. Is $x^8 + 1 = x^3 + 1$ in $\Z_{5}[x]$? Explain your answer.
+
+4. Let $A$ be an integral domain; prove the following:
+ 
+i. If $(x+1)^2 = x^2 +1$ in $A[x]$, then $A$ must have characteristic 2.
+
+ii. If $(x+1)^4 = x^4 +1$ in $A[x]$, then $A$ must have characteristic 2.
+
+iii. If $(x+1)^6 = x^6 + 2x^3 +1$ in $A[x]$, then $A$ must have characteristic 3.
+
+6. Explain why $x$ cannot be invertible in any $A[x]$, hence no domain of polynomials can ever be a field.
+\end{exercise}
+\begin{proof}
+ 1. No, because the definition of equality in polynomials is that every coefficient of every power of $x$ is the same. In this case, $x^8$ is $1$ on the left hand side and $0$ on the right hand side.
+ 
+ 4. i) We have $(x+1)^2 = x^2 + 2x^2 + 1$, so that $2=1+1=0$ in $A$. Hence $A$ has characteristic 2.
+ 
+ ii. We have $(x+1)^4 = (x^2 + 2x^2 + 1)(x^2 + 2x^2 + 1)= x^4 + 4x^3 + 6x^2 + 4x + 1$. Since we assume $(x+1)^4 = x^4 +1$, then $4=6=0$ in $A$, as a result, $A$ has characteristic $2$.
+ 
+ iii. We have $(x+1)^6 =(x+1)^4 (x+1)^2 = (x^4 + 4x^3 + 6x^2 + 4x + 1)(x^2 + 2x^2 + 1) = x^6 + 6x^5 + 15x^4 + 20x^3 + 15x^2 + 6x + 1$, so that $6=15=0$ and $20=18+2=2$ in $A$. This translates into $A$ having characteristic $3$.
+ 
+ 6. $x$ cannot be invertible in any $A[x]$. Let $a(x)\in A[x]$. We have that $xa(x)$ is either the $0$ polynomial, if $a(x)$ is the $0$ polynomial, or $xa(x)$ has degree at least $1$, because of polynomial multiplication. Since $1$ in $A[x]$ has degree zero, then $xa(x)$ cannot be $1$, so that there is no $a(x)$ such that $xa(x)=1$.
+\end{proof}
+
+\begin{exercise}{C Rings $A[x]$ where $A$ is not an integral domain}
+
+\begin{enumerate}
+    \item Prove: If $A$ is not an integral domain, neither is $A[x]$.
+    \item Give examples of divisors of zero, of degrees $0$, $1$ and $2$, in $\Z_{4}[x]$
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item Suppose $a,b\in A$, with $a, b\neq0$ and $ab=0$. Now consider the polynomials $ax, bx\in A[x]$. We have $(ax)(bx)=(ab)x^2 = 0x^2 = 0$, so $A[x]$ has divisors of zero and it is not an integral domain.
+     \item Divisors of zero of degree:
+     
+     $0$: $2$, because $2\cdot 2=0$.
+     
+     $1$: $2x$, for the same reason as above.
+     
+     $2$: $2x^2$, as above.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{D Domains $A[x]$ where $A$ has finite characteristic}
+
+In each of the following, let $A$ be an integral domain
+\begin{enumerate}
+    \item Prove that if $A$ has characteristic $p$, then $A[x]$ has characteristic $p$.
+    \item Use part 1 to give an example of an infinite integral domain with finite characteristic.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item If $A$ has characteristic $p$, then $p\cdot 1=0$, but $1$ is also a polynomial in $A[x]$, so that $p\cdot 1=0$ in $A[x]$, and $A[x]$ has characteristic $p$.
+     \item Consider the ring of polynomials $Z_{2}[x]$. We know $Z_{2}$ has characteristic $2$, and hence by the previous result, $Z_{2}[x]$ has characteristic $2$, too.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{E Subrings and ideals in $A[x]$}
+\begin{enumerate}
+    \item Show that if $B$ is a subring of $A$, then $B[x]$ is a subring of $A[x]$.
+    \item If $B$ is an ideal of $A$, $B[x]$ is an ideal of $A[x]$.
+    \item Let $S$ be the set of all the polynomials $a(x)$ in $A[x]$ for which every coefficient $a_i$ for odd $i$ is equal to zero. Show that $S$ is a subring of $A[x]$. Why is the same not true when ``odd'' is replaced by ``even''.
+    \item Let $J$ consist of all elements in $A[x]$ whose constant coefficient is equal to zero. Prove that $J$ is an ideal of $A[x]$.
+    \item Let $J$ consist of all the polynomials $a_0+a_1+\dots+a_n=0$. Prove that $J$ is an ideal of $A[x]$.
+    \item Prove that the ideals in both parts 4 and 5 are prime ideals. (Assume $A$ is an integral domain).
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+\begin{enumerate}
+    \item Let $a(x), b(x)\in B[x]$, so that $a(x)=a_0+\dots+a_nx^n$ and $b(x)=b_0+\dots+b_nx^n$.
+    
+    i. Subtraction: We have $a(x)-b(x)=(a_0-b_0)+\dots+(a_n-b_n)x^n$. Since $B$ is a subring of $A$, then $(a_0-b_0),\dots,(a_n-b_n)\in B$, and $a(x)-b(x)\in B[x]$.
+    
+    ii. Multiplication: Furthermore, $a(x)b(x)=c(x)=c_0+\dots+c_{2n}x^{2n}$, where $c_k=\sum_{i+j=k}a_ib_j$. Since $B$ is a subring of $A$, $B$ is closed under multiplication and addition, so $c_k\in B$ and $a(x)b(x)\in B[x]$.
+    \item We proved above that if $B$ is a subring of $A$, then $B[x]$ is a subring of $A[x]$, to prove $B[x]$ is an ideal of $A[x]$, we need to proof the absorption property. Let $a(x)\in A[x]$ and $b(x)\in B[x]$. We have $a(x)b(x)=c(x)=c_0+\dots+c_nx^n$, where $c_k=\sum_{i+j=k}a_ib_j$. Since $B$ is an ideal of $A$, $B$ absorbs element of $A$ under multiplication, hence $c_k\in B$ and $a(x)b(x)\in B[x]$, as desired.
+    \item Let $a(x),b(x)\in S$, so that $a(x)=a_0+\dots+a_{2n}x^{2n}$, and $b(x)=b_0+\dots+b_{2n}x^{2n}$.
+    
+    i. Subtraction: We have $a(x)-b(x)=(a_0-b_0)+\dots+(a_{2n}-b_{2n})x^{2n}$, so that $a(x)-b(x)\in S$.
+    
+    ii. Multiplication: We have $a(x)b(x)=c(x)=c_0+\dots+c_{4n}x^{4n}$, where $c_k=\sum_{i+j=k}a_ib_j$. For any $r=2m+1$, either $i$ or $j$ must be odd, so $c_k=0$. Hence, $a(x)b(x)\in S$.
+    
+    If ``even'' was replaced by ``odd'', consider the polynomials $a(x)=x$ and $b(x)=2x$ both of which would belong to the new definition of $S$. We would have $a(x)b(x)=2x^2$, which would not belong to the new definition of $S$.
+    \item Let $a(x)\in A[x]$ and $b(x),d(x)\in J$.
+    
+    i. Subtraction: We have $b(x)-d(x)=(b_0-d_0)+\dots+(b_n-d_n)x^n$. Since both $b_0$ and $d_0$ are zero, then the constant coefficient of $b(x)-c(x)$ is zero so the subtraction belongs to $J$.
+    
+    ii. Absorption: We have $a(x)b(x)=c(x)=c_0+\dots+c_{2n}x^{2n}$, where $c_k=\sum_{i+j=k}a_ib_j$. Since $c_0=a_0b_0$, and both $a_0$ and $b_0$ are zero, then $c_0=0$ and $a(x)b(x)\in J$.
+    \item Let $a(x)\in A[x]$ and $b(x),d(x)\in J$.
+    
+    i. Subtraction: We have $b(x)-d(x)=(b_0-d_0)+\dots+(b_n-d_n)x^n$. Adding up the coefficients, we obtain $(b_0-d_0)+\dots+(b_n-d_n)= (b_0+\dots+b_n)-(d_0+\dots+d_n)=0$, so that $b(x)-d(x)\in J$.
+    
+    ii. Absorption: Consider $a(x)b(x)= c(x)= c_0+\dots+c_{2n}x^{2n}$, where $c_k=\sum_{i+j=k}a_ib_j$. Fix $i$ to any specific value, and take the sum of the coefficients of $c(x)$ that contain $a_i$. We then obtain $a_ib_0+\dots+a_ib_n= a_i(b_0+\dots+b_n)=a_i\cdot 0= 0$. Since this is true for all $i$, we have that $a(x)b(x)\in J$, as required.
+    \item 4. If $a(x)b(x)\in J$, then $a_0b_0=0$, and because we $A$ is an integral domain, then either $a_0=0$, or $b_0=0$. In other words, either $a(x)\in J$ or $b(x)\in J$.
+    
+    6. If $a(x)b(x)=c(x)\in J$, where $c_k=\sum_{i+j=k}a_ib_j$, then $c_0+\dots+c_{2n}= a_0b_0+(a_0b_1+a_1b_0)+\dots+a_nb_n= (a_0+\dots+a_n)(b_0+\dots+b_n)= 0$, but because $A$ is an integral domain, then either $a_0+\dots+a_n=0$ or $b_0+\dots+b_n=0$, which implies that either $a(x)\in J$ or $b(x)\in J$.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise}{F Homomorphisms of domains of polynomials}
+Let $A$ be an integral domain.
+\begin{enumerate}
+    \item Let $h:A[x]\rightarrow A$ map every polynomial to its constant coefficient; that is, $h(a_0+a_1x+\dots+a_nx^n)=a_0$. Prove that $h$ is a homomorphism from $A[x]$ onto $A$, and describe its kernel.
+    \item Explain why the kernel of $h$ in part 1 consists of all the products $xa(x)$, for all $a(x)\in A[x]$. Why is this the same as the principal ideal $\brackets{x}$ in $A[x]$?
+    \item Using parts 1 and 2, explain why $\quot{A[x]}{\brackets{x}}\cong A$.
+    \item Let $g:A[x]\rightarrow A$ send every polynomial to the sum of its coefficients. Prove that $g$ is a surjective homomorphism, and describe its kernel.
+    \item If $c\in A$, let $h:A[x]\rightarrow A[x]$ be defined by $h(a(x))=a(cx)$, that is, $h(a_0+a_1x+\dots+a_nx^n)=a_0+a_1cx+a_2c^2x^2+\dots+a_nc^nx^n$. Prove that $h$ is a homomorphism and describe its kernel.
+    \item If $h$ is the homomorphism of part 5, prove that $h$ is an automorphism (isomorphism from $A[x]$ to itself) iff $c$ is invertible.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+\begin{enumerate}
+    \item Let $a(x),b(x)\in A[x]$. 
+
+    i. We have $h(a(x)+b(x))=a_0+b_0=h(a(x))+h(b(x))$.
+
+    ii. Moreover, $h(a(x)b(x))=a_0b_0=h(a(x))h(b(x))$.
+
+    The kernel of $h$ are the polynomials whose constant term is 0.
+    \item The kernel of $h$ corresponds to $xa(x)$ because the constant coefficient of $xa(x)$ is zero. The principal ideal $\brackets{x}$ in $A[x]$ is, by definition, the set of all multiples of $x$ by the elements of $A[x]$. That is, $\brackets{x}a(x)$ for any $a(x)\in A[x]$. As explained above, all elements in this principal ideal have constant coefficient zero.
+    \item From the fundamental homomorphism Theorem, we know that the image of $h$, $A$, is isomorphic to $A[x]$ modulo the kernel of $h$, $\brackets{x}$ in $A[x]$. That is, $\quot{A[x]}{\brackets{x}}\cong A$, as required.
+    \item Let $a(x),b(x)\in A[x]$.
+
+    i. Surjectivity: Let $a\in A$, consider the polynomial of degree zero given by $a_a(x)=a$. Then $g(a_a(x))=a$. Since this holds for an arbitrary $a\in A$, $g$ is surjective.
+
+    ii. We have $g(a(x)+b(x))=(a_0+b_0)+\dots+(a_n+b_n)=(a_0+\dots+a_n)+(b_0+\dots+b_n)=g(a(x))+g(b(x))$.
+
+    iii. Moreover, $g(a(x)b(x))=(a_0b_0)+(a_0b_1+a_1b_0)+\dots+(a_nb_n)=(a_0+\dots+a_n)(b_0+\dots+b_n)=g(a(x))g(b(x))$.
+
+    The kernel of $g$ are those polynomials whose sum of coefficients equals zero.
+    \item Let $a(x),b(x)\in A[x]$.
+
+    i. We have $h(a(x)+b(x))=(a_0+b_0)+\dots+(a_n+b_n)c^nx^n= (a_0+\dots+a_nc^nx^n)+(b_0+\dots+b_nc^nx^n)= h(a(x))+h(b(x))$.
+
+    ii. Moreover, $h(a(x)b(x))= d_0+\dots+d_{2n}c^{2n}x^{2n}$, where $d_k=\sum_{i+j=k}a_ib_j$. On the other hand, $h(a(x))h(b(x))= (a_0+\dots+a_nc^nx^n)(b_0+\dots+b_nc^nx^n)= d_0+\dots+d_{2n}c^{2n}x^{2n}$.
+
+    The kernel of $h$ is the zero polynomial.
+    \item ($\Leftarrow$) Suppose $c$ is invertible, then there exists $c^{-1}\in A$ such that $c^{-1}c=1$.
+    
+    Surjective: let $b(x)\in A[x]$, so that $b(x)=b_0+\dots+b_nx^n$. Consider the polynomial $a(x)\in A[x]$ given by $a(x)=b_0+\dots+b_nc^{-n}x^{n}$. Then $h(a(x))=b_0+\dots+b_nc^{-n}c^nx^n=b(x)$.
+
+    Injective: Suppose $h(a(x))=h(b(x))$. Then $a_0=b_0,\dots,a_nc^n=b_nc^n$. Multiplying each side of the m'th equality by $c^{-m}$ on the right, we obtain $a_0=b_0,\dots,a_n=b_n$, so that $a(x)=b(x)$, as required.
+
+    ($\Rightarrow$) Suppose $h$ is an automorphism. Then there must be a a polynomial $a(x)\in A[x]$ such that $h(a(x))=x$. Because of the definition of equality in polynomials, we have $a_0=0,a_1c=1,\dots,a_nc^n=0$. Hence $c$ is invertible.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise}{G Homomorphisms of polynomial domains induced by a homomorphism of the ring of coefficients}
+
+Let $A$ and $B$ be rings and let $h:A\rightarrow B$ be a homomorphism with kernel $K$. Define $\bar{h}:A[x]\rightarrow B[x]$ by $\bar{h}(a_0+a_1x+\dots+a_nx^n)=h(a_0)+h(a_1)x+\dots+h(a_n)x^n$. (We say that $\bar{h}$ is induced by $h$).
+\begin{enumerate}
+    \item Prove that $\bar{h}$ is a homomorphism from $A[x]$ to $B[x]$.
+    \item Describe the kernel $\bar{K}$ of $\bar{h}$.
+    \item Prove that $\bar{h}$ is surjective iff $h$ is surjective.
+    \item Prove that $\bar{h}$ is injective iff $h$ is injective.
+    \item Prove that if $a(x)$ is a factor of $b(x)$, then $\bar{h}(a(x))$ is a factor of $\bar{h}(b(x))$.
+    \item If $h:\Z\rightarrow\Z_n$ is the natural homomorphism, let $\bar{h}:\Z[x]\rightarrow\Z_n[x]$ be the homomorphism induced by $h$. Prove that $\bar{h}(a(x))=0$ iff $n$ divides every coefficient of $a(x)$.
+    \item Let $\bar{h}$ be as in part 6, and let $n$ be a prime. Prove that if $a(x)b(x)\in\ker{\bar{h}}$, then either $a(x)$ or $b(x)$ is in $\ker{\bar{h}}$. [Hint: Use exercise 19.F.2].
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+\begin{enumerate}
+    \item Let $a(x),b(x)\in A[x]$.
+
+    i. We have $\bar{h}(a(x)+b(x))= \bar{h}((a_0+b_0)+\dots+(a_n+b_n)x^n)= h(a_0+b_0)+\dots+h(a_n+b_n)x^n$. Because $h$ is a homomorphism, we have that $h(a_0+b_0)+\dots+h(a_n+b_n)x^n= h(a_0)+h(b_0)+\dots+[h(a_n)+h(b_n)]x^n= [h(a_0)+\dots+h(a_n)x^n]+[h(b_0)+\dots+h(b_n)x^n]= \bar{h}(a(x))+\bar{h}(b(x))$.
+
+    ii. Furthermore, $\bar{h}(a(x)b(x))= h(a_0b_0)+\dots+h(a_nb_n)x^{2n}$. Because $h$ is a homomorphism, we have that $h(a_0b_0)+\dots+h(a_nb_n)x^{2n}= h(a_0)h(b_0)+\dots+[h(a_n)h(b_n)]x^{2n}= [h(a_0)+\dots+h(a_n)x^n][h(b_0)+\dots+h(b_n)x^n]= \bar{h}(a(x))\bar{h}(b(x))$.
+    \item The kernel $\bar{K}$ is the ring of polynomials with coefficients in $K$, $K[x]$. This is true because the coefficients of every polynomial in $K[x]$ will be mapped to $0$. Hence the image under $\bar{h}$ of any polynomial in $K[x]$ will be the $0$ polynomial.
+    \item ($\Leftarrow$) Suppose $h$ is surjective. Let $b(x)\in B[x]$, so that $b(x)=b_0+\dots+b_nx^n$. Since $h$ is surjective, for each $b_i$, there exists a $a_i\in A$ so that $h(a_i)=b_i$. Now consider the polynomial $a(x)\in A[x]$ given by $a(x)=a_0+\dots+a_nx^n$. Then $\bar{h}(a(x))=h(a_0)+\dots+h(a_n)x^n=b_0+\dots+b_nx^n=b(x)$, as required.
+
+    ($\Rightarrow$) We will prove this by contrapositive. Suppose $h$ is not surjective, so that there exists $b\in B$ so that no $a\in A$ is mapped to $b$ by $h$. Then we have that the degree zero polynomial $b(x)\in B[x]$ given by $b(x)=b$ is not mapped by any polynomial $a(x)\in A[x]$. As a result, $\bar{h}$ is not surjective.
+    \item ($\Leftarrow)$ Suppose $h$ is injective. Consider $a(x),b(x)\in A[x]$. We have that if $\bar{h}(a(x))=\bar{h}(b(x))$, so that $h(a_0)+\dots+h(a_n)x^n= h(b_0)+\dots+h(b_n)x^n$, then by equality of polynomials, which is defined by the equality of each of the coefficients, we have that $h(a_i)=h(b_i)$, and by the injectivity of $h$ we have that $a_i=b_i$. Again, by the definition of equality in polynomials, we have that $a(x)=b(x)$, as required.
+
+    ($\Rightarrow$) We will prove this by contrapositive. Suppose $h$ is not injective, so that there exist $a_i, b_i\in A$ so that even though $h(a_i)=h(b_i)$, $a_i\neq b_i$. Now consider the polynomials of degree zero $a(x),b(x)\in A[x]$ given by $a(x)=a_i$ and $b(x)=b_i$. We then have that $\bar{h}(a(x))=h(a_i)=h(b_i)=\bar{h}(b(x))$, however, $a(x)=a_i\neq b_i=b(x)$ so that $\bar{h}$ is not injective.
+    \item If $a(x)$ is a factor of $b(x)$, then there exists a polynomial $q(x)$ so that $b(x)=a(x)q(x)$. Applying the homomorphism $\bar{h}$ on both sides of the equation, we get $\bar{h}(b(x))=\bar{h}(a(x)q(x))=\bar{h}(a(x))\bar{h}(q(x))$, the last equality following from the usual properties of homomorphisms. Then, $\bar{h}(a(x))$ is a factor of $\bar{h}(b(x))$, as required.
+    \item ($\Rightarrow$) Suppose $\bar{h}(a(x))=0$. Then all coefficients of $\bar{h}(a(x))$ are zero. Take an arbitrary coefficient $b_i$ of $\bar{h}(a(x))$. Since $b_i$ is zero, $b_i\cong 0\pmod{n}$, but $\bar{h}$ maps each coefficient of $a(x)$, $a_i$, to $h(a_i)$ so that if $h(a_i)=b_i$, then $n$ must divide $a_i$.
+
+    ($\Leftarrow$) Suppose $n$ divides every coefficient of $a(x)$. Then for all $i$, $a_i=a_i'n$, for some $a_i'\in\Z$. But $\bar{h}(a(x))$ maps every coefficient to $h(a_i)$, which in this corresponds to zero, because $a_i'n\cong 0\pmod{n}$. Hence $\bar{h}(a(x))=0$.
+    \item In 22.G.3 we proved that for any prime $n$, $\Z_n$ is a field, which implies it is also an integral domain. By Theorem 2, we then know that $\Z_n[x]\cong\quot{\Z[x]}{\brackets{n}}$ is also an integral domain. Finally, by 19.F.2, because $\Z_n[x]$ is an integral domain, it must be the case that $\brackets{x}$ is a prime ideal of $\Z[x]$ so that the desired result follows.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise}{J Division algorithm: Uniqueness of quotient and reminder}
+In the division algorithm, prove that $q(x)$ and $r(x)$ are uniquely determined. [Hint: Suppose $a(x)=b(x)q_1(x)+r_1(x)=b(x)q_2(x)+r_2(x)$, and subtract these two expressions, which are both equal to $a(x)$].
+\end{exercise}
+\begin{proof}
+ Following the hint, we have: $b(x)[q_1(x)-q_2(x)]-[r_1(x)-r_2(x)]=0$. This would only be possible if $b(x)[q_1(x)-q_2(x)]=r_1(x)-r_2(x)$, or both $b(x)[q_1(x)-q_2(x)]=r_1(x)-r_2(x)=0$. The first case is not possible, given that the degree of $b(x)[q_1(x)-q_2(x)]$ is the sum of the degrees of $b(x)$ and $q_1(x)-q_2(x)$, while the degree of $r_1(x)-r_2(x)$ is less than or equal to the degrees of $r_1(x)$ and $-r_2(x)$ which, by definition, are less than the degree of $b(x)$. As a result, we have that $b(x)[q_1(x)-q_2(x)]=r_1(x)-r_2(x)=0$. By definition, $b(x)\neq 0$, so that $q_1(x)=q_2(x)$ and $r_1(x)=r_2(x)$, as required. 
+\end{proof}

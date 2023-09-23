@@ -1,0 +1,146 @@
+\subsection*{Chapter 31. Galois Theory: Preamble}
+\addcontentsline{toc}{subsection}{Chapter 31. Galois Theory: Preamble}
+
+
+\begin{exercise}{A Examples of root fields over $\Q$}
+\begin{enumerate}
+    \item Show that $\Q(\sqrt{3},i)$ is the root field of $(x^2-2x-2)(x^2+1)$ over $\Q$.
+
+    Comparing part 1 with the example, we note that different polynomials may have the same root field. This is true even if the polynomials are irreducible.
+    \item Prove that $x^2-3$ and $x^2-2x-2$ are both irreducible over $\Q$. Then find their root fields over $\Q$ and show they are the same.
+    \item Find the root field of $x^4-2$, first over $\Q$ then over $\R$.
+    \item Explain: $\Q(i,\sqrt{2})$ is the root field of $x^4-2x^2+9$ over $\Q$, and is the root field of $x^2-2\sqrt{2}x+3$ over $\Q(\sqrt{2})$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item This polynomial has as roots $i, -i, 1+\sqrt{3}, 1-\sqrt{3}$, all of which belong to $\Q(\sqrt{3}, i)$.
+     \item The irreducibility of $x^2-3$ and $x^2-2x-2$ follows from Eisenstein's criterion using $p=3$ and $p=2$.
+
+     We have that $x^2-3$ has as roots $\pm\sqrt{3}$, both of which are in $\Q(\sqrt{3})$, and $x^2-2x-2$ has roots $1\pm\sqrt{3}$, both of which belong to $\Q(\sqrt{3})$. Then the root fields of both polynomials are the same.
+     \item In $\Q$, $x^4-2$ cannot be factorised further, so that its root field is $\Q(\sqrt[4]{2},i)$, whereas in $\R$, $x^4-2$ can be factorised into $x^4-2=(x^2-2)(x^2+2)=(x-\sqrt{2})(x+\sqrt{2})(x^2+2)$, so that its root field over $\R$ is $\R(i)=\C$, since the root of $x^2+2$ is $\sqrt{2}i$.
+     \item Well, $x^4-2x^2+9$ over $\Q(\sqrt{2})$ can be factorized into $(x^2-2\sqrt{2}x+3)(x^2+2\sqrt{2}x+3)$. In this case, $x^2-2\sqrt{2}x+3$ has as roots $\sqrt{2}\pm i$ so that its root field is $\Q(\sqrt{2}, i)$ and $x^2+2\sqrt{2}x+3$ has as roots $-\sqrt{2}\pm i$ so that its root field is $\Q(\sqrt{2},i)$, so that only $(x^2-2\sqrt{2}x+3)$ or $(x^2+2\sqrt{2}x+3)$ defines the root field of the non-factored polynomial. 
+
+     On the other hand, $x^4-2x^2+9$ cannot be factored over $\Q$, so that its roots are derived directly in there (the roots are the same as above) and its root field is $\Q(\sqrt{2},i)$.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{B Examples of root fields over $\Z_p$}
+\begin{enumerate}
+    \item Show that, in any extension of $\Z_3$ which contains a root $u$ of $a(x)=x^3+2x+1\in\Z_3[x]$, it happens that $u+1$ and $u+2$ are the remaining two roots of $a(x)$. Use this fact to find the root field of $x^3+2x+1$ over $\Z_3$. List the elements of the root field.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item We have
+     \begin{align*}
+         (u+1)^3+2(u+1)+1 =& (u+1)(u^2+2u+1)+2u+2+1\\
+         =& u^3+u^2+u+2u^2+2u+2+2u+2\\
+         =& u^3+2u+1=0.
+     \end{align*}
+     Moreover,
+     \begin{align*}
+         (u+2)^2+2(u+2)+1 =& (u+2)(u^2+4u+4)+2u+4+1\\
+         =& u^3+u^2+u+2u^2+2u+2+2u+2\\
+         =& u^3+2u+1=0.
+     \end{align*}
+    So that the other roots of $x^3+2x+1$ are $u+1$ and $u+2$ as conjectured. The field $\Z_3(c)$ is isomorphic to $\quot{\Z_3[x]}{\langle x^3+2x+1\rangle}$, which are all the polynomials of degree less than 3 with coefficients in $\Z_3$. There are $3^3$ of these polynomials.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{C Short questions relating to root field}
+Prove each of the following
+\begin{enumerate}
+    \item Every extension of degree 2 is a root field.
+    \item If $F\subseteq I\subseteq K$ and $K$ is a root field of $a(x)$ over $F$, then $K$ is a root field of $a(x)$ over $I$.
+    \item The root field over $\R$ of any polynomial in $\R[x]$ is $\R$ or $\C$.
+    \item If $c$ is a complex root of a cubic $a(x)\in\Q[x]$, then $\Q(c)$ is the root field of $a(x)$ over $\Q$. \textcolor{blue}{According to some online errata, this is false and one is encouraged to find a counterexample.}
+    \item If $p(x)=x^4+ax^2+b$ is irreducible in $F[x]$, then $\quot{F[x]}{\langle p(x)\rangle}$ is the root field of $p(x)$ over $F$.
+    \item If $K=F(a)$ and $K$ is the root field of some polynomial over $F$, then $K$ is the root field of the minimum polynomial of $a$ over $F$.
+    \item Every root field over $F$ is the root field of some irreducible polynomial over $F$. [Hint: Use part 6 and Theorem 2].
+    \item Suppose $[K:F]=n$, where $K$ is a root field over $F$. Then $K$ is the root field over $F$ of every irreducible polynomial of degree $n$ in $F[x]$ having a root in $K$. 
+    \item If $a(x)$ is a polynomial of degree $n$ in $F[x]$, and $K$ is the root field of $a(x)$ over $F$, then $[K:F]$ divides $n!$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item Suppose $K$ is an extension of $F$, with $[K:F]=2$. We can write $K=F(a)$ for a root $a$ of a polynomial $p(x)=x^2+bx+c$ of degree 2 in $F[x]$. But the roots of $p(x)$ are $b/2$ and $\pm\sqrt{b^2-4c}/2$. Since $[K=F(a):F]=2$ then it must be the case that $a=\sqrt{b^2-4c}/2$ or $a=-\sqrt{b^2-4c}/2$, but since $K=F(a)$ is a field, then we the negative of $a$ must also be in $K$ and so $K$ is the root field of $p(x)$.
+    \item If $K$ is a root field of $a(x)$ over $F$, then $a(x)$ has coefficients in $F$, and $K$ is the smallest field containing all the roots of $a(x)$. Certainly all the coefficients of $a(x)$ are also in $I$, and furthermore, there is no smaller field containing the roots of $a(x)$, as otherwise this field would be the root field of $a(x)$ over $F$ as well.
+    \item By the Fundamental Theorem of Algebra, we know that any univariate polynomial of degree greater than 0 has at least one complex root. If the polynomial has no complex roots, then $\R$ is the root field. If the polynomial has a complex root, then $\C=\R(i)$ is the root field, given that $\C$ contains the roots of all polynomials in $\R[x]$.
+    \item Consider the polynomial $x^3+4x^2+6x-24$. The roots of this polynomial are two complex numbers of the form $a\pm ib$, where both $a$ and $b$ are irrational and a real number $c$ which is also irrational. Since the 
+    \item Consider the polynomial $x^3+2$. This polynomial has as roots $-\sqrt[3]{2}$ and $1/2^{2/3}\pm i\sqrt{3}/2^{2/3}$. We cannot produce the real root as field operations on any of the complex roots, giving as the desired counterexample.
+    \item If $K$ is the root field of some polynomial over $F$, then it is the smallest field that contains all the roots of such polynomial. We can identify $F(a)\cong\quot{F[x]}{\langle p(x)\rangle}$, where $p(x)$ is the minimal polynomial of $a$ over $F$. But we know that the polynomial of which $K$ is the root field of, must be a product of $p(x)$, and because the roots of such polynomial are only the roots of $p(x)$, then $K$ must the root field of $p(x)$ too.
+    \item From part 6, we know that a root field $K=F(a)$ is the root field of the minimum polynomial of $a$ over $F$. For an arbitrary root field $K=F(a_1,\dots,a_n)$, we can represent $K$ as $F(a)$ by Theorem 2. Hence, $K$ is the minimum polynomial of $a$ over $F$, but minimum polynomials are also irreducible, so that any root field $K$ over $F$ is the root field of an irreducible polynomial.
+    \item All the hypotheses of Theorem 7 are met so this is a Corollary to that Theorem.
+    \item We start by stating some known facts. We know that a polynomial of degree $n$ has at most $n$ distinct roots, and that $[K:F]$ is the degree of $K$ over $F$. Furthermore, we can represent $K$ as a simple extension $F(c)$. We have that $[F(c):F]$ equals the minimum polynomial of $c$ over $F$. But we know that this is at most $a(x)$, as otherwise $K$ would not be a root field of $a(x)$, so that $[F(c):F]$ is at most $n$. Finally, since $n!$ contains the product of all naturals less than or equal to $n$, then it must be the case that $[K=F(c):F]$ divides $n!$.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{D Reducing iterated extensions to simple extensions}
+\begin{enumerate}
+    \item Find $c$ such that $\Q(\sqrt{2},\sqrt{-3})=\Q(c)$. Do the same for $\Q(\sqrt{2},\sqrt[3]{2})$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item We will use the result of Theorem 2 to solve this exercise. 
+     
+     First we consider $\Q(\sqrt{2},\sqrt{-3})$. We have that the minimum polynomial of $\sqrt{2}$ over $\Q$ is $x^2-2$ which has $\pm\sqrt{2}$ as roots. On the other hand, the minimum polynomial of $\sqrt{-3}$ is $x^2+3$, with roots $\pm\sqrt{-3}$. We then define $t=1\neq (-\sqrt{2}-\sqrt{2})/(-\sqrt{-3}-\sqrt{-3})$, so that $c=\sqrt{2}+\sqrt{-3}$ and $\Q(\sqrt{2},\sqrt{-3})=\Q(\sqrt{2}+\sqrt{-3})$.
+
+     Now we consider $\Q(\sqrt{2},\sqrt[3]{2})$. The minimum polynomial of $\sqrt{2}$ is as above. On the other hand, the minimum polynomial of $\sqrt[3]{2}$ is $x^3-2$ which has $\sqrt[3]{2}$ and $-(1/2^{2/3})\pm i(\sqrt[3]{2}/2^{2/3})$ as roots. Defining $t=1\neq (a_i-\sqrt{2})/(\sqrt[3]{2}-b_j)$ for all $i$ and $j$, we get that $\Q(\sqrt{2},\sqrt[3]{2})=\Q(\sqrt{2}+\sqrt[3]{2})$, as required.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{H An isomorphism extension Theorem (Proof of Theorem 3)}
+Let $F_1,F_2,h,p(x),a,b$ and $\bar{h}$ be as in the statement of Theorem 3. To prove that $\bar{h}$ is an isomorphism, it must first be shown that it is properly defined: that is, if $c(a)=d(a)$ in $F_1(a)$, then $\bar{h}(c(a))=\bar{h}(d(a))$.
+\begin{enumerate}
+    \item If $c(a)=d(a)$, prove that $c(x)-d(x)$ is a multiple of $p(x)$. Deduce from this that $hc(x)-hd(x)$ is a multiple of $hp(x)$.
+    \item Use part 1 to prove that $\bar{h}(c(a))=\bar{h}(d(a))$.
+    \item Reversing the steps of the preceding argument, show that $\bar{h}$ is injective.
+    \item Show that $\bar{h}$ is surjective.
+    \item Show that $\bar{h}$ is a homomorphism.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item If $c(a)=d(a)$, then $c(a)-d(a)=0$. Since $p(x)$ is irreducible, and $a$ is a root of $p(x)$, then $p(x)$ is the minimum polynomial of $a$ in $F_1$. Hence, any polynomial whose root is $a$ is a multiple of $p(x)$ and $c(x)-d(x)$ is a multiple of $p(x)$.
+
+     We have $c(x)-d(x)=p(x)q(x)$ for some polynomial $q(x)$. Then, $h(c(x)-d(x))=h(c(x))-h(d(x))=h(p(x)q(x))=h(p(x))h(q(x))$, as required.
+     \item Evaluating $h(c(x))-h(d(x))=h(p(x))h(q(x))$ at $a$ gives us $\bar{h}(c(a))-\bar{h}(d(a))=\bar{h}(p(a))\bar{h}(q(a))=0$ so that $\bar{h}(c(a))=\bar{h}(d(a))$, as required.
+     \item Suppose $\bar{h}(c(a))=\bar{h}(d(a))$. Then $\bar{h}(c(a))-\bar{h}(d(a))=0$ and $h(c(x))-h(d(x))$ is a multiple of $h(p(x))$ since it has $\bar{h}(a)$ as root. Hence, $c(x)-d(x)$ is a multiple of $p(x)$, and $c(a)-d(a)=p(a)q(a)=0$ so that $c(a)=d(a)$, as required.
+     \item Since all elements of $F_2(b)$ are of the form $d_0+d_1b+\dots+d_nb^n$, and $h$ is an isomorphism, then there is an element of $F_1(a)$ corresponding to $h^{-1}(d_0)+\dots+h^{-1}(d_n)a^n$, as required.
+     \item Since every element of $F_1(a)$ is of the form $c_0+c_1a+\dots+c_na^n$ and $\bar{h}$ maps this element to $h(c_0)+h(c_1)b+\dots+h(c_n)b^n$, then the homomorphism properties follow by the usual addition and multiplication properties of polynomials and the fact that $h$ is itself an isomorphism.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{I Uniqueness of the root field}
+Let $h:F_1\rightarrow F_2$ be an isomorphism. If $a(x)\in F_1[x]$, let $K_1$ be the root field of $a(x)$ over $F_1$, and $K_2$ the root field of $ha(x)$ over $F_2$.
+\begin{enumerate}
+    \item Prove: if $p(x)$ is an irreducible factor of $a(x),u\in K_1$ is a root of $p(x)$, and $\nu\in K_2$ is a root of $hp(x)$, then $F_1(u)\cong F_2(\nu)$.
+    \item $F_1(u)=K_1$ if and only if $F_2(\nu)=K_2$.
+    \item Use parts 1 and 2 to form and inductive proof that $K_1\cong K_2$.
+    \item Draw the following conclusion: the root field of a polynomial $a(x)$ over a field $F$ is unique up to isomorphism.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item Since $p(x)$ is irreducible in $F_1[x]$, $u$ is a root of $p(x)$ and $v$ is a root of $hp(x)$, by Theorem 3, $h$ can be extended to an isomorphism between $F_1(u)$ and $F_2(v)$.
+     \item We have that $F_1(u)=K_1$ if and only if $F_1(u)$ has all the roots of $a(x)$, but by exercise 1, there is an extension of $h$ such that $F_1(u)\cong F_2(v)$, but this is true if and only if $F_2(v)$ contains all the roots of $ha(x)$, that is, if $F_2(v)=K_2$, as required.
+     \item Consider the following factorization of $a(x)=a_1(x)\dots a_n(x)$, where each $a_i(x)$ is irreducible. Now for the base case, if $u_1$ is a root of $a_1(x)$ and $v_1$ is a root of $ha_1(x)$, we can use exercise 1 to conclude that $F_1(u_1)\cong F_2(v_2)$. Now we can reason inductively by using $F_1(u_1)$ and $F_2(v_2)$ as the starting fields, and the extension of $h$ as the initial isomorphism. When we do this for all $a_i(x)$, we have that $K_1\cong K_2$, as required.
+     \item This is exactly the content of the previous exercise. That is, any two extensions that are root fields of $a(x)$ have to be isomorphic.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{K Normal extensions}
+If $K$ is the root field of some polynomial $a(x)$ over $F, K$ is also called a normal extension of $F$. There are other possible ways of defining normal extensions, which are equivalent to the above. We consider the two most common ones here: they are precisely the properties expressed in Theorems 7 and 6. Let $K$ be a finite extension of $F$.
+\begin{enumerate}
+    \item Suppose that for every irreducible polynomial $p(x)$ in $F[x]$, if $p(x)$ has one root in $K$, then $p(x)$ must have all its roots in $K$. Prove that $K$ is a normal extension of $F$.
+    \item Suppose that, if $h$ is any isomorphism with domain $K$ which fixes $F$, then $h(K)\subseteq K$. Prove that $K$ is a normal extension of $F$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item Since $K$ is a finite extension of $F$, then we can write $K$ as a simple extension $F(c)$ for some $c$. Then if we take $p(x)$ to be the minimum polynomial of $c$ in $F$, and recalling that minimum polynomials are irreducible, we have that $F(c)$ is the root field of $p(x)$. That is, a normal extension of $F$.
+     \item Because $K$ is a finite extension of $F$ we can write $K=F(c)$ for some $c$. Let $p(x)$ the minimum polynomial of $c$, and let $L$ be the root field of $p(x)$, we have that $F\subseteq K\subseteq L$. We want to prove that $K=L$. Let $a$ be a root in $L\setminus K$. Now consider the extension of $h$ to $\bar{h}:K\rightarrow L$, that sends $a$ to $c$. But because the homomorphism between two fields is injective, and we have that $h(K)\subseteq K$, then the homomorphism is surjective so that $K=L$. That is, $K$ is a normal extension of $F$.
+ \end{enumerate}
+\end{proof}

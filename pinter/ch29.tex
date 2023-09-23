@@ -1,0 +1,140 @@
+\subsection*{Chapter 29. Degrees of Field Extensions}
+\addcontentsline{toc}{subsection}{Chapter 29. Degrees of Field Extensions}
+
+
+\begin{exercise}{A Examples of finite extensions}
+\begin{enumerate}
+    \item Find a basis for $\Q(i\sqrt{2})$ over $\Q$ and describe the elements of $\Q(i\sqrt{2})$. (See the two examples immediately following Theorem 1).
+    \item Show that every element of $\R(2+3i)$ can be written as $a+bi$, where $a,b\in R$. Conclude that $\R(2+3i)=\C$
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item We have $x=i\sqrt{2}$, then $x^2=i^2\sqrt{2}^2=-2$, so that $x^2+2=0$ is the minimal polynomial of $i\sqrt{2}$ over $\Q$. Then $\Q(i\sqrt{2})$ has as basis $\{1,\sqrt{2}\}$, so that $\Q(i\sqrt{2})=\{a+bi\sqrt{2}: a,b\in\Q\}$.
+     \item We know that $\R(2+3i)$ is the smallest field that contains $\R$ and $2+3i$. Then if $a,b/3\in\R$, we have that $(2+3i)(b/3)= 2b+bi\in\R(2+3i)$ and $(2/3)+a-(2/3)+bi=a+bi\in\R(2+3i)$. So that $\R(2+3i)=\{a+bi: a,b\in\R\}= \C$, as required.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{C Finite extensions of finite fields}
+By the proof of the basic theorem of field extensions, if $p(x)$ is an irreducible polynomial of degree $n$ in $F[x]$, then $\quot{F[x]}{\langle p(x)\rangle}\cong F(c)$ where $c$ is a root of $p(x)$. By Theorem 1 in this chapter, $F(c)$ is of degree $n$ over $F$. Using the paragraph preceding Theorem 1:
+\begin{enumerate}
+    \item Prove that every element of $F(c)$ can be written uniquely as $a_0+\dots+a_{n-1}c^{n-1}$, for some $a_0,\dots,a_{n-1}\in F$.
+    \item Construct a field of four elements. (It is to be an extension of $\Z_2$). Describe its elements, and supply its addition and multiplication tables.
+    \item Construct a field of eight elements. (It is to be an extension of $\Z_2$).
+    \item Prove that if $F$ has $q$ elements, and $a$ is algebraic over $F$ of degree $n$, then $F(a)$ has $q^n$ elements.
+    \item Prove that for every prime number $p$, there is an irreducible quadratic $\Z_p[x]$. Conclude that for every prime $p$, there is a field with $p^2$ elements. 
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item Suppose for the sake of contradiction, that an element in $F(c)$ can be written as $a_0+\dots+a_{n-1}c^{n-1}$ or $b_0+\dots+b_{n-1}c^{n-1}$ for $a_i,b_i\in F$. We then have $a_0+\dots+a_{n-1}c^{n-1}=b_0+\dots+b_{n-1}c^{n-1}$ which implies $(a_0-b_0)+\dots+(a_{n-1}-b_{n-1})c^{n-1}=0$. Since $1,c,\dots,c^{n-1}$ is a basis of $F(c)$, then it must be the case that $(a_0-b_0)=\dots=(a_{n-1}-b_{n-1})=0$, so that $a_i=b_i$ implying that the element can only be written as a unique linear combination.
+    \item We know that $x^2+x+1$ has no roots in $\Z_2$, call the root of this polynomial $\alpha$. Then $\Z_2(\alpha)$ has 4 elements because there are 4 polynomials $\Z_2[x]$ of degree less than $n$. The elements of $Z_2(\alpha)$ can be identified with $0,1,x,x+1$ from which we can follow the usual addition and multiplication rules in $\Z_2[x]$ in addition to $x^2+x=-1=1$ to find the tables.
+    \item From Theorem 2, we just have to find an extension of degree 2 over $\Z_2(\alpha)$ for an extension with 8 elements in $\Z_2$. Consider, as above, the polynomial $\alpha^2+\alpha+1$ which has no roots in $\Z_2(\alpha)$ giving us the desired result. 
+    \item If $a$ is algebraic over $F$ of degree $n$, it means that there exists a polynomial of degree $n$ such that $F(a)\cong\quot{F[x]}{\langle p(x)\rangle}$. But this quotient contains all the polynomials of degree less than $n$. Using the multiplication principle of counting, we can conclude that there are $q^n$ different polynomials of degree less than $n$ in a field with $q$ elements, as desired.
+    \item We will try to prove this using a counting argument. There are $p^2$ monic quadratic polynomials in $Z_p[x]$ and there are $p(p-1)/2+p$ linear polynomials in $Z_p[x]$. 
+    
+    We will now prove by induction that $p(p-1)/2+p<p^2$, to conclude the desired result. for $p=2$, we have $2(2-1)/2+2=2<4$. Now suppose that the inequality holds for all $n$ up to $p-1$, so that
+    \begin{align}
+        &\frac{(p-1)((p-1)-1)}{2}+(p-1) < (p-1)^2\\
+        &\frac{(p-1)(p-2)+2(p-1)}{2} < p^2-2p+1\\
+        &\frac{(p-1)(p-2+2)}{2} < p^2\\
+        &\frac{p(p-1)}{2}+2p-1 < p^2\\
+        &\frac{p(p-1)}{2}+p < p^2.
+    \end{align}
+    The last inequality follows from the fact that $p$ is a prime greater than 1, so that $2p-1>p$. 
+    
+    Since there are more quadratic polynomials than linear ones, then there must be some irreducible quadratic polynomial. Since the multiplicative order of any element in $\Z_p$ is $p$, then those irreducible quadratic polynomials have no solution in $\Z_p$, which by exercise 4, gives us the desired result.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{D Degrees of extensions (applications of Theorem 2)}
+Let $F$ be a field, and $K$ a field extension of $F$. Prove the following:
+\begin{enumerate}
+    \item $[K:F]=1$ if and only if $K=F$.
+    \item If $[K:F]$ is a prime number, there is no field properly between $F$ and $K$ (that is, there is no field $L$ such that $F\not\subseteq L\not\subseteq K$).
+    \item If $[K:F]$ is a prime, then $K=F(a)$ for every $a\in K-F$.
+    \item Suppose $a,b\in K$ are algebraic over $F$ with degrees $m$ and $n$, where $m$ and $n$ are relatively prime. Then:
+    \begin{enumerate}
+        \item $F(a,b)$ is of degree $mn$ over $F$.
+        \item $F(a)\cap F(b)=F$.
+    \end{enumerate}
+    \item If the degree of $F(a)$ over $F$ is a prime, then $F(a)=F(a^n)$ for any $n$ (on the condition that $a^n\notin F$).
+    \item If an irreducible polynomial $p(x)\in F[x]$ has a root in $K$, then $\deg p(x)\vert[K:F]$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item ($\Rightarrow$) We know that $K$ contains $F$ so that it must be the case that a basis of $K$ contains a scalar $a\in F$. Since $[K:F]=1$, then the basis of $K$ is simply $\{a\}$, which is $F$, so that $K=F$.
+
+     ($\Leftarrow$) If $K=F$, then a basis of $K$ is as above, so that $[K:F]=1$, as required.
+     \item Suppose $F\subseteq L\subseteq K$, then we would have, for a prime $p$, that $[K:F]=p=[K:L][L:F]$, but since we cannot factorise a prime, it must be the case that either $[K:L]=p$ and $[L:F]=1$, or $[K:L]=1$ and $[L:F]=p$, so that $L$ is no field properly between $F$ and $K$.
+     \item We have that $F\subseteq F(a)\subseteq K$, then by exercise 2, necessarily $[F(a):F]=[K:F]$ (given that $a\in K$.
+     \item 
+         \begin{enumerate}
+             \item From 2, we know that neither $F(a)\subset F(b)$ nor $F(b)\subset F(a)$. Since $F(a)$ is the smallest field containing $a$, this means $a\notin F(b)$ and likewise $b\notin F(a)$. Hence, $[F(a,b):F]=[F(a):F][F(b):F]=mn$, as required.
+             \item By the same argument as above, the only common elements of $F(a)$ and $F(b)$ are the elements of $F$ so that $F(a)\cap F(b)=F$, as required.
+         \end{enumerate}
+    \item This is a special case of exercise 3, where $F(a)=K$ and $F(a^n)=F(b)$, because $F(a)$ is a field, and $a^n\in F(a)$. 
+    \item Let $a\in K$ be the root of $p(x)$. Then $F(a)\subseteq K$, by Theorem 2, we have that $[K:F]=[K:F(a)][F(a):F]=[K:F(a)](\deg p(x))$, as required.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{E Short questions relating to degrees of extensions}
+Let $F$ be a field.
+
+Prove parts 1-3:
+\begin{enumerate}
+    \item The degree of $a$ over $F$ is the same as the degree of $1/a$ over $F$. It is also the same as the degrees of $a+c$ and $ac$ over $F$, for any $c\in F$.
+    \item $a$ is of degree 1 over $F$ if and only if $a\in F$.
+    \item If a real number $c$ is a root of an irreducible polynomial of degree greater than 1 in $\Q[x]$, then $c$ is irrational.
+    \item Use part 3 and Eisenstein's irreducibility criterion to prove that $\sqrt{m/n}$ (where $m,n\in\Z$) is irrational if there is a prime number which divides $m$ but not $n$, and whose square does not divide $m$.
+    \item Show that part 4 remains true for $\sqrt[q]{m/n}$, where $q>1$.
+    \item If $a$ and $b$ are algebraic over $F$, prove that $F(a,b)$ is a finite extension of $F$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item In Ch.27.D.1 and 2, and Ch.27.E.1 we proved that $F(a)=F(a+c)=F(ca)$ so that the degrees are the same. Furthermore, the technique we used to prove that if $1/a$ is algebraic over $F$ didn't modify the degree of the irreducible polynomial for which $a$ is a root, hence, $F(a)$ has the same degree as $F(1/a)$ over $F$.
+     \item We have that $a$ is of degree 1 over $F$, if and only if there is a polynomial of degree 1 in $F[x]$ where $a$ is a root, in particular $x-a=0$, if and only if $x=a\in F$, as required.
+     \item This is a Corollary to exercise 2, where $F=\Q$.
+     \item Consider the polynomial given by $p(x)=nx^2-m$. Suppose there is a prime number with the desired characteristics. Then if we apply Eisenstein's criterion, we have that $p(x)$ is irreducible over $\Q$. We have that if $nx^2-m=0$, then $\sqrt{m/n}$ is a root of $p(x)$. By exercise 3, this root is irrational.
+    \item Since Eisenstein's criterion does not depend on the degree of the polynomial being quadratic, we can apply the proof as above verbatim and only changing the exponent of $x$ in $p(x)$ to be $q$.
+    \item We have that if $a$ is algebraic over $F$, then it is also algebraic over $F(b)$, so we can consider $F(b)$ an intermediate extension of $F(a,b)$. By Theorem 2, $[F(a,b):F]=[F(a,b):F(b)][F(b):F]$. We know that both factors on the left hand side are finite, so that $F(a,b)$ is a finite extension, as desired.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{G Fields of algebraic elements: algebraic numbers}
+Let $F\subseteq K$ and $a,b\in K$. We have seen on page 295 that if $a$ and $b$ are algebraic over $F$, then $F(a,b)$ is a finite extension of $F$.
+
+Use the above to prove parts 1 and 2.
+\begin{enumerate}
+    \item If $a$ and $b$ are algebraic over $F$, then $a+b,\, a-b,\, ab$ and $a/b$ are algebraic over $F$. (In the last case assume $b\neq 0$).
+    \item The set $\{x\in K:x\text{ is algebraic over }F\}$ is a subfield of $K$, containing $F$.
+
+    Any complex number which is algebraic over $\Q$ is called an algebraic number. By part 2, the set of all the algebraic numbers is a field, which we shall designated by $\A$.
+
+    Let $a(x)=a_0+\dots+a_nx^n$ be in $\A[x]$, and let $c$ be any root of $a(x)$. We will prove that $c\in\A$. To begin with, all the coefficients of $a(x)$ are in $\Q(a_0,\dots,a_n)$.
+    \item Prove: $\Q(a_0,\dots,a_n)$ is a finite extension of $\Q$.
+
+    Let $\Q(a_0,\dots,a_n)=\Q_1$. Since $a(x)\in\Q_1[x]$, $c$ is algebraic over $\Q_1$.
+
+    Prove parts 4 and 5:
+    \item $\Q_1(c)$ is a finite extension of $\Q_1$, hence a finite extension of $\Q$. (Why?).
+    \item $c\in\A$.
+
+    Conclusion: the roots of any polynomial whose coefficients are algebraic numbers are themselves algebraic numbers.
+
+    A field $F$ is called algebraically closed if the roots of every polynomial in $F[x]$ are in $F$. We have thus proved that $\A$ is algebraically closed.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item If $a$ and $b$ are algebraic over $F$ that means that $F(a,b)$ has finite degree over $F$. Furthermore, all of $a+b,a-b,ab$ and $a/b$ are in $F(a,b)$, from Theorem 3, we know that all elements of the extension are algebraic over the original field, as desired.
+     \item From 1, we know that the algebraic elements of $K$ satisfy the field axioms. Furthermore, as we proved in exercise E.2., all elements of $F$ are algebraic over $F$.
+     \item Since $a(x)\in\A[x]$, by definition the coefficients of $a(x)$ are algebraic. That means that for each one of those coefficients, there is a polynomial of finite degree in $\Q[x]$ such that the coefficient is the root of such polynomial. Then we can construct $\Q_1$ with an iterated extension and conclude by Theorem 2 that $\Q_1$ has a finite degree over $\Q$.
+    \item $\Q_1(c)$ is a finite extension of $\Q_1$ because $c$ is the root of a polynomial in $\Q_1[x]$. By Theorem 1, we know that the degree of $\Q_1(c)$ is the degree of the minimum polynomial of $c$ over $\Q_1$.
+
+    Since $\Q_1$ is itself a finite extension of $\Q$, we have, by Theorem 2, $[\Q_1(c):\Q]=[\Q_1(c):\Q_1][\Q_1:\Q]$, we concluded that both terms in the right hand side are finite, hence the left hand side is finite too.
+    \item From 4 we concluded that $c$ is the root of a polynomial in $\Q$, because there is a polynomial, but this is precisely the definition of an algebraic number, so that $c\in\A$.
+ \end{enumerate}
+\end{proof}

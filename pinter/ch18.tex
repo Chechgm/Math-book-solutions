@@ -1,0 +1,152 @@
+\subsection*{Chapter 18. Ideals and homomorphisms}
+\addcontentsline{toc}{subsection}{Chapter 18. Ideals and homomorphisms}
+
+
+\begin{exercise}{A Examples of subrings}
+  Prove that each of the following is a subring of the indicated ring
+
+  1. $\{x+y\sqrt{3}:x,y\in\mathbb{Z}\}$ is a subring of $\mathbb{R}$.
+
+  4. Let $\mathcal{C}(\mathbb{R})$ be the set of all the functions from $\mathbb{R}$ to $\mathbb{R}$ which are continuous in $(-\infty,\infty)$, and let $\mathcal{D}(\mathbb{R})$ be the set of all the functions from $\mathbb{R}$ to $\mathbb{R}$ which are differentiable on $(-\infty,\infty)$. Then $\mathcal{C}(\mathbb{R})$ and $\mathcal{D}(\mathbb{R})$ are subrings of $\mathcal{F}(\mathbb{R})$.
+\end{exercise}
+\begin{proof}
+ 1. Let $a, b\in \{x+y\sqrt{3}:x,y\in\mathbb{Z}\}$, with $a=a_{1}+a_{2}\sqrt{3}$ and $b=b_{1}+b_{2}\sqrt{3}$.
+  
+  i. Subtraction: $a-b=a_{1}+a_{2}\sqrt{3}-b_{1}-b_{2}\sqrt{3} =(a_{1}-b_{2})+(a_{2}-b_{2})\sqrt{3}$, so that $a-b\in \Z[\sqrt{3}]$
+  
+  ii. Multiplication: $ab= (a_{1}+a_{2}\sqrt{3})(b_{1}+b_{2}\sqrt{3})= (a_{1}b_{1}+3a_{2}b_{2})+(a_{1}b_{2}+b_{1}a_{2})\sqrt{3}$ and $ab\in\Z[\sqrt{3}]$.
+
+ 4. i. Let $f,g\in\mathcal{C}(\R)$. By the Algebraic continuity theorem, both $f-g$ and $fg$ are continuous, so that $\mathcal{C}(\R)$ is a subring of $\mathcal{F}(\R)$.
+ 
+ ii. Let $f,g\in\mathcal{D}(\R)$. By the algebraic differentiability theorem, both $f-g$ and $fg$ are differentiable, so that $\mathcal{D}(\R)$ is a subring of $\mathcal{F}(\R)$. 
+\end{proof}
+
+
+\begin{exercise}{C Elementary properties of subrings}
+  Prove parts 1-6:
+    \begin{enumerate}
+        \item A nonempty subset $B$ of a ring $A$ is closed with respect to addition and negatives iff $B$ is closed with respect to subtraction.
+        \item Conclude from part 1 that $B$ is a subring of $A$ iff $B$ is closed with respect to subtraction and multiplication.
+        \item If $A$ is a finite ring and $B$ is a subring of $A$, then the order of $B$ is a divisor of the order of $A$.
+        \item If a subring $B$ of an integral domain $A$ contains 1, then $B$ is an integral domain ($B$ is then called a subdomain of $A$).
+        \item Every subring containing the unity of a field is an integral domain.
+        \item If a subring $B$ of a field $F$ is closed with respect to multiplicative inverses, then $B$ is a field. ($B$ is then called a subfield of $F$).
+        \item Find subrings of $\mathbb{Z}_{18}$ which illustrate the following:
+        \begin{enumerate}
+            \item $A$ is a ring with unity, $B$ is a subring of $A$, but $B$ is not a ring with unity.
+            \item $A$ and $B$ are rings with unity, $B$ is a subring of $A$ but the unity of $B$ is not the same as the unity of $A$.
+        \end{enumerate}
+        \item Let $A$ be a ring, $f:A\rightarrow A$ a homomorphism, and $B=\{x\in A: f(x)=x\}$. Prove that $B$ is a subring of $A$.
+        \item The center of a ring $A$ is the set of all the elements $a\in A$ such that $ax=xa$ for every $x\in A$. Prove that the center of $A$ is a subring of $A$.
+    \end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item ($\Rightarrow$) Suppose $B$ is closed with respect to addition and negatives. Let $b,b'\in B$, then $-b'\in B$. Because $B$ is close with respect to addition, $b-b'\in B$, so $B$ is closed with respect to subtraction.
+
+     ($\Leftarrow$) Suppose $B$ is closed with respect to subtraction. Let $b\in B$. Then $b-b=0\in B$, so that $0-b=-b\in B$ and $B$ is closed with respect to negatives. Now let $a, -a\in B$, then $a-(-b)=a+b\in B$ so that $B$ is closed under addition, as required.
+     \item ($\Rightarrow$) Suppose $B$ is a subring of $A$, then it is closed with respect to addition, negatives and multiplication. By (1), $B$ is closed with respect to subtraction.
+
+     ($\Leftarrow$) Suppose $B$ is closed with respect to subtraction and multiplication. By (1), $B$ is closed with respect to addition and negatives too. This implies $B$ is a subring of $A$.
+     \item Forgetting about multiplication in $A$ and $B$, we have that $A$ is a group and $B$ is its subgroup. By Lagrange's theorem, the order of $B$ is a divisor of the order of $A$. But this is true also if we have multiplication on $A$ and $B$, so that it also holds in the rings, as required.
+     \item Because $A$ is an integral domain, multiplication in $B$ is commutative. It remains to prove that $B$ has no divisors of zero. However, this is true because $A$ has no divisors of zero, so a subset of elements of $A$ will not have them either.
+     \item This follows from from (4) as all fields are also integral domains.
+     \item A field is a commutative ring with unity where all elements are invertible. Then $B$ is a commutative ring where all elements are invertible. Take $b\in B$ and its inverse $b^{-1}$ also in $B$. Then $bb^{-1}=b^{-1}b=1\in B$ so $B$ is a field.
+     \item a) $A=\Z_{18}, B=\{0,9\}$.
+
+     b) $A=\Z_{18}$, $B=\{0\}$.
+     \item Let $x,y\in B$. 
+
+     i) Subtraction: $x-y=f(x)-f(y)=f(x-y)$, so $x-y\in B$.
+
+     ii) Multiplication: $xy=f(x)f(y)=f(xy)$, so $xy\in B$.
+
+     iii) Non-emptiness: $0=f(0)$, so $0\in B$.
+     \item Let $a,b\in Z(A)$. Then $ax=xa$ and $bx=xb$ for all $x\in A$.
+     
+     i) Subtraction: $(a-b)x=ax-bx=xa-xb=x(a-b)$, so $a-b\in Z(A)$.
+
+     ii) Multiplication: $(ab)x=axb=x(ab)$ so $ab\in Z(A)$.
+
+     iii) Non-emptiness: $0x=0=x0$ so $0\in Z(A)$.
+ \end{enumerate}
+\end{proof}
+
+
+\begin{exercise}{E Examples of homomorphisms}
+  Prove that each of the functions in parts 1-6 is a homomorphism. Then describe its kernel and its range
+  \begin{enumerate}
+      \item $\phi:\mathcal{F}(\mathbb{R})\rightarrow\mathbb{R}$ given by $\phi(f)=f(0)$.
+      \item $h:\R\times\R\rightarrow\R$ given by $h(x,y)=x$.
+  \end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item Let $f,g\in\mathcal{F}(\R)$
+
+     i) We have $\phi([f+g])=[f+g](0)=f(0)+g(0)=\phi(f)+\phi(g)$.
+
+     ii) Furthermore, $\phi([fg])=[fg](0)=f(0)g(0)=\phi(f)\phi(g)$.
+
+     iii) Kernel: All the functions whose value at $x=0$ is zero.
+
+     iv) Range: All reals, as we can always find a function, say $f$, such that $f(0)=x$ for all $x\in\R$.
+     \item Let $(x_{1},y_{1}),(x_{2},y_{2})\in\R\times\R$
+
+     i) We have $h((x_{1}+x_{2},y_{1}+y_{2}))= x_{1}+x_{2}= h((x_{1},y_{1}))+h((x_{2},y_{2}))$.
+
+     ii) Furthermore, $h((x_{1}x_{2},y_{1}y_{2}))= x_{1}x_{2}= h((x_{1},y_{1}))h((x_{2},y_{2}))$.
+
+     iii) Kernel: All pairs $(0,y)$ for $y\in\R$.
+
+     iv) Range: All reals, as the pair $(x,y)$ can map to any $x\in\R$.
+ \end{enumerate}
+\end{proof}
+
+
+\begin{exercise}{F Elementary properties of homomorphisms}
+  Let $A$ and $B$ be rings, and $f:A\rightarrow B$ a homomorphism. Prove each of the following:
+    \begin{enumerate}
+        \item $f(A)=\{f(x): x\in A\}$ is a subring of $B$.      \item The kernel of $f$ is an ideal of $A$.
+        \item $f(0)=0$, and for every $a\in A, f(-a)=-f(a)$.
+        \item $f$ is injective iff its kernel is equal to $\{0\}$.
+        \item If $B$ is an integral domain, then either $f(1)=1$ or $f(1)=0$. If $f(1)=0$ then $f(x)=0$ for every $x\in A$. If $f(1)=1$, the image of every invertible element of $A$ is an invertible element of $B$.
+        \item Any homomorphic image of a commutative ring is a commutative ring. Any homomorphic image of a field is a field.
+        \item If the domain $A$ of the homomorphism $f$ is a field, and if the range of $f$ has more than one element, then $f$ is injective. (Hint: Use exercise D4: ``If $J$ is an ideal of $A$ and $1\in J$, then $J=A$'', where $A$ is a ring and $J$ a subset of $A$).
+    \end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item Let $a,b\in f(A)$, so that $a=f(x)$ and $b=f(y)$ for some $x,y\in A$.
+
+     i) Subtraction: $a-b=f(x)-f(y)=f(x-y)$, so $a-b\in f(A)$.
+
+     ii) Multiplication: $ab= f(x)f(y)=f(xy)$, so $ab\in f(A)$.
+
+     iii) Non-emptiness: Since $A$ is a ring, $0\in A$ and $f(0)\in B$.
+     \item Let $a,b\in \ker f$, and $x\in A$.
+
+     i) Addition: $f(a+b)=f(a)+f(b)=0$, so $a+b\in \ker f$.
+
+     ii) Negatives: If $f(a)=0$, then $f(-a)=-f(a)=-0=0$ so $-a\in \ker f$.
+
+     iii) Absorption: $f(xa)=f(x)f(a)=f(x)0=0$ so $xa\in \ker f$.
+     \item a) We have $f(0)=f(0+0)=f(0)+f(0)$ which only holds if and only if $f(0)=0$.
+
+     b) Consider $0=f(0)=f(a-a)=f(a)+f(-a)$, so that $-f(a)=f(-a)$, as required.
+     \item ($\Rightarrow$) Suppose $f$ is injective, then if $f(a)=f(b)$, it is true that $a=b$. We have that if $f(0)=f(a)=0$, then it is the case that $a=0$.
+
+     ($\Leftarrow$) Suppose $\ker f=\{0\}$. Let $a,b\in A$ and suppose $f(a)=f(b)$. We have $f(a)-f(b)=0=f(a-b)$. Since $\ker f=\{0\}$ then $a-b=0$ so $a=b$, as required.
+     \item Let $B$ be an integral domain. We have $f(1)=f(1\cdot 1)=f(1)f(1)$ which holds only if $f(1)=1$ or if $f(1)=0$. 
+
+     i) Suppose $f(1)=1$ and let $a\in A$ be an invertible element, with inverse $a^{-1}$. We then have $1=f(1)=f(aa^{-1})=f(a)f(a^{-1})$ and $1=f(1)=f(a^{-1}a)=f(a^{-1})f(a)$ so that $f(a)$ is the inverse of $f(a^{-1})$.
+
+     ii) Suppose $f(1)=0$ and let $a\in A$. We have $f(a)=f(a\cdot 1)=f(a)f(1)=f(a)0=0$, as it was to be proven.
+     \item i) Let $f:A\rightarrow B$ be a homomorphism. We know $f(A)$ is a ring. It only remains to prove that if $A$ is commutative, $f(A)$ is commutative too. Let $f(x),f(y)\in f(A)$. We have $f(x)f(y)=f(xy)=f(yx)=f(y)f(x)$ so $f(A)$ is commutative, and thus a commutative ring.
+
+     ii) Suppose now $A$ is a field. From (i) we know $f(A)$ is a commutative ring. We now prove $f(1)=1$. We have $f(1)=f(1\cdot1)=f(1)f(1)$ which can only hold if $f(1)=1$ or $f(1)=0$, in which case, we would have the trivial field. 
+
+     Finally, from (5) it holds that the image of every invertible element of $A$ is an invertible element of $f(A)$, but all elements of $A$ are invertible, so all elements of $f(A)$ are invertible and thus $f(A)$ is a field.
+     \item Suppose $A$ is a field and suppose $f(A)$ has more than one element. Since $A$ is a field, then $\ker f$ is either $\{0\}$ or $A$, but it cannot be $A$ because $f(A)$ has more than one element. By (4), $f$ must be injective, as required.
+ \end{enumerate}
+\end{proof}

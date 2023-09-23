@@ -1,0 +1,99 @@
+\subsection*{Chapter 3.C. Matrices}
+\addcontentsline{toc}{subsection}{Chapter 3.C. Matrices}
+
+
+\begin{exercise}{2}
+ Suppose $D\in\mathcal{L}(\mathcal{P}_{3}(\mathbb{R}), \mathcal{P}_{2}(\mathbb{R}))$ is the differentiation map defined by $Dp=p'$. Find a basis of $\mathcal{P}_{3}(\mathbb{R})$ and a basis of $\mathcal{P}_{2}(\mathbb{R})$ such that the matrix of $D$ with respect to the bases is 
+ $\begin{pmatrix}
+ 1 & 0 & 0 & 0\\
+ 0 & 1 & 0 & 0\\
+ 0 & 0 & 1 & 0\\
+ \end{pmatrix}$
+\end{exercise}
+\begin{proof}
+ We define the basis of $\mathcal{P}_{3}(\mathbb{R})$ with $v_{1}=x$, $v_{2}=x^{2}/2$, $v_{3}=x^{3}/3$ and $v_{4}=1$, and the basis of $\mathcal{P}_{2}(\mathbb{R})$ with $w_{1}=1$, $w_{2}=x$, $w_{3}=x^{2}$. Then with the definition of the matrix of a linear map (3.32) and leveraging example (3.34) we can see that these bases produce the desired matrix.
+\end{proof}
+
+
+\begin{exercise}{3}
+ Suppose $V$ and $W$ are finite-dimensional and $T\in\mathcal{L}(V,W)$. Prove that there exist a basis of $V$ and a basis of $W$ such that with respect to these bases, all entries of $\mathcal{M}(T)$ are 0 except that the entries in row $j$ and column $j$, equal 1 for $1\leq j\leq \dim\range T$
+\end{exercise}
+\begin{proof}
+ Let $v_{1},\dots, v_{p}$ be a basis of $\nullspace T$. Because $\nullspace T$ is a subspace of $V$, we can extend $v_{1},\dots, v_{p}$ to a basis of $V$: $v_{1},\dots, v_{m}$. 
+ 
+ Consider $w_{k}\in W$ given by $Tv_{k}=w_{k}$ if $v_{k}\notin\nullspace T$. Since $v_{1},\dots,v_{m}$ is a basis of $V$, if $a_{1}v_{1}+\dots+a_{m}w_{m} = 0$, then $a_{i}=0$ for all $i$. Apply $T$ on both sides of the equation. We get $T0 = T(a_{1}v_{1}+\dots+a_{m}v_{m}) = a_{1}Tv_{1}+\dots+a_{m}Tv_{m} = a_{p+1}Tv_{p+1}+\dots+a_{m}Tv_{m}$ because $Tv_{i}=0$ if $1\leq i\leq p$. As a result, $a_{p+1}w_{p+1}+\dots+a_{m}w_{m}=0$ so $w_{p+1},\dots,w_{m}$ are linearly independent.
+ 
+ We can extend a list of linearly independent vectors to a basis of $W$, so that $w_{p+1},\dots,w_{m}, w_{m+1},\dots, w_{n}$ is a basis of $W$. The matrix $\mathcal{M}(T)$ with respect to the bases defined above has the desired characteristics.
+\end{proof}
+
+
+\begin{exercise}{4}
+ Suppose $v_{1},\dots, v_{m}$ is a basis of $V$ and $W$ is finite-dimensional. Suppose $T\in\mathcal{L}(V,W)$. Prove that there exist a basis $w_{1},\dots,w_{n}$ of $W$ such that all the entries in the first column of $\mathcal{M}(T)$ (with respect to the bases $v_{1},\dots, v_{m}$ and $w_{1},\dots,w_{n}$) are 0 except for possibly a 1 in the first row, first column.
+\end{exercise}
+\begin{proof}
+ Let $Tv_{1}=w_{1}$. If $w_{1}\neq0$, extend it to a basis $w_{1},\dots,w_{n}$ of $W$. Otherwise, $v_{1}\in\nullspace T$, and we start the basis of $W$ with $w_{k}$ for the first $k$ so that $Tv_{k}=w_{k}\neq0$. In both cases, we obtain a basis of $W$ and we get a matrix $\mathcal{M}(T)$ with respect to $v_{1},\dots,v_{m}$ and $w_{1},\dots,w_{n}$ with the desired properties.
+\end{proof}
+
+
+\begin{exercise}{5}
+ Suppose $w_{1},\dots,w_{n}$ is a basis of $W$ and $V$ is finite-dimensional. Suppose $T\in\mathcal{L}(V,W)$. Prove that there exist a basis $v_{1},\dots, v_{m}$ of $V$ such that all the entries in the first row of $\mathcal{M}(T)$ (with respect to the bases $v_{1},\dots, v_{m}$ and $w_{1},\dots,w_{n}$) are 0 except for possibly a 1 in the first row, first column.
+\end{exercise}
+\begin{proof}
+ Let $W'=\vecspan(w_{2},\dots,w_{n})$ and $v_{2}\dots v_{m}$ be a basis of $V'=\{v\in V: Tv\in W'\}$, the preimage of $W'$. We extend the basis of $V'$ to a basis $v_{1},\dots,v_{m}$ of $V$. Since $0\in V'$, then $\nullspace T\subseteq V'$. Therefore, the extension of $v_{2}\dots v_{m}$ to a basis of $V$ consists only of a vector $v_{1}$ that maps to $A_{1,1}w_{1}+\dots+A_{n,1}w_{n}$, if $w_{1}\in\range T$, or $A_{2,1}w_{2}+\dots+A_{n,1}w_{n}$ otherwise. This is true because $W'$ is a subspace of $W$ with dimension $n-1$ and to extend $w_{2},\dots,w_{n}$ to a basis of $W$ we need one and only one vector.
+ 
+ Since $v_{1},\dots,v_{m}$ is a basis of $V$, we only have to verify that $\mathcal{M}(T)$ satisfies our desired property. By definition, no $Tv_{k}$ will contain a $w_{1}$ component for $k>1$, as this is how we defined $V'$, and $v_{2},\dots,v_{m}$ is a basis of $V'$. Now consider $Tv_{1}$, if $A_{1,1}$, the component of $w_{1}$ is not 0, then replace $v_{1}/A_{1,1}$ in our basis. If $A_{1,1}=0$, we are done.
+\end{proof}
+
+
+\begin{exercise}{7}
+ (Proposition 3.36, The matrix of the sum of linear maps) Suppose $S,T\in\mathcal{L}(V,W)$. Then $\mathcal{M}(S+T) = \mathcal{M}(S) + \mathcal{M}(T)$.
+\end{exercise}
+\begin{proof}
+ Let $v_{1},\dots,v_{n}$ be a basis of $V$ and $w_{1},\dots,w_{m}$ be a basis of $W$. By definition 3.32, we can define $\mathcal{M}(S)$ to be the matrix with entries $A_{j,k}$ given by $Sv_{k}=A_{1,k}w_{1}+\dots+A_{m,k}w_{m}$, and $\mathcal{M}(T)$ to be the matrix with entries $B_{j,k}$ given by $Tv_{k}=B_{1,k}w_{1}+\dots+B_{m,k}w_{m}$. 
+ 
+ In definition 3.6 of chapter 3.A, we defined addition on $\mathcal{L}(V,W)$ as $(S+T)(v)=Sv+Tv$. Then, $(S+T)(v_{k}) = (A_{1,k}+B_{1,k})w_{1} + \dots + (A_{m,k}+B_{m,k})w_{m}$ and matrix with entries $A_{j,k}+B_{j,k}=(A+B)_{j,k}$. But notice this is exactly definition 3.35, as required.
+\end{proof}
+
+
+\begin{exercise}{8}
+ (Proposition 3.38, The matrix of a scalar times a linear map) Suppose $\lambda\in\mathbf{F}$ and $T\in\mathcal{L}(V,W)$. Then $\mathcal{M}(\lambda T) = \lambda\mathcal{M}(T)$.
+\end{exercise}
+\begin{proof}
+ Let $v_{1},\dots,v_{n}$ be a basis of $V$ and $w_{1},\dots,w_{m}$ be a basis of $W$. By definition 3.32, we can define $\mathcal{M}(T)$ to be the matrix with entries $A_{j,k}$ given by $Tv_{k}=A_{1,k}w_{1}+\dots+A_{m,k}w_{m}$. 
+ 
+ In definition 3.6 of chapter 3.A, we defined scalar multiplication on $\mathcal{L}(V,W)$ as $(\lambda T)(v)=\lambda(Tv)=T(\lambda v)$. Then, $(\lambda T)(v_{k}) = \lambda A_{1,k}w_{1} + \dots + \lambda A_{m,k}w_{m}$ and matrix with entries $(\lambda A_{j,k})=(\lambda A)_{j,k}$. But notice this is exactly definition 3.37, as required.
+\end{proof}
+
+
+\begin{exercise}{9}
+ (Proposition 3.52, Linear combination of columns) Suppose $A$ is m-by-n matrix and $c = \begin{pmatrix}c_{1}\\ \vdots\\ c_{n}\end{pmatrix}$ is an n-by-1 matrix. Then $Ac = c_{1}A_{.,1} + \dots + c_{n}A_{.,n}$. In other words, $Ac$ is a linear combination of the columns of A, with the scalars that multiply the columns coming from $c$.
+\end{exercise}
+\begin{proof}
+ By definition 3.41 of matrix multiplication, $Ac$ is the the m-by-1 matrix whose entry in row j, and column k is given by $(Ac)_{j,k} = \sum_{r=1}^{n}A_{j,r}c_{r,k}$. Given that $c$ has only one column, we can simplify this to $(Ac)_{j,1} = \sum_{r=1}^{n}A_{j,r}c_{r}$. 
+ 
+ Now consider the j'th row of the linear combination of the columns of A, with the scalars that multiply the columns coming from $c$. The j'th row is given by the sum of the product $A_{j,r}c_{r}$, for all $r$. That is, $(Ac)_{j,1} = \sum_{r=1}^{n}A_{j,r}c_{r}$, as above.
+\end{proof}
+
+
+\begin{exercise}{13}
+  Prove that the distributive property holds for matrix addition and matrix multiplication. In other words, suppose $A,B,C,D,E$ and $F$ are matrices whose sizes ares such that $A(B+C)$ and $(D+E)F$ make sense. Prove that $AB+AC$ and $DE+EF$ both make sense and that $A(B+C)=AB+AC$ and $(D+E)F=DF+EF$.
+\end{exercise}
+\begin{proof}
+ First we define the sizes of all matrices so that $A(B+C)$ and $(D+E)F$ make sense, as it is assumed. Let $A$ be an m-by-n matrix, $B,C,D,E$ be n-by-p matrices and $F$ a p-by-m matrix.
+ 
+ We observe that $AB$ and $AB$ make sense because $A$ has $n$ columns and both $B$ and $C$ have $n$ rows. We can reason in the same way to conclude that $DE$ and $DF$ make sense.
+ 
+ Finally we prove $A(B+C)=AB+AC$. To do so, notice that $A(B+C)$ is a matrix given by entries $A(B+C)_{j,k} = \sum_{r=1}^{n}A_{j,r}(B+C)_{r,k} = \sum_{r=1}^{n}A_{j,r}(B_{r,k}+C_{r,k}) = \sum_{r=1}^{n}A_{j,r}B_{r,k}+\sum_{r=1}^{n}A_{j,r}C_{r,k}) = AB+AC$. The result for $(D+E)F=DF+EF$ can be derived in a similar way.
+\end{proof}
+
+
+\begin{exercise}{14}
+  Prove that matrix multiplication is associative. In other words, suppose $A,B,C$ are matrices such that $(AB)C$ makes sense. Prove that $A(BC)$ makes sense and that $(AB)C=A(BC)$.
+\end{exercise}
+\begin{proof}
+ First we define the sizes of $A,B$ and $C$ so that $(AB)C$ makes sense, as it is assumed. Let $A$ be an m-by-n matrix, $B$ be and n-by-p matrix and $C$ a p-by-q matrix.
+ 
+ We observe that $A(BC)$ makes sense because $B$ has $p$ columns and $C$ has $p$ rows. Then $BC$ is an n-by-q matrix. Likewise, since $A$ has $n$ columns, $A(BC)$ makes sense.
+ 
+ Finally we prove $(AB)C=A(BC)$. By definition, $(AB)C$ is the matrix with entries given by $(AB)C_{j,k} = \sum_{r=1}^{p}(AB)_{j,r}C_{r,k} = \sum_{r=1}^{p}\left(\sum_{s=1}^{n}A_{j,s}B_{s,r}\right)C_{r,k} = \sum_{r=1}^{p}\sum_{s=1}^{n}A_{j,s}B_{s,r}C_{r,k} = \sum_{s=1}^{n}\sum_{r=1}^{p}A_{j,s}B_{s,r}C_{r,k} =\\ \sum_{s=1}^{n}A_{j,s}\left(\sum_{r=1}^{p}B_{s,r}C_{r,k}\right) = A(BC)_{j,k}$. We were allowed to change the order of summation because they are finite sums.
+\end{proof}

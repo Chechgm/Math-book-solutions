@@ -1,0 +1,22 @@
+\subsection*{Chapter 3.B. Null spaces and ranges}
+\addcontentsline{toc}{subsection}{Chapter 3.B. Null spaces and ranges}
+
+
+\begin{exercise}{29}
+ Suppose $\phi\in\mathcal{L}(V,\mathbf{F})$. Suppose $u\in V$ is not in $\nullspace\phi$. Prove that $V=\nullspace\phi \oplus \{au: a\in \mathbf{F}\}$.
+\end{exercise}
+\begin{proof}
+ ($\subseteq$) Let $v\in V$. Then $\phi(v)=a\phi(u)$, where $a$ can be 0. First we prove that $v=w+au$ for $w\in\nullspace\phi$. Consider $v-au=w\in V$, we have $\phi(v-au)=\phi(w)=0$. So $w\in\nullspace\phi$. 
+ Now we prove that $\nullspace\phi\cap\{au:a\in\mathbf{F}\}=\{0\}$. To do so, notice that if $w\in\{au:a\in\mathbf{F}\}$, then $\phi(w)=\phi(au)\neq0$, so $w$ would not be in $\nullspace\phi$.
+ As a result, $v\in\nullspace\phi\oplus\{au:a\in\mathbf{F}\}$, and $V\subset\nullspace\phi\oplus\{au:a\in\mathbf{F}\}$.
+ 
+ ($\supseteq$) Let $v\in\nullspace\phi\oplus\{au:a\in\mathbf{F}\}$. Both $\nullspace\phi$ and $\{au:a\in\mathbf{F}\}$ are subspaces of $V$, so there exist vectors $v_{1},\dots,v_{n}\in\nullspace\phi$ and $a\in\mathbf{F}$, so that $v=au+v_{1}+\dots+v_{n}$ which is in $V$ because of the closure property of vector spaces. As a result,  $\nullspace\phi\oplus\{au:a\in\mathbf{F}\}\subseteq V$. And $V=\nullspace\phi \oplus \{au: a\in \mathbf{F}\}$, as required.
+\end{proof}
+
+
+\begin{exercise}{30}
+Suppose $\phi_{1}$ and $\phi_{2}$ are linear maps from $V$ to $\mathbf{F}$ that have the same null space. Show that there exists a constant $c\in\mathbf{F}$ such that $\phi_{1}=c\phi_{2}$
+\end{exercise}
+\begin{proof}
+We split the proof in two cases. First, if $\nullspace\phi_{1}=\nullspace\phi_{2}=V$, we have $\phi_{1}(v)=0=c\phi_{2}(v)$ for all $c\in\mathbf{F}$. Second, if there exists $v\in V$ with $\phi_{1}(v)\in\range\phi_{1}$ and $\phi_{2}(v)\in\range\phi_{2}$, with $\phi_{1}(v)\neq0$ and $\phi_{2}(v)\neq0$. We know there exists $u\in\mathbf{F}$ such that $u$ spans $\range\phi_{1}$ and $\range\phi_{2}$. Hence, there exist $a,b\in\mathbf{F}$ such that $\phi_{1}(v)=au$ and $\phi_{2}(v)=bu$. We know they are not 0, for otherwise, $v\in\nullspace\phi_{1}=\nullspace\phi_{2}$. We have $(1/a)\phi_{1}(v)=u$, $(1/b)\phi_{2}(v)=u$ and $\phi_{1}(v)=(a/b)\phi_{2}(v)$, as required.
+\end{proof}

@@ -1,0 +1,144 @@
+\subsection*{Chapter 3.F. Duality}
+\addcontentsline{toc}{subsection}{Chapter 3.F. Duality}
+
+
+\begin{exercise}{1}
+  Explain why every linear functional is either surjective or the zero map.
+\end{exercise}
+\begin{proof}
+ A linear functional $T$ of the vector space $V$ is an element of $\LLL(V,\bF)$. Since $\range T$ is a subspace of the codomain $\bF$, then $\dim\range T$ is either $1$ in which case $T$ is surjective, as $\dim\bF=1$, or $\dim\range T$ is $0$ in which case it is the zero map.
+\end{proof}
+
+\begin{exercise}{2}
+  Give three distinct examples of linear functionals on $\R^{[0,1]}$.
+\end{exercise}
+\begin{proof}
+ \begin{itemize}
+     \item The zero map.
+     \item The functional $\varphi:\R^{[0,1]}\rightarrow\R$ defined by $\varphi(f)=f(1)$.
+     \item The functional $\varphi:\R^{[0,1]}\rightarrow\R$ defined by $\varphi(f)=f(1)-f(0)$.
+ \end{itemize}
+\end{proof}
+
+\begin{exercise}{3}
+  Suppose $V$ is finite-dimensional and $v\in V$ with $v\neq 0$. Prove that there exists $\varphi\in V'$ such that $\varphi(v)=1$.
+\end{exercise}
+\begin{proof}
+ Consider a basis of $V$ extended from $v$: $v,v_2,\dots,v_n$, and the list\\ $1,w_2,\dots,w_n\in\bF$. From 3.5, we know there exists a linear map (in this case functional) $\varphi\in\LLL(V,\bF)$ such that $\varphi(v)=1$, as desired.
+\end{proof}
+
+\begin{exercise}{5}
+  Suppose $V_1,\dots,V_m$ are vector spaces. Prove that $(V_1\times\dots\times V_m)'$ and $V_1'\times\dots\times V_m'$ are isomorphic vector spaces.
+\end{exercise}
+\begin{proof}
+ From 3.E, we know that $\dim(V_1\times\dots\times V_m)'= \dim(\LLL(V_1,\bF)\times\dots\times \LLL(V_m,\bF))= \dim V_1+\dots\dim V_m$. Then by 3.59 we get the desired result.
+\end{proof}
+
+\begin{exercise}{7}
+  Suppose $m$ is a positive integer. Show that the dual basis of the basis $1,x,\dots,x^m$ of $\mathcal{P}_m(\R)$ is $\varphi_0,\varphi_1\dots,\varphi_m$, where $\varphi_j(p)=\frac{p^{(j)}(0)}{j!}$. Here $p^{(j)}$ denotes the $j$-th derivative of $p$, with the understanding that the $0$-th derivative of $p$ is $p$.
+\end{exercise}
+\begin{proof}
+ Let $p_j, p_k\in\{1,x,\dots,x^m\}$. We have $\varphi_j(p_j)= \frac{p_j^{(j)}(0)}{j!}= \frac{j!\cdot 1}{j!}= 1$. On the other hand, $\varphi_j(p_k)= \frac{p_j^{(j)}(0)}{j!}= \frac{j!\cdot 0^{k-j}}{j!}= 0$. Since this is valid for all $j$ and $k$, we get the desired result.
+\end{proof}
+
+\begin{exercise}{10}
+  Prove the first two bullet points in 3.101.
+
+  3.101 Algebraic properties of dual maps
+
+  \begin{itemize}
+      \item $(S+T)'=S'+T'$ for all $S,T\in\LLL(V,W)$
+      \item $(\lambda T)'=\lambda T'$ for all $\lambda\in\bF$ and all $T\in\LLL(V,W)$
+  \end{itemize}
+\end{exercise}
+\begin{proof}
+ \begin{itemize}
+     \item We have $(S+T)'(\varphi)= \varphi\circ(S+T)= \varphi\circ S + \varphi\circ T= S'(\varphi)+T'(\varphi)= S'+T'$, as required.
+     \item Also, $(\lambda T)'(\varphi)= \varphi\circ(\lambda T)= \lambda(\varphi\circ T)= \lambda(T'(\varphi))= \lambda T'$, as required.
+ \end{itemize}
+\end{proof}
+
+\begin{exercise}{12}
+  Show that the dual map of the identity map on $V$ is the identity map on $V'$
+\end{exercise}
+\begin{proof}
+ Let $I$ be the identity map on $V$. For $v\in V$, we have $I'(\varphi)(v)=\varphi\circ I(v)= \varphi(v)$, so that $I'(\varphi)=\varphi$, as required.
+\end{proof}
+
+\begin{exercise}{15}
+  Suppose $W$ is finite-dimensional and $T\in\LLL(V,W)$. Prove that $T'=0$ if and only if $T=0$
+\end{exercise}
+\begin{proof}
+ ($\Rightarrow$) To prove this by contrapositive, suppose $T\neq 0$. Then there exists $v\in V$ with $v\neq 0$ such that $Tv=w\neq 0$. By exercise 3, we know that there exists $\varphi\in W'$ such that $\varphi(w)=1$. Hence, $T'(\varphi)(v)= (\varphi\circ T)(v)= \varphi(T(v))= \varphi(w)= 1\neq 0$, as required.
+ 
+ ($\Leftarrow$) Suppose $T=0$, we have $T'(\varphi)= \varphi\circ T= \varphi(0)= 0$ because all linear maps map $0$ to $0$.
+\end{proof}
+
+\begin{exercise}{16}
+  Suppose $V$ and $W$ are finite-dimensional. Prove that the map that takes $T\in\LLL(V,W)$ to $T'\in\LLL(W',V')$ is an isomorphism of $\LLL(V,W)$ onto $\LLL(W',V')$.
+\end{exercise}
+\begin{proof}
+To prove this, we will show that the map $\Gamma:\LLL(V,W)\rightarrow\LLL(V',W')$ is injective, which in finite-dimensional spaces of the same dimension would imply that it is bijective. 
+
+We have $\dim\LLL(V,W)= (\dim V)(\dim W)= (\dim\LLL(V,\bF))(\dim\LLL(W,\bF))= \dim\LLL(V',W')$ so that they have the same dimensions.
+
+For injectivity, recall that injectivity is equivalent to $\null\Gamma=\{0\}$, and that by exercise 15, we have that $T=0$ if and only if $T'=0$, so that $\Gamma(T)=0$ whenever $T=0$. Hence $\Gamma$ is an isomorphism.
+\end{proof}
+
+\begin{exercise}{20}
+  Suppose $U$ and $W$ are subsets of $V$ with $U\subset W$. Prove that $W^0\subset U^0$.
+\end{exercise}
+\begin{proof}
+ Let $\varphi\in W^0$. Then $\varphi(w)=0$ for all $w\in W$, certainly $\varphi(u)=0$ for all $u\in U$, as $U\subset W$. Then $\varphi\in U^0$ and $W^0\subset U^0$.
+\end{proof}
+
+\begin{exercise}{32}
+  Suppose $T\in\LLL(V)$, and $u_1,\dots,u_n$ and $v_1,\dots,v_n$ are bases of $V$. Prove that the following are equivalent:
+  \begin{enumerate}
+      \item $T$ is invertible.
+      \item The columns of $\MMM(T)$ are linearly independent in $\bF^{n,1}$.
+      \item The columns of $\MMM(T)$ span $\bF^{n,1}$.
+      \item The rows of $\MMM(T)$ are linearly independent in $\bF^{1,n}$.
+      \item The rows of $\MMM(T)$ span $\bF^{1,n}$.
+  \end{enumerate}
+  Here $\MMM(T)$ means $\MMM(T,(u_1,\dots,u_n),(v_1,\dots,v_n))$.
+\end{exercise}
+\begin{proof}
+ $(1)\Rightarrow (2)$ Suppose $T$ is invertible. Then $T$ is surjective. This implies, by the Fundamental Theorem of Linear Maps, that $\dim V = \dim\range T$. By 3.117, $\dim\range T$ equals the column rank (the dimension of the span of the columns) of $\MMM(T)$ so that the columns are a basis of $\bF^{n,1}$ since they have the right size and span the space, and hence linearly independent.
+
+$(2)\Rightarrow (3)$ Suppose the columns of $\MMM(T)$ are linearly independent in $\bF^{n,1}$. Since they have the right size and are linearly independent (by assumption), then it is a basis of $\bF^{n,1}$. Thus the columns of $\MMM(T)$ span $\bF^{n,1}$.
+
+$(3)\Rightarrow (4)$ Suppose the columns of $\MMM(T)$ span $\bF^{n,1}$. By 3.118, the dimension of the span of the rows of $\MMM(T)$ is $n$. But this implies that the rows of $\MMM(T)$ are a basis of $\bF^{1,n}$ as it has the right dimensions and spans the space. Thus they are linearly independent.
+
+ $(4)\Rightarrow (5)$ Suppose the rows of $\MMM(T)$ are linearly independent in $\bF^{1,n}$. Since the rows are linearly independent and they have the right size, they are a basis of $\bF^{1,n}$. Hence, they span $\bF^{1,n}$.
+
+ $(5)\Rightarrow (1)$ Suppose the rows of $\MMM(T)$ span $\bF^{1,n}$. So that the rows of $\MMM(T)$ are a basis of $\bF^{n,1}$. By 3.118, the column rank of $\MMM(T)$ is also $n$, and by 3.117, $\dim\range T=n$. Since both $V$ and $\range T$ have the same dimension, $T$ is surjective, and by $3.69$, it is invertible.
+\end{proof}
+
+\begin{exercise}{33}
+Suppose $m$ and $n$ are positive integers. Prove that the function that takes $A$ to $A^\top$ is a linear map from $\bF^{m,n}$ to $\bF^{n,m}$. Furthermore, prove that this linear map is invertible.
+\end{exercise}
+\begin{proof}
+ Let $A,B\in\bF^{m,n}$. First, we have that $((A+B)^\top)_{k,j}= (A+B)_{j,k}= A_{j,k}+B_{j,k}= (A^\top)_{k,j}+(B^\top)_{k,j}$. Furthermore, if $\lambda\in\bF$, we have that $((\lambda A)^\top)_{k,j}= \lambda A_{j,k}= \lambda (A^\top)_{k,j}$.
+
+ To prove that the function is invertible, we will show that the function is its own inverse. We have $((A^\top)^\top)_{k,j}= (A^\top)_{j,k}= A_{k,j}$, as required.
+\end{proof}
+
+\begin{exercise}{34}
+ The \textbf{double dual space} of $V$, denoted $V''$, is defined to be the dual space of $V'$. In other words, $V''=(V')'$. Define $\Lambda:V\rightarrow V''$ by $(\Lambda v)(\varphi)=\varphi(v)$ for $v\in V$ and $\varphi\in V'$.
+ \begin{enumerate}
+     \item Show that $\Lambda$ is a linear map from $V$ to $V''$.
+     \item Show that if $T\in\LLL(V)$, then $T''\circ\Lambda=\Lambda\circ T$, where $T''=(T')'$.
+     \item Show that if $V$ is finite-dimensional, then $\Lambda$ is an isomorphism from $V$ onto $V''$.
+ \end{enumerate}
+ [Suppose $V$ is finite-dimensional. Then $V$ and $V'$ are isomorphic, but finding an isomorphism from $V$ onto $V'$ generally requires choosing a basis of $V$. In contrast, the isomorphism $\Lambda$ from $V$ onto $V'$ does not require a choice of basis and thus is considered more natural.]
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item Let $v,u\in V$ and $\varphi\in V'$. We have $(\Lambda(v+u))(\varphi)=\varphi(v+u)=\varphi(v)+\varphi(u)=(\Lambda v)(\varphi)+(\Lambda u)(\varphi)$.
+
+     Furthremore, if $\lambda\in\bF$, we have that $(\Lambda(\lambda v))(\varphi)=\varphi(\lambda v)=\lambda\varphi(v)=\lambda(\Lambda v)(\varphi)$.
+     \item We have $T''\circ\Lambda= T''\circ(\Lambda v)(\varphi)= T''\circ\varphi(v)= T'(\varphi)(v)$. On the other hand, $\Lambda\circ T= (\Lambda v)(\varphi)\circ T= \varphi(v)\circ T= T'(\varphi)(v)$, as required.
+     \item By exercise 16 we know that the maps that take $V$ to $V'$ and $V'$ to $(V')'$ are isomorphisms. Now the map between $V$ and $V''$ is the composition of these isomorphisms and since the composition of bijections is bijective, we have that this map itself is an isomorphic map. 
+ \end{enumerate}
+\end{proof}

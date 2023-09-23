@@ -1,0 +1,115 @@
+\subsection*{Chapter 5.C. Eigenspaces and diagonal matrices}
+\addcontentsline{toc}{subsection}{Chapter 5.C. Eigenspaces and diagonal matrices}
+
+
+\begin{exercise}{6}
+  Suppose $V$ is finite-dimension, $T\in\LLL(V)$ has $\dim V$ distinct eigenvalues, and $S\in\LLL(V)$ has the same eigenvectors as $T$ (not necessarily with the same eigenvalues). Prove that $ST=TS$.
+\end{exercise}
+\begin{proof}
+ Let $v$ be an arbitrary eigenvector of $S$ and $T$, and let $\lambda_S$ and $\lambda_T$ be the eigenvalues of $S$ and $T$ corresponding to $v$. We have the following:
+ \begin{align*}
+     STv &= S(\lambda_T v)\\
+     &= \lambda_T Sv\\
+     &= \lambda_T\lambda_S v\\
+     &= \lambda_S\lambda_T v\\
+     &= \lambda_S Tv\\
+     &= T(\lambda_S v)\\
+     &= TSv
+ \end{align*}
+ Since there are $\dim V$ eigenvalues, then we know that $v_1,\dots,v_n$ is a basis of $V$ and by Exercise 3.B.10, we know that both $Tv_1,\dots,Tv_n$ and $Sv_1,\dots,Sv_n$ span the ranges of $T$ and $S$, namely $V$. This implies the above conclusion works for all $v\in V$.
+\end{proof}
+
+\begin{exercise}{7}
+  Suppose $T\in\LLL(V)$ has a diagonal matrix $A$ with respect to some basis of $V$ and that $\lambda\in\bF$. Prove that $\lambda$ appears on the diagonal of $A$ precisely $\dim E(\lambda, T)$ times.
+\end{exercise}
+\begin{proof}
+ From 5.41, we know that if $T$ is diagonalisable, then there exists a basis $v_1,\dots,v_n$ of $V$ consisting of eigenvectors of $T$. Consider the matrix of $T$ with respect to this eigenbasis. Let $\lambda_i$ be the eigenvalue corresponding to $v_i$. Then $Tv_i=\lambda_iv_i$, and by the remark in section 3.C., page 71, the $k$-th column of $A$ consists of the scalars needed to write $Tv_k$ as a linear combination of $v_1,\dots,v_n$. Since $\dim E(\lambda_i,T)$ is precisely the eigenvectors corresponding to $\lambda_i$, then $\lambda_i$ appears exactly $\dim E(\lambda, T)$ times in the diagonal of A.
+\end{proof}
+
+\begin{exercise}{9}
+  Suppose $T\in\LLL(V)$ is invertible. Prove that $E(\lambda,T)=E(1/\lambda,T^{-1})$ for every $\lambda\in\bF$ with $\lambda\neq 0$.
+\end{exercise}
+\begin{proof}
+ Suppose $\lambda$ is an eigenvalue of $T$ with $v_1,\dots,v_n$ eigenvectors. For any eigenvector $v_i$, we have $Tv_i= \lambda v_i$ so that $T^{-1}Tv_i=v_i=\lambda T^{-1}v_i$ and $T^{-1}v_i=(1/\lambda)v_i$ so that $1/\lambda$ is an eigenvalue of $T^{-1}$  with corresponding eigenvector $v_i$. Since this holds for all eigenvectors associated with $\lambda$, then $E(\lambda,T)=E(1/\lambda, T^{-1})$, as required.
+
+ Contrast the solution of this exercise with the solution to 5.A.21, where we proved that $\lambda$ is an eigenvalue of $T$ if and only if $1/\lambda$ is an eigenvalue of $T^{-1}$, and that these operators have the same eigenvectors.
+\end{proof}
+
+\begin{exercise}{16}
+  The Fibonacci sequence $F_1,F_2,\dots$ is defined by 
+  \[F_1=1,,\ F_2=1,\quad \text{and}\quad F_n=F_{n-2}+F_{n-1}\, \text{for }n\geq 3 \]
+  Define $T\in\LLL(\R^2)$ by $T(x,y)=(y,x+y)$.
+  \begin{enumerate}
+      \item Show that $T^n(0,1)=(F_n,F_{n+1})$ for each positive integer $n$.
+      \item Find the eigenvalues of $T$.
+      \item Find a basis of $\R^2$ consisting of eigenvectors of $T$.
+      \item Use the solution to part 3 to compute $T^n(0,1)$. Conclude that 
+      \[F_n=\frac{1}{\sqrt{5}}\left[\left(\frac{1+\sqrt{5}}{2}\right)^n-\left(\frac{1-\sqrt{5}}{2}\right)^n\right]\]
+      for each positive integer $n$.
+      \item Use part 4 to conclude that for each positive integer $n$, the Fibonacci number $F_n$ is the integer that is closest to 
+      \[\frac{1}{\sqrt{5}}\left(\frac{1+\sqrt{5}}{2}\right)^n.\]
+  \end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+      \item We will proceed by induction. For the base case use $n=1$, we have $T(0,1)=(1,1)=(F_1,F_2)$, as required. Now suppose the equality holds for all $m<n$, so that $T^{n-1}(0,1)=(F_{n-1},F_n)$. Applying $T$ to both sides of the equation, we obtain $T^n(0,1)=T(F_{n-1},F_n)=(F_n, F_n+F_{n-1})=(F_n,F_{n+1})$, as it was to be proven.
+      \item The eigenvalues of $T$ can be found as the set $\lambda$ so that $\det(T-\lambda I)=0$. We have
+      \[\lvert T-\lambda I\rvert=
+      \left\lvert 
+      \begin{pmatrix}
+          -\lambda & 1\\
+          1 & 1-\lambda
+      \end{pmatrix}
+      \right\rvert=
+      -\lambda(1-\lambda)-1= \lambda^2-\lambda-1.\]
+      This polynomial has as solution $\lambda=(1\pm\sqrt{5})/2$.
+      \item We can find the eigenvectors of $T$ by replacing the solution of 2 in $(T-\lambda I)$. Hence, the eigenvector corresponding to $\lambda_1=(1+\sqrt{5})/2$ is given by the solution to
+      \[
+      \begin{pmatrix}
+          -(1+\sqrt{5})/2 & 1\\
+          1 & 1-(1+\sqrt{5})/2
+      \end{pmatrix}
+      \begin{pmatrix}
+          x\\
+          y
+      \end{pmatrix}=
+      0.
+      \]
+      Which has as solution $v_1=(-(1-\sqrt{5})/2, 1)$. Following the same approach, we find that the eigenvector for $\lambda_2=(1-\sqrt{5})/2$ is given by $v_2=(-(1+\sqrt{5})/2, 1)$. By inspection, we see these two vectors are not linearly dependent, so that they form a basis of $\R^2$.
+      \item To find $T^n(0,1)$, we will diagonalise $T=SDS^{-1}$ and then use $T^n=SD^nS^{-1}$ which is easy to compute. We have that
+      \begin{align*}
+      S&=
+      \begin{pmatrix}
+        -(1-\sqrt{5})/2 & -(1+\sqrt{5}/2\\
+        1 &1
+      \end{pmatrix},\quad
+      S^{-1}=
+      \begin{pmatrix}
+        \sqrt{5}/5 & (5+\sqrt{5})/10\\
+        -\sqrt{5}/5 &(5-\sqrt{5})/10
+      \end{pmatrix},\quad\text{and}\\
+      D&=
+      \begin{pmatrix}
+        (1+\sqrt{5})/2 & 0\\
+        0  & (1-\sqrt{5})/2
+      \end{pmatrix}.       
+      \end{align*}
+      So that 
+      \begin{align*}
+      \setlength{\arraycolsep}{1pt}
+      \renewcommand{\arraystretch}{0.8}
+      &T^n=SD^nS^{-1}=\\
+      &{\small \begin{pmatrix}
+        \frac{1}{2}(\frac{1}{2}(1-\sqrt{5})^n+\frac{\sqrt{5}}{10}(\frac{1}{2}(1-\sqrt{5}))^n + \frac{\phi^n}{2} - \frac{\sqrt{5}\phi^n}{10} & -\frac{1}{5}(\sqrt{5}(\frac{1}{2}(1-\sqrt{5})^n-\sqrt{5}\phi^n \\
+        -\frac{1}{5}(\sqrt{5}(\frac{1}{2}(1-\sqrt{5}))^n -\sqrt{5}\phi^n  & \frac{1}{2}(\frac{1}{2}(1-\sqrt{5}))^n - \frac{\sqrt{5}}{10}(\frac{1}{2}(1-\sqrt{5}))^n + \frac{\phi^n}{2} + \sqrt{5}\phi^n 
+      \end{pmatrix}},
+      \end{align*}
+    where $\phi=\frac{1}{2}(1+\sqrt{5})$ is the golden ratio. Since $T^n(0,1)=(F_n,F_{n+1})$, as we proved in exercise 1, then the $(2,1)$ element of $T^n$ is $F_n$. That is, 
+    \begin{align*}
+        F_n &= -\frac{1}{5}(\sqrt{5}(\frac{1}{2}(1-\sqrt{5}))^n -\sqrt{5}\phi^n\\
+        &= \frac{1}{\sqrt{5}}\left(\phi^n-\left(\frac{1-\sqrt{5}}{2}\right)^n\right)\\
+        &= \frac{1}{\sqrt{5}}\left(\left(\frac{1+\sqrt{5}}{2}\right)^n-\left(\frac{1-\sqrt{5}}{2}\right)^n\right).
+    \end{align*}
+      \item Since $\lvert(1-\sqrt{5})/2\rvert< 1$, for any power of $n$, we have that $\lvert((1-\sqrt{5})/2)^n\rvert<\lvert(1-\sqrt{5})/2\rvert\approx 0.6$. Then $((1-\sqrt{5})/2)^n\to 0$ as $n\to \infty$, then as $n$ grows larger, we are left only with the first element of $F_n$.
+  \end{enumerate}
+\end{proof}

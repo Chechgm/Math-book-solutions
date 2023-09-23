@@ -1,0 +1,82 @@
+\subsection*{Chapter 5.A. Invariant subspace}
+\addcontentsline{toc}{subsection}{Chapter 5.A. Invariant subspace}
+
+
+\begin{exercise}{1}
+  Suppose $T\in\LLL(V)$ and $U$ is a subspace of $V$.
+  \begin{enumerate}
+      \item Prove that if $U\subset\nullspace T$, then $U$ is invariant under $T$.
+      \item Prove that if $\range T\subset U$, then $U$ is invariant under $T$.
+  \end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item Let $u\in U\subset\nullspace T$. Then $Tu=0$. Since $U$ is a subspace of $V$, then $0\in U$ and $U$ is invariant under $T$.
+     \item Let $u\in U$. We have that $Tu\in\range T\subset U$, so that $U$ is invariant under $T$.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{4}
+  Suppose that $T\in\LLL(V)$ and $U_1,\dots,U_m$ are subspaces of $V$ invariant under $T$. Prove that $U_1+\dots+U_m$ is invariant under $T$.
+\end{exercise}
+\begin{proof}
+ Let $u\in U_1+\dots+U_m=U$ so that $u=u_1+\dots+u_m$ for $u_i\in U_i$. We have $T(u)=T(u_1+\dots+u_m)=T(u_1)+\dots+T(u_m)$. Since each $U_i$ is invariant under $T$, we have that $T(u_i)\in U_i$ and hence $Tu\in U$, so that $U$ is invariant, as required.
+\end{proof}
+
+\begin{exercise}{5}
+  Suppose $T\in\LLL(V)$. Prove that the intersection of every collection of subspaces of $V$ invariant under $T$ is invariant under $T$.
+\end{exercise}
+\begin{proof}
+ Let $u\in\cap_{i\in\mathcal{I}}U_i$. Then we know that $u$ is in all $U_i$ but because each $U_i$ is invariant under $T$, we know that $Tu\in U_i$. Thus $\cap_{i\in\mathcal{I}}U_i$ is invariant too, as for any element in it $Tu$ belongs to it.
+\end{proof}
+
+\begin{exercise}{6}
+  Prove or give a counterexample: if $V$ is finite-dimensional and $U$ is a subspace of $V$ that is invariant under every operator on $V$, then $U=\{0\}$ or $U=V$
+\end{exercise}
+\begin{proof}
+ If $\dim V=1$, then the assertion follow, so let $\dim V=n\geq 2$. By 3.59 we can work with $\bF^n$. Let $U$ be any proper subspace of $\bF^n$, such that $\dim U=m<n$, we have $U\cong\bF^m$. Consider the linear map $T:F^n\rightarrow F^n$ given by $T(x_1,\dots,x_n)=(0,\dots,\underbrace{x_m}_{\text{position $m+1$}},\dots,0)$. Then for any $u\in U$, $Tu\notin U$ so that $U$ is not invariant under $T$.
+\end{proof}
+
+\begin{exercise}{15}
+  Suppose $T\in\LLL(V)$. Suppose $S\in\LLL(V)$ is invertible
+  \begin{enumerate}
+      \item Prove that $T$ and $S^{-1}TS$ have the same eigenvalues.
+      \item What is the relationship between the eigenvectors of $T$ and the eigenvectors of $S^{-1}TS$?
+  \end{enumerate}
+\end{exercise}
+\begin{proof}
+\begin{enumerate}
+    \item Suppose $\lambda$ is an eigenvector of $T$. Then there exists a vector $v\neq 0$ such that $Tv=\lambda v$. Now, because $S$ is invertible, it is surjective, so that there is a vector $w$ with $v=Sw$. With this, we can write the previous equation as $TSw=\lambda(Sw)$, which implies $S^{-1}TSw=S^{-1}(\lambda(Sw))=\lambda (S^{-1}Sw)=\lambda w$ so that $\lambda$ is an eigenvalue of $S^{-1}TS$, as desired.
+    \item From the previous exercise, we saw that $v=Sw$, so the eigenvector of $T$ equals mapping of the eigenvector of $S^{-1}TS$ by $S$.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise}{16}
+  Suppose $V$ is a complex vector space, $T\in\LLL(V)$, and the matrix of $T$ with respect to some basis $V$ contains only real entries. Show that if $\lambda$ is an eigenvalue of $T$, then so is $\bar{\lambda}$
+\end{exercise}
+\begin{proof}
+ We have $Tv=\lambda v$. Consider the conjugate of this equality, given by $\overline{Tv}=\overline{T}\overline{v}=\overline{\lambda}\overline{v}=\overline{\lambda v}$. Since the entries of $T$ are all real, we have that $\overline{T}=T$ and $T\overline{v}=\overline{\lambda}\overline{v}$ so that $\overline{\lambda}$ is an eigenvalue of $T$.
+\end{proof}
+
+\begin{exercise}{21}
+  Suppose $T\in\LLL(V)$ is invertible.
+  \begin{enumerate}
+      \item Suppose $\lambda\in\bF$ with $\lambda\neq 0$. Prove that $\lambda$ is an eigenvalue of $T$ if and only if $1/\lambda$ is an eigenvalue of $T^{-1}$.
+      \item Prove that $T$ and $T^{-1}$ have the same eigenvectors.
+  \end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item ($\Rightarrow$) Suppose $\lambda$ is an eigenvalue of $T$, with corresponding eigenvector $v$. We have $Tv=\lambda v$ so that $(T^{-1}T)v=Iv=T^{-1}(\lambda v)=\lambda T^{-1}v$. Dividing both sides of the equation by $\lambda$, we get $(1/\lambda)v=T^{-1}v$ so that $\lambda$ is an eigenvalue of $T^{-1}$ too.
+
+     ($\Leftarrow$) We can follow the same argument as above in the other direction.
+     \item Notice that in the above proof, in both cases $v$ was eigenvector of $T$ and $T^{-1}$, as desired.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{23}
+  Suppose $V$ is finite-dimensional and $S,T\in\LLL(V)$. Prove that $ST$ and $TS$ have the same eigenvalues.
+\end{exercise}
+\begin{proof}
+ Suppose $\lambda$ is an eigenvalue of $ST$ corresponding to the eigenvector $v$. We then have that $(ST)v=\lambda v$, which implies $T(ST)v=T(\lambda v)$, if we let $Tv=w$, we have $(TS)w=\lambda w$ meaning that $\lambda$ is also an eigenvalue of $TS$ corresponding to the eigenvector $w$.
+\end{proof}

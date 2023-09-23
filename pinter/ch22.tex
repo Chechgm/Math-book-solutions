@@ -1,0 +1,180 @@
+\subsection*{Chapter 22. Factoring into Primes}
+\addcontentsline{toc}{subsection}{Chapter 22. Factoring into Primes}
+
+
+\begin{exercise}{A Properties of the relation ``$a$ divides $b$''}
+Prove the following, for any integers $a,b$ and $c$
+\begin{enumerate}
+    \item If $a\vert b$ and $b\vert c$, then $a\vert c$.
+    \item $a\vert b$ iff $a\vert (-b)$ iff $(-a)\vert b$.
+    \item $1\vert a$ and $(-1)\vert a$.
+    \item $a\vert 0$.
+    \item If $c\vert a$ and $c\vert b$, then $c\vert (ax+by)$ for all $x,y\in \Z$.
+    \item If $a>0$ and $b>0$ and $a\vert b$, then $a\leq b$.
+    \item $a\vert b$ iff $ac\vert bc$, when $c\neq 0$.
+    \item If $a\vert b$ and $c\vert d$, then $ac\vert bd$.
+    \item Let $p$ be a prime. If $p\vert a^{n}$ for some $n>0$, then $p\vert a$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+    \item We have that there exist integers $r,s$ such that $b=ra$ and $c=sb$. Then $c=(sr)a$ and $a\vert c$.
+    \item Suppose $a\vert b$, then there exists an integer $r$ such that $b=ra$, this implies $-b=(-r)a$ so that $a\vert -b$.
+
+    Suppose $a\vert -b$, then there exists an integer $r$ such that $-b=ra$. Multiplying both sides by $-1$ we have that $b=r(-a)$ so that $-a\vert b$.
+
+    Suppose $-a\vert b$, then there exists an integer $r$ such that $b=r(-a)$. We have $b=(-r)a$ so that $a\vert b$.
+    \item Since $a$ is an integer, $a=1a$. We have $a=(-a)(-1)$, so that $-1\vert a$.
+    \item We have $0=0a$, so that $a\vert 0$.
+    \item We have integers $r$ and $s$ such that $a=rc$ and $b=sc$. For any $x,y\in\Z$, we then have $xa=(xr)c$ and $yb=(ys)c$ and adding the first equation to the second, $xa+yb=(xr+ys)c$ so that $c\vert (ax+by)$.
+    \item There exists an integer $r$ such that $b=ra$. Because both $a$ and $b$ are positive, then $r$ must be positive too (otherwise $ra$ would be negative and $b$ would be negative). Then we have that $b\geq a$ because $r\geq 1$.
+    \item Suppose $c\neq 0$.
+
+    ($\Rightarrow$) Suppose there exists $r\in\Z$ such that $b=ra$, we have $cb=rca$, such that $ac\vert bc$.
+
+    ($\Leftarrow$) Suppose there exists $r\in\Z$ such that $bc=rac$, by the cancellation property, $b=ra$ so that $a\vert b$.
+    \item There exists integers $r,s$ such that $b=ar$ and $d=sc$. Multiplying both equations gives us $bd=(rs)ac$ so that $ac\vert bd$.
+    \item By Corollary 1, $p$ must divide at least one of the factors of $a^{n}$. Since all the factors of $a^{n}$ are $a$, then $p\vert a$.
+\end{enumerate}
+\end{proof}
+
+
+\begin{exercise}{B Properties of the gcd}
+Prove the following, for any integers $a,b$ and $c$. For each of these problems, you will need only the definition of the gcd.
+\begin{enumerate}
+    \item If $a>0$ and $a\vert b$, then $\gcd(a,b)=a$.
+    \item $\gcd(a,0)=a$, if $a>0$.
+    \item $\gcd(a,b)=\gcd(a,b+xa)$ for any $x\in \Z$.
+    \item Let $p$ be a prime. Then $\gcd(a,p)=1$ or $p$ (Explain).
+    \item Suppose every common divisor of $a$ and $b$ is a common divisor of $c$ and $d$, and viceversa. Then $\gcd(a,b)=\gcd(c,d)$.
+    \item If $\gcd(ab,c)=1$, then $\gcd(a,c)=1$ and $\gcd(b,c)=1$.
+    \item Let $\gcd(a,b)=c$. Write $a=ca'$ and $b=cb'$. Then $\gcd(a',b')=1$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+    \item i) We have that $a\vert b$ and $a\vert a$.
+
+    ii) Let $u$ be an integer such that $u\vert a$ and $u\vert b$. But since $u\vert a$, then $\gcd(a,b)=a$.
+    \item i) We know $a\vert a$ and $a\vert 0$ (from A.4).
+
+    ii) Let $u$ be an integer with $u\vert a$ and $u\vert 0$. Since $u\vert a$, then $\gcd(a,0)=a$.
+    \item Let $t=\gcd(a,b)$, so that $t\vert a$, $t\vert b$, and for any $u\in\Z$ such that $u\vert a$ and $u\vert b$, it is also the case that $u\vert t$.
+
+    i) From A.5., we have $t\vert a$ and $t\vert b+xa$.
+
+    ii) From A.5. we have that any $u$ which has $u\vert a$ and $u\vert b$ has also $u\vert b+xa$, but by assumption $u\vert t$, hence $t=\gcd(a,b+xa)=\gcd(a,b)$
+    \item If $a$ and $p$ are relatively prime, then $\gcd(a,p)=1$. If they are not relatively prime, then $a=pm$ for some integer $n$. We have:
+
+    i) $p\vert p$ and $p\vert a$.
+
+    ii) If $u\vert p$ and $u\vert a$, then $\gcd(a,p)=p$, as required.
+    \item Let $t=\gcd(a,b)$. Then $t\vert a$, $t\vert b$ and for $u$ with $u\vert a$ and $u\vert b$, we have that $u\vert t$. By hypothesis, $t\vert c, t\vert d u\vert c$ and $u\vert d$, but because $u\vert t$, then $t=\gcd(c,d)$, as required.
+    \item By Theorem 3, there exist integers $k$ and $l$ such that $1=kab+lc$. But this implies $1=(ka)b+lc$ and $1=(kb)a+lc$, so that $\gcd(a,c)=\gcd(b,c)=1$.
+    \item By Theorem 3, there exist integers $k$ and $l$ such that $c=ka+bl=kca'+lcb'$. This implies $1=ka'+lb'$, so that $\gcd(a',b')=1$, as required.
+\end{enumerate}
+\end{proof}
+
+
+\begin{exercise}{C Properties of relatively prime integers}
+Prove the following, for all integers $a,b,c,d,r$ and $s$. (Theorem 3 will be helpful).
+\begin{enumerate}
+    \item If there are integers $r$ and $s$ such that $ra+sb=1$, then $a$ and $b$ are relatively prime.
+    \item If $\gcd(a,c)=1$ and $c\vert ab$, then $c\vert b$. (Reason as in the proof of Euclid's lemma).
+    \item If $a\vert d$ and $c\vert d$ and $\gcd(a,c)=1$ and $ac\vert d$.
+    \item If $d\vert ab$ and $d\vert cb$, where $\gcd(a,c)=1$, then $d\vert b$.
+    \item If $d=\gcd(a,b)$ where $a=dr$ and $b=ds$, then $\gcd(r,s)=1$.
+    \item If $\gcd(a,c)=1$ and $\gcd(b,c)=1$, then $\gcd(ab,c)=1$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+    \item Suppose there are integers $r$ and $s$ such that $ra+sb=1$. This is equivalent to saying that $\gcd(a,b)=1$, so that $1\vert a$, $1\vert b$ and for any integer $u$ such that $u\vert a$ and $u\vert b$, then it holds that $u\vert 1$, because in $\gcd$ we choose the positive integer that holds those conditions, then it must be the case that $u$ is positive or otherwise it could not be the $\gcd$ between $a$ and $b$. Because $u$ is positive, and $u$ divides $1$, then $u$ must be $1$ and then the only integers that divide $a$ and $b$ are $1$ and $-1$. Thus, $a$ and $b$ are coprime.
+    \item We have $r,s\in\Z$ such that $ar+cs=1$. Furthermore, there exists an integer $k$ with $ab=ck$. We then have $abr+cbs=ckr+cbs=c(kr+bs)=b$, so that $c\vert b$.
+    \item By hypothesis, there exist integers $k,l,r$ and $s$ such that $d=ak, d=cl$ and $ar+cs=1$. We have $adr+cds=aclr+caks=ac(lr+ks)=d$ so that $ac\vert d$.
+    \item By hypothesis, there exist integers $k,l,r$ and $s$ such that $ab=dk, cb=dl$ and $ar+cs=1$. We have $abr+cbs=dkr+dls=d(kr+ls)=b$ so that $d\vert b$.
+    \item There exist integers $k$ and $l$ such that $ak+bl=d$, then we have $drk+dsl=d$, hence $rk+sl=1$ and $\gcd(r,s)=1$.
+    \item By hypothesis, there exist integers $k,l,r$ and $s$ such that $ak+cl=1$ and $br+cs=1$. Multiplying these equations together, we get $1=(ak+cl)(br+cs)=ab(kr)+c(aks+lbr+lcs)$, thus $\gcd(ab,c)=1$.
+\end{enumerate}
+\end{proof}
+
+
+\begin{exercise}{F Least common multiples}
+A least common multiple of two integers $a$ and $b$ is a positive integer $c$ such that (i) $a\vert c$ and $b\vert c$; (ii) if $a\vert x$ and $b\vert x$, then $c\vert x$.
+\begin{enumerate}
+    \item Prove: the set of all the common multiples of $a$ and $b$ is an ideal of $\Z$.
+    \item Prove: every pair of integers $a$ and $b$ has a least common multiple. [Hint: Use part 1].
+
+    The positive least common multiple of $a$ and $b$ is denoted by $\lcm(a,b)$.
+
+    Prove the following for all positive integers $a,b$ and $c$:
+    \item $a\lcm(b,c)=\lcm(ab,ac)$.
+    \item If $a=a_{1}c$ and $b=b_{1}c$ where $c=\gcd(a,b)$, then $\lcm(a,b)=a_{1}b_{1}c$.
+    \item $\lcm(a,ab)=ab$.
+    \item If $\gcd(a,b)=1$, then $\lcm(a,b)=ab$
+    \item If $\lcm(a,b)=ab$, then $\gcd(a,b)=1$.
+    \item Let $\gcd(a,b)=c$. Then $\lcm(a,b)=ab/c$.
+    \item Let $\gcd(a,b)=c$ and $\lcm(a,b)=d$. Then $cd=ab$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+    \item i) Subtraction: Let $c$ and $d$ be common multiples of $a$ and $b$. Then $a\vert c, b\vert c, a\vert d$ and $b\vert d$. From A.5, $a\vert c-d$ and $b\vert c-d$, hence $c-d$ is a common multiple of $a$ and $b$.
+
+    ii) Absorption: Let $k\in\Z$ and $c$ be a common multiple of $a$ and $b$, so that $a\vert c, b\vert c$. By A.3, $1\vert k$ so that by A.8, $a\vert ck$ and $b\vert ck$. As a result, $ck$ is a common multiple of $a$ and $b$ and the subring absorbs elements in $\Z$.
+    \item We have that the set $K$ of common multiples of $a$ and $b$ is nonempty because $ab$ is an element of it. Furthermore, we assumed all elements of $K$ are positive. By the well-ordering principle, $K$ has a least element, $\lcm(a,b)$.
+    \item Let $x=\lcm(b,c)$. Then $b\vert x, c\vert x$ and for any $u$ such that $b\vert u$ and $c\vert u$, it holds that $x\vert u$. By A.7 we have that $ab\vert ax$ and $ac\vert ax$. We also have that $ab\vert au$ and $ac\vert au$ implies $ax\vert au$. Hence, $ax=a\lcm(a,b)=\lcm(ab,ac)$
+    \item We have $a\vert a_{1}b_{1}c$ because $a\vert ab_{1}$, likewise $b\vert a_{1}b_{1}c$. 
+
+    Since $\gcd(a,b)=c$, there exist integers $k$ and $l$ such that $c=ka+bl=ka_{1}c+lb_{1}c$, so that $1=ka_{1}+lb_{1}$. Now suppose $a\vert u$ and $b\vert u$, so that $u=a'a=a'a_{1}c$ and $u=b'b=b'b_{1}c$. We then have $u= u(ka_{1}+lb_{1})= kua_{1}+lub_{1}= kb'a_{1}b_{1}c+la'a_{1}b_{1}c= a_{1}b_{1}c(kb'+la')$, so that $a_{1}b_{1}c\vert u$ and $\lcm(a,b)=a_{1}b_{1}c$.
+    \item We have $a\vert ab$ and $ab\vert ab$. Suppose $a\vert u$ and $ab\vert u$, then we have $\lcm(a,ab)=ab$.
+    \item We have $a\vert ab$ and $b\vert ab$. Suppose $a\vert u$ and $b\vert u$, so that $u=a'a$ and $u=b'b$. Because $\gcd(a,b)=1$, there exist integers $k$ and $l$ such that $1=ka+lb$. We then have $u=u(ka+lb)= kua+lub= kb'ab+la'ab= ab(kb'+la')$ so that $ab\vert u$ and $\lcm(a,b)=ab$.
+    \item From 8 we have that $\lcm(a,b)=ab/\gcd(a,b)=ab/1=ab$
+    \item Since $\gcd(a,b)=c$, then $c\vert a$ and $c\vert b$ so that $a=a'c$ and $b=b'c$. We have $a\vert ab/c$ because $a=ab/c=ab'c/c=ab'$, likewise $b\vert ab/c$. 
+
+    Because $\gcd(a,b)=c$, there exist integers $k$ and $l$ such that $c=ka+lb$, implying $c=cka'+clb'$ so $1=ka'+lb'$. Now suppose $a\vert u$ and $b\vert u$ for some integer $u$ such that $u=ra$ and $u=sb$ for some integers $r$ and $s$. 
+    
+    We have $u =u(ka'+lb')= kua'+lub'= ksba'+lrab'= ks(c/c)ab'+lr(c/c)a'b= ksab/c+lrab/c= ab/c(ks+lr)$ so that $ab/c\vert u$ and $\lcm(a,b)=ab/c$.
+    \item Using the previous result, we have that $\lcm(a,b)=d=ab/\gcd(a,b)=ab/c$, then $dc=ab$, as required.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise}{G Ideals in $\Z$}
+Prove the following:
+\begin{enumerate}
+    \item $\langle n\rangle$ is a prime ideal iff $n$ is a prime number.
+    \item Every prime ideal of $\Z$ is a maximal ideal. [Hint: If $\langle p\rangle\subseteq\langle a\rangle$, but $\langle p\rangle\neq\langle a\rangle$, explain why $\gcd(p,a)=1$ and conclude that $1\in\langle a\rangle$]. Assume the ideal is not $\{0\}$.
+    \item For every prime number $p, \Z_{p}$ is a field. [Hint: remember $\Z_{p}=\quot{\Z}{\langle p\rangle}$. Use Exercise 4, chapter 19].
+    \item If $c=\lcm(a,b)$, then $\langle a\rangle\cap\langle b\rangle=\langle c\rangle$.
+    \item Every homomorphic image of $\Z$ is isomorphic to $\Z_{n}$ for some $n$.
+    \item Let $G$ be a group and let $a,b\in G$. Then $S=\{n\in \Z:ab^{n}=b^{n}a\}$ is an ideal of $\Z$.
+    \item Let $G$ be a group, $H$ a subgroup of $G$ and $a\in G$. Then $S=\{n\in\Z:a^{n}\in H\}$ is an ideal of $\Z$.
+    \item If $\gcd(a,b)=d$, then $\langle a\rangle+\langle b\rangle =\langle d\rangle$. (Note: If $J$ and $K$ are ideals of a ring $A$, then $J+K=\{x+y:x\in J\ \text{and}\ y\in K\}$
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+    \item ($\Rightarrow$) If $\brackets{n}$ is a prime ideal, then if $xy\in\brackets{n}$ we have that either $x\in\brackets{n}$ or $y\in\brackets{n}$ this implies that if $xy=kn$ for some integer $k$, then either $x=rn$ or $y=sn$ for some integers $r$ and $s$. In other words, if $n\vert xy$ then either $n\vert x$ or $n\vert y$ so that $n$ is prime.
+
+    ($\Leftarrow$) Suppose $n$ is a prime number. Consider $xy\in\brackets{n}$, with $xy=nk$ for some integer $k$. By the unique factorization into primes, $n\vert x$ and $x\in\brackets{n}$ or $n\vert y$ and $y\in\brackets{n}$.
+    \item Suppose, for the sake of contradiction, that $\brackets{p}$ is a prime ideal such that $\brackets{p}\subseteq\brackets{a}$ and $\brackets{p}\neq\brackets{a}$. Then $p=ak$ for some integer $k$, because of 1). This is only possible if either $a=1$ and $k=p$, or $a=p$ and $k=1$ but only the first option is possible as we stated that $\brackets{p}\neq\brackets{a}$. Since $\brackets{a}=\brackets{1}=\Z$, then we get that $\brackets{p}$ is maximal because $\Z$ is the only ideal that contains it.
+    \item We know that $\brackets{p}$ is a prime ideal by 1), and a maximal ideal by 2). At the end of chapter 19, we proved that if $A$ is a commutative ring with unity (like $\Z$), then $J$ is a maximal ideal of $A$ (like $\brackets{p}$ if and only if $\quot{A}{J}$ ($\quot{\Z}{\brackets{p}}=\Z_{p}$) is a field.
+    \item By definition $a\vert c, b\vert c$, and for any integer $u$ such that $a\vert u$ and $b\vert u$, we have that $c\vert u$. So that $c=ra$ and $c=sb$ for $r,s\in\Z$.
+
+    Every element of $\brackets{a}$ is of the form $ax$ and every element of $\brackets{b}$ is of the form $by$ for all $x,y\in\Z$. Now the nonempty set $\brackets{a}\cap\brackets{b}$ contains $c=ra=sb$. Furthermore, $c$ is the least positive element of $\brackets{a}\cap\brackets{b}$, because of the conditions stated in the paragaph above. Finally, $kc=kra=ksb\in\brackets{a}\cap\brackets{b}$ for all $k$, so that $\brackets{a}\cap\brackets{b}=\brackets{c}$.
+    \item Recall that $\Z_{n}=\quot{Z}{\brackets{n}}$. By Theorem 1, all ideals of $\Z$ are principal, that is, all ideals of $\Z$ have the form $\brackets{n}$ for some $n$. By the Fundamental Homomorphism Theorem, $\Z\cong \quot{\Z}{J}$ for any ideal $J$ of $\Z$, but this implies $\Z\cong \quot{\Z}{\brackets{n}}= \Z_{n}$, as required.
+    \item Let $x, y\in S$, so that $ab^{x}=b^{x}a$ and $ab^{y}=b^{y}a$.
+    
+    i) Subtraction: We have $ab^{x-y}=ab^{x}b^{-y}=b^{x}ab^{-y}=b^{x}b^{-y}a=b^{x-y}a$, so that $x-y\in S$.
+
+    ii) Absorption: Let $k\in\Z$. Consider $ab^{kx}=a\underbrace{b^{x}\dots b^{x}}_{k\ \text{times}}=b^{x}a\underbrace{b^{x}\dots b^{x}}_{k-1\ \text{times}}=\dots=\underbrace{b^{x}\dots b^{x}}_{k\ \text{times}}a=b^{kx}a$, so that $kx\in S$.
+    \item Suppose $x,y\in\S$, then $a^{x},a^{y}\in H$. 
+
+    i) Subtraction: $H$ is a group so it is closed under negatives and multiplication, hence, $a^{x}a^{y}=a^{x-y}\in H$ and $x-y\in S$.
+
+    ii) Absorption: let $k\in\Z$. Because $H$ is closed under multiplication, $\underbrace{a^{x}\dots a^{x}}_{k\ \text{times}}=a^{kx}\in H$, so that $kx\in S$.
+    \item We have to prove that $d$ is the least positive integer in $\brackets{a}+\brackets{b}$, and $kd\in\brackets{a}+\brackets{b}$ for all $k\in\Z$. We have that all elements of $\brackets{a}$ are of the form $ax$ and all elements of $\brackets{b}$ are of the form $by$ for all $x,y\in\Z$. Furthermore, we know there exist integers $r$ and $s$ such that $ar+bs=d$, so that $d\in\brackets{a}+\brackets{b}$. We can multiply both sides of $ar+bs=d$ for any integer $k$ to obtain that $kd\in\brackets{a}+\brackets{b}$. 
+
+    Take an arbitrary $u$ in $\brackets{a}+\brackets{b}$, then $u=ka+bl$ for some integers $k$ and $l$, but from above, we have that $d\vert a$ and $d\vert b$ so that $a=rd$ and $b=sd$ for some integers $r$ and $s$. Then $u=krd+lsd=d(rk+ls)$ so that $d\vert u$ and $u\in\brackets{d}$, as required.
+\end{enumerate}
+\end{proof}
