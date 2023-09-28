@@ -118,12 +118,14 @@ Suppose $F\subseteq K$, where $K$ is a normal extension of $F$. (This means simp
      \item By definition, $h^{-1}(b)=a$, but $a\in I$, and $g\in I^\ast$, so that $g(a)=a$. Finally, by definition $h(a)=b$. Putting all of these together, we have $[h\circ g\circ h^{-1}](b)=b$. 
 
      Since the chosen $a, b$ and $g$ were arbitrary, that means that any element of $hI^\ast h^{-1}$ fixes any element of $I$ mapped by $h$, mathematically, $hI^\ast h^{-1}\subseteq h(I)^\ast$.
-     \item We already proved that $hI^\ast h^{-1}\subseteq h(I)^\ast$, we now need to prove the reverse containment. Let $b=h(a)$ for some $a\in I$, and $g\in h(I)^\ast$. Then $g(b)=b$
-
-     We will now prove that $hI^\ast h^{-1}$ has the same number of elements as $h(I)^\ast$. 
+     \item We already proved that $hI^\ast h^{-1}\subseteq h(I)^\ast$. We will now prove that $hI^\ast h^{-1}$ has the same number of elements as $h(I)^\ast$. Since $h$ is an automorphism, $h(I)^\ast$ must have the same number of elements as $I^\ast$. Likewise, $hI^\ast h^{-1}$ must have the same elements as $I^\ast$. Hence, $h(I)^\ast$ and $hI^\ast h^{-1}$ have the same number of elements and using part 2, they are equal.
      \item ($\Rightarrow$) Suppose $I_1$ and $I_2$ are conjugate. Then there exists $h\in Gal(K:F)$ such that $h(I_1)=I_2$, which implies $h(I_1)^\ast=I_2^\ast$. By 3, we have $I_2^\ast= h(I_1)^\ast= hI_1^\ast h^{-1}$, so that $I_1^\ast$ and $I_2^\ast$ are conjugate, as desired.
 
-     ($\Leftarrow$) Suppose $I_1^\ast$ and $I_2^\ast$ are conjugate. Then there exists $h\in Gal(K:F)$ such that $hI_1^\ast h^{-1}=I_2^\ast$
-    \item
+     ($\Leftarrow$) Suppose $I_1^\ast$ and $I_2^\ast$ are conjugate. Then there exists $h\in Gal(K:F)$ such that $hI_1^\ast h^{-1}=I_2^\ast$. By 3, $I_2^\ast= hI_1^\ast h^{-1}= h(I_1)^\ast$. But then $I_2=h(I_1)$. which means that $I_1$ and $I_2$ are conjugate fields, as required.
+    \item ($\Rightarrow$) We will use the following Lemma: a field extension is normal if and only if it equals all its conjugates. We will only prove the converse, as this is the only result we need for the exercise. For the proof, suppose a field $F$ equals all its conjugates, and let $K$ be a root field containing $F$. Furthermore, assume $F\neq K$. Take an irreducible polynomial so that some but not all its roots are in $F$. However, by Theorem 7 of Chapter 31, $K$ must contain all the roots of $p(x)$, and there must be an automorphism that permutes the roots of said polynomial. But because $F$ is its only conjugate then, by definition, all automorphisms send $F$ to itself. Hence, $F$ must contain all the roots of that polynomial, as all the automorphisms that permute the roots always send $F$ to itself. 
+
+    For the proof of the exercise, let $I_2^\ast$ be a normal subgroup of $I_1^\ast$. By the definition of normal subgroup, $I_2^\ast$ is conjugate to itself. By exercise 4, $I_2$ is conjugate to itself, and by the lemma above, $I_2$ is a normal extension. Finally, because $I_2^\ast\subseteq I_1^\ast$, then $I_2\subseteq I_2$ which implies $I_2$ is a normal extension of $I_1$.
+    
+    ($\Leftarrow$) This is the content of exercise 1.
  \end{enumerate}
 \end{proof}

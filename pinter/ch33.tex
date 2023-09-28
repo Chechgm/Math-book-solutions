@@ -25,9 +25,14 @@
  \begin{enumerate}
      \item 
      \item
-     \item
-     \item
-    \item
+     \begin{enumerate}
+         \item By Eisenstein's criterion, the polynomial is not reducible. Furthermore, the polynomial has two local optima at $x=0$ and $x=2$, so that it has three real roots and two complex roots, all denoted as $r_i$. Hence, we have that, if we denote $K$ as the root field of the polynomial, $[K:\Q]=[K:\Q(r_1)][\Q(r_1):\Q]=[K:\Q(r_1)]\cdot 5$. Hence, 5 is a factor of $[K:\Q]$, so that there is a 5-cycle in $[K:\Q]$. Finally, since the polynomial has two complex roots, we have the transposition given by $a+bi\to a-bi$ in $Gal(K:\Q)$ which implies that $Gal(K:\Q)\cong S_5$ so that the polynomial is unsolvable.
+         \item As above, by Eisenstein's criterion, the polynomial is irreducible. Furthermore, it has two local optima, giving us 3 real roots and 2 complex roots. The rest of the proof follows as above.
+         \item Same technique as above, though this time the optimum have no closed form. Nevertheless, this has no impact on the proof technique. 
+     \end{enumerate}
+     \item We have that $a(x)=x^5-10x^4+40x^3-80x^2+79x-30= (x-2)(x-3)(x-1)(x^2-4x+5)$, so that it has 2, 3 and 1 as real roots, and $2\pm i$ as complex roots and hence is solvable.
+     \item If we do the substitution $y=x^2$, we obtain the polynomial given by $p(y)=ay^4+by^3+cy^2+dy+e$. Since every polynomial of fourth degree is solvable, then we can obtain the roots of the above polynomial by radicals. For any root $r_i$ of $p(y)$, we can substitute $\sqrt{r_i}$ which is a root of the original polynomial. Hence, the original polynomial is solvable by radicals.
+    \item Neither 3 or 4 contradict the unsolvability of the quintic because the unsolvability of the quintic talks about the solution by radicals of a general quintic. Both 3 and 4 are specific cases of polynomials.
  \end{enumerate}
 \end{proof}
 
@@ -44,7 +49,7 @@ Let $G$ be a group. The symbol $H\triangleleft G$ is commonly used as an abbrevi
 \end{exercise}
 \begin{proof}
  \begin{enumerate}
-     \item 
+     \item We have the chain given by $\quot{G}{\{e\}}\cong G$ which is abelian, giving us our desired chain.
      \item
      \item 
      \item
