@@ -23,7 +23,7 @@
 \end{exercise}
 \begin{proof}
  \begin{enumerate}
-     \item 
+     \item We are unsure of what is being asked.
      \item
      \begin{enumerate}
          \item By Eisenstein's criterion, the polynomial is not reducible. Furthermore, the polynomial has two local optima at $x=0$ and $x=2$, so that it has three real roots and two complex roots, all denoted as $r_i$. Hence, we have that, if we denote $K$ as the root field of the polynomial, $[K:\Q]=[K:\Q(r_1)][\Q(r_1):\Q]=[K:\Q(r_1)]\cdot 5$. Hence, 5 is a factor of $[K:\Q]$, so that there is a 5-cycle in $[K:\Q]$. Finally, since the polynomial has two complex roots, we have the transposition given by $a+bi\to a-bi$ in $Gal(K:\Q)$ which implies that $Gal(K:\Q)\cong S_5$ so that the polynomial is unsolvable.
@@ -50,10 +50,12 @@ Let $G$ be a group. The symbol $H\triangleleft G$ is commonly used as an abbrevi
 \begin{proof}
  \begin{enumerate}
      \item We have the chain given by $\quot{G}{\{e\}}\cong G$ which is abelian, giving us our desired chain.
-     \item
-     \item 
-     \item
-     \item
-     \item
+     \item This follows directly from the fact that the intersection between a subgroup and a normal subgroup is normal. So that $J_0,\dots,J_{n}$ are all normal given that all $H_0,\dots,H_{n}$ are normal too.
+     \item Since $G$ is solvable, then we know that $\quot{H_{i+1}}{H_i}$ is abelian. We know that a quotient group is abelian if and only if  the divisor, (in this case $H_i$) contains all the commutators of $H_{i+1}$. But this implies that $J_i=K\cap H_i$ contains all the commutators of $J_{i+1}$ (as $K\cap H_i$ contains all the commutators of $K$ contained in $H_i$). Since $J_{i}$ contains all the commutators of $J_{i+1}$, then the quotient is abelian, using the same result as above.
+     \item This is essentially the conclusion of exercises 2 and 3, by considering $J_0,\dots,J_n$ the required series of subgroups that make $K$ solvable.
+     \item From the table on page 72, we can conclude that $\{e,\beta,\delta\}$ is abelian, hence $\quot{S_3}{\{e,\beta,\delta\}}$ is abelian too and clearly $\quot{\{e,\beta,\delta\}}{\{e\}}$ is abelian too. Hence, we have our desired solvable series. By the result in exercise 4, every subgroup of $S_3$ is also solvable.
+     \item We have that $\quot{S_4}{A_4}\cong \Z_2$, which is abelian. By computation, we can also conclude that $B$ is abelian so that $\quot{A_4}{B}$ is abelian too, giving us our desired solvable series. By exercise 4, all subgroups of $S_4$ are solvable.
+
+     Remark: The greater conclusion of exercises 5 and 6 is that all polynomials of degree 3 and 4 are solvable by radicals.
  \end{enumerate}
 \end{proof}
