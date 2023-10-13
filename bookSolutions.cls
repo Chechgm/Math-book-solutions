@@ -56,6 +56,7 @@
 \newcommand{\bG}{\mathbf{G}}
 
 % General
+\newcommand{\set}[1]{\{#1\}} % This is the template for a command with 1 argument.
 \newcommand*\quot[2]{{\textstyle #1}\big/{\textstyle #2}}
 \DeclareMathOperator*{\lcm}{lcm}
 \DeclareMathOperator*{\ord}{ord}
@@ -69,8 +70,8 @@
 \DeclareMathOperator*{\vecspan}{span}
 
 % Probability
+\newcommand{\E}{\mathbb{E}} % Expected value
 \newcommand{\indep}{\perp \!\!\! \perp} % Conditional independence.
-\newcommand{\EV}[1]{\mathbb{E}\left[#1\right]} % Expected value, this is the template for a command with 1 argument.
 
 % Math environments
 \newtheorem{thm}{Theorem}

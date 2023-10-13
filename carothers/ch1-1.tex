@@ -1,6 +1,5 @@
 \subsection{The real numbers}
 
-
 \begin{exercise}{1}
 If $A$ is a nonempty subset of $\R$ that is bounded below, show that $A$ has a greatest lower bound. That is, show that there is a number $m\in\R$ satisfying (i) $m$ is a lower bound for $A$; and (ii) if $x$ is a lower bound for $A$, then $x\leq m$. [Hint: Consider the set $-A=\{-a:a\in A\}$ and show that $m=-\sup(-A)$ works].
 \end{exercise}
@@ -8,22 +7,92 @@ If $A$ is a nonempty subset of $\R$ that is bounded below, show that $A$ has a g
 Consider $-A$ as above. Because $A$ is bounded below, then it must be the case $-A$ is bounded above (suppose it is not bounded above, then for all $-k\in\R$, there exists $-a\in -A$ with $-k\leq -a$ but this is the same as $k\geq a$ but this would imply $A$ is not bounded below). Since $A$ is bounded above, then by the Least Upper Bound Axiom, then there exists a number $-m\in\R$ such that for all $-a\in -A$, it holds that $-a\leq -m$ and for all other upper bound $-x\in\R$, $-m<-x$. Multiplying everything by $-1$ we get that $m\leq a$ for all $a\in A$ and for all other bounds $x\in A$, $m\geq x$, as required.
 \end{proof}
 
+\begin{exercise}{2}
+Let $A$ be a bounded subset of $\R$ containing at least two points. Prove:
+\begin{enumerate}
+    \item $-\infty<\inf A<\sup A<\infty$.
+    \item If $B$ is a nonempty subset of $A$, then $\inf A\leq\inf B\leq\sup B\leq\sup A$.
+    \item If $B$ is the set of all upper bounds for $A$, then $B$ is nonempty, bounded below and $\inf B=\sup A$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+\begin{enumerate}
+    \item If $A$ is bounded, by definition $-\infty<\inf A$ and $\sup A<\infty$. To prove that $\inf A<\sup A$ simply take any two points $a,b\in A$ with $a<b$. Since $\inf A\leq x$ for all $x\in A$, then $\inf A<a<b$ likewise, we have $a<b<\sup A$ so that $\inf A<\sup A$.
+    \item We have that for all $b\in B$, there exists an $a\in A$ with $a\leq b$, so that any lower bound of $A$ is also a lower bound of $B$. Furthermore, by definition, $\inf A\leq a$ for all $a\in A$ and also all $a\in B$ (because $B\subseteq A$, so that $\inf B$ must be at most as small as $\inf A$, but possibly larger). That is, $\inf A\leq \inf B$. We can prove $\sup B\leq \sup A$ in a similar way. From exercise 1, we know that $\inf B\leq\sup B$, giving us the desired inequality.
+    \item Since $A$ is bounded, by the Least Upper Bound axiom it has a supremum so that $B$ is not empty. Furthermore, any $a\in A$ is a lower bound of $B$, as $a\leq b$ for all $b\in B$. 
+    
+    Now we prove $\inf B=\sup A= s$. Because $B$ is the set of all upper bounds of $A$, then $s\in B$. Furthermore, $a\leq s\leq b$ for any upper bound of $A$, $b\in B$ and for any lower bound of $B$, $a\in A$. In more detail, if $a\leq s$ didn't hold, then $s$ would not be an upper bound of $A$, and if $s\leq b$ didn't hold, then $b$ would be lower upper bound of $A$. But then $s$ fulfills the conditions for $\inf B$, that is: first, it is a lower bound of $B$, and second, for any lower bound $a$, $a\leq s$. As required. 
+\end{enumerate}
+\end{proof}
+
 \begin{exercise}{3}
 Establish the following apparently different (but ``fancier'') characterization of the supremum. Let $A$ be a nonempty subset of $\R$ that is bounded above. Prove that $s=\sup A$ if and only if (i) $s$ is an upper bound for $A$, and (ii) for every $\varepsilon>0$, there is an $a\in A$ such that $a>s-\varepsilon$. State and prove the corresponding result for the infimum of a nonempty subset of $\R$ that is bounded below.
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$) We will prove this by contrapositive. Suppose there exists $\varepsilon>0$ such that for all $a\in A$, it holds that $a<s-\varepsilon$, then it does not hold that for all other lower bounds $r$, $s\leq r$, as we can simply set $r=s-\varepsilon$ as a counterexample.
+
+($\Leftarrow$) We will prove this by contrapositive. Suppose there exists an upper bound $r$ such that $r<s$. By the definition of upper bound, it holds that for all $a\in A$, $a<r<s$. But then this implies there exists $\varepsilon=s-r>0$ such that for all $a\in A$, $s-\varepsilon=r>a$, which is precisely the negation of the statement we want to prove, as desired.
 \end{proof}
 
 \begin{exercise}{4}
+Recall that a sequence $(x_n)$ of real numbers is said to converge to $x\in\R$ if, for every $\varepsilon>0$, there is a positive integer $N$ such that $\lvert x_n-x\rvert<\varepsilon$ whenever $n\geq N$. In this case, we call $x$ the limit of the sequences $(x_n)$ and write $x=\lim_{n\to\infty}x_n$.
+
+Let $A$ be a nonempty subset of $\R$ that is bounded above. Show that there is a sequence $(x_n)$ of elements of $A$ that converges to $\sup A$.
+\end{exercise}
+\begin{proof}
+To prove this, we will explicitly construct the sequence. From exercise 3, we know that if $s=\sup A$, then for all $\varepsilon>0$, we have that there is $a\in A$ with $a>s-\varepsilon$. Fix $\varepsilon=1$, then there exists $a_1\in A$ with $a_1>s-1$. Take $x_1=a_1$, for $x_2$, take $a_2$ so that $a_2>s-1/2$ (which we know exists because the property of $s$ holds for all positive numbers). More generally, for $x_n$, take $a_n\in A$ so that $a_n>s-1/n$. Since $1/n$ converges to $0$ as $n$ goes to infinity, then $a_n$ gets arbitrarily close to $s$, as required.
+\end{proof}
+
+\begin{exercise}{6}
+Prove that every convergent sequence of real numbers is bounded. Moreover, if $(a_n)$ is convergent, show that $\inf_na_n\leq \lim_{n\to\infty}a_n\leq\sup_na_n$.
+\end{exercise}
+\begin{proof}
+We will prove the first part by contrapositive. Suppose a sequence $a_n$ is not bounded above (without loss of generality), and let $a$ be any candidate limit of the sequence. Since $a_n$ is not bounded, then for all $k\in\R$, there exists a positive integer $N'$, such that $a_{N'}>k$. Notice, however, that this implies that we cannot make the absolute difference $\lvert a_n-a\rvert$ arbitrarily small after a certain positive integer, given that we can always choose $k=\lvert a+\varepsilon\rvert$ for $\varepsilon>0$, so that $\lvert a_{N'}-a\rvert >\lvert \varepsilon\rvert= \varepsilon> 0$. This proves that $a_n$ does not converge, as desired.
+
+For the second part, we will only prove that $\lim_{n\to\infty}a_n\leq\sup_na_n$, as the inequality for $\inf_na_n$ can be proved in a similar way. Suppose $a=\lim_{n\to\infty}a_n> \sup_na_n=s$ and let $a=s+\delta$, then we would have that for any $\varepsilon>0$, there exists a positive integer $N$ with $\lvert a_n-a\rvert <\lvert a_n-s-\delta\rvert< \varepsilon$ for $n>N$. However, this implies that $-\varepsilon< a_n-s-\delta<\varepsilon$, which is the same as $s+\delta-\varepsilon<a_n$, but if we choose $\varepsilon<\delta$, then we have that there exists an element $a_N$ in the sequence for which $a_N>s$. That is, $s$ would not be an upper bound and less so the supremum of $a_n$, giving us a contradiction.
+\end{proof}
+
+\begin{exercise}{7}
+If $a<b$ then there is also an irrational $x\in\R\setminus\Q$ with $a<x<b$. [Hint: Find an irrational of the form $p\sqrt{2}/q$].
+\end{exercise}
+\begin{proof}
+ We have that because $a<b$, then $a/\sqrt{2}<b/\sqrt{2}$. But by Theorem 1.3, there exists a rational $x$ so that $a/\sqrt{2}<x<b/\sqrt{2}$. Hence $a<x\sqrt{2}<b$, and $x\sqrt{2}$ is an irrational, as desired.
+\end{proof}
+
+\begin{exercise}{13}
+Let $a_n\geq 0$ for all $n$, and let $s_n=\sum_{i=1}^na_i$. Show that $(s_n)$ converges if and only if $(s_n)$ is bounded.
+\end{exercise}
+\begin{proof}
+($\Rightarrow$) Suppose $(s_n)$ is not bounded. Because $a_n\leq 0$ for all $n$, then $(s_n)$ is necessarily bounded below, so that for any $k\in\R$, there exists $N\in\N$, so that $s_N\geq k$. Now let $s$ be a candidate limit of $(s_n)$. But then choose $k=s+1$, then for all $n\geq N$, we have that $s_n>s+1$ and we cannot have that this difference is $\varepsilon$.
+
+($\Leftarrow$) Notice that because $a_n\geq 0$, then $(s_n)$ is monotone, as $s_n\leq s_{n+1}$. If we assume $(s_n)$ is bounded, all the hypotheses of Theorem 1.4 are fulfilled, so that $(s_n)$ converges.
+\end{proof}
+
+\begin{exercise}{14}
+Prove that a convergent sequence is Cauchy, and that any Cauchy sequence is bounded.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{15}
+Show that a Cauchy sequence with a convergent subsequence actually converges.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+triangle exercises: 17, 21, 24, 25, 26, 27, 33, 37
+
+\begin{exercise}{17}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof}
 
-\begin{exercise}{6}
-Prove that every convergent sequence of real numbers is bounded. Moreover, if $(a_n)$ is convergent, show that $\inf_na_n\leq \lim_{n\to\infty}a_n\leq\sup_na_n$.
+\begin{exercise}{21}
+fill
 \end{exercise}
 \begin{proof}
 fill
