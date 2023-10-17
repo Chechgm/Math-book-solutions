@@ -3,10 +3,16 @@
 
 
 \begin{exercise}{3}
-  Suppose $\bF=\R$ and $\V\neq\set{0}$. Replace the positivity condition (which states that $\langle v, v\rangle\geq 0$ for all $v\in V$) in the definition of an inner product (6.3) with the condition that $\langle v, v\rangle>0$ for some $v\in V$. Show that this change in the definition does not change the set of functions from $V\times V$ to $\R$ that are inner products on $V$.
+  Suppose $\bF=\R$ and $V\neq\set{0}$. Replace the positivity condition (which states that $\langle v, v\rangle\geq 0$ for all $v\in V$) in the definition of an inner product (6.3) with the condition that $\langle v, v\rangle>0$ for some $v\in V$. Show that this change in the definition does not change the set of functions from $V\times V$ to $\R$ that are inner products on $V$.
 \end{exercise}
 \begin{proof}
- What we need to prove here is that there is no
+ What we need to prove here is that there is no $v\in V$ for which $\langle v, v\rangle<0$. 
+ 
+ Suppose, for the sake of contradiction, that there exists $w\in V$ such that $\langle w, w\rangle<0$. Notice that inner products are continuous functions on their arguments, as $\langle w,w\rangle =\sum_{i,j}w_iw_j\langle e_i, e_j\rangle$. and $\langle e_i,e_j\rangle$ are constants for all standard basis vectors  of $V$, $e_i,e_j$. Then we would have, by the intermediate value theorem, that there is a vector $x$ with $\langle x,x\rangle =0$ in the segment $w,v$. 
+ 
+ But because of the definiteness condition, $x=0$ so that $\alpha v +(1-\alpha) w=0$ for $\alpha\in [0,1]$. This implies $\alpha(v_1e_1+\dots+v_ne_n)+(1-\alpha)(w_1e_1+\dots+w_ne_n)=0$ and $\alpha v_ie_i=-(1-\alpha)w_ie_i$ which is $-\alpha/(1-\alpha)v_i=cv_i=w_i$, where we defined $c=-\alpha/(1-\alpha)$.
+
+ However, this implies that $\langle w,w\rangle = \langle cv,cv\rangle = c^2\langle v,v\rangle > 0$, which contradicts our initial hypothesis. Hence it must be the case that $\langle w,w\rangle>0$.
 \end{proof}
 
 \begin{exercise}{4}
@@ -32,10 +38,24 @@
 \end{proof}
 
 \begin{exercise}{13}
-  Fill
+  Suppose $u,v$ are nonzero vectors in $\R^2$. Prove that $\langle u,v\rangle= \lVert u\rVert\lVert v\rVert\cos\theta$, where $\theta$ is the angle between $u$ and $v$ (thinking of $u$ and $v$ as arrows with initial point at the origin). Hint: Draw the triangle formed by $u,v$ and $u-v$; then use the law of cosines.
 \end{exercise}
 \begin{proof}
- Fill
+ In the text we saw we can think of squared norm as the length of a particular vector. That is, $\lVert u\rVert^2$ is the length of $u$ from the origin. First, we have
+ \begin{align*}
+     \langle u-v, u-v\rangle =& \langle u, u-v\rangle-\langle v,u-v\rangle\\
+     =& \langle u-v,u\rangle-\langle u-v,v\rangle\\
+     =& \langle u,u\rangle-\langle v,u\rangle-\langle u,v\rangle +\langle v,v\rangle\\
+     =& \lVert u\rVert^2+\lVert v\rVert^2-2\langle u,v\rangle
+ \end{align*}
+ Now from the law of cosines we have that
+ \begin{align*}
+     \langle u-v,u-v\rangle =& \lVert u\rVert^2+\lVert v\rVert^2-2\langle u,v\rangle\\
+     =& \lVert u\rVert^2 +\lVert v\rVert^2 -2\lVert u\rVert\lVert v\rVert\cos\theta &&\iff\\
+     -2\langle u,v\rangle =& -2\lVert u\rVert\lVert v\rVert\cos\theta &&\iff\\
+     \langle u,v\rangle =& \lVert u\rVert\lVert v\rVert\cos\theta,
+ \end{align*}
+ as required.
 \end{proof}
 
 \begin{exercise}{14}
