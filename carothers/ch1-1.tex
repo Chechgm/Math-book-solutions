@@ -59,6 +59,57 @@ If $a<b$ then there is also an irrational $x\in\R\setminus\Q$ with $a<x<b$. [Hin
  We have that because $a<b$, then $a/\sqrt{2}<b/\sqrt{2}$. But by Theorem 1.3, there exists a rational $x$ so that $a/\sqrt{2}<x<b/\sqrt{2}$. Hence $a<x\sqrt{2}<b$, and $x\sqrt{2}$ is an irrational, as desired.
 \end{proof}
 
+\begin{exercise}{11}
+Fix $a>0$ and let $x_1>\sqrt{a}$. For $n\geq 1$, define 
+\[x_{n+1}=\frac{1}{2}\left(x_n+\frac{a}{x_n}\right).\]
+Show that $(x_n)$ converges and that $\lim_{n\to\infty}x_n=\sqrt{a}$.
+\end{exercise}
+\begin{proof}
+We will split this proof in 3 parts. First we will prove by induction that the sequence is positive. Then, we will prove, by induction, that $(x_n)$ is decreasing. Finally, we use the result in Theorem 1.4 to conclude that the sequence converges and that the limit is $\sqrt{a}$.
+
+The sequence is positive. As the base case, notice we assume that $x_1>\sqrt{a}$. Suppose that $x_n>0$. We have
+\begin{align*}
+    x_n >& 0 &&\iff\\
+    x_n + \frac{a}{x_n} >& 0 &&\iff\\
+    \frac{1}{2}\left(x_n + \frac{a}{x_n}\right) =& x_{n+1} > 0,
+\end{align*}
+as required.
+
+The sequence is decreasing. Base case. We have, for $\varepsilon>0$,
+\begin{align*}
+    x_2 =& \frac{1}{2}\left(\sqrt{a}+\varepsilon+\frac{a}{\sqrt{a}+\varepsilon}\right)\\
+    =& \frac{1}{2(\sqrt{a}+\varepsilon)}\left((\sqrt{a}+\varepsilon)^2+a\right)\\
+    =& \frac{1}{2(\sqrt{a}+\varepsilon)}(a+2\sqrt{a}\varepsilon+\varepsilon^2+a)\\
+    =& \frac{1}{2(\sqrt{a}+\varepsilon)}(2a+2\sqrt{a}\varepsilon+\varepsilon^2)\\
+    \leq& \frac{1}{2(\sqrt{a}+\varepsilon)}(2a+4\sqrt{2a}\varepsilon+\sqrt{2}\varepsilon^2)\\
+    \leq& \frac{1}{2(\sqrt{a}+\varepsilon)}(\sqrt{2}\sqrt{a}+\sqrt{2}\varepsilon)^2\\
+    \leq& \sqrt{a}+\varepsilon= x_1.
+\end{align*}
+Now suppose $x_n\leq x_{n-1}$, which is the same as $1\leq x_{n-1}/x_n$. We will prove that $x_{n+1}/x_n\leq 1$. We have
+\begin{align*}
+    \frac{x_{n+1}}{x_n} =& \frac{\frac{1}{2}\left(x_n+\frac{a}{x_n}\right)}{\frac{1}{2}\left(x_{n-1}+\frac{a}{x_{n-1}}\right)}\\
+    =& \frac{x_n+\frac{a}{x_n}}{x_{n-1}+\frac{a}{x_{n-1}}}\\
+    =& \frac{\frac{x_n^2+a}{x_n}}{\frac{x_{n-1}^2+a}{x_{n-1}}}\\
+    =& \frac{x_{n-1}(x_n^2+a)}{x_n(x_{n-1}^2+a)}\\
+    \leq& \frac{x_n^2+a}{x_{n-1}^2+a}\\
+    \leq& \frac{x_n^2+a}{x_n^2+a}\\
+    =& 1.
+\end{align*}
+As required.
+
+The fact that $(x_n)$ is monotone and decreasing allows us to use Theorem 1.4 to confirm that the sequence converges. Let $x$ be the limit of the sequence. Furthermore, using the algebraic limit theorem, we have
+\begin{align*}
+    \lim x_{n+1} =& \lim \frac{1}{2}\left(x_n+\frac{a}{x_n}\right) &&\iff\\
+    x =& \frac{1}{2}\left(\lim x_n+\frac{a}{\lim x_n}\right) &&\iff\\
+    x =& \frac{1}{2}\left(x+\frac{a}{x}\right) &&\iff\\
+    2x =& \left(\frac{x^2+a}{x}\right) &&\iff\\
+    2x^2 =& x^2+a &&\iff\\
+    x^2 =& a &&\iff\\
+    x =& \pm\sqrt{a}.
+\end{align*}
+But we concluded above that the sequence is positive, so that $x=\sqrt{a}$.
+\end{proof}
+
 \begin{exercise}{13}
 Let $a_n\geq 0$ for all $n$, and let $s_n=\sum_{i=1}^na_i$. Show that $(s_n)$ converges if and only if $(s_n)$ is bounded.
 \end{exercise}
@@ -72,17 +123,19 @@ Let $a_n\geq 0$ for all $n$, and let $s_n=\sum_{i=1}^na_i$. Show that $(s_n)$ co
 Prove that a convergent sequence is Cauchy, and that any Cauchy sequence is bounded.
 \end{exercise}
 \begin{proof}
-fill
+Every convergent sequence is Cauchy. Let $(x_n)$ be a convergent sequence. Fix $\varepsilon/2>0$, then there exists $N\in\N$ such that for every $n\geq N$, it holds that $\lvert x_n-x\rvert<\varepsilon/2$. Now consider $m\geq N$. We have $\lvert x_n-x_m\rvert = \lvert x_n+x-x-x_m\lvert \leq \lvert x_n-x\rvert + \lvert x_m-x\rvert<2\varepsilon/2=\varepsilon$, as required.
+
+Every Cauchy sequence is bounded. Let $(x_n)$ be Cauchy. For the sake of contradiction and without loss of generality, suppose $(x_n)$ is not bounded above, so that for all $k\in\R$, there exists $M$ with $x_M>k$. Then it cannot be the case that $(x_n)$ is Cauchy. To see this, fix $\varepsilon>0$ and let $N\in\N$ be such that for all $n,m\geq N$, we have that $\lvert x_n-x_m\rvert<\varepsilon$. Now let $k=\max\set{x_1,\dots,x_N}$. Finally, since we assumed $(x_n)$ is not bounded, let $M$ be such that $x_M>k+1$, certainly $M>N$, but we have that $\lvert x_N-x_M\rvert>1$ so that the sequence is not Cauchy. Then the contradiction implies that every Cauchy sequence must be bounded.
 \end{proof}
 
 \begin{exercise}{15}
 Show that a Cauchy sequence with a convergent subsequence actually converges.
 \end{exercise}
 \begin{proof}
-fill
-\end{proof}
+Suppose $(x_n)$ is Cauchy and that there exists a subsequence $(x_{n_{k}})$ that converges to $x$. Then, for $\varepsilon/2>0$, there exists an $K\in\N$ such that $\lvert x_{n_{k}}-x\rvert<\varepsilon/2$ for $k\geq K$. Furthermore, because $(x_n)$ is Cauchy, there exists $N'\in\N$ so that for all $n,m\geq N'$, we have that $\lvert x_n-x_m\rvert<\varepsilon/2$. 
 
-triangle exercises: 17, 21, 24, 25, 26, 27, 33, 37
+Now let $N=\max\set{N', n_K}$. We have that for all $n,n_k\geq N$, it holds that $\lvert x_n-x\rvert= \lvert x_n-x_{n_k}+x_{n_k}-x\rvert\leq\lvert x_n-x_{n_k}\rvert+\lvert x_{n_k}-x\rvert <\varepsilon/2+\varepsilon/2=\varepsilon$. So that $(x_n)$ converges, as required.
+\end{proof}
 
 \begin{exercise}{17}
 fill
@@ -92,6 +145,48 @@ fill
 \end{proof}
 
 \begin{exercise}{21}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{24}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{25}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{26}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{27}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{33}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{37}
 fill
 \end{exercise}
 \begin{proof}

@@ -59,23 +59,17 @@
 \end{proof}
 
 \begin{exercise}{14}
-  Fill
+  The angle between two vectors (thought of as arrows with initial point at the origin) in $\R^2$ or $\R^3$ can be defined geometrically. However, geometry is not as clear in $\R^n$ for $n>3$. Thus the angle between two nonzero vectors $x,y\in\R^n$ is defined to be $\arccos\frac{\langle x,y\rangle}{\lVert x\rVert\lVert y\rVert}$, where the motivation for this definition comes from the previous exercise. Explain why the Cauchy-Schwarz inequality is needed to show that this definition makes sense.
 \end{exercise}
 \begin{proof}
- Fill
+ The function $\arccos$ is defined in the following domain and codomain $\arccos:[-1,1]\to[0,\pi]$. Then the Cauchy-Schwarz inequality $\lvert\langle x, y\rvert\rangle\leq\lVert x\rVert\lVert y\rVert$ guarantees that $\lvert \langle x,y\rangle\rvert/\lVert x\rVert\lVert y\rVert\leq 1$, as it is required by the function definition.
 \end{proof}
 
 \begin{exercise}{17}
   Prove or disprove: there is an inner product on $\R^2$ such that the associated norm is given by $\lVert (x,y)\rVert=\max\{x,y\}$ for all $(x,y)\in\R^2$.
 \end{exercise}
 \begin{proof}
- For ease, consider the square of the above norm: $\lVert (x,y)\rVert^2=\langle (x,y),(x,y)\rangle$.
-
- Positivity: Since the square of any number is non-negative, then positivity holds. 
-
- Definitieness: Since the square of any number is 0 if and only if the number is 0, then $\langle (x,y),(x,y)\rangle=0$ if and only if $(x,y)=(0,0)$.
-
- Additivity in the first slot: Consider 
+ Consider $(-1,0)\in\R^2$, which would give us $\lVert (-1,0)\rVert=0$. However, by 6.10, we know that $\lVert v\rVert=0$ if and only if $v=0$ which is not the case here. Hence, $\max\set{x,y}$ is not a valid norm and hence there cannot be an inner product that induces such function
 \end{proof}
 
 \begin{exercise}{18}
@@ -134,8 +128,23 @@ Where the last two inequalities follow from the fact that, in a real inner produ
 \end{proof}
 
 \begin{exercise}{21}
-  Fill Ask for help
+  A norm on a vector space $U$ is a function $\lVert\,\rVert:U\to[0,\infty)$ such that $\lVert u\rVert=0$ if and only if $u=0$, $\lVert\alpha u\rVert= \lvert\alpha \rvert\lVert u\rVert$ for all $\alpha\in\bF$ and all $u\in U$, and $\lVert u+v\rVert\leq \lVert u\rVert +\lVert v\rVert$ for all $u,v\in U$. Prove that a norm satisfying the parallelogram equality comes from an inner product (in other words, show that if $\lVert\,\rVert$ is a norm on $U$ satisfying the parallelogram equality, then there is an inner product $\langle\, ,\,\rangle$ on $U$ such that $\lVert u\rVert=\langle u,u\rangle^{1/2}$ for all $u\in U$).
 \end{exercise}
 \begin{proof}
- Fill
+ We will divide the solution to this exercise in several parts.
+
+ First we will prove the result for $\bF=\R^n$. Let 
+ \[ \langle x,y\rangle =\frac{1}{4}[\lVert x+y\rVert^2- \lVert x-y\rVert^2]. \]
+
+ We have to prove all the properties in definition 6.3, which we will do in steps.
+
+ Positivity: we have $\langle v,v\rangle = (1/4)\lVert 2v\rVert^2= (1/4)\lvert 2\rvert^2\lVert v\rVert^2= \lVert v\rVert^2\geq 0$, as required.
+
+ Definiteness: we have $\langle v,v\rangle=0$, if and only if $\lVert 2v\rVert^2=0$ which is equivalent to $\lVert v\rVert^2=0$, that is $\lVert v\rVert =0$ which we know is only true if and only if $v=0$.
+
+ Additivity in first slot: 
+
+ Homogeneity in the first slot:
+
+ Conjugate symmetry: 
 \end{proof}
