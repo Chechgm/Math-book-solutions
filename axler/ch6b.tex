@@ -3,21 +3,35 @@
 
 
 \begin{exercise}{2}
-  Fill
+  Suppose $e_1,\dots,e_m$ is an orthonormal list of vectors in $V$. Let $v\in V$. Prove that $\lVert v\rVert^2 =\lvert\langle v,e_1\rangle\rvert^2+\dots+\lvert\langle v,e_m\rangle\rvert^2$ if and only if $v\in\vecspan(e_1,\dots,e_m)$.
 \end{exercise}
 \begin{proof}
- Fill
+ ($\Rightarrow$) Suppose $\lVert v\rVert^2 =\lvert\langle v,e_1\rangle\rvert^2+\dots+\lvert\langle v,e_m\rangle\rvert^2$. Since $e_1,\dots,e_m$ is an orthonormal list of vectors, by 6.35 we can extend it to an orthonormal basis of $V$, namely $e_1,\dots,e_n$. We can represent $v$ as a linear combination of this basis: $v=a_1e_1+\dots+a_ne_n$, and by 6.30 the squared norm of $v$ is $\lVert v\rVert^2 =\lvert\langle v,e_1\rangle\rvert^2+\dots+\lvert\langle v,e_n\rangle\rvert^2$. Hence, we have that $\lvert\langle v,e_1\rangle\rvert^2+\dots+\lvert\langle v,e_m\rangle\rvert^2 =\lvert\langle v,e_1\rangle\rvert^2+\dots+\lvert\langle v,e_n\rangle\rvert^2$ which is $\lvert\langle v,e_{m+1}\rangle\rvert^2+\dots+\lvert\langle v,e_m\rangle\rvert^2 =0$ so that $\lvert\langle v,e_1\rangle\rvert^2,\dots,\lvert\langle v,e_m\rangle\rvert^2$ and $\langle v,e_1\rangle,\dots,\langle v,e_m\rangle$ are all 0. This implies, again, by 6.30 that $v$ can be written as a linear combination of only $e_1,\dots,e_m$. Thus $v\in\vecspan(e_1,\dots,e_m)$, as desired.
+
+ ($\Leftarrow$) This is the content of Theorem 6.30, notice that in that Theorem, we require $e_1,\dots,e_m$ to be a basis of $V$. Nonetheless, the only property of the basis we use is that it spans $v$, so that the same result holds here.
 \end{proof}
 
 \begin{exercise}{11}
-  Fill
+  Suppose $\brackets{\cdot,\cdot}_1$ and $\brackets{\cdot,\cdot}_2$ are inner products on $V$ such that $\brackets{v,w}_1=0$ if and only if $\brackets{v,w}_2=0$. Prove that there is a positive number $c$ such that $\brackets{v,w}_1=c\brackets{v,w}_2$ for every $v,w\in V$.
 \end{exercise}
 \begin{proof}
- Fill
+ Let $e_1,\dots,e_n$ be an orthonormal basis of $V$ under $\brackets{\cdot,\cdot}_1$, whose existence is guaranteed by 6.34. By hypothesis, $e_1,\dots,e_n$ is an orthogonal basis of $V$ under $\brackets{\cdot,\cdot}_2$. 
+ 
+ Because $e_1,\dots,e_n$ is a basis of $V$, then $v$ has a unique representation as a linear combination of $e_1,\dots,e_n$; that is, $v=a_1e_1+\dots+a_ne_n$. Furthermore, from 6.30, we have that $v=\brackets{v,e_1}_1e_1+\dots+\brackets{v,e_n}_1e_n$. We also have $v=(\brackets{v,e_1}_2/\brackets{e_1,e_1}_2)e_1+\dots+(\brackets{v,e_n}_2/\brackets{e_n,e_n}_2)e_n$ so that $\brackets{v,e_i}_1=\brackets{v,e_i}_2/\brackets{e_i,e_i}_2$, for all $i$. Now notice that $0=\brackets{e_i+e_j,e_i-e_j}_1=\brackets{e_i+e_j,e_i-e_j}_2$, so that $\brackets{e_i,e_i}_2=\brackets{e_j,e_j}_2$ for all $i$ and $j$. Thus $\brackets{v,e_i}_1=c\brackets{v,e_i}_2$ where $c =(1/\brackets{e_i,e_i}_2)$. This in turn implies $v=c(\brackets{v,e_1}_2e_1+\dots+\brackets{v,e_n}_2e_n)$.
+
+ We now introduce $w$. We can reason in a similar way as above to conclude that $w=c(\brackets{w,e_1}_2e_1+\dots+\brackets{w,e_n}_2e_n)$. Consider
+ \begin{align*}
+     \brackets{v,w}_1 =& \brackets{c(\brackets{v,e_1}_2e_1+\dots+\brackets{v,e_n}_2e_n), c(\brackets{w,e_1}_2e_1+\dots+\brackets{w,e_n}_2e_n)}_1\\
+     =& c\bar{c}[\brackets{\brackets{v,e_1}_2e_1+\dots+\brackets{v,e_n}_2e_n, \brackets{w,e_1}_2e_1+\dots+\brackets{w,e_n}_2e_n}_1]\\
+     =& c\bar{c}[\brackets{v,e_1}_2\brackets{w,e_1}_2+\dots+\brackets{v,e_n}_2\brackets{w,e_n}_2]\\
+     =& c\bar{c}[\brackets{\brackets{v,e_1}_2e_1+\dots+\brackets{v,e_n}_2e_n, \brackets{w,e_1}_2e_1+\dots+\brackets{w,e_n}_2e_n}_2]\\
+     =& c\bar{c}\brackets{v,w}_2,
+ \end{align*}
+ as required.
 \end{proof}
 
 \begin{exercise}{12}
-  Fill
+  Suppose $V$ is finite-dimensional and $\brackets{\cdot,\cdot}_1, \brackets{\cdot,\cdot}_2$ are inner products on $V$ with corresponding norms $\norm{\cdot}_1$ and $\norm{\cdot}_2$. Prove that there exists a positive number $c$ such that $\norm{v}_1\leq\norm{v}_2$, for every $v\in V$.
 \end{exercise}
 \begin{proof}
  Fill
@@ -31,8 +45,21 @@
 \end{proof}
 
 \begin{exercise}{17}
-  Fill
+  For $u\in V$, let $\Phi u$ denote the linear functional on $V$ defined by $(\Phi u)(v)=\langle v,u\rangle$ for $v\in V$.
+  \begin{enumerate}
+      \item Show that if $\bF=\R$, then $\Phi$ is a linear map from $V$ to $V'$. (Recall from Section 3.F that $V'=\LLL(V,\bF)$ and that $V'$ is called the dual space of $V$).
+      \item Show that if $\bF=\C$ and $V\neq\set{0}$, then $\Phi$ is not a linear map.
+      \item Show that $\Phi$ is injective.
+      \item Suppose $\bF=\R$ and $V$ is finite-dimensional. Use parts (1) and (3) and a dimension-counting argument (but without using 6.42) to show that $\Phi$ is an isomorphism from $V$ onto $V'$.
+
+      [Part (4) gives an alternative proof of the Riesz Representation Theorem (6.42) when $\bF=\R$. Part (4) also gives a natural isomorphism (meaning that it does not depend on a choice of basis) from a finite-dimensional real inner product space into its dual space.]
+  \end{enumerate}
 \end{exercise}
 \begin{proof}
- Fill
+ \begin{enumerate}
+     \item In 6.7 we proved that inner products are also additive on the second slot, which translates to additivity in our linear map. Furthermore, 6.7 shows that $\langle v,\lambda u\rangle=\bar{\lambda}\langle v,u\rangle$, since we are working on $\R$, we have $\bar{\lambda}=\lambda$. Thus we have homogeneity of our linear map. Hence, $\Phi$ is a linear map.
+     \item Using the homogeneity argument of the previous exercise we have that, in $\C$, $\bar{\lambda}\neq\lambda$ so that the map is not homogeneous.
+     \item Suppose $\Phi u =(\Phi u)(v) =\langle v,u\rangle =\langle v,w\rangle =(\Phi w)(v) =\Phi w$ for all $v\in V$. Then $\langle v,u-w\rangle=0$. From 6.12 we know that 0 is the only vector orthogonal to itself, so if $\langle v,u-w\rangle$ holds for all $v\in V$ it must hold for $v=0$ and so $u-w$ must be 0. That is, $u=w$, as required.
+     \item By the Fundamental Theorem of Linear Maps, we have that $\dim V =\dim\range\Phi +\dim\nullspace\Phi$. In (3) we proved that $\Phi$ is injective, so that $\dim\nullspace\Phi=0$ and so $\dim V=\dim\range\Phi$. Furthermore, $\dim V'=(\dim V)(\dim\bF)=\dim V$ so that by 3.69 $\Phi$ is also surjective. Hence, $\Phi$ is an isomorphism from $V$ to $V'$.
+ \end{enumerate}
 \end{proof}

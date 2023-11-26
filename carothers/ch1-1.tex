@@ -138,14 +138,40 @@ Now let $N=\max\set{N', n_K}$. We have that for all $n,n_k\geq N$, it holds that
 \end{proof}
 
 \begin{exercise}{17}
-fill
+Given real numbers $a$ and $b$, establish the following formulas: $\lvert a+b\rvert\leq\lvert a\rvert +\lvert b\rvert, \lvert\lvert a\rvert -\lvert b\rvert\rvert \leq\lvert a-b\rvert, \max\{a,b\}=(1/2)(a+b+\lvert a-b\rvert)$, and $\min\{a,b\}=(1/2)(a+b-\lvert a-b\rvert)$.
 \end{exercise}
 \begin{proof}
-fill
+\begin{itemize}
+    \item $\lvert a+b\rvert\leq\lvert a\rvert +\lvert b\rvert$. We will prove a couple of Lemmas before. 
+ 
+     First $\lvert a\rvert \leq b$ if and only if $-b\leq a\leq b$. ($\Rightarrow$) Suppose $\lvert a\rvert\leq b$. Then $a\leq b$ and $-a\leq b$, that is, $-b\leq a\leq b$, as desired. ($\Leftarrow$) Suppose $-b\leq a\leq b$. Then $a\leq b$ and $-a\leq b$, that is, $\lvert a\rvert\leq b$. 
+    
+     Second $-\lvert x\rvert\leq x\leq\lvert x\rvert$. If $x>0$, then $\lvert x\rvert =x$, otherwise, $\lvert x\rvert =-x>0$. Hence, $\lvert x\rvert\geq x$. We also have that if $x>0$, then $-\lvert x\rvert<0<x$ and if $x<0$, then $-\lvert x\rvert =-(-x) =x$. Putting everything together, $-\lvert x\rvert\leq x\leq\lvert x\rvert$, as required.
+    
+     Now for the main result. We have $-\lvert a\rvert\leq a\leq\lvert a\rvert$ and $-\lvert b\rvert\leq b\leq\lvert b\rvert$. Adding these together, we obtain $-(\lvert a\rvert+\lvert b\rvert)\leq a+b\leq\lvert a\rvert+\lvert b\rvert$. By the first Lemma, $\lvert a+b\rvert\leq\lvert a\rvert +\lvert b\rvert$.
+     \item $\lvert\lvert a\rvert -\lvert b\rvert\rvert \leq\lvert a-b\rvert$: Using the triangle inequality, we have $\lvert a\rvert = \lvert a+b-b\rvert \leq \lvert a-b\rvert +\lvert b\rvert$, that is, $\lvert a\rvert-\lvert b\rvert\leq \lvert a-b\rvert$. Furthermore, we have that $\lvert b\rvert =\lvert b+a-a\lvert \leq\lvert b-a\rvert+\lvert a\rvert =\lvert a-b\rvert +\lvert a\rvert$. This implies, $\lvert b\rvert -\lvert a\rvert \leq\lvert a-b\rvert$. Then by the first lemma for the proof of the triangle inequality, we have that $\lvert a\rvert -\lvert b\rvert\leq \lvert a-b\rvert$, and $-\lvert a-b\rvert\leq\lvert a\rvert -\lvert b\rvert$ which is the same as $\lvert b\rvert-\lvert a\rvert\leq\lvert a-b\rvert$, so that $\lvert \lvert a\rvert -\lvert b\rvert \rvert \leq \lvert a-b\rvert$, as required.
+     \item $\max\set{a,b }=(1/2)(a+b+\lvert a-b\rvert)$: We will split this in cases. Suppose $a>b$, then $a-b>0$ and $\lvert a-b\rvert =a-b$ and $(1/2)(a+b+\lvert a-b\rvert) =(1/2)(a+b+a-b) =(1/2)2a =a =\max\set{a,b}$. Now suppose $b>a$. Then $0>a-b$ and $\lvert a-b\rvert = b-a$. We can reason as before to conclude $(1/2)(a+b+\lvert a-b\rvert =b$, as required.
+     \item $\min\set{a,b}=(1/2)(a+b-\lvert a-b\rvert)$. As above we will divide this in two cases. If $a>b$, then $a-b>0$ and $\lvert a-b\rvert =a-b$ so that $(1/2)(a+b-\lvert a-b\rvert) =(1/2)(a+b-a+b) =(1/2)2b =b =\min\set{a,b}$, as required. Reasoning in a similar way, we can conclude that $(1/2)(a+b-\lvert  a-b\rvert) =a =\min\set{a,b}$, whenever $b>a$.
+\end{itemize}
+\end{proof}
+
+\begin{exercise}{19}
+If $0<c<1$, show that $c^n\to 0$; and if $c>0$, show that $c^{1/n}\to 1$. [Hint: Use Bernoulli's inequality for each, once with $c=1/(1+x), x>0$ and once with $c^n=1+x_n$, where $x_n>0$].
+\end{exercise}
+\begin{proof}
+$c^n\to 0$: To prove this, notice we can write $c=1/(1+x)$ where $x>0$ (for a particular $c$, choose $x=(1-c)/c$ and replace in the equation for $c$). Because $c$ is positive, then $c^n$ is positive for all $n$, and hence bounded below by 0. We will now prove the sequence is strictly decreasing. We have
+\begin{align*}
+    \frac{c^n}{c^{n+1}} =& \frac{\frac{1}{(1+x)^n}}{\frac{1}{(1+x)^{n+1}}}\\
+    =& \frac{(1+x)^{n+1}}{(1+x)^n}\\
+    =& 1+x>1,
+\end{align*}
+so that $c^n$ is monotonic decreasing. Hence, by Theorem 1.4, $c^n\to\inf (c^n)=0$.
+
+$c^{1/n}\to 1$: We have that $c=1/(1+x)= 1-x/(1+x)$ for $x>-1$. Then $c^{1/n}< 1-x/n(1+x)$ by Bernoulli's inequality. But as $n\to\infty,\, c^{1/n}\to 1$, as required.
 \end{proof}
 
 \begin{exercise}{21}
-fill
+Let $p\geq 2$ be a fixed integer, and let $0<x<1$. If $x$ has a finite-length base $p$ decimal expansion, that is, if $x=a_1/p+\dots+a_n/p^n$ with $a_n\neq 0$, prove that $x$ has precisely two base $p$ decimal expansions. Otherwise, show that the base $p$ decimal expansion for $x$ is unique. Characterize the numbers $0<x<1$ that have repeating base $p$ decimal expansions. How about eventually repeating?
 \end{exercise}
 \begin{proof}
 fill

@@ -43,6 +43,7 @@
 \newcommand{\C}{\mathbb{C}}
 
 \newcommand{\A}{\mathbb{A}}
+\newcommand{\F}{\mathbb{F}}
 \newcommand{\D}{\mathbb{D}}
 
 % Calligraphic and bold
@@ -53,6 +54,7 @@
 \newcommand{\PPP}{\mathcal{P}}
 
 \newcommand{\bF}{\mathbf{F}}
+\newcommand{\bV}{\mathbf{V}}
 \newcommand{\bG}{\mathbf{G}}
 
 % General
@@ -60,14 +62,16 @@
 \newcommand*\quot[2]{{\textstyle #1}\big/{\textstyle #2}}
 \DeclareMathOperator*{\lcm}{lcm}
 \DeclareMathOperator*{\ord}{ord}
-\newcommand*\brackets[1]{\left\langle #1\right\rangle}
 \newcommand*\parens[1]{\left( #1\right)}
+\newcommand*\brackets[1]{\langle #1\rangle}
+\newcommand*\absoluteValue[1]{\left\lvert #1\right\rvert}
 \newcommand*\degree{°}
 
 % Linear algebra
 \DeclareMathOperator*{\nullspace}{null}
 \DeclareMathOperator*{\range}{range}
 \DeclareMathOperator*{\vecspan}{span}
+\newcommand*\norm[1]{\left\lVert #1\right\rVert}
 
 % Probability
 \newcommand{\E}{\mathbb{E}} % Expected value

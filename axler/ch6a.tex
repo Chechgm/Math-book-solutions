@@ -138,13 +138,142 @@ Where the last two inequalities follow from the fact that, in a real inner produ
 
  We have to prove all the properties in definition 6.3, which we will do in steps.
 
- Positivity: we have $\langle v,v\rangle = (1/4)\lVert 2v\rVert^2= (1/4)\lvert 2\rvert^2\lVert v\rVert^2= \lVert v\rVert^2\geq 0$, as required.
+ \textbf{Positivity}: we have $\langle v,v\rangle = (1/4)\lVert 2v\rVert^2= (1/4)\lvert 2\rvert^2\lVert v\rVert^2= \lVert v\rVert^2\geq 0$, as required.
 
- Definiteness: we have $\langle v,v\rangle=0$, if and only if $\lVert 2v\rVert^2=0$ which is equivalent to $\lVert v\rVert^2=0$, that is $\lVert v\rVert =0$ which we know is only true if and only if $v=0$.
+ \textbf{Definiteness}: we have $\langle v,v\rangle=0$, if and only if $\lVert 2v\rVert^2=0$ which is equivalent to $\lVert v\rVert^2=0$, that is $\lVert v\rVert =0$ which we know is only true if and only if $v=0$.
 
- Additivity in first slot: 
+ Next, we prove that this definition of inner product is \textbf{additive on the first slot}. First, we start with the parallelogram equality with three variables, 
+ \begin{align*}
+     &\lVert x+y+z\rVert^2 + \lVert x-y+z\rVert^2 = 2(\lVert x+z\rVert +\lVert y\rVert) \iff\\
+     &\lVert x+y+z\rVert^2 = 2(\lVert x+z\rVert +\lVert y\rVert)-\lVert x-y+z\rVert^2 :=A.
+ \end{align*}
+  Likewise, we have that 
+  \begin{align*}
+      \lVert x+y+z\rVert^2 =2(\lVert y+z\rVert +\lVert x\rVert)-\lVert -x+y+z\rVert^2 :=B.
+  \end{align*}
+   By definition, we have that $\lVert x+y+z\rVert^2 =(A+B)/2$, which is the same as 
+   \begin{align*}
+       \lVert x+y+z\rVert^2 =&  \frac{1}{2}[2(\lVert x+z\rVert +\lVert y\rVert)-\lVert x-y+z\rVert^2\\
+       &+ 2(\lVert y+z\rVert +\lVert x\rVert)-\lVert -x+y+z\rVert^2].
+   \end{align*}
+   In a similar way, we have that 
+   \begin{align*}
+       &\lVert x+y-z\rVert^2 + \lVert x-y-z\rVert^2 =2(\lVert x-z\rVert +\lVert y\rVert)\iff\\
+       &\lVert x+y-z\rVert^2 =2(\lVert x-z\rVert +\lVert y\rVert)-\lVert x-y-z\rVert^2 :=A.
+   \end{align*}
+    and 
+    \begin{align*}
+        \lVert x+y-z\rVert^2 =2(\lVert y-z\rVert +\lVert x\rVert)-\lVert -x+y-z\rVert^2 :=B.
+    \end{align*} 
+    Giving us that 
+    \begin{align*}
+        \lVert x+y-z\rVert^2 =& \frac{1}{2}[2(\lVert x-z\rVert +\lVert y\rVert)-\lVert x-y-z\rVert^2\\ 
+        &+ 2(\lVert y-z\rVert +\lVert x\rVert)-\lVert -x+y-z\rVert^2].
+    \end{align*}
+    Putting this together, we have
+    \begin{align*}
+        \langle x+y,z\rangle =& \frac{1}{4}[\lVert x+y+z\rVert^2-\lVert x+y-z\rVert^2]\\
+        =& \frac{1}{4}[2(\lVert x+z\rVert +\lVert y\rVert)-\lVert x-y+z\rVert^2\\
+       &+ 2(\lVert y+z\rVert +\lVert x\rVert)-\lVert -x+y+z\rVert^2\\
+       &- 2(\lVert x-z\rVert +\lVert y\rVert)+\lVert x-y-z\rVert^2\\ 
+        &- 2(\lVert y-z\rVert +\lVert x\rVert)+\lVert -x+y-z\rVert^2]\\
+        =& \frac{1}{4}[2(\lVert x+z\rVert +\lVert y\rVert)
+        -2(\lVert x-z\rVert +\lVert y\rVert)\\
+       &+ 2(\lVert y+z\rVert +\lVert x\rVert)
+       -2(\lVert y-z\rVert +\lVert x\rVert)\\
+       =& \frac{1}{4}[2(\lVert x+z\rVert -\lVert x-z\rVert)
+       + 2(\lVert y+z\rVert -\lVert y-z\rVert)\\
+       =& \langle x,z\rangle +\langle y, z\rangle.
+    \end{align*}
 
- Homogeneity in the first slot:
+    We will prove \textbf{homogeneity in the first slot} in steps. First, let $n\in\N$ we will prove by induction that $\langle nx,y\rangle=n\langle x,y\rangle$. The base case, for $n=1$ is clear. Now suppose the statement holds for $n$. We have
+    \begin{align*}
+        \langle (n+1)x,y\rangle =& \langle nx+x,y\rangle\\
+        =& \langle nx,y\rangle + \langle x,y\rangle\\
+        =& n\langle x,y\rangle +\langle x,y\rangle = (n+1)\langle x,y\rangle,
+    \end{align*}
+    as required.
 
- Conjugate symmetry: 
+    Now consider $\langle x,y\rangle =\langle n(1/n)x,y\rangle =n\langle (1/n)x,y\rangle$, so that $(1/n)\langle x,y\rangle =\langle (1/n)x,y\rangle$ for all $n\in\N$.
+
+    To prove that homogeneity in the first slot also holds for an arbitrary rational $r$, we will prove that $\langle -x,y\rangle=-\langle x,y\rangle$ and then recall that $r=n/m$ for $n,m\in\Z$. We have 
+    \begin{align*}
+        \langle -x,y\rangle =& \frac{1}{4}[\lVert -x+y\rVert^2-\lVert -x-y\rVert^2]\\
+        =& \frac{1}{4}[2(\lVert -x\rVert^2+\lVert y\rVert)-\lVert -x-y\rVert^2-\lVert -x-y\rVert^2]\\
+        =& \frac{1}{4}[2(\lvert -1\rvert^2\lVert x\rVert^2+\lVert y\rVert^2-\lvert -1\rvert^2\lVert x+y\rVert^2)]\\
+        =& \frac{1}{4}[2(\lVert x\rVert^2+\lVert y\rVert^2-\lVert x+y\rVert^2)],
+    \end{align*}
+    and
+    \begin{align*}
+        -\langle x,y\rangle =& \frac{1}{4}[\lVert x-y\rVert^2-\lVert x+y\rVert^2]\\
+        =& \frac{1}{4}[2(\lVert x\rVert^2+\lVert -y\rVert^2-2\lVert x+y\rVert^2)],
+    \end{align*}
+    which is the same as above, so that $\langle -x,y\rangle =-\langle x,y\rangle$. Thus, it follows that $\langle nx,y\rangle =n\langle x,y\rangle$ for all $n\in\Z$ and, hence for $r\in\Q$, we have that $\langle rx,y\rangle =r\langle x,y\rangle$.
+
+    Before proving that the property also holds for an arbitrary real number, let's prove the triangle inequality, $\lvert\langle x,y\rangle\rvert\leq\lVert x\rVert\lVert y\rVert$, holds in our candidate inner product. We have
+    \begin{align*}
+        \langle x,y\rangle =&  \frac{1}{4}[\lVert x+y\rVert^2-\lVert x-y\rVert^2]\\
+        =& \frac{1}{4}[\lVert x+y\rVert^2-2(\lVert x\rVert^2+\lVert y\rVert^2)+\lVert x+y\rVert^2]\\
+        \leq& \frac{1}{4}[2(\lVert x\rVert^2 +\lVert y\rVert^2 +2\lVert x\rVert\lVert y\rVert)-2(\lVert x\rVert^2+\lVert y\rVert^2)]\\
+        \leq& \frac{1}{4}[2(2\lVert x\rVert\lVert y\rVert)]= \lVert x\rVert\lVert y\rVert.
+    \end{align*}
+    Likewise, we have that $-\langle x,y\rangle\geq\lVert x\rVert\lVert y\rVert$ by following a similar process as above and noticing that in that case $-\lVert x+y\rVert^2$ would appear so the inequality is reversed. Hence, $\lvert\langle x,y\rangle\rvert\leq\lVert x\rVert\lVert y\rVert$.
+    
+    Let $c\in\R$ and $r\in\Q$. We have the following
+    \begin{align*}
+        \lvert c\langle x,y\rangle - \langle cx,y\rangle\rvert =& \lvert c\langle x,y\rangle -r\langle x,y\rangle +\langle rx,y\rangle -\langle cx,y\rangle\rvert\\
+        =& \lvert (c-r)\langle x,y\rangle -\langle cx -rx,y\rangle\rvert\\
+        \leq& \lvert (c-r)\langle x,y\rangle\rvert +\lvert\langle (c-r)x,y\rangle\rvert\\
+        \leq& \lvert (c-r)\rvert\lVert x\rVert\lVert y\rVert +\lVert (c-r)x\rVert\lVert y\rVert\\
+        =& 2\lvert (c-r)\rvert\lVert x\rVert\lVert y\rVert.
+    \end{align*}
+    Since $\Q$ is dense in $\R$, then we can choose $r$ to be arbitrarily close to $c$, so that for any $\varepsilon >0$, the difference $\lvert c\langle x,y\rangle - \langle cx,y\rangle\rvert$ is less than $\varepsilon$; in words, $c\langle x,y\rangle= \langle cx,y\rangle$. This implies that the inner product is homogeneous in the first slot.
+    
+    \textbf{Conjugate symmetry:} we have
+    \begin{align*}
+        \langle x,y\rangle =& \frac{1}{4}[\lVert x+y\rVert^2-\lVert x-y\rVert^2]\\
+        =& \frac{1}{4}[\lVert x+y\rVert^2- 2(\lVert x\rVert^2+\lVert -y\rVert^2)+\lVert x+y\rVert^2]\\
+        =& \frac{1}{4}[\lVert x+y\rVert^2- 2(\lVert x\rVert^2+\lvert -1\rvert^2\lVert y\rVert^2)+\lVert x+y\rVert^2]\\
+        =& \frac{1}{4}[\lVert x+y\rVert^2- 2(\lVert x\rVert^2+\lVert y\rVert^2)+\lVert x+y\rVert^2].
+    \end{align*}
+    Likewise, it follows that
+    \begin{align*}
+        \langle y,x\rangle =& \frac{1}{4}[\lVert y+x\rVert^2-\lVert y-x\rVert^2]\\
+        =& \frac{1}{4}[\lVert x+y\rVert^2 -2(\rVert y\lVert^2 + \lVert -x\rVert^2)+\lVert y+x\rVert^2]\\
+        =& \frac{1}{4}[\lVert x+y\rVert^2 -2(\rVert y\lVert^2 + \lvert-1\rvert^2\lVert x\rVert^2)+\lVert x+y\rVert^2]\\
+        =& \frac{1}{4}[\lVert x+y\rVert^2 -2(\rVert y\lVert^2 + \lVert x\rVert^2)+\lVert x+y\rVert^2],
+    \end{align*}
+    so that $\langle x,y\rangle=\langle y,x\rangle$.
+
+    Now we extend the proof to a \textbf{complex vector space}. To do so, first think of the complex vector space as a vector space over the reals with twice the dimension of the real vector space (because we need each complex number is represented by $a+bi$, where $a,b\in\R$). We consider the following candidate inner product, using the inner product we found above
+    \begin{align*}
+        [x,y] = \langle x,y\rangle + i\langle x,iy\rangle,
+    \end{align*}
+    with the property that $[x,ix]=0$ for all $x$ in our vector space.
+
+    We will now prove this is a valid inner product. Let's begin with \textbf{positivity} and \textbf{definiteness}. We have $[x,x] = \langle x,x\rangle +i\langle x,ix\rangle = \langle x,x\rangle \geq 0$ because $\langle \cdot,\cdot\rangle$ is positive and definite.
+
+    To prove \textbf{additivity in the first slot}, notice that
+    \begin{align*}
+        [x+z,y] =& \langle x+z,y\rangle + i\langle x+z,iy\rangle\\
+        =& \langle x,y\rangle + i\langle x,iy\rangle + \langle z,y\rangle + i\langle z,y\rangle\\
+        =& [x,y] + [x,z].
+    \end{align*}
+
+    To prove \textbf{homogeneity in the first slot}, consider $\lambda\in\R$. Then,
+    \begin{align*}
+        [\lambda x,y] =& \langle\lambda x,y\rangle+i\langle\lambda x,iy\rangle\\
+        =& \lambda\langle x,y\rangle+\lambda i\langle x,iy\rangle\\
+        =& \lambda[x,y],
+    \end{align*}
+    as required.
+
+    Finally, to prove \textbf{conjugate symmetry}, we will prove that $\bar{[y,x]}=[x,y]$.
+    \begin{align*}
+        \bar{[y,x]}-[x,y] =& \langle y,x\rangle -i\langle y,ix\rangle - \langle x,y\rangle + i\langle x,iy\rangle\\
+        =& -i(\langle y,ix\rangle + \langle x,iy\rangle)\\
+        =& -i(\langle x,ix\rangle + \langle y,ix\rangle + \langle x,iy\rangle +\langle y,iy\rangle)\\
+        =& -i(\langle x+y,ix\rangle + \langle x+y,iy\rangle)\\
+        =& -i\langle ix+iy, x+y\rangle= -i\langle x+y, ix+iy\rangle=0\\
+    \end{align*}
 \end{proof}

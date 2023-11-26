@@ -1,0 +1,27 @@
+\subsection{Polynomials and Affine Space}
+
+
+\begin{exercise}{3}
+Let $p$ be a prime number. The ring of integers modulo $p$ is a field with $p$ elements, which we will denote $\F_p$.
+\begin{enumerate}
+    \item Explain why $\F_p\backslash\{0\}$ is a group under multiplication.
+    \item Use Lagrange's Theorem to show that $a^{p-1}=1$ for all $a\in \F_p\backslash\{0\}$.
+    \item Prove that $a^p=a$ for all $a\in\F_p$. Hint: treat the cases $a=0$ and $a\neq 0$ separately.
+    \item Find a nonzero polynomial in $\F_p[x]$ that vanishes at all points of $\F_p$. Hint: use part 3.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item Since $\F_p$ is a field, it is an integral domain, so that it does not have divisors of zero. That is, if $a,b\in\F_p$ and $ab=0$ then either $a=0$ or $b=0$. In other words, if $a\neq 0$ and $b\neq 0$ then $ab\in\F_p\backslash\{0\}$. Furthermore, since $\F_p$  is a field, it is closed under inverses, so that every element in $\F_p\backslash\{0\}$ is invertible.
+     \item By Lagrange's Theorem, we know that the order of any element of a finite group divides the order of the group. Since $\F_p\backslash\{0\}$ has order $p-1$, then for any $a\in\F_p\backslash\{0\}$, the order of $a$ (say $n$) divides $p-1$ so that $p-1=mn$. We then have $(a^n)^m=a^{p-1}=1^m=1$.
+     \item If $a=0$, then $0^p=0$. If $a\neq 0$, we multiply both sides of the equation in exercise 2 by $a$ we obtain $a^p=a$.
+     \item Since $a^p=a$ for all $a\in\F_p$, then the polynomial $p(x)=x^p-x$ has the property that $p(a)=0$ for all $a\in\F_p$.
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{4}
+Let $F$ be a finite field with $q$ elements. Adapt the argument of exercise 3 to prove that $x^q-x$ is a nonzero polynomial in $F[x]$ which vanishes at every point of $F$. This shows that Proposition 5 fails for all finite fields.
+\end{exercise}
+\begin{proof}
+ Since in exercise 3 we did not use the primality of the order of $\F_p$, then the result of this questions follows directly from it.
+\end{proof}
