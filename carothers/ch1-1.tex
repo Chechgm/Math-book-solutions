@@ -159,60 +159,144 @@ Given real numbers $a$ and $b$, establish the following formulas: $\lvert a+b\rv
 If $0<c<1$, show that $c^n\to 0$; and if $c>0$, show that $c^{1/n}\to 1$. [Hint: Use Bernoulli's inequality for each, once with $c=1/(1+x), x>0$ and once with $c^n=1+x_n$, where $x_n>0$].
 \end{exercise}
 \begin{proof}
-$c^n\to 0$: To prove this, notice we can write $c=1/(1+x)$ where $x>0$ (for a particular $c$, choose $x=(1-c)/c$ and replace in the equation for $c$). Because $c$ is positive, then $c^n$ is positive for all $n$, and hence bounded below by 0. We will now prove the sequence is strictly decreasing. We have
-\begin{align*}
-    \frac{c^n}{c^{n+1}} =& \frac{\frac{1}{(1+x)^n}}{\frac{1}{(1+x)^{n+1}}}\\
-    =& \frac{(1+x)^{n+1}}{(1+x)^n}\\
-    =& 1+x>1,
-\end{align*}
-so that $c^n$ is monotonic decreasing. Hence, by Theorem 1.4, $c^n\to\inf (c^n)=0$.
+$c^n\to 0$: To prove this, notice we can write $c=1/(1+x)$ where $x>0$ (for a particular $c$, choose $x=(1-c)/c$ and replace in the equation for $c$). Then $c^n= 1/(1+x)^n$. By Bernoulli's inequality, we have that $(1+x)^n\geq 1+nx$, so that $c^n= 1/(1+x)^n\leq 1/(1+nx)\to 0$, since $c>0$, $c^n$ is bounded below by 0 for all $n$, so that $c^n\to 0$, as required.
 
-$c^{1/n}\to 1$: We have that $c=1/(1+x)= 1-x/(1+x)$ for $x>-1$. Then $c^{1/n}< 1-x/n(1+x)$ by Bernoulli's inequality. But as $n\to\infty,\, c^{1/n}\to 1$, as required.
+$c^{1/n}\to 1$: We have $c^{1/n}= 1+x_n$ where $x_n>-1$ for all $n$. Then $(c^{1/n})^n= c= (1+x_n)^n\geq 1+nx_n$, by Bernoulli's inequality. But this implies $(c-1)/n\geq x_n$. However, $x_n\to 0$ since $(c-1)/n\to 0$, and $x_n\geq 0$. This in turn implies that $c^{1/n}= 1+x_n\to 1$, as required.
 \end{proof}
 
 \begin{exercise}{21}
 Let $p\geq 2$ be a fixed integer, and let $0<x<1$. If $x$ has a finite-length base $p$ decimal expansion, that is, if $x=a_1/p+\dots+a_n/p^n$ with $a_n\neq 0$, prove that $x$ has precisely two base $p$ decimal expansions. Otherwise, show that the base $p$ decimal expansion for $x$ is unique. Characterize the numbers $0<x<1$ that have repeating base $p$ decimal expansions. How about eventually repeating?
 \end{exercise}
 \begin{proof}
-fill
+Suppose $x$ is terminating. By hypothesis, $x$ has a finite-length base $p$-decimal expansion. To see it has a second expansion, consider the expansion given by $x=a_1/p+\dots+(a_n-1)/p^n+\sum_{i=n}^\infty (p-1)/p^i$. We have that 
+\begin{align*}
+    &\absoluteValue{a_1/p+\dots+(a_n-1)/p^n+\sum_{i=n}^\infty (p-1)/p^i - \left(a_1/p+\dots+a_n/p^n\right)} =\\
+    &\absoluteValue{-1/p^n+\sum_{i=n}^\infty (p-1)/p^i}= \absoluteValue{0},
+\end{align*}
+as required. If we choose any other representation mod $p$ of $x$, we can choose an $\varepsilon$ so that the difference is greater than such $\varepsilon$, the same argument works for any $x$ that is non-terminating.
+
+The numbers $0<x<1$ that are eventually repeating are the rationals.
+\end{proof}
+
+\begin{exercise}{22}
+Show that $\inf_na_n\leq \lim\inf_{n\to\infty}a_n\leq \lim\sup_{n\to\infty}a_n\leq \sup_na_n$.
+\end{exercise}
+\begin{proof}
+Notice that $\inf_na_n = \inf\set{a_1,a_2,\dots}$ whereas \\
+$\lim\inf_{n\to\infty}a_n=\sup_{n\geq 1}(\inf\set{a_n,a_{n+1},\dots})$ so that
+\\
+$\inf\set{a_1,a_2,\dots}\leq\lim\inf_{n\to\infty}a_n$ since the supremum of a set is an greater than or equal to each of its elements. We can reason in an analogous way to conclude that $\lim\sup_{n\to\infty}a_n\leq \sup_na_n$. 
+
+By exercise 3, for any $m>n$, we have 
+\[
+\inf\set{a_n,a_{n+1},\dots}
+\leq\inf\set{a_m,a_{m+1},\dots} \leq\sup\set{a_m,a_{m+1},\dots} \leq\sup\set{a_n,a_{n+1},\dots}
+\]
+which implies that the set $\set{\inf\set{a_n,a_{n+1},\dots}:n\in\N}$ is upper bounded by all elements in $\set{\sup\set{a_n,a_{n+1},\dots}:n\in\N}$, so that $\lim\inf_{n\to\infty}a_n=\sup_{n\geq 1}(\inf\set{a_n,a_{n+1}})\leq s$ for all $s\in\set{\sup\set{a_n,a_{n+1},\dots}:n\in\N}$; if this wasn't the case for $s'\in\set{\sup\set{a_n,a_{n+1},\dots}:n\in\N}$, then $\lim\inf_{n\to\infty}a_n$ would not be the supremum of the set of infima, given that there would be a lower upper bound. Likewise, $b\leq\inf_{n\geq 1}(\sup\set{a_n,a_{n+1},\dots})=\lim\sup_{n\to\infty}a_n$ for all $b\in\set{\inf\set{a_n,a_{n+1},\dots}:n\in\N}$. 
+
+To finish the proof, suppose, for the sake of contradiction, that
+\\
+$m=\lim\inf_{n\to\infty}a_n>\lim\sup_{n\to\infty}a_n$ giving us $\lim\inf_{n\to\infty}a_n-\lim\sup_{n\to\infty}a_n=\epsilon>0$. We have that for all $\varepsilon>0$, there exists $b\in\set{\inf\set{a_n,a_{n+1},\dots}:n\in\N}$ so that $m-\varepsilon\leq b$, if we choose $\varepsilon=\epsilon/2$, then we have found a smaller lower bound of $\set{\sup\set{a_n,a_{n+1},\dots}:n\in\N}$ (because the set of infima is a set of lower bounds of the set of suprema) and hence $\lim\sup_{n\to\infty}a_n$ is not the infimum of $\set{\sup\set{a_n,a_{n+1},\dots}:n\in\N}$, giving us a contradiction, so that
+\\
+$\lim\inf_{n\to\infty}a_n\leq \lim\sup_{n\to\infty}a_n$.
 \end{proof}
 
 \begin{exercise}{24}
-fill
+Show that $\lim\sup_{n\to\infty}(-a_n)=-\lim\inf_{n\to\infty}a_n$.
 \end{exercise}
 \begin{proof}
-fill
+We have that
+\begin{align*}
+    \lim\sup_{n\to\infty}(-a_n) &= \sup_{n\geq 1}(\inf\set{-a_n,-a_{n+1},\dots})\\
+    &= \sup_{n\geq 1}(-\sup\set{a_n,a_{n+1},\dots})\\
+    &= -\inf_{n\geq 1}(\sup\set{a_n,a_{n+1},\dots})\\
+    &= -\lim\inf_{n\to\infty}a_n,
+\end{align*}
+as required.
 \end{proof}
 
 \begin{exercise}{25}
-fill
+If $\lim\sup_{n\to\infty}a_n=-\infty$, show that $(a_n)$ diverges to $-\infty$. If $\lim\sup_{n\to\infty}a_n=+\infty$, show that $(a_n)$ has a subsequence that diverges to $+\infty$. What happens if $\lim\inf_{n\to\infty}a_n=\pm\infty$?
 \end{exercise}
 \begin{proof}
-fill
+Since $\lim\sup_{n\to\infty}(a_n) = \sup_{n\geq 1}(\inf\set{a_n,a_{n+1},\dots})$, then if\\ $\lim\sup_{n\to\infty}(a_n)=-\infty$, it must be the case that $\inf\set{a_n,a_{n+1},\dots}=-\infty$ for all $n$, as otherwise, $\sup$ of that would be different from $-\infty$. However, if $\inf\set{a_n,a_{n+1},\dots}=-\infty$ for all $n$, then $(a_n)$ is not bounded below, so that it diverges to $-\infty$.
+
+If $\lim\sup_{n\to\infty}(a_n)= \sup_{n\geq 1}(\inf\set{a_n,a_{n+1},\dots})= \infty$, it must be the case that the set $\set{\inf\set{a_n,a_{n+1},\dots}:n\geq 1}$ is not bounded above; that is, we can find a subsequence $n_k$ such that $(a_{n_k})$ diverges, as otherwise the set would be bounded above. 
+
+We can reason in an analogous way to make the (swapped) conclusions for $\lim\inf_{n\to\infty}a_n=\pm\infty$.
 \end{proof}
 
 \begin{exercise}{26}
-fill
+Prove the characterisation of $\lim\sup$ given above. That is, given a bounded sequence $(a_n)$, show that the number $M=\lim\sup_{n\to\infty}a_n$ satisfies ($\ast$) and, conversely, that any number $M$ satisfying ($\ast$) must equal $\lim\sup_{n\to\infty}a_n$. State and prove the corresponding result for $m=\lim\inf_{n\to\infty}a_n$.
+\end{exercise}
+\begin{proof}
+For reference, $(\ast)$ is: for every $\varepsilon>0$, we have $a_n<M+\varepsilon$ for all but finitely many $n$, and $M-\varepsilon<a_n$ for infinitely many $n$.
+
+($\Rightarrow$) Suppose that for every $\varepsilon>0$, there is an integer $N\geq 1$ such that $M-\varepsilon<\sup\set{a_k:k\geq n}<M+\varepsilon$ for all $n\geq N$. Then for $n\geq N$, $a_n<\sup\set{a_k:k\geq n}<M+\varepsilon$ so that the inequality holds for all but finitely many $n$. 
+
+Likewise, if we can choose $N$ so that $M-\varepsilon<\sup\set{a_k:k\geq n}$ for all $n\geq N$, that implies that for all $n$, there exists at least one $a_i$ so that $M-\varepsilon<a_i\leq\sup\set{a_k:k\geq n}$ (by the $\epsilon$ definition of the supremum). Since this is true for all $n$, then the inequality holds for infinitely many $i$.
+
+($\Leftarrow$) Suppose $(\ast)$. That is, for every $\varepsilon>0$, we have $a_n<M+\varepsilon$ for all but finitely many $n$, and $M-\varepsilon<a_n$ for infinitely many $n$. Since $a_n<M+\varepsilon$, for all but finitely many $n$, we can choose $N$ so that for all $n\geq N$, $a_n<M+\varepsilon$, and hence $\sup\set{a_k:k\geq n}<M+\varepsilon$. 
+
+Likewise, if $M-\varepsilon<a_n$ for infinitely many $n$, then for all $n$, we have that $M-\varepsilon<a_n\leq\sup\set{a_k:k\geq n}$, as desired.
+\end{proof}
+
+\begin{exercise}{27}
+Prove that every sequence of real numbers $(a_n)$ has a subsequence $(a_{n_k})$ that converges to $\lim\sup_{n\to\infty}a_n$. [Hint: if $M=\lim\sup_{n\to\infty}a_n=\pm\infty$, we must interpret the conclusion loosely; this case is handled in exercise 25. If $M\neq\pm\infty$, use $(\ast)$ to choose $(a_{n_k})$ satisfying $\absoluteValue{a_{n_k}-M}<1/k$, for example]. There is necessarily also a subsequence that converges to $\lim\inf_{n\to\infty}a_n$. Why?
+\end{exercise}
+\begin{proof}
+As mentioned in the problem, if $M=\lim\sup_{n\to\infty}a_n=\pm\infty$, then we can use exercise 25 to conclude the subsequence exists. Hence, we assume $M\neq\infty$. We know by the characterisation of exercise 26 that for all $\varepsilon>0$, we have $a_n<M+\varepsilon$ for all but finitely many $n$ and $M-\varepsilon<a_n$ for infinitely many $n$. Following the hint, let $\varepsilon=1/k$ for all naturals and choose $n_k$ to be the lowest index so that $n_k>n_{k-1}$ of the infinite sets previous described. The implication is that, for all $\varepsilon>0$, we can find a $k$ such that $\absoluteValue{a_{n_k}-M}<\varepsilon$, giving us the desired result.
+\end{proof}
+
+\begin{exercise}{30}
+If $a_n\leq b_n$ for all $n$, and if $(a_n)$ converges, show that $\lim_{n\to\infty}a_n\leq\lim\inf_{n\to\infty}b_n$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof}
 
-\begin{exercise}{27}
-fill
+\begin{exercise}{32}
+Given a sequence $(a_n)$ of real numbers, let $\SSS$ be the set of all limits of convergent subsequences of $(a_n)$ (including, possibly, $\pm\infty$). For example, it follows from exercise 27 that $\lim\sup_{n\to\infty}a_n$ and $\lim\inf_{n\to\infty}a_n$ are both elements of $\SSS$. Show that, in fact, $\lim\sup_{n\to\infty}a_n= \sup\SSS$ and $\lim\inf_{n\to\infty}a_n= \inf\SSS$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof}
 
 \begin{exercise}{33}
-fill
+Show that $(x_n)$ converges to $x\in\R$ if and only if every subsequence $(x_{n_k})$ of $(x_n)$ has a further subsequence $(x_{n_{k_l}})$ that converges to $x$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof}
 
 \begin{exercise}{37}
+If $(E_n)$ is a sequence of subsets of a fixed set $S$, we define
+\[
+\lim\sup_{n\to\infty}E_n=\bigcap_{n=1}^\infty\left(\bigcup_{k=n}^\infty E_k\right)
+\,\text{and }\,
+\lim\inf_{n\to\infty}E_n=\bigcup_{n=1}^\infty\left(\bigcap_{k=n}^\infty E_k\right).
+\]
+Show that 
+\[
+\lim\inf_{n\to\infty}E_n\subset\lim\sup_{n\to\infty}E_n
+\,\text{and that }\,
+\lim\inf_{n\to\infty}(E_n^c)= \left(\lim\sup_{n\to\infty}E_n\right)^c
+\]
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{X}
+34
+35
+36
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{X}
 fill
 \end{exercise}
 \begin{proof}

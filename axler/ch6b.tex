@@ -31,17 +31,53 @@
 \end{proof}
 
 \begin{exercise}{12}
-  Suppose $V$ is finite-dimensional and $\brackets{\cdot,\cdot}_1, \brackets{\cdot,\cdot}_2$ are inner products on $V$ with corresponding norms $\norm{\cdot}_1$ and $\norm{\cdot}_2$. Prove that there exists a positive number $c$ such that $\norm{v}_1\leq\norm{v}_2$, for every $v\in V$.
+  Suppose $V$ is finite-dimensional and $\brackets{\cdot,\cdot}_1, \brackets{\cdot,\cdot}_2$ are inner products on $V$ with corresponding norms $\norm{\cdot}_1$ and $\norm{\cdot}_2$. Prove that there exists a positive number $c$ such that $\norm{v}_1\leq c\norm{v}_2$, for every $v\in V$.
 \end{exercise}
 \begin{proof}
- Fill
+ Let $e_1,\dots,e_n$ be an orthonormal basis of $V$ under $\brackets{\cdot,\cdot}_2$, whose existence is guaranteed by 6.34. We can write $v\in V$ as $v=a_1e_1+\dots+a_ne_n$. We have the following
+ \begin{align*}
+     \norm{v}_1 =& \norm{a_1e_1+\dots+a_ne_n}_1\\
+     \leq& \norm{a_1e_1}_1+\dots+\norm{a_ne_n}_1\\
+     =& \absoluteValue{a_1}\norm{e_1}_1+\dots+\absoluteValue{a_n}\norm{e_n}_1,
+ \end{align*}
+ letting $c=\max\set{\norm{e_i}_1:i=1,\dots,n}$, the above inequality is
+ \begin{align*}
+     \norm{v}_1 \leq& c(\absoluteValue{a_1}+\dots+\absoluteValue{a_n}).
+ \end{align*}
+ Squaring both sides of this inequality, we obtain
+ \begin{align*}
+     \norm{v}_1^2 \leq& c^2(\absoluteValue{a_1}+\dots+\absoluteValue{a_n})^2\\
+     \leq& (cn)^2(a_1^2+\dots+a_n^2)\\
+     =& (cn)^2(\absoluteValue{a_1}^2+\dots+\absoluteValue{a_n}^2) = (cn)^2\norm{v}_2^2,
+ \end{align*}
+ where the last inequality follows from 6.25. Taking square root on both sides of the inequality gives us the desired result.
 \end{proof}
 
 \begin{exercise}{15}
-  Fill
+  Suppose $C_\R([-1,1])$ is the vector space of continous real-valued functions in the interval $[-1,1]$ with inner product given by
+  \begin{align*}
+      \brackets{f,g} = \int_{-1}^1f(x)g(x)dx
+  \end{align*}
+  for $f,g\in C_\R([-1,1])$. Let $\varphi$ be the linear functional on $C_\R([-1,1])$ defined by $\varphi(f)=f(0)$. Show that there does not exist $g\in C_\R([-1,1])$ such that $\varphi(f)=\brackets{f,g}$, for every $f\in C_\R([-1,1])$.
+
+  [The exercise above shows that the Riesz Representation Theorem (6.42) does not hold in infinite-dimensional vector spaces without additional hypotheses on $V$ and $\varphi$.]
 \end{exercise}
 \begin{proof}
- Fill
+ Consider the following three functions
+ \begin{align*}
+     &f_1(x) =
+     \begin{cases}
+         0\quad\text{if } x\in[-1,0]\\
+         x\quad\text{otherwise}
+     \end{cases}\\
+     &f_2(x) =
+     \begin{cases}
+         x\quad\text{if } x\in[-1,0]\\
+         0\quad\text{otherwise}
+     \end{cases}\\
+     &f_3(x) = 1.
+ \end{align*}
+ Then $f_1$ requires a $g$ such that $g(x)=0$ in $[0,1]$, $f_2$ requires a $g$ such that $g(x)=0$ in $[-1,0]$, these two imply that $g$ must be 0. However, for such $g$ we have $\varphi(f)=f(0)=1\neq\brackets{f,g}$, as required.
 \end{proof}
 
 \begin{exercise}{17}

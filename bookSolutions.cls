@@ -52,6 +52,7 @@
 \newcommand{\LLL}{\mathcal{L}}
 \newcommand{\MMM}{\mathcal{M}}
 \newcommand{\PPP}{\mathcal{P}}
+\newcommand{\SSS}{\mathcal{S}}
 
 \newcommand{\bF}{\mathbf{F}}
 \newcommand{\bV}{\mathbf{V}}

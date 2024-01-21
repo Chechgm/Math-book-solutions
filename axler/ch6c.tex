@@ -3,50 +3,72 @@
 
 
 \begin{exercise}{1}
-  Fill
+  Suppose $v_1,\dots,v_m\in V$. Prove that $\set{v_1,\dots,v_m}^\perp =(\vecspan(v_1,\dots,v_m))^\perp$.
 \end{exercise}
 \begin{proof}
- Fill
+ ($\subseteq$) Let $u\in\set{v_1,\dots,v_m}^\perp$. Then $a_i\brackets{v_i,u}=0$ for all $v_i\in\set{v_1,\dots,v_m}$ and a scalar $a_i$. Hence, $a_1\brackets{v_1,u}+\dots+a_m\brackets{v_m,u} =\brackets{a_1v_1+\dots+a_mv_m,u} =\brackets{v,u} =0$, where $v\in\vecspan(v_1,\dots,v_m)$. Since $v$ is an arbitrary vector in $\vecspan(v_1,\dots,v_m)$, then $u\in\vecspan(v_1,\dots,v_m)^\perp$, and \\${\set{v_1,\dots,v_m}^\perp \subseteq(\vecspan(v_1,\dots,v_m))^\perp}$, as required.
+
+ ($\supseteq$) This follows by noting that $\set{v_1,\dots,v_m}\subseteq\vecspan(v_1,\dots,v_m)$ so that by 6.46e, $(\vecspan(v_1,\dots,v_m))^\perp\subseteq\set{v_1,\dots,v_m}^\perp$.
 \end{proof}
 
 \begin{exercise}{2}
-  Fill
+  Suppose $U$ is a finite-dimensional subspace of $V$. Prove that $U^\perp=\set{0}$ if and only if $U=V$.
+
+  [Exercise 14(1) shows that the result above is not true without the hypothesis that $U$ is finite-dimensional.]
 \end{exercise}
 \begin{proof}
- Fill
+ ($\Rightarrow$) For the sake of contradiction, suppose $U^\perp=\set{0}$ and $U\neq V$. Then there exists $v\in V$ and $v\notin U$. However, by 6.47 we know that $V=U\oplus U^\perp$, but certainly $v\notin U\oplus U^\perp=V$, producing a contradiction, as desired.
+
+ ($\Leftarrow$) Suppose $U=V$, then by 6.46c, $U^\perp=V^\perp=\set{0}$.
 \end{proof}
 
 \begin{exercise}{3}
-  Fill
+  Suppose $U$ is a subspace of $V$ with basis $u_1,\dots,u_m$, and $u_1,\dots,u_m,w_1,\dots,w_n$ is a basis of $V$. Prove that if the Gram-Schmidt Procedure is applied to the basis of $V$ above, producing a list $e_1,\dots,e_m,f_1,\dots,f_n$, then $e_1,\dots,e_m$ is an orthonormal basis of $U$ and $f_1,\dots,f_n$ is an orthonormal basis of $U^\perp$.
 \end{exercise}
 \begin{proof}
- Fill
+ By 6.47, we know that $V=U\oplus U^\perp$, hence, if $u_1,
+ \dots,u_m,w_1,\dots,w_n$ is a basis of $V$ and $u_1,\dots,u_m$ is a basis of $U$, then $w_1,\dots,w_n$ is a basis of $U^\perp$. Now, if we apply the Gram-Schmidt Procedure, then $e_1,\dots,f_n$ is an orthonormal list. Certainly $e_1,\dots,e_m$ is an orthonormal basis of $U$ (as this is equivalent to doing the procedure on $u_1,\dots,u_m$), and $f_1,\dots,f_n$ is a basis of $U^\perp$ (for the same reason as above).
 \end{proof}
 
 \begin{exercise}{5}
-  Fill
+  Suppose $V$ is finite-dimensional and $U$ is a subspace of $V$. Show that $P_{U^\perp}=I-P_U$, where $I$ is the identity operator on $V$.
 \end{exercise}
 \begin{proof}
- Fill
+ From 6.47, we have that $V=U\oplus U^\perp$. Let $v\in V$, so that $v=u+u'$ where $u\in U$ and $u'\in U^\perp$. We have $P_{U^\perp}v = u' =v-u =Iv-P_Uv$, as required.
 \end{proof}
 
 \begin{exercise}{6}
-  Fill
+  Suppose $U$ and $W$ are finite-dimensional subspaces of $V$. Prove that $P_UP_W=0$ if and only if $\brackets{u,w}=0$ for all $u\in U$ and all $w\in W$.
 \end{exercise}
 \begin{proof}
- Fill
+ ($\Rightarrow$) Suppose $P_UP_W=0$. Since $V=U\oplus U^\perp$, we can write $w\in W$ as $w=u+u'$ for $u\in U$ and $u'\in U^\perp$. Since $P_U(w)=0$, then $w=u'$ which implies $w\in U^\perp$ and hence $\brackets{u,w}=0$ for all $w\in W$ and all $u\in U$.
+
+ ($\Leftarrow$) Suppose $\brackets{u,w}=0$ for all $u\in U$ and all $w\in W$. Then $w\in U^\perp$. For $v\in V$, we can write $v=u+w+w'$, where $u\in U$, $w\in U^\perp$, and $w'$ is an element of $U^\perp$ but not in $W$. We have $P_UP_Wv =P_Uw =0$, since $w\in U^\perp$.
 \end{proof}
 
-\begin{exercise}{7}
-  Fill
+\begin{exercise}{8}
+  Suppose $V$ is finite-dimensional and $P\in\LLL(V)$ is such that $P^2=P$ and $\norm{Pv}\leq\norm{v}$ for every $v\in V$. Prove that there exists a subspace $U$ of $V$ such that $P=P_U$.
 \end{exercise}
 \begin{proof}
- Fill
+ We want to prove that $Pv =P_Uv =P_U(u+u') =u$ for some subspace $U$ of $V$, $u\in U$ and $u'\in U^\perp$. Let's use $\range P$ as candidate $U$, and $\nullspace P$ be a candidate for $U^\perp$. Using the Fundamental Theorem of Linear maps, we know that $\dim V=\dim\range P +\dim\nullspace P$. Furthermore, we know that because $P=P^2$, then $\range P\cap\nullspace P=\set{0}$. Hence, $V=\range P\oplus\nullspace P$. To finish the proof, let $u\in\range P$, $w\in\nullspace P$ and $a$ be a scalar. We have $\norm{u} \leq \norm{P(aw+u)}=\norm{aw+u}$. Using exercise 6 from section 6a, we obtain that $\range P$ is orthogonal to $\nullspace P$, so that $U=\range P$ is the desired space.
 \end{proof}
 
 \begin{exercise}{14}
-  Fill
+  Suppose $C_\R([-1,1])$ is the vector space of continuous real-valued functions on the interval $[-1,1]$ with inner product given by
+  \begin{align*}
+      \brackets{f,g} = \int_{-1}^1f(x)g(x)dx
+  \end{align*}
+  for $f,g\in C_\R([-1,1])$. Let $U$ be the subspace of $C_\R([-1,1])$ defined by $U=\set{f\in C_\R([-1,1]): f(0)=0}$.
+  \begin{enumerate}
+      \item Show that $U^\perp=\set{0}$.
+      \item Show that 6.47 and 6.51 do not hold without the finite-dimensional hypothesis.
+  \end{enumerate}
 \end{exercise}
 \begin{proof}
- Fill
+ \begin{enumerate}
+     \item In exercise 15 of section 6.b we gave an example of two functions that force $U^\perp=\set{0}$.
+     \item Proposition 6.47 asserts that $V=U\oplus U^\perp$. From the previous exercise we know $U^\perp =\set{0}$, moreover $U=\set{f\in C_\R([-1,1]): f(0)=0}$. So that we cannot obtain any function with $f(0)\neq 0$ as a linear combination of $U$ and $U^\perp$.
+
+     Proposition 6.51 asserts that $U=(U^\perp)^\perp$. We have $(U^\perp)^\perp =(\set{0})^\perp =C_\R([-1,1]) \neq U$, as required. 
+ \end{enumerate}
 \end{proof}

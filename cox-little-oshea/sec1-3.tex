@@ -15,9 +15,9 @@ Consider the parametric representation
 \begin{enumerate}
     \item We have 
     \begin{align*}
-        &x = \frac{t}{1+t}\iff\\
-        &x(1+t) = t\iff\\
-        &x = t(1-x)\iff\\
+        &x = \frac{t}{1+t} &&\iff\\
+        &x(1+t) = t &&\iff\\
+        &x = t(1-x) &&\iff\\
         &t = \frac{x}{1-x},
     \end{align*}
     so that replacing in the equation of $y$ we obtain the equation of the affine variety
@@ -50,11 +50,30 @@ The idea is to adapt the argument used for the circle $x^2+y^2=1$ to 3-dimension
 \begin{enumerate}
     \item Given a point $(u,v,0)$ in the $(x,y)$-plane, draw the line form this point to the ``north pole'' $(0,0,1)$ of the sphere, and let $(x,y,z)$ be the other point where the line meets the sphere. Draw a picture to illustrate this, and argue geometrically that mapping $(u,v)$ to $(x,y,z)$ gives a parametrisation of the sphere minus the north pole.
     \item Show that the line connecting $(0,0,1)$ to $(u,v,0)$ is parametrised by $(tu,tv,1-t)$, where $t$ is a parameter that moves along the line.
-    \item Substitute $x=tu, y=tv$ and $z=1-$ into the equation for the sphere $x^2+y^2+z^2=1$. Use this to derive the formulas given at the beginning of the problem.
+    \item Substitute $x=tu, y=tv$ and $z=1-t$ into the equation for the sphere $x^2+y^2+z^2=1$. Use this to derive the formulas given at the beginning of the problem.
 \end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item Since the described line intersects the unit sphere in only one point, and for all points of the sphere (besides $(0,0,1)$ we can find $u$ and $v$ so that the point of the sphere is the intersection with the line, then the whole sphere (with the exception of the north pole) is identified with $(u,v)$. 
+    \begin{figure}[H]
+     \centering
+     \includegraphics[width=.5\textwidth]{cox-little-oshea/assets/sec1-3-ex6a.png}
+     \caption{Line between $(u,v,0)$ and $(0,0,1)$ for $u=v=2$ and the unit sphere.}
+     \label{fig:sec1-3-ex8a}
+    \end{figure}
+    Remark: This appears on Brannan, Espen and Gray as the Stereographic projection.
+    \item We know that the equation of a parametrised line in 3D is given by $r(t)=(x_0,y_0,z_0)+t(a,b,c)$, where $(a,b,c)$ are the slopes of the line. We can find the slopes, given two points, by simply subtracting one point from the other. We then have, $a=u, b=v$ and $c=-1$ then $r(t)=(0,0,1)+t(u,v,-1)=(tu,tv,1-t)$, as desired.
+    \item We have 
+    \begin{align*}
+        &u^2t^2 + v^2t^2 + (1-t)^2 = 1 &&\iff\\
+        &u^2t^2 + v^2t^2 + 1 - 2t + t^2 = 1 &&\iff\\
+        &t^2(u^2 + v^2 + 1) - 2t = 0 &&\iff\\
+        &t(u^2 + v^2 + 1) - 2 = 0 &&\iff\\
+        &t = \frac{2}{u^2 + v^2 + 1}.
+    \end{align*}
+    Replacing $t$ in the above parametric equations of the line we obtain the desired result.
+\end{enumerate}
 \end{proof}
 
 \begin{exercise}{8}
@@ -62,23 +81,44 @@ Consider the curve defined by $y^2=cx^2-x^3$, where $c$ is some constant. Here i
 \begin{figure}[H]
      \centering
      \includegraphics[width=.5\textwidth]{cox-little-oshea/assets/sec1-3-ex8.png}
-     \caption{Fill}
      \label{fig:sec1-2-ex8}
 \end{figure}
 Our goal is to parametrise this curve.
 \begin{enumerate}
     \item Show that a line will meet this curve at either 0, 1, 2, or 3 points. Illustrate your answer with a picture. Hint: let the equation of the line be either $x=a$ or $y=mx+b$.
-    \item Show that a nonvertical line through the origin meets the curve at exactly on other point when $m^2\neq c$. Draw a picture to illustrate this, and see if you can come up with an intuitive explanation as to why this happens.
+    \item Show that a nonvertical line through the origin meets the curve at exactly one other point when $m^2\neq c$. Draw a picture to illustrate this, and see if you can come up with an intuitive explanation as to why this happens.
     \item Now draw the vertical line $x=1$. Given a point $(1,t)$ on this line, draw the line connecting $(1,t)$ to the origin. This will intersect the curve in a point $(x,y)$. Draw a picture to illustrate this, and argue geometrically that this gives a parametrisation of the entire curve.
     \item Show that the geometric description from part (3) leads to the parametrisation $x=c-t^2, y=t(c-t^2)$. 
 \end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item Using the hint, consider the following two cases:
+
+    Case 1. The line is vertical, with equation $x=a$. Then we have
+    \begin{align*}
+        y^2 =& ca^2-a^3\\
+        =& a^2(c-a)\implies\\
+        y =& a\sqrt{c-a}.
+    \end{align*}
+    We then have two extra cases. Case 1a: If $c-a\geq0$, then the line intersects the curve in the following two points $y=\pm a\sqrt{c-a}$. Case 1b: If $c-a<0$, then the line does not intersect the curve.
+
+    Case 2. The line is given by the following function $y=mx+b$. We have
+    \begin{align*}
+        &(mx+b)^2 = cx^2 -x^3 &&\implies\\
+        &m^2x^2+2mbx+b^2 = cx^2-x^3 &&\implies\\
+        &x^3+(m^2-c)x^2+2mbx+b^2 = 0 &&\text{(*)},
+    \end{align*}
+    which can have either 1 or 3 real roots (because complex roots come in pairs.
+
+    Hence, the two cases tell us that a line can intersect the curve at 0,1,2 or 3 points.
+    \item If $m^2\neq c$, then the discriminant of (*) is
+    $8 m^6 b^2 - 20 m^4 b^2 c - 68 m^3 b^3 + 16 m^2 b^2 c^2 + 36 m b^3 c - 27 b^4 - 4 b^2 c^3$,
+\end{enumerate}
 \end{proof}
 
 \begin{exercise}{11}
-In this problem, we will derive the paramtrisation
+In this problem, we will derive the parametrisation
 \begin{align*}
     x = t(u^2-t^2),\,\, y = u,\,\, z = u^2-t^2
 \end{align*}
@@ -93,5 +133,9 @@ of the surface $x^2-y^2z^2+z^3=0$ considered in the text.
 \end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item These are exactly the same formulas as in part (4) of 8, where $x=y$ and $z=x$. 
+    \item After replacing $c=y^2$, we have $x^2=y^2z^2-z^3$, which is exactly the parametrisation we want.
+    \item 
+\end{enumerate}
 \end{proof}
