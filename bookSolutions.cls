@@ -55,6 +55,7 @@
 \newcommand{\SSS}{\mathcal{S}}
 
 \newcommand{\bF}{\mathbf{F}}
+\newcommand{\bI}{\mathbf{I}}
 \newcommand{\bV}{\mathbf{V}}
 \newcommand{\bG}{\mathbf{G}}
 

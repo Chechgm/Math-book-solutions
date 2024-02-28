@@ -1,27 +1,66 @@
 \subsection{Limits and continuity}
 
-41
-49
-50
-51
 
 \begin{exercise}{40}
-fill
+Prove Theorem 1.17. 
+
+Theorem 1.17. Let $f$ be a real valued function defined in some punctured neighborhood of $a\in\R$. Then the following are equivalent:
+\begin{enumerate}
+    \item There exists a number $L$ such that $\lim_{x\to a}f(x)=L$ (by the $\varepsilon-\delta$ definition).
+    \item There exists a number $L$ such that $f(x_n)\to L$ whenever $x_n\to a$, where $x_n\neq a$ for all $n$.
+    \item $(f(x_n))$ converges (to something) whenever $x_n\to a$, where $x_n\neq a$ for all $n$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+($1\Rightarrow 2$) Suppose 1, then for all $\varepsilon>0$, there exists a $\delta>0$ such that whenever $\absoluteValue{x-a}<\delta$, we also have that $\absoluteValue{f(x)-L}<\varepsilon$. Now consider an arbitrary sequence $(x_n)$ with $x_n\to a$ and $x_n\neq a$ for all $n$. Fix $\varepsilon>0$, and let $\delta>0$ be given by 1. Because $x_n\to a$, there exists an $N$ such that for all $n>N$, $\absoluteValue{x_n-a}<\delta$. However, by 1. this implies $\absoluteValue{f(x_n)-L}<\varepsilon$ for all $n>N$, so that $f(x_n)\to L$ whenever $x_n\to a$, so that 2 holds.
+
+($2\Rightarrow 3$) Suppose 2, condition 3 is less restrictive than 2, so it follows directly by it.
+
+($3\Rightarrow 2$) Suppose 3. Then $(f(x_n))$ converges to something whenever $x_n\to a$ with $x_n\neq a$ for all $n$. 
+
+then $(f(x_n))$ converges to something, say $L$, whenever $x_n\to a$ with $x_n\neq a$ for all $n$. Fix $\varepsilon>0$. Because $(f(x_n))\to L$, then there exists an $N$ such that for all $n>N$, it holds that $\absoluteValue{f(x_n)-L}<\varepsilon$. Let $\delta = \absoluteValue{x_N-a}$, then for any $x$ so that $\absoluteValue{x-a}<\delta$, we must have $\absoluteValue{f(x)-L}<\varepsilon$, as required.
+
+($2\Rightarrow 1$) Suppose, for the sake of contradiction, that there exists a number $L$ such that $\lim_{x\to a}f(x)=L$ by the $\varepsilon-\delta$ definition, but there is no number $L'$ such that $f(x_n)\to L'$ whenever $x_n\to a$ where $x_n\neq a$ for all $n$. The last condition can be also written as for all $n$, 
+\end{proof} 
+
+\begin{exercise}{41}
+Prove Theorem 1.18, including 1.18(iv) as one of the equivalent conditions
+
+Theorem 1.18. Let $f$ be a real-valued function defined in some neighborhood of $a\in\R$. Then, the following are equivalent:
+\begin{enumerate}
+    \item $f$ is continuous at $a$ (by the $\varepsilon-\delta$ defintion).
+    \item $f(x_n)\to f(a)$ whenever $x_n\to a$.
+    \item $(f(x_n))$ converges (to something) whenever $x_n\to a$.
+    \item $f(a-)$ and $f(a+)$ both exist, and both are equal to $f(a).$
+\end{enumerate}
 \end{exercise}
 \begin{proof}
 fill
 \end{proof}
 
 \begin{exercise}{45}
-fill
+Let $f:[a,b]\to\R$ be continuous and suppose that $f(x)=0$ whenever $x$ is rational. Show that $f(x)=0$ for every $x\in[a,b]$.
+\end{exercise}
+\begin{proof}
+For the sake of contradiction, suppose $f$ is continuous and $f(x)=0$ for all $x\in\Q$, but there exists $x'\in\R\setminus\Q$ such that $f(x')\neq 0$. By continuity, we have that for all sequences $(x_n)$ with $x_n\to x'$, it must be the case that $f(x_n)\to f(x')$. Consider the sequence $(x_n)\to x'$ composed of $x_n\in\Q$ for all $n$ (whose existence is guaranteed by Theorem 1.3, for example), then $f(x_n)=0$ for all $n$ and hence the sequence does not converge to $f(x')\neq 0$, as required.
+\end{proof}
+
+\begin{exercise}{46}
+Let $f:\R\to\R$ be continuous.
+\begin{enumerate}
+    \item If $f(0)>0$, show that $f(x)>0$ for all $x$ in some open interval $(-a,a)$.
+    \item If $f(x)\geq 0$ for every rational $x$, show that $f(x)\geq 0$ for all real $x$. Will this result hold with `$\geq 0$' replaced by `$>0$'? Explain.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
 fill
 \end{proof}
 
-\begin{exercise}{46}
-fill
+\begin{exercise}{49}
+Let $f:(a,b)\to\R$ be monotone and let $a<x<b$. Show that $f$ is continuous at $x$ if and only if $f(x-)=f(x+)$.
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$) Suppose $f$ is continuous at $x$
+
+($\Leftarrow$) Suppose $f(x-)=f(x+)$. Then by Theorem 1.18(iv) $f$ is continuous at $x$.
 \end{proof}

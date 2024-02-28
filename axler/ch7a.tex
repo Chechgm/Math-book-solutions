@@ -1,78 +1,146 @@
-\subsection*{Chapter 7.A. }
-\addcontentsline{toc}{subsection}{Chapter }
+\subsection*{Chapter 7.A. Self-Adjoint and Normal Operators}
+\addcontentsline{toc}{subsection}{Chapter 7.A. Self-Adjoint and Normal Operators}
 
-Axler 7: Operators on Inner Product Spaces
-A Self-Adjoint and Normal Operators
-1 Good exercise to get used to concepts
-2 Relationship of eigenvalues between adjointness, what does it mean for self-adjoint operators? This falls in the theme that adjoint operators are "alike" complex connjugate and self-adjoint is "alike" real numbers
-4 Practice with concepts 
-7 Real numbers commute, but self-adjoint operators don't always
-8+9 Remember R forms a real subspace of C
-11 What "numbers" do projection operators correspond to
-15 simple example
-21 Derivatives are not self-adjoint but normal! Important for QM
 
 \begin{exercise}{1}
   Suppose $n$ is a positive integer. Define $T\in\LLL(\bF^n)$ by 
-  \[T(z_1,\dots,z_n)=(0,z_1,\dots,z_{n-1}\].
+  \[T(z_1,\dots,z_n)=(0,z_1,\dots,z_{n-1}).\]
   Find a formula for $T^\ast(z_1,\dots,z_n)$.
 \end{exercise}
 \begin{proof}
- Fill
+ Notice that the matrix representing $T$ with respect to the standard basis of $\bF^n$ is given by the matrix with 1 in the $i$-th row and $(i-1)$-th column for $i=2,\dots,n$ and 0 everywhere else. By 7.10, the matrix of $T^\ast$ (with respect to the same basis) is the conjugate transpose of the previously described matrix, that is, the matrix with 1 in the $i$-th column and $(i-1)$-th row and 0 everywhere else. This matrix represents the linear transformation given by $T^\ast(z_1,\dots,z_n)=(z_2,\dots,z_{n},0)$, as desired.
 \end{proof}
 
-\begin{exercise}{1}
-  Fill
+\begin{exercise}{2}
+  Suppose $T\in\LLL(V)$ and $\lambda\in\bF$. Prove that $\lambda$ is an eigenvalue of $T$ if and only if $\bar{\lambda}$ is an eigenvalue of $T^\ast$.
 \end{exercise}
 \begin{proof}
- Fill
+ We will prove the first direction, and the second follows from a symmetric argument. Consider the linear map given by $(T-\lambda I)$. Since $\lambda$ is an eigenvalue of $T$, we know this map is not injective (by 5.6). By exercise 4, we have that $(T-\lambda I)^\ast=(T^\ast-\bar{\lambda}I)$ is not surjective. Using 5.6 again we conclude that $\bar{\lambda}$ is an eigenvalue of $T^\ast$, as required.
 \end{proof}
 
-\begin{exercise}{1}
-  Fill
+\begin{exercise}{4}
+  Suppose $T\in\LLL(V,W)$. Prove that
+  \begin{enumerate}
+      \item $T$ is injective if and only if $T^\ast$ is surjective;
+      \item $T$ is surjective if and only if $T^\ast$ is injective.
+  \end{enumerate}
 \end{exercise}
 \begin{proof}
- Fill
+\begin{enumerate}
+    \item We will prove both directions at the same time. Suppose $T\in\LLL(V,W)$. We have,
+    \begin{align*}
+        T\text{ is injective }&\iff\nullspace T=\set{0}\\
+        &\iff\set{0}=(\range T^\ast)^\perp\\
+        &\iff(\set{0})^\perp=((\range T^\ast)^\perp)^\perp\\
+        &\iff W=\range T^\ast\\
+        &\iff T^\ast\text{ is surjective,}
+    \end{align*}
+    as required. The first equivalence follows from 3.10, the second equivalence follows from 7.7 (c), the fourth equivalence follows from 6.46 (b) and 6.51.
+    \item We will prove both directions in one, as above. Suppose $T\in\LLL(V,W)$. We have
+    \begin{align*}
+        T\text{ is surjective }&\iff\range T=W\\
+        &\iff W=(\nullspace T^\ast)^\perp\\
+        &\iff W^\perp=((\nullspace T^\ast)^\perp)^\perp\\
+        &\iff \set{0}=\nullspace T^\ast\\
+        &\iff T^\ast\text{ is injective,}
+    \end{align*}
+    as required.
+\end{enumerate}
 \end{proof}
 
-\begin{exercise}{1}
-  Fill
+\begin{exercise}{7}
+  Suppose $S,T\in\LLL(V)$ are self-adjoint. Prove that $ST$ is self-adjoint if and only if $ST=TS$.
 \end{exercise}
 \begin{proof}
- Fill
+ ($\Rightarrow$) Suppose $ST$ is self adjoint. Then, $ST = (ST)^\ast = T^\ast S^\ast = TS$, as required.
+
+ ($\Leftarrow$) Suppose $ST=TS$. Consider the adjoint of $ST$: $(ST)^\ast = T^\ast S^\ast = TS = ST$, so that $ST$ is self-adjoint.
 \end{proof}
 
-\begin{exercise}{1}
-  Fill
+\begin{exercise}{8}
+  Suppose $V$ is a real inner product space. Show that the set of self-adjoint operators on $V$ is a subspace of $\LLL(V)$.
 \end{exercise}
 \begin{proof}
- Fill
+ Let $S,T\in\LLL(V)$ be self-adjoint and $\lambda\in\bF$.
+
+ Addition: We have $(S+T)^\ast =S^\ast+T^\ast =S+T$, where the first inequality follows from 7.6 (a), so that $S+T$ is also self-adjoint.
+
+ Scalar multiplication: We have $(\lambda S)^\ast =\bar{\lambda}S^\ast =\lambda S$, where the first inequality follows from 7.6 (b) and the last inequality follows from the fact that $\lambda\in\R$, hence, $\lambda S$ is self-adjoint.
+
+ Hence, the set of self-adjoint operators is a subspace of $\LLL(V)$, as required.
 \end{proof}
 
-\begin{exercise}{1}
-  Fill
+\begin{exercise}{9}
+  Suppose $V$ is a complex inner product space with $V\neq\set{0}$. Show that the set of self-adjoint operators on $V$ is not a subspace of $\LLL(V)$.
 \end{exercise}
 \begin{proof}
- Fill
+ Let $T\in\LLL(V)$ be self-adjoint and $T\neq 0$. We have $(i T)^\ast =\bar{i}T^\ast =-iT\neq iT$ so that $iT$ is not self-adjoint and hence the set of self-adjoint operators on a complex inner product space is not a subspace, as required.
 \end{proof}
 
-\begin{exercise}{1}
-  Fill
+\begin{exercise}{11}
+  Suppose $P\in\LLL(V)$ is such that $P^2=P$. Prove that there is a subspace $U$ of $V$ such that $P=P_U$ if and only if $P$ is self-adjoint.
 \end{exercise}
 \begin{proof}
- Fill
+ ($\Rightarrow$) Suppose there is a subspace $U$ of $V$ such that $P=P_U$. Then for $v,v'\in V$ we can write $v=u+w$ and $v'=u'+w'$ where $u,u'\in U$ and $w,w'\in U^\perp$ and $Pv=u, Pv'=u'$. We have $\brackets{Pv,v'} =\brackets{u, v'} =\brackets{u, u'+w'} =\brackets{u,u'}$, because $\brackets{u,w'}=0$. Likewise, $\brackets{v,P v'} =\brackets{u,u'}$, so that $\brackets{Pv,v'}=\brackets{v,Pv'}$, as required.
+
+ ($\Leftarrow$) Suppose $P$ is self-adjoint. Then for all $v,v'\in V$, $\brackets{Pv,v'} =\brackets{v,Pv'}$. Let $U=\range P$, we can write $v=u+w$. Moreover, by 7.7 (c), we know that $\nullspace P =(\range P)^\perp =U^\perp$. Then, $Pv =P(u+w) =Pu +Pw =Pu$, as required.
 \end{proof}
 
-\begin{exercise}{1}
-  Fill
+\begin{exercise}{15}
+  Fix $u,x\in V$. Define $T\in\LLL(V)$ by $Tv=\brackets{v,u}x$ for every $v\in V$.
+  \begin{enumerate}
+      \item Suppose $\bF=\R$. Prove that $T$ is self-adjoint if and only if $u, x$ is linearly dependent.
+      \item Prove that $T$ is normal if and only if $u, x$ is linearly dependent.
+  \end{enumerate}
 \end{exercise}
 \begin{proof}
- Fill
+On example 7.6 we showed that the adjoint of $T$ is $T^\ast v =\brackets{v,x}u$.
+ \begin{enumerate}
+    \item ($\Rightarrow$) Suppose $T$ is self-adjoint. Then $\brackets{v,u}x=Tv =T^\ast v =\brackets{v,x}u$. For $u,x\neq 0$, and letting $v=x$, we can write $u=(\brackets{x,u}/\brackets{x,x})x$ so that $u$ is a scalar multiple of $x$, as desired.
+    
+     ($\Leftarrow$) Suppose $u$ and $x$ are linearly dependent, then we can write $u=ax$ for some $a\in\R$. We have $T^\ast v =\brackets{v,x}u =\brackets{v,u/a}ax =(1/\bar{a})\brackets{v,u}ax =\brackets{v,u}x =Tv$, where $1/\bar{a}=1/a$ because $a\in\R$, as required.
+     \item ($\Rightarrow$) Suppose $T$ is normal so that $TT^\ast v =\brackets{\brackets{v,x}u, u}x =\brackets{\brackets{v,u}x, x}u=T^\ast T$, then if $u,x\neq 0$, and letting $v=u$, we have $u =(\brackets{\brackets{u,x}u, u}/\brackets{\brackets{u,u}x, x})x$ so that $u$ is a scalar multiple of $x$.
+     
+     ($\Leftarrow$) Suppose $u$ and $x$ are linearly dependent. Then, for $a\in\bF$, we can write $u=ax$. We have $TT^\ast v =\brackets{\brackets{v,x}u, u}x =\brackets{\brackets{v,(1/a)u}ax, ax}(1/a)u =\brackets{\brackets{v,u}(a/\bar{a})x, x}(\bar{a}/a)u =(a/\bar{a})\brackets{\brackets{v,u}x, x}(\bar{a}/a)u =\brackets{\brackets{v,u}x, x}u=T^\ast T$
+ \end{enumerate}
 \end{proof}
 
-\begin{exercise}{1}
-  Fill
+\begin{exercise}{21}
+  Fix a positive integer $n$. In the inner product space of continuous real-valued functions on $[-\pi,\pi]$ with inner product 
+  \[\brackets{f,g}=\int_{-\pi}^\pi f(x)g(x)dx,\]
+  let $V=\vecspan(1,\cos x,\cos 2x,\dots,\cos nx,\sin x,\sin 2x,\dots,\sin nx)$.
+  \begin{enumerate}
+      \item Define $D\in\LLL(V)$ by $Df=f'$. Show that $D^\ast = -D$. Conclude that D is normal but not self-adjoint.
+      \item Define $T\in\LLL(V)$ by $Tf=f''$. Show that $T$ is self-adjoint.
+  \end{enumerate}
 \end{exercise}
 \begin{proof}
- Fill
+ \begin{enumerate}
+     \item Using $V$, we represent any function as a linear combination of the basis vectors $f(x)=a_0+a_1\cos x+a_2\cos 2x+\dots+a_n\cos nx+a_{n+1}\sin x+\dots+a_{2n}\sin nx$ for $a_i\in\R$. We have
+     \begin{align*}
+         \brackets{Df,g} =& \int_{-\pi}^\pi f'(x)g(x)dx\\
+         =& \int_{-\pi}^\pi D(a_0+a_1\cos x+\dots+a_{2n}\sin nx)\\
+         &(b_0+b_1\cos x+\dots+b_{2n}\sin nx dx\\
+         =& \int_{-\pi}^\pi (-a_1\sin x-2a_2\sin 2x+\dots+na_{2n}\cos nx)\\
+         &(b_0+b_1\cos x+\dots+b_{2n}\sin nx dx\\
+         =& \int_{-\pi}^\pi -a_1b_0\sin x-2a_2b_0\sin 2x+\dots+na_{2n}b_0\cos nx\\
+         &-a_1(\cos x) b_1\sin x-2a_2(\cos x)b_1\sin 2x+\dots+na_{2n}(\cos x)b_1\cos nx\\
+         &+\dots\\
+         &-a_1(\sin nx)b_2n\sin x-2a_2(\sin nx)b_2n\sin 2x+\dots+na_{2n}(\sin nx)b_2n\cos nx dx
+     \end{align*}
+
+     Since $D^\ast=-D$, then we have that $D^\ast D =-DD =D-D =DD^\ast$, so that $D$ is normal.
+     \item We can represent any function using a linear combination of vectors in $V$ as above. We have
+     \begin{align*}
+         \brackets{Tf,g} =& \int_{-\pi}^\pi f''(x)g(x)dx\\
+         =& \int_{-\pi}^\pi T(a_0+a_1\cos x+\dots+a_{2n}\sin nx)\\
+         &(b_0+b_1\cos x+\dots+b_{2n}\sin nx dx\\
+         =& \int_{-\pi}^\pi (-a_1\cos x+\dots-n^2a_{2n}\cos nx)\\
+         &(b_0+b_1\cos x+\dots+b_{2n}\sin nx) dx\\
+     \end{align*}
+ \end{enumerate}
+
+ The derivative of $(cos nx)(sin mx)$ is $-(m cos(m x) cos(n x) + n sen(m x) sen(n x))/(m^2 - n^2)$
+ The integral of $(sin nx)(sin mx)$ is $(n cos(n x) sen(m x) - m cos(m x) sen(n x))/(m^2 - n^2)$
+ The integral of $(cos nx)(cos mx)$ is $(m cos(n x) sen(m x) - n cos(m x) sen(n x))/(m^2 - n^2)$
 \end{proof}

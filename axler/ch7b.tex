@@ -1,10 +1,75 @@
-\subsection*{Chapter 7.B. }
-\addcontentsline{toc}{subsection}{Chapter }
+\subsection*{Chapter 7.B. The spectral theorem}
+\addcontentsline{toc}{subsection}{Chapter 7.B. The spectral theorem }
 
 
 \begin{exercise}{1}
-  Fill
+  True or false (and give a proof of your answer): There exists $T\in\LLL(\R^3)$ such that $T$ is not self-adjoint (with respect to the usual inner product) and such that there is a basis of $\R^3$ consisting of eigenvectors of $T$.
 \end{exercise}
 \begin{proof}
- Fill
+ This is false, one might be fooled by the statement of the Real Spectral Theorem to believe that if $T$ is not self-adjoint then $V$ must -not- have a basis consisting of eigenvectors of $T$. However, we are interested in just a basis, not an orthonormal one, of $V$ consisting of eigenvectors of $T$ in $\R^3$. For a counterexample, consider the following matrix representing $T$ with respect to the standard basis
+ \[
+ \begin{pmatrix}
+     14& -13& -8\\
+     -13& 14& 8\\
+     8& 8& -7
+ \end{pmatrix},
+ \]
+ which we can verify has a basis in $\R^3$ consisting of eigenvectors of $T$, by running the command \verb|diagonalize {{14, -13, -8}, {-13, 14, 8}, {8, 8, -7}}| on WolframAlpha and noticing that the columns of the resulting matrix $S$ is a basis of $V$ consisting of eigenvectors of $T$. Since the matrix is not its own transpose, then $T$ is not self-adjoint.
+\end{proof}
+
+\begin{exercise}{4}
+  Suppose $\bF=\C$ and $T\in\LLL(V)$. Prove that $T$ is normal if and only if all pairs of eigenvectors corresponding to distinct eigenvalues of $T$ are orthogonal and $V =E(\lambda_1,T)\oplus\dots\oplus E(\lambda_m,T)$, where $\lambda_1,\dots,\lambda_m$ denote the distinct eigenvalues of $T$.
+\end{exercise}
+\begin{proof}
+ By the Complex Spectral Theorem, we know that $T$ is normal if and only if $V$ has a basis consisting of orthonormal eigenvectors of $T$. Furthermore, from 5.41 we know that $V$ has a basis consisting of eigenvectors of $T$ (not necessarily orthonormal) if and only if $V =E(\lambda_1,T)\oplus\dots\oplus E(\lambda_m,T)$, where $\lambda_1,\dots,\lambda_m$ denote the distinct eigenvalues of $T$, giving us our desired bidirectionality.
+\end{proof}
+
+\begin{exercise}{5}
+  Suppose $\bF=\R$ and $T\in\LLL(V)$. Prove that $T$ is self-adjoint if and only if all pairs of eigenvectors corresponding to distinct eigenvalues of $T$ are orthogonal and $V =E(\lambda_1,T)\oplus\dots\oplus E(\lambda_m,T)$, where $\lambda_1,\dots,\lambda_m$ denote the distinct eigenvalues of $T$.
+\end{exercise}
+\begin{proof}
+Similarly as in exercise 4, we know, by the Real Spectral Theorem, that $T$ is self-adjoint if and only if $V$ has an orthonormal basis consisting of eigenvectors of $T$. Furthermore, from 5.41, we know that $V$ has a basis consisting of eigenvectors of $T$ (not necessarily orthonormal) if and only if $V =E(\lambda_1,T)\oplus\dots\oplus E(\lambda_m,T)$, where $\lambda_1,\dots,\lambda_m$ denote the distinct eigenvalues of $T$, giving us our desired bidirectionality.
+\end{proof}
+
+\begin{exercise}{6}
+  Prove that a normal operator on a complex inner product space is self-adjoint if and only if all its eigenvalues are real. [The exercise above strengthens the analogy (for normal operators) between self-adjoint operators and real numbers].
+\end{exercise}
+\begin{proof}
+ ($\Rightarrow$) This is the content of Proposition 7.13.
+
+ ($\Leftarrow$) Suppose all eigenvalues of $T$ are real. From Exercise 7.A.2 we know that $T$ and $T^\ast$ have the same eigenvalues (because the eigenvalues of $T$ are real) and from 7.21 we know that $T$ and $T^\ast$ have the same eigenvectors. 
+ 
+ From the Complex Spectral Theorem, we know that $V$ has a basis consisting of eigenvectors $e_1,\dots,e_n$ of $T$. Let $\lambda_1,\dots,\lambda_n$ be the corresponding eigenvalues of such eigenvectors. We can write any pair of vectors as a linear combination of such eigenbasis. We have
+ \begin{align*}
+     \brackets{Tv,w} =& \brackets{T(a_1v_1+\dots+a_nv_n), w}\\
+     =& \brackets{a_1Tv_1+\dots+a_nTv_n, w}\\
+     =& \brackets{a_1\lambda_1v_1+\dots+a_n\lambda_nv_n,w}\\
+     =& \lambda_1\brackets{a_1v_1,w}+\dots+\lambda_n\brackets{a_nv_n,w}\\
+     =& \lambda_1\brackets{a_1v_1,b_1v_1+\dots+b_nv_n}+\dots+\lambda_n\brackets{a_nv_n,b_1v_1+\dots+b_nv_n}\\
+     =& \lambda_1\brackets{a_1v_1,b_1v_1}+\dots+\lambda_n\brackets{a_nv_n,b_nv_n},
+ \end{align*}
+ where the last inequality follows because $\brackets{v_i,v_j}=0$ if $i\neq j$, given that $v_1,\dots,v_n$ are orthonormal. On the other hand,
+ \begin{align*}
+    \brackets{v,Tw} =& \brackets{v,T(b_1v_1+\dots+b_nv_n)}\\
+    =& \brackets{v,b_1Tv_1+\dots+b_nTv_n}\\
+    =& \brackets{v,b_1\lambda_1v_1+\dots+b_n\lambda_nv_n}\\
+    =& \lambda_1\brackets{v,b_1v_1}+\dots+\lambda_n\brackets{v,b_nv_n}\\
+    =& \lambda_1\brackets{a_1v_1+\dots+a_nv_n,b_1v_1}+\dots+\lambda_n\brackets{a_1v_1+\dots+a_nv_n,b_nv_n}\\
+    =& \lambda_1\brackets{a_1v_1,b_1v_1}+\dots+\lambda_n\brackets{a_nv_n,b_nv_n},
+ \end{align*}
+ where, in addition to the same observation as above, $\brackets{v,b_i\lambda_iv_i}=\lambda_i\brackets{v,b_iv_i}$, because $\lambda_i$ is real. Since these two are equal, we have that $\brackets{Tv,w}=\brackets{v,Tw}$, proving that $T$ is self-adjoint, as desired.
+\end{proof}
+
+\begin{exercise}{9}
+  Suppose $V$ is a complex inner product space. Prove that every normal operator on $V$ has a square root. (An operator $S\in\LLL(V)$ is called a square root of $T\in\LLL(V)$ if $S^2=T$).
+\end{exercise}
+\begin{proof}
+ Suppose $V$ is a complex inner product space and let $T$ be a normal operator. By the Complex Spectral Theorem, we know that $T$ has a diagonal matrix with respect to some orthonormal basis of $V$. Let $S$ be such matrix, and let $S'$ be $S$ where we have taken square root of all elements (which we know exists, because the complex numbers are closed with respect to square roots). We have $(S')^2=S$, so that the operator represented by $S'$ is a square root of $T$.
+\end{proof}
+
+\begin{exercise}{11}
+  Prove or give a counterexample: every self-adjoint operator on $V$ has a cube root. (An operator $S\in\LLL(V)$ is called a cube root of $T\in\LLL(V)$ if $S^3=T$).
+\end{exercise}
+\begin{proof}
+Suppose $T$ is a self-adjoint operator on $V$. Then by both the Real and Complex Spectral Theorems, $T$ has a diagonal matrix with respect to some orthonormal basis of $V$. Let $S$ be such matrix, and let $S'$ be $S$ where we have taken the cube root of each element. We know $S'$ exists because both real and complex numbers are closed with respect to cube roots. Then $(S')^3=S$, so that the operator represented by $S'$ is a cube root of $T$, as desired. 
 \end{proof}

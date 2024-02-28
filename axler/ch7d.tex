@@ -1,9 +1,174 @@
-\subsection*{Chapter 7.D. }
-\addcontentsline{toc}{subsection}{Chapter }
+\subsection*{Chapter 7.D. Polar decomposition and singular value decomposition}
+\addcontentsline{toc}{subsection}{Chapter 7.D. Polar decomposition and singular value decomposition}
+
+9 Nice criterion of invertibility in terms of the SVD 
+14 Other nice interpretation of singular values 
+16 When do two maps have the same singular values?
+17 Writing generic maps of T in terms of the SVD
+18 Too bad we haven't done too much Carothers yet, cause this ties in perfectly. Still it's nice to see singular values kind of form a lower and upper bound of many things, like matrix norm and eigenvalues. Friedberg continues this discussion nicely and shows how this is actually useful in practice.
 
 
 \begin{exercise}{1}
-  Fill
+  Fix $u,x\in V$ with $u\neq 0$. Define $T\in\LLL(V)$ by $Tv =\brackets{v,u}x$ for every $v\in V$. Prove that
+  \[
+  \sqrt{T^\ast T}v=\frac{\norm{x}}{\norm{u}}\brackets{v,u}u
+  \]
+  for every $v\in V$.
+\end{exercise}
+\begin{proof}
+ We first have to prove that $S=\sqrt{T^\ast T}$ is a positive operator.
+ 
+ Self-adjoint: We have 
+ \begin{align*}
+     \brackets{v, S^\ast w} =& \brackets{Sv, w}\\
+     =& \brackets{\frac{\norm{x}}{\norm{u}}\brackets{v,u}u, w}\\
+     =& \frac{\norm{x}}{\norm{u}}\brackets{v,u}\brackets{u, w}\\
+     =& \frac{\norm{x}}{\norm{u}}\brackets{v,u}\overline{\brackets{w, u}}\\
+     =& \brackets{v,\frac{\norm{x}}{\norm{u}}\brackets{w, u}u},
+ \end{align*}
+ where the last inequality follows because $\norm{x}\in\R$ for all $x$. Then, $S$ is self-adjoint.
+
+ Positivity: We have
+ \begin{align*}
+     \brackets{Tv,v} =& \brackets{\frac{\norm{x}}{\norm{u}}\brackets{v,u}u,v}\\
+     =& \frac{\norm{x}}{\norm{u}}\brackets{\brackets{v,u}u,v}\\
+     =& \frac{\norm{x}}{\norm{u}}\brackets{u,v}\brackets{v,u}\\
+     =& \frac{\norm{x}}{\norm{u}}\overline{\brackets{v,u}}\brackets{v,u}>0,
+ \end{align*}
+ because norms are positive and $\overline{\brackets{v,u}}\brackets{v,u}$, unless $v=0$. Then, S is positive.
+ 
+ To finish the proof we need to show that $\sqrt{T^\ast T}^2$ as defined above equals $T^\ast T$. We have:
+ \begin{align*}
+     \sqrt{T^\ast T}\sqrt{T^\ast T}v =& \sqrt{T^\ast T}\left[\frac{\norm{x}}{\norm{u}}\brackets{v,u}u\right]\\
+     =& \frac{\norm{x}}{\norm{u}}\brackets{v,u}\sqrt{T^\ast T}u\\
+     =& \frac{\norm{x}}{\norm{u}}\brackets{v,u}\frac{\norm{x}}{\norm{u}}\brackets{u,u}u\\
+     =& \frac{\norm{x}^2}{\norm{u}^2}\brackets{v,u}\brackets{u,u}u\\
+     =& \norm{x}^2\brackets{v,u}u\\
+     =& \brackets{x,x}\brackets{v,u}u\\
+     =& \brackets{\brackets{v,u}x,x}u\\
+     =& \brackets{Tv,x}u.
+ \end{align*}
+ On the other hand, and using Example 7.4, where we proved $T^\ast v=\brackets{v,x}u$,
+ \begin{align*}
+     T^\ast Tv =& T^\ast(\brackets{v,u}x)\\
+     =& \brackets{\brackets{v,u}x,x}u\\
+     =& \brackets{Tv,x}u,
+ \end{align*}
+ as required.
+\end{proof}
+
+\begin{exercise}{3}
+  Suppose $T\in\LLL(V)$. Prove that there exists an isometry $S\in\LLL(V)$ such that $T =\sqrt{TT^\ast}S$.
+\end{exercise}
+\begin{proof}
+ Consider the polar decomposition of $T^\ast=S\sqrt{TT^\ast}$, and take adjoints on both sides of the equality: $(T^\ast)^\ast = T =(S\sqrt{TT^\ast})^\ast =(\sqrt{TT^\ast})^\ast S^\ast =\sqrt{TT^\ast}S^\ast$, where the last inequality holds because $\sqrt{TT^\ast}$ is a positive operator. From 7.42, we know that $S^\ast$ is an isometry, giving us what we wanted to prove.
+\end{proof}
+
+\begin{exercise}{8}
+  Suppose $T\in\LLL(V),S\in\LLL(V)$ is an isometry, and $R\in\LLL(V)$ is a positive operator such that $T=SR$. Prove that $R =\sqrt{T^\ast T}$. [The exercise above shows that if we write $T$ as the product of an isometry and a positive operator (as in the Polar Decomposition 7.45), then the positive operator equals $\sqrt{T^\ast T}$].
+\end{exercise}
+\begin{proof}
+ It is already given to us that $R$ is positive. We have $T^\ast T =(SR)^\ast (SR) =R^\ast S^\ast S R =R^\ast R =R^2$. The second to last equality follows from 7.42 where we concluded that $S^{-1} =S^\ast$. The last equality follows from the fact that $R$ is positive, so it is self-adjoint, meaning $R^\ast = R$. Thus we have that $R^2 =T^\ast T$, so that $R =\sqrt{T^\ast T}$.
+\end{proof}
+
+\begin{exercise}{9}
+  Suppose $T\in\LLL(V)$. Prove that $T$ is invertible if and only if there exists a unique isometry $S\in\LLL(V)$ such that $T =S\sqrt{T^\ast T}$.
+\end{exercise}
+\begin{proof}
+ ($\Rightarrow$) %Suppose, for the sake of contradiction, that $T$ is invertible but $S$ is not unique. Hence, there exists an isometry $S'\in\LLL(V)$ so that $T=S'\sqrt{T^\ast T}$. We then have $S\sqrt{T^\ast T} =S'\sqrt{T^\ast T}$. Since $\sqrt{T^\ast T}$ is a positive operator, then by Exercise 7.C.7, it is invertible. Hence, $S =S\sqrt{T^\ast T}\sqrt{T^\ast T}^{-1} =S'\sqrt{T^\ast T}\sqrt{T^\ast T}^{-1} =S'$, as required.
+
+ ($\Leftarrow$) fill%Consider the linear map $T^{-1}=\sqrt$
+\end{proof}
+
+\begin{exercise}{10}
+  Suppose $T\in\LLL(V)$ is self-adjoint. Prove that the singular values of $T$ equal the absolute values of the eigenvalues of $T$, repeated appropriately.
+\end{exercise}
+\begin{proof}
+ We have $T^\ast =T$, let $v$ be an eigenvector of $T$ with eigenvalue $\lambda$. We have $T^\ast Tv =TTv =T\lambda v =\lambda Tv =\lambda^2v$. From 7.52, we know that the singular values of $T$ are the nonnegative square roots of the eigenvalues of $T^\ast T$. That is, the singular values of $T$ are $\sqrt{\lambda^2} =\absoluteValue{\lambda}$, as desired.
+\end{proof}
+
+\begin{exercise}{11}
+  Suppose $T\in\LLL(V)$. Prove that $T$ and $T^\ast$ have the same singular values.
+\end{exercise}
+\begin{proof}
+ We defined (in conjunction with 7.52) the singular values of $T$ as the nonnegative square roots of the eigenvalues of $T^\ast T$, so that the singular values of $T^\ast$ are the square roots of the eigenvalues of $(T^\ast)^\ast T^\ast =TT^\ast$. Then we just need to prove that $T^\ast T$ and $TT^\ast$ have the same eigenvalues. But we know this is true from exercise 5.A.23, as desired.
+\end{proof}
+
+\begin{exercise}{13}
+  Suppose $T\in\LLL(V)$. Prove that $T$ is invertible if and only if 0 is not a singular value of $T$.
+\end{exercise}
+\begin{proof}
+ ($\Rightarrow$) We will prove this by contrapositive. Suppose 0 is a singular value of $T$. Then by the definition of singular values, 7.52 and Exercise 5.A.23, we have that 0 is an eigenvalue of $TT^\ast$. That is, for some $v\neq 0$, we have $TT^\ast v =Tw =0$. Here we have two options. First, if $w=0$, then $T^\ast v=0$ and $T$ is not invertible because $T^\ast$ is not invertible (see Exercise 7.A.5). Second, $w\neq 0$ and $\nullspace T\neq\set{0}$ so that $T$ is not invertible.
+
+ ($\Leftarrow$) We will prove this by contrapositive. Suppose $T$ is not invertible. Then $\nullspace T\neq\set{0}$. That is, there exists $v\in V$ so that $Tv=0$. We have $T^\ast Tv =0$ so that $0$ is an eigenvalue of $T^\ast T$ and by 7.52, 0 is a singular value of $T$.
+\end{proof}
+
+\begin{exercise}{14}
+  Suppose $T\in\LLL(V)$. Prove that $\dim\range T$ equals the number of nonzero singular values of $T$.
+\end{exercise}
+\begin{proof}
+ Fill
+\end{proof}
+
+\begin{exercise}{15}
+  Suppose $S\in\LLL(V)$. Prove that $S$ is an isometry if and only if all  the singular values of $S$ equal 1.
+\end{exercise}
+\begin{proof}
+ ($\Rightarrow$) Suppose $S$ is an isometry. From 7.42 we have that $S^\ast S =I$. Furthermore, from 7.52 we know that the singular values of $S$ are the nonnegative square roots of the eigenvalues of $S^\ast S =I$, which we know all are 1, giving us the desired result.
+
+ ($\Leftarrow$) Suppose all singular values of $S$ equal 1. Then by 7.52 the eigenvalues of $S^\ast S$ are 1 (the squares of the singular values of $S$). Since $S^\ast S$ is normal, we can use the Spectral Theorem to find an orthonormal basis of $V$ consisting of eigenvectors of $S^\ast S$. For arbitrary $v,w\in V$, we have $\brackets{Sv,Sw} =\brackets{S^\ast Sv,w} =\brackets{v,w}$ where the last equality follows from writing $v$ as a linear combination of the basis of eigenvectors of $S^\ast S$, and using the fact that all eigenvalues of $S^\ast S$ are 1. Thus, $S$ is an isometry,
+\end{proof}
+
+\begin{exercise}{16}
+  Suppose $T_1,T_2\in\LLL(V)$. Prove that $T_1$ and $T_2$ have the same singular values if and only if there exists isometries $S_1,S_2\in\LLL(V)$ such that $T_1 =S_1T_2S_2$.
+\end{exercise}
+\begin{proof}
+ ($\Rightarrow$)
+
+ ($\Leftarrow$) Suppose there exist isometries $S_1,S_2\in\LLL(V)$ such that $T_1 =S_1T_2S_2$. Then by 7.52, the singular values of $T_1$ are the nonnegative square roots of $\sqrt{(S_1T_2S_2)^\ast(S_1T_2S_2)} =\sqrt{S_2^\ast T_2^\ast S_1^\ast S_1T_2S_2} =\sqrt{S_2^\ast T_2^\ast IT_2S_2}$
+\end{proof}
+
+\begin{exercise}{17}
+  Suppose $T\in\LLL(V)$ has singular value decomposition given by 
+  \[
+  Tv =s_1\brackets{v,e_1}f_1+\dots+s_n\brackets{v,e_n}f_n
+  \]
+  for every $v\in V$, where $s_1,\dots,s_n$ are the singular values of $T$. and $e_1,\dots,e_n$ and $f_1,\dots,f_n$ are orthonormal bases of $V$.
+  \begin{enumerate}
+      \item Prove that if $v\in V$, then
+      \[
+      T^\ast v =s_1\brackets{v,f_1}e_1+\dots+s_n\brackets{v,f_n}e_n.
+      \]
+      \item Prove that $v\in V$, then
+      \[
+      T^\ast Tv =s_1^2\brackets{v,e_1}e_1+\dots+s_n^2\brackets{v,e_n}e_n.
+      \]
+      \item Prove that if $v\in V$, then
+      \[
+      \sqrt{T^\ast T}v =s_1\brackets{v,e_1}e_1+\dots+s_n\brackets{v,e_n}e_n.
+      \]
+      \item Suppose $T$ is invertible. Prove that if $v\in V$, then 
+      \[
+      T^{-1}v =\frac{\brackets{v,f_1}e_1}{s_1}+\dots+\frac{\brackets{v,f_n}e_n}{s_n}
+      \]
+      for every $v\in V$.
+  \end{enumerate}
+\end{exercise}
+\begin{proof}
+ \begin{enumerate}
+     \item fill
+     \item fill
+     \item fill
+     \item fill
+ \end{enumerate}
+\end{proof}
+
+\begin{exercise}{18}
+  Suppose $T\in\LLL(V)$. Let $\hat{s}$ denote the smallest singular value of $T$, and let $s$ denote the largest singular value of $T$.
+  \begin{enumerate}
+      \item Prove that $\hat{s}\norm{v} \leq\norm{Tv} \leq s\norm{v}$ for every $v\in V$.
+      \item Suppose $\lambda$ is an eigenvalue of $T$. Prove that $\hat{s} \leq\absoluteValue{\lambda} \leq s$.
+  \end{enumerate}
 \end{exercise}
 \begin{proof}
  Fill

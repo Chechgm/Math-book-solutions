@@ -101,7 +101,7 @@ Our goal is to parametrise this curve.
         =& a^2(c-a)\implies\\
         y =& a\sqrt{c-a}.
     \end{align*}
-    We then have two extra cases. Case 1a: If $c-a\geq0$, then the line intersects the curve in the following two points $y=\pm a\sqrt{c-a}$. Case 1b: If $c-a<0$, then the line does not intersect the curve.
+    We then have two extra cases. Case 1a: If $c-a\geq0$, then the line intersects the curve in the following two points $y=\pm a\sqrt{c-a}$, covering the 2 intersection case. Case 1b: If $c-a<0$, then the line does not intersect the curve, covering the 0 case.
 
     Case 2. The line is given by the following function $y=mx+b$. We have
     \begin{align*}
@@ -109,11 +109,25 @@ Our goal is to parametrise this curve.
         &m^2x^2+2mbx+b^2 = cx^2-x^3 &&\implies\\
         &x^3+(m^2-c)x^2+2mbx+b^2 = 0 &&\text{(*)},
     \end{align*}
-    which can have either 1 or 3 real roots (because complex roots come in pairs.
+    which can have either 1 or 3 real roots (because complex roots come in pairs, covering the 1 or 3 intersection case.
 
-    Hence, the two cases tell us that a line can intersect the curve at 0,1,2 or 3 points.
-    \item If $m^2\neq c$, then the discriminant of (*) is
-    $8 m^6 b^2 - 20 m^4 b^2 c - 68 m^3 b^3 + 16 m^2 b^2 c^2 + 36 m b^3 c - 27 b^4 - 4 b^2 c^3$,
+    Cases 1a, 1b and 2 tell us that the lines can meet in 0, 1, 2 or 3 points.
+    \item If $m^2\neq c$, and $b=0$ (because the line goes through the origin, we have that (*) is: $x^3+(m^2-c)x^2 = x^2(x+m^2-c)=0$, so that the roots of such polynomial are 0 and $x=c-m^2$. 
+    
+    My intuition of why this happens is that as we saw on (*), and replacing $b=0$, we must have 3 real roots, 0 being repeated. Hence, we are only left with $x+m^2-c=0$ which is a single intersection between the curves.
+    \begin{figure}[H]
+         \centering
+         \includegraphics[width=.5\textwidth]{cox-little-oshea/assets/sec1-3-ex8-sol2.png}
+         \label{fig:sec1-2-ex8-sol2}
+    \end{figure}
+
+    \item We just argued in the previous exercise that a line that goes through the origin meets the curve at a single point. Geometrically, this is a parametrisation of the whole curve because the line through $(1,t)$ and the origin will have any slope we want, with functional form $y=mx$. Since the intersection between this line and $y$ is given by (*) (with $b=0$), we cover all values of $y$. To see this, just choose $(1,t)$ so that $m$ gives the desired value of $y$ whenever we replace $x=c-m^2$ in the original function of the equation.
+    \begin{figure}[H]
+         \centering
+         \includegraphics[width=.5\textwidth]{cox-little-oshea/assets/sec1-3-ex8-sol3.png}
+         \label{fig:sec1-2-ex8-sol3}
+    \end{figure}
+    \item We just argued before about $x=c-m^2$, which translates to $x=c-t^2$ given that we are using the vertical curve $x=1$. To see the parametrisation for $y$, we substitute as we intuitively argued above: $y=\sqrt{c(c-t^2)^2-(c-t^2)^3}=\sqrt{t^2(c-t^2)^2}=t(c-t^2)$, as required.
 \end{enumerate}
 \end{proof}
 
@@ -136,6 +150,6 @@ of the surface $x^2-y^2z^2+z^3=0$ considered in the text.
 \begin{enumerate}
     \item These are exactly the same formulas as in part (4) of 8, where $x=y$ and $z=x$. 
     \item After replacing $c=y^2$, we have $x^2=y^2z^2-z^3$, which is exactly the parametrisation we want.
-    \item 
+    \item As argued on the two previous solutions, the formulas here presented are the same as in Exercise 8 where $x=y$ and $z=x$. Furthermore, instead of having $c$ as a parameter as in Exercise 8, we introduce a new variable to take on that value, namely $y^2=c$. Since the reasons of why the parametrisation in Exercise 8 did not depend on the value of $c$, then we simply introduce a new variable, $y$, and parameter, $u$, without affecting the fact that the entired surface is covered by the parametrisation.
 \end{enumerate}
 \end{proof}

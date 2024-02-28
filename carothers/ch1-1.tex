@@ -192,13 +192,18 @@ By exercise 3, for any $m>n$, we have
 \inf\set{a_n,a_{n+1},\dots}
 \leq\inf\set{a_m,a_{m+1},\dots} \leq\sup\set{a_m,a_{m+1},\dots} \leq\sup\set{a_n,a_{n+1},\dots}
 \]
-which implies that the set $\set{\inf\set{a_n,a_{n+1},\dots}:n\in\N}$ is upper bounded by all elements in $\set{\sup\set{a_n,a_{n+1},\dots}:n\in\N}$, so that $\lim\inf_{n\to\infty}a_n=\sup_{n\geq 1}(\inf\set{a_n,a_{n+1}})\leq s$ for all $s\in\set{\sup\set{a_n,a_{n+1},\dots}:n\in\N}$; if this wasn't the case for $s'\in\set{\sup\set{a_n,a_{n+1},\dots}:n\in\N}$, then $\lim\inf_{n\to\infty}a_n$ would not be the supremum of the set of infima, given that there would be a lower upper bound. Likewise, $b\leq\inf_{n\geq 1}(\sup\set{a_n,a_{n+1},\dots})=\lim\sup_{n\to\infty}a_n$ for all $b\in\set{\inf\set{a_n,a_{n+1},\dots}:n\in\N}$. 
+which implies that the set $\set{\inf\set{a_n,a_{n+1},\dots}:n\in\N}$ is upper bounded by all elements in $\set{\sup\set{a_n,a_{n+1},\dots}:n\in\N}$.
 
-To finish the proof, suppose, for the sake of contradiction, that
-\\
-$m=\lim\inf_{n\to\infty}a_n>\lim\sup_{n\to\infty}a_n$ giving us $\lim\inf_{n\to\infty}a_n-\lim\sup_{n\to\infty}a_n=\epsilon>0$. We have that for all $\varepsilon>0$, there exists $b\in\set{\inf\set{a_n,a_{n+1},\dots}:n\in\N}$ so that $m-\varepsilon\leq b$, if we choose $\varepsilon=\epsilon/2$, then we have found a smaller lower bound of $\set{\sup\set{a_n,a_{n+1},\dots}:n\in\N}$ (because the set of infima is a set of lower bounds of the set of suprema) and hence $\lim\sup_{n\to\infty}a_n$ is not the infimum of $\set{\sup\set{a_n,a_{n+1},\dots}:n\in\N}$, giving us a contradiction, so that
-\\
-$\lim\inf_{n\to\infty}a_n\leq \lim\sup_{n\to\infty}a_n$.
+We can take the limits of the second and third elements of the above inequality as $m\to\infty$ to conclude that $\lim\inf_{n\to\infty}a_n\leq\lim\sup_{n\to\infty}a_n$, completing the desired proof.
+
+
+% so that $\lim\inf_{n\to\infty}a_n=\sup_{n\geq 1}(\inf\set{a_n,a_{n+1}})\leq s$ for all $s\in\set{\sup\set{a_n,a_{n+1},\dots}:n\in\N}$; if this wasn't the case for $s'\in\set{\sup\set{a_n,a_{n+1},\dots}:n\in\N}$, then $\lim\inf_{n\to\infty}a_n$ would not be the supremum of the set of infima, given that there would be a lower upper bound. Likewise, $b\leq\inf_{n\geq 1}(\sup\set{a_n,a_{n+1},\dots})=\lim\sup_{n\to\infty}a_n$ for all $b\in\set{\inf\set{a_n,a_{n+1},\dots}:n\in\N}$. 
+
+% To finish the proof, suppose, for the sake of contradiction, that
+% \\
+% $m=\lim\inf_{n\to\infty}a_n>\lim\sup_{n\to\infty}a_n$ giving us $\lim\inf_{n\to\infty}a_n-\lim\sup_{n\to\infty}a_n=\epsilon>0$. We have that for all $\varepsilon>0$, there exists $b\in\set{\inf\set{a_n,a_{n+1},\dots}:n\in\N}$ so that $m-\varepsilon\leq b$, if we choose $\varepsilon=\epsilon/2$, then we have found a smaller lower bound of $\set{\sup\set{a_n,a_{n+1},\dots}:n\in\N}$ (because the set of infima is a set of lower bounds of the set of suprema) and hence $\lim\sup_{n\to\infty}a_n$ is not the infimum of $\set{\sup\set{a_n,a_{n+1},\dots}:n\in\N}$, giving us a contradiction, so that
+% \\
+% $\lim\inf_{n\to\infty}a_n\leq \lim\sup_{n\to\infty}a_n$.
 \end{proof}
 
 \begin{exercise}{24}
@@ -252,21 +257,55 @@ As mentioned in the problem, if $M=\lim\sup_{n\to\infty}a_n=\pm\infty$, then we 
 If $a_n\leq b_n$ for all $n$, and if $(a_n)$ converges, show that $\lim_{n\to\infty}a_n\leq\lim\inf_{n\to\infty}b_n$.
 \end{exercise}
 \begin{proof}
-fill
+We have that $(a_n)$ converges so that by the hypothesis, $\inf_{n\geq 1}\set{b_n,b_{n+1},\dots}$ exists for all $n$. Furthermore, we know that $\inf\set{a_n,a_{n+1},\dots}\leq\inf\set{b_n,b_{n+1},\dots}$ for all $n$, because $a_n\leq b_n$ for all $n$. Taking limits on both sides of the inequality, and using the order limit Theorem, we obtain $\lim_{n\to\infty}a_n=\lim\inf_{n\to\infty}a_n\leq\lim\inf_{n\to\infty}b_n$, where the first inequality follows from exercise 23.
+
+If $\lim\inf_{n\to\infty}b_n=\infty$, then by exercise 25 we know that $(b_n)$ diverges, then for any $\lim_{n\to\infty}a_n=a\in\R$ we can find an $N$ so that $b_n\geq a$ for all $n\geq N$.
 \end{proof}
 
 \begin{exercise}{32}
 Given a sequence $(a_n)$ of real numbers, let $\SSS$ be the set of all limits of convergent subsequences of $(a_n)$ (including, possibly, $\pm\infty$). For example, it follows from exercise 27 that $\lim\sup_{n\to\infty}a_n$ and $\lim\inf_{n\to\infty}a_n$ are both elements of $\SSS$. Show that, in fact, $\lim\sup_{n\to\infty}a_n= \sup\SSS$ and $\lim\inf_{n\to\infty}a_n= \inf\SSS$.
 \end{exercise}
 \begin{proof}
-fill
+If $\lim\inf_{n\to\infty}a_n=-\infty$, then by exercise 25, there exists a subsequence of $a_n$ that diverges to $-\infty$, then, $-\infty\in\SSS$ and $\inf\SSS =-\infty$. Likewise, if $\lim\inf_{n\to\infty}a_n=\infty$ then by exercise 25, we know that $a_n$ diverges to $\infty$ so that all of its subsequences diverge to $\infty$ and hence $\inf\SSS =\infty$.
+
+If $\lim\inf_{n\to\infty}a_n=a$, by exercise 27, we know there is a subsequence that converges to $a$. By definition, $a =\sup_{n\geq 1}\inf\set{a_n,a_{n+1},\dots}$. To prove that $a$ is $\inf\SSS$, suppose for the sake of contradiction, that it is not. Then there exists a subsequence of $a_n$, say $a_{k_n}$ so that $a'=\lim_{k\to\infty}a_{n_k}<a$. But then this implies $\inf\set{a_n,a_{n+1},\dots}>\inf\set{a_{n_k},a_{n_{k+1}},\dots}$, (since $\sup_{n\geq 1}(\inf\set{a_n,a_{n+1},\dots})\geq\inf\set{a_n,a_{n+1},\dots}$) which we know is false by exercise 3. 
+
+We can reason in an analogous way to make the conclusions about $\lim\sup_{n\to\infty}a_n$. 
 \end{proof}
 
 \begin{exercise}{33}
 Show that $(x_n)$ converges to $x\in\R$ if and only if every subsequence $(x_{n_k})$ of $(x_n)$ has a further subsequence $(x_{n_{k_l}})$ that converges to $x$.
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$) We know that any subsequence of a convergent sequence converges to the same limit as the original sequence. If we apply this idea twice, we get the desired result.
+
+($\Leftarrow$) We will prove this by contrapositive. Suppose there exists a subsequence $(x_{n_k})$ so that all its subsequences do not converge to $x$. Then there exists $\varepsilon>0$, so that for all $l$, $\absoluteValue{x_{n_{k_l}}-x}>\varepsilon$. However, for all $l$, $(x_{n_{k_l}})$ is in the sequence $x_n$, and hence for the chosen $\varepsilon$, we cannot find $N$, such that for all $n>N$, $\absoluteValue{x_n-x}<\varepsilon$ holds. Thus, $(x_n)$ does not converge to $x$, as desired.
+\end{proof}
+
+\begin{exercise}{36}
+(The root test): Let $(a_n)\geq 0$.
+\begin{enumerate}
+    \item If $\lim\sup_{n\to\infty}\sqrt[n]{a_n}<1$, show that $\sum_{n=1}^\infty a_n<\infty$.
+    \item If $\lim\inf_{n\to\infty}\sqrt[n]{a_n}>1$, show that $\sum_{n=1}^\infty a_n$ diverges.
+    \item Find examples of both a convergent and a divergent series having $\lim_{n\to\infty}\sqrt[n]{a_n} = 1$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+\begin{enumerate}
+    \item Let $\lim\sup_{n\to\infty}\sqrt[n]{a_n}=M$, so that by the characterisation of exercise 26, $\sqrt[n]{a_n}<M+\varepsilon<1$ for $0<\varepsilon<1$ for all but finitely many $n$. Hence, $a_n<(M+\varepsilon)^n<1$ for all but finitely many $n$. Let $\mathcal{I}$ be the -finite- set containing the indices of $a_n$ that don't fulfill the condition.
+
+    Let's consider the series associated with $a_n$:
+    \[
+    \sum_n^\infty a_n = \sum_{n\in\mathcal{I}}a_n + \sum_{n\notin\mathcal{I}}a_n \leq \sum_{n\in\mathcal{I}}a_n + \sum_{n=0}^\infty (M+\varepsilon)^n = \sum_{n\in\mathcal{I}}a_n + \sum_{n=0}^\infty r^n <\infty.
+    \]
+    We know that the last inequality holds because the first term is finite, and the second term is a geometric series. Thus, we obtained our desired result.
+    \item Let $\lim\inf_{n\to\infty}\sqrt[n]{a_n}=m>1$. By the characterisation of exercise 26, we have that $\sqrt[n]{a_n}>m-\varepsilon>1$ for infinitely many $n$ and $m-1>\varepsilon$. Hence, $a_n>(m-\varepsilon)^n>1$ for all $n$. For the series associated with $a_n$, we have
+    \[
+    \sum_{n=1}^\infty a_n > \sum_{n=1}^\infty (m-\varepsilon)^n >\sum_{n=1}^\infty 1,
+    \]
+    which we know diverges, as required.
+    \item Consider the sequence $a_n=1/n$ for all $n$. Then $\lim_{n\to\infty}\sqrt[n]{1/n}=1$, but $\sum_{n=1}^\infty a_n$ diverges. To get the opposite result consider $a_n'=1/n^2$, which also has $\lim_{n\to\infty}\sqrt[n]{1/n}=1$, but the series corresponding to this sequence converges.
+\end{enumerate}
 \end{proof}
 
 \begin{exercise}{37}
@@ -284,21 +323,14 @@ Show that
 \]
 \end{exercise}
 \begin{proof}
-fill
-\end{proof}
+$\lim\inf_{n\to\infty}E_n\subset\lim\sup_{n\to\infty}E_n$: Suppose $x\in \lim\inf_{n\to\infty}E_n$, then for all $N$, $x$ belongs to all $E_k$ for $k>N$. By definition, $x\in\lim\sup_{n\to\infty}E_n$ if for all $N$, $x\in E_k$ for -at least one- $k>N$. Hence, $\lim\inf_{n\to\infty}E_n\subset\lim\sup_{n\to\infty}E_n$.
 
-\begin{exercise}{X}
-34
-35
-36
-\end{exercise}
-\begin{proof}
-fill
-\end{proof}
-
-\begin{exercise}{X}
-fill
-\end{exercise}
-\begin{proof}
-fill
+$\lim\inf_{n\to\infty}(E_n^c)= \left(\lim\sup_{n\to\infty}E_n\right)^c$:  We have
+\begin{align*}
+\left(\lim\sup_{n\to\infty}E_n\right)^c =& \left[\bigcap_{n=1}^\infty\left(\bigcup_{k=n}^\infty E_k\right)\right]^c\\
+=& \bigcup_{n=1}^\infty\left(\bigcup_{k=n}^\infty E_k\right)^c\\
+=& \bigcup_{n=1}^\infty\left(\bigcap_{k=n}^\infty E_k^c\right)\\
+=& \lim\inf_{n\to\infty}(E_n^c),
+\end{align*}
+where we have used de Morgan's laws in the first two equalities.
 \end{proof}

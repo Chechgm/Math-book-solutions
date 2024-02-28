@@ -1,10 +1,120 @@
-\subsection*{Chapter 7.C. }
-\addcontentsline{toc}{subsection}{Chapter }
+\subsection*{Chapter 7.C. Positive Operators and Isometries}
+\addcontentsline{toc}{subsection}{Chapter 7.C. Positive Operators and Isometries}
 
+
+7 Sometimes helpful criterion to check invertibility
+8 This in fact characterizes all possible inner products on a vector space
+10 Some useful equivalences
+13 
 
 \begin{exercise}{1}
-  Fill
+  Prove or give a counterexample: If $T\in\LLL(V)$ is a self-adjoint and there exists an orthonormal basis $e_1,\dots,e_n$ of $V$ such that $\brackets{Te_j,e_j}\geq 0$ for each $j$, then $T$ is a positive operator.
 \end{exercise}
 \begin{proof}
- Fill
+ This is false. Consider the linear map $T\in\LLL(\R^2)$ whose matrix is given by
+ $\begin{pmatrix}
+     1 & 1\\
+     1 & 1
+ \end{pmatrix}$.
+ The linear map is self-adjoint, as its conjugate transpose (the transpose, really, as we are working in $\R$), the matrix of its adjoint, is itself. Let $\brackets{(x_1,y_1),(x_2,y_2)}=x_1x_2+4x_2y_2$. We know this is a valid inner product by example 6.4.b. If we take the canonical basis of $\R^2$ we observe that $\brackets{Te_i,e_i}\geq 0$. 
+
+ Now take $v=(-3,1)\in\R^2$, so that $\brackets{Tv,v} =\brackets{(-2,-2),(-3,1)} =6-4\cdot 2 =-2<0$, so that $T$ is not positive.
+\end{proof}
+
+\begin{exercise}{4}
+  Suppose $T\in\LLL(V,W)$. Prove that $T^\ast T$ is a positive operator on $V$ and $TT^\ast$ is a positive operator on $W$.
+\end{exercise}
+\begin{proof}
+ We will prove the result for $T^\ast T$ on $V$, the result for $TT^\ast$ on $W$ follows using a similar approach. First, we have that $(T^\ast T)^\ast =T^\ast (T^\ast)^\ast = T^\ast T$ so that $T^\ast T$ is self-adjoint. Furthermore, for any $v\in V$, we have $\brackets{(T^\ast T)v,v} =\brackets{Tv,Tv}\geq 0$, by the defining properties of an inner product. We then conclude that $T^\ast T$ is positive, as required.
+\end{proof}
+
+\begin{exercise}{5}
+  Prove that the sum of two positive operators on $V$ is also positive.
+\end{exercise}
+\begin{proof}
+ Let $T,S\in\LLL(V)$ be positive. We have $(T+S)^\ast =S^\ast +T^\ast =S+T$ so that $S+T$ is self-adjoint. Furthermore, for any $v\in V$, $\brackets{(T+S)v,v}= \brackets{Tv+Sv,v} =\brackets{Tv,v}+\brackets{Sv,v}\geq 0$ because each one of them is greater than 0. As a result, $(T+S)$ is positive.
+\end{proof}
+
+\begin{exercise}{6}
+  Suppose $T\in\LLL(V)$ is positive. Prove that $T^k$ is positive for every integer $k$.
+\end{exercise}
+\begin{proof}
+ We will prove this by induction. The base case follows by hypothesis. Suppose, then that $T^{k-1}$ is positive. We have $(T^k)^\ast =(TT^{k-1})^\ast =(T^{k-1})^\ast T^\ast =T^{k-1}T =T^k$, so that $T^k$ is self-adjoint. Now let $v\in V$. Consider $\brackets{T^kv, v} =\brackets{TT^{k-1}v,v} =\brackets{T^{k-1}v, Tv} =\brackets{T^{k-2}Tv, Tv} =\brackets{T^{k-2}w, w}\geq 0$, so that $T^k$ is positive, as required.
+\end{proof}
+
+\begin{exercise}{7}
+  Suppose $T$ is a positive operator on $V$. Prove that $T$ is invertible if and only if $\brackets{Tv,v}>0$ for every $v\in V$ with $v\neq 0$.
+\end{exercise}
+\begin{proof}
+ We will start with a short lemma: $T$ is invertible if and only if all its eigenvalues are different from zero. 
+ 
+ For the forward direction, suppose $T$ is invertible and let $v\neq 0$ be an eigenvector of $T$ and $\lambda$ its corresponding eigenvalue. If $Tv =\lambda v =0$, then $v\in\nullspace T$ so that $T$ wouldn't be injective, producing a contradiction.
+
+ For the converse suppose $T$ is not invertible, then there exists $v\in\nullspace T$ with $v\neq 0$. We then have $Tv=0$ so that 0 is an eigenvalue of $T$.
+ 
+ ($\Rightarrow$) 
+ Suppose $T$ is invertible. Because $T$ is self-adjoint, $T$ is normal and thus we can use the Complex Spectral Theorem to conclude there exists an orthonormal basis of $V$, say $v_1,\dots,v_n$, consisting of eigenvectors of $T$. Let $\lambda_1,\dots,\lambda_n$ be the corresponding (nonzero) eigenvalues of the eigenvectors.
+
+ Let $v\in V$, with $v\neq 0$. We can write $v$ as a linear combination of $v_1,\dots,v_n$. We have
+ \begin{align*}
+     \brackets{Tv,v} =& \brackets{T(a_1v_1+\dots+a_nv_n),a_1v_1+\dots+a_nv_n}\\
+     =& \brackets{\lambda_1a_1v_1+\dots+\lambda_na_nv_n,a_1v_1+\dots+a_nv_n}\\
+     =& \lambda_1\brackets{a_1v_1,a_1v_1}+\dots+\lambda_i\brackets{a_iv_i,a_iv_i}+\dots+\lambda_n\brackets{a_nv_n,a_nv_n},
+ \end{align*}
+given that $\brackets{\lambda_ia_iv_i,a_jv_j}=0$ if $i\neq j$. Since each $\lambda_i\brackets{a_iv_i,a_iv_i}\geq 0$, and in particular at least one of them is not equal to 0 (since $\lambda_i\neq 0$, and $v\neq 0$, so that not all $a_i =0$), then $\brackets{Tv,v}>0$.
+
+ ($\Leftarrow$) Suppose $\brackets{Tv,v}>0$ for all $v\in V$ with $v\neq 0$. From 6.7.c, we know that $Tv\neq 0$ as otherwise $\brackets{Tv,v}=0$. However, this implies that all eigenvalues of $T$ are nonzero (see the converse of the lemma above). Thus, by the lemma, it must be the case that $T$ is invertible, as it was to be proven.
+\end{proof}
+
+\begin{exercise}{8}
+  Suppose $T\in\LLL(V)$. For $u,v\in V$, define $\brackets{u,v}_T$ by $\brackets{u,v}_T=\brackets{Tu,v}$. Prove that $\brackets{.,.}_T$ is an inner product on $V$ if and only if $T$ is an invertible positive operator (with respect to the original inner product $\brackets{.,.}$).
+\end{exercise}
+\begin{proof}
+ ($\Rightarrow$) Suppose $\brackets{.,.}_T$ is an inner product on $V$. Let $v, w\in V$.
+
+ Self-adjointness: $\brackets{Tv,w} =\brackets{v,w}_T =\overline{\brackets{w,v}_T} =\overline{\brackets{Tw,v}} =\brackets{v,Tw}$, as required.
+
+ `Positivity' and Invertibility: $\brackets{Tv,v} =\brackets{v,v}_T\geq 0$. Furthermore, since equality follows if and only if $v=0$, by exercise 7 we have that $T$ is invertible too.
+
+ ($\Leftarrow$) Suppose $T$ is an invertible positive operator and let $u,v,w\in V$.
+
+ Positivity: $\brackets{v,v}_T =\brackets{Tv,v}\geq 0$, as required.
+
+ Definiteness: $\brackets{v,v}_T =\brackets{Tv,v} =0$ if and only if $v=0$ by exercise 7 and the fact that $T$ is invertible.
+
+ Additivity in first slot: $\brackets{u+v,w}_T =\brackets{T(u+v),w} =\brackets{Tu,w}+\brackets{Tv,w} =\brackets{u,w}_T+\brackets{v,w}_T$, as required.
+
+ Homogeneity in the first slot: $\brackets{\lambda u,v}_T =\brackets{T\lambda u,v} =\brackets{\lambda Tu,v} =\lambda\brackets{Tu,v} =\lambda\brackets{u,v}_T$, as required.
+
+ Conjugate symmetry: $\brackets{u,v}_T =\brackets{Tu,v} =\overline{\brackets{v,Tu}} =\overline{\brackets{Tv,u}} =\overline{\brackets{v,u}_T}$, where the second to last inequality follows from the fact that $T$ is self-adjoint.
+\end{proof}
+
+\begin{exercise}{10}
+  Suppose $S\in\LLL(V)$. Prove that the following are equivalent:
+  \begin{enumerate}
+      \item $S$ is an isometry;
+      \item $\brackets{S^\ast u,S^\ast v}=\brackets{u,v}$ for all $u,v\in V$;
+      \item $S^\ast e_1,\dots, S^\ast e_m$ is an orthonormal list for every orthonormal list of vectors $e_1,\dots,e_m$ in $V$;
+      \item $S^\ast e_1,\dots,S^\ast e_n$ is an orthonormal basis for some orthonormal basis $e_1,\dots,e_n$ of $V$.
+  \end{enumerate}
+\end{exercise}
+\begin{proof}
+ Suppose (1), then by 7.42.g, $S^\ast$ is an isometry, and by 7.4.2.b, we get that (2) holds. That is, that $\brackets{S^\ast u,S^\ast v} =\brackets{u,v}$ for all $u,v\in V$.
+
+ Suppose (2), then by 7.42.g, $S^\ast$ is an isometry, and by 7.4.2.c, we get that (3) holds. That is, that $S^\ast e_1,\dots,S^\ast e_m$ is an orthonormal list for every orthonormal list of vectors $e_1,\dots,e_m$ in $V$.
+
+ Suppose (3) and let $e_1,\dots,e_n$ be an orthonormal basis of $V$. We then know that $S^\ast e_1,\dots,S^\ast e_n$ is an orthonormal list in $V$. Since $S^\ast e_1,\dots,S^\ast e_n$ is an orthonormal list of the right length, then by 6.28 it is an orthonormal basis, proving (4).
+
+ Suppose (4), by the 7.42.d, we know that if there exists an orthonormal basis $e_1,\dots,e_m$ of $V$ such that $S^\ast e_1,\dots,S^\ast e_m$ is orthonormal, then $S^\ast$ is an isometry. Again using 7.42.g, we can conclude that $S$ itself is an isometry, as required.
+\end{proof}
+
+\begin{exercise}{13}
+  Prove or give a counterexample: if $S\in\LLL(V)$ and there exists an orthonormal basis $e_1,\dots,e_n$ of $V$ such that $\norm{Se_j}=1$ for each $e_j$, then $S$ is an isometry.
+\end{exercise}
+\begin{proof}
+ This is false. Consider the linear map $S\in\LLL(\R^2)$ whose matrix is given by
+ $\begin{pmatrix}
+     1 & 1\\
+     1 & 1
+ \end{pmatrix}$. We will work with the max-norm. Take the canonical basis of $\R^2$. We have that $\norm{Se_i}=1$ for both vectors, however, for the vector $(2,1)$, we have $\norm{Sv} =\norm{(3,2)} =3 \neq 2 =\norm{(2,1)} =\norm{v}$, so that $S$ is not an isometry, as required.
 \end{proof}

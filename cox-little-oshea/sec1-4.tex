@@ -1,10 +1,81 @@
-\subsection{x}
+\subsection{Ideals}
 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{1}
+Consider the equations
+\begin{align*}
+    x^2+y^2-1 =& 0,\\
+    xy-1 =& 0
+\end{align*}
+which describe the intersection of a circle with a hyperbola.
+\begin{enumerate}
+    \item Use algebra to eliminate $y$ from the above equations.
+    \item Show how the polynomial found in part 1 lies in $\brackets{x^2+y^2-1, xy-1}$. Your answer should be similar to what we did in equation (1), page 30. Hint: multiply the second equation by $xy-1$.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
 fill
 \end{proof}
 
+\begin{exercise}{2}
+Let $I\subseteq k[x_1\dots,x_n]$ be an ideal, and let $f_1,\dots,f_s\in k[x_1,\dots,x_n]$. Prove that the following statements are equivalent:
+\begin{enumerate}
+    \item $f_1,\dots,f_s\in I$.
+    \item $\brackets{f_1,\dots,f_s}\subseteq I$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{4}
+Prove proposition 4: If $f_1,\dots,f_s$ and $g_1,\dots,g_t$ are bases of the same ideal in $k[x_1,\dots,x_n]$, so that $\brackets{f_1,\dots,f_s}=\brackets{g_1,\dots,g_t}$, then we have $\bV(f_1,\dots,f_s)=\bV(g_1,\dots,g_t)$.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{7}
+Show that $\bI(\bV(x^n,y^m))=\brackets{x,y}$ for any positive integers $n$ and $m$.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{8}
+The ideal $\bI(V)$ of a variety has a special property not shared by all ideals. Specifically, we define an ideal $I$ to be the radical if whenever a power of $f^m$ of a polynomial $f$ is in $I$, then $f$ itself is in $I$. More succinctly, $I$ is a radical when $f\in I$ if and only if $f^m\in I$ for some positive integer $m$.
+\begin{enumerate}
+    \item Prove that $\bI(V)$ is always a radical ideal.
+    \item Prove that $\brackets{x^2,y^2}$ is not a radical ideal. This implies that $\brackets{x^2,y^2}\neq \bI(V)$ for any variety $V\subseteq k^2$.
+\end{enumerate}
+Radical ideals will play an important role in Chapter 4. In particular, the Nullstellensatz will imply that there is a one-to-one correspondence between varieties in $\C^n$ and radical ideals in $\C[x_1,\dots,x_n]$.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{14}
+This exercise is concerned with Proposition 8.
+\begin{enumerate}
+    \item Prove that part (ii) of the proposition follows from part (i).
+    \item Prove the following corollary of the proposition: if $V$ and $W$ are affine varieties in $k^n$, then $V\nsubseteq W$ if and only if $\bI(V)\nsupseteq\bI(W)$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{15}
+In the text, we defined $\bI(V)$ for a variety $V\subseteq k^n$. We can generalize this as follows: if $S\subseteq k^n$ is any subset, then we set
+\[
+\bI(S)=\set{f\in k[x_1,\dots,x_n]\mid f(a_1,\dots,a_n)=0\text{ for all }(a_1,\dots,a_n)\in S}.
+\]
+\begin{enumerate}
+    \item Prove that $\bI(S)$ is an ideal.
+    \item Let $X=\set{(a,a)\in\R^2\mid a\neq 1}$. By exercise 8.2, we know that $X$ is not an affine variety. Determine $\bI(X)$. Hint: What you proved in Exercise 8.2 will be useful. See also Exercise 10 of this section.
+    \item Let $\Z^n$ be the points of $\C^n$ with integer coordinates. Determine $\bI(\Z^n)$. Hint: See Exercise 1.6.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
