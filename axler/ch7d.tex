@@ -5,7 +5,6 @@
 14 Other nice interpretation of singular values 
 16 When do two maps have the same singular values?
 17 Writing generic maps of T in terms of the SVD
-18 Too bad we haven't done too much Carothers yet, cause this ties in perfectly. Still it's nice to see singular values kind of form a lower and upper bound of many things, like matrix norm and eigenvalues. Friedberg continues this discussion nicely and shows how this is actually useful in practice.
 
 
 \begin{exercise}{1}
@@ -75,9 +74,13 @@
   Suppose $T\in\LLL(V)$. Prove that $T$ is invertible if and only if there exists a unique isometry $S\in\LLL(V)$ such that $T =S\sqrt{T^\ast T}$.
 \end{exercise}
 \begin{proof}
- ($\Rightarrow$) %Suppose, for the sake of contradiction, that $T$ is invertible but $S$ is not unique. Hence, there exists an isometry $S'\in\LLL(V)$ so that $T=S'\sqrt{T^\ast T}$. We then have $S\sqrt{T^\ast T} =S'\sqrt{T^\ast T}$. Since $\sqrt{T^\ast T}$ is a positive operator, then by Exercise 7.C.7, it is invertible. Hence, $S =S\sqrt{T^\ast T}\sqrt{T^\ast T}^{-1} =S'\sqrt{T^\ast T}\sqrt{T^\ast T}^{-1} =S'$, as required.
+ ($\Rightarrow$) Suppose, for the sake of contradiction, that $T$ is invertible but $S$ is not unique. Hence, there exists an isometry $S'\in\LLL(V)$ so that $T=S'\sqrt{T^\ast T}$. We then have $S\sqrt{T^\ast T} =S'\sqrt{T^\ast T}$. Since $T$ is invertible, by Exercise 3.D.9 $\sqrt{T^\ast T}$ is also invertible. Hence, $TT^{-1} =S\sqrt{T^\ast T}(S'\sqrt{T^\ast T})^{-1} =S\sqrt{T^\ast T}\sqrt{T^\ast T}^{-1}(S')^{-1} =S(S')^{-1} \neq I$. The last inequality follows from 7.42 where we proved that $S^{-1}=S^\ast$.
 
- ($\Leftarrow$) fill%Consider the linear map $T^{-1}=\sqrt$
+ ($\Leftarrow$) Suppose $S$ is unique and, for the sake of contradiction, $T$ is not invertible. Because $S$ is an isometry, $S$ is invertible by 7.42. From 3.D.9, the product $SR$ is invertible if and only if both $S$ and $R$ are invertible, hence $R =\sqrt{T^\ast T}$ is not invertible, so that $\sqrt{T^\ast T}$ is not surjective. 
+
+ Let $e_1\dots,e_n$ be an orthonormal basis of $V$. And because $\sqrt{T^\ast T}$ is not surjective, we assume that the first $k$ vectors of such basis span $\range\sqrt{T^\ast T}$. Now let $S'e_{k+1}=-e_{k+1}$ and $S'e_{k+1}=-e_{k+1}$ and $S'=S$ otherwise. We then have that $T=S\sqrt{T^\ast T}=S'\sqrt{T^\ast T}$ (simply evaluate at vectors spanned by $e_{k+1}$. 
+ 
+ To see $S'$ is an isometry, consider $\brackets{S'e_{k+1},S'e_i} =\brackets{-Se_{k+1},Se_i} =-\brackets{Se_{k+1},Se_i} =0$ if $i\neq k+1$. Otherwise, $\brackets{S'e_{k+1}, S'e_{k+1}} =\brackets{-Se_{k+1}, -Se_{k+1}} =\brackets{Se_{k+1}, Se_{k+1}} =1$. So that by 7.42, $S'$ is an isometry, giving us the desired result.
 \end{proof}
 
 \begin{exercise}{10}
@@ -156,10 +159,98 @@
 \end{exercise}
 \begin{proof}
  \begin{enumerate}
-     \item fill
-     \item fill
-     \item fill
-     \item fill
+     \item Let $v,w\in V$. We have 
+     \begin{align*}
+         \brackets{v,&T^\ast w} 
+         = \brackets{Tv, w}\\
+         =& \brackets{s_1\brackets{v,e_1}f_1+\dots+s_n\brackets{v,e_n}f_n, w}\\
+         =& \brackets{s_1\brackets{v,e_1}f_1+\dots+s_n\brackets{v,e_n}f_n, a_1e_1+\dots+a_ne_n}\\
+         =& \brackets{s_1\brackets{v,e_1}f_1, a_1e_1}
+         +\dots+\brackets{s_i\brackets{v,e_i}f_i, a_je_j}
+         +\dots+\brackets{s_n\brackets{v,e_n}f_n, a_ne_n}\\
+         =& s_1\brackets{v,e_1}\brackets{f_1, a_1e_1}
+         +\dots+s_i\brackets{v,e_i}\brackets{f_i, a_je_j}
+         +\dots+s_n\brackets{v,e_n}\brackets{f_n, a_ne_n}\\
+         =& \brackets{v,s_1\overline{\brackets{f_1, a_1e_1}}e_1}
+         +\dots+\brackets{v,s_i\overline{\brackets{f_i, a_je_j}}e_i}
+         +\dots+\brackets{v,s_n\overline{\brackets{f_n, a_ne_n}}e_n}\\
+         =& \brackets{v,s_1\brackets{a_1e_1, f_1}e_1}
+         +\dots+\brackets{v,s_i\brackets{a_je_j, f_i}e_i}
+         +\dots+\brackets{v,s_n\brackets{a_ne_n, f_n}e_n}\\
+         =& \sum_j\brackets{v,s_1\brackets{a_je_j, f_1}e_1}
+         +\dots+\sum_j\brackets{v,s_i\brackets{a_je_j, f_i}e_i}
+         +\dots+\sum_j\brackets{v,s_n\brackets{a_ne_n, f_n}e_n}\\
+         \begin{split}
+         =& \brackets{v,s_1\brackets{a_1e_1+\dots+a_ne_n, f_1}e_1}\\
+         &+\dots+\brackets{v,s_i\brackets{a_1e_1+\dots+a_ne_n, f_i}e_i}\\
+         &+\dots+\brackets{v,s_n\brackets{a_1e_1+\dots+a_ne_n, f_n}e_n}
+         \end{split}\\
+         =& \brackets{v,s_1\brackets{w, f_1}e_1}
+         +\dots+\brackets{v,s_i\brackets{w, f_i}e_i}
+         +\dots+\brackets{v,s_n\brackets{w, f_n}e_n}.
+     \end{align*}
+     Where we used that $\bar{s_i}=s_i$ because eigenvalues of positive operators are nonnegative. Thus, $T^\ast v =s_1\brackets{v,f_1}e_1+\dots+s_n\brackets{v,f_n}e_n$, as required.
+     \item Let $v\in V$. We have
+     \begin{align*}
+         T^\ast Tv 
+         =& s_1\brackets{Tv,f_1}e_1+\dots+s_n\brackets{Tv,f_n}e_n\\
+        \begin{split}
+             =& s_1\brackets{s_1\brackets{v,e_1}f_1+\dots+s_n\brackets{v,e_n}f_n,f_1}e_1\\
+             &+\dots+s_n\brackets{s_1\brackets{v,e_1}f_1+\dots+s_n\brackets{v,e_n}f_n,f_n}e_n
+        \end{split}\\
+        =& s_1\brackets{s_1\brackets{v,e_1}f_1,f_1}e_1+\dots+s_n\brackets{s_n\brackets{v,e_n}f_n,f_n}e_n\\
+        =& s_1^2\brackets{v,e_1}\brackets{f_1,f_1}e_1+\dots+s_n^2\brackets{v,e_n}\brackets{f_n,f_n}e_n\\
+        =& s_1^2\brackets{v,e_1}e_1+\dots+s_n^2\brackets{v,e_n}e_n.
+     \end{align*}
+     Where we used that $\brackets{s_i\brackets{v,e_j}f_j,f_i}e_i =s_i\brackets{v,e_j}\brackets{f_j,f_i}e_i =0$ if $i\neq j$, because $f_1,\dots,f_n$ is an orthonormal basis.
+     \item Let $v\in V$. We have
+     \begin{align*}
+         \sqrt{T^\ast T}^2v =& s_1\brackets{\sqrt{T^\ast T}v,e_1}e_1+\dots+s_n\brackets{\sqrt{T^\ast T}v,e_n}e_n\\
+         \begin{split}
+             =& s_1\brackets{s_1\brackets{v,e_1}e_1+\dots+s_n\brackets{v,e_n}e_n,e_1}e_1\\
+             &+\dots+ s_n\brackets{s_1\brackets{v,e_1}e_1+\dots+s_n\brackets{v,e_n}e_n,e_n}e_n
+         \end{split}\\
+        =& s_1\brackets{s_1\brackets{v,e_1}e_1,e_1}e_1 +\dots+ s_n\brackets{s_n\brackets{v,e_n}e_n,e_n}e_n\\
+        =& s_1^2\brackets{v,e_1}\brackets{e_1,e_1}e_1 +\dots+ s_n^2\brackets{v,e_n}\brackets{e_n,e_n}e_n\\
+        =& s_1^2\brackets{v,e_1}e_1 +\dots+ s_n^2\brackets{v,e_n}e_n =T^\ast Tv.
+     \end{align*}
+     Where we used that $\brackets{s_i\brackets{v,e_j}e_j,e_i} =s_i\brackets{v,e_j}\brackets{e_j,e_i} =0$ if $i\neq j$ because $e_1,\dots,e_n$ is an orthonormal basis.
+
+     To finish the proof, we have to prove that $\sqrt{T^\ast T}$ is positive. 
+
+     First,
+     \begin{align*}
+         \brackets{\sqrt{T^\ast T}v,v} =& \brackets{s_1\brackets{v,e_1}e_1 +\dots+ s_n\brackets{v,e_n}e_n,v}\\
+         =& \brackets{s_1\brackets{v,e_1}e_1,v} +\dots+ \brackets{s_n\brackets{v,e_n}e_n,v}\\
+         =& s_1\brackets{v,e_1}\brackets{e_1, v} +\dots+ s_n\brackets{v,e_n}\brackets{e_n,v}\\
+         =& s_1\brackets{v,e_1}\overline{\brackets{v,e_1}} +\dots+ s_n\brackets{v,e_n}\overline{\brackets{v,e_n}}\geq 0.
+     \end{align*}
+     The last inequality follows because $z\overline{z}\geq 0$ for any complex number (see 4.5).
+
+     Second, let $w\in V$,
+     \begin{align*}
+         \brackets{v,\sqrt{T^\ast T}^\ast w} =& \brackets{\sqrt{T^\ast T}v,w}\\
+         =& \brackets{s_1\brackets{v,e_1}e_1,w} +\dots+ \brackets{s_n\brackets{v,e_n}e_n,w}\\
+         =& s_1\brackets{v,e_1}\brackets{e_1, w} +\dots+ s_n\brackets{v,e_n}\brackets{e_n,w}\\
+         =& \brackets{v,s_1\overline{\brackets{e_1, w}}e_1} +\dots+ \brackets{v,s_n\overline{\brackets{e_n,w}}e_n}\\
+         =& \brackets{v,s_1\brackets{w, e_1}e_1} +\dots+ \brackets{v,s_n\brackets{w,e_n}e_n}\\
+         =& \brackets{v,s_1\brackets{w, e_1}e_1 +\dots+ s_n\brackets{w,e_n}e_n} = \brackets{v,\sqrt{T^\ast T}},
+     \end{align*}
+     so that $\sqrt{T^\ast T}$ is self-adjoint, finalising our proof.
+     \item Let $v\in V$. We have 
+     \begin{align*}
+         T^{-1}Tv =& \frac{\brackets{Tv,f_1}e_1}{s_1}+\dots+\frac{\brackets{Tv,f_n}e_n}{s_n}\\
+         \begin{split}
+             =& \frac{\brackets{s_1\brackets{v,e_1}f_1+\dots+s_n\brackets{v,e_n}f_n,f_1}e_1}{s_1}\\
+             &+\dots+\frac{\brackets{s_1\brackets{v,e_1}f_1+\dots+s_n\brackets{v,e_n}f_n,f_n}e_n}{s_n}
+         \end{split}\\
+         =& \frac{\brackets{s_1\brackets{v,e_1}f_1, f_1}e_1}
+         {s_1}+\dots+\frac{\brackets{s_n\brackets{v,e_n}f_n,f_n}e_n}{s_n}\\
+         =& \frac{s_1\brackets{v,e_1}\brackets{f_1, f_1}e_1}{s_1}+\dots+\frac{s_n\brackets{v,e_n}\brackets{f_n,f_n}e_n}{s_n}\\
+         =& \brackets{v,e_1}\brackets{f_1, f_1}e_1+\dots+\brackets{v,e_n}\brackets{f_n,f_n}e_n\\
+         =& \brackets{v,e_1}e_1+\dots+\brackets{v,e_n}e_n =v.
+     \end{align*}
+     Where the last equality follows from 6.30. Furthermore, we used $\brackets{s_i\brackets{v,e_j}f_j,f_i}e_i =0$ if $i\neq j$, as in 2. We can prove that $TT^{-1}v=v$ in a similar way, arriving to the desired result.
  \end{enumerate}
 \end{proof}
 
@@ -171,5 +262,21 @@
   \end{enumerate}
 \end{exercise}
 \begin{proof}
- Fill
+ \begin{enumerate}
+     \item Since $T^\ast T$ is self-adjoint, by the Spectral Theorem, we can find an orthonormal basis, $e_1,\dots,e_n$, of $V$ consisting of eigenvectors of $T^\ast T$. Furthermore, let $\lambda_1,\dots,\lambda_n$ be their corresponding eigenvalues. For an arbitrary $v\in V$, which we can represent as a linear combination of $e_1,\dots,e_n$. We have
+     \begin{align*}
+         \norm{Tv}^2
+         =& \brackets{Tv,Tv} \\
+         =& \brackets{T^\ast Tv,v}\\
+         =& \brackets{T^\ast T(a_1e_1+\dots+a_ne_n),v}\\
+         =& \brackets{a_1\lambda_1e_1+\dots+a_n\lambda_ne_n,v}\\
+         =& \brackets{a_1\lambda_1e_1,v}+\dots+\brackets{a_n\lambda_ne_n,v}\\
+         =& \lambda_1\brackets{a_1e_1,v}+\dots+\lambda_n\brackets{a_ne_n,v}\\
+         \leq& \lambda\brackets{a_1e_1,v}+\dots+\lambda\brackets{a_ne_n,v}\\
+         =& \lambda\brackets{a_1e_1+\dots+a_ne_n,v}\\
+         =& \lambda\brackets{v,v} =\lambda\norm{v}^2.
+     \end{align*}
+     Where we took $\lambda$ to be the greatest eigenvalue of $T^\ast T$. In particular, we know that the inequality holds because $\brackets{a_ie_i,v}=\brackets{a_ie_i,a_ie_i}\geq 0$, given that $e_1,\dots,e_n$ are orthonormal and because by 7.35 the eigenvalues of a positive operator are nonnegative. We can find a similar result (but reversing the inequality) if we consider the smallest eigenvalue, $\hat{\lambda}$, of $T^\ast T$. Hence $\hat{\lambda}\norm{v}^2 \leq\norm{Tv}^2 \leq \lambda\norm{v}^2$. Taking square root on all elements of the inequality and 7.52, we get the desired inequality.
+     \item In 1, take $v$ to be an eigenvector of $T$. This gives us the required result by recalling that $\norm{v}=1$ and $\norm{Tv} =\norm{\lambda v} =\absoluteValue{\lambda}\norm{v} =\absoluteValue{\lambda}$.
+ \end{enumerate}
 \end{proof}
