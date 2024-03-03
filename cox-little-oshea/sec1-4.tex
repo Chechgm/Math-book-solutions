@@ -14,7 +14,10 @@ which describe the intersection of a circle with a hyperbola.
 \end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item To eliminate $y$ from the above equations, multiply the first one by $x^2$ to obtain $x^4+x^2y^2-x^2=0$ and notice that from the second we have $xy=1$, so that $x^2y^2=1$, giving us $x^4+1-x^2=0$.
+    \item Following the hint, we have $x^2(x^2+y^2-1)-(xy-1)(xy+1) =(x^4+x^2y^2-x^2)-(x^2y^2-1) =x^4+1-x^2$, as required.
+\end{enumerate}
 \end{proof}
 
 \begin{exercise}{2}
@@ -25,21 +28,23 @@ Let $I\subseteq k[x_1\dots,x_n]$ be an ideal, and let $f_1,\dots,f_s\in k[x_1,\d
 \end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+Suppose $f_1,\dots,f_s\in I$. Then for $f_i$ there exists polynomials $g_{i,1},\dots,g_{i,t_i}$ so that $f_i=\sum_r^{t_i}h_rg_{i,r}$. Now take any linear combination of $f_1,\dots,f_s$, say $r=\sum_i^sl_if_i$. Replacing each $f_i$ as a linear combination of $g_{i,k}$ gives us that $r\in I$ hence $\brackets{f_1,\dots,f_s}\subseteq I$. 
+
+If we assume 2, clearly 1 holds.
 \end{proof}
 
 \begin{exercise}{4}
 Prove proposition 4: If $f_1,\dots,f_s$ and $g_1,\dots,g_t$ are bases of the same ideal in $k[x_1,\dots,x_n]$, so that $\brackets{f_1,\dots,f_s}=\brackets{g_1,\dots,g_t}$, then we have $\bV(f_1,\dots,f_s)=\bV(g_1,\dots,g_t)$.
 \end{exercise}
 \begin{proof}
-fill
+Let $x\in \bV(f_1,\dots,f_s)$. Then $f_1(x)=\dots=f_s(x)=0$. Since $\brackets{f_1,\dots,f_s}=\brackets{g_1,\dots,g_t}$, then we can represent $g_i$ as a linear combination of $f_1,\dots,f_s$, say $g_i=\sum_i^sh_if_i$, but this implies $g_i(x)=0$ and hence $x\in\bV(g_1,\dots,g_t)$, so that $\bV(f_1,\dots,f_s)\subseteq\bV(g_1,\dots,g_t)$. The converse of the proof is symmetric to this one. Hence $\bV(f_1,\dots,f_s)=\bV(g_1,\dots,g_t)$, as required.
 \end{proof}
 
 \begin{exercise}{7}
 Show that $\bI(\bV(x^n,y^m))=\brackets{x,y}$ for any positive integers $n$ and $m$.
 \end{exercise}
 \begin{proof}
-fill
+We have that $\bV(x^n,y^m)$ implies $x^n=y^m=0$, so that $\bV(x^n,y^m)=\set{(0,0)}$. However, any polynomial in $\brackets{x,y}$ equals 0 when evaluated at $(0,0)$. Now consider any polynomial $p(x,y)\in\brackets{x,y}$ and $r\in k$ so that $q(x,y)=p(x,y)+r\notin\brackets{x,y}$. We have $q(0,0)=p(0,0)+r=r\neq 0$, hence $q(x,y)\notin\bI(\bV(x^n,y^m))$. That is, $\bI(\bV(x^n,y^m))=\brackets{x,y}$, as required.
 \end{proof}
 
 \begin{exercise}{8}
@@ -62,7 +67,10 @@ This exercise is concerned with Proposition 8.
 \end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item Since $V=W$ is the same as $V\subseteq W$ and $W\subseteq V$, (ii) follows from using part (i) twice.
+    \item This result is simply the negation of (i).
+\end{enumerate}
 \end{proof}
 
 \begin{exercise}{15}
