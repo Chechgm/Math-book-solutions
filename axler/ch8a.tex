@@ -2,88 +2,109 @@
 \addcontentsline{toc}{subsection}{Chapter 8.A. Generalized eigenvectors and nilpotent operators}
 
 1+2 Some computations to get used to the concepts
-3 Nice properties how generalized eigenspaces behave under inverses
 4 Compare with eigenspaces of different eigenvectors
 6 An example of an operator without a square root, contrast this with square roots of positive operators!
-7 Eigenvalues of nilpotent operators
-8 Properties of nilpotent operators 
-9 Properties of nilpotent operators 
 12 This gives a nice characterization of nilpotent operators since all nilpotent operators have this form 
 13 Nilpotent operators can (almost) never be normal! 
 14 Real version of Schur's theorem
 
 \begin{exercise}{1}
-  Fill
+  Define $T\in\LLL(\C^2)$ by $T(w,z)=(z,0)$. Find all generalised eigenvectors of $T$.
 \end{exercise}
 \begin{proof}
- Fill
+ The matrix of $T$ with respect to the standard basis is
+ \[
+ \begin{pmatrix}
+     0 & 1\\
+     0 & 0
+ \end{pmatrix},
+ \]
+ which has characteristic polynomial $\lambda^2$ so that the only eigenvalue of $T$ is 0 with multiplicity 2. Now, $(T-0I)^2(w,z) =T^2(w,z) =T(z,0) =(0,0)$. Hence $G(0,T)=\set{(x_1,x_2):x_i\in \bF}$.
 \end{proof}
 
 \begin{exercise}{2}
-  Fill
+  Define $T\in\LLL(\C^2)$ by $T(w,z)=(-z,w)$. Find all the generalised eigenspaces corresponding to the distinct eigenvalues of $T$.
 \end{exercise}
 \begin{proof}
  Fill
 \end{proof}
 
 \begin{exercise}{3}
-  Fill
+  Suppose $T\in\LLL(V)$ is invertible. Prove that $G(\lambda,T)=G(1/\lambda, T^{-1})$ for every $\lambda\in\bF$ with $\lambda\neq 0$.
 \end{exercise}
 \begin{proof}
- Fill
+ Let $\dim V =n$. We have that $G(\lambda, T)$ is the subspace of $V$ spanned by the vectors $v$ such that $(T-\lambda I)^n v =0$. We have $(T-\lambda I)^n v=(T^n -\lambda T^{n-1}+\dots +\lambda^n)v =0$. Applying $T^{-n}$ and multiplying by $\lambda^{-n}$ we obtain $(\lambda^{-n}T^{-n}T^n -\lambda^{-n}\lambda T^{-n}T^{n-1}+\dots +\lambda^{-n}\lambda^nT^{-n})v =(\lambda^{-n}I -\lambda^{-n+1} T^{-1}+\dots + T^{-n})v =(T^{-1}-\lambda^{-1} I)^n v=0$, so that $G(\lambda, T)=G(\lambda^{-1}, T^{-1})$, as required.
 \end{proof}
 
 \begin{exercise}{4}
-  Fill
+  Suppose $T\in\LLL(V)$ and $\alpha,\beta\in\bF$ with $\alpha\neq\beta$. Prove that $G(\alpha,T)\cap G(\beta,T)=\set{0}$.
 \end{exercise}
 \begin{proof}
- Fill
+ By 8.13, the generalised eigenvectors corresponding to $\alpha$ and $\beta$ are linearly independent. Since $G(\alpha, T)$ and $G(\beta, T)$ are the subspaces spanned by the generalised eigenvectors of $\alpha$ and $\beta$, then their intersection is simply 0, as required.
 \end{proof}
 
 \begin{exercise}{6}
-  Fill
+  Suppose $T\in\LLL(\C^3)$ is defined by $T(z_1,z_2,z_3)=(z_2,z_3,0)$. Prove that $T$ has no square root. More precisely, prove that there does not exist $S\in\LLL(\C^3)$ such that $S^2=T$.
 \end{exercise}
 \begin{proof}
  Fill
 \end{proof}
 
 \begin{exercise}{7}
-  Fill
+  Suppose $N\in\LLL(V)$ is nilpotent. Prove that 0 is the only eigenvalue of $N$.
 \end{exercise}
 \begin{proof}
- Fill
+ Let $\lambda_i$ be an eigenvalue of $N$ with corresponding eigenvector $v_i$. for $n=\dim V$, by the definiton of a nilpotent operator and 8.18, we have $0 =N^nv_i =N^{n-1}Nv_i =N^{n-1}\lambda_i v_i =\lambda_iN^{n-2}Nv_i =\dots =\lambda_i^n v_i$. Since $v_i\neq 0$, then $\lambda_i^n=0$, so that $\lambda_i=0$, as required.
 \end{proof}
 
 \begin{exercise}{8}
-  Fill
+  Prove or give a counterexample: The set of nilpotent operators on $V$ is a subspace of $\LLL(V)$.
 \end{exercise}
 \begin{proof}
- Fill
+ This is false. Consider the following matrices representing nilpotent operators under the standard basis:
+ \[
+ \begin{pmatrix}
+     0 & 1\\
+     0 & 0
+ \end{pmatrix},\,\text{ and }
+ \begin{pmatrix}
+     0 & 0\\
+     1 & 0
+ \end{pmatrix}.
+ \]
+ The sum of these matrices gives us
+ \[
+ \begin{pmatrix}
+     0 & 1\\
+     1 & 0
+ \end{pmatrix},
+ \]
+ squaring this matrix gives us the identity matrix, which is not nilpotent. Hence, the set of nilpotent operators on $V$ is not closed under addition, so it is certainly not a subspace.
 \end{proof}
 
 \begin{exercise}{9}
-  Fill
+  Suppose $S,T\in\LLL(V)$ and $ST$ is nilpotent. Prove that $TS$ is nilpotent.
 \end{exercise}
 \begin{proof}
- Fill
+ Since $ST$ is nilpotent, there exists $N$ so that $(ST)^Nv =0v$. We have $(TS)^{N+1}v =T(ST)^NSv =T(ST)^Nw =T0w =T0 =0$, as required.
 \end{proof}
 
 \begin{exercise}{12}
-  Fill
+  Suppose $N\in\LLL(V)$ and there exists a basis of $V$ with respect to which $N$ has a upper-triangular matrix with only 0's on the diagonal.  Prove that $N$ is nilpotent.
 \end{exercise}
 \begin{proof}
  Fill
 \end{proof}
 
 \begin{exercise}{13}
-  Fill
+  Suppose $V$ is an inner product space and $N\in\LLL(V)$ is normal and nilpotent. Prove that $N=0$.
 \end{exercise}
 \begin{proof}
  Fill
 \end{proof}
 
 \begin{exercise}{14}
-  Fill
+  Suppose $V$ is an inner product space and $N\in\LLL(V)$ is nilpotent. Prove that there exists an orthonormal basis of $V$ with respect to which $N$ has an upper-triangular matrix. [If $\bF=\C$, then the result above follows from Schur's Theorem (6.38) without the hypothesis that $N$ is nilpotent. Thus the exercise above needs to be proved only when $\bF=\R$].
 \end{exercise}
 \begin{proof}
  Fill

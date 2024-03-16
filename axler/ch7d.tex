@@ -1,9 +1,7 @@
 \subsection*{Chapter 7.D. Polar decomposition and singular value decomposition}
 \addcontentsline{toc}{subsection}{Chapter 7.D. Polar decomposition and singular value decomposition}
 
-14 Other nice interpretation of singular values 
 16 When do two maps have the same singular values?
-
 
 \begin{exercise}{1}
   Fix $u,x\in V$ with $u\neq 0$. Define $T\in\LLL(V)$ by $Tv =\brackets{v,u}x$ for every $v\in V$. Prove that
@@ -108,7 +106,7 @@
   Suppose $T\in\LLL(V)$. Prove that $\dim\range T$ equals the number of nonzero singular values of $T$.
 \end{exercise}
 \begin{proof}
- Fill
+ We know that $\sqrt{T^\ast T}$ is a positive operator, so that $\sqrt{T^\ast T}$ is self-adjoint. By the Complex Spectral Theorem, we can find a basis $e_1,\dots,e_n$ of $V$ consisting of eigenvectors of $\sqrt{T^\ast T}$. We have that $\dim\range \sqrt{T^\ast T}$ equals the number of non-zero eigenvalues of $\sqrt{T^\ast T}$; this because $\sqrt{T^\ast T}e_i =\lambda_ie_i$. Furthermore, the eigenvectors corresponding to non-zero eigenvalues are orthonormal. From 7.42, we know that $Se_1,\dots,Se_n$ is a list of orthonormal vectors for any isometry $S$. Recall that the polar decomposition of a $T$ is given by $T =S\sqrt{T^\ast T}$ for an isometry $S$, hence, the arguments above imply that $\dim\range T$ is the number of nonzero singular values of $T$, as required.
 \end{proof}
 
 \begin{exercise}{15}
@@ -124,9 +122,29 @@
   Suppose $T_1,T_2\in\LLL(V)$. Prove that $T_1$ and $T_2$ have the same singular values if and only if there exists isometries $S_1,S_2\in\LLL(V)$ such that $T_1 =S_1T_2S_2$.
 \end{exercise}
 \begin{proof}
- ($\Rightarrow$)
+We will use the following lemmas: 
 
- ($\Leftarrow$) Suppose there exist isometries $S_1,S_2\in\LLL(V)$ such that $T_1 =S_1T_2S_2$. Then by 7.52, the singular values of $T_1$ are the nonnegative square roots of $\sqrt{(S_1T_2S_2)^\ast(S_1T_2S_2)} =\sqrt{S_2^\ast T_2^\ast S_1^\ast S_1T_2S_2} =\sqrt{S_2^\ast T_2^\ast IT_2S_2}$
+(i) If $S,T\in\LLL(V)$ and $S$ is an isometry, and $T$ has eigenvalues $\lambda_i$ with corresponding eigenvectors $v_i$, then the map $STS^\ast$ has eigenvalues $\lambda_i$ with eigenvectors $Sv_i$. To see this, notice that $ST^\ast S^\ast Sv_i =ST^\ast v_i =S\lambda_iv_i =\lambda_iSv_i$, giving us the desired result.
+
+(ii) Let $R,T\in\LLL(V)$ be self-adjoint. $R$ and $T$ have the same diaongalised matrix if and only if there is an isometry $S$ such that $R = STS^\ast$.
+
+For the forward direction, suppose $R$ and $T$ are self-adjoint and have the same diagonalised matrix consisting of eigenvalues $\lambda_1,\dots,\lambda_n$. By the Spectral Theorem, there are orthonormal bases of $V$ consisting of eigenvectors of $R:e_1,\dots,e_n$ and $T:f_1,\dots,f_n$. Consider the linear map $S$ defined as $Sf_i=e_i$ for all $i$. By 7.42, $S$ is an isometry. Furthermore, let $v\in V$. We have $STS^\ast v =STS^\ast (a_1e_1+\dots+a_ne_n) =ST (a_1f_1+\dots+a_nf_n) =S(a_1\lambda_1f_1+\dots+a_n\lambda_nf_n) =a_1\lambda_1e_1+\dots+a_n\lambda_ne_n =a_1Re_1+\dots+a_nRe_n = R(a_1e_1+\dots+a_ne_n) =Rv$, as required.
+
+For the converse, suppose there exists an isometry $S$ so that $R=STS^\ast$ From the Spectral Theorem, there is an orthonormal basis of $V$ consisting of eigenvectors of $T$. By Lemma (i), we have that the eigenvalues of $R$ are the same of those of $STS^\ast$, so that their diagonal matrices are the same.
+
+ ($\Rightarrow$) Suppose $T_1$ and $T_2$ have the same singular values. Since singular values of $T$ are the eigenvalues of $\sqrt{T^\ast T}$, then $\sqrt{T_1^\ast T_1}$ and $\sqrt{T_2^\ast T_2}$ have the same diagonalised matrix. By Lemma (ii), there exist an isometry $S$ so that $\sqrt{T_1^\ast T_1} = S\sqrt{T_2^\ast T_2}S^\ast$. Finally, by the polar decomposition of $T_1$ and $T_2$, there exist isometries $S_1$ and $S_2$ so that $S_1T_1 =\sqrt{T_1^\ast T_1}$ and $S_2T_2 =\sqrt{T_2^\ast T_2}$. Replacing this in our previous equality, gives us: $S_1T_1 = SS_2T_2S^\ast$, which implies $T_1 = S_1^\ast SS_2T_2S^\ast$. Since the product of isometries is an isometry (by definition, $\norm{S_1S_2v} =\norm{S_2v} =\norm{v}$), we get the desired result.
+
+ ($\Leftarrow$) For the proof of the converse, we will first prove the following lemma: 
+ 
+ If $S, T\in\LLL(V)$ and $S$ is an isometry, then $\sqrt{S^\ast T^\ast TS}=S^\ast\sqrt{T^\ast T}S$. First, notice that squaring both sides of the equality gives us $S^\ast T^\ast TS =S^\ast \sqrt{T^\ast T}SS^\ast\sqrt{T^\ast T}S =S^\ast T^\ast TS$, because $S^{-1}=S^\ast$ and $\sqrt{T^\ast T}^2 =T^\ast T$.
+
+ Now we have to prove that $S^\ast\sqrt{T^\ast T}S$ is positive.
+
+ Self-adjoint: For $v,w\in V$, we have $\brackets{S^\ast\sqrt{T^\ast T}Sv, w} =\brackets{v, (S^\ast\sqrt{T^\ast T}S)^\ast w} =\brackets{v, S^\ast\sqrt{T^\ast T}^\ast Sw} =\brackets{v, S^\ast\sqrt{T^\ast T}Sw}$, where the last equality follows because $\sqrt{T^\ast T}$ is positive (and hence, self-adjoint).
+
+ Positivity: We have $\brackets{S^\ast\sqrt{T^\ast T}Sv, v} =\brackets{\sqrt{T^\ast T}Sv, Sv} =\brackets{\sqrt{T^\ast T}w, w} \geq 0$, where the last inequality follows from $\sqrt{T^\ast T}$ being positive.
+
+ Now the proof of the main result. We have that the singular values of $T_1$ are the eigenvalues of $\sqrt{T_1^\ast T_1} =\sqrt{(S_1T_2S_2)^\ast (S_1T_2S_2)} =\sqrt{S_2^\ast T_2^\ast S_1^\ast (S_1T_2S_2)} =\sqrt{S_2^\ast T_2^\ast T_2S_2} =S_2^\ast\sqrt{T_2^\ast T_2}S_2$. Where the last equality follows from the Lemma above. Using Lemma (ii), we conclude that $\sqrt{T_1^\ast T_1}$ has the same eigenvalues as $\sqrt{T_2^\ast T_2}$ so that $T_1$ and $T_2$ have the same singular values, as desired.
 \end{proof}
 
 \begin{exercise}{17}

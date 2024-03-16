@@ -1,0 +1,111 @@
+\subsection{Polynomials of one variable}
+
+
+\begin{exercise}{1}
+Over the complex numbers $\C$, Corollary 3 can be stated in a stronger form. Namely, prove that if $f\in\C[x]$ is a polynomial of degree $n>0$, then $f$ can be written in the form $f=c(x-a_1)\dots(x-a_n)$, where $c,a_1,\dots,a_n\in\C$ and $c\neq 0$. Hint: Use Theorem 7 of 1.1. Note that this result holds for any algebraically closed field.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{6}
+Given $f_1,\dots,f_x\in k[x]$, let $h=\gcd(f_2,\dots,f_s)$. Then use the equality $\brackets{h}=\brackets{f_2,\dots,f_s}$ to show that $\brackets{f_1,h}=\brackets{f_1,f_2,\dots,f_s}$. This equality is used in the proof of part (iii) of Proposition 8.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{7}
+If you are allowed to compute the $\gcd$ of only two polynomials at a time (which is true for some computer algebra systems), give pseudocode for an algorithm that computes the $\gcd$ of polynomials $f_1,\dots,f_s\in k[x]$, where $s>2$. Prove that your algorithm works. Hint: See Proposition 6. This will complete the proof of part (iv) of Proposition 8.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{8}
+Use a computer algebra system to compute the following gcd's:
+\begin{enumerate}
+    \item $\gcd(x^4+x^2+1, x^4-x^2-2x-1,x^3-1)$
+    \item $\gcd(x^3+2x^2-x-2,x^3-2x^2-x+2,x^3-x^2-4x+4)$
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{9}
+9 (use a computer algebra system)
+
+Use the method described in the text to decide whether $x^2-4$ is an element of the ideal $\brackets{x^3+x^2-4x-4, x^3-x^2-4x+4,x^3-2x^2-x+2}$.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{10}
+Give pseudocode for an algorithm that has input $f,g\in k[x]$ and output $h,A,B\in k[x]$ where $h =\gcd(f,g)$ and $Af+Bg=h$. Hint: The idea is to add variables $A,B,C,D$ to the algorithms so that $Af+Bg =h$ and $Cf+Dg =s$ remain true at every step of the algorithm. Note that the initial values of $A,B,C,D$ are $1,0,0,1$ respectively. You may find it useful to let $\text{quotient}(f,g)$ denote the quotient of $f$ on division by $g$,i.e., if the division algorithm yields $f =qg+r$, then $q =\text{quotient}(f,g)$.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{11}
+In this exercise we will study the one-variable case of the consistency problem from Section 2. Given $f_1,\dots,f_s\in k[x]$, this asks if there is an algorithm to decide whether $\bV(f_1,\dots,f_s)$ is non-empty. We will see that the answer is yes when $k=\C$.
+\begin{enumerate}
+    \item Let $f\in\C[x]$ be a nonzero polynomial. Then use Theorem 7 of Section1 to show that $\bV(f) =\empty$ if and only if $f$ is constant.
+    \item If $f_1,\dots,f_s\in\C[x]$, prove $\bV(f_1,\dots,f_s) =\empty$ if and only if $\gcd(f_1,\dots,f_s) =1$.
+    \item Describe (in words, not pseudocode) an algorithm for determining whether or not $\bV(f_1,\dots,f_s)$ is nonempty.
+\end{enumerate}
+When $k=\R$, the consistency problem is much more difficult. It requires giving an algorithm that tells whether a polynomial $f\in\R[x]$ has a real root.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{12}
+This exercise will study the one-variable case of the Nullstellensatz problem from Section 4, which asks for the relation between $\bI(\bV(f_1,\dots,f_s))$ and $\brackets{f_1,\dots,f_s}$ when $f_1,\dots,f_s\in\C[x]$. By using gcd's, we can reduce to the case of a single generator. So, in this problem, we will explicitly determine $\bI(\bV(f))$ when $f\in\C[x]$ is a nonconstant polynomial. Since we are working over the complex numbers, we know by Exercise 1 that $f$ factors completely,i.e., $f=c(x-a_1)^{r_1}\dots(x-a_l)^{r_l}$, where $a_1,\dots,a_l\in\C$ are distinct and $c\in\C\setminus\set{0}$. Define the polynomial $f_{\text{rcd}}c(x-a_1)\dots(x-a_l)$. The polynomials $f$ and $f_{\text{rcd}}$ have the same roots, but their multiplicities may differ. In particular, all roots of $f_{\text{rcd}}$ have multiplicity one. We call $f_{\text{rcd}}$ the reduced or square-free part of $f$. The latter name recognizes that $f_{\text{rcd}}$ is the square-free factor of $f$ of largest degree.
+\begin{enumerate}
+    \item Show that $\bV(f)=\set{a_1,\dots,a_l}$.
+    \item Show that $\bI(\bV(f))=\brackets{f_{\text{red}}}$.
+\end{enumerate}
+Whereas part 2 describes $\bI(\bV(f))$, the answer is not completely satisfactory because we need to factor $f$ completely to find $f_{\text{red}}$. In exercises 13, 14 and 15 we will show how to determine $f_{\text{rcd}}$.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{13}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{14}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{15}
+15 (use a computer algebra system)
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{16}
+Use exercises 12 and 15 to describe (in words, not pseudocode) an algorithm whose input consists of polynomials $f_1,\dots,f_s\in\C[x]$ and whose output consists of a basis of $\bI(\bV(f_1,\dots,f_s))$. It is more difficult to construct such an algorithm when dealing with polynomials of more than one variable.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{17}
+17 (use a computer algebra system)
+Find a basis for the ideal $\bI(\bV(x^5-2x^4+2x^2-x, x^5-x^4-2x^3+2x^2+x-1))$.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}

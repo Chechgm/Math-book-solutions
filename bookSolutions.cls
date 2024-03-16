@@ -54,6 +54,8 @@
 \newcommand{\PPP}{\mathcal{P}}
 \newcommand{\SSS}{\mathcal{S}}
 
+\newcommand{\bx}{\mathbf{x}}
+
 \newcommand{\bF}{\mathbf{F}}
 \newcommand{\bI}{\mathbf{I}}
 \newcommand{\bV}{\mathbf{V}}

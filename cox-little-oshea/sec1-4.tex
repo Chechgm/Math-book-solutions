@@ -56,7 +56,12 @@ The ideal $\bI(V)$ of a variety has a special property not shared by all ideals.
 Radical ideals will play an important role in Chapter 4. In particular, the Nullstellensatz will imply that there is a one-to-one correspondence between varieties in $\C^n$ and radical ideals in $\C[x_1,\dots,x_n]$.
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item ($\Rightarrow$) Suppose $f\in\bI(V))$, because $\bI(V))$ is an ideal, then all powers of $f$ are in $\bI(V))$. Hence, $f^m\in\bI(V))$.
+
+    ($\Leftarrow$) Suppose $f^m\in\bI(V))$. Then $f^m(x)=0$ for some $\bx\in k^n$. However, we have that $f^m(x) =f^{m-1}(x)f(x)=0$. If $f(x)=0$, we are done, otherwise, we can argue similarly with $f^{m-1}$ until $f^2(x)$ which gives us $f(x)=0$, so that $f\in\bI(V))$ as well.
+    \item Well, we have that all polynomials in $\brackets{x^2,y^2}$ are of the form $h_1x^2+h_2y^2$ for $h_1,h_2\in k^n[x,y]$. By choosing $h_1=1$ and $h_2=0$, we have that $x^2\in\brackets{x^2,y^2}$. However, $x\notin\brackets{x^2,y^2}$, as all the polynomials in $\brackets{x^2,y^2}$ are of degree at least 2. Hence, $\brackets{x^2,y^2}$ is not a radical ideal.
+\end{enumerate}
 \end{proof}
 
 \begin{exercise}{14}
@@ -80,8 +85,8 @@ In the text, we defined $\bI(V)$ for a variety $V\subseteq k^n$. We can generali
 \]
 \begin{enumerate}
     \item Prove that $\bI(S)$ is an ideal.
-    \item Let $X=\set{(a,a)\in\R^2\mid a\neq 1}$. By exercise 8.2, we know that $X$ is not an affine variety. Determine $\bI(X)$. Hint: What you proved in Exercise 8.2 will be useful. See also Exercise 10 of this section.
-    \item Let $\Z^n$ be the points of $\C^n$ with integer coordinates. Determine $\bI(\Z^n)$. Hint: See Exercise 1.6.
+    \item Let $X=\set{(a,a)\in\R^2\mid a\neq 1}$. By exercise 1.2.8, we know that $X$ is not an affine variety. Determine $\bI(X)$. Hint: What you proved in Exercise 1.2.8 will be useful. See also Exercise 10 of this section.
+    \item Let $\Z^n$ be the points of $\C^n$ with integer coordinates. Determine $\bI(\Z^n)$. Hint: See Exercise 1.1.6.
 \end{enumerate}
 \end{exercise}
 \begin{proof}
