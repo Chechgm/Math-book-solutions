@@ -1,10 +1,77 @@
-\subsection*{Chapter 8.B. }
-\addcontentsline{toc}{subsection}{Chapter }
+\subsection*{Chapter 8.B. Decomposition of an operator}
+\addcontentsline{toc}{subsection}{Chapter 8.B. Decomposition of an operator}
 
 
 \begin{exercise}{1}
-  Fill
+  Suppose $V$ is a complex vector space, $N\in\LLL(V)$, and 0 is the only eigenvalue of $N$. Prove that $N$ is nilpotent.
 \end{exercise}
 \begin{proof}
- Fill
+ By 8.23 we have that $V$ has a basis consisting of generalised eigenvectors of $N$, say $v_1,\dots,v_n$. From 8.11, we know that $G(\lambda, N)=\nullspace(N-\lambda I)^n$. For any $v\in V$, consider $N^nv =N^n(a_1v_1+\dots+a_nv_n) =a_1N^nv_1+\dots+a_nN^nv_n=a_1(N-I0)^nv_1+\dots+a_n(N-I0)^nv_n =0$, as required.
+\end{proof}
+
+\begin{exercise}{2}
+  Give an example of an operator $T$ on a finite-dimensional real vector space such that 0 is the only eigenvalue of $T$ but $T$ is not nilpotent.
+\end{exercise}
+\begin{proof}
+ Suppose $T\in\LLL(\R^3)$ such that the matrix that represents $T$ with respect to the standard basis is
+ $\begin{pmatrix}
+ 0 & 0 &1\\
+ 1 & 0 & 0\\
+ -1 & 0 &0
+ \end{pmatrix}$.
+ Using Wolfram Alpha, we can verify that this matrix has as eigenvalues 0 and $\pm i$, so that 0 is its only eigenvalue in the reals. Furthermore, we have that $T^9=T$, so that $T$ is not nilpotent.
+\end{proof}
+
+\begin{exercise}{3}
+  Suppose $T\in\LLL(V)$. Suppose $S\in\LLL(V)$ is invertible. Prove that $T$ and $S^{-1}TS$ have the same eigenvalues with the same multiplicities
+\end{exercise}
+\begin{proof}
+ Let $n=\dim V$. We proved in Exercise 5.A.15 that $T$ and $S^{-1}TS$ have the same eigenvalues. Let $\lambda$ be an eigenvalue of $T$ and $S^{-1}TS$. 
+
+ Suppose $v\in\nullspace(T-\lambda I)^n$, then $(T-\lambda I)^nv =(T^n-\dots +\lambda^n I)v =0$. In Exercise 5.B.5, we proved that $(S^{-1}TS)^n =S^{-1}T^nS$, thus, composing the equality in the previous sentence by $S^{-1}$ on the left and $S$ on the right, we get $(S^{-1}T^nS-\dots +\lambda^n S^{-1}S)v =(S^{-1}TS-\lambda I)^n =0$, so that $v\in\nullspace(S^{-1}TS-\lambda I)^n$ and $\nullspace(T-\lambda I)^n\subseteq \nullspace(S^{-1}TS-\lambda I)^n$. We get the opposite containment relation mutatis mutandis by considering $v\in\nullspace(S^{-1}TS-\lambda I)^n$. That is, $\nullspace(T-\lambda I)^n =\nullspace(S^{-1}TS-\lambda I)^n$ and $\dim\nullspace(T-\lambda I)^n =\dim\nullspace(S^{-1}TS-\lambda I)^n$, giving us that the multiplicities of the eigenvalues of $T$ and $S^{-1}TS$ are the same.
+ \end{proof}
+
+\begin{exercise}{5}
+  Suppose $V$ is a complex vector space and $T\in\LLL(V)$. Prove that $V$ has a basis consisting of eigenvectors of $T$ if and only if every generalised eigenvector of $T$ is an eigenvector of $T$. [For $\bF=\C$, the exercise above adds an equivalence to the list in 5.41].
+\end{exercise}
+\begin{proof}
+ ($\Rightarrow$) Suppose $V$ has a basis consisting of eigenvectors of $T$, say $v_1,\dots,v_n$. Now let $v_i'$ be a generalised eigenvector of $T$ corresponding to eigenvalue $\lambda_i$, furthermore, let $v_k,\dots,v_l$ be the eigenvalues corresponding to $\lambda_i$. We have $v_i' =a_1v_1+\dots+a_nv_n =(T-\lambda_i I)^n a_kv_k+\dots+a_lv_l$, where the last inequality follows from 8.13 where we concluded that generalised eigenvectors from distinct eigenvalues are linearly independent, and the fact that eigenvectors are also generalised eigenvectors. Now consider $Tv_i' =T(a_kv_k+\dots+a_lv_l) =\lambda_i(a_kv_k+\dots+a_lv_l)$, so that $v_i'$ is an eigenvector of $T$ with eigenvalue $\lambda_i$, as required.
+
+ ($\Leftarrow$) Suppose every generalised eigenvector of $T$ is an eigenvector of $T$. From 8.23 we know there is a basis of $V$ consisting of generalised eigenvectors of $T$, by assumption these are eigenvectors of $T$, so that there is a basis of $V$ consisting of eigenvectors of $T$, as it was to be proven.
+\end{proof}
+
+\begin{exercise}{7}
+  Suppose $V$ is a complex vector space. Prove that every invertible operator on $V$ has a cube root.
+\end{exercise}
+\begin{proof}
+ We first prove the following lemma: Suppose $N\in\LLL(V)$ is nilpotent, then $I+N$ has a cube root. 
+
+ Proof of the lemma: Since $N$ is nilpotent, there exists an $m$ such that $N^m=0$. Consider the formula of the Taylor series of $sqrt[3]{1+x}$ about 0 and substitute $1=I$ and $x=N$: $I+a_1N+a_2N^2+\dots+a_{m-1}N^{m-1}$. We have $(I+a_1N+a_2N^2+\dots+a_{m-1}N^{m-1})^3 = I+3a_1N+(3a_2+3a_1^2)N^2+\dots+(3a_{m-1}+\text{ terms involving }a_1,a_2,\dots,a_{m-2})N^{m-1}$. We need that all the coefficients of $N^2,\dots,N^{m-1}$ are 0 and the coefficient of $N$ is 1. That is, $3a_1=1$, so that $a_1=1/3$, $3a_2+3a_1^2=3a_2+3(1/3)^2=0$, so that $a_2=-(1/3)^2$, but as in the text, we don't care about the values of $a_i$, we just care that it is possible to fulfill our desired condition (which it is). Hence $I+N$ has a cube root.
+
+ Proof of the main result: Let $\lambda_1,\dots,\lambda_n$ be the distinct eigenvalues of $T$. For each $j$ there exists a nilpotent operator $N_j\in \LLL(G(\lambda_j,T))$ such that $T|_{G(\lambda_j,T)}=\lambda_j+N_j$. Because $T$ is invertible, none of the $\lambda_j$'s equal 0, so we can write
+ \[
+ T|_{G(\lambda_j,T)}=\lambda_j\left(I+\frac{N_j}{\lambda_j}\right)
+ \]
+ for each $j$. $N_j/\lambda_j$ is nilpotent, so $I+N_j/\lambda_j$ has a cube root from the Lemma above. Multiplying a cube root of the complex number $\lambda_j$ by the cube root of $I+N_j/\lambda_j$ we obtain a cube root $R_j$ of $T|_{G(\lambda_j,T)}$.
+
+ Using a basis composed of generalized eigenvectors, as in 8.21, we can write $v\in V$ as
+ \[
+ v=u_1+\dots+u_n,
+ \]
+ where $u_j\in G(\lambda_j,T)$. Using this decomposition, define an operator $R\in\LLL(V)$ by
+ \[
+ Rv = R_1u_1+\dots+R_nu_n.
+ \]
+To see $R$ is a cube root of $T$. Consider $R^3v =R^2(R_1u_1+\dots+R_nu_n) =R^2(R_1u_1+\dots+R_nu_n) =R(R_1(R_1u_1+\dots+R_nu_n)+\dots+R_n(R_1u_1+\dots+R_nu_n)) =R(R_1^2u_1+\dots+R_n^2u_n) =R_1^3u_1+\dots+R_n^3u_3$, where the second to last inequality follows from the fact that whenever we want to represent $R_iu_i$ using the basis of generalised eigenvectors we simply obtain an element of $G(\lambda_i,T)$ due to the invariance of $R_i$. Thus $R(R_iu_i)=R_1(R_iu_i)+\dots+R_n(R_iu_i) =R_i^2u_i$. Hence, $R$ is the cube root of $T$, as desired.
+\end{proof}
+
+\begin{exercise}{10}
+  Suppose $\bF=\C$ and $T\in\LLL(V)$. Prove that there exist $D,N\in\LLL(V)$ such that $T=D+N$, the operator $D$ is diagonalisable, $N$ is nilpotent, and $DN=ND$.
+\end{exercise}
+\begin{proof}
+ Because $V$ is a complex vector space, from 8.21, we know there exists a basis of $V$ consisting of generalised eigenvectors of $T$, where $\lambda_1,\dots,\lambda_m$ are the distinct eigenvalues. Let $\brackets{.,.}$ be an inner product on $V$, such that the generalised eigenvectors of $T$ form an orthonormal basis. 
+
+ Let $P_i$ be the orthogonal projection on $G(\lambda_i,T)$, so that $T=\lambda_1P_1+\lambda_2P_2+\dots+\lambda_mP_m+(T-\lambda_1 I)P_1+\dots+(T-\lambda_m I)P_m$. To see this equality holds, simply represent $v\in V$ as a linear combination of the basis of generalised eigenvectors of $T$ and apply the two sides of the equality to $v$ (remembering the additivity of linear maps). We have that the map $(T-\lambda_j I)P_j$ is nilpotent because $(T-\lambda_j I)|_{G(\lambda_j,T)}$ is nilpotent, and $P_j$ `restricts' the action of $(T-\lambda_j I)$ to elements of $G(\lambda_j,T)$. The sum of $(T-\lambda_j I)P_j$ is then nilpotent. To see that $\lambda_1 P_1+\dots+\lambda_m P_m$ is diagonalisable, notice that for any element of the basis consisting of generalised eigenvectors of $T$, we have $(\lambda_1P_1+\dots+\lambda_mP_m)v_j = \lambda_jP_jv_j = \lambda_j v_j$, because $P_jv_i=0$ for $i\neq j$. Hence, $v_1,\dots,v_n$ is a basis consisting of eigenvectors of $\lambda_1P_1+\dots+\lambda_mP_m$ so that by 5.41 it is diagonalisable.
+
+ To prove the operators are commutative, consider $NDv =((T-\lambda_1 I)P_1+\dots+(T-\lambda_m I)P_m)(\lambda_1P_1+\dots+\lambda_mP_m)v = (T-\lambda_1 I)P_1\lambda_1P_1v+\dots+(T-\lambda_m I)P_m\lambda_mP_mv$, since $P_jP_iv=0$ if $i\neq j$. But notice $\lambda_j$ is a scalar, and given that $(T-\lambda_i I)$ is invariant in $G(\lambda_i,T)$, then for any $v\in V$,  $(T-\lambda_i I)P_i\lambda_iP_iv =\lambda_iP_i(T-\lambda_i I)P_iv$. That is, $ND=DN$, finishing the proof.
 \end{proof}

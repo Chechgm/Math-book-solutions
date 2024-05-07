@@ -49,6 +49,8 @@
 % Calligraphic and bold
 \newcommand{\AAA}{\mathcal{A}}
 \newcommand{\CCC}{\mathcal{C}}
+\newcommand{\FFF}{\mathcal{F}}
+\newcommand{\III}{\mathcal{I}}
 \newcommand{\LLL}{\mathcal{L}}
 \newcommand{\MMM}{\mathcal{M}}
 \newcommand{\PPP}{\mathcal{P}}
@@ -75,6 +77,8 @@
 \DeclareMathOperator*{\nullspace}{null}
 \DeclareMathOperator*{\range}{range}
 \DeclareMathOperator*{\vecspan}{span}
+\DeclareMathOperator*{\trace}{trace}
+\DeclareMathOperator*{\matrixdet}{det}
 \newcommand*\norm[1]{\left\lVert #1\right\rVert}
 
 % Probability

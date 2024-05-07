@@ -1,10 +1,117 @@
-\subsection*{Chapter 9.B. }
-\addcontentsline{toc}{subsection}{Chapter }
+\subsection*{Chapter 9.B. Operators on real inner product spaces}
+\addcontentsline{toc}{subsection}{Chapter 9.B. Operators on real inner product spaces}
 
 
 \begin{exercise}{1}
-  Fill
+  Suppose $S\in\LLL(\R^3)$ is an isometry. Prove that there exists a nonzero vector $x\in\R^3$ such that $S^2x=x$.
 \end{exercise}
 \begin{proof}
- Fill
+ From exercise 2, we know that all eigenvalues of $S$ are either 1 or -1. Then simply let $x\in\R^3$ be an eigenvector of $S$. We have $S^2x=1^2x=x$ or $S^2x=(-1)^2x=x$, as required.
+\end{proof}
+
+\begin{exercise}{2}
+  Prove that every isometry on an odd-dimensional real inner product space has 1 or -1 as an eigenvalue.
+\end{exercise}
+\begin{proof}
+ Suppose $S$ is an isometry in an odd-dimensional real inner product space. By 9.19 we know $S$ has at least one real eigenvalue. Let $\lambda$ be this eigenvalue and $v\in V$ its corresponding eigenvector. Then, $\absoluteValue{\lambda}^2\brackets{v,v}=\brackets{Sv,Sv}=\brackets{v,v}$, so that $\lambda^2=1$ and $\lambda=\pm 1$, as required.
+\end{proof}
+
+\begin{exercise}{3}
+  Suppose $V$ is a real inner product space. Show that
+  \[
+  \brackets{u+iv,x+iy} = 
+  \brackets{u,x}+\brackets{v,y}
+  + i(\brackets{v,x}-\brackets{u,y})
+  \]
+  for $u,v,x,y\in V$ defines a complex inner product on $V_\C$.
+\end{exercise}
+\begin{proof}
+Let $u,v,w\in V_\C$ and $\lambda\in\C$.
+
+ Positivity and definiteness: We have 
+ \begin{align*}
+    \brackets{u,u} =& \brackets{u_1+iu_2, u_1+iu_2}\\
+    =& \brackets{u_1,u_1} + \brackets{u_2,u_2} 
+    + i(\brackets{u_2,u_1}-\brackets{u_1,u_2})\\
+    =& \brackets{u_1,u_1} + \brackets{u_2,u_2} 
+    + i(\brackets{u_2,u_1}-\overline{\brackets{u_2,u_1}})\\
+    =& \brackets{u_1,u_1} + \brackets{u_2,u_2} 
+    + i(\brackets{u_2,u_1}-\brackets{u_2,u_1})\\
+    =& \brackets{u_1,u_1} + \brackets{u_2,u_2} \geq 0.
+ \end{align*}
+ Where the second to last inequality follows because $V$ is a real inner product space, so that $\overline{\brackets{u_2,u_1}} =\brackets{u_2,u_1}$. In the previous proof, we have equality with zero if and only if both $u_1$ and $u_2$ are zero, so that we get definiteness too.
+
+ Additivity in first slot: We have
+ \begin{align*}
+     \brackets{u+v,w} =& \brackets{u_1+v_1+i(u_2+v_2), w_1+iw_2}\\
+     =& \brackets{u_1+v_1,w_1} + \brackets{u_2+v_2,w_2}
+     + i(\brackets{u_2+v_2,w_1} + \brackets{u_1+v_1,w_2})\\
+     =& [\brackets{u_1,w_1} + \brackets{u_2,w_2}
+     + i(\brackets{u_2,w_1} + \brackets{u_1,w_2})]\\
+     +& [\brackets{v_1,w_1} + \brackets{v_2,w_2}
+     + i(\brackets{v_2,w_1} + \brackets{v_1,w_2})]\\
+     =& \brackets{u,w} + \brackets{v,w},
+ \end{align*}
+ as required.
+
+ Homogeneity in first slot: We have
+ \begin{align*}
+     \brackets{\lambda u,v} =& \brackets{(\lambda_1+i\lambda_2)(u_1+iu_2), v_1+iv_2}\\
+     =& \brackets{(\lambda_1u_1-\lambda_2u_2)+i(\lambda_1u_2+\lambda_2u_1), v_1+iv_2}\\
+     =& \brackets{\lambda_1u_1-\lambda_2u_2, v_1} + 
+     \brackets{\lambda_1u_2+\lambda_2u_1, v_2}\\
+     +& i(\brackets{\lambda_1u_2+\lambda_2u_1, v_1} - \brackets{\lambda_1u_1-\lambda_2u_2, v_2})\\
+     =& \lambda_1\brackets{u_1,v_1}-\lambda_2\brackets{u_2, v_1} + 
+     \lambda_1\brackets{u_2, v_2}+\lambda_2\brackets{u_1, v_2}\\
+     +& i(\lambda_1\brackets{u_2, v_1}+\lambda_2\brackets{u_1, v_1} - \lambda_1\brackets{u_1, v_2}+\lambda_2\brackets{u_2, v_2})\\
+     =& \lambda_1[\brackets{u_1,v_1}+\brackets{u_2, v_2}]-\lambda_2[\brackets{u_2, v_1}-\brackets{u_1, v_2}]\\
+     +& i(\lambda_1[\brackets{u_2, v_1}-\brackets{u_1, v_2}] + \lambda_2[\brackets{u_1, v_1}+\brackets{u_2, v_2}])\\
+     =& [\lambda_1+i\lambda_2][\brackets{u_1,v_1}+\brackets{u_2,v_2}+i(\brackets{u_2,v_1}-\brackets{u_1,v_2})]\\
+     =& \lambda\brackets{u,v}.
+\end{align*}
+
+Conjugate symmetry: We have
+\begin{align*}
+    \brackets{u,v} =& \brackets{u_1,v_1}+\brackets{u_2,v_2}
+    + i(\brackets{u_2,v_1}-\brackets{u_1,v_2})\\
+    =& \overline{\brackets{v_1,u_1}}+\overline{\brackets{v_2,u_2}}
+    + i(\overline{\brackets{v_1,u_2}}-\overline{\brackets{v_2,u_1}})\\
+    =& \overline{\brackets{v_1,u_1}+\brackets{v_2,u_2}}
+    + i(\overline{\brackets{v_1,u_2}-\brackets{v_2,u_1}})\\
+    =& \overline{\brackets{v_1,u_1}+\brackets{v_2,u_2}
+    - i(\brackets{v_2,u_1}, \brackets{v_1,u_2})}\\
+    =& \overline{\brackets{v,u}}.
+\end{align*}
+Notice the change in the order of the imaginary terms in the second to last inequality, which gives us the change in the sign of $i$.
+\end{proof}
+
+\begin{exercise}{4}
+  Suppose $V$ is a real inner product space and $T\in\LLL(V)$ is self-adjoint. Show that $T_\C$ is a self-adjoint operator on the inner product space $V_\C$ defined by the previous exercise.
+\end{exercise}
+\begin{proof}
+ Let $u,v\in V_\C$. We have
+ \begin{align*}
+     \brackets{T_\C u,v} =& \brackets{T_\C(u_1+iu_2),v_1+iv_2}\\
+     =& \brackets{Tu_1+iTu_2,v_1+iv_2}\\
+     =& \brackets{Tu_1,v_1}+\brackets{Tu_2,v_2}
+     +i(\brackets{Tu_2,v_1}-\brackets{Tu_1,v_2})\\
+     =& \brackets{u_1,Tv_1}+\brackets{u_2,Tv_2}
+     +i(\brackets{u_2,Tv_1}-\brackets{u_1,Tv_2})\\
+     =& \brackets{u_1+iu_2,Tv_1+iTv_2}\\
+     =& \brackets{u_1+iu_2,T_\C(v_1+iv_2)} = \brackets{u,T_\C v},
+ \end{align*}
+ as required.
+\end{proof}
+
+\begin{exercise}{5}
+  Use the previous exercise to give a proof of the Real Spectral Theorem (7.29) via complexification and the Complex Spectral Theorem (7.24).
+\end{exercise}
+\begin{proof}
+ In the previous exercise we proved that if $T$ is self-adjoint, and in 9.7 we concluded that the matrix of $T_\C$ equals the matrix of $T$. Thus, $T_\C$ is self-adjoint with respect to the inner product in exercise 3. Because self-adjoint operators are normal, we can apply the Complex Spectral Theorem to $T_\C$ as a complex vector space. This implies that i) $V_\C$ has an orthonormal basis consisting of eigenvectors of $T_\C$, and ii) $T_\C$ has a diagonal matrix with respect to some orthonormal basis of $V_\C$. 
+
+ We have the following three facts: from ii) above we know that $T_\C$ has a diagonal matrix with respect to some orthonormal basis of $V_\C$, the matrix of $T_\C$ is real (because by 9.7 we know it is the same matrix as $T$), and from 5.32 the elements of an upper-triangular matrix are precisely the eigenvalues of the operator. Then, $T_\C$ has only real eigenvalues. Then by exercise 9.A.18, we know there exists a basis of $V$ consisting of generalised eigenvectors of $T$. However, we know that because the eigenvalues of $T_\C$ are real, then the generalised eigenvectors of $T_\C$ are the generalised eigenvectors of $T$, and by exercise 8.B.5. the generalised eigenvectors of $T_\C$ are eigenvectors of $T_\C$. That is, we have a basis of $V$ consisting of eigenvectors of $T$.
+
+ Now since the matrix of $T_\C$ is real, then the basis of $V_\C$ to which it is diagonal must be in $V$. That is, there is a basis of $V$ with respect to which we have a diagonal matrix of $T$.
+
+ Finally to make these bases othonormal, we can use the Gram-Schmidt procedure (6.31) to turn those bases into orthonormal bases.
 \end{proof}

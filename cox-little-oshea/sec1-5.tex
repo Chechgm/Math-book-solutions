@@ -5,14 +5,15 @@
 Over the complex numbers $\C$, Corollary 3 can be stated in a stronger form. Namely, prove that if $f\in\C[x]$ is a polynomial of degree $n>0$, then $f$ can be written in the form $f=c(x-a_1)\dots(x-a_n)$, where $c,a_1,\dots,a_n\in\C$ and $c\neq 0$. Hint: Use Theorem 7 of 1.1. Note that this result holds for any algebraically closed field.
 \end{exercise}
 \begin{proof}
-fill
+Firs we recall that Theorem 7 of section 1.1 says that every nonconstant polynomial in $\C[x]$ has a root in $\C$. With this, let $f\in\C[x]$ be a polynomial of degree $n>0$ so that $f$ is nonconstant and we can apply Theorem 1.1.7. Let $a_1\in\C$ be a root of $f$, and divide $f$ by $x-a_1$. We obtain $f(x)=(x-a_1)q(x)+r(x)$. Since $0\leq\deg r<\deg (x-a)=1$, then $r$ is either a nonzero constant, or 0, but we have that $0 =f(a_1) =(x-a_1)q(a_1)+r(a_1) =r(a_1)$, which is not possible if $r$ is a nonzero constant. Continue the process until the quotient $q(x)$ quotient is constant. By renaming the last quotient $c$, we obtain the desired result.
 \end{proof}
 
 \begin{exercise}{6}
 Given $f_1,\dots,f_x\in k[x]$, let $h=\gcd(f_2,\dots,f_s)$. Then use the equality $\brackets{h}=\brackets{f_2,\dots,f_s}$ to show that $\brackets{f_1,h}=\brackets{f_1,f_2,\dots,f_s}$. This equality is used in the proof of part (iii) of Proposition 8.
 \end{exercise}
 \begin{proof}
-fill
+Let $f\in\brackets{f_1,\dots,f_s}$, then $f=\sum_{i=0}^{n_1}g_{1,i}f_1^i+\dots+\sum_{i=0}^{n_1}g_{1,i}f_1^i$
+Notice that $\brackets{f_1,h}=\set{\sum_{i=0}g_if_1^i+\sum_{j=0}g_j'h^j: g_i,g_j'\in k[x]}$, 
 \end{proof}
 
 \begin{exercise}{7}
@@ -25,21 +26,34 @@ fill
 \begin{exercise}{8}
 Use a computer algebra system to compute the following gcd's:
 \begin{enumerate}
-    \item $\gcd(x^4+x^2+1, x^4-x^2-2x-1,x^3-1)$
-    \item $\gcd(x^3+2x^2-x-2,x^3-2x^2-x+2,x^3-x^2-4x+4)$
+    \item $\gcd(x^4+x^2+1, x^4-x^2-2x-1, x^3-1)$
+    \item $\gcd(x^3+2x^2-x-2, x^3-2x^2-x+2, x^3-x^2-4x+4)$
 \end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item Using the command 
+    \begin{verbatim}
+        PolynomialGCD[x^4+x^2+1, x^4-x^2-2x-1, x^3-1],
+    \end{verbatim}
+    on Wolfram Alpha, we obtain $\gcd(f_1, f_2, f_3)=x^2+x+1$.
+    \item Using the command 
+    \begin{verbatim}
+        PolynomialGCD[x^3+2x^2-x-2, x^3-2x^2-x+2, x^3-x^2-4x+4],
+    \end{verbatim}
+    on Wolfram Alpha, we obtain $\gcd(f_1, f_2, f_3)=x-1$.
+\end{enumerate}
 \end{proof}
 
 \begin{exercise}{9}
-9 (use a computer algebra system)
-
 Use the method described in the text to decide whether $x^2-4$ is an element of the ideal $\brackets{x^3+x^2-4x-4, x^3-x^2-4x+4,x^3-2x^2-x+2}$.
 \end{exercise}
 \begin{proof}
-fill
+To do this, we first use the command 
+\begin{verbatim}
+        PolynomialGCD[x^3+x^2-4x-4, x^3-x^2-4x+4,x^3-2x^2-x+2],
+\end{verbatim}
+on Wolfram Alpha to obtain the gcd of the 3 polynomials: $x-2$. Since $x^2-4 = (x-2)(x+2)$, then we know that $x^2-4$ belongs to the ideal, as it was to be shown.
 \end{proof}
 
 \begin{exercise}{10}
@@ -52,8 +66,8 @@ fill
 \begin{exercise}{11}
 In this exercise we will study the one-variable case of the consistency problem from Section 2. Given $f_1,\dots,f_s\in k[x]$, this asks if there is an algorithm to decide whether $\bV(f_1,\dots,f_s)$ is non-empty. We will see that the answer is yes when $k=\C$.
 \begin{enumerate}
-    \item Let $f\in\C[x]$ be a nonzero polynomial. Then use Theorem 7 of Section1 to show that $\bV(f) =\empty$ if and only if $f$ is constant.
-    \item If $f_1,\dots,f_s\in\C[x]$, prove $\bV(f_1,\dots,f_s) =\empty$ if and only if $\gcd(f_1,\dots,f_s) =1$.
+    \item Let $f\in\C[x]$ be a nonzero polynomial. Then use Theorem 7 of Section 1 to show that $\bV(f) =\emptyset$ if and only if $f$ is constant.
+    \item If $f_1,\dots,f_s\in\C[x]$, prove $\bV(f_1,\dots,f_s) =\emptyset$ if and only if $\gcd(f_1,\dots,f_s) =1$.
     \item Describe (in words, not pseudocode) an algorithm for determining whether or not $\bV(f_1,\dots,f_s)$ is nonempty.
 \end{enumerate}
 When $k=\R$, the consistency problem is much more difficult. It requires giving an algorithm that tells whether a polynomial $f\in\R[x]$ has a real root.
@@ -63,33 +77,87 @@ fill
 \end{proof}
 
 \begin{exercise}{12}
-This exercise will study the one-variable case of the Nullstellensatz problem from Section 4, which asks for the relation between $\bI(\bV(f_1,\dots,f_s))$ and $\brackets{f_1,\dots,f_s}$ when $f_1,\dots,f_s\in\C[x]$. By using gcd's, we can reduce to the case of a single generator. So, in this problem, we will explicitly determine $\bI(\bV(f))$ when $f\in\C[x]$ is a nonconstant polynomial. Since we are working over the complex numbers, we know by Exercise 1 that $f$ factors completely,i.e., $f=c(x-a_1)^{r_1}\dots(x-a_l)^{r_l}$, where $a_1,\dots,a_l\in\C$ are distinct and $c\in\C\setminus\set{0}$. Define the polynomial $f_{\text{rcd}}c(x-a_1)\dots(x-a_l)$. The polynomials $f$ and $f_{\text{rcd}}$ have the same roots, but their multiplicities may differ. In particular, all roots of $f_{\text{rcd}}$ have multiplicity one. We call $f_{\text{rcd}}$ the reduced or square-free part of $f$. The latter name recognizes that $f_{\text{rcd}}$ is the square-free factor of $f$ of largest degree.
+This exercise will study the one-variable case of the Nullstellensatz problem from Section 4, which asks for the relation between $\bI(\bV(f_1,\dots,f_s))$ and $\brackets{f_1,\dots,f_s}$ when $f_1,\dots,f_s\in\C[x]$. By using gcd's, we can reduce to the case of a single generator. So, in this problem, we will explicitly determine $\bI(\bV(f))$ when $f\in\C[x]$ is a nonconstant polynomial. Since we are working over the complex numbers, we know by Exercise 1 that $f$ factors completely, i.e., $f=c(x-a_1)^{r_1}\dots(x-a_l)^{r_l}$, where $a_1,\dots,a_l\in\C$ are distinct and $c\in\C\setminus\set{0}$. Define the polynomial $f_{\text{red}}=c(x-a_1)\dots(x-a_l)$. The polynomials $f$ and $f_{\text{red}}$ have the same roots, but their multiplicities may differ. In particular, all roots of $f_{\text{red}}$ have multiplicity one. We call $f_{\text{red}}$ the reduced or square-free part of $f$. The latter name recognizes that $f_{\text{red}}$ is the square-free factor of $f$ of largest degree.
 \begin{enumerate}
     \item Show that $\bV(f)=\set{a_1,\dots,a_l}$.
     \item Show that $\bI(\bV(f))=\brackets{f_{\text{red}}}$.
 \end{enumerate}
-Whereas part 2 describes $\bI(\bV(f))$, the answer is not completely satisfactory because we need to factor $f$ completely to find $f_{\text{red}}$. In exercises 13, 14 and 15 we will show how to determine $f_{\text{rcd}}$.
+Whereas part 2 describes $\bI(\bV(f))$, the answer is not completely satisfactory because we need to factor $f$ completely to find $f_{\text{red}}$. In exercises 13, 14 and 15 we will show how to determine $f_{\text{red}}$ without any factoring.
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item Take $a_i$ in the conjectured variety of $f$. Since $f=c(x-a_1)^{r_1}\dots(x-a_i)^{r_i}\dots(x-a_l)^{r_l}$, then $f(a_i)=c(a_i-a_1)^{r_1}\dots 0\dots(a_i-a_l)^{r_l}=0$. Furthermore, if $b\neq a_i$ for all $i$, then $b-a_i\neq 0$ for all $i$, so that $f(b)=c(b-a_1)^{r_1}\dots(b-a_l)^{r_l}\neq 0$, proving that there are no more elements in the conjectured variety. Hence $\bV(f)=\set{a_1,\dots,a_l}$.
+    \item Since $\brackets{f_{\text{red}}}=\set{\sum_i^nh_if_{\text{red}}^i: h_i\in\C[x]}$, and $f_{\text{red}}(a_i=0$ for all $a_i\in\bV(f)$ (adapting the proof from above), then $\brackets{f_{\text{red}}}\subseteq\bI(\bV(f))$. 
+    
+    To see there are no additional polynomials in $\bI(\bV(f))$, suppose $g\notin\brackets{f_{\text{red}}}$, and divide $g$ by $f_{\text{red}}$: $g=hf_{\text{red}}+r$ where $0\leq\deg r<\deg f_{\text{red}}$. Now we claim $0 =g(a_i) =h(a_i)f_{\text{red}}(a_i)+r(a_i) =r(a_i)$ for all $a_i$. But if we factorise $r$ we obtain $r=c'(x-a_1)\dots(x-a_{j-1})(x-a_{j+1})(x-a_l)$ for some $j$, otherwise $\deg r=\deg f_{\text{red}}$, but this implies that $a_j-a_i\neq 0$ for all $i$, so that $r$ does not vanish at $a_j$, giving us a contradiction. Hence $\bI(\bV(f))=\brackets{f_{\text{red}}}$, as it was to be proven.
+\end{enumerate}
 \end{proof}
 
 \begin{exercise}{13}
-fill
+We will study the formal derivative of $f=c_0x^n+c_1x^{n-1}+\dots+c_{n-1}x+c_n\in\C[x]$. The formal derivative is defined by the usual formulas from calculus:
+\[
+f'=nc_0x^{n-1}+(n-1)c_1x^{n-2}+\dots+c_{n-1}+0.
+\]
+Prove that the following rules of differentiation apply:
+\begin{align*}
+    (af)' =& af',\, \text{ when } a\in\C,\\
+    (f+g)' =& f' + g',\\
+    (fg)' =& f'g + fg'.
+\end{align*}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item We have,
+    \begin{align*}
+        (af)' =& (a[c_0x^n+c_1x^{n-1}+\dots+c_{n-1}x+c_n])'\\ 
+        =& (ac_0x^n+ac_1x^{n-1}+\dots+ac_{n-1}x+ac_n)'\\
+        =& nac_0x^{n-1}+(n-1)ac_1x^{n-2}+\dots+ac_{n-1}\\ =& a(nc_0x^{n-1}+(n-1)c_1x^{n-2}+\dots+c_{n-1}) =af',
+    \end{align*}
+    as required.
+    \item Furthermore,
+    \begin{align*}
+        (f+g)' =& (c_0x^n+c_1x^{n-1}+\dots+c_{n-1}x+c_n\\ &+b_0x^m+b_1x^{m-1}+\dots+b_{m-1}x+b_m)'\\
+        =& nc_0x^{n-1}+(n-1)c_1x^{n-2}+\dots+c_{n-1}\\
+        &+ nb_0x^{n-1}+(n-1)b_1x^{n-2}+\dots+b_{m-1}\\
+        =& f' + g',
+    \end{align*}
+    as required.
+    \item Finally (notice the changed notation with respect to the previous two exercises),
+    \begin{align*}
+        (fg)' =& (\sum_{l=0}^{m+n}a_lx^l)',\text{ where }a_l=\sum_{j,k: j+k=l}c_jb_k\\
+        =& \sum_{l=1}^{m+n}la_lx^{l-1}\\
+        =& (\sum_{l=1}^{m}lc_lx^{l-1})(\sum_{l=0}^{n}b_lx^{l}) + (\sum_{l=0}^{m}c_lx^{l})(\sum_{l=1}^{n}lb_lx^{l-1})\\
+        =& f'g + g'f,
+    \end{align*}
+    as required.
+\end{enumerate}
 \end{proof}
 
 \begin{exercise}{14}
-fill
+In this exercise we will use the differentiation properties of exercise 13 to compute $\gcd(f,f')$ when $f\in\C[x]$.
+\begin{enumerate}
+    \item Suppose $f=(x-a)^rh$ in $\C[x]$, where $r\geq 1$ and $h(a)\neq 0$. Then prove that $f'=(x-a)^{r-1}h_1$, where $h_1\in\C[x]$ does not vanish at $a$. Hint: Use the product rule.
+    \item Let $f=c(x-a_1)^{r_1}\dots(x-a_l)^{r_l}$ be the factorisation of $f$, where $a_1,\dots,a_l$ are distinct. Prove that $f'$ is a product $f'=(x-a_1)^{r_1-1}\dots(x-a_l)^{r_l-1}H$, where $H\in\C[x]$ is a polynomial vanishing at none $a_1,\dots,a_l$.
+    \item Prove that $\gcd(f,f')=(x-a_1)^{r_1-1}\dots(x-a_l)^{r_l-1}$.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
 fill
 \end{proof}
 
 \begin{exercise}{15}
-15 (use a computer algebra system)
+Consider the square-free part $f_{\text{red}}$ of a polynomial $f\in\C[x]$ defined in Exercise 12.
+\begin{enumerate}
+    \item Use Exercise 14 to prove that $f_{\text{red}}$ is given by the formula
+    \[
+    f_{\text{red}} =\frac{f}{\gcd(f,f')}.
+    \]
+    The virtue of this formula is that it allows us to find the square-free part without factoring $f$. This allows for much quicker computations.
+    \item Use a computer algebra system to find the square-free part of the polynomial 
+    \[
+    x^11-x^10+2x^8-4x^7+3x^5-3x^4+x^3+3x^2-x-1.
+    \]
+\end{enumerate}
 \end{exercise}
 \begin{proof}
 fill

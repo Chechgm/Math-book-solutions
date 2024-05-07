@@ -1,10 +1,157 @@
-\subsection*{Chapter 9.A. }
-\addcontentsline{toc}{subsection}{Chapter }
+\subsection*{Chapter 9.A. Complexification}
+\addcontentsline{toc}{subsection}{Chapter 9.A. Complexification}
 
 
 \begin{exercise}{1}
-  Fill
+  Prove 9.3:
+
+  ($V_\C$ is a complex vector space). Suppose $V$ is a real vector space. Then with the definitions of addition and scalar multiplication as above, $V_\C$ is a complex vector space.
 \end{exercise}
 \begin{proof}
- Fill
+ Let $u,v,w\in V_\C$ and $\lambda,\lambda'\in\C$.
+
+ Commutativity: We have 
+ \begin{align*}
+     u+v =& 
+     u_1+iu_2+v_1+iv_2\\ 
+     =& v_1+iv_2+u_1+iu_2 =v+u.
+ \end{align*}
+
+ Associativity: We have 
+ \begin{align*}
+    (u+v)+w =& 
+    (u_1+iu_2+v_1+iv_2)+w_1+iw_2\\ 
+    =& u_1+iu_2+v_1+iv_2+w_1+iw_2\\ 
+    =& u_1+iu_2+(v_1+iv_2+w_1+iw_2) =u+(v+w).   
+ \end{align*}
+
+ Additive identity: We have $u+0 = u_1+iu_2+0+i0 =u_1+iu_2 =u$.
+
+ Additive inverse: We have $u_1+iu_2+(-u_1-iu_2) =0+i0 =0$, since $u_1,u_2\in V$, we have that $-u_1,-u_2\in V$ and hence $-u=-u_1-iu_2\in V_\C$.
+
+ Multiplicative identity: We have $1u =(1+i0)(u_1+iu_2) =(u_1-u_20)+i(u_1o+u_2) =u_1+iu_2 =u$, where $1+i0\in\C$.
+
+ Distributive properties: We have
+ \begin{align*}
+     \lambda(u+v) =& 
+     (\lambda_1+i\lambda_2)(u_1+iu_2+v_1+iv_2)\\ 
+     =& (\lambda_1(u_1+v_1)-\lambda_2(u_2+v_2))
+     +i(\lambda_1(u_2+v_2)+\lambda_2(u_1+v_1))\\
+     =& \lambda_1u_1+\lambda_1v_1-\lambda_2u_2+\lambda_2v_2
+     +i\lambda_1u_2+i\lambda_1v_2+i\lambda_2u_1+i\lambda_2v_1\\ 
+     =& (\lambda_1u_1-\lambda_2u_2)+i(\lambda_2u_1+\lambda_1u_2)
+     +(\lambda_1v_1-\lambda_2v_2)+i(\lambda_1v_2+\lambda_2v_1)\\ 
+     =& \lambda u + \lambda v.
+ \end{align*} 
+ The proof that $(\lambda+\lambda')u =\lambda u+\lambda' u$ follows in a similar fashion.
+\end{proof}
+
+\begin{exercise}{2}
+  Verify that if $V$ is a real vector space and $T\in\LLL(V)$, then $T_\C\in\LLL(V_\C)$.
+\end{exercise}
+\begin{proof}
+Let $u,v\in V_\C$ and $\lambda\in\C$.
+ 
+ Additive: We have,
+ \begin{align*}
+    T_\C(u+v) =& 
+    T_\C(u_1+v_1+i(u_2+v_2))\\ 
+    =&  T(u_1+v_1) + iT(u_2+v_2)\\
+    =&  Tu_1+Tv_1 + iTu_2+iTv_2\\
+    =&  (Tu_1+iTu_2)+ (Tv_1+iTv_2) =T_\C(u) +T_\C(v).
+ \end{align*}
+
+ Homogeneous: We have,
+ \begin{align*}
+     T_\C(\lambda u) =& 
+     T_\C((\lambda_1+i\lambda_2)(u_1+iu_2))\\
+     =& T_\C((\lambda_1u_1-\lambda_2u_2)+i(\lambda_2u_1+\lambda_1u_2))\\
+     =& T(\lambda_1u_1-\lambda_2u_2)+iT(\lambda_2u_1+\lambda_1u_2)\\
+     =& (\lambda_1Tu_1-\lambda_2Tu_2)+i(\lambda_2Tu_1+i\lambda_1Tu_2)\\
+     =& (\lambda_1+i\lambda_2)(Tu_1+iTu_2)\\
+     =& (\lambda_1+i\lambda_2)T_\C(u_1+iu_2) =\lambda T_\C u.
+ \end{align*}
+\end{proof}
+
+\begin{exercise}{3}
+  Suppose $V$ is a real vector space and $v_1,\dots,v_m\in V$. Prove that $v_1,\dots,v_m$ is linearly independent in $V_\C$ if and only if $v_1,\dots,v_m$ is linearly independent in $V$.
+\end{exercise}
+\begin{proof}
+ ($\Rightarrow$) Suppose $v_1,\dots,v_m$ is linearly independent in $V_\C$ and $a_1,\dots,a_m\in\C$. Then if $a_1v_1+\dots+a_mv_m =0$, it holds that $a_j=0$, so that for all $j$, $0=a_j'+ia_j''$, where $a_j',a_j''\in\R$. Hence, $a_j'=0$ and $a_j''=0$ so that $a_1'v_1+\dots+a_m'v_m =0$ implies $a_1'=\dots=a_m'=0$ and $v_1,\dots,v_m$ are linearly independent in $V$ too.
+
+ ($\Leftarrow$) Suppose $v_1,\dots,v_m$ is linearly independent in $V$ and $b_1,\dots,b_m\in\C$, where $b_j=b_j'+ib_j''$, with $b_j', b_j''\in\R$ for all $j$. Suppose $0 =b_1v_1+\dots+b_mv_m =(b_1'+ib_1'')v_1+\dots+(b_m'+ib_m'')v_m =(b_1'v_1+\dots+b_m'v_m) +i(b_1''v_1+\dots+b_m''v_m)$, so that $b_1'v_1+\dots+b_m'v_m=0$ and $b_1''v_1+\dots+b_m''v_m=0$. Since $v_1,\dots,v_m$ are linearly independent in $V$, then $a_1v_1+\dots+a_mv_m =0$ implies $a_j=0$, hence the last equality above implies that $b_j'=b_j''=0$ so that $b_j=0+i0$ and $v_1,\dots,v_m$ is linearly independent in $V_\C$.
+\end{proof}
+
+\begin{exercise}{4}
+  Suppose $V$ is a real vector space and $v_1,\dots,v_m\in V$. Prove that $v_1,\dots,v_m$ spans $V_\C$ if and only if $v_1,\dots,v_m$ spans $V$.
+\end{exercise}
+\begin{proof}
+ ($\Rightarrow$) Suppose $v_1,\dots,v_m$ spans $V_\C$, then any $v\in V_\C$ with $v=v'+iv''$ with $v',v''\in V$ can be written as $v =a_1v_1+\dots+a_mv_m$ where $a_j\in\C$. Now let $v\in V$, seen as a vector in $V_\C$, $v=v'+i0$, so that $v=(a_1'v_1+\dots+a_m'v_m)+i(a_1''v_1+\dots+a_m''v_m)$ so that $i(a_1''v_1+\dots+a_m''v_m)=0$ and $v=a_1'v_1+\dots+a_m'v_m$ so that $v_1,\dots,v_m$ spans $V$.
+
+ ($\Leftarrow$) Suppose $v_1\dots,v_m$ span $V$. Then for all $u,v\in V$, $u$ and $v$ can be written as linear combinations of $v_1,\dots,v_m$. Since $V_\C$ is composed of all vectors of the for $u+iv$, where $u,v\in V$, and scalar multiplication is defined over the complex numbers, then $v_1,\dots,v_m,iv_1,\dots,iv_m$ is enough to span $V_\C$.
+\end{proof}
+
+\begin{exercise}{5}
+  Suppose that $V$ is a real vector space and $S,T\in\LLL(V)$. Show that $(S+T)_\C =S_\C +T_\C$ and that $(\lambda T)_\C =\lambda T_\C$ for every $\lambda\in\R$.
+\end{exercise}
+\begin{proof}
+ Let $v\in V$. First, we have
+ \begin{align*}
+     (S+T)_\C v =& 
+     (S+T)v_1 + i(S+T)v_2\\
+     =& (S+T)v_1 + i(S+T)v_2\\
+     =& Sv_1+Tv_1 + iSv_2+iTv_2\\
+     =& (Sv_1+iSv_2) + (Tv_1+iTv_2) = S_\C v +T_\C v.
+ \end{align*}
+ Furthermore,
+ \begin{align*}
+     (\lambda T)_\C v =&
+     (\lambda T)v_1 + i(\lambda T)v_2\\
+     =& \lambda (Tv_1 + iTv_2) =\lambda(T_\C v).
+ \end{align*}
+\end{proof}
+
+\begin{exercise}{6}
+  Suppose $V$ is a real vector space and $T\in\LLL(V)$. Prove that $T_\C$ is invertible if and only if $T_\C$ is invertible.
+\end{exercise}
+\begin{proof}
+ ($\Rightarrow$) Suppose $T$ is invertible, then for all $v\in V$, $T^{-1}Tv =TT^{-1}v =v$. Let $u\in V$ and consider $T_\C\in\LLL(V_\C)$ given by $T_\C^{-1}(u+iv) =T^{-1}u+iT^{-1}v$. We have $T^{-1}T_\C(u+iv) =T_\C^{-1}(Tu +iTv) =T^{-1}Tu +iT^{-1}Tv =u+iv$. We can prove that $TT^{-1}v=v$ in an analogue way.
+
+ ($\Leftarrow$) Suppose $T_\C$ is invertible, and let $v_1,\dots,v_m$ be a basis of $V$. By 9.4 we know that $v_1,\dots,v_m$ is also a basis of $V_\C$. We know $T_\C$ is invertible if and only if the image of a basis is a basis (use the Fundamental Theorem of Linear Maps and the characteristation of invertibility from 3.56). Thus, $T_\C v_1,\dots,T_\C v_m$ is a basis of $V_\C$ and by 9.4 a basis of $V$, meaning $T_\C v_i =Tv_i$. This implies $T_\C v1=Tv_1,\dots,T_\C v_m=Tv_m$ is a basis of $V$, so that $T$ is invertible.
+\end{proof}
+
+\begin{exercise}{7}
+  Suppose $V$ is a real vector space and $N\in\LLL(V)$. Prove that $N_\C$ is nilpotent if and only if $N$ is nilpotent.
+\end{exercise}
+\begin{proof}
+ ($\Rightarrow$) Since $N$ is nilpotent, we know from 8.18 that for any $v\in V$, $N^{\dim V}v=0$. Then, if $u,v\in V$, then $N_\C^{\dim V}(u+iv) =N^{\dim V}u+iN^{\dim V}v =0+i0 =0$, so that $N_\C^{\dim V}$ is nilpotent, as required.
+
+ ($\Leftarrow$) As above, $N_\C^{\dim V}=0$, for arbitrary $u,v\in V$, we have $N_\C^{\dim V}(u+iv) =N^{\dim V}u +iN^{\dim V}v =0$, if we take $v=0$, $N^{\dim V}u=0$ and $N$ is nilpotent, as required.
+\end{proof}
+
+\begin{exercise}{18}
+  Suppose $V$ is a real vector space and $T\in\LLL(V)$. Prove that the following are equivalent:
+  \begin{enumerate}
+      \item All the eigenvalues of $T_\C$ are real.
+      \item There exists a basis of $V$ with respect to which $T$ has an upper-triangular matrix.
+      \item There exists a basis of $V$ consisting of generalised eigenvectors of $T$.
+  \end{enumerate}
+\end{exercise}
+\begin{proof}
+    (1 $\Rightarrow$ 3) 
+    Suppose $v\in V_\C$ is a generalised eigenvector of $T_\C$ with eigenvalue $\lambda$. We have
+    \begin{align*}
+        0 =& (T_\C-\lambda I)^{\dim V_\C}v\\
+        =& (T_\C^{\dim V_\C}+\lambda T_\C^{\dim V_\C-1}+\dots+\lambda^{\dim V}I)v\\
+        =& T^{\dim V_\C}v_1+iT^{\dim V_\C}v_2+\dots+\lambda^{\dim V}Iv_1+i\lambda^{\dim V}Iv_2\\
+        =& (T^{\dim V_\C}+\dots+\lambda^{\dim V}I)v_1+i(T^{\dim V_\C}+\dots+\lambda^{\dim V}I)v_2\\
+        =& (T-\lambda I)^{\dim V}v_1+i(T-\lambda I)^{\dim V}v_2.
+    \end{align*}
+    From the last equality, we obtain that $(T-\lambda I)^{\dim V}v_1=0$ and $i(T-\lambda I)^{\dim V}v_2$ so that both $v_1$ and $v_2$ are generalised eigenvectors of $T$.
+
+    We would now like to prove that there exists a basis of $V$ consisting of generalised eigenvectors of $T$. To see this, notice that for any $G(\lambda,T_\C)$, with generalised eigenvectors $v_1,\dots,v_m$, form a basis of the generalised eigenspace:\\ $\text{Re}(v_1),\text{Im}(v_1),\dots,\text{Re}(v_m),\text{Im}(v_m)$. We can now extract a list from\\ $\text{Re}(v_1),\text{Im}(v_1),\dots,\text{Re}(v_m),\text{Im}(v_m)$ that form a basis of the $G(\lambda, T)$. Furthermore, we know that generalised eigenvectors from different eigenvalues are independent, so that when we choose a basis for the eigenspaces corresponding to each eigenvalue, we obtain a basis of $V$.
+    
+    (3 $\Rightarrow$ 2) Suppose there exists a basis of $V$ consisting of generalised eigenvectors of $T$. Then by the definition of generalised eigenvectors, we have that $(T-\lambda_j I)|_{G(\lambda_j, T)}$ is nilpotent for each $j$. From exercise 8.A.14, we know that there exists an orthonormal basis of $V$ with respect to which $(T-\lambda_j I)|_{G(\lambda_j, T)}$ has an upper triangular matrix. Furthermore, from 8.13 we know that generalised eigenvectors from distinct eigenvalues are linearly independent. Hence, we can put together the orthonormal bases that produce an upper triangular matrix for each $(T-\lambda_j I)|_{G(\lambda_j, T)}$. Finally to get an upper triangular matrix of $T$, we add $(T-\lambda_j I)|_{G(\lambda_j, T)} + \lambda_j I|_{G(\lambda_j, T)}$ for each $j$, giving us the desired result.
+    
+    (2 $\Rightarrow$ 1) Suppose there exists a basis of $V$ with respect to which $T$ has an upper-triangular matrix. Since $T\in\LLL(V)$, with $V$ being a real vector space, then the entries of such matrix are all real. From 5.32, we know we can determine the eigenvalues of an operator by looking at the elements of the diagonal of one of its upper-triangular matrices. From 9.11 we know that $T$ and $T_\C$ have the same real eigenvalues, and $T$ has the same number of eigenvalues as its dimension (and by 9.4 the same dimension as $T_\C$), then all eigenvalues of $T_\C$ are real, as required.
 \end{proof}

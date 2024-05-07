@@ -1,12 +1,6 @@
 \subsection*{Chapter 8.A. Generalized eigenvectors and nilpotent operators}
 \addcontentsline{toc}{subsection}{Chapter 8.A. Generalized eigenvectors and nilpotent operators}
 
-1+2 Some computations to get used to the concepts
-4 Compare with eigenspaces of different eigenvectors
-6 An example of an operator without a square root, contrast this with square roots of positive operators!
-12 This gives a nice characterization of nilpotent operators since all nilpotent operators have this form 
-13 Nilpotent operators can (almost) never be normal! 
-14 Real version of Schur's theorem
 
 \begin{exercise}{1}
   Define $T\in\LLL(\C^2)$ by $T(w,z)=(z,0)$. Find all generalised eigenvectors of $T$.
@@ -26,7 +20,22 @@
   Define $T\in\LLL(\C^2)$ by $T(w,z)=(-z,w)$. Find all the generalised eigenspaces corresponding to the distinct eigenvalues of $T$.
 \end{exercise}
 \begin{proof}
- Fill
+ First we will figure out the eigenvalues of $T$. the matrix of $T$ with respect to the standard basis is
+ \[
+ \begin{pmatrix}
+     0 & -1\\
+     1 & 0
+ \end{pmatrix},
+ \]
+ so that the characteristic polynomial is $\lambda^2+1$ giving us that the eigenvalues of $T$ are $\lambda \pm i$. 
+ 
+ Now to find the generalised eigenvectors of $T$ consider $(T-\lambda I)^{\dim \C^2}v =(T-\lambda I)^2v =(T^2 -\lambda T +\lambda^2 I)v = (-w +2\lambda z+\lambda^2 w, -z-2\lambda w +\lambda^2 z)$, so that for $\lambda = i$, we have $\nullspace (T-iI)^2$, is $\vecspan(\begin{pmatrix}
+     1\\
+     i
+ \end{pmatrix})$ and for $\lambda =-i$, $\nullspace (T+iI)^2$ is $\vecspan(\begin{pmatrix}
+     i\\
+     1
+ \end{pmatrix})$.
 \end{proof}
 
 \begin{exercise}{3}
@@ -47,7 +56,7 @@
   Suppose $T\in\LLL(\C^3)$ is defined by $T(z_1,z_2,z_3)=(z_2,z_3,0)$. Prove that $T$ has no square root. More precisely, prove that there does not exist $S\in\LLL(\C^3)$ such that $S^2=T$.
 \end{exercise}
 \begin{proof}
- Fill
+ Suppose, for the sake of contradiction, that there exists $S$ with $S^2=T$. By the definition of $T$, we have $T^3=0$. Then $S^6=0$, so that $S^3=0$ (because $S$ is nilpotent and by 8.18, $S^{\dim V}=0$. We have that $S^4 = T^2 =0$, but $T^2(z_1,z_2,z_3) =(z_3,0,0)\neq 0$. Giving us the contradiction. Hence, no such $S$ exists.
 \end{proof}
 
 \begin{exercise}{7}
@@ -93,19 +102,36 @@
   Suppose $N\in\LLL(V)$ and there exists a basis of $V$ with respect to which $N$ has a upper-triangular matrix with only 0's on the diagonal.  Prove that $N$ is nilpotent.
 \end{exercise}
 \begin{proof}
- Fill
+ With a slight abuse of notation, write $N=\MMM(N)$. Notice that a matrix which is upper triangular and has 0's on the diagonal has the following property: $N_{j,k}=0$ for $k\geq j$. We will prove the statement by induction. 
+
+ Base case: we can write any upper-triangular matrix with 0's on the diagonal as
+ \[
+ \begin{pmatrix}
+     0 & a\\
+     0 & 0
+ \end{pmatrix},
+ \]
+ for $a\in V$, so that $N^2=0$.
+
+ Induction case: Now suppose that the statement holds for $\dim V=n-1$. Now we will check what are the resulting elements after multiplying $N$ by itself. 
+ 
+ First, for elements on the diagonal or below. For $k\geq j$, by the definition of matrix multiplication, we have $(N^2)_{j,k} =\sum_{r=1}^nN_{j,r}N_{r,k} =\sum_{r=1}^kN_{j,r}N_{r,k}+\sum_{i=k+1}^nN_{j,i}N_{i,k}$. By $N_{j,k}=0$ for $k\geq j$, we have that $N_{r,k}=0$ for all $r$ in the first summation and $N_{j,i}=0$ for the second summation, so that $(N^2)_{j,k}=0$.
+
+ Second, for the elements just above the diagonal; that is $k= j-1$. We have $(N^2)_{j,j-1} =\sum_{r=1}^nN_{j,r}N_{r,j-1} =\sum_{r=1}^{j-1}N_{j,r}N_{r,j-1}+\sum_{i=j}^nN_{j,i}N_{i,j-1}$. Just as above, $N_{r,j-1}=0$ for all $r$ on the first sum and $N_{j,i}=0$ for all $i$ on the second sum. That is, the elements above the diagonal are 0.
+
+ To complete the proof, notice that the submatrix $N_{2:n,2:n}$ is a matrix of an operator of dimension $n-1$ (and by the induction hypothesis, nilpotent). Thus $N$ is nilpotent.
 \end{proof}
 
 \begin{exercise}{13}
   Suppose $V$ is an inner product space and $N\in\LLL(V)$ is normal and nilpotent. Prove that $N=0$.
 \end{exercise}
 \begin{proof}
- Fill
+ Suppose $N$ is normal and nilpotent. From the Spectral Theorem and given that $N$ is normal, we know we can find a diagonal matrix with respect to an orthonormal basis of $V$. We abuse notation by setting $N=\MMM(N)$. We have that $N^{\dim V}=0$ (from 8.18) is a diagonal matrix, where each element of the diagonal is the element of the same position of $N$ to the power of $\dim V$. However, we can only get $N^{\dim V}$ to be 0 in such case if and only if each element of the diagonal is 0. Hence, $N$ must be 0 in the first place.
 \end{proof}
 
 \begin{exercise}{14}
   Suppose $V$ is an inner product space and $N\in\LLL(V)$ is nilpotent. Prove that there exists an orthonormal basis of $V$ with respect to which $N$ has an upper-triangular matrix. [If $\bF=\C$, then the result above follows from Schur's Theorem (6.38) without the hypothesis that $N$ is nilpotent. Thus the exercise above needs to be proved only when $\bF=\R$].
 \end{exercise}
 \begin{proof}
- Fill
+ By 8.19 we know there exists a basis of $V$ with respect to which $N$ has an upper-triangular matrix. Furthermore, by 6.37, we know that if an operator has an upper-triangular matrix with respect to -some- basis, then it has an upper-triangular matrix with respect to an orthonormal basis of $V$, giving us the desired result.
 \end{proof}

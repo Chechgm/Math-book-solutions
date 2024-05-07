@@ -1,10 +1,67 @@
-\subsection*{Chapter 8.C. }
-\addcontentsline{toc}{subsection}{Chapter }
+\subsection*{Chapter 8.C. Characteristic and minimal polynomials}
+\addcontentsline{toc}{subsection}{Chapter 8.C. Characteristic and minimal polynomials}
 
 
-\begin{exercise}{1}
-  Fill
+\begin{exercise}{8}
+  Suppose $T\in\LLL(V)$. Prove that $T$ is invertible if and only if the constant term in the minimal polynomial of $T$ is nonzero.
 \end{exercise}
 \begin{proof}
- Fill
+ ($\Rightarrow$) Suppose $T$ is invertible. Then none of its eigenvalues is 0. We then have that the minimal polynomial of $T$ is $p(z)=(z-\lambda_1)\dots(z-\lambda_n)$, where $\lambda_i$ are the eigenvalues of $T$. Expanding the right hand side of the equality, we obtain that the constant of $p(z)$ is the product of the (nonzero) eigenvalues of $T$. Thus, the constant term in the minimal polynomial is nonzero.
+
+ ($\Leftarrow$) Suppose the constant term in the minimal polynomial of $T$ is nonzero. Then by the Fundamental Theorem of Algebra we can factorise the minimal polynomial of $T$ as $p(z)=c(z-\lambda_1)\dots(T-\lambda_n)$, where $\lambda_i\neq 0$ (if some $\lambda_i$ was 0, then expanding the right hand side of the equality would give us a constant equal to 0). By 8.49, we know the eigenvalues of $T$ are precisely the zeros of the minimal polynomial, then all eigenvalues of $T$ are nonzero. Hence, $T$ is invertible, as required.
+\end{proof}
+
+\begin{exercise}{10}
+  Suppose $V$ is a complex vector space and $T\in\LLL(V)$ is invertible. Let $p$ denote the characteristic polynomial of $T$ and let $q$ denote the characteristic polynomial of $T^{-1}$. Prove that 
+  \[
+  q(z)=\frac{1}{p(0)}z^{\dim V}p\left(\frac{1}{z}\right)
+  \]
+  for all nonzero $z\in\C$.
+\end{exercise}
+\begin{proof}
+Since $V$ is a complex vector space and $T$ is invertible, we can write the characteristic polynomial of $T$ as $p(z)=(z-\lambda_1 I)^{d_1}\dots(z-\lambda_m I)^{d_m}$, where $\lambda_i$ are the eigenvalues of $T$ with their respective multiplicities $d_i$. We know that the nonzero constant, $p(0)$ of the characteristic polynomial is the product of the eigenvalues. Then, 
+\begin{align*}
+    q(z) =& \frac{1}{p(0)} z^{\dim V} p(1/z)\\
+    =& \frac{1}{(-1)^{\dim V}\prod_i \lambda_i^{d_i}}z^{\sum_i d_i}\left(\frac{1}{z}-\lambda_1 \right)^{d_1}\dots\left(\frac{1}{z}-\lambda_m \right)^{d_m}\\
+    =& \frac{1}{(-1)^{\dim V}\prod_i \lambda_i^{d_i}}z^{\sum_i d_i}\left(\frac{1}{z}-\lambda_1 \right)^{d_1}\dots\left(\frac{1}{z}-\lambda_m \right)^{d_m}\\
+    =& (-1)^{\dim V}\left(\frac{1}{\lambda_1} - z\right)^{d_1}\dots\left(\frac{1}{\lambda_m} - z\right)^{d_m}.
+\end{align*} 
+ On exercise we showed that if $T$ is invertible, then if $\lambda_i$ is an eigenvector of $T$, then $1/\lambda_i$ is an eigenvector of $T^{-1}$, which shows that $q(z)$ is precisely the characteristic polynomial of $T^{-1}$, as required.
+\end{proof}
+
+\begin{exercise}{11}
+  Suppose $T\in\LLL(V)$ is invertible. Prove that there exists a polynomial $p\in\PPP(\bF)$ such that $T^{-1}=p(T)$.
+\end{exercise}
+\begin{proof}
+ Let $p(z)=a_0+\dots+a_nz^n$ be the characteristic polynomial of $T$. By the Cayley-Hamilton Theorem, we have $0 =p(T) =a_0+\dots+a_nT^n$. Composing both sides of the equality by $T^{-1}$ gives us $0 =a_0T^{-1}+a_1+\dots+a_nT^{n-1}$, and solving for $T^{-1}$ (and taking into account that, because $T$ is invertible, then $a_0\neq 0$), we have that $T^{-1} =-(a_1/a_0)-\dots-(a_n/a_0) T^{n-1}$. Hence, the polynomial $q(z) =-(a_1/a_0)-\dots-(a_n/a_0) z$ has the desired property.
+\end{proof}
+
+\begin{exercise}{12}
+  Suppose $V$ is a complex vector space and $T\in\LLL(V)$. Prove that $V$ has a basis consisting of eigenvectors of $T$ if and only if the minimal polynomial of $T$ has no repeated zeros. [For complex vector spaces, the exercise above adds another equivalence to the list given by 5.41].
+\end{exercise}
+\begin{proof}
+ ($\Rightarrow$) Suppose there exists a basis of $V$ consisting of eigenvectors of $T$. By exercise 8.B.3, every generalised eigenvector of $T$ is an eigenvector of $T$. Since the minimal polynomial is the polynomial $p$ of smallest degree such that $p(T)=0$, then it follows that we don't need the power of the factors of the factorisation of $p$ to be larger than 1. In other words, for every eigenvalue $\lambda$ and respective eigenvector $v$ of $T$, we have that $(T-\lambda I)v=0$, so that the minimal polynomial doesn't have repeated zeros.
+
+ ($\Leftarrow$) Suppose the minimal polynomial of $T$ has no repeated zeros. Then every generalised eigenvector of $T$ is an eigenvector of $T$ (because for every eigenvalue $\lambda$ and corresponding eigenvector $v$ of $T$, we have that $(T-\lambda I)v=0$). By exercise 8.B.3, $V$ has a basis consisting of eigenvectors of $T$.
+\end{proof}
+
+\begin{exercise}{13}
+  Suppose $V$ is an inner product space and $T\in\LLL(V)$ is normal. Prove that the minimal polynomial of $T$ has no repeated zeros.
+\end{exercise}
+\begin{proof}
+ We will prove this by contrapositive. Suppose the minimal polynomial of $T$ has some repeated zero. From exercise 12, we know that $T$ does not have a basis consisting of eigenvectors of $T$. Finally by the Complex Spectral Theorem we know that $V$ has an orthonormal basis consisting of eigenvectors of $T$ if and only if $T$ is normal. Since we concluded there is no basis of $V$ consisting of eigenvectors of $T$, then $T$ is not normal, as required.
+\end{proof}
+
+\begin{exercise}{16}
+  Suppose $V$ is an inner product space and $T\in\LLL(V)$. Suppose $a_0+a_1z+a_2z^2+\dots+a_{m-1}z^{m-1}+z^m$ is the minimal polynomial of $T$. Prove that $\overline{a_0}+\overline{a_1}z+\overline{a_2}z^2+\dots+\overline{a_{m-1}}z^{m-1}+z^m$ is the minimal polynomial of $T^\ast$.
+\end{exercise}
+\begin{proof}
+ We know we can express the minimal polynomial of $T$, $p(z)$, as a product of factors of the form $(z-\lambda_i)^{d_i}$ where $\lambda_i$ are the eigenvalues of $T$ and $d_i$ are the exponent to produce its respective generalised eigenvector. We have 
+ \begin{align*}
+     p(z^\ast)^\ast =& [(z^\ast-\lambda_1)^{d_1}\dots(z^\ast-\lambda_m)^{d_m}]^\ast\\ 
+     =& [(z^\ast-\lambda_n)^{d_n}]^\ast\dots[(z^\ast-\lambda_1)^{d_1}]^\ast\\ 
+     =& (z-\overline{\lambda_n})^{d_n}\dots(z-\overline{\lambda_1} z)^{d_1}\\
+     =& \overline{a_0}+\overline{a_1}z+\overline{a_2}z^2+\dots+\overline{a_{m-1}}z^{m-1}+z^m :=q(z). 
+ \end{align*}
+ From 7A.2 we know that if $\lambda$ is an eigenvalue of $T$, then $\overline{\lambda}$ is an eigenvalue of $T^\ast$, hence $q(z)$ is the minimal polynomial of $T^\ast$, giving us the desired result.
 \end{proof}

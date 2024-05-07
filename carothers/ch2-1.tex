@@ -1,67 +1,97 @@
 \subsection{Equivalence and cardinality}
 
 
-1*
-2
-3*
-4*
-6*
-7
-
-13*
-15*
-
-19
 \begin{exercise}{1}
+Check that the relation ``is equivalent to '' defines an equivalence relation. That is, show that (i) $A\sim A$, (ii) $A\sim B$ if and only if $B\sim A$, and (iii) if $A\sim B$ and $B\sim C$, then $A\sim C$.
 \end{exercise}
 \begin{proof}
-fill
+(i) Consider the function $f:A\to A$ given by $f(x)=x$, this is a one-to-one correspondence between $A$ and itself, so that $A\sim A$.
+
+(ii) Suppose $f:A\to B$. We have that $f$ is a one-to-one correspondence if and only if $f$ has an inverse. That is, $A\sim B$ if and only if $B\sim A$, as required.
+
+(iii) Suppose $A\sim B$ and $B\sim C$. That is, there exist functions $f:A\to B$ and $g:B\to C$ so that $f$ and $g$ are both one-to-one correspondences. Consider the function $g\circ f:A\to C$. Since both $f$ and $g$ are one-to-one correspondences, so is $g\circ f$ so that $A\sim C$, as it was to be proven.
 \end{proof} 
 
 \begin{exercise}{2}
+If $A$ is an infinite set, prove that $A$ contains a subset of size $n$ for any $n\geq 1$.
 \end{exercise}
 \begin{proof}
-fill
+We prove this by induction. We have that $A=\set{a_i: i\in\III}$, where $\III$ is an arbitrary indexing set. 
+
+Base case: Let $B=\set{a_i}$ for any $i\in\III$. The size of $B$ is $n=1$, and we know such set exists because $A$ is infinite (thus nonempty).
+
+For the induction step, suppose a set $B'$ of size $n-1$ exists. Then let $B=\set{a_j}\cup B'$, where $a_j\in A\setminus B'$. We know that $A\setminus B'$ is nonempty because $B'$ is finite and $(A\setminus B')\cup B'$ is infinite. $B$ is the set of the desired size.
 \end{proof} 
 
 \begin{exercise}{3}
+Given finitely many countable sets $A_1,\dots,A_n$, show that $A_1\cup\dots\cup A_n$ and $A_1\times\dots\times A_n$ are countable sets.
 \end{exercise}
 \begin{proof}
-fill
+We will prove both propositions by induction.
+
+($A_1\cup\dots\cup A_n$ is countable) Base case: because $A_1$ and $A_2$ are countable, there exist bijective functions $f_i:A_i\to\N$. Let $f:A_1\cup A_2\to\Z$ be defined as $f(x)=f_1(x)$ if $x\in A_1\setminus A_2$ and $f(x)=-f_2(x)$ if $x\in A_2$. This function is one to one so that by Exercise 7 and the fact that $\Z$ is countable, $A_1\cup A_2$ is countable. 
+
+Now suppose the statement holds up to $n-1$. Then $A_1\cup A_{n-1}$ is countable and we can use exactly the same technique as above (say by relabeling $B=A_1\cup\dots\cup A_{n-1}$) and considering functions $f_{n-1}:B\to\N$ and $f_n:A_n\to\N$.
+
+($A_1\times\dots\times A_n$ is countable) Base case: because $A_1$ and $A_2$ are countable, there exist bijective functions $f_1:A_1\to\N$ and $f_2:A_2\to\N$. Furthermore, in the main text the following bijective function $f:\N\times\N\to\N$ was introduced $f(m,n)=2^{m-1}(2n-1)$. Hence, the function given by $f(f_1(a_1),f_2(a_2))$ for $a_1\in A_1$ and $a_2\in A_2$ is the desired bijection. 
+
+As above, if we assume the statement holds up to $n-1$, so that $A_1\times\dots\times A_{n-1}$ is countable, we can simply relabel $B=A_1\times\dots\times A_{n-1}$ and acknowledge there is a bijection between $B$ and $\N$ and use the same function as in the base case. This gives us the desired result.
 \end{proof} 
 
 \begin{exercise}{4}
+Show that any infinite set has a countably infinite subset.
 \end{exercise}
 \begin{proof}
-fill
+From exercise 2, we know that every infinite set contains a set $A_n$ of size $n\in\N$. Consider the set $A=\cup_n^{\infty} A_n$. Since $A$ is a countable union of countable sets, it is countable (by exercise 3). Furthermore, because $A$ consists of a union of infinite elements, it is itself infinite. Thus, $A$ is our desired set.
 \end{proof} 
 
 \begin{exercise}{6}
+If $A$ is infinite and $B$ is countable, show that $A$ and $A\cup B$ are equivalent. [Hint: No containment relation between $A$ and $B$ is assumed here].
 \end{exercise}
 \begin{proof}
-fill
+If $A$ is infinite there are two options: either $A$ is countable or it is not. 
+
+Case 1 ($A$ is countable): If $A$ is countable, we can use exercise 3 to conclude that $A\cup B$ is countable to so that $A$ and $A\cup B$ are equivalent (because we can find a bijection between the naturals and -both- sets).
+
+Case 2 ($A$ is not countable): If $A$ is not countable, then we cannot find a bijection between $A$ and $\N$. From exercise 4, we have that every infinite set has a countably infinite subset, let $A'\subseteq A$ be countably infinite. From exercise 3, we know that $A'\cup B$ is equivalent to $A'$ (both of them are countable), and let $g$ the bijection between them. Now let $f:A\to A\cup B$ be defined as $f(x)=x$ if $x\in A\setminus (A'\cup B)$ and $f(x)=g(x)$ if $x\in A'$. Then $f$ is a bijection, proving that $A\cup B$ and $A$ are equivalent when $A$ is not countable.
 \end{proof} 
 
 \begin{exercise}{7}
+Let $A$ be countable. If $f:A\to B$ is onto, show that $B$ is countable; if $g:C\to A$ is one-to-one, show that $C$ is countable. [Hint: Be careful!].
 \end{exercise}
 \begin{proof}
-fill
+We begin the proof of these two statements by proving that $C$ is countable and using this result for the countability of $B$.
+
+($C$ is countable) If $C$ is finite, then we are done, so suppose $C$ is infinite. Since $A$ is countable, there exists a bijection $f:A\to\N$. We will now define a bijection $h:C\to \N$. Let $c_0$ such that $f(g(c_0))=\min f(g(C))$, and define $h(c_0)=1$. Next, take $c_1$ such that $f(g(c_1))=\min f(g(C\setminus\set{c_0}))$ and define $h(c_1)=1$ and, in general, $c_n$ such that $f(g(c_n))=\min f(g(C\setminus\set{c_0,\dots, c_{n-1}}))$ and define $h(c_n)=n$. We now proceed to prove that $h$ is a bijection.
+
+Injective: Suppose $h(c_i)=h(c_j)$. Then $\min f(g(C\setminus\set{c_1,\dots,c_{i-1}}))=\min f(g(C\setminus\set{c_1,\dots,c_{j-1}}))$. However, since $h(c)$ is mapping $c$ to the ascending ranking of $f(g(c))$ relative to the other elements of $C$, and both $g$ and $f$ are injective, then if $h(c_i)$ is the same as $h(c_j)$ it must be the case that $c_i=c_j$, as required. 
+
+Surjective: As explained above, $h$ is ranking the elements of $f(g(C))$. Since $C$ is infinite, then for any $n\in\N$ we can find a $c_i$ where $h(c_i)=n$. In other words, since for all $n$ we are defining $h(c_n)$ as the $c_n$ where $f(g(c_n))=\min f(g(C\setminus\set{c_0,\dots,c_{n-1}}))$, and we are subtracting a -finite- subset of $C$, then $C\setminus\set{c_0,\dots,c_n}$ also has an infinite amount of elements, so that $f(g(C\setminus\set{c_0,\dots,c_{n-1}}))$ is not empty, and hence $h(c_n)=n$.
+
+($B$ is countable) Suppose $f:A\to B$ is onto. If $B$ is finite, we are done, so suppose $B$ is infinite. Furthermore, because of the countability of $A$ there exists a bijective function $f':A\to\N$. 
+
+Because $f$ is onto, for all $b\in B$, there exists an $a\in A$ with $f(a)=b$, let $h:B\to \N$ be defined as $h(b)=\min\set{f'(a):\text{for }a\in A, f(a)=b}$, we know that such minimum exists because $f'$ maps to $\N$. To prove $B$ is countable, we prove that $h$ is injective and use the previous result.
+
+Injective: Suppose $h(b)=h(b')$, then $a=\min\set{f'(a):\text{for }a\in A, f(a)=b}=\min\set{f'(a):\text{for }a\in A, f(a)=b'}$, but since $f$ is well-defined, then $b=f(a)=f(h(b))=f(h(b'))=f(a)=b'$, as required.
 \end{proof} 
 
 \begin{exercise}{13}
+Show that $\N$ contains infinitely many pairwise disjoint infinite subsets.
 \end{exercise}
 \begin{proof}
-fill
+Consider the sets $A_p=\set{p^n: n\in\N}$ for a prime $p$. Certainly $A_p\subseteq \N$, $A_p$ are disjoint, and because there are infinite primes, there are infinite such subsets, as required.
 \end{proof} 
 
 \begin{exercise}{15}
+Show that any collection of pairwise disjoint, nonempty open intervals in $\R$ is at most countable. [Hint: Each one contains a rational!].
 \end{exercise}
 \begin{proof}
-fill
+Let $A$ be a collection of such nonempty open intervals in $\R$. As the hint suggests, every such open set contains at least a rational. Since the intervals in $A$ are disjoint, there are at most intervals as there are rationals. However, we know that $\Q$ is countable, hence, $A$ must be countable too.
 \end{proof} 
 
 \begin{exercise}{19}
+Show that the set of functions $f:A\to\set{0,1}$ is equivalent to $\PPP(A)$, the power set of $A$ (i.e., the set of all subsets of $A$).
 \end{exercise}
 \begin{proof}
-fill
+Call the set of functions $\FFF$. Notice that any function $f_i:A\to\set{0,1}$, implies that for any $a\in A$, either $f_i(a)=0$ or $f_i(a)=1$. Now consider the function $h:\PPP(A)\times A\to\set{0,1}$ given by $h(A_i,a)=0$ if $a\notin A_i$ and 1 otherwise. For a fixed $A_i$, let $h_{A_i}:A\to\set{0,1}$ be defined as $h_{A_i}(a)=h(A_i,a)$. We can see that for all $f_i\in\FFF$ there exists a unique $h_{A_j}$ that maps $A$ to the same values. Since each $h_{A_j}$ is associated to a unique $A_j$, then we get our desired result.
 \end{proof} 

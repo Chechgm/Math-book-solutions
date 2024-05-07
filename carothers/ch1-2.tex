@@ -31,9 +31,11 @@ Theorem 1.18. Let $f$ be a real-valued function defined in some neighborhood of 
 \end{enumerate}
 \end{exercise}
 \begin{proof}
-($1\Rightarrow 4$) Suppose $f$ is continuous at $a$, by the $\varepsilon-\delta$ definition. Then for all $\varepsilon>0$, there exists a $\delta >0$ such that if $\absoluteValue{x-a}\leq\delta$, then it is the case that $\absoluteValue{f(x)-f(a)}<\varepsilon$. Fix $\varepsilon>0$. If $x\to a+$, we can find $\delta>0$ so that $x=a+\delta$ and $\absoluteValue{x-a}=\absoluteValue{a+\delta-a}=\absoluteValue{\delta}$ and hence $\absoluteValue{f(x)-f(a)}<\varepsilon$, so that $f(x+)=\lim_{x\to a+}f(x)=f(a)$. The argument works mutatis mutandis for $f(a-)$, giving us the desired result.
+($1\Rightarrow 4$) Suppose $f$ is continuous at $a$, by the $\varepsilon-\delta$ definition. Then for all $\varepsilon>0$, there exists a $\delta >0$ such that if $\absoluteValue{x-a}\leq\delta$, then it is the case that $\absoluteValue{f(x)-f(a)}<\varepsilon$. Fix $\varepsilon>0$. If $x\to a+$, we can find $\delta>0$ so that $a-x\leq\delta$, so that $\absoluteValue{x-a}\leq\delta$ and $\absoluteValue{f(x)-f(a)}<\varepsilon$ holds (from the definition of continuity). Hence, $f(x+)=\lim_{x\to a+}f(x)=f(a)$. The argument works mutatis mutandis for $f(a-)$, giving us the desired result.
 
-($4\Rightarrow 3$) Suppose $f(a-)=f(a+)=f(a)$. Because $f(a+)=f(a-)=f(a)$, we have that $\lim_{x\to a+}f(x)=\lim_{x\to a-}f(x)=f(a)$, which effectively implies that $\lim_{x\to a}f(x)=f(a)$. Fix $\varepsilon>0$ and let $x_n\to a$. Given that $\lim_{x\to a}f(x)=f(a)$, then for all $\varepsilon>0$, there exists a $\delta>0$ so that whenever $\absoluteValue{x-a}<\delta$ it also holds that $\absoluteValue{f(x)-f(a)}<\varepsilon$. Since $x_n\to a$, then for all $\delta>0$, there exists an $N$ such that whenever $n> N$, it is the case that $\absoluteValue{x_n-a}<\delta$. Thus, by choosing $\delta =1/n$, we get that $(f(x_n))\to L$, whenever $x_n\to a$, as required.
+($4\Rightarrow 3$) We will first prove that if $\lim_{x\to a-}f(x) =\lim_{x\to a+}f(x) =f(a)$, then $\lim_{x\to a}f(x)= f(a)$. To see this, notice that $\lim_{x\to a-}f(x)=f(a)$ means that for every $\varepsilon>0$, there exists a $\delta'>0$ so that whenever $a-x<\delta'$ we have that $\absoluteValue{f(x)-f(a)}<\varepsilon$. Likewise, because $\lim_{x\to a+}f(x)=f(a)$, there exists $\delta''>0$ such that whenever $a-x<\delta''$ it holds that $\absoluteValue{f(x)-f(a)}<\varepsilon$. Take $\delta =\min\set{\delta',\delta''}$, then we have that whenever $\absoluteValue{x-a}<\delta$ it holds that $\absoluteValue{f(x)-f(a)}<\varepsilon$; that is, $\lim_{x\to a}f(x)=f(a)$.
+
+Now we prove the main result. Suppose $f(a-)=f(a+)=f(a)$. Fix $\varepsilon>0$ and let $x_n\to a$. Given that $\lim_{x\to a}f(x)=f(a)$, then for all $\varepsilon>0$, there exists a $\delta>0$ so that whenever $\absoluteValue{x-a}<\delta$ it also holds that $\absoluteValue{f(x)-f(a)}<\varepsilon$. Since $x_n\to a$, then for all $\delta>0$, there exists an $N$ such that whenever $n> N$, it is the case that $\absoluteValue{x_n-a}<\delta$. Since the existence of such $N$ is guaranteed by the convergence of $x_n$, we get that $(f(x_n))\to L$, whenever $x_n\to a$, as required.
 
 ($3\Rightarrow 2$) As in exercise 40.
 
@@ -61,7 +63,7 @@ Let $f:\R\to\R$ be continuous.
 
     By Theorem 1.18, we must have that $f(y_n)\to f(y)$ whenever $y_n\to y$. Consider a sequence $y_n$ where all $y_n$ are rational but $y_n$ gets arbitrarily close to $y$ (the existence of such sequence is guaranteed by Theorem 1.3). Then $-f(y)=\varepsilon$ breaks the limit $f(y_n)\to f(y)$, so that by Theorem 1.18 $f$ is not continuous, giving us a contradiction.
 
-    The result does not change if we replace $\geq 0$ with $>0$, since the crucial part of the contradiction is that there exists an irrational $y$ with $f(y)<0$, creating a positive difference with all $f(x)$ where $x$ is rational.
+    The result changes if we replace $\geq 0$ with $>0$. To see this, consider the function $f(x)=\absoluteValue{x-\sqrt{2}}$. This function is greater than 0 for all rationals but 0 whenever $x=\sqrt{2}$. Furthermore, $f$ is continuous, hence $f$ does not satisfy the alternative statement.
 \end{enumerate}
 \end{proof}
 
