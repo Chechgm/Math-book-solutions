@@ -1,51 +1,101 @@
 \subsection*{Chapter 10.A. Trace}
 \addcontentsline{toc}{subsection}{Chapter 10.A. Trace}
 
-1 Basic correspondence between matrix and operator, very important
-8 Easy application of the concept of a trace 
-10 Linking trace with adjoints
-14 Elementary property
-15 Elementary property
-19 So matrices also form an inner product space! Wow!
 
 \begin{exercise}{1}
   Suppose $T\in\LLL(V)$ and $v_1,\dots,v_n$ is a basis of $V$. Prove that the matrix $\MMM(T, (v_1,\dots,v_n))$ is invertible if and only if $T$ is invertible.
 \end{exercise}
 \begin{proof}
- Fill
+ We have:
+ \begin{align*}
+     &TT^{-1}=T^{-1}T=I &&\iff\\
+     &\MMM(TT^{-1})=\MMM(T^{-1}T)=I &&\iff\\
+     &\MMM(T)\MMM(T^{-1})=\MMM(T^{-1})\MMM(T)=I.&&
+ \end{align*}
+ Where the product of matrices of linear maps follows from 3.42. Thus, there exists an inverse of $\MMM(T)$, say $\MMM(T^{-1})$, if and only if there exists an inverse of the operator $T$, $T^{-1}$.
 \end{proof}
 
 \begin{exercise}{8}
   Suppose $V$ is an inner product space and $v,w\in V$. Define $T\in\LLL(V)$ by $Tu=\brackets{u,v}w$. Find a formula for $\trace T$.
 \end{exercise}
 \begin{proof}
- Fill
+ We will first derive the eigenvalues of $T$. By the definition of eigenvalues and eigenvectors, an eigenvalue $\lambda$ with corresponding eigenvector $u$ must have the following property: $Tu =\brackets{u,v}w =\lambda u$. However, this implies $u$ must be a multiple of $w$, without loss of generality, let $u=w$, so that $\brackets{w,v}w=\lambda w$ and $\lambda=\brackets{w,v}$. 
+ 
+ Now, the above derivation is true for all eigenvalues of $T$, so that $\brackets{w,v}$ is the only eigenvalue of $T$. Furthermore, we know by 8.26 that the sum of multiplicities of eigenvalues must be $\dim V$, then we get the following expression for the trace of $T$: $\trace T=(\dim V)\brackets{w,v}$.
 \end{proof}
 
 \begin{exercise}{10}
   Suppose $V$ is an inner product space and $T\in\LLL(V)$. Prove that $\trace T^\ast =\overline{\trace T}$.
 \end{exercise}
 \begin{proof}
- Fill
+ Let $\overline{\MMM(T)}$ be the conjugate transpose of $\MMM(T)$. We have:
+ \begin{align*}
+     \trace T^\ast =& \trace\MMM(T^\ast)\\
+     =& \trace\overline{\MMM(T)}\\
+     =& \overline{\trace T}.
+ \end{align*}
+ Where the third equality follows from the fact that the trace is simply the sum of the diagonal elements of $\overline{\MMM(T)}$, which is simply the sum of the complex conjugate of the diagonal elements of $\MMM(T)$, as required.
 \end{proof}
 
 \begin{exercise}{14}
   Suppose $T\in\LLL(V)$ and $c\in\bF$. Prove that $\trace(cT)=c\trace T$.
 \end{exercise}
 \begin{proof}
- Fill
+ Let $A_{i,j}$ be the element on the $i$'th row and $j$'th column of $\MMM(T)$. We have 
+ \begin{align*}
+     \trace(cT) =& \sum_{j=1}^ncA_{j,j}\\
+     =& c\sum_{j=1}^nA_{j,j}\\
+     =& c\trace T.
+ \end{align*}
+ Where the second equality follows from the definition of scalar multiplication of a matrix (3.37).
 \end{proof}
 
 \begin{exercise}{15}
   Suppose $S,T\in\LLL(V)$. Prove that $\trace(ST)=\trace(TS)$.
 \end{exercise}
 \begin{proof}
- Fill
+ This is exactly the content of 10.14, taking into account that we can represent $T$ and $S$ as matrices, and the fact that the trace of on operator does not depend on the basis chosen to represent its matrix (10.15).
 \end{proof}
 
 \begin{exercise}{19}
   Suppose $V$ is an inner product space. Prove that $\brackets{S,T}=\trace(ST^\ast)$ defines an inner product on $\LLL(V)$.
 \end{exercise}
 \begin{proof}
- Fill
+ Let $S,T,R\in\LLL(V)$ and $\lambda\in\bF$.
+
+ Positivity and definiteness: We have
+ \begin{align*}
+     \brackets{S,S} =& \trace(SS^\ast)\\
+     =& \trace(\MMM(SS^\ast))\\
+     =& \sum_{j=1}^n S_{j,j}\overline{S_{j,j}}\\
+     =& \sum_{j=1}^n\absoluteValue{S_{j,j}}^2 \geq 0,
+ \end{align*}
+ with equality if and only if $S_{j,j}=0$ for all $j$. Since this computation is basis independent, taking the standard basis of $V$ shows us that $S$ itself is the 0 operator.
+
+ Additivity in first slot: We have
+ \begin{align*}
+     \brackets{S+T,R} =& \trace((S+T)R^\ast)\\
+     =& \trace(\MMM((S+T)R^\ast))\\
+     =& \trace(\MMM(SR^\ast+TR^\ast))\\
+     =& \trace(SR^\ast+TR^\ast)\\
+     =& \trace(SR^\ast)+\trace(TR^\ast)\\
+     =& \brackets{S,R}+\brackets{T,R}
+ \end{align*}
+ Where the third equality follows from the distributive property for matrix multiplication (exercise 3.C.13).
+
+ Homogeneity in first slot: We have
+ \begin{align*}
+     \brackets{\lambda S,T} =& \trace(\lambda ST^\ast)\\
+     =& \trace(\MMM(\lambda ST^\ast))\\
+     =& \lambda\trace(\MMM(ST^\ast))\\
+     =& \lambda\brackets{S,T}.
+ \end{align*}
+
+ Conjugate symmetry: We have
+ \begin{align*}
+     \overline{\brackets{S,T}} =& \overline{\trace(ST^\ast)}\\
+     =& \trace((ST^\ast)^\ast)\\
+     =& \trace(TS^\ast)\\
+     =& \brackets{T,S}.
+ \end{align*}
 \end{proof}

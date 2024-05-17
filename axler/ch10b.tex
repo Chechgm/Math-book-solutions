@@ -1,27 +1,53 @@
 \subsection*{Chapter 10.B. Determinants}
 \addcontentsline{toc}{subsection}{Chapter 10.B. Determinants}
 
-4 Nice formula concerning the determinant
-7 Correspondence between real and complex matrices
-8 Compare with similar property of the trace
 
 \begin{exercise}{4}
   Suppose $T\in\LLL(V)$ and $c\in\bF$. Prove that $\matrixdet(cT)=c^{\dim V}\matrixdet T$.
 \end{exercise}
 \begin{proof}
- Fill
+ We know that the determinant of an operator is the same as the determinant of its matrix, independent of the choice of basis (10.41, 10.42). Then, we have
+ \begin{align*}
+     \det(cT) =& \det(\MMM(cT))\\
+     =& \det(c\MMM(T))\\
+     =& \sum_{(m_1,\dots,m_n)\in\text{ perm }n}(\text{sign}(m_1,\dots,m_n))cA_{m_1,1}\dots cA_{m_n,n}\\
+     =& \sum_{(m_1,\dots,m_n)\in\text{ perm }n}c^{\dim V}(\text{sign}(m_1,\dots,m_n))A_{m_1,1}\dots A_{m_n,n}\\
+     =& c^{\dim V}\left[\sum_{(m_1,\dots,m_n)\in\text{ perm }n}(\text{sign}(m_1,\dots,m_n))A_{m_1,1}\dots A_{m_n,n}\right]\\
+     =& c^{\dim V}\det T,
+ \end{align*}
+ as required.
 \end{proof}
 
 \begin{exercise}{7}
   Suppose $A$ is an $n$-by-$n$ matrix with real entries. Let $S\in\LLL(\C^n)$ denote the operator on $\C^n$ whose matrix equals $A$, and let $T\in\LLL(\R^n)$ denote the operator on $\R^n$ whose matrix equals to $A$. Prove that $\trace S=\trace T$ and $\matrixdet S=\matrixdet T$.
 \end{exercise}
 \begin{proof}
- Fill
+ Determinant: We have concluded that the determinant of an operator equals the determinant of its matrix (10.42) and that the determinant of a matrix doesn't depend on the choice of basis (10.41), hence $\det S=\det T$.
+
+ Trace: Since the matrices for $S$ and $T$ are both equal, and the trace can be computed as the sum of the diagonal elements of the matrix of the operator with respect to -any- basis, then $\trace S=\trace T$.
 \end{proof}
 
 \begin{exercise}{8}
   Suppose $V$ is an inner product space and $T\in\LLL(V)$. Prove that $\matrixdet T^\ast=\overline{\matrixdet T}$. Use this to prove that $\absoluteValue{\matrixdet T}=\matrixdet\sqrt{T^\ast T}$, giving a different proof than was given in 10.47.
 \end{exercise}
 \begin{proof}
- Fill
+ We have that the determinant of an operator equals the determinant of its matrix independent of the choice of basis (10.41, 10.42). Then we have
+ \begin{align*}
+     \det T^\ast =& \det\MMM(T^\ast)\\
+     =& \det\MMM(T)^\ast\\
+     =& \sum_{(m_1,\dots,m_n)\in\text{ perm }n}(\text{sign}(m_1,\dots,m_n))\overline{A_{m_1,1}}\dots\overline{A_{m_n,n}}\\
+     =& \overline{\sum_{(m_1,\dots,m_n)\in\text{ perm }n}(\text{sign}(m_1,\dots,m_n))A_{m_1,1}\dots A_{m_n,n}}\\
+     =& \overline{\det T}.
+ \end{align*}
+
+ For the alternative proof of 10.47, we have 
+ \begin{align*}
+    \absoluteValue{\det T}^2 =&(\overline{\det T})(\det T)\\
+    =& \det(T^\ast)\det(T)\\ 
+    =& \det(T^\ast T)\\ 
+    =& \det(\sqrt{T^\ast T}\sqrt{T^\ast T})\\ 
+    =& \det(\sqrt{T^\ast T})\det(\sqrt{T^\ast T})\\
+    =& \det(\sqrt{T^\ast T})^2.
+ \end{align*}
+ Taking square roots on both sides of the equality gives us the desired result.
 \end{proof}

@@ -1,8 +1,5 @@
 \subsection{The Cantor set}
 
-21*
-22*
-23*
 26*
 
 29*
@@ -11,28 +8,41 @@
 Show that any terniary decimal of the form $0.a_1a_2\dots a_n11$ (base 3), i.e., any finite-length decimal ending in two (or more) 1s, is not an element of $\Delta$.
 \end{exercise}
 \begin{proof}
-fill
+From the (base 3) interpretation of the cantor set, we know that any number that has 2 or more 1s are numbers that selected the deleted middle third twice and, particularly, because it is chosen twice, then it is not one of the endpoints of these thirds (which do belong to the cantor set). Hence, such number is not in $\Delta$.
 \end{proof} 
 
 \begin{exercise}{22}
 Show that $\Delta$ contains no (nonempty) open intervals. In particular, show that if $x,y\in\Delta$ with $x<y$, there there is one $z\in[0,1]\setminus\Delta$ with $x<z<y$. (It follows from this that $\Delta$ is nowhere dense, which is another way of saying that $\Delta$ is ``small'').
 \end{exercise}
 \begin{proof}
-fill
+This is a Corollary to exercise 21. Since $x<y$, and $x,y\in\Delta$, then there exists an $n$ such that the $n$'th decimal of $x$ is 0 and the $n$'th decimal of $y$ is 2 (base 3). Now let $z\in[0,1]$ be the number such that the first $n$ decimals are the same as $x$ and $y$, but the $n$'th and $n+1$'th decimals are both 1. Regardless of what the rest of the decimals are, we have that $x<z<y$ and that $z\notin\Delta$.
 \end{proof} 
 
 \begin{exercise}{23}
 The endpoints of $\Delta$ are points in $\Delta$ having a finite-length base 3 decimal expansion (not necessarily in the proper form), that is, all of the points in $\Delta$ of the form $a/3^n$ for some integers $n$ and $0\leq a\leq 3^n$. Show that the endpoints of $\Delta$ other than 0 and 1 can be written as $0.a_1a_2\dots a_{n+1}$ (base 3), where each $a_k$ is 0 or 2, except $a_{n+1}$, which is either 1 or 2. That is, the discarded ``middle third'' intervals are of the form ($0.a_1a_2\dots a_{n}1,\, 0.a_1a_2\dots a_n2$) where both entries are points of $\Delta$ written in base 3.
 \end{exercise}
 \begin{proof}
-fill
+We will break this proof in 2. First, the statement that all $a_k$ is 0 or 2 except $a_{n+1}$. This is true because every decimal (base 3) represents a choice between the two thirds that stay in each step, that is the first or third third which are represented by 0 or 2 in (base 3). Second, the statement that $a_{n+1}$ is either 1 or 2. This is true because (with the exception of 0 or 2, which are infinitely many 0s and 2s), the endpoints of a particular removed third are either its upper endpoint (which is basically choosing 2 -the upper third- and then all 0s afterwards) or the lower point (which is choosing 1 -the middle third- and then all 0s afterwards).
 \end{proof} 
 
 \begin{exercise}{26}
-Let $f:\Delta\to[0,1]$ be the Cantor function (defined above) and let $x,y\in\Delta$ with $x<y$. Show that $f(x)\leq f(y)$. If $f(x)=f(y)$, show that $x$ has two distinct binary decimal expansions. Finally, show that $f(x)=f(y)$ if and only if $x$ and $y$ are ``consecutive'' endpoints of the form $x=0a_1a_2\dots a_n1$ and $y=0.a_1a_2\dots a_n2$ (base 3).
+Let $f:\Delta\to[0,1]$ be the Cantor function (defined above) and let $x,y\in\Delta$ with $x<y$. Show that $f(x)\leq f(y)$. If $f(x)=f(y)$, show that $x$ has two distinct binary decimal expansions. Finally, show that $f(x)=f(y)$ if and only if $x$ and $y$ are ``consecutive'' endpoints of the form $x=0.a_1a_2\dots a_n1$ and $y=0.a_1a_2\dots a_n2$ (base 3).
 \end{exercise}
 \begin{proof}
-fill
+We defined the Cantor function as 
+\[
+    f\left(\sum^\infty_{n=1}\frac{2b_n}{3^n}\right)
+    =\sum^\infty_{n=1}\frac{b_n}{2^n},\,\text{ where } b_n=0,1,
+\]
+or, alternatively,
+\[
+f(0.a_1a_2,\dots\text{ (base 3)})=
+0.\frac{a_1}{2}\frac{a_2}{2}\dots\text{ (base 2) },\,\text{ where }a_n=0,2.
+\]
+The fact that $f(x)\leq f(y)$ can be seen from the second definition of the cantor function, given that if $x<y$, then there exists an $n$ so that the $n$'th decimal of $y$ is larger than the $n$'th decimal of $x$ and hence the $n$'th decimal of $f(y)$ is larger than the $n$'th decimal than $f(x)$.
+
+On the main text, Carothers proved the ambiguity of expansions at the endpoints of the deleted thirds. So now we will prove that $f(x)=f(y)$ if and only if $x$ and $y$ are ``consecutive'' endpoints. 
+
 \end{proof} 
 
 \begin{exercise}{29}
