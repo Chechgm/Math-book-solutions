@@ -1,8 +1,139 @@
 \subsection{Further examples of metric spaces}
 
-\begin{exercise}{1}
-fill
+
+\begin{exercise}{3}
+Show that the Cauchy-Schwarz inequality (11) implies 
+\[
+(\absoluteValue{x_1}+\dots+\absoluteValue{x_n})^2 
+\leq n (\absoluteValue{x_1}^2+\dots+\absoluteValue{x_n}^2).
+\]
 \end{exercise}
 \begin{proof}
-fill
+Consider $(x_1,\dots,x_n)$ and $(1,\dots,1)$, $n$ times. Then the Cauchy-Schwarz inequality tells us
+\[
+\sum^n_{i=1}\absoluteValue{x_i} \leq
+\sqrt{\sum_{i=1}^n\absoluteValue{x_i}^2}\sqrt{\sum_{i=1}^n\absoluteValue{1}^2} 
+=\sqrt{\sum_{i=1}^n\absoluteValue{x_i}^2}\sqrt{n}.
+\]
+Squaring both sides of the inequality gives us the desired result.
+\end{proof}
+
+\begin{exercise}{4 (Space $l^p$)}
+Find a sequence which converges to 0, but is not in any space $l^p$, where $1\leq p<+\infty$.
+\end{exercise}
+\begin{proof}
+Consider the sequence $x_n=1/\log_2(n)$. This sequence converges to 0 because $\log_2(n)\to\infty$ as $n\to\infty$. However, we can do the Cauchy condensation test on the series $\sum_{n=1}^\infty 1/\absoluteValue{\log_2(n)}^p$ (to see whether $x_n$ is in $l^p$). We have 
+\begin{align*}
+    \sum_{n=1}^\infty \frac{2^n}{\absoluteValue{\log_2(2^n)}^p} 
+    =\sum_{n=1}^\infty \frac{2^n}{\absoluteValue{n}^p}.
+\end{align*}
+Now using the ratio test on the sequence $2^n/\absoluteValue{n}^p$, we obtain
+\[
+\lim_{n\to\infty}\frac{2^{n+1}/\absoluteValue{(n+1)}^p}{2^n/\absoluteValue{n}^p} =2,
+\]
+so that the series does not converge for any $p$, giving us the desired result.
+\end{proof}
+
+\begin{exercise}{5}
+Find a sequence which is in $l^p$ with $p>1$, but $x\notin l^1$.
+\end{exercise}
+\begin{proof}
+We have that the series associated to the sequence $x_n=1/n$ does not converge for $p=1$ but it does for $p>1$, as required.
+\end{proof}
+
+\begin{exercise}{6 (Diameter, bounded set)}
+The diameter $\delta(A)$ of a nonempty set $A$ in a metric space $(X,d)$ is defined to be 
+\[
+\delta(A) =\sup_{x,y\in A}d(x,y).
+\]
+$A$ is said to be bounded if $\delta(A)<\infty$. Show that $A\subseteq B$ implies $\delta(A)\leq\delta(B)$.
+\end{exercise}
+\begin{proof}
+Since $\delta(B)=\sup{x,y\in B}d(x,y)$, then $\delta(B)$ is an upper bound for all the distances between the elements of $B$. However, because $A\subseteq B$, then the set of distances between the elements of $A$ is a subset of the set of distances between the elements of $B$. Hence $\delta(B)$ is also an upper bound for the set of distances between the elements of $A$. Thus, the least upper bound of such set, namely $\delta(A)$ is less than or equal to any other upper bound of such set, so that $\delta(A)\leq\delta(B)$, as required.
+\end{proof}
+
+\begin{exercise}{7}
+Show that $\delta(A)=0$ (cf. exercise 6) if and only if $A$ consists of a single point.
+\end{exercise}
+\begin{proof}
+Suppose $\delta(A)$ is 0, then for all $x,y\in A$, $d(x,y)=0$ (because $d$ is nonnegative), since $d(x,y)=0$ if and only if $x=y$, then $A$ consists of a single point. 
+
+Conversely, suppose $A$ consists of a single point. Then $\delta(A) = \sup_{x,y\in A}d(x,y) =0$, as required.
+\end{proof}
+
+\begin{exercise}{11}
+If $(X,d)$ is any metric space, show that another metric on $X$ is defined by
+\[
+\hat{d}(x,y)=\frac{d(x,y)}{1+d(x,y)},
+\]
+and $X$ is bounded in the metric $\hat{d}$.
+\end{exercise}
+\begin{proof}
+M1, M2 and M3 follow directly from the properties of $d$ and the fact that the function $f(t)=t/(1+t)$ defined on the nonnegative reals does not alter these properties.
+
+The proof that M4 holds for $\hat{d}$ is essentially the same as in 1.2-1, which I reproduce here for completeness. We have that $f'(t)=1/(1+t)^2$, which is positive, so that $f(t)$ is monotonically increasing. Thus, if $\absoluteValue{a+b}\leq \absoluteValue{a}+\absoluteValue{b}$, then $f(\absoluteValue{a+b})\leq f(\absoluteValue{a}+\absoluteValue{b})$. Knowing this, we have that 
+\begin{align*}
+    \frac{\absoluteValue{a+b}}{(1+\absoluteValue{a+b})} \leq& \frac{\absoluteValue{a}+\absoluteValue{b}}{1+\absoluteValue{a}+\absoluteValue{b}}\\
+    \leq& \frac{\absoluteValue{a}}{1+\absoluteValue{a}} 
+    + \frac{\absoluteValue{b}}{1++\absoluteValue{b}}.
+\end{align*}
+Replacing $a=d(x,z)$ and $b=d(z,y)$ in the above inequality we get the desired result.
+
+To prove that $X$ is bounded under $\hat{d}$, consider the following two cases.
+
+First: if $X$ is bounded under $d$, then $d(x,y)$ has an upper bound for all $x,y$ so that $\sup_{x,y\in X}\hat{d}(x,y)<\infty$.
+
+Second: if $X$ is not bounded under $d$, then we have to check the limiting process of $\hat{d}$ whenever $d(x,y)\to\infty$ for some $x,y\in X$. In that case, we have $\lim_{d(x,y)\to\infty}\frac{d(x,y)}{1+d(x,y)}=1$, so that $\sup_{x,y\in X}\hat{d}(x,y)\leq \infty$, as required.
+\end{proof}
+
+\begin{exercise}{12}
+Show that the union of two bounded sets $A$ and $B$ in a metric space is bounded. (Definition in exercise 6).
+\end{exercise}
+\begin{proof}
+Suppose $A$ and $B$ are bounded. Let $a\in A\cup B$ be arbitrary and fix $a_0\in A$ and $b_0\in B$. If both $a_0,b_0$ are in either $A$ or $B$ then they they are bounded because both $A$ and $B$ are bounded. So suppose $a_0\in A$ and $b_0\in B$. By the generalised triangle inequality, with $x_1=a, x_2=a_0, x_3=b_0$ and $x_4=b$ (exercise 1.11), we obtain $d(a,b)\leq d(a,a_0)+d(a_0,b_0)+d(b_0,b)$. The first and the last terms of that inequality are bounded because $A$ and $B$ are bounded. Furthermore, by M1, $d(a_0,b_0)$ is finite. Thus, the right hand side of the inequality has an upper bound and since $a$ and $b$ were chosen arbitrarily, then $A\cup B$ is bounded.
+\end{proof}
+
+\begin{exercise}{13 (Product of metric spaces)}
+The Cartesian product $X=X_1\times X_2$ of two metric spaces $(X_1, d_1)$ and $(X_2, d_2)$ can be made into a metric space $(X, d)$ in many ways. For instance, show that a metric $d$ is defined by $d(x,y)=d_1(x_1,y_1)+d_2(x_2,y_2)$, where $x=(x_1,x_2)$ and $y=(y_1,y_2)$.
+\end{exercise}
+\begin{proof}
+M1, M2 and M3 follow from the fact that $d$ is an addition and the properties of $d_1$ and $d_2$. To see that M4 holds, let $x,y,z\in X_1\times X_2$. We have $d(x,y) =d_1(x_1,y_1)+d_2(x_2,y_2) \leq d_1(x_1,z_1)+d_1(z_1,y_1) + d_2(x_2,z_2)+d_2(z_2,y_2) = d(x,z)+d(z,y)$, as required.
+\end{proof}
+
+\begin{exercise}{14}
+Show that another metric on $X_1\times X_2$ (as in exercise 13) is defined by $\hat{d}(x,y)=\sqrt{d_1(x_1,y_1)^2+d_2(x_2,y_2)^2}$.
+\end{exercise}
+\begin{proof}
+M1, M2 and M3 follow directly from the properties of $d_1$ and $d_2$ and the functions that compose them: first squaring, then addition and then taking root, all of which preserve these properties of metrics. To see M4 holds, let $x,y,z\in X_1\times X_2$. We have 
+\begin{align*}
+    \hat{d}(x,y) =& [d_1(x_1,y_1)^2+d_2(x_2,y_2)^2]^{1/2}\\
+    \leq& [[d_1(x_1,z_1)+d_1(z_1,y_1)]^2+[d_2(x_2,z_2)+d_2(z_2,y_2)]^2]^{1/2}\\
+    =& [d_1(x_1,z_1)^2+2d_1(x_1,z_1)d_1(z_1,y_1)+d_1(z_1,y_1)^2\\
+    &+ d_2(x_2,z_2)^2+2d_2(x_2,z_2)d_2(z_2,y_2)+d_2(z_2,y_2)^2]^{1/2}
+\end{align*}
+squaring both sides of the inequality, and using the the Cauchy-Schwarz inequality in those terms that contain a factor of 2:
+\begin{align*}
+    \hat{d}(x,y)^2 
+    \leq&  d_1(x_1,z_1)^2+d_2(x_2,z_2)^2 +d_1(z_1,y_1)^2+d_2(z_2,y_2)^2\\
+    &+2\sqrt{\sum_{i=1}^2d_i(x_i,z_i)^2}\sqrt{\sum_{i=1}^2d_i(z_i,y_i)^2}\\
+    =& \hat{d}(x,z)^2 + \hat{d}(z,y)^2+ 2(\hat{d}(x,z)\hat{d}(z,y))\\
+    =& (\hat{d}(x,z)+\hat{d}(z,y))^2.
+\end{align*}
+Taking square root on both sides of the inequality gives us the desired result.
+\end{proof}
+
+\begin{exercise}{15}
+Show that a third metric on $X_1\times X_2$ (as in exercise 13) is defined by $\bar{d}(x,y)=\max[d_1(x_1,y_1),d_2(x_2,y_2)]$. (The metrics in exercises 13 to 15 are of practical importance, and other metrics on $X$ are possible).
+\end{exercise}
+\begin{proof}
+M1, M2 and M3 follow directly from the properties of $d_1$ and $d_2$ and the fact that $\max$ does not affect these properties. To see M4 also holds, let $x,y,z\in X_1\times X_2$. We have
+\begin{align*}
+    \bar{d}(x,y) 
+    =& \max[d_1(x_1,y_1),d_2(x_2,y_2)]\\
+    \leq& \max[d_1(x_1,z_1)+d_1(z_1,y_1),d_2(x_2,z_2)+d_2(z_2,y_2)]\\
+    \leq& \max[d_1(x_1,z_1),d_2(x_2,z_2)]
+    + \max[d_1(z_1,y_1), d_2(z_2,y_2)]\\
+    =& \bar{d}(x,z)+\bar{d}(z,y),
+\end{align*}
+where the last inequality follows from the fact that we are splitting the sums on the second line by choosing the greatest element of each sum and adding them together, hence the sum of the $\max$ is greater than the $\max$ of the sums.
 \end{proof}

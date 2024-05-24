@@ -1,0 +1,73 @@
+\subsection{Convergence, Cauchy sequence, completeness}
+
+2
+3
+4
+5
+6 Basic facts about convergence
+8
+9 We call these metrics to be equivalent. Equivalent metrics are not the same but enjoy mostly the same properties when it comes to sequence convergence, Cauchy, completeness, etc.
+10
+
+\begin{exercise}{1 (Subsequence)}
+If a sequence $(x_n)$ in a metric space $X$ is convergent and has limit $x$, show that every subsequence $(x_{n_k})$ of $(x_n)$ is convergent and has the same limit $x$.
+\end{exercise}
+\begin{proof}
+Let $(x_{n_k})$ be a subsequence of $(x_n)$. Since $(x_n)$ converges to $x$, then for all $\epsilon>0$, there exists an $N\in\N$ so that for all $n>N$, it holds that $d(x_n,x)<\epsilon$. Fix $\epsilon>0$, and find $N\in\N$ as above. Now $N=n_K$ for some $K\in\N$, so that for all $k>K$ (and thus $n_k>N$, it holds that $d(x_{n_k},x)<\epsilon$ and $(x_{n_k})\to x$, as desired.
+\end{proof}
+
+\begin{exercise}{2}
+If $(x_n)$ is Cauchy and has a convergent subsequence, say, $x_{n_k}\to x$, show that $(x_n)$ is convergent with the limit $x$.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{3}
+Show that $x_n\to x$ if and only if for every neighborhood $V$ of $x$ there is an integer $n_0$ such that $x_n\in V$ for all $n>n_0$.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{4 (Boundedness)}
+Show that a Cauchy sequence is bounded.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{5}
+Is boundedness of a sequence in a metric space sufficient for the sequence to be Cauchy? Convergent?
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{6}
+If $(x_n)$ and $(y_n)$ are Cauchy sequences in a metric space $(X,d)$, show that $(a_n)$, where $a_n=d(x_n,y_n)$, converges. Give illustrative examples.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{8}
+If $d_1$ and $d_2$ are metrics on the same set $X$ and there are positive numbers $a$ and $b$ such that for all $x,y\in X$, $ad_1(x,y)\leq d_2(x,y)\leq bd_1(x,y)$, show that the Cauchy sequences in $(X,d_1)$ and $(X,d_2)$ are the same.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{9}
+Using exercise 9, show that the metric space in exercises 13 to 15 of Section 1.2 have the same Cauchy sequences.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{10}
+Using the completeness of $\R$, prove the completeness of $\C$.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
