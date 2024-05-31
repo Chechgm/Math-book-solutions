@@ -1,6 +1,5 @@
 \subsection{Monotone functions}
 
-Monotone Functions
 32
 33
 
@@ -8,12 +7,18 @@ Monotone Functions
 Deduce from Theorem 2.17 that a monotone function $f:\R\to\R$ has points of continuity in every open interval.
 \end{exercise}
 \begin{proof}
-fill
+We know that every open interval in the real line is not countable (because we can find a bijection between $(a,b)$ and $\R$. Hence, if there existed an open interval without a point of continuity, then the monotone function would have uncountably many points of discontinuity, which contradicts Theorem 2.17.
 \end{proof} 
 
 \begin{exercise}{33}
 Let $f:[a,b]\to\R$ be monotone. Given $n$ distinct points $a<x_1<x_2<\dots<x_n<b$, show that $\sum_{i=1}^n\absoluteValue{f(x_i+)-f(x_i-)}\leq \absoluteValue{f(b)-f(a)}$. Use this to give another proof that $f$ has at most countably many (jump) discontinuities.
 \end{exercise}
 \begin{proof}
-fill
+Without loss of generality, suppose $f$ is monotonically increasing. We will prove $\sum_{i=1}^n\absoluteValue{f(x_i+)-f(x_i-)}\leq \absoluteValue{f(b)-f(a)}$ by induction.
+
+Base case: from monotonicity, we have that for any point $x_i$, $f(x_i+)-f(x_i-)\leq f(b)-f(a)$ (as otherwise $f$ wouldn't be monotonous or it wouldn't be the case that $a<x_i<b$).
+
+Suppose the statement holds for $i=k$. Then $\sum_{i=1}^k\absoluteValue{f(x_i+)-f(x_i-)}\leq \absoluteValue{f(b)-f(a)}$. We will use the same argument as above. By monotonicity we have that $f(x_{k+1}+)-f(x_{k+1}-)\leq f(b)-f(x_k+)$. Now, since $\sum_{i=1}^k f(x_i+)-f(x_i-)\leq f(x_{k+1}+)-f(a)$ (by the induction hypothesis, and the fact that $x_k<x_{k+1}$). Adding those two together gives us the desired result.
+
+If there were are an uncountable number of discontinuities, then we could not enumerate the elements of the domain where there the discountinuities and the inequality would not hold.
 \end{proof} 

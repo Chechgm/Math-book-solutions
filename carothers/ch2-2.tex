@@ -1,8 +1,5 @@
 \subsection{The Cantor set}
 
-26*
-
-29*
 
 \begin{exercise}{21}
 Show that any terniary decimal of the form $0.a_1a_2\dots a_n11$ (base 3), i.e., any finite-length decimal ending in two (or more) 1s, is not an element of $\Delta$.
@@ -39,15 +36,39 @@ or, alternatively,
 f(0.a_1a_2,\dots\text{ (base 3)})=
 0.\frac{a_1}{2}\frac{a_2}{2}\dots\text{ (base 2) },\,\text{ where }a_n=0,2.
 \]
-The fact that $f(x)\leq f(y)$ can be seen from the second definition of the cantor function, given that if $x<y$, then there exists an $n$ so that the $n$'th decimal of $y$ is larger than the $n$'th decimal of $x$ and hence the $n$'th decimal of $f(y)$ is larger than the $n$'th decimal than $f(x)$.
 
-On the main text, Carothers proved the ambiguity of expansions at the endpoints of the deleted thirds. So now we will prove that $f(x)=f(y)$ if and only if $x$ and $y$ are ``consecutive'' endpoints. 
+We will begin by proving that if $x<y$, then $f(x)\leq f(y)$. This fact can be seen from the second definition of the cantor function, given that if $x<y$, then there exists an $n$ so that the $n$'th decimal of $y$ is larger than the $n$'th decimal of $x$ and hence the $n$'th decimal of $f(y)$ is larger than the $n$'th decimal of $f(x)$.
 
+Suppose we have that $x=a_1a_2,\dots a_n1=a_1a_2,\dots a_n022\dots$ and $y=0.a_1a_2\dots a_n2$, then according to the second definition of the cantor function, we get 
+\[
+f(x)=0.\frac{a_1}{2}\frac{a_2}{2}\dots\frac{a_n}{2}\frac{0}{2}111\dots 
+= 0.\frac{a_1}{2}\frac{a_2}{2}\dots1000\dots
+\text{ (base 2) }\]
+and
+\[
+f(y)=0.\frac{a_1}{2}\frac{a_2}{2}\dots \frac{a_n}{2}\frac{2}{2}000\dots =
+0.\frac{a_1}{2}\frac{a_2}{2}\dots \frac{a_n}{2}1000\dots \text{ (base 2) },
+\]
+so that $f(x)=f(y)$.
+
+On the other hand,
+\[
+0.\frac{a_1}{2}\frac{a_2}{2}\dots\frac{a_n}{2}\frac{0}{2}111\dots = f(x)
+= f(y)=0.\frac{a_1}{2}\frac{a_2}{2}\dots \frac{a_n}{2}1000\dots,
+\]
+so that $x$ has two representations.
 \end{proof} 
 
 \begin{exercise}{29}
 Prove that the extended Cantor function $f:[0,1]\to[0,1]$ (as defined above) is increasing. [Hint: Consider cases].
 \end{exercise}
 \begin{proof}
-fill
+The extended Cantor function is defined as 
+\[
+f(x)=\sup\set{f(y):y\in\Delta, y\leq x}
+\text{ for }x\in[0,1]\setminus\Delta,
+\]
+in addition to the previous definition.
+
+We proved on exercise 28 that if $x,y\in\Delta$, then $f(x)\leq f(y)$. So we just have to prove that if $x,y\in[0,1]\setminus\Delta$, $f(x)\leq f(y)$. From exercise 22, we know that for all $a,b\in\Delta$, and $a<b$ there exists a $z\in[0,1]\Delta$ with $a<z<b$. Thus, for all $z,z'$ between $a$ and $b$, $f(z)$ will be the constant. That is $f(z)=f(z')$. On the other hand, if $a<z'<b<z<c$, for $c\in\Delta$, then $f(z')<f(z)$, because $b$ is an upper bound of all the elements between $a$ and $b$ but not of those between $b$ and $c$.
 \end{proof}
