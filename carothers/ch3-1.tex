@@ -16,7 +16,7 @@ Metric Spaces
 If $d$ is a metric on $M$, show that $\absoluteValue{d(x,z)-d(y,z)}\leq d(x,y)$ for any $x,y,z\in M$.
 \end{exercise}
 \begin{proof}
-
+We have $d(x,z)\leq d(x,y)+d(y,z)$, so that $d(x,z)-d(y,z)\leq d(x,y)$. On the other hand, $d(y,z)\leq d(x,y)+d(x,z)$, so that $-d(x,y)\leq d(x,z)-d(x,y)$. Combining these results together, we obtain that $\absoluteValue{d(x,z)-d(y,z)}\leq d(x,y)$.
 \end{proof} 
 
 \begin{exercise}{3}

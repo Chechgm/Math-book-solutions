@@ -22,7 +22,7 @@ Squaring both sides of the inequality gives us the desired result.
 Find a sequence which converges to 0, but is not in any space $l^p$, where $1\leq p<+\infty$.
 \end{exercise}
 \begin{proof}
-Consider the sequence $x_n=1/\log_2(n)$. This sequence converges to 0 because $\log_2(n)\to\infty$ as $n\to\infty$. However, we can do the Cauchy condensation test on the series $\sum_{n=1}^\infty 1/\absoluteValue{\log_2(n)}^p$ (to see whether $x_n$ is in $l^p$). We have 
+Consider the sequence $x^n=1/\log_2(n)$. This sequence converges to 0 because $\log_2(n)\to\infty$ as $n\to\infty$. However, we can do the Cauchy condensation test on the series $\sum_{n=1}^\infty 1/\absoluteValue{\log_2(n)}^p$ (to see whether $x^n$ is in $l^p$). We have 
 \begin{align*}
     \sum_{n=1}^\infty \frac{2^n}{\absoluteValue{\log_2(2^n)}^p} 
     =\sum_{n=1}^\infty \frac{2^n}{\absoluteValue{n}^p}.
@@ -38,7 +38,7 @@ so that the series does not converge for any $p$, giving us the desired result.
 Find a sequence which is in $l^p$ with $p>1$, but $x\notin l^1$.
 \end{exercise}
 \begin{proof}
-We have that the series associated to the sequence $x_n=1/n$ does not converge for $p=1$ but it does for $p>1$, as required.
+We have that the series associated to the sequence $x^n=1/n$ does not converge for $p=1$ but it does for $p>1$, as required.
 \end{proof}
 
 \begin{exercise}{6 (Diameter, bounded set)}

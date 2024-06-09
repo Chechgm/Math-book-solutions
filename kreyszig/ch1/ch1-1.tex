@@ -51,12 +51,12 @@ We have $\absoluteValue{x_j-y_j} \leq \absoluteValue{x_j-z_j}+\absoluteValue{z_j
 \end{proof}
 
 \begin{exercise}{8}
-Show that another metric $\tilde{d}$ on the set $X$ in 1.1-7 is defined by $\tilde{d}(x,y)=\int_a^b\absoluteValue{x(t)-y(t)}dt$.
+Show that another metric $\tilde{d}$ on the set $X$ in 1.1-7 is defined by $\tilde{d}(f,g)=\int_a^b\absoluteValue{f(t)-g(t)}dt$.
 \end{exercise}
 \begin{proof}
 Let $f,g,h\in C[a,b]$.
 
-(M1): The integral of a nonegative function ($\absoluteValue{f(x)-g(x)}$, in this case) is nonnegative. Integrals are real valued and because $f$ and $g$ are continous, the image of a compact set (in this case $[a,b]$) is compact (Theorem 4.4.1. in Abbott's understanding analysis), so that the integral of $\absoluteValue{f(x)-g(x)}$ in $[a,b]$ is finite.
+(M1): The integral of a nonnegative function ($\absoluteValue{f(x)-g(x)}$, in this case) is nonnegative. Integrals are real valued and because $f$ and $g$ are continuous, the image of a compact set (in this case $[a,b]$) is compact (Theorem 4.4.1. in Abbott's understanding analysis), so that the integral of $\absoluteValue{f(x)-g(x)}$ in $[a,b]$ is finite.
 
 (M2): If $f=g$, clearly $d(f,g)=0$, on the other hand, if $\int_a^b\absoluteValue{f(x)-g(x)}dx =0$, it means that $f-g=0$. To see this, remember that $f-g$ is a continuous function, and that if there exists an $x\in [a,b]$ with $f(x)-g(x)>0$, then $f(x)-g(x)>0$ in an open interval around $x$ (see Carothers exercise 46), and then the integral would not be 0. Hence, $f=g$.
 

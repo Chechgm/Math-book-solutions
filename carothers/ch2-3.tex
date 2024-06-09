@@ -18,7 +18,15 @@ Without loss of generality, suppose $f$ is monotonically increasing. We will pro
 
 Base case: from monotonicity, we have that for any point $x_i$, $f(x_i+)-f(x_i-)\leq f(b)-f(a)$ (as otherwise $f$ wouldn't be monotonous or it wouldn't be the case that $a<x_i<b$).
 
-Suppose the statement holds for $i=k$. Then $\sum_{i=1}^k\absoluteValue{f(x_i+)-f(x_i-)}\leq \absoluteValue{f(b)-f(a)}$. We will use the same argument as above. By monotonicity we have that $f(x_{k+1}+)-f(x_{k+1}-)\leq f(b)-f(x_k+)$. Now, since $\sum_{i=1}^k f(x_i+)-f(x_i-)\leq f(x_{k+1}+)-f(a)$ (by the induction hypothesis, and the fact that $x_k<x_{k+1}$). Adding those two together gives us the desired result.
+Suppose the statement holds for $i=k$. Then $\sum_{i=1}^k\absoluteValue{f(x_i+)-f(x_i-)}\leq \absoluteValue{f(b)-f(a)}$. We will use the same argument as above. Let $y=(x_{k+1}-x_k)/2$, so that $f(x_k+)<f(y)<f(x_{k+1}-)$. By monotonicity we have that $f(x_{k+1}+)-f(x_{k+1}-)\leq f(b)-f(y)$. Now, since $\sum_{i=1}^k f(x_i+)-f(x_i-)\leq f(y)-f(a)$ (by the induction hypothesis, and the fact that $x_k<x_{k+1}$), we can add those together, giving us the desired result.
 
-If there were are an uncountable number of discontinuities, then we could not enumerate the elements of the domain where there the discountinuities and the inequality would not hold.
+To see that $f$ has at most countably many (jump) discontinuities, let $D$ the set of all discontinuities, and define
+\[
+    D_n=\left\{x_i\in D: f(x_i+)-f(x_i-)\geq\frac{f(b)-f(a)}{n}\right\}.
+\]
+Now $D_n$ has at most $n$ elements, as otherwise, it would be the case that 
+\[
+f(b)-f(a)\geq\sum_{i=1}^{n+1}f(x_i+)-f(x_i-) \geq\sum_{i=1}^{n+1}\frac{f(b)-f(a)}{n} > f(b)-f(a),
+\]
+which is a contradiction. Since $D=\bigcup_nD_n$ and all $D_n$ are finite, then $D$ is countable, as required.
 \end{proof} 

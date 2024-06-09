@@ -1,0 +1,113 @@
+\subsection{Completion of metric spaces}
+
+14 Pseudometrics are actually quite important in analysis, exercise 14 gives one such example of a pseudometric that is of considerable importance. The completion of this (pseudo)-metric space is $L^1$
+
+\begin{exercise}{1}
+Show that if a subspace $Y$ of a metric space consists of finitely many points, then $Y$ is complete.
+\end{exercise}
+\begin{proof}
+To prove $Y$ is complete we will use Theorem 1.4-7. We will prove $Y$ is closed by proving $Y^C$ is open. Let $r=\min_{x,y\in Y}d(x,y)$. Then for all $x\in Y^C$, the ball $B(x;r)\subset Y^C$, because there is no point in $Y$ with distance less than $r$ to $x$. Thus $Y^C$ is open, $Y$ is closed, and by Theorem 1.4-7, $Y$ is complete.
+\end{proof}
+
+\begin{exercise}{2}
+What is the completion of $(X,d)$, where $X$ is the set of all rational numbers and $d(x,y)=\absoluteValue{x-y}$.
+\end{exercise}
+\begin{proof}
+The reals, as we can get arbitrarily close to any real number using rational numbers and the reals are complete.
+\end{proof}
+
+\begin{exercise}{3}
+What is the completion of a discrete metric space $X$? (Cf.1.1-8).
+\end{exercise}
+\begin{proof}
+In exercise 1.5.10 we proved discrete metric spaces are complete, thus, their completions are themselves.
+\end{proof}
+
+\begin{exercise}{4}
+If $X_1$ and $X_2$ are isometric and $X_1$ is complete, show that $X_2$ is complete.
+\end{exercise}
+\begin{proof}
+We have that $\overline{X_1}=X_1$, that is, $X_1$ equals its completion. By Theorem 1.6-2, $\overline{X_1}$ is unique up to isometries. Since $X_2$ is isometric to $X_2$, then it must be the case that $X_2$ is complete, since $X_1$ is complete too.
+\end{proof}
+
+\begin{exercise}{5 (Homeomorphism)}
+A homeomorphism is a continuous bijective mapping $T:X\to Y$ whose inverse is continuous; the metric spaces $X$ and $Y$ are then said to be homeomorphic. (a) Show that if $X$ and $Y$ are isometric, they are homeomorphic. (b) Illustrate with an example that a complete and an incomplete metric space may be homeomorphic.
+\end{exercise}
+\begin{proof}
+a) If $X$ and $Y$ are isometric, then there exists a bijective function $T:X\to Y$ so that $\bar{d}(Tx,Ty)=d(x,y)$ for all $x,y\in X$. Hence, to prove that $X$ and $Y$ are homeomorphic, we need to prove that $T$ and $T^{-1}$ are both continuous. 
+
+Fix $\epsilon>0$, we have $\bar{d}(Tx,Ty)=d(x,y)<\epsilon$ so that by choosing $\delta=\epsilon$ we can make $Tx$ and $Ty$ arbitrarily close. Since $T$ is bijective and continuous, then its inverse is also continuous. Hence, $X$ and $Y$ are homeomorphic.
+
+b) The metric space $(X,d)$ with $X=(-\pi/2,\pi/2)$ and $d$ being the usual metric in $\R$. These spaces are homeomorphic with $f:X\to\R$ defined by $f(x)=\tan x$ being bijective and continuous for all $x\in X$. However, $X$ is not complete, given that $\pi/2$ is a limit point (that is, it is the limit of a Cauchy sequence in $X$) of $X$ but not in $X$.
+\end{proof}
+
+\begin{exercise}{9}
+If $(x^n)$ and $(y^n)$ in $(X,d)$ are such that (1) holds and $(x^n)\to x$, show that $(y^n)$ converges and has the limit $x$.
+\end{exercise}
+\begin{proof}
+Suppose $\lim_{n\to\infty}d(x^n,y^n)=0$ so that there exists $N\in\N$ with $d(x^n,y^n)<\epsilon/2$ for $n>N$. Furthermore, we assume $(x^n)\to x$, so that for $\epsilon>0$, there exists an $N'\in\N$ with $d(x^n,x)<\epsilon/2$ for $n>N'$. 
+
+Let $M=\max[N,N']$ and $n>M$. We have $d(y^n, x)\leq d(y^n,x^n)+d(x^n,x)<\epsilon$, so that $(y^n)\to x$, as required.
+\end{proof}
+
+\begin{exercise}{10}
+If $(x^n)$ and $(y^n)$ are convergent sequences in a metric space $(X,d)$ and have the same limit $x$, show that they satisfy $\lim_{n\to\infty}d(x^n,y^n)=0$.
+\end{exercise}
+\begin{proof}
+Since $(x^n)\to x$ and $(y^n)\to x$, then for $\epsilon>0$, there exist $N,N'\in\N$ so that for $n>N$ and $m>N'$, we have both $d(x^n,x)<\epsilon/2$ and $d(y^m,x)<\epsilon/2$. Thus, let $n>\max[N,N']$, consider $d(x^n,y^n)\leq d(x^n,x)+d(x,y^n)<\epsilon$, giving us $\lim_{n\to\infty}d(x^n,y^n)=0$, as required.
+\end{proof}
+
+\begin{exercise}{11}
+Show that (1) defines an equivalence relation on the set of all Cauchy sequences of elements of $X$.
+\end{exercise}
+\begin{proof}
+Let $(x^n), (y^n)$ and $(z^n)$ be Cauchy in $X$.
+
+Reflexivity: We have $d(x^n,x^n)=0$ for all $n$, so that $\lim_{n\to\infty}d(x^n,x^n)=0$.
+
+Symmetry: We have $d(x^n,y^n)=d(y^n,x^n)$, for all $n$, so that $\lim_{n\to\infty}d(x^n,y^n)=\lim_{n\to\infty}d(y^n,x^n)$.
+
+Transitivity: If $\lim_{n\to\infty}d(x^n,y^n)=0$ and $\lim_{n\to\infty}d(y^n,z^n)=0$. We have $d(x^n,z^n)\leq d(x^n,y^n)+d(y^n,z^n)$. Taking limits on both sides gives us that $\lim_{n\to\infty}d(x^n,z^n)=0$.
+\end{proof}
+
+\begin{exercise}{12}
+If $(x^n)$ is Cauchy in $(X,d)$ and $(y^n)$ in $X$ satisfies $\lim_{n\to\infty}d(x^n,y^n)=0$, show that $(y^n)$ is Cauchy in $X$.
+\end{exercise}
+\begin{proof}
+Suppose $(x^n)$ is Cauchy and $\lim_{n\to\infty}d(x^n,y^n)=0$. Fix $\epsilon>0$. There exists $N\in\N$ so that for all $n,m>N$, it holds that $d(x^n,x^m)<\epsilon/3$. Moreover, there exists $N'\in\N$ so that $d(x^n,y^n)<\epsilon/3$. We have $d(y^n,y^m)\leq d(y^n,x^n)+d(x^n,y^m)\leq d(y^n,x^n)+d(x^n,x^m)+d(x^m,y^m)<\epsilon$, so that $(y^n)$ is Cauchy as required.
+\end{proof}
+
+\begin{exercise}{13 (Pseudometric)}
+A finite pseudometric on a set $X$ is a function $d:X\times X\to\R$ satisfying (M1), (M3), (M4), section 1.1, and 
+\[
+\text{(M2)}^\ast\quad d(x,x)=0.
+\]
+What is the difference between a metric and a pseudometric? Show that $d(x,y)=\absoluteValue{x_1-y_1}$ defines a pseudometric on the set of all ordered pairs of real numbers, where $x=(x_1,x_2)$, $y=(y_1,y_2)$. (We mention that some authors use the term semimetric instead of pseudometric).
+\end{exercise}
+\begin{proof}
+The difference between a metric and pseudometric is that a pseudometric can have 0 distance between non distinct points. That is, it is not the case that $d(x,y)=0$ if and only if $x=y$.
+
+(M1): Certainly $d$ is real valued, finite and nonnegative. 
+
+$\text{(M2)}^\ast$: For any $x\in X$, $d(x,x)=0$.
+
+(M3): For any $x,y\in X$, we have $d(x,y)=\absoluteValue{x_1-y_1}=\absoluteValue{y_1-x_1}=d(y,x)$.
+
+(M4): For $x,y,z\in X$ we have $d(x,y)=\absoluteValue{x_1-y_1}\leq \absoluteValue{x_1-y_1}+\absoluteValue{y_1-z_1}=d(x,y)+d(y,z)$.
+
+Remark: Consider the pairs $x=(1,1)$ and $y=(1,0)$. We have that $d(x,y)=0$, however, $x\neq y$.
+\end{proof}
+
+\begin{exercise}{14}
+Does 
+\[
+d(f,g)=\int^b_a\absoluteValue{f(t)-g(t)}dt
+\]
+define a metric or pseudometric on $X$ if $X$ is (a) the set of all real-valued continuous functions on $[a,b]$, (b) the set of all real-valued Riemann integrable functions on $[a,b]$?
+\end{exercise}
+\begin{proof}
+Without loss of generality, let $a=0$ and $b=1$.
+a) We will prove that $d$ is a metric on the set of continuous functions. If $f=g$, then for $h=f-g$ we have $\int^1_0\absoluteValue{h(x)}dx=0$. Now suppose $f\neq g$. Since both $f$ and $g$ are continuous, then $h$ is continuous, and moreover, there is a point at which $\absoluteValue{h}$ is nonzero. Because $h$ is continuous, then there must be a neighborhood around that point which is positive, so that $\int^1_0\absoluteValue{h(x)}dx> 0$, as required.
+
+b) Let $f(x)=0$ for $x\in(0,1]$ and $f(0)=1$; $g(x)=0$ for $x\in[0,1)$ and $g(1)=1$. We have that both $f$ and $g$ are Riemann integrable and that $\absoluteValue{f-g}(x)=0$ for $x\in(0,1)$ and 1 otherwise. Moreover, $d(f,g)=0$, so that $d$ is a pseudometric on the set of all real-valued Riemann integrable functions.
+\end{proof}

@@ -1,0 +1,108 @@
+\subsection{Examples. Completeness proofs}
+
+
+\begin{exercise}{1}
+Let $a,b\in\R$ and $a<b$. Show that the open interval $(a,b)$ is an incomplete subspace of $\R$, whereas the closed interval $[a,b]$ is complete.
+\end{exercise}
+\begin{proof}
+By section 1-4, we know that $\R$ is a complete metric space. By Theorem 1.4-7, we know that a subspace, $M$, of a complete metric space, $X$, is complete if and only if $M$ is closed in $X$. We have that $(a,b)$ is not closed in $\R$, because $a$ and $b$ don't belong to the set but they are limit points of the set. Hence $(a,b)$ is not complete. On the other hand, $[a,b]$ is closed in $\R$ and thus a complete subspace of $\R$.
+\end{proof}
+
+\begin{exercise}{2}
+Let $X$ be the space of all ordered $k$-tuples $x=(x_1,x_2,\dots,x_k)$ of real numbers and $d(x,y)=\max_j\absoluteValue{x_j-y_j}$ where $y=(y_1,\dots,y_k)$. Show that $(X,d)$ is complete.
+\end{exercise}
+\begin{proof}
+We will follow a similar strategy as in the text. Let $x^{(n)}$ be a Cauchy sequence in the defined space. Then for $\epsilon>0$, there exists an $N\in\N$ so that for all $n,m>N$, it holds that $d(x^n,x^m)=\max_j\absoluteValue{x^n_j-x^m_j}<\epsilon$. This means that for all $j$, we have that $\absoluteValue{x^n_j-x^m_j}<\epsilon$. But this implies that for each $j$, the sequence $(x^n)$ in $\R$ is Cauchy and by the completeness of $\R$, it converges. Now let $x=(x_1,\dots,x_k)$, for a given $\epsilon>0$, we can find $N\in\N$ with $d(x^n,x)=\max_j\absoluteValue{x^n_j-x_j}<\epsilon$, so that $x^n\to x$, as required. 
+\end{proof}
+
+\begin{exercise}{3}
+Let $M\subseteq l^\infty$ be the subspace consisting of all sequences with at most finitely many nonzero terms. Find a Cauchy sequence in $M$ which does not converge in $M$, so that $M$ is not complete.
+\end{exercise}
+\begin{proof}
+First let's define a target sequence not in $M$: $x=(1,1/2,1/3,\dots)$. Now consider the sequence of sequences given by $x^1=(1,0,0,\dots),\,x^2=(1,1/2,0,\dots),\,x^3=(1,1/2,1/3,\dots)$. To see that $x^n\to x$, notice that $d(x^n,x)=\sup_{j\in\N}\absoluteValue{x^n_j-x_j}=1/n$. Then, after fixing $\epsilon>0$, we can choose $N\in\N$ so that for all $n>N$, $1/n<\epsilon$. Then we have $d(x^n,x)<1/n<\epsilon$, as required. However all elements of $x$ are nonzero so $l^\infty$ is not complete.
+\end{proof}
+
+\begin{exercise}{5}
+Show that the set $X$ of all integers with metric $d$ defined by $d(m,n)=\absoluteValue{m-n}$ is a complete metric space.
+\end{exercise}
+\begin{proof}
+We can prove this using Theorem 1.4-7. $\Z$ with the usual metric on $\R$ is a subspace of $\R$. We have that $\Z$  is closed in $\R$, because its complement is open (it is a union of open intervals). Hence, Theorem 1.4-7 tells us that $\Z$ is complete.
+\end{proof}
+
+\begin{exercise}{6}
+Show that the set of all real numbers constitutes an incomplete metric space if we choose $d(x,y)=\absoluteValue{\arctan x-\arctan y}$.
+\end{exercise}
+\begin{proof}
+Consider the sequence given by $x^n=\tan(\pi/2-1/n)$, then under the defined metric, the sequence is Cauchy (because $d(x^m,x^n)=\absoluteValue{1/m-1/n}$, so for a fixed $\epsilon>0$, we can choose an $N\in\N$ so that for all $n,m>N$, it holds that $d(x^n,x^m)<\epsilon$. However, since $\tan(\pi/2)$ is not defined, then the limit is not in $\R$, and hence $\R$ is not complete under this metric.
+\end{proof}
+
+\begin{exercise}{8 (Space $C[a,b]$)}
+Show that the subspace $Y\subseteq C[a,b]$ consisting of all $x\in C[a,b]$ such that $x(a)=x(b)$ is complete
+\end{exercise}
+\begin{proof}
+We will prove the statement using Theorem 1.4-7 which asserts that a subset of a complete space is itself complete if it is closed. To do that, we need to prove $Y^C$ is open. Let $f\in Y^C$ and choose $\epsilon$ such that $\absoluteValue{f(a)-f(b)}>\epsilon>0$. Now consider the open ball $B(f;\epsilon/2)$. For any $g\in B(f;\epsilon/2)$, we have that 
+\begin{align*}
+    &\absoluteValue{g(b)-g(a)+f(a)-f(a)+f(b)-f(b)} \\
+    >& \absoluteValue{f(b)-f(a)} -\absoluteValue{g(b)-f(b)} -\absoluteValue{g(a)-f(a)}\\
+    >& \epsilon-\absoluteValue{g(b)-f(b)}-\absoluteValue{f(a)-g(a)}>0
+\end{align*}
+ The last inequality being true because $\absoluteValue{g(b)-f(b)}-\absoluteValue{f(a)-g(a)}<\epsilon$. Thus, $g\notin Y$ so that $Y^C$ is open, $Y$ is closed, and by 1.4-7, complete.
+\end{proof}
+
+\begin{exercise}{10 (Discrete metric)}
+Show that a discrete metric space (cf. 1.1-8) is complete.
+\end{exercise}
+\begin{proof}
+Let $(x^n)$ be a Cauchy sequence in a discrete space. Then it must be the case that for $N\in\N$, $x^n$ is the same for all $n>N$, otherwise $\epsilon<1$ would be enough to break the Cauchy criterion. But since this element must be in the space itself, then we can choose it as the limit of the sequence, and hence the discrete space is complete.
+\end{proof}
+
+\begin{exercise}{11 (Space $s$)}
+Show that in the space $s$ (cf. 1.2-1) we have $x^n\to x$ if and only if $x^n_j\to x_j$ for all $j=1,2,\dots$, where $x^n=(x^n_1, x^n_2,\dots)$ and $x=(x_1, x_2,\dots)$.
+\end{exercise}
+\begin{proof}
+For reference, recall that $s$ is the set of all sequences of complex numbers and the following metric:
+\[
+d(x,y)=\sum_{j=1}^\infty \frac{1}{2^j}\frac{\absoluteValue{x_j-y_j}}{1+\absoluteValue{x_j-y_j}}.
+\]
+
+($\Rightarrow$) Suppose $x^n\to x$. Then for $1>\epsilon>0$, there exists an $N\in\N$, so that for all $n>N$, it holds that
+\[
+d(x^n,x)=\sum_{j=1}^\infty \frac{1}{2^j}\frac{\absoluteValue{x^n_j-x_j}}{1+\absoluteValue{x^n_j-x_j}}<\frac{\epsilon}{2^j}.
+\]
+However, this implies that for all $j$, we have
+\begin{align*}
+    &\frac{1}{2^j}\frac{\absoluteValue{x^n_j-x_j}}{1+\absoluteValue{x^n_j-x_j}} < \frac{\epsilon}{2^j} &&\iff\\
+    &\absoluteValue{x^n_j-x_j}-\epsilon\absoluteValue{x^n_j-x_j} < \epsilon &&\iff\\
+    &d_\C(x^n_j,x_j)=\absoluteValue{x^n_j-x_j}<\frac{\epsilon}{1-\epsilon},
+\end{align*}
+so that $\frac{\epsilon}{1-\epsilon}<\varepsilon$, gives us that $x^n_j\to x_j$.
+
+($\Leftarrow$) Suppose $x^n_j\to x_j$ for all $j$. Then after fixing $j$ and $\epsilon>0$, we can find $N_j\in\N$ so that whenever $n>N_j$ it holds that
+\[
+d_\C(x^n_j,x_j)=\absoluteValue{x^n_j-x_j}<\frac{\epsilon}{2^j}.
+\]
+We know that it is always the case that $\absoluteValue{x_j-y_j}/(1+\absoluteValue{x_j-y_j})<1$. Furthermore, the following infinite series evaluates to $\sum^\infty_{j=m}1/2^j=1/2^{m-1}$.
+
+Fix $\epsilon>0$. Choose $m$ so that $1/2^{m-1}<\epsilon/2$. Now let $N=\max[N_1,\dots,N_{m-1}]$ so that $d_\C(x^n_j,x_j)<\epsilon/2(m-1)$. Then
+\begin{align*}
+    d(x^n,x) =& \sum_{j=1}^\infty \frac{1}{2^j}\frac{\absoluteValue{x^n_j-x_j}}{1+\absoluteValue{x^n_j-x_j}}\\
+    =& \sum_{j=m}^\infty \frac{1}{2^j}\frac{\absoluteValue{x^n_j-x_j}}{1+\absoluteValue{x^n_j-x_j}}
+    + \sum_{j=1}^{m-1} \frac{1}{2^j}\frac{\absoluteValue{x^n_j-x_j}}{1+\absoluteValue{x^n_j-x_j}}\\
+    <& \sum_{j=m}^\infty \frac{1}{2^j}
+    + \sum_{j=1}^{m-1} \frac{1}{2^j}\frac{\absoluteValue{x^n_j-x_j}}{1+\absoluteValue{x^n_j-x_j}}\\
+    <& \epsilon/2 + \sum_{j=1}^{m-1} \frac{1}{2^j}\frac{\epsilon/2(m-1)}{1+\epsilon/2(m-1)}\\
+    <& \epsilon/2 + \frac{1}{2^j}\frac{\epsilon/2}{1+\epsilon/2(m-1)}<\epsilon.
+\end{align*}
+ as required.
+\end{proof}
+
+\begin{exercise}{12}
+Using exercise 11, show that the sequence space $s$ in 1.2-1 is complete.
+\end{exercise}
+\begin{proof}
+Exercise 11 is most of the work to prove the completeness of $s$. Take a Cauchy sequence in $s$. Because the sequence is Cauchy, then for $\epsilon>0$, we can find $N\in\N$ so that whenever $n,m>N$, it holds that
+\[
+d(x^n,x^m)=\sum_{j=1}^\infty \frac{1}{2^j}\frac{\absoluteValue{x^n_j-x^m_j}}{1+\absoluteValue{x^n_j-x^m_j}}<\epsilon,
+\]
+But this implies for all $j$, $\absoluteValue{x^n_j-x^m_j}<\epsilon$, so that $(x^n_j)$ is Cauchy. But because $(x^n_j)$ is a complex sequence it converges, $x^n_j\to x_j$, and by Exercise 11, $s$ is complete.
+\end{proof}
