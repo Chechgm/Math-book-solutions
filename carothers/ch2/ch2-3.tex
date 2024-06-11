@@ -1,7 +1,5 @@
 \subsection{Monotone functions}
 
-32
-33
 
 \begin{exercise}{32}
 Deduce from Theorem 2.17 that a monotone function $f:\R\to\R$ has points of continuity in every open interval.
@@ -16,9 +14,13 @@ Let $f:[a,b]\to\R$ be monotone. Given $n$ distinct points $a<x_1<x_2<\dots<x_n<b
 \begin{proof}
 Without loss of generality, suppose $f$ is monotonically increasing. We will prove $\sum_{i=1}^n\absoluteValue{f(x_i+)-f(x_i-)}\leq \absoluteValue{f(b)-f(a)}$ by induction.
 
-Base case: from monotonicity, we have that for any point $x_i$, $f(x_i+)-f(x_i-)\leq f(b)-f(a)$ (as otherwise $f$ wouldn't be monotonous or it wouldn't be the case that $a<x_i<b$).
+Base case: let $y\leq b$ and $x_i\in[a,y]$. From monotonicity, we have that for any point $x_i$, $f(x_i+)-f(x_i-)\leq f(y)-f(a)$ (as otherwise $f$ wouldn't be monotonous or it wouldn't be the case that $a<x_i<y$).
 
-Suppose the statement holds for $i=k$. Then $\sum_{i=1}^k\absoluteValue{f(x_i+)-f(x_i-)}\leq \absoluteValue{f(b)-f(a)}$. We will use the same argument as above. Let $y=(x_{k+1}-x_k)/2$, so that $f(x_k+)<f(y)<f(x_{k+1}-)$. By monotonicity we have that $f(x_{k+1}+)-f(x_{k+1}-)\leq f(b)-f(y)$. Now, since $\sum_{i=1}^k f(x_i+)-f(x_i-)\leq f(y)-f(a)$ (by the induction hypothesis, and the fact that $x_k<x_{k+1}$), we can add those together, giving us the desired result.
+Suppose the statement holds for $x_k$. Then $\sum_{i=1}^k\absoluteValue{f(x_i+)-f(x_i-)}\leq \absoluteValue{f(y)-f(a)}$. We will use the same argument as above, but this time with $b$, the upper limit of the interval. By monotonicity we have that $f(x_{k+1}+)-f(x_{k+1}-)\leq f(b)-f(y)$. Now, since $\sum_{i=1}^k f(x_i+)-f(x_i-)\leq f(y)-f(a)$ (by the induction hypothesis, and the fact that $x_k<x_{k+1}$), we can add those together, giving us the desired result.
+
+% Base case: from monotonicity, we have that for any point $x_i$, $f(x_i+)-f(x_i-)\leq f(b)-f(a)$ (as otherwise $f$ wouldn't be monotonous or it wouldn't be the case that $a<x_i<b$).
+
+% Suppose the statement holds for $x_k$. Then $\sum_{i=1}^k\absoluteValue{f(x_i+)-f(x_i-)}\leq \absoluteValue{f(b)-f(a)}$. We will use the same argument as above. Let $y=(x_{k+1}+x_k)/2$, so that $f(x_k+)<f(y)<f(x_{k+1}-)$. By monotonicity we have that $f(x_{k+1}+)-f(x_{k+1}-)\leq f(b)-f(y)$. Now, since $\sum_{i=1}^k f(x_i+)-f(x_i-)\leq f(y)-f(a)$ (by the induction hypothesis, and the fact that $x_k<x_{k+1}$), we can add those together, giving us the desired result.
 
 To see that $f$ has at most countably many (jump) discontinuities, let $D$ the set of all discontinuities, and define
 \[

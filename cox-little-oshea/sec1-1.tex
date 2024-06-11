@@ -10,6 +10,33 @@ Let $\mathbb{F}_2 = \{0,1\}$, and define addition and multiplication by $0+0 = 1
    The additive inverse of $0$ is $0$ since $0+0=0$, and the additive inverse of $1$ is $1$ since $1+1=1$. The multiplicative inverse of $1$ is $1$ since $1\cdot 1 = 1$.
 \end{proof}
 
+\begin{exercise}{2}
+Let $\mathbb{F}_2$ be the field from Exercise $1$.
+\begin{enumerate}
+    \item Consider the polynomial $g(x,y) = x^2 y + y^2 x\in \mathbb{F}_2[x,y]$. Show that $g(x,y) = 0$ for every $(x,y)\in \mathbb{F}_2^2$, and explain why this does not contradiction Proposition $5$.
+    \item Find a nonzero polynomial in $\mathbb{F}_2[x,y,z]$ which vanishes at each point of $\mathbb{F}_2^3$. Try to find one involving all three variables.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+\begin{enumerate}
+    \item We have the following situations:
+    \begin{itemize}
+        \item For $(x,y) = (0,0)$,
+        $$x^2 y + y^2 x = 0^2\cdot 0 + 0^2 \cdot 0 = 0\cdot 0 + 0\cdot 0 = 0 + 0 = 0.$$
+        \item For $(x,y) = (1,0)$,
+        $$x^2 y + y^2 x = 1^2\cdot 0 + 0^2 \cdot 1 = 1\cdot 0 + 0\cdot 1 = 0 + 0 = 0.$$
+        \item For $(x,y) = (0,1)$,
+        $$x^2 y + y^2 x = 0^2\cdot 1 + 1^2 \cdot 0 = 0\cdot 1 + 1\cdot 0 = 0 + 0 = 0.$$
+        \item For $(x,y) = (1,1)$,
+        $$x^2 y + y^2 x = 1^2\cdot 1 + 1^2 \cdot 1 = 1\cdot 1 + 1\cdot 1 = 1 + 1 = 0.$$
+    \end{itemize}
+    This does cont contradict Proposition $5$, since that assumes an infinite field which $\mathbb{F}_2$ isn't.
+    \item Try $g(x,y,z) = (x-y)(x-z)(y-z)$. Take $(x,y,z)\in \mathbb{F}_2^3$ and since $x,y,z\in \{0,1\}$, it must be the case that $x=y$ or $y=z$ or $x=z$ by the pigeonhole principle. In each of these cases, it clearly holds that $g(x,y,z) = 0$.
+\end{enumerate}    
+\end{proof}
+
+
+
 \begin{exercise}{3}
 Let $p$ be a prime number. The ring of integers modulo $p$ is a field with $p$ elements, which we will denote $\F_p$.
 \begin{enumerate}
