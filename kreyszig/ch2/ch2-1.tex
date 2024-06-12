@@ -1,9 +1,5 @@
 \subsection{Vector space}
 
-4 A bit of a recap of subspaces
-5 Showing C[a,b] is an infinite dimensional space, which is pretty crucial
-6 Standard fact about a basis
-7 Links between complex and real vector spaces
 
 \begin{exercise}{4}
 Which of the following subset of $\R^3$ constitute a subspace of $\R^3$? [Here, $x=(x_1,x_2,x_3)$].
@@ -16,10 +12,12 @@ Which of the following subset of $\R^3$ constitute a subspace of $\R^3$? [Here, 
 \end{exercise}
 \begin{proof}
 \begin{enumerate}
-    \item 
-    \item
-    \item 
-    \item
+    \item Let $x$ and $y$ be elements of the subspace. Then $x_1=x_2$, $y_1=y_2$ and $x_3=0=y_3$, let $a,b\in\R$. Consider $ax+by=(ax_1+by_1,ax_2+by_2,ax_3+by_3)$, since $x_3=0=y_3$, then $ax_3+by_3=0$, furthermore, since $x_1=x_2$, then $ax_1=ax_2$ and similarly $by_1=by_2$, adding the last two equalities together gives us that $ax_1+by_1=ax_2+by_2$. Hence, $ax+by$ is in the subspace, as required.
+    \item This is not a subspace. Consider $x$ and $y$ in this subspace. We have that $x+y=(x_1+y_1,x_2+y_2,x_3+y_3)$ with $x_1=x_2+1$ and $y_1=y_2+1$, however, $x_1+y_1=x_2+y_2+2$, so that $x+y$ is not on the subspace anymore.
+    \item This is not a subspace. This is easy to see by multiplying any $x$ in the subspace by $-1\in\R$, giving us all elements of $-1x$ either 0 or negative.
+    \item If $k\neq 0$, this is not a subspace. We can see this by taking any vector in the subspace and multiplying it by a scalar different from 1. We get $ax=(ax_1,ax_2,ax_3)$, since $x_1-x_2+x_3=k$, then $a(x_1-x_2+x_3)=ak$, so that $x$ is not in the subspace anymore.
+
+    If $k=0$ then let $x$ and $y$ be in the subspace, and $a$ and $b$ be scalars. We have $ax+by=(ax_1+by_1,ax_2+by_2,ax_3+by_3)$. We have that $x_1-x_2+x_3=0$ and $y_1-y_3+y_3=0$, so that $ax_1-ax_2+ax_3=0$ and $by_1-by_3+by_3=0$ adding these equations together gives us that $ax+by$ is in the subspace, as required.
 \end{enumerate}
 \end{proof}
 
@@ -27,19 +25,23 @@ Which of the following subset of $\R^3$ constitute a subspace of $\R^3$? [Here, 
 Show that $\set{x_1,\dots,x_n}$, where $x_j(t)=t^j$, is a linearly independent set in the space $C[a,b]$.
 \end{exercise}
 \begin{proof}
-fill
+By the fundamental Theorem of algebra, we know that the polynomial $x(t)=a_1t+\dots+a_nt^n$ has at most $n$ roots, unless all $a_i=0$. So that, in the former case, if we choose $n+1$ different points in $c_i\in[a,b]$, then there is at least one for which $x(c_i)\neq 0$. Thus, all $a_i$ must be zero for $x(t)$ to be the 0 function.
 \end{proof}
 
 \begin{exercise}{6}
 Show that in an $n$-dimensional vector space $X$, the representation of any $x$ as a linear combination of given basis vectors $e_1,\dots,e_n$ is unique.
 \end{exercise}
 \begin{proof}
-fill
+Suppose $x$ is not represented uniquely as a linear combination of $e_1\dots,e_n$, so that $a_1e_1+\dots+a_ne_n=x=b_1e_1+\dots+b_ne_n$. Thus $0=(a_1-b_1)e_1+\dots+(a_n-b_n)e_n$. Because $e_1,\dots,e_n$ is a basis of $X$, then it must be linearly independent, that is $a_i-b_i=0$ or $a_i=b_i$ for all $i$, so that the representations are actually not different from each other.
 \end{proof}
 
 \begin{exercise}{7}
 Let $\set{e_1,\dots,e_n}$ be a basis for a complex vector space $X$. Find a basis for $X$ regarded as a real vector space. What is the dimension of $X$ in either case?
 \end{exercise}
 \begin{proof}
-fill
+Since $e_1,\dots,e_n$ is a basis for a complex vector space, then for any $x\in X$ we can write 
+\[
+x = (a_1+ib_1)e_1+\dots+(a_n+ib_n)e_n = a_1e_1+ib_1e_1+\dots+a_ne_n+ib_ne_n.
+\]
+Thus a basis for $X$ regarded as a real vector space is $e_1,ie_1,\dots,e_n,ie_n$. The dimension of $X$ when it is real, is $2n$ whereas the dimension of $X$ when regarded as complex is $n$.
 \end{proof}
