@@ -15,6 +15,8 @@
 \usepackage{algorithm}
 \usepackage{algorithmic}
 
+\usepackage{caption}
+\usepackage{subcaption}
 \usepackage{graphicx} % To add images
 \usepackage{booktabs} % Beautiful tables
 

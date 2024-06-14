@@ -23,98 +23,104 @@ Limits in Metric Spaces
 45
 46*
 \begin{exercise}{29}
-fill
+Prove that $A$ is bounded if and only if $\text{diam}(A)<\infty$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{30}
-fill
+If $A\subseteq B$, show that $\text{diam}(A)\leq\text{diam}(B)$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{32}
-fill
+In a normed vector space $(V,\norm{c\dot})$ show that $B_r(x)=x+B_r(0)=\set{x+y:\norm{y}<r}$ and that $B_r(0)=r(B_1(0)=\set{rx:\norm{x}<1}$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{33}
-fill
+In a metric space $M$ with metric $d$ show that limits are unique. [Hint: $d(x,y)\leq d(x,x_n)+d(x_n,y)$].
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{34}
-fill
+If $x_n\to x$ in $(M,d)$, show that $d(x_n,y)\to d(x,y)$ for any $y\in M$. More generally, if $x_n\to x$ and $y_n\to y$, show that $d(x_n,y_n)\to d(x,y)$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{35}
-fill
+In a metric space $M$ with metric $d$ show that if $x_n\to x$, then $x_{n_k}\to x$ for any subsequence $(x_{n_k})$ of $(x_n)$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{36}
-fill
+In a metric space $M$ with metric $d$ show that a convergent sequence is Cauchy, and a Cauchy sequence is bounded (that is, the set $\set{x_n:n\geq 1}$ is bounded).
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{37}
-fill
+In a metric space $M$ with metric $d$ show that a Cauchy sequence with a convergent subsequence converges.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{39}
-fill
+In a metric space $M$ with metric $d$ show that if every subsequence of $(x_n)$ has a further subsequence that converges to $x$, then $(x_n)$ converges to $x$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{41}
-fill
+Given $x,y\in l_2$, recall that $\brackets{x,y}=\sum_{i=1}^\infty x_iy_i$. Show that if $x^{(k)}\to x$ and $y^{(k)}\to y$ in $l_2$, then $\brackets{x^{(k)},y^{(k)}}\to\brackets{x,y}$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{42}
-fill
+Two metric $d$ and $\rho$ on a set $M$ are said to be equivalent if they generate the same convergent sequences; that is, $d(x_n,x)\to 0$ if and only if $\rho(x_n,x)\to 0$. If $d$ is any metric on $M$, show that the metrics $\rho,\sigima$ and $\tau$, defined on exercise 6, are all equivalent to $d$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{43}
-fill
+Show that the usual metric on $\N$ is equivalent to the discrete metric. Show that any metric on a finite set is equivalent to the discrete metric.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{44}
-fill
+Show that the metrics induced by $\norm{\cdot}_1,\norm{\cdot}_2$, and $\norm{\cdot}_\infty$ on $\R^n$ are all equivalent. [Hint: See exercise 18].
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{46}
-fill
+Given two metric spaces $(M,d)$ and $(N,\rho)$, we can define a metric on the product $M\times N$ in a variety of ways. Our only requirement is that a sequence of pairs $(a_n,x_n)$ in $M\times N$ should converge precisely when both coordinate sequences $(a_n)$ and $(x_n)$ converge (in $(M,d)$ and $(N,\rho)$, respectively). Show that each of the following define metrics on $M\times N$ that enjoy this property and that all three are equivalent:
+\begin{align*}
+    d_1((a,x),(b,y)) =& d(a,b)+\rho(x,y)\\
+    d_2((a,x),(b,y)) =& (d(a,b)^2+\rho(x,y)^2)^{1/2}\\
+    d_\infty((a,x),(b,y)) =& \max\set{d(a,b),\rho(x,y)}.
+\end{align*}
+Henceforth, any implicit reference to ``the'' metric on $M\times N$, sometimes called the product metric, will mean one of $d_1,d_2$, or $d_\infty$. Any one of them will serve equally well; use whichever looks most convenient for the argument at hand.
 \end{exercise}
 \begin{proof}
 fill

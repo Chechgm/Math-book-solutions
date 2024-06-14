@@ -15,6 +15,7 @@ Let $\mathbb{F}_2$ be the field from Exercise $1$.
 \begin{enumerate}
     \item Consider the polynomial $g(x,y) = x^2 y + y^2 x\in \mathbb{F}_2[x,y]$. Show that $g(x,y) = 0$ for every $(x,y)\in \mathbb{F}_2^2$, and explain why this does not contradiction Proposition $5$.
     \item Find a nonzero polynomial in $\mathbb{F}_2[x,y,z]$ which vanishes at each point of $\mathbb{F}_2^3$. Try to find one involving all three variables.
+    \item Find a nonzero polynomial in $\mathbb{F}_2[x_1,...,x_n]$ which vanishes at every point in $\mathbb{F}_2^n$. Can you find one in which all of $x_1$,...,$x_n$ appear.
 \end{enumerate}
 \end{exercise}
 \begin{proof}
@@ -32,6 +33,8 @@ Let $\mathbb{F}_2$ be the field from Exercise $1$.
     \end{itemize}
     This does cont contradict Proposition $5$, since that assumes an infinite field which $\mathbb{F}_2$ isn't.
     \item Try $g(x,y,z) = (x-y)(x-z)(y-z)$. Take $(x,y,z)\in \mathbb{F}_2^3$ and since $x,y,z\in \{0,1\}$, it must be the case that $x=y$ or $y=z$ or $x=z$ by the pigeonhole principle. In each of these cases, it clearly holds that $g(x,y,z) = 0$.
+    \item Analogously with (b), we can define
+    $$g(x_1,...,x_n) = \prod_{1\leq i<j\leq n} (x_i - x_j).$$
 \end{enumerate}    
 \end{proof}
 
@@ -60,4 +63,21 @@ Let $F$ be a finite field with $q$ elements. Adapt the argument of exercise 3 to
 \end{exercise}
 \begin{proof}
  Since in exercise 3 we did not use the primality of the order of $\F_p$, then the result of this questions follows directly from it.
+\end{proof}
+
+\begin{exercise}{5}
+In the proof of Proposition $5$, we took $f\in k[x_1,...,x_n]$ and wrote it as a polynomial in $x_n$ with coefficients in $k[x_1,...,x_{n-1}]$. To see what this looks like in a specific case, consider the polynomial
+$$f(x,y,z) = x^5 y^2 z - x^4 y^3 + y^5 + x^2 z - y^3 z + xy + 2x - 5z + 3.$$
+\begin{enumerate}
+    \item Write $f$ as a polynomial in $x$ with coefficients in $k[y,z]$.
+    \item Write $f$ as a polynomial in $y$ with coefficients in $k[x,z]$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item We have
+        $$f(x,y,z) = (y^2 z)x^5 + (-y^3)x^4 + z x^2 + (y + 2)x + (y^5 - y^3 z - 5z + 3).$$
+        \item We have
+        $$f(x,y,z) = y^5 + (-x^4 - z)y^3 + (x^5 z)y^2 + xy + (x^2 z + 2x - 5z + 3).$$
+    \end{enumerate}
 \end{proof}
