@@ -1,88 +1,101 @@
 \subsection{Limits in metric spaces}
 
-Limits in Metric Spaces
-27
-28
-29*
-30*
-32*
-
-33*
-34*
-35*
-36*
-37*
 38
-39*
 
 40
 41*
-42*
 43*
 44*
 45
 46*
+
+\begin{exercise}{27}
+Show that $\text{diam}(B_r(x))\leq 2r$, and give an example where strict inequality holds.
+\end{exercise}
+\begin{proof}
+Let $y,z\in B_r(x)$ be arbitrary. Then $d(z,y)\leq d(z,x)+d(x,y)<2r$, so that $\text{diam}(B_r(x))\leq 2r$. 
+
+Example: let $X$ be a discrete metric space. Then $B_1(x)=\set{x}$. In this case, $2\neq 0=\sup\set{d(a,b):a,b\in B_1(x)}$.
+\end{proof} 
+
 \begin{exercise}{29}
 Prove that $A$ is bounded if and only if $\text{diam}(A)<\infty$.
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$) Suppose $A$ is bounded. Thus, there exists $a\in M$ and $r>0$ so that $A\subseteq B_r(a)$. Let $b,c\in A$ be arbitrary. We have $d(b,c)\leq d(b,a)+d(a,c)\leq 2r$. Thus, $\text{diam}(A)\leq 2r<\infty$, as required.
+
+($\Leftarrow$) Suppose $\text{diam}(A)<\infty$. Then there exists a real, say $r$, so that $\text{diam}(A) =\sup\set{d(a,b):a,b\in A} =r$. That is, for all $a,b\in A$, we have $d(a,b)<r$, hence we can find a point in $a\in A\subseteq M$ so that $A\subseteq B_r(a)=\set{y\in M:d(a,y)<r}$. In words, $A$ is bounded.
 \end{proof} 
 
 \begin{exercise}{30}
 If $A\subseteq B$, show that $\text{diam}(A)\leq\text{diam}(B)$.
 \end{exercise}
 \begin{proof}
-fill
+Notice that $\text{diam}(A) =\sup\set{d(a,b):a,b\in A}$. However, since $A\subseteq B$, then we have $\set{d(a,b):a,b\in A} \subseteq\set{d(a,b):a,b\in B}$. By exercise 1.2.b we have that $\sup\set{d(a,b):a,b\in A} \leq\sup\set{d(a,b):a,b\in B}$, that is $\text{diam}(A) \leq\text{diam}(B)$.
 \end{proof} 
 
 \begin{exercise}{32}
-In a normed vector space $(V,\norm{c\dot})$ show that $B_r(x)=x+B_r(0)=\set{x+y:\norm{y}<r}$ and that $B_r(0)=r(B_1(0)=\set{rx:\norm{x}<1}$.
+In a normed vector space $(V,\norm{\cdot})$ show that $B_r(x)=x+B_r(0)=\set{x+y:\norm{y}<r}$ and that $B_r(0)=rB_1(0)=\set{rx:\norm{x}<1}$.
 \end{exercise}
 \begin{proof}
-fill
+Take any element of $x+B_r(0)=\set{y+x:\norm{y}<r}$, say $y+x$, and consider its distance to $x$: $\norm{y+x-x}=\norm{y}<r$, so that $y\in B_r(x)$, and $x+B_r(0)\subseteq B_r(x)$.
+
+Now take any element of $B_r(x)$, say $y$. Consider the distance of $y+x$ to $x$: $\norm{y+x-x}<r$, so that $y\in x+B_r(0)$, and $B_r(x)\subseteq x+B_r(0)$. Putting this and the above together, we have that $B_r(x)=x+B_r(0)$.
+
+We have $B_1(0)=\set{x:\norm{x}<1}$, multiplying each element of $B_1(0)$ by $r$ gives us $rB_1(0)=\set{rx:\norm{x}<1}$
 \end{proof} 
 
 \begin{exercise}{33}
 In a metric space $M$ with metric $d$ show that limits are unique. [Hint: $d(x,y)\leq d(x,x_n)+d(x_n,y)$].
 \end{exercise}
 \begin{proof}
-fill
+Suppose $(x_n)\to x$ and $(x_n)\to y$. Then for a fixed $\epsilon>0$, there exist an $N\in\N$ so that for all $n>N$, it holds that $d(x_n,x)<\epsilon/2$. Likewise, there exists an $N'\in\N$ so that for all $n>N'$, it holds that $d(x_n,y)<\epsilon/2$. Let $n>\max\set{N,N'}$, we then have $d(x,y)\leq d(x,x_n)+d(x_n,y)\leq \epsilon$, so that $x=y$, as required.
 \end{proof} 
 
 \begin{exercise}{34}
 If $x_n\to x$ in $(M,d)$, show that $d(x_n,y)\to d(x,y)$ for any $y\in M$. More generally, if $x_n\to x$ and $y_n\to y$, show that $d(x_n,y_n)\to d(x,y)$.
 \end{exercise}
 \begin{proof}
-fill
+From the hypotheses, we have that for all $\epsilon>0$, there exists an $N\in\N$ so that $d(x_n,x)<\epsilon/2$ whenever $n>N$. Likewise, there exists an $N'\in\N$ so that $d(y_n,y)<\epsilon/2$ whenever $n>N'$. Let $n>\max\set{N,N'}$, we then have 
+\[
+d(x_n,y_n) 
+\leq d(x_n,x)+d(x,y_n) 
+\leq d(x_n,x)+d(x,y)+d(y,y_n)
+<\epsilon+d(x,y).
+\]
+Subtracting $d(x,y)$ on both sides of the inequality gives us that $d(x_n,y_n)\to d(x,y)$, as required.
 \end{proof} 
 
 \begin{exercise}{35}
 In a metric space $M$ with metric $d$ show that if $x_n\to x$, then $x_{n_k}\to x$ for any subsequence $(x_{n_k})$ of $(x_n)$.
 \end{exercise}
 \begin{proof}
-fill
+Suppose $x_n\to x$. Then for all $\epsilon>0$, there exists an $N\in\N$ so that for all $n>N$, it holds that $d(x_n,x)<\epsilon$. 
+
+Let $(x_{n_k})$ be an arbitrary subsequence of $(x_n)$. Since $n_k$ is increasing, we can choose a $K\in\N$ so that for all $k>K$ it holds that $n_k>N$. Thus, $d(x_{n_k},x)<\epsilon$ because, as argued above, the condition holds for all $n>N$.
 \end{proof} 
 
 \begin{exercise}{36}
 In a metric space $M$ with metric $d$ show that a convergent sequence is Cauchy, and a Cauchy sequence is bounded (that is, the set $\set{x_n:n\geq 1}$ is bounded).
 \end{exercise}
 \begin{proof}
-fill
+(Convergent implies Cauchy) Let $(x_n)$ be a convergent sequence. Then for all $\epsilon>0$ there exists an $N\in\N$ so that for all $n>N$ it holds that $d(x_n,x)<\epsilon$. Let $n,m>N$. We have that $d(x_n,x_m)\leq d(x_n,x)+d(x_m,x)<\epsilon$, so that $(x_n)$ is Cauchy, as desired.
+
+(Cauchy is bounded) Let $(x_n)$ be a Cauchy sequence. Then for all $\epsilon>0$, there exists an $N\in\N$ so that for all $n,m>N$, it holds that $d(x_n,x_m)<\epsilon$. Let $\epsilon'=\max\set{d(x_1,x_N),d(x_2,x_N),\dots,d(x_{N-1},x_N)}$, and let $r=\epsilon+2\epsilon'$. We have that $(x_n)\subseteq B_r(x_n)$. To see that, let $x_i,x_j\in B_r(x_N)$. We have three cases: (i) if $i,j>N$, then $d(x_i,x_j)<\epsilon<r$ by the Cauchy criterion, (ii) if $i,j<N$, then $d(x_i,x_j)\leq d(x_i,x_N)+d(x_N,x_j)<2\epsilon' <r$ by the definition of $\epsilon'$, and (iii) if $j<N<i$, we have that $d(x_i,x_j)\leq d(x_i,x_N)+d(x_j,x_N)<\epsilon+\epsilon'<r$.
 \end{proof} 
 
 \begin{exercise}{37}
 In a metric space $M$ with metric $d$ show that a Cauchy sequence with a convergent subsequence converges.
 \end{exercise}
 \begin{proof}
-fill
+Let $(x_n)$ be Cauchy and $x_{n_k}\to x$. Thus, for all $\epsilon>0$, there exists a $K\in\N$ so that for all $k>K$, it holds that $d(x_{n_k},x)<\epsilon/2$. Furthermore, there exists an $M\in\N$ so that for all $n,m>M$, it holds that $d(x_n,x_m)<\epsilon/2$. Now let $N=\max\set{n_K,M}$. It is then the case that $d(x_n,x) \leq d(x_n, x_{n_K})+d(x_{n_K},x) <\epsilon$, so that $(x_n)\to x$, as desired.
 \end{proof} 
 
 \begin{exercise}{39}
 In a metric space $M$ with metric $d$ show that if every subsequence of $(x_n)$ has a further subsequence that converges to $x$, then $(x_n)$ converges to $x$.
 \end{exercise}
 \begin{proof}
-fill
+Suppose, for the sake of contradiction, that $(x_n)$ does not converge to $x$, but all subsequences of $(x_n)$ have a further subsequence that converge to $x$. The fact that $(x_n)$ does not converge to $x$ means that there exists an $\epsilon>0$ so that for all $N\in\N$, there exists an $n>N$ so that $d(x_n,x)\geq\epsilon$. We now construct a subsequence of $(x_n)$ with no further subsequence that converges to $x$. Let $x_{n_j}$ be the $j$-th element of $(x_n)$ with $d(x_{n_j},x)\geq\epsilon$. There are infinitely many such elements, given that we have at least one for all $N\in\N$. We then have that for all $k\in\N$ it holds that $d(x_{n_k},x)\geq\epsilon$ so that no subsequence of $(x_{n_k})$ converges to $x$, giving us a contradiction.
 \end{proof} 
 
 \begin{exercise}{41}
@@ -93,10 +106,16 @@ fill
 \end{proof} 
 
 \begin{exercise}{42}
-Two metric $d$ and $\rho$ on a set $M$ are said to be equivalent if they generate the same convergent sequences; that is, $d(x_n,x)\to 0$ if and only if $\rho(x_n,x)\to 0$. If $d$ is any metric on $M$, show that the metrics $\rho,\sigima$ and $\tau$, defined on exercise 6, are all equivalent to $d$.
+Two metric $d$ and $\rho$ on a set $M$ are said to be equivalent if they generate the same convergent sequences; that is, $d(x_n,x)\to 0$ if and only if $\rho(x_n,x)\to 0$. If $d$ is any metric on $M$, show that the metrics $\rho,\sigma$ and $\tau$, defined on exercise 6, are all equivalent to $d$.
 \end{exercise}
 \begin{proof}
-fill
+(Equivalence between $d$ and $\tau$) Notice that if a sequence $x_n\to x$ under $d$ or $\tau$, then $d(x_n,x)<1$ for $n>N$ for some $N\in\N$, but then in that case $d=\tau$, so that they are equivalent.
+
+(Equivalence between $d$ and $\rho$) Let $x_n\to x$ under $d$, then for all $\epsilon>0$, there exists an $N\in\N$ so that for all $n>N$, it holds that $\tau(x_n,x)\leq \sqrt{d(x_n,x)}\leq d(x_n,x)<\epsilon$, so that $x_n\to x$ under $\tau$. Now let $x_n\to x$ under $\tau$, then for all $\epsilon$ there exists an $N\in\N$ so that $\tau(x_n,x) =\sqrt{d(x_n,x)} <\sqrt{\epsilon}$ whenever $n>N$. Squaring both sides of the inequality, shows us that $d(x_n,x)<\epsilon$ so that $x_n\to x$ under $d$.
+
+(Equivalence between $d$ and $\sigma$) Let $x_n\to x$ under $d$. Then for all $\epsilon>0$, there exists an $N\in\N$ so that for all $n>N$ it holds that $\sigma(x_n,x) =d(x_n,x)/(1+d(x_n,x)) \leq d(x_n,x) <\epsilon$, so that $x_n\to x$ under $\sigma$. Now suppose $x_n\to x$ under $\sigma$. Then for all $\epsilon>0$, there exists an $N\in\N$ so that whenever $n>N$ it holds that $\sigma(x_n,x) =d(x_n,x)/(1+d(x_n,x)) <\epsilon/(1+\epsilon)$. That is, $d(x_n,x)(1+\epsilon)<\epsilon(1+d(x_n,x))$ which is the same as $d(x_n,x)<\epsilon$, so that $x_n\to x$ under $d$. 
+
+Since the definition of equivalence of metrics is an equivalence relation, then all the metrics are equivalent to each other, and to $d$.
 \end{proof} 
 
 \begin{exercise}{43}
@@ -110,7 +129,7 @@ fill
 Show that the metrics induced by $\norm{\cdot}_1,\norm{\cdot}_2$, and $\norm{\cdot}_\infty$ on $\R^n$ are all equivalent. [Hint: See exercise 18].
 \end{exercise}
 \begin{proof}
-fill
+%Prove that if the norms are equivalent in Kreyszig sense then the convergent sequences are the same and then use 18 because then we proved they are equivalent in kreyszig sense.
 \end{proof} 
 
 \begin{exercise}{46}
@@ -126,12 +145,7 @@ Henceforth, any implicit reference to ``the'' metric on $M\times N$, sometimes c
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
+
 
 \begin{exercise}{x}
 fill

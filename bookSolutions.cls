@@ -51,11 +51,14 @@
 % Calligraphic and bold
 \newcommand{\AAA}{\mathcal{A}}
 \newcommand{\CCC}{\mathcal{C}}
+\newcommand{\DDD}{\mathcal{D}}
 \newcommand{\FFF}{\mathcal{F}}
 \newcommand{\III}{\mathcal{I}}
 \newcommand{\LLL}{\mathcal{L}}
 \newcommand{\MMM}{\mathcal{M}}
+\newcommand{\NNN}{\mathcal{N}}
 \newcommand{\PPP}{\mathcal{P}}
+\newcommand{\RRR}{\mathcal{R}}
 \newcommand{\SSS}{\mathcal{S}}
 
 \newcommand{\bx}{\mathbf{x}}

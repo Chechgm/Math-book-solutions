@@ -1,90 +1,148 @@
 \subsection{Further properties of normed spaces}
 
-1
-2 
-3 Some important subspaces of $l^\infty$
-4
-5 So similar to R
-6 The closure respects the algebraic operations, which is something that sounds like we want to have
-7
-8
-9 The notion of absolute convergent and conditionally convergent is rather important. This shows that Banach spaces are the only one where absolute => conditional, which is a very useful property to have
-10 Not that easy to prove
-11 What fails here for $l^\infty$?
 
 \begin{exercise}{1}
 Show that $c\subseteq l^\infty$ is a vector subspace of $l^\infty$ (cf. 1.5-3) and so is $c_0$, the space of all sequences of scalars converging to zero.
 \end{exercise}
 \begin{proof}
-fill
+$c$: Recall that $c$ consists of all convergent sequences. Let $(x^n),(y^n)\in c$ with $x^n\to x$ and $y^n\to y$. Moreover, let $a,b\in\C$. We have $ax^n+by^n\to ax+by$ by the algebraic limit theorem (see, for example, Theorem 2.3.3. of Abbott's understanding analysis), so that $ax^n+by^n\in c$ and hence $c$ is a subspace.
+
+$c_0$: This is a Corollary of the above proof since, if $(x^n),(y^n)\in c_0$, then $x^n\to 0$, $y^n\to 0$ and $ax^n+by^n\to 0$, so that $ax^n+by^n\in c_0$.
 \end{proof}
 
 \begin{exercise}{2}
 Show that $c_0$ in exercise 1 is a closed subspace of $l^\infty$, so that $c_0$ is complete by 1.5-2 and 1.4-7.
 \end{exercise}
 \begin{proof}
-fill
+To prove $c_0$ is closed, we will prove it contains all its limit points. Let $(x^n_m)$ be a convergent sequence where, for each $n$, $x^n\in c_0$, so that $x^n_m\to 0$ (whenever $m\to\infty$), and $x^n_m\to x_m$ (whenever $n\to\infty$). We want to prove $(x_m)\in c_0$.
+
+ We have that for all $\epsilon>0$, there exists an $N\in\N$ so that for all $n>N$, it holds that $d(x^n, x)=\sup_{j=1,\dots}\absoluteValue{x^n_j-x_j}<\epsilon/2$. That is, for all $m$, the difference is less than $\epsilon/2$. Fix this $N$. For the sequence $x^N_m$, for all $\epsilon>0$, there exists $M\in\N$, so that for all $m>M$, it holds that $d(x^N_m, 0)=\absoluteValue{x^N_m}<\epsilon/2$. We then have that $d(x_m,0)\leq d(x_m,x^N_m)+d(x^N_m,0)= \absoluteValue{x_m-x^N_m}+\absoluteValue{x^N_m}=\epsilon$, for $m>M$. Hence, $x_m\to 0$, and $x_m\in c_0$, so that $c_0$ is closed, and by $1.5-2$ and $1.4-7$, complete.
 \end{proof}
 
 \begin{exercise}{3}
 In $l^\infty$, let $Y$ be the subset of all sequences with only finitely many nonzero terms. Show that $Y$ is a subspace of $l^\infty$ but not a closed subspace.
 \end{exercise}
 \begin{proof}
-fill
+Subspace: let $x,y\in Y$, and $a,b$ be scalars. Then both $x$ and $y$ have finitely many nonzero terms, certainly $ax$ and $by$ have finitely many nonzero terms, that is, there exist $N$ and $M$ so that for all $n>N$ and $m>M$ the terms $ax_n$ and $by_m$ are all 0. To see that $ax+by$ has finitely many nonzero terms, notice that for $k>\max[N,M]$ it must be the case that $ax_k+by_k=0$ so that $ax+by\in Y$.
+
+Not closed: in exercise 3 of section 1.5 we defined the sequence (of sequences) given by $x^1=(1,0,0\dots), x^2=(1,1/2,0,\dots), x^3=(1,1/2,1/3,0,\dots),\dots$ and proved that $x^n\to x$ with all the elements of $x$ nonzero. Thus $Y$ is not closed and as a result, not complete.
 \end{proof}
 
 \begin{exercise}{4 (Continuity of vector space operations)}
 Show that in a normed space $X$, vector addition and multiplication by scalars are continuous operations with respect to the norm; that is, the mappings defined by $(x,y)\to x+y$ and $(\alpha, x)\to \alpha x$ are continuous.
 \end{exercise}
 \begin{proof}
-fill
+Addition: Let $x,y,x',y'\in X$. Fix $\epsilon>0$ and let $\delta=\epsilon/2$. We have that if $\norm{(x,y)-(x',y')}_\infty =\max[\norm{x-x'}, \norm{y-y'}] <\delta=\epsilon/2$, then 
+\begin{align*}
+\norm{f(x,y)-f(x',y)} 
+=&\norm{x+y-(x'+y')}\\
+\leq& \norm{x-x'}+\norm{y-y'}\\
+\leq& 2\max[\norm{x-x'}, \norm{y-y'}] =\epsilon,
+\end{align*}
+so that addition is continuous.
+
+Scalar multiplication: Let $x,x'\in X$ and $\alpha,\alpha'$ be scalars. Fix $\epsilon>0$ and choose $\delta<\min[1,\epsilon/(1+\absoluteValue{\alpha}+\norm{x})]\leq 1$. We then have that if $\norm{(\alpha, x)-(\alpha',x')}_\infty =\max[\absoluteValue{\alpha-\alpha'}+\norm{x-x'}]<\delta$. Then 
+\begin{align*}
+    \norm{f(\alpha,x)-f(\alpha',x')} 
+    =& \norm{\alpha x-\alpha'x'}\\
+    =& \norm{\alpha x-\alpha' x+\alpha' x-\alpha'x'}\\
+    =& \norm{\alpha' (x-x')+(\alpha-\alpha')x}\\
+    \leq& \norm{\alpha' (x-x')}+\norm{(\alpha-\alpha')x}\\
+    =& \absoluteValue{\alpha'}\norm{x-x'}+\absoluteValue{\alpha-\alpha'}\norm{x}\\
+    \leq& \absoluteValue{\alpha'}\max[\norm{x-x'}, \absoluteValue{\alpha-\alpha'}]+\norm{x}\max[\norm{x-x'}, \absoluteValue{\alpha-\alpha'}]\\
+    =& (\absoluteValue{\alpha'}+\norm{x})\max[\norm{x-x'}, \absoluteValue{\alpha-\alpha'}]\\
+    \leq& (\absoluteValue{\alpha'-\alpha}+\absoluteValue{\alpha}+\norm{x})\max[\norm{x-x'}, \absoluteValue{\alpha-\alpha'}]<\epsilon.
+\end{align*}
+Where the last inequality follows from exercise 3, Section 2.2: $\norm{\alpha'} \leq\norm{\alpha-\alpha'}+\norm{\alpha}$, and the condition that $\delta\leq 1$, so that $\absoluteValue{\alpha-\alpha'}\leq 1$.
 \end{proof}
 
 \begin{exercise}{5}
 Show that $x^n\to x$ and $y^n\to y$ implies $x^n+y^n\to x+y$. Show that $\alpha^n\to\alpha$ and $x^n\to x$ implies $\alpha^nx^n\to \alpha x$.
 \end{exercise}
 \begin{proof}
-fill
+Addition: since $x^n\to x$, then for all $\epsilon>0$, there exists a $N\in\N$ so that for all $n>N$, it holds that $\norm{x^n-x}<\epsilon/2$. Likewise, there exists $N'\in\N$ so that $\norm{y^n-y}<\epsilon/2$ for all $n>N'$. Thus, let $n>\max[N,N']$. We have that $\norm{(x^n+y^n)-(x+y)}\leq \norm{x^n-x}+\norm{y^n-y}<\epsilon$, as required.
+
+Scalar multiplication: since $\alpha^n\to\alpha$, then we have two results. First, $\alpha^n$ is bounded by some constant $A$, so that for all $n$, it holds that $\absoluteValue{\alpha^n}\leq A$. Furthermore, since $\alpha^n\to\alpha$, then for all $\epsilon>0$ there exists an $N\in\N$, so that for all $n>N$, it holds that $\norm{\alpha^n-\alpha}<\epsilon/2\norm{x}$, where $\norm{x}$ is fixed because the limit of $x^n$ is unique. Now,since $x^n\to x$, then for all $\epsilon>0$, there exists an $N'\in\N$ so that for all $n>N$, it holds that $\norm{x^n-x}<\epsilon/2A$.
+
+Thus, let $n>\max[N,N']$. We have that 
+\begin{align*}
+    \norm{\alpha^nx^n-\alpha x} 
+    =& \norm{\alpha^nx^n+\alpha^n x-\alpha^n x -\alpha x}\\
+    \leq&\norm{\alpha^n(x^n-x)}+\norm{(\alpha^n-\alpha)x}\\
+    =& \absoluteValue{\alpha^n}\norm{x^n-x}+\absoluteValue{\alpha^n-\alpha}\norm{x}\\
+    \leq& A\norm{x^n-x}+\absoluteValue{\alpha^n-\alpha}\norm{x}<\epsilon.
+\end{align*}
 \end{proof}
 
 \begin{exercise}{6}
 Show that the closure $\bar{Y}$ of a subspace $Y$ of a normed space $X$ is again a vector subspace.
 \end{exercise}
 \begin{proof}
-fill
+Theorem 1.4-6 tells us that $y\in\bar{Y}$ if and only if there is a sequence $(y^n)$ in $Y$ such that $y^n\to y$. Let $x,y\in\bar{Y}$ then there exist sequences $(x^n)$ and $(y^n)$ so that $x^n\to x$ and $y^n\to y$. Furthermore, let $a$ and $b$ be scalars. Because $Y$ is a subspace, we have that $ax^n+by^n\in Y$ for all $n$. Furthermore, from the previous exercise, we know that $ax^n+by^n\to ax+by$, so that $(ax^n+by^n)$ is the required sequence for $ax+by$ to belong to $\bar{Y}$.
 \end{proof}
 
 \begin{exercise}{7 (Absolute convergence)}
 Show that convergence of $\norm{y^1}+\norm{y^2}+\norm{y^3}+\dots$ may not imply convergence of $y^1+y^2+y^3+\dots$. Hint: Consider $Y$ in exercise 3 and $(y^n)_{n=1,\dots}$ (a sequence indexed by $n$), where $y^n=(y^n_m)_{m=1\dots,}$ (each particular $y^n$ is a sequence indexed by $m$), with $y^n_n=1/n^2$, and $y^n_j=0$ for all $j\neq n$.
 \end{exercise}
 \begin{proof}
-fill
+Consider the sequence in the hint, where $Y$ is the subspace of $l^\infty$ where each element of $Y$ has finitely many nonzero elements. The series to evaluate for absolute convergence is given by $\sum 1/n^2$, because $\norm{y^n}=\sup_j\absoluteValue{y^n_j}=1/n^2$. This series of real numbers converges. 
+
+On the other hand, notice that $s^k=y^1+y^2+\dots+y_k$ is the sequence $(1,1/2^2,\dots,1/k^2,0,0,\dots)$. Consider any candidate limit of $s^n$, say $y$. Because $y\in Y$, then there exists an $N\in\N$ so that all elements of $y$ after $N$ are 0. Thus, $\norm{s^k-y}=\sup_j\absoluteValue{s^k_j-y_j}=1/(k+1)^2$, and we cannot get any closer than that value, so that $s^k$ does not converge to $y$. Hence, $s^k$ does not converge in $Y$.
 \end{proof}
 
 \begin{exercise}{8}
 If in a normed space $X$, absolute convergence of any series always implies convergence of that series, show that $X$ is complete.
 \end{exercise}
 \begin{proof}
-fill
+Let $(x^n)$ be a Cauchy sequence in $X$. Then we can construct a subsequence $(x^{n_k})$ so that $\norm{x^{n_{k+1}}-x^{n_k}}<2^{-k}$ for all $k$. Based on this subsequence, consider the sequence given by $x^{n_1}, x^{n_2}-x^{n-1},\dots,x^{n_{k+1}}-x^{n_k},\dots$ and its series in absolute terms:
+\[
+\norm{x^{n_1}} + \sum_k^\infty \norm{x^{n_{k+1}}-x^{n_k}}
+< \norm{x^{n_1}} + \sum_k^\infty 2^k
+< \infty.
+\]
+That is, the series converges absolutely. Then, by assumption, it converges, so that 
+\[
+x^{n_1} + \sum_k^\infty x^{n_{k+1}}-x^{n_k}
+= L <\infty.
+\]
+Since the sequence telescopes, then for all $\epsilon>0$, there exists an $m\in\N$, so that for all $m>$ it holds that $\norm{x^{n_1} + \sum_k^m x^{n_{k+1}}-x^{n_k} - L} =\norm{x^{n_{m+1}}-L}<\epsilon$. Thus the subsequence converges and by exercise 1.4.2 the original Cauchy sequence converges. Since the Cauchy sequence is arbitrary, $X$ is complete.
 \end{proof}
 
 \begin{exercise}{9}
 Show that in a Banach space, an absolute convergent series is convergent.
 \end{exercise}
 \begin{proof}
-fill
+Let $X$ be Banach and let $(y^n)$ be an absolutely convergent sequence. Let $s^k=\sum^k_j \norm{y^j}$, so that $s^n\to s$. We want to prove that $r^k=\sum^k_j y^j$ converges. Since $(s^n)$ is a sequence of real numbers that converges,  then it is Cauchy, so for all $\epsilon>0$, there exists an $N\in\N$ so that for all $n>m>N$, it holds that
+\[
+    \norm{s^n-s^m} = \absoluteValue{\sum^n_j \norm{y^j}-\sum^m_j \norm{y^j}} <\epsilon.
+\]
+But then we have
+\begin{align*}
+    \absoluteValue{\sum^n_j \norm{y^j}-\sum^m_j \norm{y^j}}
+    =& \absoluteValue{\norm{y^n}+\norm{y^{n-1}}+\dots+\norm{y^{m+1}}}\\
+    =& \norm{y^n}+\norm{y^{n-1}}+\dots+\norm{y^{m+1}}\\
+    \geq& \norm{y^n+y^{n-1}+\dots+y^{m+1}}\\
+    =& \norm{r^n-r^m}.
+\end{align*}
+So that $\norm{r^n-r^m}<\epsilon$ and $(r^n)$ is Cauchy. Since $X$ is complete, then $(r^n)$ converges, so that the series associated with $(y^n)$ is convergent, as required.
 \end{proof}
 
 \begin{exercise}{10 (Schauder basis)}
 Show that if a normed space has a Schauder basis, it is separable.
 \end{exercise}
 \begin{proof}
-fill
+Let $X$ be a normed space with a Schauder basis $e^1,e^2,\dots$. Consider the subset $M$ containing all the finite linear combinations of the basis elements with rational scalars in order, we will call this rational linear combinations. In set notation, $M=\set{\sum_{i=1}^m q^ie^i:q^i\in\Q, m\in\N}$.
+
+We will first prove that $M$ is countable. Consider any $m$ in the above definition. The rational linear combinations are a finite union of countable sets, to see this, notice that the finite sum of can be identified with $\Q\times\dots\times\Q$, $m$ times. Then, since there is a countable number of basis elements, $M$ is the countable union of countable sets, and hence countable.
+
+We will now prove that $M$ is dense in $X$. Let $x\in X$ and fix $\epsilon>0$. Because $e^1,e^2,\dots$ is a Schauder basis, then there exists an $n\in\N$ so that $\norm{x-\sum_{i=1}^n\alpha^ne^n}<\epsilon$, in the definition of Schauder basis, the sequence of $(\alpha^n)$ is a real sequence, however, since the rationals are dense in $\R$, then we can choose rationals so that the same property holds. Notice, however, that this means that our set $M$ is dense in $X$, as such finite sum is contained in $M$. Hence, $X$ is separable, because $M$ is a countable dense subset of $X$.
 \end{proof}
 
 \begin{exercise}{11}
 Show that $(e^n)$, where $e^n=\delta^n_j$, is a Schauder basis for $l^p$ where $1\leq p<\infty$.
 \end{exercise}
 \begin{proof}
-fill
+Let $x\in l^p$ for $1\leq p<\infty$. Then $\sum \absoluteValue{x_j}^p<\infty$, so that $\absoluteValue{x_n}^p\to 0$ (see Abbott Theorem 2.7.3) and because $1\leq p<\infty$, $x_n\to 0$. Let $(\alpha^n)$ be the sequence of scalars corresponding to the entries of $x$. Then $\norm{x-(\alpha^1e^1+\dots+\alpha^ne^n)}=(\sum^\infty_{j=n+1}\absoluteValue{\alpha^j}^p)^{1/p}<\epsilon$, for a suitable choice of $n$. 
+
+Remark: the problem with $p=\infty$ is that $l_\infty$ consists of the bounded sequences and the norm is the supremum of the sequence. Take the sequence of 1s, then there is no $n$ so that the supremum of the difference between the sequence and any potential expansion of the sequence.
 \end{proof}

@@ -1,51 +1,115 @@
 \subsection{Normed vector spaces}
 
-16*
-18*
-19*
-21
-22
-23
-
 
 \begin{exercise}{16}
 Let $V$ be a vector space, and let $d$ be a metric on $V$ satisfying $d(x,y)=d(x-y,0)$ and $d(\alpha x,\alpha y)=\absoluteValue{\alpha}d(x,y)$ for every $x,y\in V$ and every scalar $\alpha$. Show that $\norm{x}=d(x,0)$ defines a norm on $V$ (that has $d$ as its ``usual'' metric). Give an example of a metric on the vector space $\R$ that fails to be associated with a norm in this way.
 \end{exercise}
 \begin{proof}
-fill
+(i) $\norm{x}\geq 0$ because $d(x,y)\geq 0$ for all $x$ and $y$ in the vector space.
+
+(ii) We have that $\norm{x}=d(x,0)=0$ if and only if $x=0$, because $d(x,y)=0$ if and only if $x=y$.
+
+(iii) We have that $\norm{\alpha x}=d(\alpha x, \alpha 0) = \absoluteValue{\alpha}d(x,0)=\absoluteValue{\alpha}\norm{x}$.
+
+(iv) We have $\norm{x+y} =d(x+y,0)=d(x,-y)\leq d(x,0)+d(0,-y) =d(x,0)+d(y,0) =\norm{x}+\norm{y}$.
+
+An example of a metric on the vector space $\R$ that fails to be associated with a norm in this way is the discrete metric, since $\norm{\alpha x} =d(\alpha x, 0) =1$, regardless of the value of $\alpha$.
 \end{proof} 
 
 \begin{exercise}{18}
-Show that $\norm{x}_\infty\leq \norm{x}_2\leq\norm{x}_1$ for any $x\in \R^n$. Also check that $\norm{x}_1\leq n\norm{x}_\infty$ and $\norm_1\leq\sqrt{n}\norm{x}_2$.
+Show that $\norm{x}_\infty\leq \norm{x}_2\leq\norm{x}_1$ for any $x\in \R^n$. Also check that $\norm{x}_1\leq n\norm{x}_\infty$ and $\norm{x}_1\leq\sqrt{n}\norm{x}_2$.
 \end{exercise}
 \begin{proof}
-fill
+We have 
+\[
+\norm{x}_2 
+=(\sum_{i=1}^n\absoluteValue{x_i}^2)^{1/2}
+\geq \max_{1\leq i\leq n}(\absoluteValue{x_i}^2)^{1/2}
+=\max_{1\leq i\leq n}\absoluteValue{x_i}
+=\norm{x}_\infty.
+\]
+Furthermore,
+\[
+\norm{x}_1^2
+=\sum_{i=1}^n\absoluteValue{x_i}^2+c
+\geq \sum_{i=1}^n\absoluteValue{x_i}^2
+=\norm{x}_2,
+\]
+for some $c\geq 0$. Taking square root on both sides of the inequality gives us $\norm{x}_1\geq \norm{x}_2$. Thus $\norm{x}_\infty \leq\norm{x}_2 \leq\norm{x}_1$.
+
+Next, 
+\[
+\norm{x}_1
+=\sum_{i=1}^n\absoluteValue{x_i}
+\leq \sum_{i=1}^n\max_{1\leq i\leq n}\absoluteValue{x_i}
+= n\max_{1\leq i\leq n}\absoluteValue{x_i}
+= n\norm{x}_\infty.
+\]
+
+Finally,
+\[
+\norm{x}_1
+=\sum_{i=1}^n\absoluteValue{x_i\cdot 1}
+\leq (\sum_{i=1}^n\absoluteValue{x_i}^2)^{1/2} (\sum_{i=1}^n\absoluteValue{1}^2)^{1/2}
+= (\sum_{i=1}^n\absoluteValue{x_i}^2)^{1/2}\sqrt{n}
+= \sqrt{n}\norm{x}_2.
+\]
 \end{proof} 
 
 \begin{exercise}{19}
-Show that we have $\sum_{i=1}^nx_iy_i=\norm{x}_2\norm_2$ (quality in the Cauchy-Shwarz inequality) if and only if $x$ and $y$ are proportional, that is if and only if either $x=\alpha y$ or $y=\alpha x$ for some $\alpha\geq 0$.
+Show that we have $\sum_{i=1}^nx_iy_i=\norm{x}_2\norm{x}_2$ (equality in the Cauchy-Schwarz inequality) if and only if $x$ and $y$ are proportional, that is if and only if either $x=\alpha y$ or $y=\alpha x$ for some $\alpha\geq 0$.
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$) Suppose the Cauchy-Schwarz inequality holds with equality, so that using the notation of Lemma 3.3, we have $\brackets{x+ty,x+ty}=\norm{x}_2\norm{y}_2$. Then the polynomial in Lemma 3.3, $t^2\norm{y}_2^2+2t\brackets{x,y}+\norm{x}_2^2$, has zero discriminant. That is, there exists a single $t$ so that $\brackets{x+ty,x+ty}=\norm{x+ty}_2^2=0$, for such $t$, we have $x+ty=0$ because of the properties of norms. Thus, $x=\alpha y$ for $\alpha =-t$.
+
+($\Leftarrow$) Suppose, without loss of generality, $x=\alpha y$. Then by the Cauchy-Schwarz inequality, we have 
+\begin{align*}
+    \norm{x}_2\norm{y}_2
+    =& \norm{\alpha y}_2\norm{y}_2\\
+    =& \absoluteValue{\alpha}\norm{y}_2\norm{y}_2\\
+    =& \absoluteValue{\alpha}\norm{y}_2^2.
+\end{align*}
+On the other hand,
+\begin{align*}
+    \sum^n_{i=1}\absoluteValue{x_iy_i} 
+    =& \sum^n_{i=1}\absoluteValue{\alpha y_iy_i}\\
+    =& \absoluteValue{\alpha}\sum^n_{i=1}\absoluteValue{ y_i}\absoluteValue{y_i}\\
+    =& \absoluteValue{\alpha}\sum^n_{i=1}\absoluteValue{y_i}^2\\
+    =& \absoluteValue{\alpha}\norm{y}_2^2,
+\end{align*}
+as required.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{22}
+Show that $\norm{x}_\infty \leq\norm{x}_2$ for any $x\in l_2$, and that $\norm{x}_2 \leq\norm{x}_1$ for any $x\in l_1$.
 \end{exercise}
 \begin{proof}
-fill
+First, let $(x_i)\in l_2$. Then $(\sum_i^\infty \absoluteValue{x_i}^2)^{1/2} <\infty$. Let $s=\sup_{n}\absoluteValue{x_n}$. If $s\in (x_i)$, then we are done, because 
+\[
+\norm{x}_\infty 
+=\sup_{n}\absoluteValue{x_n} \leq(\sum_i^\infty\absoluteValue{x_i}^2)^{1/2} 
+=\norm{x}_2.
+\]
+If $s\notin (x_i)$, then there must be infinitely many different elements in $(x_i)$ that get arbitrarily close to $s$. Choose $y,y'\in (x_i)$ so that $\epsilon =s^2-\absoluteValue{y}^2$ and $\epsilon\leq \absoluteValue{y'}^2$. thus $\norm{x}_2 =\sum_j^\infty\absoluteValue{x_i} \geq s =\norm{x}_\infty$.
+
+Second, for all $n$, we have
+\[
+\sum_i^n\absoluteValue{x_i}^2 
+\leq \sum_i^n\absoluteValue{x_i}^2 +\sum_{i,j:i\neq j}^n\absoluteValue{x_i}\absoluteValue{x_j}
+= (\sum_i^n\absoluteValue{x_i})^2.
+\]
+Considering $n\to\infty$ we obtain $\norm{x}_2^2\leq \norm{x}_1^2$, taking square root on both sides of the inequality gives the desired result.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{23}
+The subset of $l_\infty$ consisting of all sequences that converge to 0 is denoted by $c_0$. (Note that $c_0$ is actually a linear subspace of $l_\infty$; thus $c_0$ is also a normed vector space under $\norm{\cdot}_\infty$). Show that we have the following proper set inclusions $l_1\subset l_2\subset c_0\subset l_\infty$.
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
+Any sequence that converges must be bounded (otherwise it would not converge), hence $c_0\subset l_\infty$. Moreover, for a sequence to converge, it must converge to 0 (see Theorem 2.7.3 in Abbott), thus $l_2\subset c_0$. Finally, let $(x_i)\in l_1$. We have
+\[
+\sum_i^n \absoluteValue{x_i} = 
+\sum_i^n \absoluteValue{x_i}^2 + \sum_i^n\sum_j^n 2\absoluteValue{x_ix_j}
+\geq \sum_i^n \absoluteValue{x_i}^2.
+\]
+Taking $n\to\infty$ and square root on both sides of the inequality, we get that $(x_i)\in l_2$.
 \end{proof} 

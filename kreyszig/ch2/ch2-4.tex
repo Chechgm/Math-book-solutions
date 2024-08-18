@@ -1,8 +1,72 @@
 \subsection{Finite dimensional normed spaces and subspaces}
 
+
 \begin{exercise}{1}
-fill
+Give examples of subspaces of $l^\infty$ and $l^2$ which are not closed.
 \end{exercise}
 \begin{proof}
-fill
+$l^\infty$: We have seen that the subspace $Y$ of $l^\infty$ consisting of all the sequences with finitely many nonzero elements is not closed.
+
+$l^2$: Since the subspace of $l^\infty$ above has finitely many nonzero elements, then it converges under the $p=2$ norm and hence $Y\subseteq l^2$. Thus the example above is an example of a nonclosed subspace of $l^2$.
+\end{proof}
+
+\begin{exercise}{3}
+Show that in Def. 2.4-4 (Equivalent norms) the axioms of an equivalence relation hold (cf. A1.4 in Appendix 1).
+\end{exercise}
+\begin{proof}
+Let $\norm{\cdot}_1$, $\norm{\cdot}_2$ and $\norm{\cdot}_3$ be norms and $a,a',b$ and $b'$ be constants.
+
+Reflexive: we have $\norm{x}_1 \leq\norm{x}_1 \leq \norm{x}_1$, so that $\norm{x}_1\sim \norm{x}_1$
+
+Symmetric: suppose $\norm{x}_1\sim \norm{x}_2$, that is $a\norm{x}_1 \leq\norm{x}_2 \leq a'\norm{x}_1$, then we have that both $\norm{x}_1\leq (1/a)\norm{x}_2$ and $(1/a')\norm{x}_2 \leq \norm{x}_1$, so that $(1/a')\norm{x}_2 \leq\norm{x}_1 \leq (1/a)\norm{x}_2$, so that $\norm{x}_2 \sim \norm{x}_1$
+
+Transitive: Suppose $\norm{x}_1\sim \norm{x}_2$ and $\norm{x}_2 \sim \norm{x}_3$. That is, $a\norm{x}_1 \leq \norm{x}_2 \leq a'\norm{x}_1$ and $b\norm{x}_2 \leq \norm{x}_3 b'\leq \norm{x}_2$. Thus, $ab\norm{x}_1 \leq b\norm{x}_2 \leq \norm{x}_3$ and $\norm{x}_3 \leq b'\norm{x}_2 \leq a'b'\norm{x}_1$, so that . $ab\norm{x}_1 \leq \norm{x}_3 \leq a'b'\norm{x}_1$. That is, $\norm{x}_1\sim\norm{x}_3$, as required.
+\end{proof}
+
+\begin{exercise}{4}
+Show that equivalent norms on a vector space $X$ induce the same topology for $X$.
+\end{exercise}
+\begin{proof}
+Let $\norm{\cdot}$ and $\norm{\cdot}_0$ be equivalent in $X$. Then there exist constants $a$ and $b$ so that for all $x\in X$, it holds that $a\norm{x}_0 \leq\norm{x} \leq b\norm{x}_0$.
+
+Let $M$ be an open set in $X$ with respect to $\norm{\cdot}$. Then, for all $x\in M$, there exists an open ball contained in $M$. That is, there exists $r>0$, so that $B(x;ar)\subseteq M$ or, equivalently, if $\norm{x-y}<ar$, then $y\in M$. However, from the definition of equivalence, we have that $a\norm{x-y}_0 \leq\norm{x-y} <r$, thus $M$ is also closed under $\norm{\cdot}_0$. Starting from an open set with respect to $\norm{\cdot}_0$ we can conclude that the set is also open in $\norm{\cdot}$ mutatis mutandis.
+
+Since both norms induce the same open sets, they also induce the same topology, as required.
+\end{proof}
+
+\begin{exercise}{5}
+If $\norm{\cdot}$ and $\norm{\cdot}_0$ are equivalent norms on $X$, show that the Cauchy sequences in $(X,\norm{\cdot})$ and $(X,\norm{\cdot}_0)$ are the same.
+\end{exercise}
+\begin{proof}
+Let $\norm{\cdot}$ and $\norm{\cdot}_0$ be equivalent in $X$. Then there exist constants $a$ and $b$ so that for all $x\in X$, it holds that $a\norm{x}_0 \leq\norm{x} \leq b\norm{x}_0$.
+
+Let $(x^n)$ be Cauchy in $X$ under $\norm{\cdot}$. Then for all $a,\epsilon>0$, there exists an $N\in\N$ so that for all $n,m>N$, it holds that $a\norm{x^n-x^m}\leq\norm{x^n-x^m}<a\epsilon$, so that $(x^n)$ is also Cauchy in $X$ under $\norm{\cdot}_0$. Starting from a Cauchy sequence under $\norm{\cdot}_0$ we can prove that the sequence is Cauchy under $\norm{\cdot}$ mutatis mutandis.
+\end{proof}
+
+\begin{exercise}{8}
+Show that the norms $\norm{\cdot}_1$ and $\norm{\cdot}_2$ in exercise 8, Section 2.2, satisfy $1/\sqrt{n}\norm{x}_1\leq\norm{x}_2\leq\norm{x}_1$.
+\end{exercise}
+\begin{proof}
+Recall that $\norm{x}_1=\absoluteValue{x_1}+\dots+\absoluteValue{x_n}$, and $\norm{x}_2=(\absoluteValue{x_1}^2+\dots+\absoluteValue{x_n}^2)^{1/2}$. 
+
+By the Cauchy-Schwarz inequality, we have 
+\[
+\sum^n_j\absoluteValue{x_j}\leq \sqrt{\sum^n_j\absoluteValue{x_j}^2}\sqrt{\sum^n_j\absoluteValue{1}^2}=\sqrt{\sum^n_j\absoluteValue{x_j}^2}\sqrt{n},
+\]
+implying the first inequality.
+
+For the second inequality, notice
+\[
+\norm{x}_1^2 = \absoluteValue{x}^2 = \sum_j^n\sum_i^n\absoluteValue{x_i}\absoluteValue{x_j}\geq \sum_j^n\absoluteValue{x_j}^2 = \norm{x}_2^2.
+\]
+Taking square root on both sides of the inequality gives us the second inequality.
+\end{proof}
+
+\begin{exercise}{9}
+If two norms $\norm{\cdot}$ and $\norm{\cdot}_0$ on a vector space $X$ are equivalent, show that (i) $\norm{x^n-x}\to 0$ implies (ii) $\norm{x^n-x}_0\to 0$ (and vice versa, of course).
+\end{exercise}
+\begin{proof}
+Since $\norm{\cdot}$ and $\norm{\cdot}_0$ are equivalent, then there exist constants $a$ and $b$ so that for all $x\in X$, it holds that $a\norm{x}_0 \leq\norm{x} \leq b\norm{x}_0$.
+
+Let $\norm{x^n-x}\to 0$. Then for all $\epsilon>0$, there exists an $N\in\N$ so that for all $n>N$, it holds that $a\norm{x^n-x}_0 \leq\norm{x^n-x} <a\epsilon$. Hence $\norm{x^n-x}_0\to 0$, as required. We can find the other direction by using the same argument mutatis mutandis.
 \end{proof}

@@ -71,6 +71,7 @@ $$f(x,y,z) = x^5 y^2 z - x^4 y^3 + y^5 + x^2 z - y^3 z + xy + 2x - 5z + 3.$$
 \begin{enumerate}
     \item Write $f$ as a polynomial in $x$ with coefficients in $k[y,z]$.
     \item Write $f$ as a polynomial in $y$ with coefficients in $k[x,z]$.
+    \item Write $f$ as a polynomial in $z$ with coefficients in $k[x,y]$.
 \end{enumerate}
 \end{exercise}
 \begin{proof}
@@ -79,5 +80,45 @@ $$f(x,y,z) = x^5 y^2 z - x^4 y^3 + y^5 + x^2 z - y^3 z + xy + 2x - 5z + 3.$$
         $$f(x,y,z) = (y^2 z)x^5 + (-y^3)x^4 + z x^2 + (y + 2)x + (y^5 - y^3 z - 5z + 3).$$
         \item We have
         $$f(x,y,z) = y^5 + (-x^4 - z)y^3 + (x^5 z)y^2 + xy + (x^2 z + 2x - 5z + 3).$$
+        \item We have
+        $$f(x,y,z) = (x^5 y^2 + x^2 - y^3 - 5)z + (-x^4y^3 + y^5 +xy + 2x + 3).$$
     \end{enumerate}
 \end{proof}
+
+\begin{exercise}{6}
+    Inside of $\mathbb{C}^n$, we have the subset $\mathbb{Z}^n$, which consists of all points with integer coordinates.
+    \begin{enumerate}
+        \item Prove that if $f\in \mathbb{C}[x_1,...,x_n]$ vanishes at every point of $\mathbb{Z}^n$, then $f$ is the zero polynomial.
+        \item Let $f\in \mathbb{C}[x_1,...,x_n]$, and let $M$ be the largest power of any variable that appears in $f$. Let $\mathbb{Z}_{M+1}^n$ be the set of points of $\mathbb{Z}^n$, all coordinates of which lie between $1$ and $M+1$, inclusive. Prove that if $f$ vanishes at all points of $\mathbb{Z}_{M+1}^n$, then $f$ is the zero polynomial.
+    \end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item When $n=1$, it is well known that a nonzero polynomial in $\mathbb{C}[x]$ of degree $m$ has at most $m$ distinct roots. For our particular $f\in \mathbb{C}[x]$, we are assuming $f(a)=0$ for all $a\in \mathbb{Z}$. Since $\mathbb{Z}$ is infinite, this means that $f$ has infinitely many roots, and, hence, $f$ must be the zero polynomial.\\
+        Now assume that the statement is true for $n-1$ and let $f\in \mathbb{C}[x_1,...,x_n]$ be a polynomial that vanishes at all points of $\mathbb{Z}^n$. By collecting the various powers of $x_n$, we can write $f$ in the form
+        $$f = \sum_{i=0}^N g_i(x_1,...,x_{n-1})x_n^i,$$
+        where $g_i\in \mathbb{C}[x_1,...,x_{n-1}]$. We will show that each $g_i$ is the zero polynomial in $n-1$ variables, which will force $f$ to be the zero polynomial in $\mathbb{C}[x_1,...,x_n]$.\\
+        If we fix $(a_1,...,a_{n-1})\in \mathbb{Z}^{n-1}$, we get the polynomial $f(a_1,...,a_{n-1}, x_n)\in \mathbb{C}[x_n]$. By our hypothesis on $f$, this vanishes for each $a_n\in \mathbb{Z}$. It follows from the case $n=1$ that $f(a_1,...,a_{n-1},x_n)$ is the zero polynomial in $\mathbb{C}[x_n]$. Using the above formula for $f$, we see that the coefficients of $f(a_1,...,a_{n-1},x_n)$ are $g_i(a_1,...,a_{n-1})$, and thus $g_i(a_1,...,a_{n-1})=0$ for all $i$. Since $(a_1,...,a_{n-1})$ was arbitrarily chosen in $\mathbb{Z}^{n-1}$, it follows that each $g_i\in \mathbb{C}[x_1,...,x_{n-1}]$ gives the zero function on $\mathbb{Z}^{n-1}$. Our inductive assumption then implies that each $g_i$ is the zero polynomial in $\mathbb{C}[x_1,...,x_{n-1}]$. This forces $f$ to be the zero polynomial in $\mathbb{C}[x_1,...,x_n]$ and completes the proof.
+        \item When $n=1$, it is well known that a nonzero polynomial in $\mathbb{C}[x]$ of degree $<N$ has at most $N$ distinct roots. For our particular $f\in \mathbb{C}[x]$, we are assuming $f(a)=0$ for all $a\in \mathbb{Z}_{M+1}$. Since this contains $M+1$ points, this means that $f$ must be the zero polynomial.\\
+        Now assume that the statement is true for $n-1$ and let $f\in \mathbb{C}[x_1,...,x_n]$ be a polynomial that vanishes at all points of $\mathbb{Z}^n_{M+1}$. By collecting the various powers of $x_n$, we can write $f$ in the form
+        $$f = \sum_{i=0}^N g_i(x_1,...,x_{n-1})x_n^i,$$
+        where $g_i\in \mathbb{C}[x_1,...,x_{n-1}]$. We will show that each $g_i$ is the zero polynomial in $n-1$ variables, which will force $f$ to be the zero polynomial in $\mathbb{C}[x_1,...,x_n]$.\\
+        If we fix $(a_1,...,a_{n-1})\in \mathbb{Z}^{n-1}_{M+1}$, we get the polynomial $f(a_1,...,a_{n-1}, x_n)\in \mathbb{C}[x_n]$. By our hypothesis on $f$, this vanishes for each $a_n\in \mathbb{Z}_{M+1}$. It follows from the case $n=1$ that $f(a_1,...,a_{n-1},x_n)$ is the zero polynomial in $\mathbb{C}[x_n]$. Using the above formula for $f$, we see that the coefficients of $f(a_1,...,a_{n-1},x_n)$ are $g_i(a_1,...,a_{n-1})$, and thus $g_i(a_1,...,a_{n-1})=0$ for all $i$. Since $(a_1,...,a_{n-1})$ was arbitrarily chosen in $\mathbb{Z}^{n-1}_{M+1}$, it follows that each $g_i\in \mathbb{C}[x_1,...,x_{n-1}]$ gives the zero function on $\mathbb{Z}^{n-1}$. Our inductive assumption then implies that each $g_i$ is the zero polynomial in $\mathbb{C}[x_1,...,x_{n-1}]$. This forces $f$ to be the zero polynomial in $\mathbb{C}[x_1,...,x_n]$ and completes the proof.
+    \end{enumerate}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

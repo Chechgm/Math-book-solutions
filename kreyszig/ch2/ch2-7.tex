@@ -1,7 +1,118 @@
 \subsection{Bounded and continuous linear operators}
 
+1 These results are used all the time, so very important
+2 This kind of explains the wierd name "bounded"
+5
+6
+7
+8 Some practice with the concepts and also an important counterexample
+9
+10 Some practice with the basic concepts
+12
+13
+14 
+15 Norms on matrices and how they arise. Not that important, but it's nice to know.
+
 \begin{exercise}{1}
+Let $X,Y,Z$ be normed spaces, $T_1:Y\to Z$ and $T_2:Y\to Z$ and $T:X\to X$. Then:
+\begin{enumerate}
+    \item $\norm{T_1T_2}\leq\norm{T_1}\norm{T_2}$, and
+    \item $\norm{T^n}\leq \norm{T}^n$, for all $n\in\N$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
 fill
+\end{proof}
+
+\begin{exercise}{2}
+Let $X$ and $Y$ be normed spaces. Show that a linear operator $T:X\to Y$ is bounded if and only if $T$ maps bounded sets in $X$ into bounded sets in $Y$.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{5}
+Show that the operator $T:l^\infty\to l^\infty$ defined by $x=(x^n)$, $y^n=x^n/n$, $y =(y^n) =Tx$, is linear and bounded.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{6 (Range)}
+Show that the range $\RRR(T)$ of a bounded linear operator $T:X\to Y$ need not be closed in $Y$. Hint: Use $T$ in exercise 5.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{7 (Inverse operator)}
+Let $T$ be a bounded linear operator from a normed space $X$ onto a normed space $Y$. If there is a positive $b$ such that $\norm{Tx}\geq b\norm{x}$ for all $x\in X$, show that then $T^{-1}:Y\to X$ exists and is bounded.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{8}
+Show that the inverse $T^{-1}:\RRR(T)\to X$ of a bounded linear operator $T:X\to Y$ need not be bounded. Hint: Use $T$ in exercise 5.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{9}
+Let $T:C[0,1]\to C[0,1]$ be defined by $y(t)=\int_0^t x(\tau)d\tau$. Find $\RRR(T)$ and $T^{-1}:\RRR(T)\to C[0,1]$. Is $T^{-1}$ linear and bounded?
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{10}
+On $C[0,1]$ define $S$ and $T$ by $y(s)=s\int_0^1x(t)dt$, $y(s)=sx(s)$, respectively. Do $S$ and $T$ commute? Find $\norm{S}, \norm{T}, \norm{ST}$ and $\norm{TS}$.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{12 (Matrices)}
+From 2.7-7 we know that an $r\times n$ matrix $A=(a_{jk})$ defines a linear operator from the vector space $X$ of all ordered $n-$tuples of numbers into the vector space $Y$ of all ordered $r-$tuples of numbers. Suppose that any norm $\norm{\cdot}_1$ is given on $X$ and any norm $\norm{\cdot}_2$ is given on $Y$. Remember from exercise 2.4.10, that there are various norms on the space $Z$ of all those matrices ($r$ and $n$ fixed). A norm $\norm{\cdot}$ on $Z$ is said to be compatible with $\norm{\cdot}_1$ and $\norm{\cdot}_2$ if $\norm{Ax}_2 \leq\norm{A}\norm{x}_1$.
+
+Show that the norm defined by
+\[
+\norm{A} = \sup_{x\in X, x\neq 0}\frac{\norm{Ax}_2}{\norm{x}_1}
+\]
+is compatible with $\norm{\cdot}_1$ and $\norm{\cdot}_2$. This norm is often called the natural norm defined by $\norm{\cdot}_1$ and $\norm{\cdot}_2$. If we choose $\norm{x}_1=\max_j\absoluteValue{x^j}$ and $\norm{y}=\max_j\absoluteValue{y^j}$, show that the natural norm is
+\[
+\norm{A}=\max_j\sum^n_{k=1}\absoluteValue{a_{jk}}.
+\]
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{13}
+Show that in 2.7-7 with $r=n$, a compatible norm is defined by 
+\[
+\norm{A} = \parens{\sum^n_{j=1}\sum^n_{k=1}a^2_{jk}}^{1/2},
+\]
+but for $n>1$ this is not the natural norm defined by the Euclidean norm on $R^n$.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{14}
+If in exercise 12 we choose 
+\[
+\norm{x}_1=\sum^n_{k=1}\absoluteValue{x^k},\quad \norm{y}_2=\sum^r_{j=1}\absoluteValue{y_j},
+\]
+show that a compatible norm is defined by $\norm{A}=\max_k\sum^r_{j=1}\absoluteValue{a_{jk}}$.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{15}
+Show that for $r=n$, the norm in exercise 14 is the natural norm corresponding to $\norm{\cdot}_1$ and $\norm{\cdot}_2$ as defined in that problem.
 \end{exercise}
 \begin{proof}
 fill

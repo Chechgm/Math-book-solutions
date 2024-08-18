@@ -1,28 +1,68 @@
 \subsection{More inequalities}
 
-More Inequalities
-24*
-25*
-26 (for L: generalize to infinite sums)
-
 
 \begin{exercise}{24}
 The conclusion of Lemma 3.7 also holds in the case $p=1$ and $q=\infty$. [Lemma 3.7. (H\"olders inequality) let $1<p<\infty$ and let $q$ be defined by $1/p+1/q=1$. Given $x\in l_p$ and $y\in l_q$, we have $\sum_{i=1}^\infty \absoluteValue{x_iy_i}\leq\norm{x}_p\norm{y}_q$]. Why?
 \end{exercise}
 \begin{proof}
-fill
+If we interpret the assumption that $1/p+1/q=1$ with $q=\infty$ as a limiting process, then $p=1$. Thus let $x\in l_1$ and $y\in l_\infty$. We have for all $n$
+\[
+    \sum^n_{i=1}\absoluteValue{\frac{x_iy_i}{\norm{x}_1\norm{y}_\infty}}
+    \leq \sum^n_{i=1}\absoluteValue{\frac{x_i\norm{y}_\infty}{\norm{x}_1\norm{y}_\infty}}
+    \leq \sum^n_{i=1}\absoluteValue{\frac{\norm{x}_1\norm{y}_\infty}{\norm{x}_1\norm{y}_\infty}} 
+    =1,
+\]
+so that the inequality holds too.
 \end{proof} 
 
 \begin{exercise}{25}
 The same techniques can be used to show that $\norm{f}_p=(\int_0^1\absoluteValue{f(t)}^pdt)^{1/p}$ defines a norm on $C[0,1]$ for any $1<p<\infty$. State and prove the analogues of Lemma 3.7 and Theorem 3.8 in this case. (Does Lemma 3.7 still hold in this setting for $p=1$ and $q=\infty$?).
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
+\textbf{Lemma 3.7 (H\"older's inequality for $C[0,1]$)} Let $1<p<\infty$ and let $q$ be defined by $1/p+1/q=1$. Given $f\in (C[0,1],\norm{\cdot}_p)$ and $g\in (C[0,1],\norm{\cdot}_q)$, we have
+\[
+\int_0^1\absoluteValue{f(t)g(t)}dt
+\leq \norm{f}_p\norm{g}_q
+\]
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
+\textit{Proof}: Notice that Young's inequality (Lemma 3.6) is not defined for sums or integrals but simply numbers so that for all $t$, it holds that 
+\[
+\absoluteValue{\frac{f(t)g(t)}{\norm{f}_p\norm{g}_q}}
+\leq \frac{1}{p}\absoluteValue{\frac{f(t)}{\norm{f}_p}}^p 
++\frac{1}{q}\absoluteValue{\frac{g(t)}{\norm{g}_q}}^q.
+\]
+Integrating on both sides of the inequality, we obtain
+\begin{align*}
+    \int_0^1 \absoluteValue{\frac{f(t)g(t)}{\norm{f}_p\norm{g}_q}}dt 
+    \leq& \int_0^1\left[\frac{1}{p}\absoluteValue{\frac{f(t)}{\norm{f}_p}}^p +\frac{1}{q}\absoluteValue{\frac{g(t)}{\norm{g}_q}}^q\right]dt\\
+    \leq& \frac{1}{p}\int_0^1\absoluteValue{\frac{f(t)}{\norm{f}_p}}^p dt
+    + \frac{1}{q}\int_0^1\absoluteValue{\frac{g(t)}{\norm{g}_q}}^q dt\\
+    =& \frac{1}{p}\frac{1}{\int_0^1 \absoluteValue{f(t)}^p dt}\int_0^1\absoluteValue{f(t)}^p dt
+    + \frac{1}{q}\frac{1}{\int_0^1\absoluteValue{g(t)}^q dt}\int_0^1\absoluteValue{g(t)}^q dt\\
+    =& \frac{1}{p} + \frac{1}{q} =1.
+\end{align*}
+If we multiply both sides of the previous inequality by the absolute value of the product of the norms, we get the desired result.
+    
+
+\textbf{Theorem 3.8 (Minkowski's inequality for $C[0,1]$)} Let $1<p<\infty$. If $f,g\in (C[0,1],\norm{\cdot}_p)$, then $f+g\in (C[0,1],\norm{\cdot}_p)$ and $\norm{f+g}_p \leq\norm{f}_p+\norm{g}_p$.
+
+\textit{Proof:} The fact that $f+g\in (C[0,1],\norm{\cdot}_p)$ follows from Lemma 3.5. 
+
+To prove that $\norm{f+g}_p \leq\norm{f}_p+\norm{g}_p$, notice that the remark made by Carothers after the proof of H\"olders inequality also holds in $(C[0,1],\norm{\cdot}_p)$; that is 
+\[
+    \norm{\absoluteValue{f}^{p-1}}
+    = \left(\int_0^1\absoluteValue{f(t)}^p\right)^{1/q}
+    =\norm{f}^{p-1}_p,
+\]
+because $(p-1)q=p$.
+
+Now for the proof, we have:
+\begin{align*}
+    \int_0^1\absoluteValue{f(t)+g(t)}^pdt
+    =& \int_0^1\absoluteValue{f(t)+g(t)}\absoluteValue{f(t)+g(t)}^{p-1}dt\\
+    \leq& \int_0^1\absoluteValue{f(t)}\absoluteValue{f(t)+g(t)}^{p-1}dt + \int_0^1\absoluteValue{g(t)}\absoluteValue{f(t)+g(t)}^{p-1}dt\\
+    \leq& \norm{f}_p\norm{\absoluteValue{f+g}^{p-1}}_q + \norm{g}_p\norm{\absoluteValue{f+g}^{p-1}}_q\\
+    =& \norm{f+g}^{p-1}_p(\norm{f}_p+\norm{g}_p).
+\end{align*}
+That is, $\norm{f+g}^p_p\leq\norm{f+g}^{p-1}_p(\norm{f}_p+\norm{g}_p)$, so that dividing by $\norm{f+g}^{p-1}_p$ on both sides of the inequality gives us the desired result.
 \end{proof} 

@@ -1,8 +1,69 @@
 \subsection{Compactness and finite dimension}
 
+
 \begin{exercise}{1}
-fill
+Show that $\R^n$ and $\C^n$ are not compact.
 \end{exercise}
 \begin{proof}
-fill
+Let $(x^n)$ be a sequence in $\R^n$ defined by $x^n_j=n$ for all coordinates $j$. This sequence doesn't have a convergent subsequence and hence $\R^n$ is not compact. Note that the sequence also is in $\C^n$ where $x^n_j=n+i0$.
+\end{proof}
+
+\begin{exercise}{2}
+Show that a discrete metric space $X$ (cf. 1.1-8) consisting of infinitely many points is not compact.
+\end{exercise}
+\begin{proof}
+Consider a sequence, $(x^n)$ with all its elements are different. We can guarantee this sequence exists because $X$ has infinitely many points. The elements of any subsequence of $(x^n)$  will also be distinct. Now for an arbitrary subsequence $(x^{n_k})$, consider a candidate limit point $x$ of the subsequence. Because all the points of the subsequence are distinct, there will be no $K\in\N$ so that for all $k>K$, we have $d(x^{n_k}-x)<1$ (because they are different for all but at most one element of $(x^{n_k})$). Thus $(x^n)$ does not have a convergent subsequence and $X$ is not compact.
+\end{proof}
+
+\begin{exercise}{3}
+Give examples of compact and noncompact curves in the place $\R^2$.
+\end{exercise}
+\begin{proof}
+Compact: Any constant function $f:\R^2\to\R^2$, $f(x,y)=(a,b)$ is compact in $R^2$, because it maps to a single point and the only sequences in the range of $f$ are constant sequences.
+
+Noncompact: The function $f:\R^2\to\R^2$, $f(x,y)=(1/x,a)$ for a constant $a$ if $x\neq 0$ and $f(0)=0$ is not compact. Consider the sequence $(x^n,y^n)$ where the first coordinate is given as in exercise 1, (with $\R^n=\R$) and the second coordinate is always $a$. This sequence is contained in the range of $f$, however, as argued on the first exercise, this sequence does not have a convergent subsequence, so that $f$ is not compact.
+\end{proof}
+
+\begin{exercise}{4}
+Show that for an infinite subset $M$ in the space $s$ (cf. 2.2-8) to be compact, it is necessary that there are numbers $a^1,a^2,\dots$ such that for all $(x^n)\in M$ we have $\absoluteValue{x^n}\leq a^n$. (It can be shown that the condition is also sufficient for the compactness of M).
+\end{exercise}
+\begin{proof}
+Let $M$ be compact. We define $A_j=\set{x^n_j:x^n_j\in (x^n)\in M}$. Take a sequence in $A_j$ for all $j$, say $(x^j)$ and put all the $(x^j)$ together into a sequence of $M$, say $(x^n)$. Since $M$ is compact, $(x^n)$ contains a convergent subsequence, $(x^{n_k})$. We will now prove that for all $j$ of this subsequence, the subsequence of the $j$-th coordinate $(x^{j_k})$ converges, so that $(x^j)$ has a convergent subsequence, and $A_j$ is compact too. Suppose, by contradiction, that $(x^{j_k})$ does not converge for some $j$, but $(x^{n_k})$ does converge to $x$. Then 
+\[
+d(x^{n_k}, x)
+=\sum_{r=1}^\infty \frac{1}{2^r}\frac{\absoluteValue{x^{n_k}_r-x_r}}{1+\absoluteValue{x^{n_k}_r-x_r}},
+\]
+but we assumed that for all $k$, there exists a $j$ so that $\absoluteValue{x^{n_k}_j-x_j}>\epsilon$, so that we cannot make the sum less than $\epsilon$ for all $k>K$ for some $K\in\N$. Hence, $(x^{n_k})$ does not converge, giving us a condtradiction. 
+
+But this implies $(x^{j_k})$ converges for all $j$, so $A_j$ is compact as we asserted above. Since $A_j$ is compact and $A_j$ is a metric space (a subset of the reals with the metric induced by $\norm{\cdot}_1$), we conclude from 2.5-2 that $A_j$ is closed and bounded, say by $a_j$. Since this holds true for all $j$, there exists a sequence $(a^j)$ so that $\absoluteValue{x^n}\leq a^n$, as required.
+\end{proof}
+
+\begin{exercise}{5 (Local compactness)}
+A metric space $X$ is said to be locally compact if every point of $X$ has a compact neighborhood. Show that $\R$ and $\C$ and, more generally, $\R^n$ and $\C^n$ are locally compact. 
+\end{exercise}
+\begin{proof}
+For any point of $\R^n$ and $\C^n$ take a closed ball of finite radius containing it. This is a closed and bounded neighborhood. Since $\R^n$ and $\C^n$ are finite dimensional, we can conclude from Theorem 2.5-3 that the neighborhood is compact. Thus $\R^n$ and $\C^n$ are locally compact.
+\end{proof}
+
+\begin{exercise}{6}
+Show that a compact metric space $X$ is locally compact.
+\end{exercise}
+\begin{proof}
+Since $X$ is a subset of itself, and $X$ contains an $\epsilon$-ball around every of its limit points, then $X$ is a valid neighborhood of any point in $X$. Moreover, $X$ is compact by assumption, so that $X$ is locally compact.
+\end{proof}
+
+\begin{exercise}{9}
+If $X$ is a compact metric space and $M\subseteq X$ is closed, show that $M$ is compact.
+\end{exercise}
+\begin{proof}
+Take a sequence in $M$, since $M\subset X$, the sequence is also a sequence in $X$, so it has a convergent subsequence. By assumption, $M$ is closed so the limit of the convergent subsequence is in $M$. Thus $M$ is compact because all its sequences have a convergent subsequence with limit in $M$.
+\end{proof}
+
+\begin{exercise}{10}
+Let $X$ and $Y$ be metric spaces, $X$ is compact, and $T:X\to Y$ bijective and continuous. Show that $T$ is a homeomorphism (cf. 1.6.5).
+\end{exercise}
+\begin{proof}
+Since $T$ is bijective, its inverse is bijective, we need to show that $T^{-1}$ is continuous to complete the proof. We will prove that if $y^n\to y$ then $T^{-1}y^n\to T^{-1}y$.
+
+Let $y^n\to y$, where $(y^n)$ is a sequence in $\RRR(T)$. Since $T$ is bijective, then there exists a sequence $(x^n)$ in $X$ so that $y^n=Tx^n\to Tx$. Given that $X$ is compact, then $(x^n)$ has a subsequence $(x^{n_k})$ that converges to $x'$. We first prove that $x=x'$. If this wasn't the case, then $T$ would not be continuous, as $Tx^n$ and $Tx^{n_k}$ must both converge to $Tx$, so that $Tx=Tx'$, so that by injectivity $x=x'$. We can reason in a similar way to conclude that any subsequence of $(x^{n_k})$ converges to $x$. By exercise 33 of Carothers, we know that $(x^n)$ converges to $x$ if and only if every subsequence has a further subsequence that converges to $x$, which we argued is the case. Thus $(x^n)$ converges to $x$ and thus $T^{-1}y^n =x^n \to x=T^{-1}y$, so that $T^{-1}$ is continuous. 
 \end{proof}
