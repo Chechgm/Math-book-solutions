@@ -1,119 +1,180 @@
-\subsection{fill}
+\subsection{Closed sets}
 
-\begin{exercise}{x}
-fill
+Closed Sets
+1* Generalize this to the product of two open/closed sets in MxN with the product metric of the last exercise of previous section
+2
+3*
+5* Generalize this where the domain is an arbitrary metric space
+7*
+8*
+10L
+11*
+12
+13
+14
+
+15
+16
+17*
+18*
+19*
+20
+21
+22
+24
+25
+26
+27 (where continuous here means that if xn->x then d(xn,A)-> d(x,A)
+28
+29
+32
+33*
+34*
+36
+37
+38L
+39L
+40*
+41*
+42*
+43*
+44
+45
+46*
+48*
+49L
+50
+51
+52
+53
+
+
+\begin{exercise}{1}
+Show that an ``open rectangle'' $(a,b)\times (c,d)$ is an open set in $\R^2$. More generally, if $A$ and $B$ are open in $\R$, show that $A\times B$ is open in $\R^2$. If $A$ and $B$ are closed in $\R$, show that $A\times B$ is closed in $\R^2$. This also holds in an arbitrary metric space with the product metric (see exercise 3.46).
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{3}
+Some authors say that two metrics $d$ and $\rho$ on a set $M$ are equivalent if they generate the same open sets. Prove this. (Recall that we have defined equivalence to mean that $d$ and $\rho$ generate the same convergent sequences. See exercise 3.42.)
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{5}
+Let $f:\R\to\R$ be continuous. Show that $\set{x:f(x)>)}$ is an open subset of $\R$ and that $\set{x:f(x)=0}$ is a closed subset of $\R$. Prove this for a general metric space too.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{7}
+Show that every open set in $\R$ is the union of (countably many) open intervals with rational endpoints. Use this to show that the collection $\UUU$ of all open subset of $\R$ has the same cardinality as $\R$ itself.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{8}
+Show that every oepn interval (and hence every open set) in $\R$ is a countable union of closed intervals and that every closed interval in $\R$ is a countable intersection of open intervals.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{11}
+Let $e^{(k)}=(0,\dots,0,1,0,\dots)$, where the $k$-th entry is 1 and the rest are 0s. Show that $\set{e^{(k)}:k\geq 1}$ is closed as a subset of $l_1$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{17}
+Show that $A$ is open if and only if $A^\text{\degree}=A$ and that $A$ is closed if and only if $\bar{A}=A$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{18}
+Given a nonempty bounded subset $E$ of $\R$, show that $\sup E$ and $\inf E$ are elements of $\bar{E}$. Thus $\sup E$ and $\inf E$ are elements of $E$ whenever $E$ is closed.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{19}
+Show that $\text{diam}(A)=\text{diam}(\bar{A})$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{33}
+Let $A$ be a subset of $M$. A point $x\in M$ is called a limit point of $A$ if every neighborhood of $x$ contains a point of $A$ that is different from $x$ itself, that is, if $(B_\epsilon(x)\setminus \set{x})\cap A\neq\empty$ for every $\epsilon>0$. If $x$ is a limit point of $A$, show that every neighborhood of $x$ contains infinitely many points of $A$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{34}
+Show that $x$ is a limit point of $A$ if and only if there is a sequence $(x_n)$ in $A$ such that $x_n\to x$ and $x_n\neq x$ for all $n$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{40}
+If $x\in A$ and $x$ is not a limit point of $A$, then $x$ is called an isolated point of $A$. Show that a point $x\in A$ is an isolated point of $A$ if and only if $(B_\epsilon(x)\setminus\set{x})\cap A=\empty$ for some $\epsilon>0$. Prove that a subset of $\R$ can have at most countably many isolated points, thus showing that every uncountable subset of $\R$ has a limit point.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{41}
+Related to the notion of limit points and isolated points are boundary ponits. A point $x\in M$ is said to be a boundary point of $A$ if each neighborhood of $x$ hits both $A$ and $A^C$. In symbols, $x$ is a boundary point of $A$ if and only if $B_\epsilon(x)\cap A \neq\empty$ and $B_\epsilon(x)\cap A^C \neq\empty$ for every $\epsilon>0$. Verify each of the following formulas, where $\text{bdry}(A)$ denotes the set of boundary points of $A$:
+\begin{enumerate}
+    \item $\text{bdry}(A)=\text{bdry}(A^C)$,
+    \item $\text{cl}(A)=\text{bdry}(A)\cup\text{int}(A)$,
+    \item $M=\text{int}(A)\cup\text{bdry}(A)\cup\text{int}(A^C)$.
+\end{enumerate}
+Notice that the first and last equations tell us that each set $A$ partitions $M$ into three regions: the points ``well inside'' $A$, the points ``well outside'' $A$ and the points on the common boundary of $A$ and $A^C$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{42}
+If $E$ is a nonempty bounded subset of $\R$, show that $\sup E$ and $\inf E$ are both boundary points of $E$. Hence, if $E$ is also closed, then $\sup E$ and $\inf E$ are elements of $E$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{43}
+Show that $\text{bdry}(A)$ is always a closed set; in fact, $\text{bdry}(A)=\bar{A}\setminus A^\text{\degree}$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{46}
+A set $A$ is said to be dense in $M$ (or, as some authors say, everywhere dense) if $\bar{A}=M$. For example, both $\Q$ and $\R\setminus\Q$ are dense in $\R$. Show that $A$ is dense in $M$ if and only if any of the following hold:
+\begin{enumerate}
+    \item Every point in t$M$ is the limit of a sequence from $A$.
+    \item $B_\epsilon(x)\cap A\neq\empty$ for every $x\in M$ and every $\epsilon>0$.
+    \item $U\cap A\neq\empty$ for every nonempty open set $U$.
+    \item $A^C$ has empty interior.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{48}
+A metric space is called separable if it contains a countable dense subset. Find examples of countable dense sets in $\R$, in $\R^2$ and in $\R^n$.
 \end{exercise}
 \begin{proof}
 fill

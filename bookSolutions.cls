@@ -60,6 +60,7 @@
 \newcommand{\PPP}{\mathcal{P}}
 \newcommand{\RRR}{\mathcal{R}}
 \newcommand{\SSS}{\mathcal{S}}
+\newcommand{\UUU}{\mathcal{U}}
 
 \newcommand{\bx}{\mathbf{x}}
 

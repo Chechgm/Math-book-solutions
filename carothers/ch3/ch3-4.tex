@@ -3,11 +3,7 @@
 38
 
 40
-41*
-43*
-44*
 45
-46*
 
 \begin{exercise}{27}
 Show that $\text{diam}(B_r(x))\leq 2r$, and give an example where strict inequality holds.
@@ -102,7 +98,25 @@ Suppose, for the sake of contradiction, that $(x_n)$ does not converge to $x$, b
 Given $x,y\in l_2$, recall that $\brackets{x,y}=\sum_{i=1}^\infty x_iy_i$. Show that if $x^{(k)}\to x$ and $y^{(k)}\to y$ in $l_2$, then $\brackets{x^{(k)},y^{(k)}}\to\brackets{x,y}$.
 \end{exercise}
 \begin{proof}
-fill
+Before we prove the main result we will prove a helpful Lemma: if $(x^{(k)})$ is a sequence in $l_2$, then $\sup\set{\norm{x^{(k)}}: k\in\N}<\infty$. Proof: From exercise 36, we know that a convergent sequence is Cauchy and a Cauchy sequence is bounded. Furthermore, we know that the sequence is bounded if and only if for all $a\in l_2$ it holds that $\sup_{x\in (x^{(k)})}d(x, a)<\infty$. Choosing $a=0$, we have that $\sup\set{\norm{x^{(k)}}:k\in\N}=C<\infty$.
+
+Since $x^{(k)}\to x$ and $y^{(k)}\to y$, then for $\epsilon>0$, there exist a $N,M\in\N$ so that whenever $n>N$ and $m>M$, it holds that $\norm{x^{(n)}-x}<\epsilon/\norm{y}_2$ and $\norm{y^{(m)}-y}<\epsilon/C$. Let $k>\max\set{N,M}$. We have,
+\begin{align*}
+    \absoluteValue{\brackets{x^{(k)}, y^{(k)}}-\brackets{x,y}}
+    =& \absoluteValue{\brackets{x^{(k)}, y^{(k)}}- \brackets{x^{(k)}, y} + \brackets{x^{(k)}, y} -\brackets{x,y}}\\
+    \leq& \absoluteValue{\brackets{x^{(k)}, y^{(k)}}- \brackets{x^{(k)}, y}}
+    + \absoluteValue{\brackets{x^{(k)}, y} -\brackets{x,y}}\\
+    =& \absoluteValue{\sum_{i=1}^\infty x^{(k)}_iy^{(k)}_i -\sum_{i=1}^\infty x^{(k)}_iy_i}
+    + \absoluteValue{\sum_{i=1}^\infty x^{(k)}_iy_i -\sum_{i=1}^\infty x_iy_i}\\
+    =& \absoluteValue{\sum_{i=1}^\infty x^{(k)}_i(y^{(k)}_i -y_i)}
+    + \absoluteValue{\sum_{i=1}^\infty (x^{(k)}_i-x_i)y_i}\\
+    \leq& \sum_{i=1}^\infty \absoluteValue{x^{(k)}_i(y^{(k)}_i -y_i)}
+    + \sum_{i=1}^\infty \absoluteValue{(x^{(k)}_i-x_i)y_i}\\
+    \leq& \norm{x^{(k)}}_2\norm{y^{(k)}-y}_2
+    + \norm{y}_2\norm{x^{(k)}-x}_2\\
+    <& \frac{\norm{x^{(k)}}_2\epsilon}{C} + \frac{\norm{y}_2\epsilon}{\norm{y}_2} < \epsilon,
+\end{align*}
+giving us the desired result.
 \end{proof} 
 
 \begin{exercise}{42}
@@ -122,18 +136,25 @@ Since the definition of equivalence of metrics is an equivalence relation, then 
 Show that the usual metric on $\N$ is equivalent to the discrete metric. Show that any metric on a finite set is equivalent to the discrete metric.
 \end{exercise}
 \begin{proof}
-fill
+($\N$ with the usual metric is equivalent to the discrete metric) To see this equivalence, notice that for a sequence to be convergent in $\N$ under the usual metric or the discrete metric, the sequence needs to eventually be constant. That is, there must exist $N\in\N$ so that for all $n>N$ it holds that $x_n=x$. If this was not the case, then $x_n\not\to x$. But this is the same as saying that $\N$ under the usual metric and the discrete metric are equivalent, since a sequence converges under these metrics if and only if it is eventually constant.
+
+(Any metric on a finite set is equivalent to the discrete metric) This follows from essentially the same argument as above. For a sequence to be convergent in a finite set under any metric, it is necessary that the sequence is eventually constant. To see this, let $X=\set{x_1,\dots,x_n}$ and $d$ be a metric defined on $X$. Let $\epsilon=\min\set{d(x_i,x_j):x_i,x_j\in X}$. The only way in which a sequence $(x_n)$ can get arbitrarily close (less than $\epsilon$) to a potential limit $x$, is by having $x_n=x$ for all $n>N$ for some 
+$N\in\N$. Since this is also the case for the discrete metric, then these metrics are equivalent.
 \end{proof} 
 
 \begin{exercise}{44}
 Show that the metrics induced by $\norm{\cdot}_1,\norm{\cdot}_2$, and $\norm{\cdot}_\infty$ on $\R^n$ are all equivalent. [Hint: See exercise 18].
 \end{exercise}
 \begin{proof}
-%Prove that if the norms are equivalent in Kreyszig sense then the convergent sequences are the same and then use 18 because then we proved they are equivalent in kreyszig sense.
+We will first prove a Lemma: Let $(X,\norm{\cdot}_0)$ and $(X,\norm{\cdot})$ be metric spaces. If there exist constants $a,b$ such that for all $x\in X$, $a\norm{x} \leq\norm{x}_0 \leq b\norm{x}$ holds (this is the definition of equivalent norms in Kreyszig), then a sequence $(x_n)$ in $X$ converges in $(X,\norm{\cdot})$, if and only if it converges in $(X,\norm{\cdot}_0)$.
+
+\textit{Proof}: we will only prove one direction, the other direction can be proved in a similar fashion, mutatis mutandis. Let $x_n\to x$ under $\norm{\cdot}$. Then for all $\epsilon>0$, there exists an $N\in\N$ such that if $n>N$, then it holds that $\norm{x_n-x}_0/b\leq\norm{x_n-x}<\epsilon/b$. Multiplying both sides of the inequality by $b$ gives us that $\norm{x_n-x}_0<\epsilon$. That is, $x_n\to x$ under $\norm{\cdot}_0$, as required.
+
+Having proved this, we can use exercise 18 where we proved such constants exists between $\norm{\cdot}_1, \norm{\cdot}_2$ and $\norm{\cdot}_\infty$ on $\R^n$, so that the metrics induced by these norms are equivalent in Carothers' sense.
 \end{proof} 
 
 \begin{exercise}{46}
-Given two metric spaces $(M,d)$ and $(N,\rho)$, we can define a metric on the product $M\times N$ in a variety of ways. Our only requirement is that a sequence of pairs $(a_n,x_n)$ in $M\times N$ should converge precisely when both coordinate sequences $(a_n)$ and $(x_n)$ converge (in $(M,d)$ and $(N,\rho)$, respectively). Show that each of the following define metrics on $M\times N$ that enjoy this property and that all three are equivalent:
+Given two metric spaces $(M,d)$ and $(N,\rho)$, we can define a metric on the product $M\times N$ in a variety of ways. Our only requirement is that a sequence of pairs $(a_n,x_n)$ in $M\times N$ should converge precisely when both coordinate sequences $(a_n)$ and $(x_n)$ converge (in $(M,d)$ and $(N,\rho)$, respectively). Show that each of the following define metrics on $M\times N$ enjoy this property and that all three are equivalent:
 \begin{align*}
     d_1((a,x),(b,y)) =& d(a,b)+\rho(x,y)\\
     d_2((a,x),(b,y)) =& (d(a,b)^2+\rho(x,y)^2)^{1/2}\\
@@ -142,7 +163,56 @@ Given two metric spaces $(M,d)$ and $(N,\rho)$, we can define a metric on the pr
 Henceforth, any implicit reference to ``the'' metric on $M\times N$, sometimes called the product metric, will mean one of $d_1,d_2$, or $d_\infty$. Any one of them will serve equally well; use whichever looks most convenient for the argument at hand.
 \end{exercise}
 \begin{proof}
-fill
+(For the property) Suppose $a_n\to a$ and $x_n\to x$. Then for all $\epsilon>0$, there exist $N,M\in\N$ so that for $n>N$ and $m>M$, it holds that $d(a_n,a)<\epsilon/2$ and $\rho(x_n,x)<\epsilon/2$. Let $n>\max\set{N,M}$. Then it is true that 
+\begin{align*}
+    d_1((a_n,a),(x_n,x)) =& d(a_n,a)+\rho(x_n,x) <\epsilon,\\
+    d_2((a_n,a),(x_n,x)) =& (d(a_n,a)^2+\rho(x_n,x)^2)^{1/2}\\
+    <& ((\epsilon/2)^2+(\epsilon/2)^2)^{1/2} <\epsilon/2^{1/2}<\epsilon,\\
+    d_\infty((a_n,a),(x_n,x)) =&\max\set{d(a_n,a), \rho(x_n,x)} <\epsilon/2<\epsilon.
+\end{align*}
+
+On the other hand, suppose $(a_n,x_n)\to (a,x)$ under $d_1,d_2$ and $d_\infty$. Then for all $\epsilon>0$ there exists an $N\in\N$ so that for all $n>N$, it holds that
+\begin{align*}
+    d(a_n,a),\rho(x_n,x)
+    \leq& d(a_n,a)+\rho(x_n,x) =d_1((a_n,a),(x_n,x)) <\epsilon\\
+    d(a_n,a),\rho(x_n,x)
+    \leq& (d(a_n,a)^2+\rho(x_n,x)^2)^{1/2} =d_2((a_n,a),(x_n,x)) <\epsilon\\
+    d(a_n,a),\rho(x_n,x)
+    \leq& \max\set{d(a_n,a), \rho(x_n,x)} =d_\infty((a_n,a),(x_n,x)) <\epsilon,
+\end{align*}
+so that in all cases, it also holds that $a_n\to a$ and $x_n\to x$.
+
+(Equivalence between $d_1$ and $d_\infty$) Let $(a_n,x_n)\to (a,x)$ under $d_1$. Then for all $\epsilon>0$, there exists an $N\in\N$ so that for all $n>N$, it holds that 
+\begin{align*}
+    d_\infty((a_n,x_n),(a,x)) 
+    =& \max\set{d(a_n,a),\rho(x_n,x)}\\
+    <& d(a_n,a)+\rho(x_n,x)\\
+    =& d_1((a_n,x_n),(a,x)) <\epsilon.
+\end{align*}
+On the other hand, if $(a_n,x_n)\to (a,x)$ under $d_\infty$, then there exists an $N\in\N$ so that whenever $n>N$, it holds that $d_\infty((a_n,x_n),(a,x)) <\epsilon/2$. Hence,
+\begin{align*}
+    d_1((a_n,x_n),(a,x)) 
+    <& d(a_n,a)+\rho(x_n,x)\\
+    \leq& 2\max\set{d(a_n,a),\rho(x_n,x)}\\
+    =& 2d_\infty((a_n,x_n),(a,x)) <2\epsilon/2 = \epsilon.
+\end{align*}
+Putting these two results together gives us that $d_1$ and $d_\infty$ are equivalent.
+
+(Equivalence between $d_2$ and $d_\infty$) Let $(a_n,x_n)\to (a,x)$ under $d_2$. Then for all $\epsilon>0$, there exists an $N\in\N$ so that for all $n>N$, it holds that 
+\begin{align*}
+    d_\infty((a_n,x_n),(a,x)) 
+    =& \max\set{d(a_n,a),\rho(x_n,x)}\\
+    <& (d(a_n,a)^2+\rho(x_n,x)^2)^{1/2}\\
+    =& d_2((a_n,x_n),(a,x)) <\epsilon.
+\end{align*}
+On the other hand, if $(a_n,x_n)\to (a,x)$ under $d_\infty$, then there exists an $N\in\N$ so that whenever $n>N$, it holds that $d_\infty((a_n,x_n),(a,x)) <\epsilon/\sqrt{2}$. Hence,
+\begin{align*}
+    d_2((a_n,x_n),(a,x)) 
+    <& (d(a_n,a)^2+\rho(x_n,x)^2)^{1/2}\\
+    \leq& \sqrt{2}\max\set{d(a_n,a),\rho(x_n,x)}\\
+    =& \sqrt{2}d_\infty((a_n,x_n),(a,x)) <\sqrt{2}\epsilon/\sqrt{2} = \epsilon.
+\end{align*}
+Putting these two results together gives us that $d_2$ and $d_\infty$ are equivalent.
 \end{proof} 
 
 
