@@ -1,9 +1,5 @@
 \subsection{Limits in metric spaces}
 
-38
-
-40
-45
 
 \begin{exercise}{27}
 Show that $\text{diam}(B_r(x))\leq 2r$, and give an example where strict inequality holds.
@@ -85,6 +81,32 @@ In a metric space $M$ with metric $d$ show that a Cauchy sequence with a converg
 \end{exercise}
 \begin{proof}
 Let $(x_n)$ be Cauchy and $x_{n_k}\to x$. Thus, for all $\epsilon>0$, there exists a $K\in\N$ so that for all $k>K$, it holds that $d(x_{n_k},x)<\epsilon/2$. Furthermore, there exists an $M\in\N$ so that for all $n,m>M$, it holds that $d(x_n,x_m)<\epsilon/2$. Now let $N=\max\set{n_K,M}$. It is then the case that $d(x_n,x) \leq d(x_n, x_{n_K})+d(x_{n_K},x) <\epsilon$, so that $(x_n)\to x$, as desired.
+\end{proof} 
+
+\begin{exercise}{38}
+A sequence $(x_n)$ has a Cauchy subsequence if and only if it has a subsequence $(x_{n_k})$ for which $d(x_{n_k},x_{n_{k+1}})<2^{-k}$ for all $k$.
+\end{exercise}
+\begin{proof}
+($\Rightarrow$) 
+Suppose $(x_n)$ has a Cauchy subsequence. 
+Then for all $\epsilon=2^k>0$ there exists an $K\in\N$ so that whenever $k,m>K$, it holds that $d(x_{n_k},x_{n_{m}})<2^{-k}$.
+We can build the subsequence with the desired property noticing the above property holds for $m=k+1$ and any choice of $k$ with $\epsilon=2^{-k}>0$.
+
+($\Leftarrow$)
+Suppose $(x_n)$ has a subsequence $(x_{n_k})$ for which $d(x_{n_k},x_{n_{k+1}})<2^{-k}$ for all $k$. 
+We will prove that $(x_{n_k})$ is itself Cauchy. 
+Fix $\epsilon>0$, and choose $K\in\N$ so that $1/2^{K-1}<\epsilon$. 
+We then have, for all $k,l>K$
+\begin{align*}
+    d(x_{n_k},x_{n_l}) 
+    \leq& d(x_{n_k},x_{n_{k+1}})+\dots+d(x_{n_{l-1}},x_{n_l})\\
+    \leq& \sum_{i=K}^\infty d(x_{n_i},x_{n_{i+1}})\\
+    <& \sum_{i=K}^\infty 2^{-i}\\
+    =& \sum_{i=0}^\infty 2^{-i}-\sum_{i=0}^{K-1}2^{-i}\\
+    =& 2-(2^K-1)/2^{K-1}\\
+    =& 1/2^{K-1}<\epsilon.
+\end{align*}
+That is, $(x_{n_k})$ is Cauchy, as desired.
 \end{proof} 
 
 \begin{exercise}{39}
@@ -213,34 +235,4 @@ On the other hand, if $(a_n,x_n)\to (a,x)$ under $d_\infty$, then there exists a
     =& \sqrt{2}d_\infty((a_n,x_n),(a,x)) <\sqrt{2}\epsilon/\sqrt{2} = \epsilon.
 \end{align*}
 Putting these two results together gives us that $d_2$ and $d_\infty$ are equivalent.
-\end{proof} 
-
-
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
 \end{proof} 

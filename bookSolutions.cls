@@ -50,6 +50,7 @@
 
 % Calligraphic and bold
 \newcommand{\AAA}{\mathcal{A}}
+\newcommand{\BBB}{\mathcal{B}}
 \newcommand{\CCC}{\mathcal{C}}
 \newcommand{\DDD}{\mathcal{D}}
 \newcommand{\FFF}{\mathcal{F}}

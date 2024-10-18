@@ -1,92 +1,186 @@
 \subsection{Bounded and continuous linear operators}
 
-1 These results are used all the time, so very important
-2 This kind of explains the wierd name "bounded"
-5
-6
-7
-8 Some practice with the concepts and also an important counterexample
-9
-10 Some practice with the basic concepts
-12
-13
-14 
-15 Norms on matrices and how they arise. Not that important, but it's nice to know.
 
 \begin{exercise}{1}
-Let $X,Y,Z$ be normed spaces, $T_1:Y\to Z$ and $T_2:Y\to Z$ and $T:X\to X$. Then:
+Let $X,Y,Z$ be normed spaces, and $T_1:Y\to Z$ and $T_2:Y\to Z$ and $T:X\to X$ bounded linear operators. Then:
 \begin{enumerate}
     \item $\norm{T_1T_2}\leq\norm{T_1}\norm{T_2}$, and
     \item $\norm{T^n}\leq \norm{T}^n$, for all $n\in\N$.
 \end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+Notice that for all $x\in\DDD(T_1,T_2)$ we have
+\[
+\norm{T_1T_2x}\leq\norm{T_1}\norm{T_2x}\leq\norm{T_1}\norm{T_2}\norm{x},
+\]
+so that dividing both sides of the inequality by $\norm{x}$ we get that $\norm{T_1T_2}\leq\norm{T_1}\norm{T_2}$, as required.
+
+The second inequality follows from induction, by using $T=T_1=T_2$ in the first step, and $T=T_1$ and $T^{n-1}=T_2$ on the induction step.
 \end{proof}
 
 \begin{exercise}{2}
-Let $X$ and $Y$ be normed spaces. Show that a linear operator $T:X\to Y$ is bounded if and only if $T$ maps bounded sets in $X$ into bounded sets in $Y$.
+Let $X$ and $Y$ be normed spaces. 
+Show that a linear operator $T:X\to Y$ is bounded if and only if $T$ maps bounded sets in $X$ into bounded sets in $Y$.
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$) Let $T$ be bounded. Then there exists a constant $c$ so that for all $x\in X$, we have $\norm{Tx}\leq c\norm{x}$. Let $A\subseteq X$ be bounded. Hence, $\sup_{x,y\in A}\norm{x-y}=M<\infty$. Thus, $\norm{T(x-y)}=\norm{Tx-Ty}\leq c\norm{x-y}<\infty$ so that the set $T(A)$ is bounded too.
+
+($\Leftarrow$) Let $T$ map bounded sets to bounded sets, so that if $A\subseteq X$ is a bounded set, then $T(A)\subseteq Y$ is bounded too. Let $A=\set{x\in X:\norm{x}=1}$. To see this is a bounded set, notice that if $x,y\in A$, then $d(x,y)\leq d(x,0)+d(0,y) =\norm{x}+\norm{y}=2$. By exercise 2.2.15, we have that $A$ is bounded if and only if there is a positive number $c$ such that $\norm{x}\leq c$ for all $x\in A$. Thus, since $T(A)$ is bounded, such $c$ exists (notice this is an alternative proof that $A$ itself is bounded, by taking $c=1$). Finally, by definition, we have that $\norm{T} =\sup_{x\in\DDD(T),\norm{x}=1}\norm{Tx} =\sup_{x\in A}\norm{Tx}<\infty$, so that $T$ is bounded, as required.
 \end{proof}
 
 \begin{exercise}{5}
 Show that the operator $T:l^\infty\to l^\infty$ defined by $x=(x^n)$, $y^n=x^n/n$, $y =(y^n) =Tx$, is linear and bounded.
 \end{exercise}
 \begin{proof}
-fill
+We claim that for $\norm{Tx}\leq c\norm{x}$ to hold for all $x\in\l_\infty$ we need to set $c=1$, and thus $T$ is bounded. 
+To see this, recall that $l_\infty$ consists of all bounded sequences, so that for all $n$, $\absoluteValue{x^n}\leq M$ for some constant. 
+Furthermore, $\norm{x}=\sup_{n\in\N}\absoluteValue{x^n}$. 
+We also see that for all $n$, $\absoluteValue{y^n}=\absoluteValue{x^n/n}\leq M$. 
+Thus $\sup_{n\in\N}\absoluteValue{x^n/n} =\norm{Tx} \leq\norm{x} =\sup_{n\in\N}\absoluteValue{x^n}$, as required.
 \end{proof}
 
 \begin{exercise}{6 (Range)}
-Show that the range $\RRR(T)$ of a bounded linear operator $T:X\to Y$ need not be closed in $Y$. Hint: Use $T$ in exercise 5.
+Show that the range $\RRR(T)$ of a bounded linear operator $T:X\to Y$ need not be closed in $Y$. 
+Hint: Use $T$ in exercise 5.
 \end{exercise}
 \begin{proof}
-fill
+Consider the sequence $(x^n)$ given by $x^n=(1,2,\dots,n,0,0,\dots)$. 
+Every element of this sequence is in $l^\infty$ (because it is bounded), and the image of every element of the sequence, $T(x^n)=(1,1,\dots,1,0,0,\dots)$ is in $l^\infty$. 
+However, the limit of the sequence, the constant sequence of 1s is not in $T(l^\infty)$ because it is the image of the sequence of naturals, $(1,2,\dots,n,n+1,\dots)$ which is not in $l^\infty$ because it is not a bounded sequence.
+Hence, $T(l^\infty)$ is not closed.
 \end{proof}
 
 \begin{exercise}{7 (Inverse operator)}
-Let $T$ be a bounded linear operator from a normed space $X$ onto a normed space $Y$. If there is a positive $b$ such that $\norm{Tx}\geq b\norm{x}$ for all $x\in X$, show that then $T^{-1}:Y\to X$ exists and is bounded.
+Let $T$ be a bounded linear operator from a normed space $X$ onto a normed space $Y$. 
+If there is a positive $b$ such that $\norm{Tx}\geq b\norm{x}$ for all $x\in X$, show that then $T^{-1}:Y\to X$ exists and is bounded.
 \end{exercise}
 \begin{proof}
-fill
+To see $T$ is injective (and thus has an inverse, given that we assume it is onto), suppose $Tx=Ty$.
+Then $0 =\norm{Tx-Ty} \geq b\norm{x-y}\geq 0$, so that $\norm{x-y}=0$ and $x=y$.
+
+To see $T^{-1}$ is bounded, notice that $\norm{x} =\norm{T(T^{-1}x)} \geq b\norm{T^{-1}x}$, so that $(1/b)\norm{x} =c\norm{x} \geq \norm{T^{-1}x}$, as desired.
 \end{proof}
 
 \begin{exercise}{8}
-Show that the inverse $T^{-1}:\RRR(T)\to X$ of a bounded linear operator $T:X\to Y$ need not be bounded. Hint: Use $T$ in exercise 5.
+Show that the inverse $T^{-1}:\RRR(T)\to X$ of a bounded linear operator $T:X\to Y$ need not be bounded. 
+Hint: Use $T$ in exercise 5.
 \end{exercise}
 \begin{proof}
-fill
+We argued on exercise 6 that any finite sequence of $n$ sequential 1s is the image of the sequence $(1,2,\dots,n,0,0,\dots)\in l^\infty$.
+Now consider the sequence (of sequences), where $x^n$ is the sequence of $n$ 1s.
+For each $x^n$, we have $\norm{x^n}_\infty=\sup_j\absoluteValue{x^n_j}=1$.
+Furthermore, for all $n$ we have $\norm{T^{-1}x^n} =\sup_j\absoluteValue{nx^n_j} =n$ so
+$\norm{T^{-1}}=\sup_{x\in\DDD(T^{-1}),\norm{x}=1}\norm{T^{-1}x}=\infty$, so that $T^{-1}$ is not bounded.
 \end{proof}
 
 \begin{exercise}{9}
-Let $T:C[0,1]\to C[0,1]$ be defined by $y(t)=\int_0^t x(\tau)d\tau$. Find $\RRR(T)$ and $T^{-1}:\RRR(T)\to C[0,1]$. Is $T^{-1}$ linear and bounded?
+Let $T:C[0,1]\to C[0,1]$ be defined by $y(t)=\int_0^t x(\tau)d\tau$. 
+Find $\RRR(T)$ and $T^{-1}:\RRR(T)\to C[0,1]$. Is $T^{-1}$ linear and bounded?
 \end{exercise}
 \begin{proof}
-fill
+We have that $\RRR(T)$ is the set of functions in $[0,1]$ that are differentiable at least once and whose derivative is continuous (that is, in $C^1[0,1]$), and for which $f(0)=0$ (since whenever we integrate with predetermined limits we don't get any constant).
+$T^{-1}$ is the differentiation operator, which is linear but not bounded.
+To see that $T^{-1}$ is not bounded, notice that $x=t^n$ for an arbitrary $n$, which is in $\RRR(T)$, and use the argument in 2.7-5.
 \end{proof}
 
 \begin{exercise}{10}
-On $C[0,1]$ define $S$ and $T$ by $y(s)=s\int_0^1x(t)dt$, $y(s)=sx(s)$, respectively. Do $S$ and $T$ commute? Find $\norm{S}, \norm{T}, \norm{ST}$ and $\norm{TS}$.
+On $C[0,1]$ define $S$ and $T$ by $y(s)=s\int_0^1x(t)dt$, $y(s)=sx(s)$, respectively. 
+Do $S$ and $T$ commute? 
+Find $\norm{S}, \norm{T}, \norm{ST}$ and $\norm{TS}$.
 \end{exercise}
 \begin{proof}
-fill
+We have 
+\begin{align*}
+    STx 
+    =& S(Tx) = S(sx(s)) = s\int_0^1 tx(t) dt\\
+    TSx =& T(Sx) = T(s\int_0^1 x(t) dt) = s^2\int_0^1 x(t)dt.
+\end{align*}
+So that, in general, $T$ and $S$ do not commute.
+
+Now,
+\begin{align*}
+    \norm{T} 
+    =& \sup_{x\in C[0,1], \norm{x}=1} \norm{Tx}\\
+    =& \sup_{x\in C[0,1], \norm{x}=1} \max_{s\in [0,1]}\absoluteValue{sx(s)}\\
+    =& \sup_{x\in C[0,1], \norm{x}=1} \max_{s\in [0,1]}\absoluteValue{s}\absoluteValue{x(s)}\\
+    \leq& \sup_{x\in C[0,1], \norm{x}=1} \max_{s\in [0,1]}\absoluteValue{s}\max_{s\in [0,1]}\absoluteValue{x(s)}\\
+    =& \sup_{x\in C[0,1], \norm{x}=1}\norm{x} =1,
+\end{align*}
+furthermore, if we take $x(t)=1$ for all $t$, then using equation 3,
+\begin{align*}
+    1 
+    =& \max_{s\in [0,1]}\absoluteValue{sx(s)}
+    = \norm{Tx}\\
+    \leq& \norm{T}\norm{x}\\
+    =& \norm{T}\max_{s\in[0,1]}\absoluteValue{x(s)} =\norm{T}, 
+\end{align*}
+hence $\norm{T}=1$.
+
+Now for the norm of $S$, we have
+\begin{align*}
+    \norm{S} 
+    =& \sup_{x\in C[0,1], \norm{x}=1}\norm{Sx}\\
+    =& \sup_{x\in C[0,1], \norm{x}=1} \max_{s\in[0,1]}\absoluteValue{s\int_0^1x(t)dt}\\
+    \leq& \sup_{x\in C[0,1], \norm{x}=1} \max_{s\in[0,1]}\absoluteValue{s} \max_{s\in[0,1]}\absoluteValue{\int_0^1x(t)dt}\\
+    =& \sup_{x\in C[0,1], \norm{x}=1} \max_{s\in[0,1]}\absoluteValue{\int_0^1x(t)dt}\\
+    \leq& 1.
+\end{align*}
+The last inequality is true because $\absoluteValue{\int_0^1 x}\leq \int_0^1 \absoluteValue{x}$ and if $x(t)\leq 1$ for all $t$, then $\int_0^1x\leq 1(1-0)$ (Theorem 7.4.2.iii and v in Abbott).
+Furthermore, choosing $x(t)=1$ for all $t$ and equation 3,
+\begin{align*}
+    1 =& \max_{s\in[0,1]}s\int_0^1x(t)dt
+    = \max_{s\in[0,1]}\norm{Sx}\\
+    \leq& \norm{S}\norm{x}\\
+    =& \norm{S}\max_{s\in[0,1]}\int_0^1x(t)dt =\norm{S},
+\end{align*}
+so that $\norm{S}=1$.
+
+For $\norm{TS}$ and $\norm{ST}$ we can use a similar technique as for $S$ to conclude that $\norm{TS}=\norm{ST}=1$.
+
 \end{proof}
 
 \begin{exercise}{12 (Matrices)}
-From 2.7-7 we know that an $r\times n$ matrix $A=(a_{jk})$ defines a linear operator from the vector space $X$ of all ordered $n-$tuples of numbers into the vector space $Y$ of all ordered $r-$tuples of numbers. Suppose that any norm $\norm{\cdot}_1$ is given on $X$ and any norm $\norm{\cdot}_2$ is given on $Y$. Remember from exercise 2.4.10, that there are various norms on the space $Z$ of all those matrices ($r$ and $n$ fixed). A norm $\norm{\cdot}$ on $Z$ is said to be compatible with $\norm{\cdot}_1$ and $\norm{\cdot}_2$ if $\norm{Ax}_2 \leq\norm{A}\norm{x}_1$.
+From 2.7-7 we know that an $r\times n$ matrix $A=(a_{jk})$ defines a linear operator from the vector space $X$ of all ordered $n-$tuples of numbers into the vector space $Y$ of all ordered $r-$tuples of numbers. 
+Suppose that any norm $\norm{\cdot}_1$ is given on $X$ and any norm $\norm{\cdot}_2$ is given on $Y$. 
+Remember from exercise 2.4.10, that there are various norms on the space $Z$ of all those matrices ($r$ and $n$ fixed). 
+A norm $\norm{\cdot}$ on $Z$ is said to be compatible with $\norm{\cdot}_1$ and $\norm{\cdot}_2$ if $\norm{Ax}_2 \leq\norm{A}\norm{x}_1$.
 
 Show that the norm defined by
 \[
 \norm{A} = \sup_{x\in X, x\neq 0}\frac{\norm{Ax}_2}{\norm{x}_1}
 \]
-is compatible with $\norm{\cdot}_1$ and $\norm{\cdot}_2$. This norm is often called the natural norm defined by $\norm{\cdot}_1$ and $\norm{\cdot}_2$. If we choose $\norm{x}_1=\max_j\absoluteValue{x^j}$ and $\norm{y}=\max_j\absoluteValue{y^j}$, show that the natural norm is
+is compatible with $\norm{\cdot}_1$ and $\norm{\cdot}_2$. 
+This norm is often called the natural norm defined by $\norm{\cdot}_1$ and $\norm{\cdot}_2$. 
+If we choose $\norm{x}_1=\max_j\absoluteValue{x_j}$ and $\norm{y}=\max_j\absoluteValue{y_j}$, show that the natural norm is
 \[
 \norm{A}=\max_j\sum^n_{k=1}\absoluteValue{a_{jk}}.
 \]
 \end{exercise}
 \begin{proof}
-fill
+(Compatibility)
+We have 
+\begin{align*}
+    \norm{A}\norm{x'}_1
+    =& \sup_{x\in X, x\neq 0}\left\{\frac{\norm{Ax}_2}{\norm{x}_1}\right\}\norm{x'}_1\\
+    \geq& \sup_{x\in X, x\neq 0}\left\{\norm{Ax}_2\right\}\frac{\norm{x'}_1}{{\norm{x'}_1}}\\
+    =& \sup_{x\in X, x\neq 0}\norm{Ax}_2
+    \geq \norm{Ax'}_2,
+\end{align*}
+as required.
+
+(Natural norm)
+We have
+\begin{align*}
+    \norm{A}
+    =& \sup_{x\in X, x\neq 0}\left\{\frac{\max_k \absoluteValue{\sum_l a_{k,l}x_l}}{\max_j \absoluteValue{x_j}}\right\}\\
+    \leq& \sup_{x\in X, x\neq 0}\left\{\frac{\max_k \absoluteValue{\sum_l a_{k,l}\max_l \absoluteValue{x_l}}}{\max_j \absoluteValue{x_j}}\right\}\\
+    =& \sup_{x\in X, x\neq 0}\left\{\frac{\max_k \absoluteValue{\max_l \absoluteValue{x_l}\sum_l a_{k,l}}}{\max_j \absoluteValue{x_j}}\right\}\\
+    =& \sup_{x\in X, x\neq 0}\left\{\frac{\max_l  \absoluteValue{x_l}\max_k\absoluteValue{\sum_l a_{k,l}}}{\max_j \absoluteValue{x_j}}\right\}\\
+    =& \sup_{x\in X, x\neq 0}\left\{\max_k\absoluteValue{\sum_l a_{k,l}}\right\}\\
+    =& \max_k\absoluteValue{\sum_l a_{k,l}}
+\end{align*}
+The second inequality would hold be an equality if $x$ is a constant vector.
+Choosing $x=(1,\dots,1)$ is enough to get us the desired result.
 \end{proof}
 
 \begin{exercise}{13}
@@ -97,23 +191,60 @@ Show that in 2.7-7 with $r=n$, a compatible norm is defined by
 but for $n>1$ this is not the natural norm defined by the Euclidean norm on $R^n$.
 \end{exercise}
 \begin{proof}
-fill
+We have 
+\begin{align*}
+    \norm{Ax}^2
+    =& \sum_{j=1}^n \parens{\sum_{k=1}^n a_{jk}x_k}^2\\
+    \leq& \sum_{j=1}^n \parens{\sum_{k=1}^n a_{jk}^2}\parens{\sum_{k=1}^n x_k^2}\\
+    =& \parens{\sum_{k=1}^n x_k^2}\parens{\sum_{j=1}^n\sum_{k=1}^n a_{jk}^2}\\
+    =& \norm{x}^2\norm{A}^2.
+\end{align*}
+Where the inequality is given by Cauchy-Schwarz applied to every $j$ separately and summing them again. 
+Thus, taking square root on both sides of the inequality tells us that $\norm{A}$ is compatible.
+
+To see the second part, consider $A=I$.
+Then $\norm{A}=\sqrt{n}$, and the natural norm is 1.
+Since they are not the same, then $\norm{A}$ is not the natural norm.
 \end{proof}
 
 \begin{exercise}{14}
 If in exercise 12 we choose 
 \[
-\norm{x}_1=\sum^n_{k=1}\absoluteValue{x^k},\quad \norm{y}_2=\sum^r_{j=1}\absoluteValue{y_j},
+\norm{x}_1=\sum^n_{k=1}\absoluteValue{x_k},\quad \norm{y}_2=\sum^r_{j=1}\absoluteValue{y_j},
 \]
 show that a compatible norm is defined by $\norm{A}=\max_k\sum^r_{j=1}\absoluteValue{a_{jk}}$.
 \end{exercise}
 \begin{proof}
-fill
+We have 
+\begin{align*}
+    \norm{Ax}_2
+    =& \sum_j^r \absoluteValue{(Ax)_j}\\
+    =& \sum_j^r \absoluteValue{\sum_k^n a_{jk}x_k}\\
+    \leq& \sum_j^r \sum_k^n \absoluteValue{a_{jk}x_k}\\
+    =& \sum_k^n \absoluteValue{x_k}\sum_j^r \absoluteValue{a_{jk}}\\
+    \leq& \sum_k^n \absoluteValue{x_k} \max_k\sum_j^r \absoluteValue{a_{jk}}\\
+    =& \sum_k^n \absoluteValue{x_k} \norm{A}\\
+    =& \norm{A}\sum_k^n \absoluteValue{x_k} =\norm{A}\norm{x}_1
+\end{align*}
+Where the first inequality follows from the triangle inequality.
 \end{proof}
 
 \begin{exercise}{15}
 Show that for $r=n$, the norm in exercise 14 is the natural norm corresponding to $\norm{\cdot}_1$ and $\norm{\cdot}_2$ as defined in that problem.
 \end{exercise}
 \begin{proof}
-fill
+Starting from the second equality of exercise 14, we have
+\begin{align*}
+    \norm{Ax}_2
+    =& \sum_j^n \absoluteValue{\sum_k^n a_{jk}x_k}.
+\end{align*}
+Let $x=(0,\dots,1,\dots,0)$, where $x_k=1$ when $\max_k \sum_j^n \absoluteValue{a_{jk}}$.
+Then we have
+\begin{align*}
+    \sum_j^n \absoluteValue{\sum_k^n a_{jk}x_k}
+    &= \sum_j^n \max_k \absoluteValue{a_{jk}}
+    = \max_k \sum_j^n\absoluteValue{a_{jk}} = \norm{A}.
+\end{align*}
+Since $\norm{x}_1=1$, then this is consistent with the natural norm.
+If $x_k$ was different from a constant in more than one $k$ then applying the triangle inequality (as the first inequality in exercise 14) would give us that our proposed solution is larger than with the alternative $x$.
 \end{proof}

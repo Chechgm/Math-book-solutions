@@ -1,7 +1,103 @@
 \subsection{Linear functionals}
 
-\begin{exercise}{1}
+2 Some practice with the basic concepts
+4 Some practice with the basic concepts
+5 Some practice with the basic concepts
+6 This is interesting since the differentiation functional is not bounded on C[a,b] with the usual norm, but if we change our norm a bit, it becomes bounded 
+7 Good to know
+9
+10
+11 
+12 Some links between functionals and the nullspace as a hyperplane
+13 So a functional is either 0 or surjective 
+14 Not so important, but I think this geometric interpretation of the norm is especially cool
+
+\begin{exercise}{2}
+Show that the functionals defined on $C[a,b]$ by 
+\begin{align*}
+    f_1(x) =& \int_a^b x(t)y_0(t)dt\\
+    f_2(x) =& \alpha x(a) +\beta x(b),
+\end{align*}
+for $y_0\in C[a,b]$, and fixed $\alpha,\beta$ are linear and bounded.
+\end{exercise}
+\begin{proof}
 fill
+\end{proof}
+
+\begin{exercise}{4}
+Show that $f_1(x)=\max_{t\in J} x(t)$ and $f_2(x)=\min_{t\in J} x(t)$ for $J=[a,b]$ define functionals on $C[a,b]$. 
+Are they linear? Bounded?
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{5}
+Show that on any sequence space $X$ we can define a linear functional $f$ by setting $f(x)=x_n$ ($n$ fixed, where $x=(x_n)$. 
+Is $f$ bounded if $X=l^\infty$?
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{6 (Space $C^1[a,b]$)}
+The space $C^1[a,b]$ or $C'[a,b]$ is the normed space of all continuously differentiable functions on $J=[a,b]$ with norm defined by $\norm{x}=\max_{t\in J}\absoluteValue{x(t)}+\max_{t\in J}\absoluteValue{x'(t)}$. Show that the axioms of a norm are satisfied. 
+Show that $f(x)=x'(c)$, $c=(a+b)/2$, defines a bounded linear functional on $C^1[a,b]$. 
+Show that $f$ is not bounded, considered as a functional on the subspace of $C[a,b]$ which consists of all continuously differentiable functions.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{7}
+If $f$ a bounded linear functional on a complex normed space, is $\bar{f}$ Bounded? Linear?
+(The bar denotes complex conjugate).
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{9}
+Let $f\neq 0$ be any linear functional on a vector space $X$ and $x_0$ any fixed element of $X\setminus \NNN(f)$, where $\NNN(f)$ is the null space of $f$.
+Show that any $x\in X$ has a unique representation $x=\alpha x_0+y$, where $y\in\NNN(f)$.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{10}
+Show that in exercise 9, two elements $x_1,x_2\in X$ belong to the same element of the quotient space $\quot{X}{\NNN(f)}$ if and only if $f(x_1)=f(x_2)$;
+show that $\text{codim }\NNN(f)=1$.
+(Cf. 2.1.14).
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{11}
+Show that two linear functionals $f_1\neq 0$ and $f_2\neq 0$ which are defined on the same vector space and have the same null space are proportional.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{12 (Hyperplane)}
+If $Y$ is a subspace of a vector space $X$ and $\text{codim }Y=1$ (cf. 2.1.14), then every element of $\quot{X}{Y}$ is called a hyperplane parallel to $Y$.
+Show that for any linear functional $f\neq 0$ on $X$, the set $H_1=\set{x\in X: f(x)=1}$ is a hyperplane parallel to the null space $\NNN(f)$ of $f$.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{13}
+If $Y$ is a subspace of a vector space $X$ and $f$ is a linear functional on $X$ such that $f(Y)$ is no the whole scalar field of $X$, show that $f(y)=0$ for all $y\in Y$.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{14}
+Show that the norm $\norm{f}$ of a bounded linear functional $f\neq 0$ on a normed space $X$ can be interpreted geometrically as the reciprocal of the distance $\bar{d}=\inf\set{\norm{x}: f(x)=1}$ of the hyperplane $H_1=\set{x\in X: f(x)=1}$ from the origin.
 \end{exercise}
 \begin{proof}
 fill

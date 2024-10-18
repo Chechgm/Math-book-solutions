@@ -539,6 +539,7 @@ This problem deals with convex sets and will be used in the next exercise to sho
         x & = & (1-t)^3 x_0 + 3t(1-t)^2 x_1 + 3t^2 (1-t) x_2 + t^3 x_3,\\
         x & = & (1-t)^3 y_0 + 3t(1-t)^2 y_1 + 3t^2 (1-t) y_2 + t^3 y_3.        
     \end{eqnarray*}
+    \item Use the previous exercise to show that a B\'ezier cubic always lies inside its control polygon.
     \begin{enumerate}
         \item Show that the above equations can be written in vector form
         $$\left(\begin{array}{c} x\\ y\end{array}\right) = (1-t)^3 \left(\begin{array}{c} x_0\\ y_0\end{array}\right) + 3t(1-t)^2\left(\begin{array}{c} x_1\\ y_1\end{array}\right) + 3t^2 (1-t) \left(\begin{array}{c} x_2\\ y_2\end{array}\right) + t^3 \left(\begin{array}{c} x_3\\ y_3\end{array}\right).$$
@@ -547,10 +548,36 @@ This problem deals with convex sets and will be used in the next exercise to sho
 \begin{proof}
     \begin{enumerate}
         \item This is trivial by looking at the equation in the two components. 
+        \item We see that
+        \begin{eqnarray*}
+            (1-t)^3 + 3t(1-t)^2 + 3t^2 (1-t) + t^3
+            & = & ( (1-t) + t)^3\\
+            & = & 1^3\\
+            & = & 1.
+        \end{eqnarray*}
+        Thus, since the sum of the coefficients is $1$, and the control polygon is by definition convex, we see that $(x,y)$ lies in the control polygon for all $t$.
     \end{enumerate}
 \end{proof}
 
+\begin{exercise}{16}
+One disadvantage of B\'ezier cubics is that curves like circles and hyperbolas cannot be described exactly by cubics. In this exercise, we will discuss a method similar to example (4) for parametrizing conic sections.\\
 
+A conic section is a curve in the plane defined by a second degree equation of the form $ax^2 + bxy + cy^2 + dx + ey = 0$. Conic sections include the familiar examples of circles, ellipses, parabolas, and hyperbolas. Now consider the curve parametrized by
+\begin{eqnarray*}
+    x & = & \frac{(1-t)^2 x_1 + 2t(1-t)wx_2 + t^2 x_3}{(1-t)^2 + 2t(1-t)w + t^2},\\
+    x & = & \frac{(1-t)^2 y_1 + 2t(1-t)wy_2 + t^2 y_3}{(1-t)^2 + 2t(1-t)w + t^2}    
+\end{eqnarray*}
+for $0\leq t\leq 1$. The constants $w,x_1,y_1,x_2,y_2,x_3,y_3$ are specified by the design engineer, and we will assume that $w\geq 0$. In Chapter $3$, we will show that these equations parametrize a conic section. The goal of this exercise is to give a geometric interpretation for the quantities $w,x_1,y_1,x_2,y_2,x_3,y_3$.
+    \begin{enumerate}
+        \item Show that our assumption $w\geq 0$ implies that the denominator in the above formulas never vanishes.
+    \end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item Since $w\geq 0$, we see that
+        $$(1-t)^2 + 2t(1-t)w + t^2\geq (1-t)^2 + t^2 > 0.$$
+    \end{enumerate}
+\end{proof}
 
 
 

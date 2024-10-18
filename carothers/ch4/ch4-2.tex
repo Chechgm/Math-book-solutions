@@ -1,195 +1,545 @@
 \subsection{Closed sets}
 
-Closed Sets
-1* Generalize this to the product of two open/closed sets in MxN with the product metric of the last exercise of previous section
-2
-3*
-5* Generalize this where the domain is an arbitrary metric space
-7*
-8*
-10L
-11*
-12
-13
-14
-
-15
-16
-17*
-18*
-19*
-20
-21
-22
-24
-25
-26
-27 (where continuous here means that if xn->x then d(xn,A)-> d(x,A)
-28
-29
-32
-33*
-34*
-36
-37
-38L
-39L
-40*
-41*
-42*
-43*
-44
-45
-46*
-48*
-49L
-50
-51
-52
-53
-
 
 \begin{exercise}{1}
-Show that an ``open rectangle'' $(a,b)\times (c,d)$ is an open set in $\R^2$. More generally, if $A$ and $B$ are open in $\R$, show that $A\times B$ is open in $\R^2$. If $A$ and $B$ are closed in $\R$, show that $A\times B$ is closed in $\R^2$. This also holds in an arbitrary metric space with the product metric (see exercise 3.46).
+Show that an ``open rectangle'' $(a,b)\times (c,d)$ is an open set in $\R^2$. More generally, if $A$ and $B$ are open in $\R$, show that $A\times B$ is open in $\R^2$. 
+If $A$ and $B$ are closed in $\R$, show that $A\times B$ is closed in $\R^2$. 
+This also holds in an arbitrary metric space with the product metric (see exercise 3.46).
 \end{exercise}
 \begin{proof}
-fill
+We will prove the more general case for the product of two arbitrary metric spaces and then the results for $\R^2$ will follow as a corollary.
+
+(Open sets) Let $A$ and $B$ be open sets in $(X,d)$ and $(M,d')$. 
+Then for all $x\in A$ and $y\in B$, there exists an $\epsilon>0$ so that $B_{\epsilon/2}(x)=\set{a:d(x,a)<\epsilon/2}\subseteq A$ and $B_{\epsilon/2}(y)=\set{b:d'(x,b)<\epsilon/2}\subseteq B$. 
+Now consider $(x,y)\in A\times B$. 
+For all $(a,b)\in A\times B$, we have that $\rho((x,y),(a,b))=d(x,a)+d'(y,b)<2\epsilon/2=\epsilon$, so that $B_\epsilon(x,y)=\set{a,b:\rho((x,y),(a,b))=d(x,a)+d'(y,b)<\epsilon}\subseteq A\times B$, as required.
+
+(Closed sets) Let $A$ and $B$ be closed sets in $(X,d)$ and $(Y,d')$. 
+By Theorem 4.9, if $(x_n)\in A$ converges to $x\in X$, then $x\in A$, and likewise if $(y_n)$ converges to $y\in Y$, then $y\in B$. 
+Consider the space $(X\times Y, \rho)$. 
+Then a convergent sequence in $X\times Y$ converges to the product of each of the coordinate limits. 
+Since these limits belong to $X$ and $Y$, by Theorem 4.9, then its product belongs to $X\times Y$, so that $X\times Y$ is closed by the same Theorem.
+\end{proof} 
+
+\begin{exercise}{2}
+If $F$ is a closed set and $G$ is an open set in a metric space $M$, show that $F\setminus G$ is closed and that $G\setminus F$ is open.
+\end{exercise}
+\begin{proof}
+We have that $F\setminus G= F\cap G^C$. Since $G$ is open, $G^C$ is closed. 
+Theorem 4.3 says that an arbitrary union of open sets is again open. 
+Applying De Morgan's laws to this Theorem tells us that an arbitrary intersection of closed sets is closed, so that $F\setminus G$ is closed.
+
+We can prove mutatis mutandis that $G\setminus F$ is open.
 \end{proof} 
 
 \begin{exercise}{3}
-Some authors say that two metrics $d$ and $\rho$ on a set $M$ are equivalent if they generate the same open sets. Prove this. (Recall that we have defined equivalence to mean that $d$ and $\rho$ generate the same convergent sequences. See exercise 3.42.)
+Some authors say that two metrics $d$ and $\rho$ on a set $M$ are equivalent if they generate the same open sets. 
+Prove this. (Recall that we have defined equivalence to mean that $d$ and $\rho$ generate the same convergent sequences. 
+See exercise 3.42.)
 \end{exercise}
 \begin{proof}
-fill
+We will prove this via closed sets and Theorem 4.9. 
+Let $A\subset M$ be closed (under d), so that by Theorem 4.9, if $(x_n)\in A$ converges (under d) to $x\in M$, then $x\in A$. 
+Because $d$ and $\rho$ are equivalent, then $x_n\to x$ under $\rho$ so $A$ is closed under $\rho$ too. 
+By Theorem 4.9, $A^C$ is open, and since we constructed $A$ arbitrarily (and it is closed under both $d$ and $\rho$), then $A^C$ is open under $d$ if and only if it is open under $\rho$, as desired.
 \end{proof} 
 
 \begin{exercise}{5}
-Let $f:\R\to\R$ be continuous. Show that $\set{x:f(x)>)}$ is an open subset of $\R$ and that $\set{x:f(x)=0}$ is a closed subset of $\R$. Prove this for a general metric space too.
+Let $f:\R\to\R$ be continuous. 
+Show that $\set{x:f(x)>0}$ is an open subset of $\R$ and that $\set{x:f(x)=0}$ is a closed subset of $\R$. 
+Prove this for a general metric space too.
 \end{exercise}
 \begin{proof}
-fill
+Notice that the following proofs are not dependent on any metric, and so the results for $\R$ follow as a Corollary.
+
+($A=\set{x:f(x)>0}$) 
+Consider $A^C=\set{x:f(x)\leq 0}$. 
+Let $(x_n)\in A^C$, and $x_n\to x$. 
+Thus, $f(x_n)\leq 0$ for all $n$, and because $f$ is continuous, $f(x_n)\to f(x)$. 
+By the order limit Theorem (see, for example, Theorem 2.3.4 in Abbott) $f(x)\leq 0$, so that $x\in A^C$, $A^C$ is closed, and by Theorem 4.9, $A$ is open.
+
+($A=\set{x:f(x)=0}$) 
+Suppose $(x_n)\in A\subseteq X$ for an arbitrary metric space $(X,d)$ and $x_n\to x$. 
+Then $f(x_n)=0$ for all $n$. 
+Since $f$ is continuous, then $f(x)=0$ and so $x\in A$. 
+By Theorem 4.9, $A$ is closed.
 \end{proof} 
 
 \begin{exercise}{7}
-Show that every open set in $\R$ is the union of (countably many) open intervals with rational endpoints. Use this to show that the collection $\UUU$ of all open subset of $\R$ has the same cardinality as $\R$ itself.
+Show that every open set in $\R$ is the union of (countably many) open intervals with rational endpoints. 
+Use this to show that the collection $\UUU$ of all open subset of $\R$ has the same cardinality as $\R$ itself.
 \end{exercise}
 \begin{proof}
-fill
+We will prove that we can construct any open interval as the countable union of open intervals with rational endponints. 
+Then we will use Theorem 4.6 which states that any open subset of $\R$ can be written as a countable union of disjoint open intervals.
+Consider $(a,b)$ if $a$ and $b$ are rational then we are done, so suppose that $a$ is not rational.
+We know there exists a sequence $(a_n)$ with each $a_n\in Q$, $a<a_n$ and $a_n\to a$.
+Thus, we have that $\cup_n^\infty (a_n,b) =(a,b)$.
+If $b$, or $a$ and $b$ were not rational, we can find a countable union of open intervals mutatis mutandis.
+From Theorem 4.6 we know that any open subset of $\R$ can be written as a countable union of disjoint open intervals, say $U=\cup_m^\infty (a_m,b_m)$, but from our previous conclusion, we have $U =\cup_m^\infty (a_m,b_m) =\cup_m^\infty \cup_n^\infty(a_{m_n},b_{m_n})$ which is a countable union, as required.
+
+To prove that $\UUU$ and $\R$ have the same cardinality, we will use a Cantor-Schr\"oder-Bernstein argument.
+
+For the injective function, recall that $\Q^\N\cong\R\setminus\set{0}$, and the function $r\in\R$ given by $r\mapsto (0,r)$ if $r>0$ and $(r,0)$ otherwise is injective.
+
+Second, to find an injection from $\Q^\N$ to $\UUU$ we will first proof the following Lemma: 
+for any two sets $X$ and $Y$, the existence of a surjection from $X$ to $Y$ guarantees the existence of an injection from $Y$ to $X$.
+\textit{Proof:} Let $f:X\to Y$ be surjective.
+For $y\in Y$, take any $x\in X$ so that $f(x)=y$ and label such $x=g(y)$, then $g:Y\to X$ is injective.
+
+A surjective function is given by the following mapping $(a_1,b_1,\dots,a_n,b_n,\dots)\mapsto \cup_n (a_n,b_n)$.
+So that by our lemma, there exists an injective function from $\UUU$ to $\Q^\N$, and by the Cantor-Schr\"oder-Bernstein Theorem, $\Q^\N\cong\R\cong\UUU$.
 \end{proof} 
 
 \begin{exercise}{8}
-Show that every oepn interval (and hence every open set) in $\R$ is a countable union of closed intervals and that every closed interval in $\R$ is a countable intersection of open intervals.
+Show that every open interval (and hence every open set) in $\R$ is a countable union of closed intervals and that every closed interval in $\R$ is a countable intersection of open intervals.
 \end{exercise}
 \begin{proof}
-fill
+To construct $(a,b)$ as a countable union of closed intervals, consider $\cup_n [a+1/n, b-1/n]$. 
+On the other hand, to construct $[a,b]$ as a countable intersection of open intervals consider $\cap_n (a-1/n,b+1/n)$.
 \end{proof} 
 
 \begin{exercise}{11}
-Let $e^{(k)}=(0,\dots,0,1,0,\dots)$, where the $k$-th entry is 1 and the rest are 0s. Show that $\set{e^{(k)}:k\geq 1}$ is closed as a subset of $l_1$.
+Let $e^{(k)}=(0,\dots,0,1,0,\dots)$, where the $k$-th entry is 1 and the rest are 0s. 
+Show that $\set{e^{(k)}:k\geq 1}$ is closed as a subset of $l_1$.
 \end{exercise}
 \begin{proof}
-fill
+Let $(x_n)$ be a sequence in $A=\set{e^{(k)}:k\geq 1}$, notice that in this subspace the metric induced by $\norm{\cdot}_1$ is the same as the discrete metric (because $\norm{x-y}=\sum_i\absoluteValue{x^i-y^i}=0$ if and only if $x^i=y^i$ and 1 otherwise). 
+As we argued on exercise 3.43, under the discrete metric only sequences that are eventually constant converge. 
+Knowing this, let $(x_n)$ converge, and hence be eventually constant. 
+Thus $x_n=x$ for all $n$ whenever $n>N$ for some $N$, and thus $x\in A$ giving us that $A$ is closed by Theorem 4.9.
+\end{proof} 
+
+\begin{exercise}{12}
+Let $F$ be the set of all $x\in l_\infty$ such that $x_n=0$ for all but finitely many $n$. 
+Is $F$ closed? open? neither? explain.
+\end{exercise}
+\begin{proof}
+($F$ not closed)
+To see this, consider the sequence (of sequences) $x^{(k)}$, where for a specific $k$, $(x^k_n)=(1,1/2,\dots,1/k,0,0,\dots)$. 
+For all $k$, $(x^k_n)\in l_\infty$, and $x^k_n=0$ for all but finitely many $n$.
+We have that $(x^k_n)\to (x_n)$ where $(x_n)=(1,1/2,\dots,1/n,1/(n+1),\dots)$, which contains no zeros, so it does not belong to the original set.
+
+($F$ is not open)
+Let $\epsilon>0$. 
+Consider the open ball around $0\in F$ given by $B_\epsilon(0)=\set{y\in l_\infty:d_\infty(0,y)=\norm{y}_\infty<\epsilon}$, and the sequence $y_n=\epsilon/2$ for all $n$.
+We have that $\norm{y}_\infty<\epsilon$, though $y\notin F$.
+Since this is true for all $\epsilon>0$, then it is not possible to have an open ball around $0\in F$ contained in $F$, and thus $F$ is not open.
+\end{proof} 
+
+\begin{exercise}{14}
+Show that the set $A=\set{x\in l_2:\absoluteValue{x_n}\leq 1/n, n =1,2,\dots}$ is a closed set in $l_2$ but that $B=\set{x\in l_2:\absoluteValue{x_n}<1/n, n =1,2,\dots}$ is not an open set.
+[Hint: Does $B\supseteq B_\epsilon(0)$?].
+\end{exercise}
+\begin{proof}
+($A$ is closed)
+Let $(x^{(n)})$ be a sequence (of sequences) in $A$ such that $x^{(n)}\to x$.
+We will prove $x\in A$.
+For all $\epsilon>0$ there exists an $N\in\N$ such that whenever $n>N$, $d(x^{(n)},x)=\sum_i^\infty \absoluteValue{x^{(n)}_i-x_i}^2<\epsilon$.
+This implies that for all $i$, $\absoluteValue{x^{(n)}_i-x_i}^2<\epsilon$ so that the sequence converges coordinate-wise.
+Since for each coordinate we have $\absoluteValue{x^{(n)}_i}\leq 1/i$, then by the order limit Theorem (see Abbott Theorem 2.3.4.) then $\absoluteValue{x_i}\leq 1/i$ for all $i$, and $x\in A$, as required.
+
+($B$ is not open)
+Consider the sequence (of sequences) $(x^{(n)})$ given by $x^{n}=(0,0,\dots,1/n,1/(n+1),1/(n+2),\dots$.
+For all $n$, $x^{(n)}$ is not in $B$ (since $x^{(n)}_n=1/n$.
+However, $x^{(n)}\to x=0$, since $d(x^{(n)},0) =\sum_i^\infty\absoluteValue{x^{(n)}_i}^2$, which we know we can get arbitrarily close to 0.
+Thus, $B^C$ is not closed (because there is a sequence in it that doesn't converge to an element in $B^C$), and thus $B$ is not open.
+\end{proof} 
+
+\begin{exercise}{16}
+If $(V,\norm{\cdot})$ is any normed space, prove that the closed ball $\bar{B}_1(0)=\set{x\in V:\norm{x}\leq 1}$ is always the closure of the open ball $B_1(0)=\set{x\in V:\norm{x}< 1}$.
+\end{exercise}
+\begin{proof}
+Let $x\in\bar{B}_1(0)$.
+Consider the sequence $(x_n)$ with $x_n\in B_1(0)$ given by $x_n=x(1-1/n)$.
+We have that $x_n\to x$ so that $x$ is a limit point of $B_1(0)$.
+Thus $\bar{B}_1(0)$ is the closure of $B_1(0)$.
 \end{proof} 
 
 \begin{exercise}{17}
 Show that $A$ is open if and only if $A^\text{\degree}=A$ and that $A$ is closed if and only if $\bar{A}=A$.
 \end{exercise}
 \begin{proof}
-fill
+($A$ is open if and only if $A^\text{\degree}=A$)
+
+($\Rightarrow$) 
+Suppose $A$ is open. 
+Since $A^\text{\degree}$ is the largest open set contained in $A$, the largest set contained in $A$ is $A$ itself, and since $A$ is open, then the largest open set contained in $A$ is $A$ itself. 
+Thus $A^\text{\degree}=A$.
+
+($\Leftarrow$) 
+Let $A^\text{\degree}=A$. 
+By definition, $A^\text{\degree}$ is the largest open set contained in $A$, so that $A^\text{\degree}$ is open and hence $A$ is open.
+
+($A$ is closed if and only if $\bar{A}=A$)
+
+($\Rightarrow$) 
+Suppose $A$ is closed. 
+$\bar{A}$ is the smallest closed set containing $A$, so that $A\subseteq\bar{A}$. 
+Now let $a\in\bar{A}$. 
+Then either $a\in A$ or $a$ is a limit point of $A$. 
+If $a\in A$, then $\bar{A}\subseteq A$ finishing the proof. 
+On the other hand, if $a$ is a limit point of $A$, and $A$ is closed, then $a\in A$ so that in any case $\bar{A}\subseteq A$. 
+Thus $\bar{A}=A$.
+
+($\Leftarrow$) 
+Suppose $\bar{A}=A$. 
+By definition, $\bar{A}$ is closed, in particular, the smallest closed set containing $A$. 
+Thus $A$ is closed.
 \end{proof} 
 
 \begin{exercise}{18}
-Given a nonempty bounded subset $E$ of $\R$, show that $\sup E$ and $\inf E$ are elements of $\bar{E}$. Thus $\sup E$ and $\inf E$ are elements of $E$ whenever $E$ is closed.
+Given a nonempty bounded subset $E$ of $\R$, show that $\sup E$ and $\inf E$ are elements of $\bar{E}$. 
+Thus $\sup E$ and $\inf E$ are elements of $E$ whenever $E$ is closed.
 \end{exercise}
 \begin{proof}
-fill
+We know from exercise 1.4 that a nonempty bounded subset of $\R$ has sequence $(x_n)$ converging to $x=\sup E$. 
+By Corollary 4.11, we know that $x\in E$ if and only if there exists a sequence that converges to $x$, so that $\sup E\in E$. 
+We can reason in an analogous way to conclude that $\inf E\in E$. 
 \end{proof} 
 
 \begin{exercise}{19}
 Show that $\text{diam}(A)=\text{diam}(\bar{A})$.
 \end{exercise}
 \begin{proof}
-fill
+Let $x,y\in\bar{A}$ and $\epsilon>0$.
+Then there exist sequences $(x_n)$ and $(y_n)$ in $A$ so that $x_n\to x$ and $y_n\to y$.
+That is, there exist $N,M\in\N$ so that whenever $n>N$ and $m>M$ it holds that $d(x_n,x)<\epsilon/2$ and $d(y_m,y)<\epsilon/2$. 
+Let $n>\max\set{N,N}$.
+We have that 
+\[
+d(x,y) 
+\leq d(x,x_n)+d(x_n,y_n)+d(y_n,y) 
+< d(x_n,y_n)+\epsilon.
+\]
+Since we can do this for all $x,y\in\bar{A}$ and $\epsilon>0$, then it is also the case that $\text{diam}(\bar{A})<\text{diam}(A)+\epsilon$.
+To see this, notice that there exist $x,y\in\bar{A}$ that can get $\epsilon>0$ close to $\text{diam}(\bar{A})$ 
+(otherwise the supremum would be another one).
+That is, we can find the sequences as above.
+It is also the case that for all $x_n,y_n\in A$ (the names of the elements here are suggestive), $d(x_n,y_n)\leq\text{diam}(A)$.
+Now, since $A\subseteq\bar{A}$, it is also true that $\text{diam}(A)<\text{diam}(\bar{A})+\epsilon$, so that $\absoluteValue{\text{diam}(\bar{A})-\text{diam}(A)}<\epsilon$, as desired.
+\end{proof} 
+
+\begin{exercise}{21}
+If $A$ and $B$ are any sets in $M$, show that $\overline{A\cup B} =\bar{A}\cup\bar{B}$ and $\overline{A\cap B} \subseteq\bar{A}\cap\bar{B}$. 
+Give an example showing that this last inclusion can be proper.
+\end{exercise}
+\begin{proof}
+($\overline{A\cup B} =\bar{A}\cup\bar{B}$)
+
+($\subseteq$) 
+Suppose $x\in\overline{A\cup B}$. 
+Then $x\in A\cup B$ or $x$ is a limit of $A\cup B$.
+If $x\in A\cup B$ then we are done because that implies $x\in A$ or $x\in B$ so that $x\in\bar{A}$ or $x\in\bar{B}$ which implies $x\in\bar{A}\cup\bar{B}$.
+So suppose $x\notin\overline{A\cup B}$ but $x$ is a limit point of $\overline{A\cup B}$.
+Thus, there exists a sequence $(x_n)$ in $A\cup B$ so that $x_n\to x$.
+Notice, however, that this implies there is a subsequence of $(x_n)$ consisting of only elements of $A$ or elements of $B$ that converges to $x$ (because subsequences of convergent sequences converge to the same limit), and thus $x$ is a limit of $A$ or $B$ (depending on the set containing the sequence). 
+Thus, $x\in\bar{A}\cup\bar{B}$.
+
+($\supseteq$) 
+Suppose $x\in\bar{A}\cup\bar{B}$, then $x\in A$, $x\in B$ or $x$ is a limit point of either.
+If $x\in A$ or $x\in B$, we are done because then $x\in\overline{A\cup B}$, so suppose, without loss of generality, $x$ is a limit point of $A$.
+This implies there exists a sequence $(x_n)$ of elements in $A$ so that $x_n\to x$.
+However, this sequence is also contained in $A\cup B$, so that $x$ is also a limit point of $A\cup B$ and thus $x\in\overline{A\cup B}$, as desired.
+
+($\overline{A\cap B} \subseteq\bar{A}\cap\bar{B}$)
+
+($\subseteq$)
+Suppose $x\in\overline{A\cap B}$.
+Then either $x\in A\cap B$ or $x$ is a limit point of the intersection.
+In the former case, we are done because then $x\in A$ and $x\in B$ which implies $x\in\bar{A}$ and $x\in\bar{B}$ so that $x\in\bar{A}\cap\bar{B}$.
+So suppose that $x$ is a limit point of $\overline{A\cap B}$.
+This implies there exists a sequence $(x_n)$ of elements in $A\cap B$ so that $x_n\to x$.
+Thus, $(x_n)$ is both in $A$ and $B$ meaning that $x$ is a limit point of both $A$ and $B$;
+that is, $x\in\bar{A}\cap\bar{B}$, as required.
+
+For the example, consider the following two open intervals, $A=(0,1)$ and $B=(1,2)$.
+We have that $\overline{A\cap B}=\emptyset$ and $\bar{A}\cap\bar{B}=[0,1]\cap[1,2]=\set{1}$.
+\end{proof}
+
+\begin{exercise}{24}
+Show that $\bar{A} =(\text{int}(A^C))^C$ and that $A^{\text{\degree}} =(\text{cl}(A^C))^C$.
+\end{exercise}
+\begin{proof}
+($\bar{A} =(\text{int}(A^C))^C$)
+Consider the following definition given by Carothers:
+\begin{align*}
+    (\text{int}(A^C))^C 
+    =& \set{x\in A^C:B_\epsilon(x)\subseteq A^C\text{ for some }\epsilon>0}^C
+\end{align*}
+That is, $(\text{int}(A^C))^C$ is the set of $x$ so that either $x\in A$ or the set of $x$ so that for all $\epsilon>0$, there exists a $b\in B_\epsilon(x)$ such that $b\in A$, which is the same as saying that $x$ is a limit point of $A$. 
+These elements together form precisely $\bar{A}$.
+
+($A^{\text{\degree}} =(\text{cl}(A^C))^C$)
+We can use the results from the previous proof.
+We have that $(\text{cl}(A^C))^C$ consists of all the elements of $A^C$ or the $x$ so that for all $\epsilon>0$ so that there exists a $b\in B_\epsilon(x)$ with $b\in A^C$.
+Negating this statement is the same as saying that the set is composed of $x\in A$ and for $x\in A$ there exists an $\epsilon>0$ so that for all $b\in B_\epsilon(x)$ $b\notin A^C$; 
+that is, $B_\epsilon(x)\subseteq A$.
+Notice, however, that this coincides with Carothers definition:
+\begin{align*}
+    \text{int}(A)=A^{\text{\degree}}=\set{x\in A:B_\epsilon(x)\subseteq A\text{ for some }\epsilon>0},
+\end{align*}
+as required.
+\end{proof} 
+
+\begin{exercise}{26}
+We define the distance from a point $x\in M$ to a nonempty set $A$ in $M$ by $d(x,A)=\inf\set{d(x,a):a\in A}$.
+Prove that $d(x,A)=0$ if and only if $x\in \bar{A}$.
+\end{exercise}
+\begin{proof}
+($\Rightarrow$) 
+Suppose, by contrapositive, that $x\notin\bar{A}$.
+Then $x\notin A$, but furthermore, there exists an $\epsilon>0$ so that $B_\epsilon(x)\subseteq A^C$.
+We have that $d(x,A)\geq\epsilon$, as required.
+
+($\Leftarrow$) 
+Suppose $x\in\bar{A}$, then either $x\in A$ in which case $0\in\set{d(x,a):a\in A}$, as $d(x,x)=0$, since $d(x,y)\geq 0$, or $x$ is a limit point of $A$.
+If $A$ is a limit point of $A$, then there exists a sequence $(x_n)$ in $A$ so that $x_n\to x$.
+Thus $d(x_n,x)\to d(x,x)=0$, and $d(x,A)=0$, as required.
+\end{proof} 
+
+\begin{exercise}{28}
+Given a set $A$ in $M$ and $\epsilon>0$, show that $\set{x\in M:d(x,A)<\epsilon}$ is an open set and that $\set{x\in M:d(x,A)\leq\epsilon}$ is a closed set (and each contains $A$).
+\end{exercise}
+\begin{proof}
+(Open)
+Let $x\in X=\set{x\in M:d(x,A)<\epsilon}$, so that $d(x,A)\leq\epsilon-\epsilon'$ for some $\epsilon'>0$.
+Now consider the open ball $B_{\epsilon'}(x)=\set{y:d(x,y)<\epsilon'}$.
+Let $x'\in B_{\epsilon'}(x)$, so that $d(x,x')<\epsilon'$.
+From exercise 27 we know that $\absoluteValue{d(x',A)-d(x,A)} \leq d(x',x)<\epsilon'$.
+The first inequality also implies that $d(x',A)\leq d(x',x)+d(x,A)<\epsilon$, so that $x'\in X$, and $B_{\epsilon'}(x)\subseteq X$, as required.
+
+(Closed)
+From exercise 27, we know that $f(x)=d(x,A)$ is continuous.
+We also know that for continuous functions, $f(x_n)\to x$ holds for a sequence $(x_n)$ with $x_n\to x$.
+Thus, if $(x_n)$ is a sequence in $X'=\set{x\in M:d(x,A)\leq\epsilon}$, then for each $x_n$ we must have $f(x_n)=d(x_n,A)\leq\epsilon$, and by the order limit Theorem, then $f(x)=d(x,A)\leq\epsilon$, giving us that $x\in X'$ so that $X'$ is closed, as required.
+\end{proof} 
+
+\begin{exercise}{32}
+We define the distance between two (nonempty subset $A$ and $B$ of $M$ by $d(A,D)=\inf\set{d(a,b):a\in A,b\in B}$.
+Given an example of two disjoint closed sets $A$ and $B$ in $\R^2$ with $d(A,B)=0$.
+\end{exercise}
+\begin{proof}
+Consider the two following sets $A=\set{(x,0):x\in\R}$ and $B=\set{(x,1/x):x>0}$.
+Both sets are closed;
+$A$ is closed as we can identify it with $\R$ and if we consider a convergent sequence in $B$, then the limit will belong to $B$.
+Furthermore, $A$ and $B$ are disjoint, as for any $(x,y)\in B$, $y\neq 0$.
+Finally, notice that for all $\epsilon>0$, we can find an $x\in\R$ so that for $(x,0)\in A$ and $(x,1/x)\in B$, we have $d(a,b)=\max\set{\absoluteValue{x-x}=0,\absoluteValue{1/x}}<\epsilon$, so that $d(A,B)=0$, as required.
 \end{proof} 
 
 \begin{exercise}{33}
-Let $A$ be a subset of $M$. A point $x\in M$ is called a limit point of $A$ if every neighborhood of $x$ contains a point of $A$ that is different from $x$ itself, that is, if $(B_\epsilon(x)\setminus \set{x})\cap A\neq\empty$ for every $\epsilon>0$. If $x$ is a limit point of $A$, show that every neighborhood of $x$ contains infinitely many points of $A$.
+Let $A$ be a subset of $M$. A point $x\in M$ is called a limit point of $A$ if every neighborhood of $x$ contains a point of $A$ that is different from $x$ itself, that is, if $(B_\epsilon(x)\setminus \set{x})\cap A\neq\emptyset$ for every $\epsilon>0$. If $x$ is a limit point of $A$, show that every neighborhood of $x$ contains infinitely many points of $A$.
 \end{exercise}
 \begin{proof}
-fill
+Suppose $x$ is a limit point of $A$. 
+Then for all $n\in\N$, there exists at least one $a_n\in A\setminus\set{x}$ so that $a\in B_{1/n}(x)$. 
+Thus there is an infinite sequence $(a_n)$ of distinct elements of $A$ inside $B_1(x)$. 
+Now take any $\epsilon>0$, it is the case that for some $N\in\N$, $\epsilon>1/N$, since the set $A'=\set{a_1,\dots,a_N}$ is finite, then the set $\set{a_n: a_n\in (a_n)}\setminus A'$ is infinite, giving us the desired result.
 \end{proof} 
 
 \begin{exercise}{34}
 Show that $x$ is a limit point of $A$ if and only if there is a sequence $(x_n)$ in $A$ such that $x_n\to x$ and $x_n\neq x$ for all $n$.
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$) Suppose $x$ is a limit point of $A$. 
+Then for all $\epsilon=1/n>0$, we have $B_\epsilon(x)\cap A\setminus\set{x}\neq\emptyset$.
+Let $x_n\in B_\epsilon(x)\cap A\setminus\set{x}$, then $x_n\to x$, and $x_n\neq x$ for all $n$.
+
+($\Leftarrow$) Suppose $(x_n)$ with $x_n\to x$ and $x_n\neq x$ for all $n$. 
+Then for all $\epsilon>0$, there exists an $N\in\N$ so that if $n>N$ it holds that $d(x_n,x)<\epsilon$. 
+But since $x_n\neq x$ for all $n$, that's exactly the same as saying that $B_\epsilon(x) =\set{y:d(x,y)<\epsilon}\cap A\setminus\set{x} \neq\emptyset$ for all $\epsilon$, as required.
+\end{proof} 
+
+\begin{exercise}{37}
+Prove the Bolzano-Weierstrass Theorem:
+Every bounded infinite subset of $\R$ has a limit point.
+[Hint: Use the nested interval Theorem.
+If $A$ is a bounded infinite subset of $\R$, then $A$ is contained in some closed bounded interval $I_1$.
+At least one of the left or right halves of $I_1$ contains infinitely many points of $A$.
+Call this new closed interval $I_2$.
+Continue].
+\end{exercise}
+\begin{proof}
+We will follow the hint to construct a sequence with a limit.
+First, we notice that $A$ is contained in a closed and bounded interval, which we call $I_1$.
+This interval contains infinite points.
+Now split $I_1$ into two (almost) halves, by choosing a point in $A$, consisting of closed and bounded intervals, at least one these will have an infinite number of points.
+Let $I_2$ be one (or the) interval with infinite points.
+Additionally, $I_2\subseteq I_1$.
+We do this countably infinite times to obtain a sequence of closed and bounded nested intervals $I_1\supseteq I_2\supseteq \dots$.
+Now we can apply the nested interval theorem to conclude that the intersection of such intervals is non empty: $x=\cap_n^\infty I_n$, and moreover $x$ is unique since the length of $I_n$ tends to 0 as $n\to\infty$.
+$x$ is a limit point in $A$.
+To see this, define the sequence given by the cutting point of the intervals, so that for $I_n=[a_n,b_n]$, we define a sequence $(x_n)$ with $x_n=a_n$ if $a_n$ is the point in $A$ used to cut $I_{n-1}$ and $x_n=b_n$ if $b_n$ was used. 
+We have $x_n\to x$.
 \end{proof} 
 
 \begin{exercise}{40}
-If $x\in A$ and $x$ is not a limit point of $A$, then $x$ is called an isolated point of $A$. Show that a point $x\in A$ is an isolated point of $A$ if and only if $(B_\epsilon(x)\setminus\set{x})\cap A=\empty$ for some $\epsilon>0$. Prove that a subset of $\R$ can have at most countably many isolated points, thus showing that every uncountable subset of $\R$ has a limit point.
+If $x\in A$ and $x$ is not a limit point of $A$, then $x$ is called an isolated point of $A$. 
+Show that a point $x\in A$ is an isolated point of $A$ if and only if $(B_\epsilon(x)\setminus\set{x})\cap A=\emptyset$ for some $\epsilon>0$. 
+Prove that a subset of $\R$ can have at most countably many isolated points, thus showing that every uncountable subset of $\R$ has a limit point.
 \end{exercise}
 \begin{proof}
-fill
+Using the definition in exercise 33, a point $x\in M$ is a limit point of $A$ if $(B_\epsilon(x)\setminus\set{x})\cap A\neq\emptyset$, for all $\epsilon>0$.
+Thus, negation of this statement yields that $x$ is an isolated point of $A$ if there exists an $\epsilon>0$ so that $(B_\epsilon(x)\setminus\set{x})\cap A=\emptyset$, which is precisely what we wanted to prove.
+
+Before proving that a subset, say $M$, of $\R$ can have at most countably many isolated points, we will first prove that there exists a closed and bounded subset of $M$ that contains uncountable many points.
+To see this, notice that $M=\cup_{n\in\N} (M\cap [-n,n])$.
+If there was no $a$ such that $[-a,a]$ contains uncountable many points of $M$, then $M$ would be the countable union of countable sets, and thus itself countable.
+Knowing about the existence of such subset $[-a,a]\subseteq M$ with uncountable many points, then we can use the Bolzano-Weierstrass Theorem which states that any closed and bounded set contains a convergent sequence.
+The limit of such convergent sequence is in $[-a,a]\subseteq M$, giving us the desired result.
 \end{proof} 
 
 \begin{exercise}{41}
-Related to the notion of limit points and isolated points are boundary ponits. A point $x\in M$ is said to be a boundary point of $A$ if each neighborhood of $x$ hits both $A$ and $A^C$. In symbols, $x$ is a boundary point of $A$ if and only if $B_\epsilon(x)\cap A \neq\empty$ and $B_\epsilon(x)\cap A^C \neq\empty$ for every $\epsilon>0$. Verify each of the following formulas, where $\text{bdry}(A)$ denotes the set of boundary points of $A$:
+Related to the notion of limit points and isolated points are boundary points. 
+A point $x\in M$ is said to be a boundary point of $A$ if each neighborhood of $x$ hits both $A$ and $A^C$. 
+In symbols, $x$ is a boundary point of $A$ if and only if $B_\epsilon(x)\cap A \neq\emptyset$ and $B_\epsilon(x)\cap A^C \neq\emptyset$ for every $\epsilon>0$. 
+Verify each of the following formulas, where $\text{bdry}(A)$ denotes the set of boundary points of $A$:
 \begin{enumerate}
     \item $\text{bdry}(A)=\text{bdry}(A^C)$,
     \item $\text{cl}(A)=\text{bdry}(A)\cup\text{int}(A)$,
     \item $M=\text{int}(A)\cup\text{bdry}(A)\cup\text{int}(A^C)$.
 \end{enumerate}
-Notice that the first and last equations tell us that each set $A$ partitions $M$ into three regions: the points ``well inside'' $A$, the points ``well outside'' $A$ and the points on the common boundary of $A$ and $A^C$.
+Notice that the first and last equations tell us that each set $A$ partitions $M$ into three regions: 
+the points ``well inside'' $A$, the points ``well outside'' $A$ and the points on the common boundary of $A$ and $A^C$.
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item Since the logical operator `and' is commutative, then the definition of boundary applies to both the boundary of $A$ and the boundary of $A^C$.
+    \item Proposition 4.10 states that $x\in\bar{A}$ if and only if for all $\epsilon>0$, it holds that $B_\epsilon(x)\cap A \neq\emptyset$.
+    This definition gives us two type of elements in $A$:
+    those that have an open ball contained in $A$ around them (which would conform $\text{int}(A)$,
+    and those that don't, in which case for all $\epsilon>0$, it will holds that $B_\epsilon(x)\cap A^C \neq\emptyset$, which would conform the boundary of $A$, giving us the desired result.
+    \item From two previous points, we can conclude that $\text{int}(A)\cup\text{bdry}(A)\cup\text{int}(A^C)=\bar{A}\cup \bar{A^C}$ which includes all points in $M$, as required.
+\end{enumerate}
 \end{proof} 
 
 \begin{exercise}{42}
 If $E$ is a nonempty bounded subset of $\R$, show that $\sup E$ and $\inf E$ are both boundary points of $E$. Hence, if $E$ is also closed, then $\sup E$ and $\inf E$ are elements of $E$.
 \end{exercise}
 \begin{proof}
-fill
+We will prove the result for $s=\sup E$.
+The proof for $\inf E$ will follow using a similar strategy.
+On exercise 1.3 we gave an alternative characterisation of the supremum of $E$ by saying that $s=\sup E$ if s is an upper bound of $E$, and for all $\epsilon>0$, there exists $e\in E$ so that $e>s-\epsilon$;
+that is, for all $\epsilon>0$, there exists $e\in B_\epsilon(s)$ and so $B_\epsilon(s)\cap E\neq\emptyset$.
+Furthermore, by exercise 1.2 if $B$ is the set of all upper bounds of $E$, then $B$ is non empty, bounded below and $\inf B=\sup E$.
+Using the same reasoning as above (with a definition of $\inf B$ similar to that of $\sup E$), we can conclude that $B_\epsilon(s)\cap B\neq\emptyset$.
+However, notice that $B\subseteq E^C$, thus, $B_\epsilon(s)\cap E^C\neq\emptyset$, and $s\in\text{bdry}(E)$, as required.
 \end{proof} 
 
 \begin{exercise}{43}
-Show that $\text{bdry}(A)$ is always a closed set; in fact, $\text{bdry}(A)=\bar{A}\setminus A^\text{\degree}$.
+Show that $\text{bdry}(A)$ is always a closed set; 
+in fact, $\text{bdry}(A)=\bar{A}\setminus A^\text{\degree}$.
 \end{exercise}
 \begin{proof}
-fill
+This follows directly from the definition of boundary and the equivalence between $A$ being closed, and $x\in A$ whenever $B_\epsilon(x)\cap A \neq\emptyset$ for all $\epsilon>0$, from Theorem 4.9.
+\end{proof} 
+
+\begin{exercise}{44}
+Show that $A$ is closed if and only if $\text{bdry}(A)\subseteq A$.
+\end{exercise}
+\begin{proof}
+($\Rightarrow$)
+Suppose $A$ is closed.
+Let $x\in\text{bdry}(A)$.
+Then for all $\epsilon=1/n>0$, it is true that $B_\epsilon(x)\cap A\neq\emptyset$.
+Thus, consider the sequence $(x_n)$ where $x_n$ is an element from $B_\epsilon(x)\cap A$.
+We have that $x_n\to x$, and since $A$ is closed, it contains its limit points so that $x\in A$;
+that is, $\text{bdry}(A)\subseteq A$.
+
+($\Leftarrow$) 
+We will prove this by contrapositive.
+Thus, suppose $A$ is not closed.
+Then there exists a sequence $(x_n)$ in $A$ with $x_n\to x$, but $x\notin A$.
+By the definition of limit, we have that for all $\epsilon>0$, $B_\epsilon(x)\cap A\neq\emptyset$.
+Furthermore, we assumed $x\notin A$, so that $B_\epsilon(x)\cap A\neq\emptyset$.
+Putting these two statements together, we have that $x\in\text{bdry}(A)$ and $\text{bdry}(A)\not\subseteq A$, as required.
+\end{proof} 
+
+\begin{exercise}{45}
+Give examples showing that $\text{bdry}(A)=\emptyset$ and $\text{bdry}(A)=M$ are both possible.
+\end{exercise}
+\begin{proof}
+($\text{bdry}(A)=\emptyset$)
+Either the reals or the empty set.
+
+($\text{bdry}(A)=M$)
+The rationals or irrationals.
 \end{proof} 
 
 \begin{exercise}{46}
 A set $A$ is said to be dense in $M$ (or, as some authors say, everywhere dense) if $\bar{A}=M$. For example, both $\Q$ and $\R\setminus\Q$ are dense in $\R$. Show that $A$ is dense in $M$ if and only if any of the following hold:
 \begin{enumerate}
-    \item Every point in t$M$ is the limit of a sequence from $A$.
-    \item $B_\epsilon(x)\cap A\neq\empty$ for every $x\in M$ and every $\epsilon>0$.
-    \item $U\cap A\neq\empty$ for every nonempty open set $U$.
+    \item Every point in $M$ is the limit of a sequence from $A$.
+    \item $B_\epsilon(x)\cap A\neq\emptyset$ for every $x\in M$ and every $\epsilon>0$.
+    \item $U\cap A\neq\emptyset$ for every nonempty open set $U$.
     \item $A^C$ has empty interior.
 \end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+(Dense $\Rightarrow 1$) 
+Suppose $\bar{A}=M$, then all the elements of $M$ are either in $A$ or they are limit points of $A$. 
+In both cases, they are limit point of sequences in $A$.
+
+($1\Rightarrow 2$)
+Suppose every point in $M$ is the limit of a sequence from $A$.
+Let $x\in M$, then there exists a sequence $(x_n)$ with $x_n\in A$ for all $n$ so that $x_n\to x$.
+But this means that for all $\epsilon>0$, there exists an $N\in\N$ so that $d(x_n,x)<\epsilon$ for all $n>N$.
+That is, $x_n\in B_\epsilon(x)$, so that $B_\epsilon(x)\cap A \neq\emptyset$ for all $\epsilon>0$.
+
+($2\Rightarrow 3$)
+Suppose $B_\epsilon(x)\cap A \neq\emptyset$ for every $x\in M$ and every $\epsilon>0$.
+Since the previous statement is true for all $x\in M$, we can construct $U$ in $M$ as an arbitrary union of open sets $U=\cup_{i\in\III} B_{\epsilon_i}(x_i)$.
+However, we assume that for any of those such open balls $B_{\epsilon_i}(x_i)\cap A\neq\emptyset$, thus $U\cap A\neq\emptyset$.
+
+($3\Rightarrow 4$)
+Suppose $U\cap A\neq\emptyset$ for every nonempty open set $U$ and, for the sake of contradiction, suppose $\text{int}(A^C) =M\setminus A \neq\emptyset$.
+Since $\text{int}(A^C)$ is not empty, then there exists $x\in A^C$ so that $B_\epsilon(x)\subseteq A^C$ for some $\epsilon>0$.
+But this is a contradiction, because $B_\epsilon(x)\cap A\neq \emptyset$ (by noticing $B_\epsilon(x)=U$ is an open set) which is inconsistent with $B_\epsilon(x)$ being contained in $A^C$.
+
+($4\Rightarrow$ dense)
+Suppose $A^C$ has empty interior.
+Thus, for all $x\in A^C$ and all $\epsilon>0$, it is the case that $B_\epsilon(x)\cap A\neq\emptyset$ (this is exactly what the definition of having an empty interior means, from Carothers definition).
+But notice that this is exactly to say that for all $x\in M\setminus A$, $x$ is a limit point of $A$.
+Thus $\bar{A}=M$.
 \end{proof} 
 
 \begin{exercise}{48}
-A metric space is called separable if it contains a countable dense subset. Find examples of countable dense sets in $\R$, in $\R^2$ and in $\R^n$.
+A metric space is called separable if it contains a countable dense subset. 
+Find examples of countable dense sets in $\R$, in $\R^2$ and in $\R^n$.
 \end{exercise}
 \begin{proof}
-fill
+In $\R^n$ the set $\Q^n$ countable (because it is the finite product of countable sets) and dense (because we can approximate any irrational and thus, any tuple of irrationals, with rational numbers).
+Countable dense sets in $\R$ and $\R^2$ follow as corollaries.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{50}
+Show that $l_\infty$ is not separable.
+[Hint: Consider the set $2^\N$, consisting of all sequences of 0s and 1s, as a subset of $l_\infty$.
+We know that $2^\N$ is uncountable.
+Now what?].
 \end{exercise}
 \begin{proof}
-fill
+This proof comes from 1.3-9 in Kreyszig's Functional analysis.
+Let $y=(y_1,y_2,\dots)$ be a sequence of zeros and ones.
+Then $y\in l^\infty$.
+With $y$ we associate the real number $\hat{y}$ whose binary representation is $y_1/2 + y_2/2^2 + y_3/2^3 +\dots$.
+We now use the facts that the set of points in the interval $[0,1]$ is uncountable, each $\hat{y}$ has a binary representation, and different $\hat{y}$ have different binary representations.
+Hence there are uncountable many sequences of zeros and ones.
+The metric on $l^\infty$ show that any two of them which are not equal must be of distance 1 apart.
+If we let each of these sequences be the center of a small ball, say of radius 1/3, these balls do not intersect and we have uncountably many of them.
+If $M$ is any dense set in $l^\infty$, each of these nonintersecting balls must contain an element of $M$.
+Hence $M$ cannot be countable.
+Since $M$ was an abitrary dense set, this show that $l^\infty$ cannot have dense subsets that are uncountable.
+Consequently, $l^\infty$ is not separable.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{52}
+If $M$ is separable, show that any collection of disjoint open sets in $M$ is at most countable.
 \end{exercise}
 \begin{proof}
-fill
+If $M$ is separable, then there exists a countable subset of $A\subseteq M$ so that $A$ is dense in $M$, mathematically $\bar{A}=M$.
+Thus, for all $m\in M$, either $m\in A$, or for all $\epsilon>0$, $B_\epsilon(b)\cap A\neq\emptyset$.
+Consider a collection $\BBB$ of disjoint open sets in $M$.
+Then for any $B\in \BBB$, it is the case that $B\cap A\neq\emptyset$. 
+Furthermore, since $\BBB$ consists of disjoint sets, then there are at most countable number of elements in $\BBB$, since i) each one of them has to contain at least one element of $A$, ii) no two sets can contain the same elements, and iii) $A$ is countable.
 \end{proof} 
