@@ -1,8 +1,100 @@
 \subsection{Linear operators and functional on finite dimensional spaces}
 
-\begin{exercise}{1}
-fill
+
+\begin{exercise}{3}
+Find the dual basis of the basis $\set{(1,0,0), (0,1,0), (0,0,1)}$ for $\R^3$.
 \end{exercise}
 \begin{proof}
-fill
+The dual basis would be $\delta_{j,k}=f_k(e_j)=1$ if $k=j$ and 0 otherwise.
+\end{proof}
+
+\begin{exercise}{5}
+If $f$ is a linear functional on an $n$-dimensional vector space $X$, what dimension can the null-space $\NNN(f)$ have?
+\end{exercise}
+\begin{proof}
+We assume that $X$ is finite dimensional, thus we can use the rank-nullity Theorem to conclude that $\dim X = n=\dim\range f +\dim\nullspace f$.
+$\range f$ can either be $\set{0}, \C$ (as a complex vector space) or $\R$ (as a real vector space), then $\dim\nullspace f$ is either $n$ or $n-1$.
+\end{proof}
+
+\begin{exercise}{8}
+If $Z$ is a $(n-1)$-dimensional subspace of an $n$-dimensional vector space $X$, show that $Z$ is the nullspace of a suitable linear functional $f$ on $X$, which is uniquely determined to within a scalar multiple.
+\end{exercise}
+\begin{proof}
+Let $Z=\vecspan(z_1,z_2,\dots,z_{n-1})$ and $\vecspan(y)$, so that $\vecspan(y)\oplus Z=X$.
+Let $f:X\to\R$ be defined as $f(x)=f(a_1z_1+\dots+a_{n-1}z_{n-1}+a_ny)=a_n$.
+We will now prove $f$ is linear.
+Let $x,x'\in X$.
+Then,
+\begin{align*}
+    f(x+x') 
+    =& f(a_1z_1+\dots+a_{n-1}z_{n-1}+a_ny+b_1z_1+\dots+b_{n-1}z_{n-1}+b_ny)\\
+    =& f((a_1+b_1)z_1+\dots+(a_{n-1}+b_{n-1})z_{n-1}+(a_n+b_n)y)\\
+    =& a_n+b_n\\
+    =& f(x)+f(x').
+\end{align*}
+Furthermore, if $\alpha\in\R$, we have
+\begin{align*}
+    f(\alpha x)
+    = f(\alpha a_1z_1+\dots+\alpha a_{n-1}z_{n-1}+\alpha a_ny)
+    = \alpha a_n
+    = \alpha f(x),
+\end{align*}
+as required.
+
+For any $z_i\in Z$ we have $f(z_i)$ so that $\NNN(f)=Z$.
+And furthermore, if we had defined $f(x)=ca_n$ for any scalar $c$ we would have obtained the same result, giving us the family of linear functionals with the desired property.
+\end{proof}
+
+\begin{exercise}{10}
+Let $Z$ be a proper subspace of an $n$-dimensional vector space $X$, and let $x_0\in X\setminus Z$.
+Show that there is a linear functional $f$ on $X$ such that $f(x_0)=1$ and $f(x)=0$ for all $x\in Z$.
+\end{exercise}
+\begin{proof}
+From exercise 8, we know that for any subspace, $Z'$, of dimension $n-1$ there is a linear functional $f$ so that $\NNN(f)=Z'$.
+Furthermore, from exercise 5 we know that $\NNN(f)$ must be either $n$ or $n-1$-dimensional.
+Let $Z$ have $k<n$ dimensions, and extend a basis of $Z$ so that the space, $Z'$, spanned by the new basis is such that $\vecspan(x_0)\oplus Z'=X$.
+Given that $\dim(Z')=n-1$, we can choose $f$ using exercise 8 with $f(x_0)=1$.
+Furthermore, $Z\subseteq\NNN(f)$ and $f(x)=0$ for all $x\in Z$, as desired.
+\end{proof}
+
+\begin{exercise}{11}
+If $x$ and $y$ are different vectors in a finite dimensional vector space $X$, show that there is a linear functional $f$ on $X$ such that $f(x)\neq f(y)$.
+\end{exercise}
+\begin{proof}
+Let $x,y\in X$.
+We have two options:
+first, $x$ is a scalar multiple of $y$, say $y=ax$ with $a\neq 0,1$.
+Then $f(y)=f(ax)=af(x)\neq f(x)$.
+Second, $x$ and $y$ are not scalar multiples of each other.
+In that case, we can simply set $Z=\vecspan(y)$ and use exercise 10 to find a linear functional on $X$ so that $f(x)=1$ and $f(y)=0$.
+In both cases, $f(x)\neq f(y)$, as required.
+\end{proof}
+
+\begin{exercise}{12}
+If $f_1,\dots,f_p$ are linear functionals on an $n$-dimensional vector space where $p<n$, show that there is a vector $x\neq 0$ in $X$ such that $f_1(x)=0,\dots,f_p(x)=0$. 
+What consequences does does this result have with respect to linear equations?
+\end{exercise}
+\begin{proof}
+Consider the nullspaces of each of the functionals, $\NNN(f_1),\dots,\NNN(f_p)\subseteq X$ all of which have dimension $n-1$.
+Now consider the intersection between these subspaces $Z=\NNN(f_1)\cap\dots\cap\NNN(f_p)$.
+We have that $\dim(Z)\leq n-p$.
+To see this consider the case where $p=2$.
+In that case, $\NNN(f_1)\cap\NNN(f_2)$, if $f_1$ and $f_2$ have the same nullspace then $\NNN(f_1)=\NNN(f_2)$ and $\NNN(f_1)\cap\NNN(f_2)=\NNN(f_1)$ has dimension $n-1$.
+Otherwise, $\NNN(f_1)\cap\NNN(f_2)$ agree on all but 1 dimension, since they are both $n-1$-dimensional, and thus $\NNN(f_1)\cap\NNN(f_2)$ has dimension $n-2$.
+We can reason inductively to conclude the $n-p$ statement.
+Now since $n>p$, then $n-p>0$ and thus $Z\neq \set{0}$, so any element of $Z$ will fulfill the desired property.
+
+The consequence with respect to linear equations is that if we have a set of linear functionals of size less than the dimension in which they are defined, they don't have a unique solution.
+\end{proof}
+
+\begin{exercise}{13 (Linear extension)}
+Let $Z$ be a proper subspace of an $n$-dimensional vector $X$, and let $f$ be a linear functional on $Z$.
+Show that $f$ can be extended linearly to $X$, that is, there is a linear functional $\tilde{f}$ on $X$ such that $\tilde{f}|_Z=f$.
+\end{exercise}
+\begin{proof}
+Consider a basis of $Z$: $z_1,\dots,z_m$, and extend it to a basis of \\
+$X$: $z_1,\dots,z_m,x_1,\dots,x_{n-m}$.
+Consider the list of $n$ elements in $\R$ given by $f(z_1),\dots,f(z_m),0\dots,0$.
+From Theorem 3.5 in Axler, we know there exists a unique linear map which we call $\tilde{f}$ so that $\tilde{f}(z_i)=f(z_i)$ and $\tilde{f}(x_i)=0$.
+By definition, the linear functional has the required property.
 \end{proof}

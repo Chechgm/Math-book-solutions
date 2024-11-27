@@ -1,16 +1,5 @@
 \subsection{Linear functionals}
 
-2 Some practice with the basic concepts
-4 Some practice with the basic concepts
-5 Some practice with the basic concepts
-6 This is interesting since the differentiation functional is not bounded on C[a,b] with the usual norm, but if we change our norm a bit, it becomes bounded 
-7 Good to know
-9
-10
-11 
-12 Some links between functionals and the nullspace as a hyperplane
-13 So a functional is either 0 or surjective 
-14 Not so important, but I think this geometric interpretation of the norm is especially cool
 
 \begin{exercise}{2}
 Show that the functionals defined on $C[a,b]$ by 
@@ -21,7 +10,57 @@ Show that the functionals defined on $C[a,b]$ by
 for $y_0\in C[a,b]$, and fixed $\alpha,\beta$ are linear and bounded.
 \end{exercise}
 \begin{proof}
-fill
+In both cases, let $x,x'\in C[a,b]$ and $c,c'\in \R$.
+
+($f_1$) 
+Linear: 
+We have 
+\begin{align*}
+    f_1(cx+c'x') 
+    =& \int_a^b(cx(t)+c'x'(t))y_0(t) dt\\
+    =& \int_a^b cx(t)y_0(t)dt + \int_a^b c'x'(t)y(t)_0dt\\
+    =& c\int_a^b x(t)y_0(t)dt + c'\int_a^b x'(t)y(t)_0dt\\
+    =& cf_1(x)+c'f_1(x').
+\end{align*}
+
+Bounded: 
+We have
+\begin{align*}
+    \norm{f_1(x)}
+    =& \absoluteValue{\int_a^b x(t)y_0(t)dt}\\
+    \leq& \int_a^b \absoluteValue{x(t)y_0(t)}dt\\
+    \leq& \int_a^b \absoluteValue{x(t)}\absoluteValue{y_0(t)}dt\\
+    \leq& \int_a^b \max_{s\in[a,b]}\absoluteValue{x(s)}\absoluteValue{y_0(t)}dt\\
+    &= \max_{s\in[a,b]}\set{\absoluteValue{x(s)}} \int_a^b\absoluteValue{y_0(t)}dt =\norm{x}c.
+\end{align*}
+
+($f_2$)
+Linear:
+We have
+\begin{align*}
+    f_2(cx +c'x')
+    =& \alpha [cx(a)+c'x'(a)] +\beta [cx(b)+c'x'(b)]\\
+    =& c\alpha x(a)+ c'\alpha x'(a) 
+    +c\beta x(b) + c'\beta x'(b)\\
+    =& c[\alpha x(a) +\beta x(b)]
+    + c'[\alpha x'(a) +\beta x'(b)] = cf_2(x)+c'f_2(x'),
+\end{align*}
+so that $f_2$ is linear.
+
+Bounded:
+We have
+\begin{align*}
+    \norm{f_2(x)}
+    =& \absoluteValue{\alpha x(a) +\beta x(b)}\\
+    \leq& \absoluteValue{\alpha x(a)} 
+    +\absoluteValue{\beta x(b)}\\
+    =& \absoluteValue{\alpha}\absoluteValue{x(a)} 
+    +\absoluteValue{\beta}\absoluteValue{x(b)}\\
+    \leq& \absoluteValue{\alpha}\absoluteValue{\max_{t\in [a,b]}x(t)} 
+    +\absoluteValue{\beta}\absoluteValue{\max_{t\in [a,b]}x(t)}\\
+    =& (\absoluteValue{\alpha}+\absoluteValue{\beta})\absoluteValue{\max_{t\in [a,b]}x(t)}\\
+    \leq& (\absoluteValue{\alpha}+\absoluteValue{\beta})\max_{t\in [a,b]}\absoluteValue{x(t)} = c\norm{x}.
+\end{align*}
 \end{proof}
 
 \begin{exercise}{4}
@@ -29,7 +68,30 @@ Show that $f_1(x)=\max_{t\in J} x(t)$ and $f_2(x)=\min_{t\in J} x(t)$ for $J=[a,
 Are they linear? Bounded?
 \end{exercise}
 \begin{proof}
-fill
+($\max$)
+The $\max$ functional is not linear.
+Consider $f,g\in C[a,b]$ given by $x(t)=1$ if $t\in[a,(a+b)/2]$ and $x(t)=0$ otherwise, and $y(t)=0$ if $t\in[a,(a+b)/2]$ and $y(t)=1$ otherwise.
+Then $f_1(x+y)=1$, but $f_1(x)+f_1(y)=2$.
+
+The $\max$ functional is bounded.
+To see this, notice that 
+\begin{align*}
+\norm{f_1(x)} =\absoluteValue{\max_{t\in J}x(t)} \leq\max_{t\in J}\absoluteValue{x(t)} =\norm{x},    
+\end{align*}
+as required.
+
+($\min$)
+We can prove that $\min$ is not linear using the same functions as with $\max$.
+In that case, we would obtain $f_2(x+y) =1$ and $f_2(x)+f_2(y)=0$.
+
+$\min$ is bounded.
+To see this, we have 
+\begin{align*}
+    \norm{f_2(x)} 
+    =\absoluteValue{\min_{t\in J}x(t)} 
+    \leq \max_{t\in j}\absoluteValue{x(t)}
+    =\norm{x}.
+\end{align*}
 \end{proof}
 
 \begin{exercise}{5}
@@ -37,7 +99,8 @@ Show that on any sequence space $X$ we can define a linear functional $f$ by set
 Is $f$ bounded if $X=l^\infty$?
 \end{exercise}
 \begin{proof}
-fill
+$f$ is bounded, since $l^\infty$ consists of all bounded sequences, and the norm in $l^\infty$ is defined as the supremum of the sequence.
+Thus, for any $n$, $\norm{fx} =\absoluteValue{x_n}\leq \sup_n\absoluteValue{x_n} =\norm{x}$.
 \end{proof}
 
 \begin{exercise}{6 (Space $C^1[a,b]$)}
@@ -46,7 +109,81 @@ Show that $f(x)=x'(c)$, $c=(a+b)/2$, defines a bounded linear functional on $C^1
 Show that $f$ is not bounded, considered as a functional on the subspace of $C[a,b]$ which consists of all continuously differentiable functions.
 \end{exercise}
 \begin{proof}
-fill
+($\norm{x}$ is a norm)
+
+i) Since we are taking $\max$ of absolute values, the norm is necessarily greater than or equal to 0.
+
+ii) Equality of the previous point only holds whenever the function is the 0 function, since otherwise the $\max$ would be greater than 0.
+
+iii) Let $a\in\R$ and $x\in C^1[a,b]$. Then we have that 
+\begin{align*}
+\norm{a x} 
+=& \max_{t\in J}\absoluteValue{a x(t)} 
++ \max_{t\in J}\absoluteValue{a x'(t)}\\
+=& \absoluteValue{a}\max_{t\in J}\absoluteValue{x(t)} 
++ \absoluteValue{a}\max_{t\in J}\absoluteValue{x'(t)}\\
+=& \absoluteValue{a}[\max_{t\in J}\absoluteValue{x(t)} 
+ + \max_{t\in J}\absoluteValue{x'(t)}] = \absoluteValue{a}\norm{x}.
+\end{align*}
+
+vi) Furthermore, if $y\in C^1[a,b]$, we have
+\begin{align*}
+    \norm{x+y}
+=& \max_{t\in J}\absoluteValue{x(t) + y(t)} 
++ \max_{t\in J}\absoluteValue{(x(t) +y(t))'}\\
+=& \max_{t\in J}\absoluteValue{x(t) + y(t)} 
++ \max_{t\in J}\absoluteValue{x'(t) + y'(t)}\\
+\leq& \max_{t\in J}\set{\absoluteValue{x(t)} + \absoluteValue{y(t)}}
++ \max_{t\in J}\set{\absoluteValue{x'(t)} + \absoluteValue{y'(t)}}\\
+\leq& \max_{t\in J}\absoluteValue{x(t)} 
++ \max_{t\in J}\absoluteValue{y(t)}
++ \max_{t\in J}\absoluteValue{x'(t)} 
++ \max_{t\in J}\absoluteValue{y'(t)}\\
+& [\max_{t\in J}\absoluteValue{x(t)} 
++ \max_{t\in J}\absoluteValue{x'(t)}]
++ [\max_{t\in J}\absoluteValue{y(t)}
++ \max_{t\in J}\absoluteValue{y'(t)}] 
+=\norm{x}+\norm{y}.
+\end{align*}
+
+($f$ linear and bounded functional in $C^1[a,b]$)
+
+Linear.
+Let $x,y\in C^1[a,b]$ and $a,b\in\R$.
+We have 
+\begin{align*}
+f(ax+by) 
+=& (ax+by)'(c)\\
+=& (ax)'(c)+(by)'(c)\\
+=& ax'(c)+by'(c) =af(x)+bf(y).
+\end{align*}
+
+
+Bounded.
+We have 
+\begin{align*}
+\norm{fx} 
+=& \absoluteValue{x'(c)}\\
+\leq& \max_{t\in J}\absoluteValue{x'(t)}\\
+\leq& \max_{t\in J}\absoluteValue{x(t)} + \max_{t\in J}\absoluteValue{x'(t)} =\norm{x}.
+\end{align*}
+
+($f$ not bounded when defined on the subspace of continuously differentiable functions of $C[a,b]$)
+To see $f$ is not bounded when considered as a functional on the subspace of $C[a,b]$, consider the sequence of functions $x_n(t)=\arctan(nt)/n$ in $C[0,1]$.
+We have
+\begin{align*}
+    \norm{x}
+    = \max_{t\in[0,1]}\absoluteValue{\arctan(nt)/n} \to 0,
+\end{align*}
+as $n\to\infty$, given that $\arctan{x}\leq\pi/2$.
+On the other hand,
+\begin{align*}
+    \norm{f(x)}
+    = \absoluteValue{1/(n^2x^2+1)} \to 1,
+\end{align*}
+as $n\to\infty$.
+Thus we cannot find a $c\in\R$ with $\norm{f(x_n)}\leq c\norm{x_n}$, given that for any $c$, we can find an $N$ so that the equality does not hold for any $n>N$.
+Thus, the functional $f$ is not bounded, when thinking of $x$ as a subspace of $C[0,1]$.
 \end{proof}
 
 \begin{exercise}{7}
@@ -54,7 +191,27 @@ If $f$ a bounded linear functional on a complex normed space, is $\bar{f}$ Bound
 (The bar denotes complex conjugate).
 \end{exercise}
 \begin{proof}
-fill
+(Linear)
+$\bar{f}$ is not linear. 
+To see this, consider $x,y\in X$ and $a,b\in\C$.
+Then, 
+\begin{align*}
+    \bar{f}(ax) 
+    =\overline{f(ax)} 
+    =\bar{a}\overline{f(x)},
+\end{align*}
+which does not equal $a\overline{f(x)}$ in the generic case, so that $\bar{f}$ is not homogenous and thus not linear.
+
+(Bounded)
+$\bar{f}$ is bounded.
+We have
+\begin{align*}
+\norm{\bar{f}(x)}
+= \absoluteValue{\bar{f}(x)}
+= \absoluteValue{f(x)}
+\leq c\norm{x},
+\end{align*}
+where the inequality follows because $f$ is bounded.
 \end{proof}
 
 \begin{exercise}{9}
@@ -62,7 +219,13 @@ Let $f\neq 0$ be any linear functional on a vector space $X$ and $x_0$ any fixed
 Show that any $x\in X$ has a unique representation $x=\alpha x_0+y$, where $y\in\NNN(f)$.
 \end{exercise}
 \begin{proof}
-fill
+Theorem 1.45 in Axler's Linear Algebra says that the sum of two subspaces of $X$ is a direct sum if and only if the intersection of the subspaces is zero.
+That condition is precisely satisfied for the subspaces $\vecspan(x_0)$ and $\NNN(f)$.
+Since $x_0\in X\setminus\NNN(f)$, then $f(\alpha x_0)\neq 0$ for $\alpha\neq 0$ and $f(\alpha x_0)=0$ if $\alpha=0$, thus $\vecspan(x_0)\cap \NNN(f)=\set{0}$.
+
+Now to see that $x\in X$ can be represented as such, choose $\alpha = f(x)/f(x_0)$ and $y=x-\alpha x_0$.
+Since $x_0\in X\setminus\NNN(f)$, then $\alpha$ is defined and $f(y) =f(x-\alpha x_0) =f(x)-\alpha f(x_0) =f(x)-f(x)=0$, so that $y\in\NNN(f)$.
+Last, we have $\alpha x_0+y =\alpha x_0 +x-\alpha x_0=x$, as required.
 \end{proof}
 
 \begin{exercise}{10}
@@ -71,14 +234,27 @@ show that $\text{codim }\NNN(f)=1$.
 (Cf. 2.1.14).
 \end{exercise}
 \begin{proof}
-fill
+Recall that $x_1$ and $x_2$ are equivalent if and only if $x_1-x_2\in\NNN(f)$.
+Suppose $x_1$ and $x_2$ belong to the same element of the quotient space.
+Then $x_1+y_1=x_2+y_2$ for $y_1,y_2\in\NNN(f)$, but this implies $f(x_1+y_1) =f(x_1)+f(y_1) =f(x_1) =f(x_2+y_2) =f(x_2)$, as required.
+
+Now suppose $f(x_1)=f(x_2)$.
+Then $f(x_1)-f(x_2) =f(x_1-x_2) =0$, so that $x_1-x_2\in\NNN(f)$, so that they are elements of the quotient space.
+
+Too see $\text{codim }\NNN(f)=1$ we use the result we just proved.
+That is, we just proved that the points in $X$ are collapsed to elements in the codomain in $f$, the reals.
+Since the reals is a one-dimensional vector space, then the quotient space (and the codimension of $f$) are one dimensional too.
 \end{proof}
 
 \begin{exercise}{11}
 Show that two linear functionals $f_1\neq 0$ and $f_2\neq 0$ which are defined on the same vector space and have the same null space are proportional.
 \end{exercise}
 \begin{proof}
-fill
+This is a corollary to exercise 9.
+The definition of direct sum (see 1.40 in Axler) tells us that each element of the sum can be written in only one way as the sum of elements of each of the subspaces.
+Since $\NNN(f_1)=\NNN(f_2):=\NNN(f)$, for a fixed $x_0$, every $x\in X$ can be written as $x=\alpha x_0+y$, where $y\in\NNN(f)$, with a unique $\alpha$.
+The choice of $\alpha$ we found in exercise 9 is $\alpha=f_1(x)/f_1(x_0)=f_2(x)/f_2(x_0)$.
+Since $x_0$ is fixed before hand, this implies $cf_1(x)=f_2(x)$, where $c=f_2(x_0)/f_1(x_0)$, giving us the desired result.
 \end{proof}
 
 \begin{exercise}{12 (Hyperplane)}
@@ -86,19 +262,25 @@ If $Y$ is a subspace of a vector space $X$ and $\text{codim }Y=1$ (cf. 2.1.14), 
 Show that for any linear functional $f\neq 0$ on $X$, the set $H_1=\set{x\in X: f(x)=1}$ is a hyperplane parallel to the null space $\NNN(f)$ of $f$.
 \end{exercise}
 \begin{proof}
-fill
+This is a Corollary to exercise 10.
+Since all elements of $x_1$ and $x_2$ of $H_1$ map to the same value under $f$, then they belong to the same element of the quotient space.
+$H_1$ constitutes the whole element of $\quot{X}{\NNN(f)}$ because any other $x$ whose value under $f$ would be different would belong to another element of the quotient space.
 \end{proof}
 
 \begin{exercise}{13}
 If $Y$ is a subspace of a vector space $X$ and $f$ is a linear functional on $X$ such that $f(Y)$ is no the whole scalar field of $X$, show that $f(y)=0$ for all $y\in Y$.
 \end{exercise}
 \begin{proof}
-fill
+Suppose there exists $y\in Y$ so that $f(y)\neq 0$.
+Then since $f$ is linear and homogenous, and $Y$ is a vector space itself, then for all $k$ in the scalar field we can choose $a=k/f(y)$, so that $f(ay)=af(y)=k$.
+Now if $Y\subseteq\NNN(f)$, then $f(y)=0$ for all $y\in Y$, and $f$ would still be a valid functional on $X$.
 \end{proof}
 
 \begin{exercise}{14}
 Show that the norm $\norm{f}$ of a bounded linear functional $f\neq 0$ on a normed space $X$ can be interpreted geometrically as the reciprocal of the distance $\bar{d}=\inf\set{\norm{x}: f(x)=1}$ of the hyperplane $H_1=\set{x\in X: f(x)=1}$ from the origin.
 \end{exercise}
 \begin{proof}
-fill
+Notice that, by definition, $\norm{f}$ is the smallest $c$ (the infimum) such that $\norm{f(x)x}/\norm{f}\leq c$.
+Now let $x\in H_1$, thus, $f(x)=1$ and so $1/\norm{x}\leq c$.
+Since the quantity on the left is maximised whenever $\norm{x}$ is the minimised, then $\norm{f}$ is the inverse (or reciprocal) of $\bar{d}=\inf\set{\norm{x}:f(x)=1}$, as required.
 \end{proof}

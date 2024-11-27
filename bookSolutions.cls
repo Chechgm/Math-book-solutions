@@ -91,6 +91,8 @@
 % Probability
 \newcommand{\E}{\mathbb{E}} % Expected value
 \newcommand{\indep}{\perp \!\!\! \perp} % Conditional independence.
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
 
 % Math environments
 \newtheorem{thm}{Theorem}

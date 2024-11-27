@@ -3,10 +3,14 @@
 
 
 \begin{exercise}{1}
-  Suppose $T\in\mathcal{L}(U,V)$ and $S\in\mathcal{L}(V,W)$ are both invertible linear maps. Prove that $ST\in\mathcal{L}(U,W)$ is invertible and that $(ST)^{-1}=T^{-1}S^{-1}$.
+  Suppose $T\in\mathcal{L}(U,V)$ and $S\in\mathcal{L}(V,W)$ are both invertible linear maps. 
+  Prove that $ST\in\mathcal{L}(U,W)$ is invertible and that $(ST)^{-1}=T^{-1}S^{-1}$.
 \end{exercise}
 \begin{proof}
- For the first part, notice that if $T$ and $S$ are linear maps, then the composition, $ST$ is a linear map in $\mathcal{L}(U,W)$ too. Dy definition, $S$ and $T$ are both injective and surjective, since they are invertible. From basic set theory, we know that the composition of injective functions is injective and the composition of surjective functions is surjective. As a result, $ST$ is both injective and surjective, so $ST$ is invertible.
+ For the first part, notice that if $T$ and $S$ are linear maps, then the composition, $ST$ is a linear map in $\mathcal{L}(U,W)$ too. 
+ Dy definition, $S$ and $T$ are both injective and surjective, since they are invertible. 
+ From basic set theory, we know that the composition of injective functions is injective and the composition of surjective functions is surjective. 
+ As a result, $ST$ is both injective and surjective, so $ST$ is invertible.
  
  For the second part, we have $(ST)(ST)^{-1}=I \implies T(ST)^{-1}=S^{-1} \implies (ST)^{-1}=S^{-1}T^{-1}$, as required.
 \end{proof}
@@ -67,10 +71,15 @@
 
 
 \begin{exercise}{8}
-  Suppose $V$ is finite-dimensional and $T:V\rightarrow W$ is a surjective linear map of $V$ onto $W$. Prove that there is a subspace $U$ of $V$ such that $T\vert_{U}$ is an isomorphism of $U$ onto $W$. (Here $T\vert_{U}$ means the function $T$ restricted to $U$. In other words, $T\vert_{U}$ is the function whose domain is $U$ with $T\vert_{U}$ defined by $T\vert_{U}(u)=Tu$ for every $u\in U$).
+  Suppose $V$ is finite-dimensional and $T:V\rightarrow W$ is a surjective linear map of $V$ onto $W$. 
+  Prove that there is a subspace $U$ of $V$ such that $T\vert_{U}$ is an isomorphism of $U$ onto $W$. 
+  (Here $T\vert_{U}$ means the function $T$ restricted to $U$. 
+  In other words, $T\vert_{U}$ is the function whose domain is $U$ with $T\vert_{U}$ defined by $T\vert_{U}(u)=Tu$ for every $u\in U$).
 \end{exercise}
 \begin{proof}
- Let $w_{1},\dots,w_{m}$ be a basis of $\range T$. Let $u_{i}$ be defined as one (of the possibly many) vectors in $V$ with $Tu_{i}=w_{i}$. We then let $U=\vecspan(u_{1},\dots,u_{m})$.
+ Let $w_{1},\dots,w_{m}$ be a basis of $\range T$. 
+ Let $u_{i}$ be defined as one (of the possibly many) vectors in $V$ with $Tu_{i}=w_{i}$. 
+ We then let $U=\vecspan(u_{1},\dots,u_{m})$.
  
  We know prove $U$ is a subspace of $V$. i) $T0=0\in\range T$. ii) Let $u,u'\in U$, then $T(u+u')=Tu+Tu'$ which is in $\range T$ because both $Tu$ and $Tu'$ are, so $u+u'\in U$. iii) Let $\lambda\in\mathbf{F}$, then $T(\lambda u)=\lambda Tu$ which belongs to $\range T$ because $Tu$ does and $\lambda u\in U$.
  

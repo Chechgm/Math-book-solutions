@@ -1,132 +1,232 @@
-\subsection{fill}
+\subsection{Continuous functions}
 
-\begin{exercise}{x}
+1*
+2*
+5C
+6C
+8*
+9*
+10*
+14*
+17*
+19*
+20*
+22C
+24*
+25*
+26*
+27C
+29C
+30*
+31*
+
+34*
+35*
+36*
+
+\begin{exercise}{1}
+Given a function $f:S\to T$ and sets $A,B\subseteq S$ and $C,D\subset T$ establish the following:
+\begin{enumerate}
+    \item $A \subseteq f^{-1}(f(A))$, with equality for all $A$ if and only if $A$ is one-to-one.
+    \item $f(f^{-1}(C))\subseteq C$, with equality for all $C$ if and only if $f$ is onto.
+    \item $f(A\cup B)= f(A)\cup f(B)$.
+    \item $f^{-1}(C\cup D)=f^{-1}(C)\cup f^{-1}(D)$.
+    \item $f(A\cap B)\subseteq f(A)\cap f(B)$, with equality for all $A$ and $B$ if and only if $f$ is one-to-one.
+    \item $f^{-1}(C\cap D)=f^{-1}(C)\cap f^{-1}(D)$.
+    \item $f(A)\setminus f(B)\subseteq f(A\setminus B)$.
+    \item $f^{-1}(C\setminus D)= f^{-1}(C)\setminus f^{-1}(D)$.
+\end{enumerate}
+Generalise, whenever possible, to arbitrary unions and intersections.
+\end{exercise}
+\begin{proof}
+\begin{enumerate}
+    \item We have $f^{-1}(f(A))=\set{y\in S: f(y)\in f(A)}$, thus all $y\in f^{-1}(f(A))$ are in $A$.
+    Suppose $f$ is one-to-one, then whenever $f(x)=f(y)$, we have $x=y$, so that each distinct pairs of elements in $A$ are mapped to distinct elements in $f(A)$, and thus the preimage of any pair of elements of $f(A)$ does not map to a single element;
+    in other words, $f^{-1}(f(A))=A$.
+    
+    \item We have $f(f^{-1}(C))=\set{f(x)\in T: x\in f^{-1}(C)}$.
+    Since $f^{-1}(C)=\set{x\in S: f(x)\in C}$, then the elements of $f^{-1}(C)$ will be mapped to elements in $C$ by $f$, as required.
+    Now suppose $f$ is onto.
+    Then, for all $y\in C$, there is an $x\in S$ with $y=f(x)$.
+    Thus, $x\in f^{-1}(C)$, and $y\in f(f^{-1}(C))$, as required.
+    
+    \item ($\subseteq$)
+    Let $f(x)\in f(A\cup B)$, then $x\in A$ or $x\in B$.
+    But this implies that $f(x)\in f(A)\cup f(B)$;
+    that is $f(A\cup B)\subseteq f(A)\cup f(B)$.
+
+    ($\supseteq$)
+    Let $f(x)\in f(A)\cup f(B)$.
+    Then $f(x)\in f(A)$ or $f(x)\in f(B)$.
+    But this implies $x\in A$ or $x\in B$, which in turn implies $f(x)\in f(A\cup B)$;
+    that is $f(A)\cup f(B)\subseteq f(A\cup B)$
+    
+    \item
+    \item 
+    \item 
+    \item 
+    \item
+\end{enumerate}
+\end{proof} 
+
+\begin{exercise}{2}
+Given a subset $A$ of some ``universal'' set $S$, we define $\chi_A:S\to\R$, the characteristic function of $A$, by $\chi_A(x)=1$ if $x\in A$ and $\chi_A(x)=0$ if $x\notin A$.
+Prove of disprove the following formulas:
+\begin{enumerate}
+    \item $\chi_{A\cup B}=\chi_A +\chi_B$,
+    \item $\chi_{A\cap B}=\chi_A \chi_B$,
+    \item $\chi_{A\setminus B}=\chi_A-\chi_B$.
+\end{enumerate}
+What corrections are necessary?
+\end{exercise}
+\begin{proof}
+fill
+\end{proof} 
+
+\begin{exercise}{5}
+Is there a continuous characteristic function on $\R$?
+If $A\subseteq\R$, show that $\chi_A$ is continuous at each point of $\text{int}(A)$.
+Are there any other points of continuity?
+\end{exercise}
+\begin{proof}
+fill
+\end{proof} 
+
+\begin{exercise}{6}
+Let $f:\R\to\R$ be continuous.
+Show that $\set{x:f(x)>0}$ is an open subset of $\R$ and that $\set{x:f(x)=0}$ is a closed subset of $\R$.
+If $f(x)=0$ whenever $x$ is rational, show that $f(x)=0$ for every real $x$.
+\end{exercise}
+\begin{proof}
+fill
+\end{proof} 
+
+\begin{exercise}{8}
+Let $f:\R\to\R$ be continuous.
+\begin{enumerate}
+    \item If $f(0)>0$, show that $f(x)>0$ for all $x$ in some interval $(-a,a)$.
+    \item If $f(x)\geq 0$ for every rational $x$, show that $f(x)\geq 0$ for all real $x$.
+    Will this results hold with $\geq0$ replaced by $>0$? 
+    Explain
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+fill
+\end{proof} 
+
+\begin{exercise}{9}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
+\begin{exercise}{10}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
+\begin{exercise}{14}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
+\begin{exercise}{17}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
+\begin{exercise}{19}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
+\begin{exercise}{20}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
+\begin{exercise}{22}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
+\begin{exercise}{24}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
+\begin{exercise}{25}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
+\begin{exercise}{26}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
+\begin{exercise}{27}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
+\begin{exercise}{29}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
+\begin{exercise}{30}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
+\begin{exercise}{31}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
+\begin{exercise}{34}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
+\begin{exercise}{35}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
+\begin{exercise}{36}
 fill
 \end{exercise}
 \begin{proof}

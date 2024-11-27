@@ -2,9 +2,7 @@
 
 61*
 62*
-63
 64
-68
 
 \begin{exercise}{61}
 Let $A\subseteq M$.
@@ -17,8 +15,33 @@ Let $A\subseteq M$.
 \begin{proof}
 \begin{enumerate}
     \item Proved in the text.
-    \item fill
-    \item fill
+    \item ($\Rightarrow$)
+    Suppose $F$ is closed in $(A,d)$.
+    Then, for any convergent sequence, $(x_n)$ in $F$, if $x_n\to x$, then $x\in F$.
+    However, since $A\subset M$, then $(x_n)$ converges in $x$ to and so $F$ is closed in $(M,d)$.
+    Since $F\subset A$, then $F=A\cap F$, where $F$ is closed in $(M,d)$, as required.
+
+    ($\Leftarrow$)
+    Suppose $F=A\cap C$ where $C$ is closed in $(M,d)$.
+    Then for any sequence $(x_n)$ where $x_n\in C$ and $x_n\to x$ we have that $x\in C$.
+    There are two options, first $x\in A$, then $x\in F=A\cap C$;
+    second, $x\notin A$.
+    In this case $(x_n)$ does not converge in $(A,d)$, so that $(x_n)$ is not relevant in our definition of closed. 
+    Thus, $F$ is closed in $(A,d)$, as required.
+    \item ($\subseteq$)
+    Let $x\in \text{cl}_A(E)$.
+    Then either $x\in E$ or $x$ is a limit point of $E$.
+    In the first case, $x\in A$, and so $x\in A\cap\text{cl}_M(E)$.
+    Suppose then, that $x$ is a limit point of $E$.
+    Then there exists a sequence $(x_n)$, where $x_n\in E$ and $x_n\to x$ (and $x\in A$, since the closure is relative to $A$).
+    But $x\in A\subseteq M$, so that $x$ is a limit point of $E$ in $M$ too and thus $x\in\text{cl}_M(E)$ and so $x\in A\cap\text{cl}_M(E)$.
+
+    ($\supseteq$)
+    Let $x\in A\cap\text{cl}_M(E)$.
+    Then $x\in A$ and either $x\in E$ or $x$ is a limit point of $E$ in M.
+    Since $E\subseteq A$,we are interested in the case where $x\in A$ and $x$ is a limit point of $E$ in $M$.
+    Since $x$ is a limit point of $E$ in $M$, then there exists a sequence $(x_n)$ with $x_n\in E$ so that $x_n\to x$.
+    But $x\in A$, thus $x$ is a limit point of $E$ relative to $A$ too, that is, $x\in\text{cl}_A(E)$, as required.
 \end{enumerate}
 \end{proof} 
 
@@ -26,26 +49,37 @@ Let $A\subseteq M$.
 Suppose that $A$ is open in $(M,d)$ and that $G\subseteq A$. Show that $G$ is open in $A$ if and only if $G$ is open in $M$. Is the result still true if ``open'' is replaced everywhere by ``closed''? Explain.
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$)
+Suppose $G\subseteq A$ is open.
+Then for all $x\in G$, there exists an $\epsilon>0$ so that $B_\epsilon^A(x) \subseteq G \subseteq A$.
+However $x\in A$ and $A$ is open in $M$, so that there exists $\epsilon'>0$ with $B_{\epsilon'}^M(x)\subseteq A$.
+If $\epsilon\geq\epsilon'$, then $B_{\epsilon'}^M(x)\subseteq B^A_\epsilon(x)\subseteq G$.
+If $\epsilon'>\epsilon$, consider the ball $B_\epsilon^M(x)=\set{y\in M:d(x,y)<\epsilon}$.
+We know that $B_\epsilon^M(x)\subseteq B_{\epsilon'}^M(x)\subset A$, but also $B_\epsilon^M(x)\subseteq G$.
+If this was not the case, then there exists $x'\in B_\epsilon^M(x)$ with $x'\notin G$.
+That is, $d(x,x')<\epsilon$ with $x'\in A$.
+But then $x'\in B_\epsilon^A \subseteq G$, a contradiction.
+Thus, $B_\epsilon^M(x)\subseteq G$ and $G$ is open in $M$.
+
+($\Leftarrow$)
+We will prove this by contrapositive.
+Suppose $G\subseteq A\subseteq M$ is not open in $A$.
+That is, for all $\epsilon>0$, $B^A_\epsilon(x)\cap G^C\neq \emptyset$, where $G^C$ is the complement of $G$ relative to $A$.
+Notice, however, that the complement of $G$ relative to $A$ is a subset of the complement of $G$ relative to $M$ and $B^A_\epsilon(x)\subseteq B^M_\epsilon(x)$.
+Thus, for all $\epsilon>0$, we have that $B^M_\epsilon(x)\cap G^C\neq \emptyset$, where this time $G^C$ is taken relative to $M$ and $G$ is not open in $M$.
+
+(Closed)
+The statement will hold if we change ``open'' for ``closed''.
+A sketch of the argument is the following.
+One of the definitions of closed is that for any sequence $(x_n)$, with $x_n\in G$ and $x_n\to x$ then $x\in G$.
+Notice, however, that this definition of closed does not depend on whether $G$ is closed relative to an other set but instead is a sequential definition which holds under conditions on $G$ solely.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{64}
+Show that the analogue of part (iii) of Proposition 4.13  for relative interiors is false. 
+Specifically, finds sets $E \subseteq A \subseteq\R$ such that $\text{int}_A(E)=A$ while $\text{int}_\R(E)=\emptyset$.
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
+Consider $E=\Q\subseteq\Q =A$.
+Then $\text{int}_A(E)=\Q=A$, but $\text{int}_\R(\Q)=\emptyset$.
 \end{proof} 
