@@ -383,8 +383,8 @@ where $a$ is a constant.
     \begin{eqnarray*}
         y^2
         & = & \frac{(a-x)^3}{x+a}\\
-        & = & \frac{(a-x)}{x+a}(a-x)^2.
-        & = & \frac{(a-x)(a+x)}{(x+a)^2}(x-a)^2.
+        & = & \frac{(a-x)}{x+a}(a-x)^2\\
+        & = & \frac{(a-x)(a+x)}{(x+a)^2}(x-a)^2\\
         & = & \frac{a^2 - x^2}{(x+a)^2}(x-a)^2.    
     \end{eqnarray*}
     Since $a\in (-a,a]$, we know that $(x+a)/(x-a)\geq 0$, thus,
@@ -533,7 +533,7 @@ This problem deals with convex sets and will be used in the next exercise to sho
     \end{enumerate}
 \end{proof}
 
-\begin{exercise}
+\begin{exercise}{15}
     Let a B\'ezier cubic be given by
     \begin{eqnarray*}
         x & = & (1-t)^3 x_0 + 3t(1-t)^2 x_1 + 3t^2 (1-t) x_2 + t^3 x_3,\\
@@ -565,18 +565,115 @@ One disadvantage of B\'ezier cubics is that curves like circles and hyperbolas c
 A conic section is a curve in the plane defined by a second degree equation of the form $ax^2 + bxy + cy^2 + dx + ey = 0$. Conic sections include the familiar examples of circles, ellipses, parabolas, and hyperbolas. Now consider the curve parametrized by
 \begin{eqnarray*}
     x & = & \frac{(1-t)^2 x_1 + 2t(1-t)wx_2 + t^2 x_3}{(1-t)^2 + 2t(1-t)w + t^2},\\
-    x & = & \frac{(1-t)^2 y_1 + 2t(1-t)wy_2 + t^2 y_3}{(1-t)^2 + 2t(1-t)w + t^2}    
+    y & = & \frac{(1-t)^2 y_1 + 2t(1-t)wy_2 + t^2 y_3}{(1-t)^2 + 2t(1-t)w + t^2}    
 \end{eqnarray*}
 for $0\leq t\leq 1$. The constants $w,x_1,y_1,x_2,y_2,x_3,y_3$ are specified by the design engineer, and we will assume that $w\geq 0$. In Chapter $3$, we will show that these equations parametrize a conic section. The goal of this exercise is to give a geometric interpretation for the quantities $w,x_1,y_1,x_2,y_2,x_3,y_3$.
     \begin{enumerate}
         \item Show that our assumption $w\geq 0$ implies that the denominator in the above formulas never vanishes.
+        \item Evaluate the above formulas at $t=0$ and $t=1$. This should tell you what $x_1$, $y_1$, $x_3$, $y_3$ mean.
+        \item Now compute $(x'(0), y'(0))$ and $(x'(1), y'(1))$. Use this to show that $(x_2,y_2)$ is the intersection of the tangent lines at the start and end of the curve. Explain why $(x_1,y_1)$, $(x_2,y_2)$ and $(x_3,y_3)$ are called the control points of the curve.
+        \item Define the control polygon (it is actually a triangle in this case), and prove that the curve defined by the above equations always lies in its control polygon. This gives the following picture:\\
+        \includegraphics[width=0.8\linewidth]{cox-little-oshea/assets/sec1-3-ex16.png}
+        It remains to explain the constant $w$, which is called the shape factor. A hint should come from the answer to part (c), for note that $w$ appears in the formulas for the tangent vectors when $t=0$ and $1$. So $w$ somehow controls the ``velocity,'' and a larger $w$ should force the curve closer to $(x_2,y_2)$. In the last two parts of the problem, we will determine exactly what $w$ does.
+        \item Prove that
+        $$\left(\begin{array}{c}x\left(\frac{1}{2}\right)\\ y\left(\frac{1}{2}\right)\end{array}\right) = \frac{1}{1+w}\left(\frac{1}{2}\left(\begin{array}{c}x_1\\ y_1\end{array}\right) + \frac{1}{2}\left(\begin{array}{c}x_3\\ y_3\end{array}\right) \right) + \frac{w}{1+w}\left(\begin{array}{c}x_2\\ y_2\end{array}\right).$$
+        Use this formula to show that $\left(x\left(\frac{1}{2}\right),y\left(\frac{1}{2}\right)\right)$ lies on the line segment connecting $(x_2,y_2)$ to the midpoint between $(x_1,y_1)$ and $(x_3,y_3)$.\\
+        \includegraphics[width=0.8\linewidth]{cox-little-oshea/assets/sec1-3-ex16a.png}
+        \item Notice that $\left(x\left(\frac{1}{2}\right), y\left(\frac{1}{2}\right)\right)$ divides this line segment into two pieces, say of length $a$ and $b$ as indicated in the above picture. Then prove that
+        $$w = \frac{a}{b},$$
+        so that $w$ tells us exactly where the curve crosses this line segment.
     \end{enumerate}
 \end{exercise}
 \begin{proof}
     \begin{enumerate}
         \item Since $w\geq 0$, we see that
         $$(1-t)^2 + 2t(1-t)w + t^2\geq (1-t)^2 + t^2 > 0.$$
+        \item As $t=0$, we get
+\begin{align*}
+    x & = \frac{(1-t)^2 x_1 + 2t(1-t)wx_2 + t^2 x_3}{(1-t)^2 + 2t(1-t)w + t^2} & = x_1,\\
+    y & = \frac{(1-t)^2 y_1 + 2t(1-t)wy_2 + t^2 y_3}{(1-t)^2 + 2t(1-t)w + t^2} & = y_1.   
+\end{align*}        
+We get for $t=1$, that
+\begin{align*}
+    x & = \frac{(1-t)^2 x_1 + 2t(1-t)wx_2 + t^2 x_3}{(1-t)^2 + 2t(1-t)w + t^2} & = x_3,\\
+    y & = \frac{(1-t)^2 y_1 + 2t(1-t)wy_2 + t^2 y_3}{(1-t)^2 + 2t(1-t)w + t^2} & = y_3.   
+\end{align*}     
+So we see that $(x_1,y_1)$ and $(x_3, y_3)$ are the begin and endpoints of the segment.
+\item We see that 
+$$x'(t) = \frac{2w(-x_1(t-1)^2 + 2x_2t + x_2 + x_3t^2) + 2(t-1)t(x_1 - x_3)}{(1 - 2(t-1)t(w-1))^2}.$$
+We get,
+$$x'(0) = 2w(x_2 - x_1),~~y'(0) = 2w(x_3 - x_2).$$
+Similarly,
+$$y'(0) = 2w(y_2 - y_1),~~y'(0) = 2w(y_3 - y_2).$$
+The tangent line through $(x_1, y_1)$, is given by
+$$f(t) = (x(0),y(0)) + t(x'(0),y'(0)) = (x_1 + 2wt (x_2 - x_1), y_1 + 2wt(y_2 - y_1)).$$
+Putting $t= \frac{1}{2w}$, we get that $(x_2,y_2)$ is on this tangent line. Similarly, it is on the tangent line $g(t) = (x(1),y(1)) + t(x'(1),y'(1))$. This establishes that $(x_2,y_2)$ is on the intersection of the two tangent lines. We say that $(x_1,y_1)$, $(x_2, y_2)$ and $(x_3,y_3)$ are called the control points since they control completely geometrically what the curve looks like.
+\item We can write
+\begin{eqnarray*}
+    \left(\begin{array}{c} x\\ y \end{array}\right) 
+    & = &\frac{(1-t)^2}{(1-t)^2 + 2t(1-t)w + t^2}\left(\begin{array}{c} x_1\\ y_1 \end{array}\right)\\
+    & & +\frac{2t(1-t)w}{(1-t)^2 + 2t(1-t)w + t^2}\left(\begin{array}{c} x_2\\ y_2  \end{array}\right)\\
+    & & + \frac{t^2}{(1-t)^2 + 2t(1-t)w + t^2}\left(\begin{array}{c} x_1\\ y_1 \end{array}\right).
+\end{eqnarray*}
+Note that each of the three coefficients is in $[0,1]$, and they clearly add up to $1$. Thus since $(x,y)$ is a convex combination of $(x_1,y_1)$, $(x_2,y_2)$ and $(x_3,y_3)$, we see that $(x,y)$ is in the control polygon.
+\item We see that
+\begin{eqnarray*}
+   x\left(\frac{1}{2}\right)
+   & = & \frac{\left(1-\frac{1}{2}\right)^2 x_1 + 2\frac{1}{2}\left(1-\frac{1}{2}\right)wx_2 + \left(\frac{1}{2}\right)^2 x_3}{\left(1-\frac{1}{2}\right)^2 + 2\frac{1}{2}\left(1-\frac{1}{2}\right)w + \left(\frac{1}{2}\right)^2}\\
+   & = & \frac{\left(\frac{1}{2}\right)^2 x_1 + 2\frac{1}{2}\left(\frac{1}{2}\right)wx_2 + \left(\frac{1}{2}\right)^2 x_3}{\left(\frac{1}{2}\right)^2 + 2\frac{1}{2}\left(\frac{1}{2}\right)w + \left(\frac{1}{2}\right)^2}\\
+   & = & \frac{\frac{1}{4} x_1 + 2\frac{1}{4}wx_2 + \frac{1}{4} x_3}{\frac{1}{4} + 2\frac{1}{4}w + \frac{1}{4}}\\
+   & = & \frac{\frac{1}{4} x_1 + \frac{1}{2}wx_2 + \frac{1}{4} x_3}{\frac{1}{2} + \frac{1}{2}w}\\
+   & = & \frac{\frac{1}{2} x_1 + wx_2 + \frac{1}{2} x_3}{1+w}\\
+   & = & \frac{1}{2}\frac{x_1}{1+w} + \frac{w}{1+w}x_2 + \frac{1}{2}\frac{x_3}{1+w}\\
+   & = & \frac{1}{1+w}\left(\frac{1}{2}x_1 + \frac{1}{2}x_3\right) + \frac{w}{1+w}x_3.
+\end{eqnarray*}
+A similar computation holds for $y\left(\frac{1}{2}\right)$.
+    \item The midpoint between $(x_1,y_1)$ and $(x_3,y_3)$ has coordinates 
+    $$\left(\begin{array}{c}x_{\text{mid}}\\ y_{\text{mid}}\end{array}\right) = \frac{1}{2}\left(\begin{array}{c}x_1\\ y_1\end{array}\right) + \frac{1}{2}\left(\begin{array}{c}x_3\\ y_3\end{array}\right).$$
+    Thus,
+    $$\left(\begin{array}{c}x\left(\frac{1}{2}\right)\\ y\left(\frac{1}{2}\right)\end{array}\right) = \frac{1}{1+w}\left(\begin{array}{c}x_{\text{mid}}\\ y_{\text{mid}}\end{array}\right) + \frac{w}{1+w}\left(\begin{array}{c}x_2\\ y_2\end{array}\right).$$
+    By Exercise $14$ and choosing $t = \frac{1}{1+w}$, we then see that $\left(x\left(\frac{1}{2}\right),y\left(\frac{1}{2}\right)\right)$ is part of the line going through $(x_{\text{mid}},y_{\text{mid}})$ and $(x_2,y_2)$, as desired.
+    \item Note that
+    \begin{eqnarray*}
+        \frac{a}{b}
+        & = & \frac{\left\|\left(\begin{array}{c} x\left(\frac{1}{2}\right)\\ y\left(\frac{1}{2}\right)\end{array}\right) - \left(\begin{array}{c} x_{\text{mid}}\\ y_{\text{mid}}\end{array}\right)\right\|}{\left\|\left(\begin{array}{c} x\left(\frac{1}{2}\right)\\ y\left(\frac{1}{2}\right)\end{array}\right) - \left(\begin{array}{c} x_2\\ y_2\end{array}\right)\right\|}\\
+        & = & \frac{\left\|\frac{1}{1+w}\left(\begin{array}{c} x_{\text{mid}}\\ y_{\text{mid}}\end{array}\right) + \frac{w}{1+w}\left(\begin{array}{c} x_2\\ y_2\end{array}\right) - \left(\begin{array}{c} x_{\text{mid}}\\ y_{\text{mid}}\end{array}\right)\right\|}{\left\|\frac{1}{1+w}\left(\begin{array}{c} x_{\text{mid}}\\ y_{\text{mid}}\end{array}\right) + \frac{w}{1+w}\left(\begin{array}{c} x_2\\ y_2\end{array}\right) - \left(\begin{array}{c} x_2\\ y_2\end{array}\right)\right\|}\\        
+        & = & \frac{\left\|-\frac{w}{1+w}\left(\begin{array}{c} x_{\text{mid}}\\ y_{\text{mid}}\end{array}\right) + \frac{w}{1+w}\left(\begin{array}{c} x_2\\ y_2\end{array}\right)\right\|}{\left\|\frac{1}{1+w}\left(\begin{array}{c} x_{\text{mid}}\\ y_{\text{mid}}\end{array}\right) - \frac{1}{1+w}\left(\begin{array}{c} x_2\\ y_2\end{array}\right)\right\|}\\        
+        & = & \frac{\frac{w}{1+w}\left\|-\left(\begin{array}{c} x_{\text{mid}}\\ y_{\text{mid}}\end{array}\right) + \left(\begin{array}{c} x_2\\ y_2\end{array}\right)\right\|}{\frac{1}{1+w}\left\|\left(\begin{array}{c} x_{\text{mid}}\\ y_{\text{mid}}\end{array}\right) - \left(\begin{array}{c} x_2\\ y_2\end{array}\right)\right\|}\\        
+        & = & w\frac{\left\|\left(\begin{array}{c} x_{\text{mid}}\\ y_{\text{mid}}\end{array}\right) - \left(\begin{array}{c} x_2\\ y_2\end{array}\right)\right\|}{\left\|\left(\begin{array}{c} x_{\text{mid}}\\ y_{\text{mid}}\end{array}\right) - \left(\begin{array}{c} x_2\\ y_2\end{array}\right)\right\|}\\        
+        & = & w.
+    \end{eqnarray*}
     \end{enumerate}
+\end{proof}
+
+\begin{exercise}{17}
+    Use the formulas of the previous exercise to parametrize the arc of the circle $x^2 + y^2 = 1$ from $(1,0)$ to $(0,1)$.
+\end{exercise}
+\begin{proof}
+We see that
+$$(x_1,y_1) = (1,0),~(x_2,y_2) = (1,1),~(x_3,y_3) = (0,1).$$
+Also,
+$$(x_{\text{mid}}, y_{\text{mid}}) = \left(\frac{1}{2}, \frac{1}{2}\right),~~\left(x\left(\frac{1}{2}\right), y\left(\frac{1}{2}\right)\right) = \left(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}\right).$$
+Note then that
+\begin{eqnarray*}
+    w
+    & = & \frac{a}{b}\\
+    & = & \frac{\left\|\left(\begin{array}{c} x\left(\frac{1}{2}\right)\\ y\left(\frac{1}{2}\right)\end{array}\right) - \left(\begin{array}{c} x_{\text{mid}}\\ y_{\text{mid}}\end{array}\right)\right\|}{\left\|\left(\begin{array}{c} x\left(\frac{1}{2}\right)\\ y\left(\frac{1}{2}\right)\end{array}\right) - \left(\begin{array}{c} x_2\\ y_2\end{array}\right)\right\|}\\
+    & = & \frac{\left\|\left(\begin{array}{c} \frac{1}{\sqrt{2}}\\ \frac{1}{\sqrt{2}}\end{array}\right) - \left(\begin{array}{c} \frac{1}{2}\\ \frac{1}{2}\end{array}\right)\right\|}{\left\|\left(\begin{array}{c} \frac{1}{\sqrt{2}}\\ \frac{1}{\sqrt{2}}\end{array}\right) - \left(\begin{array}{c} 1\\ 1\end{array}\right)\right\|}\\
+    & = & \frac{\left\|\left(\begin{array}{c} \frac{1}{\sqrt{2}} - \frac{1}{2}\\ \frac{1}{\sqrt{2}} - \frac{1}{2}\end{array}\right)\right\|}{\left\|\left(\begin{array}{c} \frac{1}{\sqrt{2}} - 1\\ \frac{1}{\sqrt{2}} - 1\end{array}\right)\right\|}\\
+    & = & \frac{\sqrt{\left(\frac{1}{\sqrt{2}} - \frac{1}{2}\right)^2 + \left(\frac{1}{\sqrt{2}} - \frac{1}{2}\right)^2}}{\sqrt{\left(\frac{1}{\sqrt{2}} - 1\right)^2 + \left(\frac{1}{\sqrt{2}} - 1\right)^2}}\\
+    & = & \frac{\frac{1}{\sqrt{2}} - \frac{1}{2}}{1 \frac{1}{\sqrt{2}}}\\
+    & = & \frac{\frac{2 - \sqrt{2}}{2\sqrt{2}}}{\frac{\sqrt{2} - 1}{\sqrt{2}}}\\
+    & = & \frac{2 - \sqrt{2}}{2\sqrt{2} - 2}\\
+    & = & \frac{(2 - \sqrt{2})(1 + \sqrt{2})}{2(2 - 1)}\\
+    & = & \frac{1}{2}(2 + 2\sqrt{2} - \sqrt{2} - 2)\\
+    & = & \frac{\sqrt{2}}{2}\\
+    & = & \frac{1}{\sqrt{2}}.    
+\end{eqnarray*}
+So,
+$$x = \frac{(1- t)^2 x_1 + 2t(1-t)wx_2 + t^2 x_3}{(1- t)^2 + 2t(1-t)w + t^2} = \frac{(1- t)^2 + \sqrt{2}t(1-t)}{(1- t)^2 + \sqrt{2}t(1-t) + t^2}$$
+and
+$$x = \frac{(1- t)^2 y_1 + 2t(1-t)wy_2 + t^2 y_3}{(1- t)^2 + 2t(1-t)w + t^2} = \frac{\sqrt{2}t(1-t) + t^2}{(1- t)^2 + \sqrt{2}t(1-t) + t^2}$$
 \end{proof}
 
 

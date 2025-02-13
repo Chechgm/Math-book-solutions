@@ -4,6 +4,7 @@
 % article is our base class
 \LoadClass{article}
 
+
 \usepackage{mathtools} % Improved amsmath
 \usepackage{amsfonts}
 \usepackage{amsthm} % For the proof environment
@@ -79,6 +80,7 @@
 \newcommand*\brackets[1]{\langle #1\rangle}
 \newcommand*\absoluteValue[1]{\left\lvert #1\right\rvert}
 \newcommand*\degree{°}
+\DeclareMathOperator{\sgn}{sgn}
 
 % Linear algebra
 \DeclareMathOperator*{\nullspace}{null}

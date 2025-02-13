@@ -1,23 +1,17 @@
 \subsection{Normed spaces of operators. Dual space}
 
-Kreyszig 2.10 Normed Spaces of Operators. Dual Space 
-1 Obviously important and elementary 
-2 
-3 I don't know if you're interested in doing unbounded operators since they're mostly important for QM, if so, this result is important 
-4 An alternative characterization of convergence
-6 Good practice, and important for intuition on dual spaces.
-8 This is rather difficult, and not such an important result, but it's good to go through the details of finding the dual space yourself at some point
-9 Should be known from LA
-10
-11 So we are in fact considering a different thing than the Axler dual space (in infinite dimensions)
-12 Some applications of dual spaces
 
 \begin{exercise}{1}
 What is the zero element of the vector space $B(X,Y)$?
 The inverse of a $T\in B(X,Y)$ in the sense of Definition 2.1-1?
 \end{exercise}
 \begin{proof}
-fill
+(Zero element of $B(X,Y)$) 
+The zero element of $B(X,Y)$ is the linear map that $T$ such that for every $x\in X$, $Tx=0$.
+
+(Inverse of $T$)
+The inverse of $T$ is simply $-T$.
+By linearity, we have $T + (-T)x= Tx + (-Tx) = Tx - Tx = 0$.
 \end{proof}
 
 \begin{exercise}{2}
@@ -26,29 +20,71 @@ Show that without that assumption, in the case of functionals we still have the 
 If $f$ and $g$ are bounded linear functionals with domains in a normed space $X$ then for any nonzero scalars $\alpha$ and $\beta$ the linear combination $h=\alpha f+\beta g$ if a bounded linear functional with domain $\DDD(f)\cap\DDD(g)$.
 \end{exercise}
 \begin{proof}
-fill
+Let $f$ be a bounded linear functional with domain $\DDD(f)$ and $g$ a bounded linear functional with domain $\DDD(g)$.
+Furthermore, let $\alpha, \beta, a, b$ be nonzero scalars.
+For $x,y \in\DDD(f)\cap\DDD(g)$, we have:
+\begin{align*}
+    h(ax+by) 
+    =& \alpha f(ax+by) + \beta g(ax+by)\\
+    =& \alpha af(x)+ \alpha bf(y) + \beta ag(x) + \beta bg(y)\\
+    =& a[\alpha f(x) + \beta g(x)] + b[\alpha f(y) + \beta g(y)]\\
+    =& ah(x) + bh(y),
+\end{align*}
+so that $h$ is a linear functional
+
+Now, to see $h$ is bounded, we have 
+\begin{align*}
+    \absoluteValue{h(x)} 
+    =& \absoluteValue{\alpha f(x) + \beta g(x)}\\
+    \leq& \absoluteValue{\alpha f(x)} + \absoluteValue{\beta g(x)}\\
+    =& \absoluteValue{\alpha}\absoluteValue{f(x)} + \absoluteValue{\beta}\absoluteValue{g(x)}\\
+    \leq& \absoluteValue{\alpha}c\norm{x} + \absoluteValue{\beta}c'\norm{x}\\
+    =& [\absoluteValue{\alpha}c + \absoluteValue{\beta}c']\norm{x},
+\end{align*}
+as required.
+Here $c$ is the constant for which $\absoluteValue{f(x)} \leq c\norm{x}$ for all $x$, and likewise for $c'$ and $g$.
 \end{proof}
 
 \begin{exercise}{3}
 Extend the Theorem in exercise 2 to bounded linear operators $T_1$ and $T_2$.
 \end{exercise}
 \begin{proof}
-fill
+The proof above does not depend on $f$ or $g$ being functionals but on their linear and bounded nature.
 \end{proof}
 
 \begin{exercise}{4}
 Let $X$ and $Y$ be normed spaces and $T_n:X\to Y\ (n=1,2\dots)$ bounded linear operators.
-Show that convergence $T_n\to T$ implies that for every $\epsilon>0$ there is an $N$ such that for all $n>N$ and all $x$ in any given closed ball we have $\norm{T_nx-tTx}<\epsilon$.
+Show that convergence $T_n\to T$ implies that for every $\epsilon>0$ there is an $N$ such that for all $n>N$ and all $x$ in any given closed ball we have $\norm{T_nx-Tx} <\epsilon$.
 \end{exercise}
 \begin{proof}
-fill
+Consider a closed ball $B$ and let $k =\sup_{x\in B}\norm{x}<\infty$, because a closed ball is bounded.
+Let $\epsilon >0$, then there exists $N \in\N$, such that for all $n>N$, it holds that $\norm{T_n-T} <\epsilon/k$.
+Because $T_n$ and $T$ are bounded, $T_n-T$ is bounded and then the following holds
+\begin{align*}
+    \norm{T_nx-Tx} 
+    = \norm{(T_n-T)x}
+    \leq \norm{T_n-T}\norm{x}
+    < \epsilon\norm{x}/k <\epsilon,
+\end{align*}
+Giving us the desired result.
 \end{proof}
 
 \begin{exercise}{6}
 If $X$ is the space of ordered $n$-tuples of real numbers and $\norm{x}=\max_i \absoluteValue{x_i}$, what is the corresponding norm on the dual space $X'$?
 \end{exercise}
 \begin{proof}
-fill
+Following the examples in the section, we are going to consider the functional given by $f(x) =\sum_i^n x_i\gamma_i$, where $\gamma_i = f(e_i)$ for a basis $e_1,\dots,e_n$ of $X$.
+We then have
+\begin{align*}
+    \absoluteValue{f(x)}
+    =& \absoluteValue{\sum_i^n x_i\gamma_i}.
+\end{align*}
+Choose $x_i = 1$ if $\gamma_i>0$ and $x_i = -1$ if $\gamma_i \leq 0$, so that we will obtain:
+\begin{align*}
+    \absoluteValue{\sum_i^n \gamma_i}
+    =& \sum_i^n\absoluteValue{\gamma_i} = \norm{\gamma}_1
+\end{align*}
+and because $x$ is a sequence of $-1$ or $1$, then $\norm{x}_\infty=1$ so that $\norm{f} = \norm{\gamma}_1$, giving us the desired result.
 \end{proof}
 
 \begin{exercise}{8}
@@ -56,7 +92,48 @@ Show that the dual space of the space $c_0$ is $l^1$.
 (See exercise 2.3.1).
 \end{exercise}
 \begin{proof}
-fill
+We will divide this proof in 2 steps:
+
+(For any $f\in c_0'$ we have $f\in l_1$)
+Suppose $f$ is a bounded functional in $c_0'$ and let $x\in c_0$.
+Then
+\begin{align*}
+    f(x) = \sum x_iy_i,
+\end{align*}
+where $y_i=f(e_i)$ and $(e_n)$ is a Schauder basis of $c_0$.
+Since $f$ is bounded, we have that for any choice $x\in c_0$ with $\norm{x}_\infty$
+\begin{align*}
+    \absoluteValue{f(x)}
+    = \absoluteValue{\sum x_iy_i}
+    \leq \norm{f},
+\end{align*}
+where $y_i=f(e_i)$ and $(e_n)$ is a Schauder basis of $c_0$.
+Now choose $x_i = \sgn(y_i)$ if $i\leq N$ for $N\in \N$, and 0 otherwise.
+We then obtain
+\begin{align*}
+    \absoluteValue{\sum^N_i x_iy_i}
+    = \sum^N_i y_i
+    = \sum^N_i \absoluteValue{y_i}
+    \leq \norm{f},
+\end{align*}
+and taking $N\to\infty$, we get that $y_i\in l_1$.
+This choice of $x$ gives us the supremum of $\norm{f(x)}$ for $x$ with norm 1, so that the norm in $c_0'$ is indeed the 1-norm.
+
+(For some $y\in l_1$ we can find a bounded functional in $c_0'$)
+Let $y\in l_1$ and define a functional on $c_0$ in the natural way:
+\begin{align*}
+    f(x) = \sum^\infty_i x_iy_i.
+\end{align*}
+We then have
+\begin{align*}
+    \absoluteValue{f(x)}
+    =& \absoluteValue{\sum^\infty_i x_iy_i}\\
+    \leq& \absoluteValue{\sum^\infty_i \max_j \absoluteValue{x_j}y_i}\\
+    \leq& \sum^\infty_i \absoluteValue{\max_j \absoluteValue{x_j}y_i}\\
+    =& \max_j \absoluteValue{x_j}\sum^\infty_i \absoluteValue{y_i}\\
+    =& \norm{x}_\infty\norm{y}_1,
+\end{align*}
+as required.
 \end{proof}
 
 \begin{exercise}{9}
@@ -64,7 +141,19 @@ Show that a linear functional $f$ on a vector space $X$ is uniquely determined b
 (See section 2.1).
 \end{exercise}
 \begin{proof}
-fill
+Let $f$ be a linear functional on $X$ and let $e_1,\dots,e_n$ be a basis of $X$.
+Suppose, for the sake of contradiction, that there exists another linear functional $f'$ so that for all $e_i$, $f(e_i)=f'(e_i)$.
+Now let $x\in X$ so that we can write $x = a_1e_1+\dots+a_ne_n$ where all $a_i$ are unique.
+We have 
+\begin{align*}
+f(x) 
+=& f(a_1e_1+\dots+a_ne_n)\\
+=& a_1f(e_1)+\dots+a_nf(e_n)\\
+=& a_1f'(e_1)+\dots+a_nf'(e_n)\\
+=& f'(a_1e_1+\dots+a_ne_n)
+= f'(x),
+\end{align*}
+so that $f$ and $f'$ are not distinct.
 \end{proof}
 
 \begin{exercise}{10}
@@ -73,14 +162,23 @@ Show that there is at least one unbounded linear operator $T:X\to Y$.
 (Use a Hamel basis).
 \end{exercise}
 \begin{proof}
-fill
+Consider the space $W\subseteq l_1$, where $W$ consists of all sequences with finitely many nonzero values.
+We start our definition of $f$ by mapping all $w\in W$ to 0.
+Take the set $\set{(1,0,0,\dots), (0,1,0,\dots), (0,0,1,0,\dots),\dots}\subseteq W$ and extend it to a Hamel basis of $l_1$.
+The elements that compose the extension of the set above are mapped by $f$ to 1.
+By exercise 9, this defines a unique functional on $l_1$.
+Consider the sequence of sequences in $l_1$ where the $i$-th sequence $(x_n^i)\in l_1$ is given by $x_k = 1/k^2$ if $k\leq i$ and 0 otherwise.
+We have that $(x^i_n)\to (x_n)$, where $x_n=1/n^2$.
+For each $i$, $f(x^i) = f(\sum^i_{k=1} (1/k^2)e_k) = \sum^i_{k=1} (1/k^2)f(e_k) = 0$.
+However, from our definition of $f$, we know that $f(x)\neq 0$, because $x$ is not a finite linear combination of the set we extended to be a Hamel basis of $l_1$.
+Thus, $f$ is not continuous (given that $0 = \lim_n f(x^n) \neq f(\lim_n x^n) = f(x)$), and by Theorem 2.7-9, $f$ is not bounded.
 \end{proof}
 
 \begin{exercise}{11}
 If $X$ is a normed space and $\dim X=\infty$, show that the dual space $X'$ is not identical with the algebraic dual space $X^\ast$.
 \end{exercise}
 \begin{proof}
-fill
+The previous exercise is as an example of this, as the dual space is the space of bounded linear functionals, and we saw that there is an unbounded functional in $l_1$.
 \end{proof}
 
 \begin{exercise}{12 (Completeness)}
@@ -89,5 +187,6 @@ How?
 For what spaces?
 \end{exercise}
 \begin{proof}
-fill
+In the examples we proved that $l_p'$ and $l_q$ are isomorphic and that $l_1'$ and $l_\infty$ are isomorphic so that if we can prove that $l_p'$ and $l_1'$ are complete, then $l_q$ and $l_\infty$ are complete too.
+However, Theorem 2.10-4 tells us that the dual space of a normed space is Banach, giving us the completeness that we wanted.
 \end{proof}

@@ -43,6 +43,15 @@ Let $A$ be a nonempty subset of $\R$ that is bounded above. Show that there is a
 To prove this, we will explicitly construct the sequence. From exercise 3, we know that if $s=\sup A$, then for all $\varepsilon>0$, we have that there is $a\in A$ with $a>s-\varepsilon$. Fix $\varepsilon=1$, then there exists $a_1\in A$ with $a_1>s-1$. Take $x_1=a_1$, for $x_2$, take $a_2$ so that $a_2>s-1/2$ (which we know exists because the property of $s$ holds for all positive numbers). More generally, for $x_n$, take $a_n\in A$ so that $a_n>s-1/n$. Since $1/n$ converges to $0$ as $n$ goes to infinity, then $a_n$ gets arbitrarily close to $s$, as required.
 \end{proof}
 
+\begin{exercise}{5}
+    Suppose that $a_n \leq b$ for all $n$ and that $a = \lim_{n\rightarrow \infty}a_n$ exists. Show that $a \leq b$. Conclude that $a \leq \sup\{a_n~|~n \in \mathbb{N}\}$.
+\end{exercise}
+\begin{proof}
+    Suppose that $a > b$, which means that $a - b > 0$. Set $\epsilon = a -b$. By the definition of the limit of a sequence, there exists $M > 0$ such that for all $n > M$, it holds that:
+    $$\lvert a - a_n \rvert < \epsilon \implies -\epsilon < a - a_n < \epsilon \implies a < a_n + \epsilon$$
+    It is the case that $a_n \leq b$ for all $n$, thus $a < b + \epsilon = b + (a -b) \implies a < a$, which is clearly a contradiction. Therefore $a \leq b$. Now because $s = \sup\{a_n : n \in \mathbb{N}\}$ is by definition a number for which $a_n \leq s$ for all $n$, the previous result applies, and thus $a \leq s = \sup\{a_n : n \in \mathbb{N}\}$.
+\end{proof}
+
 \begin{exercise}{6}
 Prove that every convergent sequence of real numbers is bounded. Moreover, if $(a_n)$ is convergent, show that $\inf_na_n\leq \lim_{n\to\infty}a_n\leq\sup_na_n$.
 \end{exercise}
@@ -57,6 +66,73 @@ If $a<b$ then there is also an irrational $x\in\R\setminus\Q$ with $a<x<b$. [Hin
 \end{exercise}
 \begin{proof}
  We have that because $a<b$, then $a/\sqrt{2}<b/\sqrt{2}$. But by Theorem 1.3, there exists a rational $x$ so that $a/\sqrt{2}<x<b/\sqrt{2}$. Hence $a<x\sqrt{2}<b$, and $x\sqrt{2}$ is an irrational, as desired.
+\end{proof}
+
+\begin{exercise}{8}
+    Given $a < b$, show that there are, in fact, infinitely many distinct rationals between $a$ and $b$. The same goes for irrationals too.
+\end{exercise}
+
+\begin{proof}
+
+    Suppose that there are only a finite number of distinct rationals between $a$ and $b$, and call them $q_1, q_2, \ldots q_n$, listed in ascending order. This means $a < q_1 < q_2 < \ldots < q_n < b$. But then we have that $q_n, b$ are real numbers with $q_n < b$, and therefore there has to exist a rational number $q$ such that $q_n < r < b$. But this is a contradiction, because $q \neq q_i$ for all $i$ and $a < q < b$. Therefore there exists an infinite number of distinct rationals between $a$ and $b$.\\
+
+    Now suppose that there is only a finite number of irrationals $r_1, r_2, \ldots r_n$ between $a, b$, listed in ascending order. However, in exercise $7$ we've seen that if $a < b$, there exists an irrational $x$ such that $a < x < b$. This means that in our case there exists an irrational $r$ such that $r_n < r <b$. Clearly, this is a contradiction since $r_i \neq r$ for all $i$. Therefore there exist infinitely many distinct irrationals between $a, b$.
+\end{proof}
+
+\begin{exercise}{9}
+    Show that the least upper bound axiom also holds in $\mathbb{Z}$ (i.e., each nonempty subset of $\mathbb{Z}$ with an upper bound in $\mathbb{Z}$ has a least upper bound in $\mathbb{Z}$), but that it fails to hold in $\mathbb{Q}$.
+\end{exercise}
+\begin{proof}
+    Let us first consider the case of $\mathbb{Z}$. Let $A\subseteq \mathbb{Z}$ be a nonempty set that is bounded above. By the least upper bound axiom in $\mathbb{R}$, $a = \sup A$ exists. Assume that $a\notin \mathbb{Z}$, then there is an integer $n$ such that $n<a<n+1$. Since $a$ is the supremum of $A$, we see that $n$ cannot be an upper bound of $A$. Thus there must be some element $b\in A$ such that $n<b\leq a$. But then $b$ is an integer such that $n<b<n+1$ for another integer $n$, this cannot be. Thus $a$ had to be an integer from the start, and thus the least upper bound axiom does also hold in $\mathbb{Z}$.\\
+
+    For the case of $\mathbb{Q}$, consider the set $A = \{x\in \mathbb{Q}~\vert~x>0~\text{and}~x^2<2\}$. This set is clearly nonempty since $1\in A$. Clearly also, if $x\in A$, then $x^2<2<2^2$, and thus since $x>0$, it follows that $x<2$. Thus $A$ has an upper bound. We claim that $A$ has no least upper bound in $\mathbb{Q}$. So let $a$ be the least upper bound of $A$. Clearly $a>0$, there are now two possible situations:
+    \begin{enumerate}
+        \item First, it may happen that $a^2 < 2$. Let us show that we can find some $k\in \mathbb{N}$ such that $\left(a + \frac{1}{k}\right)^2 < 2$. Choose
+        $$k> \frac{2a + 1}{2-a^2}.$$
+        Then,        
+        Note that then
+        $$a^2 + \frac{2a}{k} + \frac{1}{k} < 2.$$
+        But then,
+        \begin{eqnarray*}
+        \left(a + \frac{1}{k}\right)^2
+        & = & a^2 + \frac{2a}{k} + \frac{1}{k^2}\\
+        & < & a^2 + \frac{2a}{k} + \frac{1}{k}\\
+        & < & 2.
+        \end{eqnarray*}
+        But then $a + \frac{1}{k}$ is also an element of $A$, which implies that $a$ is not an upper bound at all.
+        \item Second, it may happen that $a^2 > 2$. Let us show that we can find some $k\in \mathbb{N}$ such that $\left(a - \frac{1}{k}\right)^2>2$ while still $a-\frac{1}{k}>0$. Choose
+        $$k>\frac{2a}{a^2 - 2}.$$
+        Then
+        $$a^2 - \frac{2a}{k}>2.$$
+        But then,
+        \begin{eqnarray*}
+            \left(a - \frac{1}{k}\right)^2
+            & = & a^2 - \frac{2a}{k} + \frac{1}{k^2}\\
+            & > & a^2 - \frac{2a}{k}\\
+            & > & 2.
+        \end{eqnarray*}
+        But then $a - \frac{1}{k}$ is also an upper bound of $A$, which implies that $a$ is not a least upper bound at all.
+    \end{enumerate}
+    It must therefore be true that $a^2 = 2$, but since $a\in \mathbb{Q}$ and $\sqrt{2}$ is irrational, this is also impossible. We obtain then that $A$ has no least upper bound in $\mathbb{Q}$.
+\end{proof}
+
+\begin{exercise}{10}
+Let $a_1 = \sqrt{2}$ and let $a_{n+1} = \sqrt{2a_n}$ for $n\geq 1$. Show that $(a_n)$ converges and find its limit.    
+\end{exercise}
+\begin{proof}
+    It is clear that $a_n>0$ for all $n$. We will prove by induction the statement that for all $n$, $a_n\leq 2$. For this, assume that $a_{n-1}\leq 2$. It follows that
+    $$a_n = \sqrt{2a_{n-1}}\leq \sqrt{2\cdot 2} = 2.$$
+    This proves that the sequence $(a_n)$ is bounded above by $2$. Next, it follows that $a_n\leq 2$, that $a_n^2\leq 2a_n$, and thus
+    $$a_n\leq \sqrt{2a_n} = a_{n+1}.$$
+    Since this is true for all $n$, we get that $(a_n)$ is an increasing sequence bounded above by $2$. From Theorem $1.4$ it follows that there is some number $a = \lim_{n\rightarrow \infty} a_n$. Note then that
+    \begin{eqnarray*}
+        a
+        & = & \lim_{n\rightarrow \infty} a_{n+1}\\
+        & = & \lim_{n\rightarrow \infty} \sqrt{2a_n}\\
+        & = & \sqrt{2\lim_{n\rightarrow \infty} a_n}\\
+        & = & \sqrt{2a}.
+    \end{eqnarray*}
+    Squaring both sides gives us $a^2 = 2a$, and thus $a = 0$ or $a=2$. Since $(a_n)$ is increasing, we know that $a_n\geq a_1 = \sqrt{2}$. This implies that $a\geq \sqrt{2}>0$. Thus $a=2$. We get that $(a_n)$ converges to $2$.
 \end{proof}
 
 \begin{exercise}{11}
@@ -110,6 +186,33 @@ The fact that $(x_n)$ is monotone and decreasing allows us to use Theorem 1.4 to
 But we concluded above that the sequence is positive, so that $x=\sqrt{a}$.
 \end{proof}
 
+\begin{exercise}{12}
+Suppose that $s_1>s_2>0$ and let $s_{n+1} = \frac{1}{2}(s_n + s_{n-1})$ for $n\geq 2$. Show that $(s_n)$ converges.    
+\end{exercise}
+\begin{proof}
+    An easy induction shows that $s_n>0$ for all $n$. Let us show by induction that for any $n$ holds that $s_{2n}<s_{2n-1}$. This is clearly true for $n=1$. Assume that $s_{2n}<s_{2n-1}$, then
+    $$s_{2n+1} = \frac{1}{2}(s_{2n} + s_{2n-1}) > \frac{1}{2}(s_{2n} + s_{2n}) = s_{2n}$$
+    and thus
+    $$s_{2n+2} = \frac{1}{2}(s_{2n+1} + s_{2n}) < \frac{1}{2}(s_{2n+1} + s_{2n+1}) = s_{2n+1}.$$
+    This completes the induction. Then for each $n$:
+    $$s_{2n+1} = \frac{1}{2}(s_{2n} + s_{2n-1}) < \frac{1}{2}(s_{2n-1} + s_{2n-1}) = s_{2n-1},$$
+    hence it follows that $s_{2n+1}$ is decreasing. For $n$ arbitrary holds too that
+    $$s_{2n+1} = \frac{1}{2}(s_{2n} + s_{2n-1}) > \frac{1}{2}(s_{2n} + s_{2n}) = s_{2n}$$
+    and thus
+    $$s_{2n+2} = \frac{1}{2}(s_{2n} + s_{2n+1}) > \frac{1}{2}(s_{2n} + s_{2n}) = s_{2n},$$
+    from which it follows that $s_{2n}$ is increasing. In particular, from the lemma, we know for each $n$, that
+    $$s_2< s_{2n}<s_{2n-1} < s_1.$$
+    In particular, $s_{2n}$ is increasing and bounded above by $s_1$ and $s_{2n+1}$ is decreasing and bounded below by $s_2$. So we know there are $a,b$ such that $s_{2n}\rightarrow a$ and $s_{2n+1}\rightarrow b$. Then
+    \begin{eqnarray*}
+        b
+        & = & \lim_{n\rightarrow\infty} s_{2n+1}\\
+        & = & \lim_{n\rightarrow \infty} \frac{1}{2}(s_{2n} + s_{2n-1})\\
+        & = & \frac{1}{2}\left(\lim_{n\rightarrow\infty} s_{2n} + \lim_{n\rightarrow\infty} s_{2n-1}\right)\\
+        & = & \frac{1}{2}\left(a+b\right).
+    \end{eqnarray*}
+    Thus $2a = a+b$ and thus $a=b:=s$. Now take any $\varepsilon>0$. We now know there is an $N_1$ such that for all $2n>N_1$ holds that $|s_{2n} - a|<\varepsilon$ and $N_2$ such that for $2n+1>N_2$ holds that $|s_{2n+1} - b|<\varepsilon$. Then for $N > N_1,N_2$, we have that for $n>N$, we have either that $n=2m$ and thus $|s_n - s| = |s_n - a|<\varepsilon$, and if $n=2m+1$ hence $|s_n - s| = |s_n - b|<\varepsilon$. Thus, we get that $s_n\rightarrow s$. 
+\end{proof}
+
 \begin{exercise}{13}
 Let $a_n\geq 0$ for all $n$, and let $s_n=\sum_{i=1}^na_i$. Show that $(s_n)$ converges if and only if $(s_n)$ is bounded.
 \end{exercise}
@@ -137,6 +240,83 @@ Suppose $(x_n)$ is Cauchy and that there exists a subsequence $(x_{n_{k}})$ that
 Now let $N=\max\set{N', n_K}$. We have that for all $n,n_k\geq N$, it holds that $\lvert x_n-x\rvert= \lvert x_n-x_{n_k}+x_{n_k}-x\rvert\leq\lvert x_n-x_{n_k}\rvert+\lvert x_{n_k}-x\rvert <\varepsilon/2+\varepsilon/2=\varepsilon$. So that $(x_n)$ converges, as required.
 \end{proof}
 
+\begin{exercise}{16}
+\begin{enumerate}
+    \item Why is $0.4999... = 0.5$?
+    \item Write $0.234234234...$ as a fraction.
+    \item Precisely which real numbers between $0$ and $1$ have more than one decimal representation? Explain.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item We put
+        $$x = 0.4999...$$
+        then
+        $$10x = 4.999...$$
+        and thus
+        $$10x - x = 4.5$$
+        Solving for $x$, we get $9x = 4.5$ and thus
+        $$x = \frac{4.5}{9} = \frac{1}{2} = 0.5.$$
+        A somewhat more rigorous proof would consist of the sum of a geometric series:
+        \begin{eqnarray*}
+            0.4999...
+            & = & 0.4 + \sum_{n=2}^\infty 9\cdot 10^{-n}\\
+            & = & 0.4 + 9\sum_{n=2}^\infty 10^{-n}\\
+            & = & 0.4 + 0.09 \sum_{n=0}^\infty 10^{-n}\\
+            & = & 0.4 + 0.09\cdot \frac{1}{1 - 10^{-1}}\\
+            & = & 0.4 + 0.09\cdot \frac{10}{10 - 1}\\
+            & = & 0.4 + \frac{9}{100}\frac{10}{9}\\
+            & = & 0.4 + \frac{1}{10}\\
+            & = & 0.4 + 0.1\\
+            & = & 0.5.
+        \end{eqnarray*}
+        \item We take
+        $$x = 0.234234234...,$$
+        then
+        $$1000x = 234.234234234...,$$
+        and thus
+        $$999x = 1000x-x = 234,$$
+        from which we get
+        $$x = \frac{234}{999} = \frac{26}{111}.$$
+        \item Precisely those nonzero real numbers which have a finite decimal expansion have another decimal expansion ending with all $9$'s. Indeed, take a number with a finite decimal expansion
+        $$x = \sum_{k=1}^N x_k 10^{-k}.$$
+        Since $x\neq 0$, we may choose without loss of generality that $x_N\neq 0$. Then define $y_k = x_k$ for $k<N$, set $y_N = x_N - 1$ and $y_k = 9$ for $k>N$. We see that
+        \begin{eqnarray*}
+            \sum_{k=1}^\infty y_k 10^{-k}
+            & = & \sum_{k=1}^{N-1} y_k 10^{-k} + y_N 10^{-N} + \sum_{k=N+1}^\infty y_k 10^{-k}\\
+            & = & \sum_{k=1}^{N-1} x_k 10^{-k} + (x_N - 1) 10^{-N} + 9\sum_{k=N+1}^\infty 10^{-k}\\
+            & = & \sum_{k=1}^{N-1} x_k 10^{-k} + (x_N - 1) 10^{-N} + 9\cdot 10^{-N-1}\sum_{k=0}^\infty 10^{-k}\\
+            & = & \sum_{k=1}^{N-1} x_k 10^{-k} + (x_N - 1) 10^{-N} + 9\cdot 10^{-N-1}\frac{1}{1 - 10^{-1}}\\
+            & = & \sum_{k=1}^{N-1} x_k 10^{-k} + (x_N - 1) 10^{-N} + 9\cdot 10^{-N-1}\frac{10}{9}\\
+            & = & \sum_{k=1}^{N-1} x_k 10^{-k} + (x_N - 1) 10^{-N} + 10^{-N}\\
+            & = & \sum_{k=1}^{N-1} x_k 10^{-k} + x_N 10^{-N}\\
+            & = & \sum_{k=1}^{N} x_k 10^{-k}\\
+            & = & x.
+        \end{eqnarray*}
+        Thus we see that $x$ has a second decimal representation. \\
+        Conversely, assume that $x$ has a decimal representation
+        $$x = \sum_{i=1}^\infty x_i 10^{-i} = \sum_{i=1}^\infty y_i 10^{-i}.$$
+        Suppose further that $(x_i)$ or $(y_i)$ is not eventually repeating $9$ or $0$. Assume further that not all $x_i = y_i$. Then let $N$ be the first index such that $x_N\neq y_N$. We can assume without loss of generality that $x_N < y_N$. We know then that since some $i>N$ has $x_i<9$,
+        \begin{eqnarray*}
+            x
+            & = & \sum_{k=1}^\infty x_k 10^{-k}\\
+            & = & \sum_{k=1}^{N-1} x_k 10^{-k} + x_N 10^{-N} + \sum_{k=N+1} x_k 10^{-k}\\
+            & < & \sum_{k=1}^{N-1} x_k 10^{-k} + x_N 10^{-N} + \sum_{k=N+1} 9\cdot 10^{-k}\\
+            & < & \sum_{k=1}^{N-1} x_k 10^{-k} + x_N 10^{-N} + 9\sum_{k=N+1} 10^{-k}\\
+            & = & \sum_{k=1}^{N-1} x_k 10^{-k} + x_N 10^{-N} + 9\cdot 10^{-N-1}\frac{1}{1 - 10^{-1}}\\
+            & = & \sum_{k=1}^{N-1} x_k 10^{-k} + x_N 10^{-N} + 9\cdot 10^{-N-1}\frac{10}{9}\\
+            & = & \sum_{k=1}^{N-1} x_k 10^{-k} + x_N 10^{-N} + 10^{-N}\\
+            & = & \sum_{k=1}^{N-1} x_k 10^{-k} + (x_N +1) 10^{-N}\\
+            & = & \sum_{k=1}^{N-1} y_k 10^{-k} + (x_N +1) 10^{-N}\\
+            & \leq & \sum_{k=1}^{N-1} y_k 10^{-k} + y_N 10^{-N}\\
+            & \leq & \sum_{k=1}^{N-1} y_k 10^{-k} + y_N 10^{-N} + \sum_{k=N+1}^\infty y_k 10^{-k}\\
+            & = & \sum_{k=1}^\infty y_k 10^{-k}\\
+            & = & x.
+        \end{eqnarray*}
+        Thus $x<x$, which is a contradiction.
+    \end{enumerate}
+\end{proof}
+
 \begin{exercise}{17}
 Given real numbers $a$ and $b$, establish the following formulas: $\lvert a+b\rvert\leq\lvert a\rvert +\lvert b\rvert, \lvert\lvert a\rvert -\lvert b\rvert\rvert \leq\lvert a-b\rvert, \max\{a,b\}=(1/2)(a+b+\lvert a-b\rvert)$, and $\min\{a,b\}=(1/2)(a+b-\lvert a-b\rvert)$.
 \end{exercise}
@@ -155,6 +335,68 @@ Given real numbers $a$ and $b$, establish the following formulas: $\lvert a+b\rv
 \end{itemize}
 \end{proof}
 
+\begin{exercise}{18}
+\begin{enumerate}
+    \item[(a)] Given $a > -1, a \neq 0$, use induction to show that $(1+a)^n > 1 +na$ for any integer $n > 1$.
+    \item[(b)] Use (a) to show that, for any $x > 0$, the sequence $(1 + \frac{x}{n})^n$ increases.
+    \item[(c)] If $a > 0$, show that $(1+a)^r > 1 + ra$ holds for any \textit{rational} exponent $r > 1$.
+    \item[(d)] Finally, show that (c) holds for any \textit{real} exponent $r > 1$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] The base case of the induction is $n = 2$. We then have that:
+    $$(1 +a)^2 = 1 + 2a + a^2 > 1 + 2a,$$
+    since $a$ is not zero, meaning that $a^2 > 0$. Suppose now that the inequality holds for $n = k > 1$. Then we have that:
+    \begin{eqnarray*}
+        (1 +a)^{k+1} 
+        & = & (1+a)(1+a)^k\\
+        & > & (1+a)(1 +ka)\\
+        & = & 1 + ka + a + ka^2\\
+        & = & 1 + (k+1)a +ka^2\\
+        & > & 1 + (k+1)a,
+    \end{eqnarray*}
+    where, crucially, we used the fact that $a > -1$, thus that $a + 1 > 0$, thus that we can multiply the inequality for $n = k$ with $(1+a)$. In the last step we again use the fact that $a \neq 0$, thus that $ka^2 > 0$.
+    \item[(b)] We'll work through this the same way as the book's examples, i.e., compute the ratio between two successive terms of the sequence:
+    \begin{eqnarray*}
+        \frac{(1+\frac{x}{n+1})^{n+1}}{(1+\frac{x}{n})^n} 
+        & = & \Bigl(1+\frac{x}{n}\Bigr)\frac{(1+\frac{x}{n+1})^{n+1}}{(1+\frac{x}{n})^{n+1}}\\
+        & = & \Bigl(1+\frac{x}{n}\Bigr)\Biggl(\frac{\frac{n+1+x}{n+1}}{\frac{n+x}{n}}\Biggr)^{n+1}\\
+        & = & \Bigl(1+\frac{x}{n}\Bigr)\Bigl(\frac{n^2+n+nx}{n^2+x+n+nx}\Bigr)^{n+1}\\
+        & = & \Bigl(1+\frac{x}{n}\Bigr)\Biggl(1 - \frac{x}{n^2+x+n+nx}\Biggr)^{n+1}\\
+        & = & \Bigl(1+\frac{x}{n}\Bigr) \Biggl(1 - \frac{x}{(x+n)(n+1)}\Biggr)^{n+1}.
+    \end{eqnarray*}
+    Now, for any $x > 0$ and $n$ positive integer we have that:
+    \begin{eqnarray*}
+        xn +n^2+n > 0 
+        & \implies & xn + n^2 + n + x > x\\
+        & \implies & (x+n)(n+1) > x\\
+        & \implies & - (x+n)(n+1) < -x\\
+        & \implies & -1 < -\frac{x}{(x+n)(n+1)}
+    \end{eqnarray*}
+    Also, $x > 0$ thus this quantity is never zero. Therefore, using it as an $a$ in the Bernoulli inequality (part (a)) we can obtain that:
+    \begin{eqnarray*}
+        \frac{(1+\frac{x}{n+1})^{n+1}}{(1+\frac{x}{n})^n} & > & \Bigl(1+\frac{x}{n}\Bigr)(1 - (n+1)\frac{x}{(x+n)(n+1)})\\
+        & = & \Bigl(1+\frac{x}{n}\Bigr)\Bigl(1 - \frac{x}{x+n}\Bigr)\\
+        & = & \frac{x+n}{n}\cdot\frac{n}{x+n}\\
+        & = & 1
+    \end{eqnarray*}
+    which means that the sequence $\bigl(1+\frac{x}{n}\bigr)$ does indeed increase.
+    \item[(c)] Consider any rational $r > 1$. $r$ can be written as $\frac{p}{q}$, where $p, q$ are positive integers, and in fact $p > q$. Setting $x = ap$ (for this part, $a > 0$) and observing that $p > q$, from part (b) we have that: 
+    $$\Bigl(1 + \frac{ap}{q}\Bigr)^q < \Bigl(1+\frac{ap}{p}\Bigr)^p \implies \Bigl(1 + \frac{ap}{q}\Bigr)^q < (1 + a)^p$$
+    For $a > 0$, both quantities inside the parentheses are positive, and thus we can take $q$-th roots and obtain:
+    $$\Bigl(1 + \frac{ap}{q}\Bigr) < (1+a)^{\frac{p}{q}},$$
+    which, since $r = \frac{p}{q}$, is the equivalent of the Bernoulli inequality for a rational exponent $r > 1$ and $ a > 0$.
+    \item[(d)] We know that we can approach any real number $r > 1$ with a sequence of rationals. Furthermore, the Bernoulli inequality will hold for all of those rationals that are larger than 1, so as we approach $r > 1$, the Bernoulli inequality will hold. Now, at the limit, this strict inequality holds as a non-strict inequality, thus we can conclude that:
+    $$(1+a)^r \geq 1 + ra$$
+    Now pick a rational $q$ such that $1 < q < r$ (such a rational always exists). Observe that:
+    $$(1+a)^r = (1+a)^{\frac{rq}{q}} = ((1+a)^q)^{\frac{r}{q}} > (1+qa)^{\frac{r}{q}}$$
+    , where we applied the Bernoulli inequality for $q$. Now, however, $\frac{r}{q}$ is a real number greater than 1, and hence we can use our non-strict inequality above to arrive at the desired result:
+    $$(1+a)^r > (1+qa)^{\frac{r}{q}} \geq 1 + q\frac{r}{q}a = 1 + ra \implies (1+a)^r > 1 + ra.$$
+    \end{enumerate}
+\end{proof}
+
+
 \begin{exercise}{19}
 If $0<c<1$, show that $c^n\to 0$; and if $c>0$, show that $c^{1/n}\to 1$. [Hint: Use Bernoulli's inequality for each, once with $c=1/(1+x), x>0$ and once with $c^n=1+x_n$, where $x_n>0$].
 \end{exercise}
@@ -164,28 +406,80 @@ $c^n\to 0$: To prove this, notice we can write $c=1/(1+x)$ where $x>0$ (for a pa
 $c^{1/n}\to 1$: We have $c^{1/n}= 1+x_n$ where $x_n>-1$ for all $n$. Then $(c^{1/n})^n= c= (1+x_n)^n\geq 1+nx_n$, by Bernoulli's inequality. But this implies $(c-1)/n\geq x_n$. However, $x_n\to 0$ since $(c-1)/n\to 0$, and $x_n\geq 0$. This in turn implies that $c^{1/n}= 1+x_n\to 1$, as required.
 \end{proof}
 
+\begin{exercise}{20}
+Given $a,b>0$, show that $\sqrt{ab}\leq \frac{1}{2}(a+b)$ (this is the arithmetic-geometric mean inequality). Generalize this to $(a_1a_2...a_n)^{1/n}\leq \frac{1}{n}(a_1+a_2+...+a_n)$.
+\end{exercise}
+\begin{proof}
+    For the first part, we know that
+    $$a - 2\sqrt{ab} + b = (\sqrt{a})^2 - 2\sqrt{a}\sqrt{b} + (\sqrt{b})^2 = (\sqrt{a}-\sqrt{b})^2 \geq 0.$$
+    Thus,
+    $$a + b \geq 2\sqrt{ab}.$$
+    Hence,
+    $$\sqrt{ab}\leq \frac{a+b}{2}.$$
+    In general, let $A_k$ to be the arithmetic mean of the first $k$ terms of $x_1$,...,$x_n$. Then,
+    \begin{eqnarray*}
+        \frac{A^n}{A_{n-1}^n}
+        & = & \left(1 + \frac{A_n}{A_{n-1}} - 1\right)^n\\
+        & \geq & 1 + n\left(\frac{A_n}{A_{n-1}} - 1\right)\\
+        & = & \frac{nA_n - (n-1) A_{n-1}}{A_{n-1}}\\
+        & = & \frac{x_n}{A_{n-1}}.
+    \end{eqnarray*}
+    Thus,
+    $$A_n^n\geq x_n A_{n-1}^{n-1}.$$
+    Doing this iteratively, we get
+    $$A_n^n\geq x_n x_{n-1} ... x_1,$$
+    which is the general arithmetic-geometric mean inequality.
+\end{proof}
+
 \begin{exercise}{21}
 Let $p\geq 2$ be a fixed integer, and let $0<x<1$. If $x$ has a finite-length base $p$ decimal expansion, that is, if $x=a_1/p+\dots+a_n/p^n$ with $a_n\neq 0$, prove that $x$ has precisely two base $p$ decimal expansions. Otherwise, show that the base $p$ decimal expansion for $x$ is unique. Characterize the numbers $0<x<1$ that have repeating base $p$ decimal expansions. How about eventually repeating?
 \end{exercise}
 \begin{proof}
-Suppose $x$ is terminating. By hypothesis, $x$ has a finite-length base $p$-decimal expansion. To see it has a second expansion, consider the expansion given by $x=a_1/p+\dots+(a_n-1)/p^n+\sum_{i=n}^\infty (p-1)/p^i$. We have that 
-\begin{align*}
-    &\absoluteValue{a_1/p+\dots+(a_n-1)/p^n+\sum_{i=n}^\infty (p-1)/p^i - \left(a_1/p+\dots+a_n/p^n\right)} =\\
-    &\absoluteValue{-1/p^n+\sum_{i=n}^\infty (p-1)/p^i}= \absoluteValue{0},
-\end{align*}
-as required. If we choose any other representation mod $p$ of $x$, we can choose an $\varepsilon$ so that the difference is greater than such $\varepsilon$, the same argument works for any $x$ that is non-terminating.
+    We consider first the decimal expansion $0.a_1 a_2 \ldots a_n 0 0 \ldots$, with an infinite number of trailing zeros after the $n$-th decimal, and call the $i$-th decimal here $b_i$. As per the book's definition, this corresponds to an infinite series defined as $\sum_{i=1}^{\infty}b_i/p^i$. It's clear that the limit of this sum is $x$, since $x$ is precisely the sum of the first $n$ terms, and all of the terms after $n$ are zero. Thererefore, the expansion above indeed corresponds to $x$.\\
 
-The numbers $0<x<1$ that are eventually repeating are the rationals.
+    Now consider the decimal expansion corresponding to the series $\frac{a_1}{p} + \frac{a_2}{p^2}+ \ldots + \frac{a_n - 1}{p^n} + \sum_{k=n+1}^{\infty}\frac{p-1}{p^k}$. This would yield a series of decimals the first $n$ of which would equal $a_1, \ldots a_n - 1$ (note that because $a_n \neq 0, a_n -1$ causes no problems), while all decimals after that would equal $p-1$ (call the sequence of digits $c_i$). If we consider the limit of this series, we can see that the last term is a series summing to $\frac{1}{p^n}$, and that the first $n$ terms sum to $x - \frac{1}{p^n}$. Thus, the series as a whole tends to $x$, which means that it \textit{is} a decimal expansion for $x$.\\
+
+    We now have to show that there is no other decimal expansion for $x$. We will do this by selecting a decimal expansion $0.b_1 b_2 \ldots b_n b_{n+1} \ldots$ that is not equal to $0.a_1a_2 \ldots a_n 00\ldots$ and show that it must necessarily equal $0.a_1 a_2 \ldots (a_n-1) (p-1) (p-1)\ldots$\ . Let us then examine such a decimal expansion. Since it differs from $0.a_1 a_2 \ldots a_n 00\ldots$, there must exist a first $j$ such that $a_j \neq b_j$. Because both decimal expansions correspond to $x$, for the two series it must hold that:
+    $$\sum_{i=1}^{j-1}\frac{a_i}{p^i} + \sum_{i=j}^{\infty}\frac{a_i}{p^i} = \sum_{i=1}^{j-1}\frac{b_i}{p^i} + \sum_{i=j}^{\infty}\frac{b_i}{p^i} \implies \frac{a_j}{p^j} + \sum_{i=j+1}^{\infty} \frac{a_i}{p^i} = \frac{b_j}{p^j} + \sum_{i=j+1}^{\infty}\frac{b_i}{p^i},$$
+
+    where we have erased from both sides the first $j-1$ digits that are equal (note that the set of these may be empty). Because we are manipulating convergent series, we can write:
+    $$\frac{a_j - b_j}{p^j} = \sum_{i=j+1}^{\infty}\frac{b_i - a_i}{p^i} = \sum_{i=j+1}^{n} \frac{b_i-a_i}{p^i} + \sum_{i=n+1}^{\infty}\frac{b_i}{p^i},$$
+
+    where we noted that after the $n$-th digit, all $a_i$ are zero. Now, note that if $b_j > a_j$, the LHS here equals at most $-\frac{1}{p^j}$. At the same time, the RHS equals at least 0, which happens when $b_i = 0, i \geq n+1$ and all $b_i - a_i = 0, j+1 \leq i \leq n$. Clearly then, they can never be equal. On the other hand, if $b_j < a_j$ the LHS equals at least $\frac{1}{p^j}$. The RHS equals at most $\sum_{i=j+1}^{\infty} \frac{p-1}{p^i} = \frac{1}{p^j}$, and, crucially, this happens if all $b_i = p -1, i \geq n+1, b_i - a_i = p -1, j + 1 \leq i \leq n$. Because the value is achieved when all of the digits fulfill these conditions, the RHS will be strictly smaller than the LHS in all other cases. The consequence of this is that all $b_i$ starting at $i=n+1$ are equal to $p-1$. Additionally, all $a_i, j + 1\leq i \leq n$ have to be zero. But because $a_n \neq 0$, it must hold that $j + 1 > n$. That is, the first digit where the two expansions differ must be at least at position $n$. If this was strictly larger than $n$, the LHS would not achieve its minimum value ($a_j$ would be 0 and $b_j$ would be $p-1$), thus it could not equal the RHS, contradiction. Thus $j = n$. By these observations, the only digit for which we have not yet determined a value is at position $n$. Recall that $a_j - b_j$ must equal 1, which means that $b_j = a_j - 1$. In other words, $b_n = a_n - 1$, all $b_i = a_i, i < n$ and all $b_i = p - 1, i > n$, leading us to conclude that there exists no third possible representation.\\
+
+    Now we proceed to examine an $x$ with no finite-length base $p$ decimal expansion. Let $a_i, i =1, 2, \ldots$ be one of its expansions, which is necessarily infinite in length. We will show that this is unique by taking another expansion $b_i$ and showing that it must equal $a_i$ at all digits. Indeed, suppose that they differ, and that the first digit at which this happens is at position $j$. As we did above, we can write:
+    $$\sum_{i=1}^{j-1}\frac{a_i}{p^i} + \sum_{i=j}^{\infty}\frac{a_i}{p^i} = \sum_{i=1}^{j-1}\frac{b_i}{p^i} + \sum_{i=j}^{\infty}\frac{b_i}{p^i} \implies \frac{a_j}{p^j} + \sum_{i=j+1}^{\infty} \frac{a_i}{p^i} = \frac{b_j}{p^j} + \sum_{i=j+1}^{\infty}\frac{b_i}{p^i},$$
+
+    and, again because the series converge, we can rewrite this as:
+    $$\frac{a_j - b_j}{p^j} = \sum_{i=j+1}^{\infty}\frac{b_i - a_i}{p^i}$$
+
+    If $b_j > a_j$ we again observe that the LHS equals at most $-\frac{1}{p^j}$. The RHS equals at least $\sum_{i=j+1}^{\infty}\frac{-(p-1)}{p^i} = -\frac{1}{p^j}$, which happens if all $b_i - a_i = -(p-1), i > j$. This cannot otherwise be true because this minimum value is achieved when all $b_i - a_i$ are minimized. The consequence is each $b_i = 0, a_i = p - 1, i > j$. However, this implies that $x$ can then be written as $0.b_1 b_2 \ldots b_j 0 0 \ldots$, which is a finite-length expansion since all trailing digits after $j$ are zeros. This is a contradiction. An exactly symmetrical argument applies when $b_j < a_j$, leading us to conclude that $b_j = a_j$ for \textit{all} $j$, thus $a_i$ is a unique expansion for $x$.\\
+
+    Now we examine $0 < x < 1$ that have an eventually repeating base $p$ decimal expansion. This means that there exists a finite-length ``unique'' first part of the number, consisting of $m$ digits, as well as a minimum ``period'' of repetition $n$ (this can also be zero, in which case the part below does not apply but the number is trivially rational), such that the number can be written as:
+    $$0.a_1 a_2 \ldots a_m a_{m+1} a_{m+2} a_{m+3} \ldots a_{m+n} a_{m+1} \ldots a_{m+n} \ldots,$$
+
+    where we have defined $n$ as the minimum integer for which this holds. Then observe that we can write:
+    \begin{eqnarray*}
+        x
+        & = & (a_1 a_2 \ldots a_m)p^{-m} + (a_{m+1} a_{m+2}\ldots a_{m+n})p^{-m-n} + (a_{m+1} a_{m+2}\ldots a_{m+n})p^{-m-2n}\\
+        & & + (a_{m+1} a_{m+2} \ldots a_{m+n})p^{-m-3n} + \ldots\\
+        & = & \frac{a_1 a_2 \ldots a_m}{p^m} + (a_{m+1} a_{m+2} \ldots a_{m+n})(\sum_{i=1}^{\infty} p^{-m-in})\\
+        & = & \frac{a_1 a_2 \ldots a_m}{p^m} + \frac{a_{m+1} a_{m+2} \ldots a_{m+n}}{p^{m}(p^n - 1)}.
+    \end{eqnarray*}
+
+    which is a sum of two quotients of integers, and therefore is a rational number. Note that for the case of repeating expansions everything above simplifies to $m=0$. Now we need to examine whether \textit{every} rational number can be written in this way, in other words, whether every rational number has an eventually repeating (which includes the trivially ``eventually repeating'' finite-length digit sequences) base $p$ decimal expansion.\\
+
+    Recall that a rational number can be written as the quotient of two integers. Furthermore, because we are interested in numbers in $[0, 1]$, we can restrict ourselves to $x = \frac{a}{b}$ where $a, b$ natural, non-zero numbers with $a < b$. We now recall that for finding a base $p$ decimal expansion for $x$ we can use the division algorithm iteratively. Namely, we first find the smallest power $p^n_1$ such that $ap^n_1 \geq b$, and then we use the division algorithm on $ap^n, b$. According to it, there will exist unique $q_1, r_1, 0 \leq r_1 < b \in \mathbb{N}$ such that $ap^{n_1} = bq_1 + r_1$. Notice that this implies that $\frac{a}{b} = \frac{q}{p^{n_1}} + \frac{r_1}{bp^{n_1}}$. The first $n_1-1$ digits of the decimal expansion of $x$ will be zeros, since for all powers $p^k, k<n$ it has to be that $ap^k < b \implies x < \frac{1}{p^k}$. Now notice that $q_1 \leq \frac{ap^{n_1}}{b} < p$ because $ap^{n_1-1} < b$ due to the choice of $n_1$. Therefore $q_1$ can be thought of as the $n_1$-th digit in the decimal expansion of $x$. If $r_1 = 0$, the decimal expansion is finished, and finite in length. Otherwise, we can apply the same procedure to $r_1, bp^{n_1}$ to obtain that $r_1p^{n_2} = bp^{n_1}q_2 + r_2$, where $n_2$ has been chosen in the same manner as above, and signifies that the next $n_2 - 1$ digits of $x$ will be zero, while the $n_2$-th will be $q_2$. Now we observe that if at any point $r_k$ becomes zero, the expansion is finite in length. Otherwise, we record this sequence of remainders. Each of them is in the range $(0, b)$. Therefore, after at most $b - 1$ steps we will encounter a remainder that has been encountered before. The consequence is that after this point, the sequence of digits is fully known, because we are always performing a division with $b$. Therefore, from that point on the decimal expansion will indeed be infinitely repeating, thus completing the proof.
 \end{proof}
 
 \begin{exercise}{22}
 Show that $\inf_na_n\leq \lim\inf_{n\to\infty}a_n\leq \lim\sup_{n\to\infty}a_n\leq \sup_na_n$.
 \end{exercise}
 \begin{proof}
-Notice that $\inf_na_n = \inf\set{a_1,a_2,\dots}$ whereas \\
-$\lim\inf_{n\to\infty}a_n=\sup_{n\geq 1}(\inf\set{a_n,a_{n+1},\dots})$ so that
-\\
-$\inf\set{a_1,a_2,\dots}\leq\lim\inf_{n\to\infty}a_n$ since the supremum of a set is an greater than or equal to each of its elements. We can reason in an analogous way to conclude that $\lim\sup_{n\to\infty}a_n\leq \sup_na_n$. 
+Notice that $\inf_na_n = \inf\set{a_1,a_2,\dots}$ whereas
+$$\liminf_{n\to\infty}a_n=\sup_{n\geq 1}(\inf\set{a_n,a_{n+1},\dots})$$
+so that
+$$\inf\set{a_1,a_2,\dots}\leq\liminf_{n\to\infty}a_n$$ since the supremum of a set is an greater than or equal to each of its elements. We can reason in an analogous way to conclude that $\limsup_{n\to\infty}a_n\leq \sup_na_n$.\\
 
 By exercise 3, for any $m>n$, we have 
 \[
@@ -194,7 +488,7 @@ By exercise 3, for any $m>n$, we have
 \]
 which implies that the set $\set{\inf\set{a_n,a_{n+1},\dots}:n\in\N}$ is upper bounded by all elements in $\set{\sup\set{a_n,a_{n+1},\dots}:n\in\N}$.
 
-We can take the limits of the second and third elements of the above inequality as $m\to\infty$ to conclude that $\lim\inf_{n\to\infty}a_n\leq\lim\sup_{n\to\infty}a_n$, completing the desired proof.
+We can take the limits of the second and third elements of the above inequality as $m\to\infty$ to conclude that $\liminf_{n\to\infty}a_n\leq\limsup_{n\to\infty}a_n$, completing the desired proof.
 
 
 % so that $\lim\inf_{n\to\infty}a_n=\sup_{n\geq 1}(\inf\set{a_n,a_{n+1}})\leq s$ for all $s\in\set{\sup\set{a_n,a_{n+1},\dots}:n\in\N}$; if this wasn't the case for $s'\in\set{\sup\set{a_n,a_{n+1},\dots}:n\in\N}$, then $\lim\inf_{n\to\infty}a_n$ would not be the supremum of the set of infima, given that there would be a lower upper bound. Likewise, $b\leq\inf_{n\geq 1}(\sup\set{a_n,a_{n+1},\dots})=\lim\sup_{n\to\infty}a_n$ for all $b\in\set{\inf\set{a_n,a_{n+1},\dots}:n\in\N}$. 
@@ -206,33 +500,44 @@ We can take the limits of the second and third elements of the above inequality 
 % $\lim\inf_{n\to\infty}a_n\leq \lim\sup_{n\to\infty}a_n$.
 \end{proof}
 
+\begin{exercise}{23}
+    If $a_n$ is convergent, show that $\liminf_{n\rightarrow \infty} a_n = \limsup_{n \rightarrow \infty} a_n = \lim_{n \rightarrow \infty} a_n$.
+\end{exercise}
+\begin{proof}
+    We begin by showing $\liminf_{n\rightarrow \infty} a_n = \lim_{n \rightarrow \infty} a_n$. Let $L$ be the limit of $a_n$. By definition, $\liminf_{n\rightarrow \infty} a_n = \sup_{n \geq 1} \{\inf\{a_n, a_{n+1}, \ldots\}\}$. Suppose first that this supremum did not exist, i.e.\ that it ``equals infinity''. Then for every $M > 0$ there must exist $N > 0$ such that $\inf\{a_N, a_{N+1}, \ldots\} > M$. But this in turn would mean that $a_n$ is not bounded and yet converges to $L$, a contradiction. Now suppose that the supremum equals $L + \epsilon, \epsilon > 0$. Then $L + \epsilon', \epsilon' < \epsilon$ cannot constitute an upper bound for the infimums. Thus there exists $N > 0$ such that $\inf\{a_N, a_{N+1}, \ldots\} > L + \epsilon'$, which means that for $n \geq N, a_n > L + \epsilon'$. This is a clear contradiction of the definition of limit, since $a_n$ cannot get more than $\epsilon'$-close to $L$. Therefore, the liminf of $a_n$ is at most $L$.\\
+
+    Now, by the definition of the limit, for any $\epsilon > 0$ there exists $N > 0$ such that for $n > N, \lvert a_n - L \rvert < \epsilon \implies a_n > L - \epsilon$. Notice that this means that $\inf\{a_{N}, a_{N+1}, \ldots\} \geq L - \epsilon$, which in turn means that the liminf of $a_n$, as an upper bound for these infimums, must equal at least $L - \epsilon$ for \textit{any} $\epsilon > 0$. At the same time, it equals at most $L$. The only possibility then is that $\liminf_{n\rightarrow \infty} a_n = L$, which is what we are asked to prove.\\
+
+    The argument for showing that $\limsup_{n\rightarrow \infty} a_n = L$ is exactly symmetrical.
+\end{proof}
+
 \begin{exercise}{24}
-Show that $\lim\sup_{n\to\infty}(-a_n)=-\lim\inf_{n\to\infty}a_n$.
+Show that $\limsup_{n\to\infty}(-a_n)=-\liminf_{n\to\infty}a_n$.
 \end{exercise}
 \begin{proof}
 We have that
 \begin{align*}
-    \lim\sup_{n\to\infty}(-a_n) &= \sup_{n\geq 1}(\inf\set{-a_n,-a_{n+1},\dots})\\
+    \limsup_{n\to\infty}(-a_n) &= \sup_{n\geq 1}(\inf\set{-a_n,-a_{n+1},\dots})\\
     &= \sup_{n\geq 1}(-\sup\set{a_n,a_{n+1},\dots})\\
     &= -\inf_{n\geq 1}(\sup\set{a_n,a_{n+1},\dots})\\
-    &= -\lim\inf_{n\to\infty}a_n,
+    &= -\liminf_{n\to\infty}a_n,
 \end{align*}
 as required.
 \end{proof}
 
 \begin{exercise}{25}
-If $\lim\sup_{n\to\infty}a_n=-\infty$, show that $(a_n)$ diverges to $-\infty$. If $\lim\sup_{n\to\infty}a_n=+\infty$, show that $(a_n)$ has a subsequence that diverges to $+\infty$. What happens if $\lim\inf_{n\to\infty}a_n=\pm\infty$?
+If $\limsup_{n\to\infty}a_n=-\infty$, show that $(a_n)$ diverges to $-\infty$. If $\limsup_{n\to\infty}a_n=+\infty$, show that $(a_n)$ has a subsequence that diverges to $+\infty$. What happens if $\lim\inf_{n\to\infty}a_n=\pm\infty$?
 \end{exercise}
 \begin{proof}
-Since $\lim\sup_{n\to\infty}(a_n) = \sup_{n\geq 1}(\inf\set{a_n,a_{n+1},\dots})$, then if\\ $\lim\sup_{n\to\infty}(a_n)=-\infty$, it must be the case that $\inf\set{a_n,a_{n+1},\dots}=-\infty$ for all $n$, as otherwise, $\sup$ of that would be different from $-\infty$. However, if $\inf\set{a_n,a_{n+1},\dots}=-\infty$ for all $n$, then $(a_n)$ is not bounded below, so that it diverges to $-\infty$.
+Since $\limsup_{n\to\infty}(a_n) = \sup_{n\geq 1}(\inf\set{a_n,a_{n+1},\dots})$, then if\\ $\limsup_{n\to\infty}(a_n)=-\infty$, it must be the case that $\inf\set{a_n,a_{n+1},\dots}=-\infty$ for all $n$, as otherwise, $\sup$ of that would be different from $-\infty$. However, if $\inf\set{a_n,a_{n+1},\dots}=-\infty$ for all $n$, then $(a_n)$ is not bounded below, so that it diverges to $-\infty$.
 
-If $\lim\sup_{n\to\infty}(a_n)= \sup_{n\geq 1}(\inf\set{a_n,a_{n+1},\dots})= \infty$, it must be the case that the set $\set{\inf\set{a_n,a_{n+1},\dots}:n\geq 1}$ is not bounded above; that is, we can find a subsequence $n_k$ such that $(a_{n_k})$ diverges, as otherwise the set would be bounded above. 
+If $\limsup_{n\to\infty}(a_n)= \sup_{n\geq 1}(\inf\set{a_n,a_{n+1},\dots})= \infty$, it must be the case that the set $\set{\inf\set{a_n,a_{n+1},\dots}:n\geq 1}$ is not bounded above; that is, we can find a subsequence $n_k$ such that $(a_{n_k})$ diverges, as otherwise the set would be bounded above. 
 
 We can reason in an analogous way to make the (swapped) conclusions for $\lim\inf_{n\to\infty}a_n=\pm\infty$.
 \end{proof}
 
 \begin{exercise}{26}
-Prove the characterisation of $\lim\sup$ given above. That is, given a bounded sequence $(a_n)$, show that the number $M=\lim\sup_{n\to\infty}a_n$ satisfies ($\ast$) and, conversely, that any number $M$ satisfying ($\ast$) must equal $\lim\sup_{n\to\infty}a_n$. State and prove the corresponding result for $m=\lim\inf_{n\to\infty}a_n$.
+Prove the characterisation of $\lim\sup$ given above. That is, given a bounded sequence $(a_n)$, show that the number $M=\limsup_{n\to\infty}a_n$ satisfies ($\ast$) and, conversely, that any number $M$ satisfying ($\ast$) must equal $\limsup_{n\to\infty}a_n$. State and prove the corresponding result for $m=\liminf_{n\to\infty}a_n$.
 \end{exercise}
 \begin{proof}
 For reference, $(\ast)$ is: for every $\varepsilon>0$, we have $a_n<M+\varepsilon$ for all but finitely many $n$, and $M-\varepsilon<a_n$ for infinitely many $n$.
@@ -247,10 +552,19 @@ Likewise, if $M-\varepsilon<a_n$ for infinitely many $n$, then for all $n$, we h
 \end{proof}
 
 \begin{exercise}{27}
-Prove that every sequence of real numbers $(a_n)$ has a subsequence $(a_{n_k})$ that converges to $\lim\sup_{n\to\infty}a_n$. [Hint: if $M=\lim\sup_{n\to\infty}a_n=\pm\infty$, we must interpret the conclusion loosely; this case is handled in exercise 25. If $M\neq\pm\infty$, use $(\ast)$ to choose $(a_{n_k})$ satisfying $\absoluteValue{a_{n_k}-M}<1/k$, for example]. There is necessarily also a subsequence that converges to $\lim\inf_{n\to\infty}a_n$. Why?
+Prove that every sequence of real numbers $(a_n)$ has a subsequence $(a_{n_k})$ that converges to $\limsup_{n\to\infty}a_n$. [Hint: if $M=\limsup_{n\to\infty}a_n=\pm\infty$, we must interpret the conclusion loosely; this case is handled in exercise 25. If $M\neq\pm\infty$, use $(\ast)$ to choose $(a_{n_k})$ satisfying $\absoluteValue{a_{n_k}-M}<1/k$, for example]. There is necessarily also a subsequence that converges to $\lim\inf_{n\to\infty}a_n$. Why?
 \end{exercise}
 \begin{proof}
-As mentioned in the problem, if $M=\lim\sup_{n\to\infty}a_n=\pm\infty$, then we can use exercise 25 to conclude the subsequence exists. Hence, we assume $M\neq\infty$. We know by the characterisation of exercise 26 that for all $\varepsilon>0$, we have $a_n<M+\varepsilon$ for all but finitely many $n$ and $M-\varepsilon<a_n$ for infinitely many $n$. Following the hint, let $\varepsilon=1/k$ for all naturals and choose $n_k$ to be the lowest index so that $n_k>n_{k-1}$ of the infinite sets previous described. The implication is that, for all $\varepsilon>0$, we can find a $k$ such that $\absoluteValue{a_{n_k}-M}<\varepsilon$, giving us the desired result.
+As mentioned in the problem, if $M=\limsup_{n\to\infty}a_n=\pm\infty$, then we can use exercise 25 to conclude the subsequence exists. Hence, we assume $M\neq\infty$. We know by the characterisation of exercise 26 that for all $\varepsilon>0$, we have $a_n<M+\varepsilon$ for all but finitely many $n$ and $M-\varepsilon<a_n$ for infinitely many $n$. Following the hint, let $\varepsilon=1/k$ for all naturals and choose $n_k$ to be the lowest index so that $n_k>n_{k-1}$ of the infinite sets previous described. The implication is that, for all $\varepsilon>0$, we can find a $k$ such that $\absoluteValue{a_{n_k}-M}<\varepsilon$, giving us the desired result.
+\end{proof}
+
+\begin{exercise}{28}
+By modifying the argument in the previous exercise, show that every sequence of real numbers has a monotone subsequence.
+\end{exercise}
+\begin{proof}
+    Assume first that $\limsup_{n\rightarrow \infty} = +\infty$, then by exercise $25$ there is a subsequence of $a_n$ that diverges to $+\infty$. We can then recursively define a subsequence $a_{k_n}\geq \max\{a__{k_1},...,a_{k_{n-1}}\}$, which always exists by the divergence. This is then a monotone subsequence of ($a_n)$. If $\limsup_{n\rightarrow \infty} a_n = -\infty$, then by exercise $25$, we know that $a_n$ diverges to $-\infty$. We can then again recursively define a sequence subsequence $a_{k_n}\leq \max\{a__{k_1},...,a_{k_{n-1}}\}$, which again exists because of the divergence. In exactly the same way, we can treat the case where $\liminf_{n\rightarrow \infty} a_n = \pm\infty$. Thus for the remainder, we can assume that $M = \limsup_{n\rightarrow \infty} a_n$ and $m = \liminf_{n\rightarrow \infty} a_n$ exist, and are thus real numbers.\\
+
+    
 \end{proof}
 
 \begin{exercise}{30}

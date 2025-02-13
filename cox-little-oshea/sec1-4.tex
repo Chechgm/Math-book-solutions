@@ -33,11 +33,104 @@ Suppose $f_1,\dots,f_s\in I$. Then for $f_i$ there exists polynomials $g_{i,1},\
 If we assume 2, clearly 1 holds.
 \end{proof}
 
+\begin{exercise}{3}
+    Use the previous exercise to prove the following equalities of ideals in $\mathbb{Q}[x,y]$:
+    \begin{enumerate}
+        \item $\langle x+y,x-y\rangle = \langle x,y\rangle$.
+        \item $\langle x+xy, y+xy, x^2, y^2\rangle = \langle x,y\rangle$.
+        \item $\langle 2x^2 + 3y^2 - 11, x^2 - y^2 - 3\rangle = \langle x^2 - 4, y^2 -1\rangle$.
+    \end{enumerate}
+    This illustrates that the same ideal can have many different bases and that different bases may have different number of elements.
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item It is obvious that $x+y, x-y\in \langle x,y\rangle$, and thus $\langle x+y,x-y\rangle \subseteq \langle x,y\rangle$. Conversely, note that
+        $$x = \frac{1}{2}(x-y) + \frac{1}{2}(x+y),$$
+        hence $x\in \langle x+y,x-y\rangle$, and
+        $$y = \frac{1}{2}(x+y) - \frac{1}{2}(x-y),$$
+        from which we get $y\in \langle x+y,x-y\rangle$. We obtain $\langle x,y\rangle \subseteq \langle x+y,x-y\rangle$. Together, we infer $\langle x,y\rangle = \langle x+y,x-y\rangle$.
+        \item It is obvious that $x+xy, y+xy, x^2, y^2\in \langle x,y\rangle$, and thus $\langle x+y,x-y\rangle \subseteq \langle x,y\rangle$. Conversely, note that
+        $$x-y = (x+xy) - (y+xy)\in \langle x+xy, y+xy, x^2, y^2\rangle.$$
+        Thus,
+        $$xy = \frac{1}{2}(x^2 + y^2 - (x-y)^2)\in \langle x+xy, y+xy, x^2, y^2\rangle.$$
+        Thus,
+        $$x = (x+xy) - xy \in \langle x+xy, y+xy, x^2, y^2\rangle$$
+        and
+        $$y = (y+xy) - xy \in \langle x+xy, y+xy, x^2, y^2\rangle.$$
+        This implies that $\langle x,y\rangle \subseteq \langle x+xy, y+xy, x^2, y^2\rangle$. Thus,
+        $$\langle x,y\rangle = \langle x+xy, y+xy, x^2, y^2\rangle.$$
+        \item Note first that
+        $$2x^2 + 3y^2 - 11 = 2(x^2 - 4) + 3(y^2 - 1)\in \langle x^2 - 4, y^2 - 1\rangle,$$
+        and
+        $$x^2 - y^2 - 3 = (x^2 - 4) - (y^2 - 1)\in \langle x^2 - 4, y^2 - 1\rangle,$$
+        and thus
+        $$\langle 2x^2 + 3y^2 - 11, x^2 - y^2 - 3\rangle \subseteq \langle x^2 - 4, y^2 -1\rangle.$$
+        Conversely,
+        $$x^2 - 4 = \frac{1}{5}(2x^2 + 3y^2 - 11) + \frac{3}{5}(x^2 - y^2 - 3)\in \langle 2x^2 + 3y^2 - 11, x^2 - y^2 - 3\rangle,$$
+        and
+        $$y^2 -1 = \frac{1}{5}(2x^2 + 3y^2 - 11) - \frac{2}{5}(x^2 - y^2 - 3)\in \langle 2x^2 + 3y^2 - 11, x^2 - y^2 - 3\rangle,$$
+        and thus
+        $$\langle x^2 - 4, y^2 -1\rangle\subseteq \langle 2x^2 + 3y^2 - 11, x^2 - y^2 - 3\rangle.$$
+        We obtain then finally that
+        $$\langle 2x^2 + 3y^2 - 11, x^2 - y^2 - 3\rangle = \langle x^2 - 4, y^2 -1\rangle.$$
+    \end{enumerate}
+\end{proof}
+
 \begin{exercise}{4}
 Prove proposition 4: If $f_1,\dots,f_s$ and $g_1,\dots,g_t$ are bases of the same ideal in $k[x_1,\dots,x_n]$, so that $\brackets{f_1,\dots,f_s}=\brackets{g_1,\dots,g_t}$, then we have $\bV(f_1,\dots,f_s)=\bV(g_1,\dots,g_t)$.
 \end{exercise}
 \begin{proof}
 Let $x\in \bV(f_1,\dots,f_s)$. Then $f_1(x)=\dots=f_s(x)=0$. Since $\brackets{f_1,\dots,f_s}=\brackets{g_1,\dots,g_t}$, then we can represent $g_i$ as a linear combination of $f_1,\dots,f_s$, say $g_i=\sum_i^sh_if_i$, but this implies $g_i(x)=0$ and hence $x\in\bV(g_1,\dots,g_t)$, so that $\bV(f_1,\dots,f_s)\subseteq\bV(g_1,\dots,g_t)$. The converse of the proof is symmetric to this one. Hence $\bV(f_1,\dots,f_s)=\bV(g_1,\dots,g_t)$, as required.
+\end{proof}
+
+\begin{exercise}{5}
+    Show that $\bV(x+xy,y+xy,x^2,y^2) = \bV(x,y)$.
+\end{exercise}
+\begin{proof}
+    We know from 3(b), that
+    $$\langle x+xy, y+xy, x^2, y^2\rangle = \langle x,y\rangle.$$
+    We get then immediately from Proposition $4$, that
+    $$\bV(x+xy,y+xy,x^2,y^2) = \bV(x,y).$$
+\end{proof}
+
+\begin{exercise}{6}
+The word ``basis'' is used in various ways in mathematics. In this exercise, we will see that ``a basis of an ideal,'' as defined in this section, is quite different from ``a basis of a subspace,'' which is studied in linear algebra.
+\begin{enumerate}
+    \item First, consider the ideal $I = \langle x\rangle\subseteq k[x]$. As an ideal, $I$ has a basis consisting of the one element $x$. But $I$ can also be regarded as a subspace of $k[x]$, which is a vector space over $k$. Prove that any vector space basis of $I$ over $k$ is infinite.
+    \item In linear algebra, a basis must span and be linearly independent over $k$, whereas for an ideal, a basis is concerned only with spanning - there is no mention of any sort of independence. The reason is that once we allow polynomial coefficients, no independence is possible. To see this, consider the ideal $\langle x,y\rangle \subseteq k[x,y]$. Show that zero can be written as a linear combination of $y$ and $x$ with nonzero polynomial coefficients.
+    \item More generally, suppose that $f_1$, ..., $f_s$ is the basis of an ideal $I\subseteq k[x_1,...,x_n]$. If $s\geq 2$ and $f_i\neq 0$ for all $i$, then show that for any $i$ and $j$, zero can be written as a linear combination of $f_i$ and $f_j$ with nonzero polynomial coefficients.
+    \item A consequence of the lack of independence is that when we write an element $f\in \langle f_1,...,f_s\rangle$ as $f = \sum_{i=1}^s h_i f_i$, the coefficients $h_i$ are not unique. As an example, consider $f = x^2 + xy + y^2\in \langle x,y\rangle$. Express $f$ as a linear combination of $x$ and $y$ in two different ways. (Even though the $h_i$'s are not unique, one can measure their lack of uniqueness. This leads to the interesting topic of syzygies.)
+    \item A basis $f_1$, ..., $f_s$ of an ideal $I$ is said to be minimal if no proper subset of $f_1$, ..., $f_s$ is a basis of $I$. For example, $x$, $x^2$ is a basis of an ideal, but not a minimal basis since $x$ generates the same ideal. Unfortunately, an ideal can have minimal bases consisting of different numbers of elements. To see this, show that $x$ and $x+x^2$, $x^2$ are minimal bases of the same ideal of $k[x]$. Explain how this contrasts with the situation in linear algebra.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item It suffices to show that $\{x,x^2,x^3, ...\}$ is linear independent. Indeed, they are clearly in $I$, but take a finite linear combination
+        $$\alpha_1 x + \alpha_2 x^2 + ... + \alpha_n x^n = 0,$$
+        it is clear from properties of polynomials over a field that this holds if all $\alpha_i = 0$. This implies linear independence. Thus any basis of $I$ over $k$ is infinite.
+        \item This follows immediately from
+        $$0 = (-y)x + xy.$$
+        \item This is simply because
+        $$0 = (-f_i)f_j + f_jf_i.$$
+        \item We have
+        $$f = x\cdot x + (x+y)y = (x+y)x + y\cdot y,$$
+        as two different ways of writing $f$ in a linear combination of $x$ and $y$.
+    \item We clearly that
+    $x+x^2, x\in \langle x\rangle,$
+    and thus
+    $$\langle x+x^2, x^2\rangle \subseteq \langle x\rangle.$$
+    On the other hand,
+    $$x = (x+x^2) - 1\cdot x^2 \in \langle x+x^2, x^2\rangle,$$
+    and thus
+    $$\langle x\rangle \subseteq \langle x+x^2, x^2\rangle.$$
+    We obtain that
+    $$\langle x+x^2, x^2\rangle = \langle x\rangle.$$
+    We show that $x+x^2$ is not a basis for the ideal. Indeed, assume that $x\in \langle x+x^2\rangle$, then there is some polynomial $P$ such that
+    $$x = (x + x^2)P(x).$$
+    Substituting in $x=-1$, we get that
+    $$0 = (-1 + (-1)^2)P(-1) = -1.$$
+    This is a contradiction. Similarly, assume that $x \in \langle x^2\rangle$. We know that each element of $\langle x^2 \rangle$ is of the form $x^2 P(x)$ and has degree greater than $2$. We know that $x$ does not satisfy this. Thus neither $x+x^2$ and $x^2$ are bases of $\langle x+x^2, x^2\rangle$. Thus the basis is minimal. Thus the same ideal is generated by a minimal basis of size $1$, and a minimal basis of size $2$. This is in contrast with linear algebra, where all linear bases have the same cardinality.
+    \end{enumerate}
 \end{proof}
 
 \begin{exercise}{7}
@@ -62,6 +155,205 @@ Radical ideals will play an important role in Chapter 4. In particular, the Null
     ($\Leftarrow$) Suppose $f^m\in\bI(V))$. Then $f^m(x)=0$ for some $\bx\in k^n$. However, we have that $f^m(x) =f^{m-1}(x)f(x)=0$. If $f(x)=0$, we are done, otherwise, we can argue similarly with $f^{m-1}$ until $f^2(x)$ which gives us $f(x)=0$, so that $f\in\bI(V))$ as well.
     \item Well, we have that all polynomials in $\brackets{x^2,y^2}$ are of the form $h_1x^2+h_2y^2$ for $h_1,h_2\in k^n[x,y]$. By choosing $h_1=1$ and $h_2=0$, we have that $x^2\in\brackets{x^2,y^2}$. However, $x\notin\brackets{x^2,y^2}$, as all the polynomials in $\brackets{x^2,y^2}$ are of degree at least 2. Hence, $\brackets{x^2,y^2}$ is not a radical ideal.
 \end{enumerate}
+\end{proof}
+
+\begin{exercise}{9}
+Let $V = \bV(y-x^2, z-x^3)$ be the twisted cubic. In the text, we showed that $\bI(V) = \langle y-x^2, z-x^3\rangle$.
+\begin{enumerate}
+    \item Use the parametrization of the twisted cubic to show that $y^2 - xz\in \bI(V)$.
+    \item Use the argument given in the text to express $y^2 - xz$ as a combination of $y-x^2$ and $z-x^3$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item We know the twisted cubic has the parametrization $(t,t^2,t^3)$. So it suffices to plug this into the polynomial:
+        \begin{eqnarray*}
+            y^2 - xz
+            & = & (t^2)^2 - t\cdot t^3\\
+            & = & t^4 - t^4\\
+            & = & 0.
+        \end{eqnarray*}
+        Thus, $y^2 - xz$ vanishes on all points of the twisted cubie, and is thus in $\bI(V)$.
+        \item We see that
+        \begin{eqnarray*}
+            y^2 - xz
+            & = & (x^2 + (y-x^2))^2 - x(x^3 + (z-x^3))\\
+            & = & (x^4 + (y-x^2)^2 + 2x^2(y-x^2) ) - x^4 - x(z-x^3)\\
+            & = & (y+x^2)(y-x^2) + (-x)(z-x^3).
+        \end{eqnarray*}
+    \end{enumerate}
+\end{proof}
+
+\begin{exercise}{10}
+Use the argument given in the discussion of the twisted cubic to show that $\bI(\bV(x-y)) = \langle x-y\rangle$. Your argument should be valid for any infinite field $k$.    
+\end{exercise}
+\begin{proof}
+    We first claim, that given any polynomial $f\in k[x,y]$, we can write it in the form
+    $$f = h(x-y) + r,$$
+    where $h\in k[x,y]$, and $r$ is a polynomial in $x$ alone. First, consider the case where $f$ is a monomial $x^\alpha y^\beta$. Then the binomial theorem tells us that
+    \begin{eqnarray*}
+        x^\alpha y^\beta 
+        & = & x^\alpha (x + (y-x))^\beta\\
+        & = & x^\alpha (x^\beta + \text{ terms involving } y-x).
+    \end{eqnarray*}
+    Multiplying this out, we see that
+    $$x^\alpha y^\beta = x^{\alpha+\beta} + h(y-x),$$
+    for some polynomial $h\in k[x,y]$. Since an arbitrary $f\in k[x,y]$ is an $k$-linear combination of monomials, the claim follows in general.\\
+    Note that clearly $x-y\in \bI(\bV(x-y))$, and thus since $\bI(\bV(x-y))$ is an ideal, it follows that $h(x-y)\in \bI(\bV(x-y))$, which proves $\langle x-y\rangle \subseteq \bI(\bV(x-y))$. To prove the opposite direction, take any $f\in \bI(\bV(x-y))$, and write
+    $$f = h(x-y) + r,$$
+    as in the claim. Note that $f$ vanishes on $\bV(x-y)$. But for any $t$, $(t,t)\in \bV(x-y)$, and thus $f(t,t) = 0$. We obtain that
+    $$0 = f(t,t) = r(t).$$
+    Thus $r$ is a one-degree polynomial vanishing at all points of the infinite field $k$. This implies $r= 0$. Thus,
+    $$f = h(x-y) \in \langle x-y\rangle.$$
+    We obtain then that
+    $$\bI(\bV(x-y))\subseteq \langle x-y\rangle.$$
+    Thus,
+    $$\bI(\bV(x-y)) = \langle x-y\rangle.$$
+\end{proof}
+
+\begin{exercise}{11}
+Let $V\subseteq \mathbb{R}^3$ be the curve parametrized by $(t,t^3, t^4)$.
+\begin{enumerate}
+    \item Prove that $V$ is an affine variety.
+    \item Adapt the method used in the case of the twisted cubic to determine $\bI(V)$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item This is clear, since 
+        $$V = \bV(x^3 - y, x^4 - z).$$
+        Indeed, if $(x,y,z)\in V$, then there is some $t$ such that $(x,y,z) = (t,t^3,t^4)$, and thus
+        $$x^3 - y = t^3 - t^3 = 0,~x^4 - z = t^4 - t^4 = 0.$$
+        Conversely, assume that $(x,y,z)$ is such that $x^3 - y = x^4 - z = 0$. Then take $t = x$, and we see that $y = t^3$ and $z= t^4$. So $(x,y,z) = (t,t^3, t^4)$.
+        \item We will first show that any polynomial $f\in \mathbb{R}[x,y]$ can be written in the form
+        $$f = h_1(y - x^3) + h_2(z-x^4)+ r,$$
+        where $h_1,h_2\in \mathbb{R}[x,y,z]$ and $r$ is a polynomial in the variable $x$ alone. First, consider the case when $f$ is a monomial $x^\alpha y^\beta z^\gamma$. Then the binomial theorem tells us that
+        \begin{eqnarray*}
+            x^\alpha y^\beta z^\gamma
+            & = & x^\alpha (x^3 + (y-x^3))^\beta (x^4 + (z-x^4))^\gamma\\
+            & = & x^\alpha (x^{3\beta} + \text{ terms involving }y-x^3)(x^{4\gamma} + \text{ terms involving } z-x^4),
+        \end{eqnarray*}
+        and multiplying this out shows that
+        $$x^\alpha y^\beta z^\gamma = h_1(y-x^3) + h_2(z-x^4) + x^{\alpha + 3\beta + 4\gamma}$$
+        for some polynomials $h_1,h_2\in \mathbb{R}[x,y,z]$. The result is also true for an arbitrary polynomial $f\in \mathbb{R}[x,y,z]$ as this is an $\mathbb{R}$-linear combination of monomials.\\
+        We can now prove $\bI(V) = \langle y-x^3, z-x^4\rangle$. It is clear that $y-x^3, z-x^4\in \bI(V)$. Thus $\langle y-x^3, z-x^4\rangle\subseteq \bI(V)$. To prove the opposite inclusion, take $f\in \bI(V)$ and let
+        $$f = h_1(y-x^3) + h_2(z-x^4) + r.$$
+        Take any point $(t,t^3,t^4)$ on $V$. Since $f$ vanishes on $V$, we get
+        $$0 = f(t,t^3,t^4) = 0+0+r(t).$$
+        Since $t$ can be any real number, $r\in \mathbb{R}[x]$ must be the zero polynomial. Thus,
+        $$f = h_1(y-x^3) + h_2(z-x^4)$$
+        has the required form and thus $\bI(V) = \langle y-x^3, z-x^4\rangle$, as required.
+    \end{enumerate}
+\end{proof}
+
+\begin{exercise}{12}
+Let $V\subseteq \mathbb{R}^3$ be the curve parametrized by $(t^2, t^3, t^4)$.
+\begin{enumerate}
+    \item Prove that $V$ is an affine variety.
+    \item Determine $\bI(V)$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+        \begin{enumerate}
+        \item This is clear, since 
+        $$V = \bV(x^3 - y^2, x^2 - z).$$
+        Indeed, if $(x,y,z)\in V$, then there is some $t$ such that $(x,y,z) = (t^2,t^3,t^4)$, and thus
+        $$x^3 - y^2 = t^6 - t^6 = 0,~x^2 - z = t^4 - t^4 = 0.$$
+        Conversely, assume that $(x,y,z)$ is such that $x^3 - y^2 = x^2 - z = 0$. Assume first that $y\geq 0$. Then we know that $x^3 = y^2 \geq 0$. Thus $x\geq 0$. Take $t = x^{1/2}$. We obtain that
+        \begin{eqnarray*}
+            t^2 & = & (x^{1/2})^2 = x\\
+            t^3 & = & (x^{1/2})^3 = x^{3/2} = |y| = y\\
+            t^4 & = & (x^{1/2})^2 = x^2 = z.
+        \end{eqnarray*}
+        Taking $t = -x^{1/2}$ also parametrizes those points with negative $y$.
+        \item Take any monomial of the form $x^\alpha y^\beta z^\gamma$. Write $\beta = 2\beta' + \rho$, where $\rho\in \{0,1\}$. Then,
+        \begin{eqnarray*}
+            x^\alpha y^\beta z^\gamma 
+            & = & x^\alpha y^\rho (y^2)^{\beta'} z^\gamma\\
+            & = & x^\alpha y^\rho (x^3 - (x^3 - y^2))^{\beta'} (x^2 - (x^2 - z))^\gamma\\
+            & = & x^\alpha y^\rho (x^{3\beta'} + \text{ terms involving } x^3 - y^2)(x^{2\gamma} + \text{ terms involving } x^2 - z)\\
+            & = & x^{\alpha + 3\beta' + 2\gamma} y^\rho + h_1(x^3 - y^2) + h_2(x^2 - z).
+        \end{eqnarray*}
+        So we see that any polynomial $f\in \mathbb{R}[x,y,z]$ can be written as
+        $$f = h_1(x^3 - y^2) + h_2(x^2 - z) + r,$$
+        where $r\in \mathbb{R}[x,y]$ is such that in every term there is either none or one $y$ factor. Now, it is clear that
+        $$\langle x^3 - y^2, x^2 - z\rangle\subseteq \bI(V).$$
+        Conversely, take any $f\in bI(V)$, and decompose it as
+         $$f = h_1(x^3 - y^2) + h_2(x^2 - z) + r,$$
+         as above. Write
+         $$r = \sum_{i=0}^n \alpha_i x^i + \sum_{j=0}^m \beta_j x^j y.$$
+         Then for all $t$, we have that
+         \begin{eqnarray*}
+             0 & = & f(t^2, t^3, t^4)\\
+             & = & r(t^2 t^3, t^4)\\
+             & = & \sum_{i=0}^n \alpha_i t^{2i} + \sum_{j=0}^m \beta_j t^{2i+3}.
+         \end{eqnarray*}
+         Define the polynomial in $\mathbb{R}[t]$ as
+         $$P(t) = \sum_{i=0}^n \alpha_i t^{2i} + \sum_{j=0}^m \beta_j t^{2i+3},$$
+         notice that the terms in the first sum have even degree and in the second sum have odd degree, so they don't add together. Since this polynomial is $0$ for eveyr $t$, we must have $\alpha_i = 0$ and $\beta_j = 0$ for all $i,j$. Thus $r=0$. We obtain that $f\in \langle x^3 - y^2, x^2 - z\rangle$.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise}{13}
+In Exercise $2$ of \S 1, we showed that $x^2 y + y^2 x$ vanishes at all points of $\mathbb{F}_2^2$. More generally, let $I\subseteq \mathbb{F}_2[x,y]$ be the ideal of all polynomials that vanish at all points of $\mathbb{F}_2^2$. The goal of this exercise is to show that $I = \langle x^2 - x, y^2 - y\rangle$.
+\begin{enumerate}
+    \item Show that $\langle x^2 - x, y^2 - y\rangle \subseteq I$.
+    \item Show that every $f\in \mathbb{F}_2[x,y]$ can be written as $A(x^2 - x) + B(y^2 + y) + axy + bx + cy + d$, where $A,B\in \mathbb{F}_2[x,y]$ and $a,b,c,d\in \mathbb{F}_2$.
+    \item Show that $axy + bx + cy + d\in I$ if and only if $a=b=c=d=0$.
+    \item Using parts (b) and (c), complete the proof that $I = \langle x^2 - x, y^2- y\rangle$.
+    \item Express $x^2 y + y^2 x$ as a combination of $x^2 - x$ and $y^2 - y$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item It suffices to show that $x^2 - x$ and $y^2 - y$ vanish at all points of $\mathbb{F}_2^2$, but this is trivial since:
+        $$0^2 - 0 = 0-0 = 0~~\text{and}~~1^2 - 1 = 1-1 = 0.$$
+        \item We write
+        $$f = \sum_{i=1}^n p_i(x) y^i.$$
+        For each $p_i$, we use the division algorithm to write this as
+        $$p_i(x) = q_i(x^2 - x) + r_i,$$
+        where $q_i, r_i\in \mathbb{F}_2[x]$ with $\deg(r_i)<2$. Thus, we can write $r_i(y) = a_i + b_i x$
+        \begin{eqnarray*}
+            f 
+            & = & \sum_{i=1}^n p_i(x) y^i\\
+            & = & \sum_{i=1}^n (q_i (x^2 - x) + r_i)y^i\\
+            & = & (x^2 - x)\sum_{i=1}^n q_i y^i + \sum_{i=1}^n r_i y^i\\
+            & = & (x^2 - x)\sum_{i=1}^n q_i y^i + \sum_{i=1}^n a_i y^i + x\sum_{i=1}^n b_i y^i\\
+            & := & (x^2 - x)A + q_2(y) + xq_1(y),
+        \end{eqnarray*}
+        where $A\in \mathbb{F}_2[x,y]$, and $q_1,q_2\in \mathbb{F}_2[y]$. Use the division algorithm again to write
+        $$q_i(y) = h_i(y^2 - y) + s_i,$$
+        where $h_i, s_i\in \mathbb{F}_2[y]$ with $\deg(s_i)<2$. Thus we can write $s_i(y) = c_i + d_i y$. We get
+        \begin{eqnarray*}
+            f
+            & = & (x^2 - x)A + q_2(y) + xq_1(y)\\
+            & = & (x^2 - x)A + h_2(y^2 - y) + s_2 + xh_1(y^2 - y) + xs_1\\
+            & = & (x^2 - x)A + (h_2 + xh_1)(y^2 - y) + s_2 + xs_1\\
+            & = & (x^2 - x)A + (h_2 + xh_1)(y^2 - y) + c_2 + yd_2 + c_1 x + d_1 xy\\
+            & = & A(x^2 - x) + B(y^2 - y) + c_2 + yd_2 + c_1 x + d_1 xy.
+        \end{eqnarray*}
+        This completes this part.
+        \item Assume that $f(x,y) = axy + bx + cy + d\in I$, this means that $f$ vanishes at all points of $I$. In particular, we see that
+        \begin{eqnarray*}
+            0 & = & f(0,0) = d\\
+            0 & = & f(1,0) = b+d\\
+            0 & = & f(0,1) = c+d\\
+            0 & = & f(1,1) = a+b+c+d.
+        \end{eqnarray*}
+        It follows immediately from this that $a=b=c=d=0$. The converse implication is trivial.
+        \item We just need to prove $I\subseteq \langle x^2 - x, y^2 - y\rangle$. For this, take $f\in I$. As in $(b)$, we can write
+        $$f = A(x^2 - x) + B(y^2 - y) + axy + bx + cy + d,$$
+        where $A,B\in \mathbb{F}_2[x,y]$ and $a,b,c,d\in \mathbb{F}_2$. Since it is obvious that $A(x^2 -x) + B(y^2 - y)\in I$, we see that we must have $axy + bx + cy + d\in I$. But for this to happen, we know from (c) that $a=b=c=d=0$. Thus, we have
+        $$f = A(x^2 - x) + B(y^2 - y)\in I.$$
+        This proves the inclusion.
+        \item We get
+        \begin{eqnarray*}
+            y(x^2 - x) + x(y^2 - y)
+            & = & x^2 y - xy + xy^2 - xy\\
+            & = & x^2 y - 2xy + xy^2\\
+            & = & x^2 y + xy^2.
+        \end{eqnarray*}
+    \end{enumerate}
 \end{proof}
 
 \begin{exercise}{14}
@@ -100,3 +392,128 @@ In the text, we defined $\bI(V)$ for a variety $V\subseteq k^n$. We can generali
     \item As above, so that we get $\bI(\Z^n)=\set{0}$.
 \end{enumerate}
 \end{proof}
+
+\begin{exercise}{16}
+Here is more practice with ideals. Let $f$ be an ideal in $k[x_1,...,x_n]$.
+\begin{enumerate}
+    \item Prove that $1\in I$ if and only if $I = k[x_1,...,x_n]$.
+    \item More generally, prove that $I$ contains a nonzero constant if and only if $I = k[x_1,...,x_n]$.
+    \item Suppose $f,g\in k[x_1,...,x_n]$ satisfy $f^2,g^2\in I$. Prove that $(f+g)^3\in I$.
+    \item Now suppose $f,g\in k[x_1,...,x_n]$ satisfy $f_r, g^s\in I$. Prove that $(f+g)^{r+s-1}\in I$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item Assume that $1\in I$, and take any $f\in k[x_1,...,x_n]$. Then since $I$ is an ideal, it satisfies the absorption law and thus $f = f\cdot 1\in I$. Thus $I = k[x_1,...,x_n]$. The converse implication is trivial.
+        \item Assume $c\in I$ for $0\neq c\in k$. Then since ideals satisfy the absorption law, we get that
+        $$1 = c^{-1}c \in I,$$
+        and part (a) applies to prove that $I = k[x_1,...,x_n]$. The converse implication is again trivial.
+        \item We see that
+        \begin{eqnarray*}
+            (f+g)^3
+            & = & f^3 + 3f^2 g + 3fg^2 + g^3\\
+            & = & (f + 3g)f^2 + (3f + g)g^2\\
+            & \in & I.
+        \end{eqnarray*}
+        \item We see that
+        \begin{eqnarray*}
+            (f+g)^{r+s-1}
+            & = & \sum_{i=0}^{r+s-1} \binom{r+s-1}{i} f^i g^{r+s-1-i}\\
+            & = & \sum_{i=0}^{r-1}  \binom{r+s-1}{i} f^i g^{r+s-1-i} + \sum_{i=r}^{r+s-1}  \binom{r+s-1}{i} f^i g^{r+s-1-i}\\
+            & = & g^s\sum_{i=0}^{r-1}  \binom{r+s-1}{i} f^i g^{(r-1)-i} + f^r\sum_{i=r}^{r+s-1}  \binom{r+s-1}{i} f^{i-r} g^{r+s-1-i}\\
+            & \in & I.
+        \end{eqnarray*}
+    \end{enumerate}
+\end{proof}
+
+\begin{exercise}{17}
+In the proof of Lemma $7$, we showed that $x\notin \langle x^2,y^2\rangle$ in $k[x,y]$.
+\begin{enumerate}
+    \item Prove that $xy\notin \langle x^2,y^2\rangle$.
+    \item Prove that $1, x, y, xy$ are the only monomials not contained in $\langle x^2, y^2\rangle$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item Assume by contradiction that
+        $$xy = x^2 h_1 + y^2 h_2.$$
+        We can write $h_i = \alpha_i + g_i$, where $g_i\in k[x,y]$ does not have a constant term. Thus,
+        \begin{eqnarray*}
+            xy
+            & = & x^2 h_1 + y^2 h_2\\
+            & = & x^2 (\alpha_1 + g_1) + y^2 (\alpha_2 + g_2)\\
+            & = & (\alpha_1 x^2 + \alpha_2 y^2) + (x^2 g_1 + y^2 g_2).
+        \end{eqnarray*}
+        Note that each term of $x^2 g_1 + y^2 g_2$ has degree bigger than $2$, while each term of $xy - \alpha_1 x^2 - \alpha_2 y^2$ has degree $2$. Thus, we must have $x^2 g_1 + y^2 g_2 = 0$ and thus
+        $$xy = \alpha_1 x^2 + \alpha_2 y^2.$$
+        But these are clearly are different polynomials, hence can never be equal.
+        \item Note that $1,x,y$ have degree less than $2$, and as such cannot be a combination of $x^2$ and $y^2$, which must have degree larger or equal than $2$. Together with (a), we see that the monomials $1,x,y,xy$ are not contained in $\langle x^2, y^2\rangle$. Now take any other monomial $x^a y^b$. If $a\leq 1$, then $b\geq 2$, and thus $x^a y^b = y^2 (x^a y^{b-2})\in \langle x^2,y^2\rangle$. If $a\geq 2$, we see that $x^a y^b = x^2 (x^{a-2} y^b)\in \langle x^2, y^2\rangle$. Thus we see that all the other monomials are contained in $\langle x^2, y^2\rangle$.
+    \end{enumerate}
+\end{proof}
+
+\begin{exercise}{18}
+In the text, we showed that $\bI(\{(0,0)\}) = \langle x,y\rangle$ in $k[x,y]$.
+\begin{enumerate}
+    \item Generalize this by proving that the origin $0 = (0,...,0)\in k^n$ has the property that $\bI(\{0\}) = \langle x_1,...,x_n\rangle$ in $k[x_1,...,x_n]$.
+    \item What does part (a) say about polynomials in $k[x_1,...,x_n]$ with zero constant term?
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item Any polynomial of the form $\sum_{k=1}^n A_n x_n$ obviously vanishes at the origin, so clearly $\langle x_1,...,x_n\rangle \subseteq \bI(\{0\})$. Going the other way, suppose that
+        $$f = \sum_{k_1,...,k_n} a_{k_1...k_n} x^{k_1} ... x^{k_n}$$
+        vanishes at the origin. Then $a_{0...0} = f(0,...,0) = 0$ and, consequently,
+        \begin{eqnarray*}
+            f
+            & = & a_{0...0} + \sum_{k_1,...,k_n\neq 0,...,0} a_{k_1...k_n} x^{k_1}...x^{k_n}\\
+            & = & 0 + x_1 \sum_{\substack{k_1,...,k_n\\ k_1>0}} a_{k_1...k_n} x^{k_1-1}...x^{k_n} + x_2\sum_{\substack{k_2,...,k_n\\ k_2 > 0}} a_{0 k_2...k_n} x^{k_2 - 1}...x^{k_n}\\
+            & & + ... + x_{k_n}\sum_{k_n>0} a_{0...0k_n} x^{k_n - 1}\\
+            & \in & \langle x_1,...,x_n\rangle.
+        \end{eqnarray*}
+        This proves the claim.
+        \item The polynomials with zero constant term form an ideal. They form exactly the ideal $\bI(\{0\})$, hence they are exactly the polynomials vanishing at $(0,...,0)$. Since $\bI(\{0\}) = \langle x_1,...,x_n\rangle$, any such polynomial can be written as $A_1 x_1 + ... + A_n x_n$.
+    \end{enumerate}
+\end{proof}
+
+\begin{exercise}{19}
+One of the key ideas of this section is that a system of equations $f_1 = ... = f_s = 0$ gives the ideal $I=\langle f_1,...,f_s\rangle$ of polynomial consequences. Now suppose that the system has a consequence of the form $f=g$ and we take the $m$th power of each side to obtain $f^m = g^m$. In terms of the ideal $I$, this means that $f-g\in I$ should imply $f^m - g^m\in I$. Prove this by factoring $f^m - g^m$.    
+\end{exercise}
+\begin{proof}
+    Assume that $f-g\in I$. Then,
+    \begin{eqnarray*}
+        f^m - g^m
+        & = & (f-g)(f^{m-1} + f^{m-2}g + ... + fg^{m-2} + g^{m-1})\\
+        & \in & I.
+    \end{eqnarray*}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
