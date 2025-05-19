@@ -1,11 +1,5 @@
 \subsection{Continuous functions}
 
-30*
-31*
-
-34*
-35*
-36*
 
 \begin{exercise}{1}
 Given a function $f:S\to T$ and sets $A,B\subseteq S$ and $C,D\subset T$ establish the following:
@@ -406,28 +400,49 @@ Since $f$ is not continuous, then there exists an $x\in M$ such that for any seq
 Let $A$ be an open ball around $x$ with $x$ (and potentially $x'$, if originally in that open ball) removed.
 Thus, we have that $x\in\bar{A}$ and $f(x) \in f(\bar{A})$, however, $f(x)\notin \overline{f(A)}$.
 
-(If $f(\bar{A})\subseteq \overline{f(A)}$, then $f^{-1}(B^\circ) \subseteq (f^{-1}(B))^\circ$)
+($f$ is continuous if and only if $f^{-1}(B^\circ)\subseteq (f^{-1}(B))^{-1}$)
 
-We have $f^{-1}(B^\circ) =\set{x \in M: f(x) \in B^\circ}$, whereas $(f^{-1}(B))^\circ = \set{x \in M: f(x) \in B}^\circ$
+($\Rightarrow$)
+Since $B^\circ\subseteq B$, then $f^{-1}(B^\circ) \subseteq f^{-1}(B)$.
+From the continuity of $f$ and the fact that $B^\circ$ is open, then $f^{-1}(B^\circ)$ is open too.
+Finally, $(f^{-1}(B))^\circ$ is the greatest open set contained in $f^{-1}(B)$ so that $f^{-1}(B^\circ)$ (which we said is open) must be a subset of this greatest open set, as required.
 
-(If $f^{-1}(B^\circ) \subseteq (f^{-1}(B))^\circ$, then $f$ is continuous)
+($\Leftarrow$)
+Suppose $f^{-1}(B^\circ)\subseteq (f^{-1}(B))^\circ$.
+Let $A$ be an open set, so that $A=A^\circ$.
+Thus, by our assumption, $f^{-1}(A)\subseteq (f^{-1}(A))^\circ$.
+However, $(f^{-1}(A))^\circ\subseteq f^{-1}(A)$, since the interior of a set is contained in the set itself. 
+Putting the two containments together, we get that $f^{-1}(A) = (f^{-1}(A))^\circ$, so that $f^{-1}(A)$ is open and thus $f$ is continuous.
 
 (A counterexample for $f(\bar{A}) \neq \overline{f(A)}$)
+Let $f(x)=\arctan(x)$ and let $A=\R$.
+Then $f(\bar{A})=f(A)=(-\pi/2,\pi/2)$, whereas $\overline{f(A)}=\overline{(-\pi/2,\pi/2)}=[-\pi/2,\pi/2]$.
 \end{proof} 
 
 \begin{exercise}{31}
 Let $f: (M,d) \to (N,\rho)$.
 \begin{enumerate}
-    \item If $M =\cup^\infty_{n=1} U_n$ where each $U_n$ is an open set in $M$, and if $f$ is continuous on each $U_n$, show that $f$ is continuous on $M$.
-    \item If $M =\cup^N_{n=1} E_n$ and if each $E_n$ is a closed set in $M$, and if $f$ is continuous on each $E_n$, show that $f$ is continuous on $M$.
-    \item Give an example showing that $f$ can fail to be continuous on all of $M$ if, instead, we use a countably infinite union of closed sets $M = \cup^\infty_{n=1} E_n$ on 2.
+    \item If $M =\bigcup^\infty_{n=1} U_n$ where each $U_n$ is an open set in $M$, and if $f$ is continuous on each $U_n$, show that $f$ is continuous on $M$.
+    \item If $M =\bigcup^N_{n=1} E_n$ and if each $E_n$ is a closed set in $M$, and if $f$ is continuous on each $E_n$, show that $f$ is continuous on $M$.
+    \item Give an example showing that $f$ can fail to be continuous on all of $M$ if, instead, we use a countably infinite union of closed sets $M = \bigcup^\infty_{n=1} E_n$ on 2.
 \end{enumerate}
 \end{exercise}
 \begin{proof}
 \begin{enumerate}
-    \item This means every element of $M$ is an element of an open set and so for every open set around 
-    \item fill
-    \item fill
+    \item We know $f|_{U_n}$ is continuous, so that for an open set $V\in M$.
+    We have $f|_{U_n}^{-1}(V) = \set{x: f|_{U_n}(x)\in V} = f^{-1}(V)\cap U_n$ is open (since it is the intersection of open sets).
+    Since $M=\bigcup_{n=1}^\infty U_n$, then $f(x)=\bigcup_{n=1}^\infty f|_{U_n}(x)$, thus for any open set in $V$, we have
+    \begin{align*}
+        f^{-1}(V) = \bigcup_{n=1}^\infty f^{-1}|_{U_n}(V) = \bigcup_{n=1}^\infty f^{-1}(V)\cap U_n.
+    \end{align*}
+    Since the last equality is the arbitrary union of open sets, it is open, so that $f$ is continuous.
+    \item This proof is essentially the same as above.
+    From Theorem 5.3 we know that the preimage of a closed set for a continuous function is closed;
+    and from Theorem 4.4 we know that the finite union of closed sets is closed (by taking complements and applying deMorgan).
+    With these two theorems and the technique as above we get the desired result.
+    \item Let $M = \set{0} \cup \set{1/n: n \in N}$, which is a countable union of singletons, each of which is a closed set.
+    Now consider the function $f(x)=0$ if $x\neq 0$ and $f(x)=1$ otherwise.
+    In such case, $f$ is continuous on each $E_n$, but $f$ is not a continuous function, as any sequence $x_n\to 0$ will produce $1 =f(0) =f(\lim x_n) \neq \lim f(x_n) =0$.
 \end{enumerate}
 \end{proof} 
 
@@ -437,14 +452,33 @@ This says that $d$ is jointly continuous, that is, continuous as a function of t
 [Hint: If $x_n \to x$ and $y_n \to y$, show that $d(x_n,y_n) \to d(x,y)$].
 \end{exercise}
 \begin{proof}
-fill
+We will ignore the hint.
+Fix $\epsilon>0$, and choose $\delta=\epsilon$.
+Let $(x,y),(x',y')\in M\times M$ with the $d_1$ metric.
+We have 
+\begin{align*}
+    \absoluteValue{d(x,y)-d(x',y')}
+    \leq d(x,x')+d(y,y') 
+    = d_1((x,y),(x',y')) < \delta = \epsilon.
+\end{align*}
+Were the first inequality follows from exercise 1.1.12 in Kreyszig.
 \end{proof} 
 
 \begin{exercise}{35}
 Show that a set $U$ is open in $M$ if and only if $U=f^{-1}(V)$ for some continuous function $f: M \to \R$ and some open set $V$ in $\R$.
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$)
+Suppose $U$ is open.
+We have to find a continuous function $f:M\to\R$ so that for some open set $V$, $f^{-1}(V)=U$.
+Let $f(x) = d(x,M\setminus U) = \inf_{y\in M\setminus U}d(x,y)$.
+We have that $f^{-1}(V) = \set{x\in M: \inf_{y\in M\setminus U}d(x,y)\in V}$.
+Consider $V=(-\infty,0)\cup(0,\infty)$, which is open.
+Since $M\setminus U$ is a closed set (because $U$ is open), then it contains all its limit points.
+Thus, $f(x)=d(x,y)=0$ only if $x\in M\setminus U$ so that $f(x)\neq 0$ if $x\in U$ giving us the desired result.
+
+($\Leftarrow$)
+This is essentially the definition of a continuous function through open sets.
 \end{proof} 
 
 \begin{exercise}{36}
@@ -453,5 +487,7 @@ Does it follow that $x_n \to x$ in $M$?
 Explain.
 \end{exercise}
 \begin{proof}
-fill
+Yes.
+Consider the function $f(y)=d(x,y)$ which is continuous and real valued.
+Thus for a given sequence $x_n\to x$, the assumption implies $f(x_n)\to f(x)$ or $d(x_n,x) \to d(x,x) =0$, giving us the convergence of the sequence.
 \end{proof} 

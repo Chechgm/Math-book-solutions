@@ -390,8 +390,8 @@ Given real numbers $a$ and $b$, establish the following formulas: $\lvert a+b\rv
     \item[(d)] We know that we can approach any real number $r > 1$ with a sequence of rationals. Furthermore, the Bernoulli inequality will hold for all of those rationals that are larger than 1, so as we approach $r > 1$, the Bernoulli inequality will hold. Now, at the limit, this strict inequality holds as a non-strict inequality, thus we can conclude that:
     $$(1+a)^r \geq 1 + ra$$
     Now pick a rational $q$ such that $1 < q < r$ (such a rational always exists). Observe that:
-    $$(1+a)^r = (1+a)^{\frac{rq}{q}} = ((1+a)^q)^{\frac{r}{q}} > (1+qa)^{\frac{r}{q}}$$
-    , where we applied the Bernoulli inequality for $q$. Now, however, $\frac{r}{q}$ is a real number greater than 1, and hence we can use our non-strict inequality above to arrive at the desired result:
+    $$(1+a)^r = (1+a)^{\frac{rq}{q}} = ((1+a)^q)^{\frac{r}{q}} > (1+qa)^{\frac{r}{q}},$$
+    where we applied the Bernoulli inequality for $q$. Now, however, $\frac{r}{q}$ is a real number greater than 1, and hence we can use our non-strict inequality above to arrive at the desired result:
     $$(1+a)^r > (1+qa)^{\frac{r}{q}} \geq 1 + q\frac{r}{q}a = 1 + ra \implies (1+a)^r > 1 + ra.$$
     \end{enumerate}
 \end{proof}
@@ -435,7 +435,7 @@ Given $a,b>0$, show that $\sqrt{ab}\leq \frac{1}{2}(a+b)$ (this is the arithmeti
 Let $p\geq 2$ be a fixed integer, and let $0<x<1$. If $x$ has a finite-length base $p$ decimal expansion, that is, if $x=a_1/p+\dots+a_n/p^n$ with $a_n\neq 0$, prove that $x$ has precisely two base $p$ decimal expansions. Otherwise, show that the base $p$ decimal expansion for $x$ is unique. Characterize the numbers $0<x<1$ that have repeating base $p$ decimal expansions. How about eventually repeating?
 \end{exercise}
 \begin{proof}
-    We consider first the decimal expansion $0.a_1 a_2 \ldots a_n 0 0 \ldots$, with an infinite number of trailing zeros after the $n$-th decimal, and call the $i$-th decimal here $b_i$. As per the book's definition, this corresponds to an infinite series defined as $\sum_{i=1}^{\infty}b_i/p^i$. It's clear that the limit of this sum is $x$, since $x$ is precisely the sum of the first $n$ terms, and all of the terms after $n$ are zero. Thererefore, the expansion above indeed corresponds to $x$.\\
+    We consider first the decimal expansion $0.a_1 a_2 \ldots a_n 0 0 \ldots$, with an infinite number of trailing zeros after the $n$-th decimal, and call the $i$-th decimal here $b_i$. As per the book's definition, this corresponds to an infinite series defined as $\sum_{i=1}^{\infty}b_i/p^i$. It's clear that the limit of this sum is $x$, since $x$ is precisely the sum of the first $n$ terms, and all of the terms after $n$ are zero. Therefore, the expansion above indeed corresponds to $x$.\\
 
     Now consider the decimal expansion corresponding to the series $\frac{a_1}{p} + \frac{a_2}{p^2}+ \ldots + \frac{a_n - 1}{p^n} + \sum_{k=n+1}^{\infty}\frac{p-1}{p^k}$. This would yield a series of decimals the first $n$ of which would equal $a_1, \ldots a_n - 1$ (note that because $a_n \neq 0, a_n -1$ causes no problems), while all decimals after that would equal $p-1$ (call the sequence of digits $c_i$). If we consider the limit of this series, we can see that the last term is a series summing to $\frac{1}{p^n}$, and that the first $n$ terms sum to $x - \frac{1}{p^n}$. Thus, the series as a whole tends to $x$, which means that it \textit{is} a decimal expansion for $x$.\\
 
@@ -562,9 +562,11 @@ As mentioned in the problem, if $M=\limsup_{n\to\infty}a_n=\pm\infty$, then we c
 By modifying the argument in the previous exercise, show that every sequence of real numbers has a monotone subsequence.
 \end{exercise}
 \begin{proof}
-    Assume first that $\limsup_{n\rightarrow \infty} = +\infty$, then by exercise $25$ there is a subsequence of $a_n$ that diverges to $+\infty$. We can then recursively define a subsequence $a_{k_n}\geq \max\{a__{k_1},...,a_{k_{n-1}}\}$, which always exists by the divergence. This is then a monotone subsequence of ($a_n)$. If $\limsup_{n\rightarrow \infty} a_n = -\infty$, then by exercise $25$, we know that $a_n$ diverges to $-\infty$. We can then again recursively define a sequence subsequence $a_{k_n}\leq \max\{a__{k_1},...,a_{k_{n-1}}\}$, which again exists because of the divergence. In exactly the same way, we can treat the case where $\liminf_{n\rightarrow \infty} a_n = \pm\infty$. Thus for the remainder, we can assume that $M = \limsup_{n\rightarrow \infty} a_n$ and $m = \liminf_{n\rightarrow \infty} a_n$ exist, and are thus real numbers.\\
+    Assume first that $\limsup_{n\rightarrow \infty} = +\infty$, then by exercise $25$ there is a subsequence of $a_n$ that diverges to $+\infty$. We can then recursively define a subsequence $a_{k_n}\geq \max\{a_{k_1},...,a_{k_{n-1}}\}$, which always exists by the divergence. This is then a monotone subsequence of ($a_n)$. If $\limsup_{n\rightarrow \infty} a_n = -\infty$, then by exercise $25$, we know that $a_n$ diverges to $-\infty$. We can then again recursively define a sequence subsequence $a_{k_n}\leq \max\{a_{k_1},...,a_{k_{n-1}}\}$, which again exists because of the divergence. In exactly the same way, we can treat the case where $\liminf_{n\rightarrow \infty} a_n = \pm\infty$. Thus for the remainder, we can assume that $M = \limsup_{n\rightarrow \infty} a_n$ and $m = \liminf_{n\rightarrow \infty} a_n$ exist, and are thus real numbers.\\
 
-    
+    Assume first that there are infinitely many elements of the sequence above $M$. Label these elements $(a_{k_n})$. For any $\varepsilon>0$, there must be finitely many elements of the sequence above $M+\varepsilon$. Thus eventually, all the $a_{k_n}$ will be between $M$ and $M+\varepsilon$. We see thus that $a_{k_n}\rightarrow M$. Construct a sequence recursively as follows, if $a_{k_{l_n}}$ has already been chosen, then choose $l_{n+1}$ the index where the sequence $\{a_{k_m}~\vert~m> l_n\}$ has its maximum. Since the sequences converges to $M$ which is below every $a_{k_n}$, this maximum exists and constitutes a decreasing subsequence of $(a_{k_n})$.\\
+
+    Next, assume that there are only finitely many elements above $M$. Without loss of generality, we can assume all elements of the sequence are below $M$. We know that a subsequence $(a_{k_n})$ must converge to $M$.  Construct a sequence recursively as follows, if $a_{k_{l_n}}$ has already been chosen, then choose $l_{n+1}$ the index where the sequence $\{a_{k_m}~\vert~m> l_n\}$ has its minimum. Since the sequences converges to $M$ which is above every $a_{k_n}$, this minimum exists and constitutes an increasing subsequence of $(a_{k_n})$.
 \end{proof}
 
 \begin{exercise}{30}

@@ -1,6 +1,107 @@
 \subsection{Orthogonal complements and direct sums}
 
+1 This is an interesting example where norm convergence gives actual convergence in the Hilbert space
+2
+3 Simple example to reinforce the ideas
+6 Simple example to reinforce the ideas
+7 Some important identites
+9
+10 Two very important theorems related to the orthogonal complement and double complement. Used all the time!
+
 \begin{exercise}{1}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{2}
+Show that the subset $M=\set{y=(y_i): \sum y_i=1)}$ of complex space $\C^n$ (see 3.1-4) is complete and convex.
+Find the vector of minimum norm in $M$.
+\end{exercise}
+\begin{proof}
+(Complete)
+Let $(x^n)$ be a sequence (of sequences) in $M$, so that for each sequence, $\sum_i x^n_i=1$.
+Assume $x^n\to x$, so that for every $\epsilon>0$, we can find an $n\in\N$ such that $\norm{x^n-x}_1<\epsilon$.
+We have
+\begin{align*}
+    \absoluteValue{1-\sum_i x_i}
+    =& \absoluteValue{\sum_i x^n_i - \sum_i x_i}\\
+    =& \absoluteValue{\sum_i x^n_i - x_i}\\
+    \leq& \sum_i\absoluteValue{x^n_i - x_i}
+    <\epsilon.
+\end{align*}
+That is, $x\in M$
+Theorem 1.4-6 states that a closed subset of a complete space is complete.
+Since $\C^n$ is complete, and $M$ is closed, then $M$ is complete.
+
+(Convex)
+For $x,y\in M$ and $a\in[0,1]$, we have
+\begin{align*}
+    \sum_i (ax_i+(1-a)y_i)
+    =& \sum_i ax_i + \sum_i (1-a)y_i\\
+    =& a\sum_i x_i + (1-a)\sum_i y_i\\
+    =& a + (1-a) = 1,
+\end{align*}
+so that $ax+(1-a)y\in M$.
+
+(Vector of minimum norm)
+The norm of a vector $x$ in $\C^n$ is $\sum_i x_i\bar{x}_i$.
+The vector that minimises such norm is $x_i=1/n$ for all $i$.
+\end{proof}
+
+\begin{exercise}{3}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{5}
+Let $X=\R^2$.
+find $M^\perp$ if $M$ is
+\begin{enumerate}
+    \item $\set{x}$, where $x = (x_1,x_2) \neq 0$,
+    \item a linearly independent set $\set{x_1,x_2}\subseteq X$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+\begin{enumerate}
+    \item We can use the Gram-Schmidt process to find the vector orthogonal to $x$.
+    In general, take any $y = (y_1,y_2)\in\R^2$.
+    Then the vector
+    \begin{align*}
+        x' = y -\text{proj}_x(y) = y - \frac{\brackets{x,y}}{\brackets{y,y}}y
+    \end{align*}
+    is orthogonal to $x$.
+    So that $M^\perp = \vecspan{x}$.
+    \item Since the set is linearly independent, its span constitutes a basis of $\R^2$. 
+    Thus, the only vector orthogonal to both of them simultaneously is 0.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise}{6}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{7}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{9}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof}
+
+\begin{exercise}{10}
 fill
 \end{exercise}
 \begin{proof}

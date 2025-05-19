@@ -1,141 +1,84 @@
-\subsection{fill}
+\subsection{The space of continuous functions}
 
-The Space of Continuous Functions
-62
 
-63
-
-64
-
-\begin{exercise}{x}
-fill
+\begin{exercise}{63}
+Let $[a,b]$ be any closed, bounded interval in $\R$, and let $\sigma:[0,1]\to[a,b]$ be defined by $\sigma(t)= a + t(b-a)$.
+Prove that:
+\begin{enumerate}
+    \item $\sigma$ is a homeomorphism.
+    \item $f\in C[a,b]$ if and only if $f\circ \sigma\in C[0,1]$.
+    \item The map $f\mapsto f \circ \sigma$ is an isometry from $C[a,b]$ onto $C[0,1]$.
+    The map $T(f) = f \circ \sigma$ actually does much more;
+    it is both an algebra and a lattice isomorphism.
+    That is, it also preserves the algebraic and the order structures.
+    Specifically, given any $f,g\in C[a,b]$, check that:
+    \item $T(\alpha f + \beta g) = \alpha T(f) + \beta T(g)$, for all $\alpha,\beta\in\R$.
+    \item $T(fg)=T(f)T(g)$.
+    \item $T(f) \leq T(g)$ if and only if $f\leq g$.
+\end{enumerate}
+Thus for all practical purposes, $C[a,b]$ and $C[0,1]$ are identical.
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
+\begin{enumerate}
+    \item Let $\sigma^{-1}(x) = (x-a)/(b-a)$.
+    We have that $\sigma \circ \sigma^{-1} (x) = a + [(x-a)/(b-a)](b-a) = a + x - a = x$, and likewise $\sigma^{-1}\circ\sigma(x) = x$, so that $\sigma^{-1}$ is the inverse of $\sigma$ and thus it is a bijection.
+    Furthermore, a simple $\epsilon-\delta$ argument gives us that both $\sigma$ and $\sigma^{-1}$ are continuous, so that $\sigma$ is a homeomorphism.
+    \item 
+    ($\Rightarrow$)
+    If $f:[a,b]\to\R$ is continuous, then $f\circ \sigma:[0,1]\to\R$ is continuous because the composition of continuous functions is continuous.
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
+    ($\Leftarrow$)
+    Suppose $f\circ\sigma \in C[0,1]$ is continuous.
+    We have $(f\circ\sigma)\circ\sigma^{-1}=f$ is continuous because it is the composition of two continuous functions.
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
+    \item 
+    For the next 4 points, let $f,g\in C[a,b]$.
+    We have 
+    \begin{align*}
+    \sup_{x\in[0,1]}\absoluteValue{T(f)(x)-T(g)(x)} 
+    =& \sup_{x\in[0,1]}\absoluteValue{f\circ\sigma(x) - g\circ\sigma(x)}\\
+    =& \sup_{x\in[0,1]}\absoluteValue{(f-g)\circ\sigma(x)}\\
+    =& \sup_{\substack{y=\sigma(x);\,\\ x\in[0,1]}}\absoluteValue{(f-g)(y)}\\
+    =& \sup_{y\in[a,b]}\absoluteValue{f(y)-g(y)},
+    \end{align*}
+    so that $T$ is an isometry.
+    
+    \item 
+    Let  $f,g \in C[a,b]$ and $h(x) = \alpha f(x) + \beta g(x)$, then,
+    \begin{align*}
+        T(\alpha f + \beta g)(x)
+        =& T(h)(x)\\
+        =& (h\circ\sigma)(x)\\
+        =& h(\sigma(x))\\
+        =& \alpha f(\sigma(x)) + \beta g(\sigma(x))\\
+        =& \alpha(f\circ\sigma)(x) 
+            + \beta (g\circ\sigma)(x)\\
+        =& \alpha T(f) + \beta T(g),
+    \end{align*}
+    as required.
+    
+    \item
+    Now let $h(x) = f(x)g(x)$, we then have 
+    \begin{align*}
+        T(fg)(x)
+        =& T(h)(x)\\
+        =& (h\circ \sigma)(x)\\
+        =& h(\sigma(x))\\
+        =& f(\sigma(x))g(\sigma(x))\\
+        =& (f\circ\sigma)(x)(g\circ\sigma)(x)\\
+        =& T(f)T(g)(x),
+    \end{align*}
+    as required.
+    
+    \item $T(f) \leq T(g)$ if and only if $f\leq g$.
+    We have
+    \begin{align*}
+        T(f)(x) \leq& T(g)(x) &&\iff\\
+        (f \circ \sigma)(x) \leq& (g \circ \sigma)(x) &&\iff\\
+        (f-g) \circ \sigma(x) \leq& 0 &&\iff\\
+        (f-g) \leq& 0 &&\iff\\
+        f \leq& g
+    \end{align*}
+    Where the second to last line follows from the fact that the inequality most hold for all $y\in[a,b]$, and so it must also be the case for all $\sigma(x)\in[a,b]$ and $x\in[0,1]$.
+\end{enumerate}
 \end{proof} 

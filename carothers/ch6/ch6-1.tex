@@ -1,0 +1,177 @@
+\subsection{Connected sets}
+
+
+\begin{exercise}{1 Lemma 6.3}
+Let $E$ be a subset of a metric space $M$.
+If $U$ and $V$ are disjoint open sets in $E$, then there are disjoint open sets $A$ and $B$ in $M$ such that $U=A\cap E$ and $V=B\cap E$.
+\end{exercise}
+\begin{proof}
+As a notational matter, we use $B_\epsilon(x)$ instead of $B_\epsilon^M(x)$.
+For each $x\in U$ there is an $\epsilon_x>0$ such that $E\cap B_{\epsilon_x}(x)\subseteq U$, because $U$ is open in $E$.
+Likewise, for each $y\in V$, there is a $\delta_y>0$, such that $E\cap B_{\delta_y}(y)\subset V$.
+Since $U\cap Y = \emptyset$, we also get $E\cap B_{\epsilon_x}(x)\cap B_{\delta_y}(y) = \emptyset$.
+We would like to get rid of the set $E$ in this conclusion and we do so at a small price:
+
+Claim: $B_{\epsilon_x/2}(x)\cap B_{\delta_y/2}(y) = \emptyset$ for every $x\in U$ and $y\in V$. 
+
+Suppose this is not the case.
+That is, there is $x\in U\subseteq E$ with $x\in B_{\epsilon_x/2}(x)$ and $y\in V$ such that $x\in B_{\delta_y/2}(y)$.
+But then $x\in E \cap B_{\epsilon_x} \cap B_{\delta_y}(y)$, since $x$ belongs to a subset of each of these sets, a contradiction.
+Thus the claim must be true.
+
+Now choose $A = \bigcup \set{B_{\epsilon_x/2}(x): x\in U}$ and $B = \bigcup\set{B_{\delta_y/2}: y\in V}$, giving us the desired open sets.
+\end{proof} 
+
+\begin{exercise}{5}
+If $E$ and $F$ are connected subsets of $M$ with $E\cap F \neq \emptyset$, show that $E\cup F$ is connected.
+\end{exercise}
+\begin{proof}
+From Theorem 6.1 we know that $E$ is connected if and only if its only clopen sets are $E$ and $\emptyset$.
+We have that the only clopen sets of $E\cup F$ are $E\cup F$ and $\emptyset$.
+Suppose this was not the case, that is, there is a set $A\neq\emptyset$ and $A\neq E\cup F$ clopen in $E\cup F$.
+Thus $E\cap A$ would be clopen in $E$, as it is the intersection of an open set with an open set and an intersection of a closed set with a closed set.
+We have to explore three cases now. 
+
+i) If $E \cap A \neq E$ and $E\cap A\neq \emptyset$, we get a contradiction, as then $E$ would not be itself connected.
+
+ii) If $E \cap A = E$, then $E$ is still connected, but then $F\cap A$, which is not itself $E\cup F$, by assumption; but also nonempty, since $F\cap E\neq \emptyset$, is clopen in $F$.
+
+iii) If $E\cap A = \emptyset$, then $E$ is still connected, but then $A\cap F \subset F\setminus(F\cap E)\subset F$ is clopen in $F$, so that $F$ itself would not be connected.
+
+Hence, $E\cup F$ and $\emptyset$ are the only clopen subsets of $E\cup F$ so that by Theorem 6.1, $E\cup F$ is connected.
+\end{proof} 
+
+\begin{exercise}{6}
+More generally, if $\CCC$ is a collection of connected subsets of $M$, all having a point in common, prove that $\bigcup\CCC$ is connected.
+Use this to give another proof that $\R$ is connected.
+\end{exercise}
+\begin{proof}
+We will follow a similar approach as the previous exercise.
+Suppose for the sake of contradiction, that there exists a subset $A\subseteq\bigcup\CCC$ with $A\neq\emptyset$ and $A\neq\bigcup\CCC$.
+
+i) If there exists $C\subseteq\CCC$ such that $A\cap C\neq \empty$ and $A\cap C\neq C$, then $A\cap C$ is clopen in $C$ and $C$ is not connected.
+
+ii) Now suppose that $A\cap C=\emptyset$ for all but $C'\in\CCC$ (this is guaranteed because $A\neq\emptyset$ and $A\subseteq\bigcup\CCC$).
+Then $A\cap C'=C'$ is the only way in which $C'$ is also connected, but this is not possible, because by assumption $C'$ contains a point that is also in all other $C\in\CCC$.
+Thus, $A\cap C'$ must be a proper clopen subset of $C'$, giving us that $C'$ is not connected, a contradiction.
+
+iii) Likewise, suppose that $A\cap C$ for all but $C'\in\CCC$ (this is guaranteed because $A\neq\bigcup\CCC$).
+Then $A\cap C'\neq\emptyset$, because there is a point common to all $C\in\CCC$, thus $A\cap C'$ is a proper clopen subset of $C'$ and thus $C'$ is not connected, a contradiction.
+
+To see $\R$ is connected, consider $\bigcup_n [-n,n]$.
+\end{proof} 
+
+\begin{exercise}{7}
+If every pair of points in $M$ is contained in some connected set, show that $M$ is itself connected.
+\end{exercise}
+\begin{proof}
+This is a corollary to the previous exercise.
+We can construct a collection of connected subsets, $\CCC$, of $M$, all having a point in common, with $\bigcup\CCC=M$ as follows.
+Choose any point in $x\in M$ and for any other element $y\in M$, let $C_y$ be the connected set containing $x$ and $y$.
+We have that $\bigcup_{y\in M\setminus\set{x}}C_y =\bigcup\CCC =M$, all $C_y$ connected and $x\in C_y$ for all $y$ so that exercise 6 applies giving us the desired result.
+\end{proof} 
+
+\begin{exercise}{9}
+If $A \subseteq B \subseteq \bar{A} \subseteq M$, and if $A$ is connected, show that $B$ is connected.
+In particular $\bar{A}$ is connected.
+\end{exercise}
+\begin{proof}
+Suppose, for the sake of contradiction, that $B$ is not connected, so that we can write $B$ as the union of two nonempty disjoint open sets in $B$, say $C$ and $D$.
+We now explore two cases.
+
+i) If the sets $C\cap A$ and $D\cap A$ are open and nonempty in $A$, then $A$ is not connected because their union is $A$ (because their union is $B$ intersected with $A$, which is $A$).
+
+ii) Without loss of generality, suppose $C\cap A=A$ and thus $D\cap A=\emptyset$. 
+Then it is not the case that $D$ was originally open.
+To see this, notice that all the elements in $B\setminus A$ are limit points of $A$.
+Thus, since $A\subseteq C$, then all the points in $B\setminus A$ are also limit points of $C$, including all the points in $D$.
+So take any $x\in D$ and any $\epsilon>0$. 
+We have that $B_\epsilon(x)\cap C\neq\emptyset$, so that for no $\epsilon>0$, $B_\epsilon(x)\subseteq D$ and thus $D$ is not open, giving us a contradiction.
+\end{proof} 
+
+\begin{exercise}{12}
+If $M$ is connected and has at least two points, show that $M$ is uncountable.
+[Hint: Find a nonconstant, continuous real-valued function on $M$].
+\end{exercise}
+\begin{proof}
+Fix $a\in M$ and consider the real-valued function given by $f(x)=d(a,x)$.
+Since $f$ is continuous and $M$ is connected, by Theorem 6.6, $f(M)$ is connected.
+$f(M)$ is neither a singleton, nor empty, since $d(a,a)=0$ and $d(x,a)\neq 0$ for $x\neq a$, so that by Theorem 6.4, which tells us that the connected subsets of $\R$ are intervals, we can conclude that $M$ is itself uncountable.
+\end{proof} 
+
+\begin{exercise}{13}
+If $f:[a,b]\to[a,b]$ is continuous, show that $f$ has a fixed point; that is, show that there is some point $x$ in $[a,b]$ with $f(x)=x$.
+\end{exercise}
+\begin{proof}
+Consider the continuous function given by $g(x)=x-f(x)$, whose range contains 0, as $a-f(a)\leq 0$ and $b-f(b)\geq 0$
+By Corollary 6.7, $g$ assumes every value between $g(a)$ and $g(b)$, thus $0=x-f(x)$ for some $x$ and $f(x)=x$, as required.
+\end{proof} 
+
+\begin{exercise}{16}
+If $f:\R\to\R$ is continuous and one-to-one, show that $f$ is strictly monotone.
+\end{exercise}
+\begin{proof}
+Suppose, for the sake of contradiction, that $f$ is not strictly monotone but $f$ is continuous and one-to-one.
+Thus, there exist $x<y<z\in\R$ so that $f(x)>f(y)$; 
+that is, $f$ is decreasing in $I=[x,y]$, and $f(z)>f(y)$;
+that is, $f$ is increasing in $I'=[y,z]$.
+By Corollary 6.7, and the fact that $f$ is continuous, then $f$ assumes every value in $f(I)=[f(y),f(x)]$, and every value in $f(I')=[f(y),f(z)]$.
+But notice that in such case $f$ cannot be one-to-one, as for any real in $f(y)\pm\min[f(x)-f(y), f(z)-f(y)]$, there must be an $a\in I$ and an $a'\in I'$ such that $f(a)=f(a')$.
+\end{proof} 
+
+\begin{exercise}{26}
+Let $f:[0,1]\to\R$ be defined by $f(x)=\sin(1/x)$ for $x\neq 0$ and $f(0)=0$.
+Show that although $f$ is not continuous, the graph of $f$ is a connected subset of $\R^2$.
+[Hint: Use exercise 9].
+\end{exercise}
+\begin{proof}
+Notice that $f$ is continuous on $(0,1]$ so that by Theorem 6.6, since $(0,1]$ is connected, then $f((0,1])$ is connected too.
+Furthermore, by Lemma 6.9, we have that the set $A=\set{(x,f(x)): x\in (0,1]}$ is connected too.
+Notice that the point $(0,0)\in\bar{A}$ so that by exercise 9 we can conclude that the graph of $f$ is indeed connected.
+\end{proof} 
+
+\begin{exercise}{27}
+Let $V$ be a normed vector space, and let $x\neq y\in V$.
+Show that the map $f(t)=x-t(y-x)$ is a homeomorphism from $[0,1]$ into $V$.
+The range of $f$ is the line segment joining $x$ and $y$, and it is often written $[x,y]$ (since $f$ is a homeomorphism, this interval notation is justified).
+[Hint: that $f$ is continuous and one-to-one is easy; next show that if $f(t_n)\to z$, then $(t_n)$ converges to some $t$ in $[0,1]$ with $z=f(t)$].
+\end{exercise}
+\begin{proof}
+To see $f$ is continuous, let $\epsilon>0$ and $\absoluteValue{t-s}<\epsilon/\norm{x-y}$.
+We have
+\begin{align*}
+    \norm{f(t)-f(s)} 
+    = \norm{x+t(y-x)-x-s(y-x)}
+    = \norm{y-x}\absoluteValue{t-s}
+    < \epsilon.
+\end{align*}
+
+Now suppose $f(t)=f(x)$, we then have
+\begin{align*}
+    &x-t(y-x) = x-s(y-x) &&\iff\\
+    &t(y-x) = s(y-x) &&\iff\\
+    &ty-tx = sy-sx &&\iff\\
+    &(t-s)(y-x) = 0.
+\end{align*}
+Since $y\neq x$ then it must be the case that $t-s=0$, so that $t=s$ and $f$ is one-to-one.
+In addition, $f$ is surjective onto its range, giving us that $f$ is bijective.
+
+Finally, suppose $f(t_n)\to z = f(t)$.
+The existence of $t$ is guaranteed by the surjectivity of $f$.
+Thus, $x+t_n(y-x) \to x+t(y-x)$ implies $t_n(y-x) \to t(y-x)$ so we have that $t_n(y-x)-t(y-x) \to 0$;
+that is $\norm{(t_n-t)(y-x)}=\absoluteValue{t_n-t}\norm{y-x}\to 0 $.
+Since $\norm{y-x}\neq 0$ and fixed, it must be the case that $\absoluteValue{t_n-t}\to 0$.
+By Theorem 5.5, in conjunction with the continuity of $f$, we get that $f$ is a homeomorphism, as desired. 
+\end{proof} 
+
+\begin{exercise}{28}
+Deduce from exercises 7 and 27 that any normed space $V$ is connected.
+\end{exercise}
+\begin{proof}
+In the previous exercise, we concluded that any pair of points $x,y\in V$ are in a set that is homeomorphic to $[0,1]$.
+We also know from Theorem 6.4 that $[0,1]$ is connected.
+Since connectedness is a topological property (it is a property that can be written in terms of open sets), then it is preserved by homeomorphisms.
+Suppose then $f$ is the homeomorphism between $[0,1]$ and the range of $f$, which is a subset of $V$ containing $x$ and $y$ (consider $f(0)$ and $f(1)$).
+By exercise 27, the range of $f$ is connected.
+Since this is true for any $x$ and $y$ in $V$, by exercise 7 we have that $V$ is itself connected, as required.
+\end{proof} 

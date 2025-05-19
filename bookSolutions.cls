@@ -102,14 +102,27 @@
 \Crefname{thm}{Theorem}{Theorems}
 
 % Exercise with box
-\usepackage{mdframed}
-\mdfdefinestyle{exercise-box}{backgroundcolor=gray!20,
-                                topline=false,bottomline=false,rightline=false,
-                                linewidth=0.075cm,linecolor=gray!80}
-\newenvironment{exercise}[2][Exercise]
-    { \begin{mdframed}[style=exercise-box] \sloppy\textbf{#1 #2}  \\}
-    {  \end{mdframed}}
+%\usepackage{mdframed}
+% \mdfdefinestyle{exercise-box}{backgroundcolor=gray!20,
+%                                 topline=false,bottomline=false,rightline=false,
+%                                 linewidth=0.075cm,linecolor=gray!80}
+% \newenvironment{exercise}[2][Exercise]
+%     { \begin{mdframed}[style=exercise-box] \sloppy\textbf{#1 #2}  \\}
+%     {  \end{mdframed}}
 
+% Exercise with box, and no break errors.
+\usepackage{tcolorbox}
+\newtcolorbox{exercise}[1]
+{
+  colframe = black!25,
+  /tcb/leftrule  =0.5mm,
+  /tcb/rightrule =0.5mm,
+  /tcb/bottomrule=0.5mm,
+  colback  = gray!10,
+  coltitle = black!20!black,
+  fonttitle= \bfseries,
+  title    = {Exercise #1}
+}
 
 \setcounter{tocdepth}{2}
 % For the table of contents (toc), if you have *sections, use the following command to add to toc:

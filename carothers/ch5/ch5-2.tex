@@ -1,157 +1,341 @@
-\subsection{fill}
-
-Homeomorphisms
-43*
-44*
-45
-46*
-47
-48*
-49
-50
-51L
-
-52*
-53*
-54*
-55*
-56*
-57*
-58
-60
-61
+\subsection{Homeomorphisms}
 
 
-
-\begin{exercise}{x}
-fill
+\begin{exercise}{43}
+If you are not already convinced, prove that two metrics $d$ and $\rho$ on a set $M$ are equivalent if and only if the identity map on $M$ is a homeomorphism from $(M,d)$ to $(M,\rho)$
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$)
+Suppose $d$ and $\rho$ are equivalent, so that  $x_n\xrightarrow[]{d}x$ if and only if $x_n\xrightarrow[]{\rho}x$.
+Let $x\in M$ and let $(x_n)$ be an arbitrary sequence in $M$ converging to $x$.
+We have $i(x_n)=x_n\xrightarrow[]{\rho}x=i(x)$ so that $i$ is continuous.
+The technique works mutatis mutandis for $i^{-1}$ so that the metric spaces are homeomorphic.
+
+($\Leftarrow$)
+Suppose the identity is a homemorphism from $(M,d)$ to $(M,\rho)$.
+Thus, if $x_n\xrightarrow[]{d} x$, then it holds that $i(x_n)\xrightarrow[]{\rho} i(x)$; that is $x_n\xrightarrow[]{\rho} x$.
+Putting this together with the same result for $i^{-1}$ tells us that the metric spaces are equivalent.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{44}
+Check that the relation ``is homeomorphic to'' is an equivalence relation on pairs of metric spaces.
 \end{exercise}
 \begin{proof}
-fill
+Let $X, Y, Z$ be metric spaces.
+
+Reflexivity:
+We have that the identity function is a bijective continuous function from any set to itself so that $X\sim X$.
+The inverse of the identity function is itself.
+
+Symmetry:
+Let $X\sim Y$, so that there exists continuous bijective functions $f:X\to Y$ and $f^{-1}:Y\to X$.
+We then have that $Y\sim X$, because $f^{-1}$ is a bijective continuous function from $Y$ to $X$ which has an inverse with the same properties;
+namely $f$.
+
+Transitivity:
+Let $X\sim Y$ and $Y\sim Z$, so that there exist functions (and their inverses) $f:X\to Y$ and $g:Y\to Z$ that are continuous and bijective.
+We know that the composition of continuous bijective functions are continuous and bijective, so that $g\circ f:X\to Z$ is a continuous bijective function from $X$ to $Z$ with (continuous and bijective) inverse $f^{-1}\circ g^{-1}: Z\to X$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{45}
+Prove that $\N$ (with its usual metric) is homeomorphic to $X=\set{(1/n):n\geq 1}$ (with its usual metric).
 \end{exercise}
 \begin{proof}
-fill
+Consider the function $f:\N\to X$ given by $n\mapsto 1/n$.
+Now we will prove that $f$ is a homeomorphism through Theorem 5.5 and closed sets.
+
+($\Rightarrow$) 
+First, let $E$ by any closed set in $\N$, thus $E$ is a set composed of isolated points (because for every $n$ and every $\epsilon<1$ the only point in  $B_\epsilon(n)$ is $n$).
+Furthermore $f(E)=\set{1/n: n\in E}$ is a set of isolated points as well, and hence closed (since the points are isolated, $E$ has no limit points and thus its closure is itself, and moreover).
+
+($\Leftarrow$)
+This proof is essentially the same, starting from a closed set $f(E)\subseteq X$, noticing that $f(E)$ must be composed of isolated points, and the preimage of $f$ must give a set of isolated points in $\N$.
+The fact that $f(E)$ is closed comes from the fact that $0$, the only possible limit point of $X$ is  not part of $X$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{46}
+Show that every metric space is homeomorphic to one of finite diameter.
+[Hint: every metric is equivalent to a bounded metric].
 \end{exercise}
 \begin{proof}
-fill
+We proved in exercise 3.42 that any metric $d$ is equivalent to $d'(x,y)=\min\set{d(x,y), 1}$;
+Furthermore, $d'$ has finite diameter, given that the maximum distance between two points is 1.
+As explained in the main text, and proved in exercise 43, the identity function is a homeomorphism between $(X,d)$ and $(X,d')$, as required.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{48}
+Prove that $\R$ is homeomorphic to $(0,1)$ and that $(0,1)$ is homeomorphic to $(0,\infty)$.
+Is $\R$ isometric to $(0,1)$?
+To $(0,\infty)$?
+Explain
 \end{exercise}
 \begin{proof}
-fill
+($\R \cong (0,1)$)
+Consider the ``sigmoid'' function $\sigma: \R \to (0,1)$ defined by 
+\begin{align}
+    \sigma(x) = \frac{1}{1+e^{-x}}.
+\end{align}
+This function is bijective and continuous and its inverse $\sigma^{-1}(x) = \ln(x)-\ln(1-x)$ is also bijective and continuous, giving us the desired homemorphism.
+
+($(0,1) \cong (0,\infty)$)
+Consider the function $f:(0,1)\to (0,\infty)$ given by $x\mapsto x/(1-x)$.
+This function is bijective and continuous in the given domain, and furthermore its inverse $f^{-1}(x) = x/(1+x)$ is also bijective and continuous, giving us the homeomorphism.
+
+$\R$ is not isometric to $(0,1)$ because the supremum of the distance with the usual metric attained by $(0,1)$ is 1 whereas the distance between -1 and 1 is already 2.
+
+$\R$ is also not isometric to $(0,\infty)$.
+Consider the point $1/2$.
+In $\R$ there are two points within distance 1 of $1/2$: -.5 and .5 whereas in $(0,\infty)$ there is only one such point: .5.
+An isometry should preserve the number of points that are within a specific distance of one point, giving us that the two are not isometric.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{49}
+Let $V$ be a normed vector space.
+Given a fixed vector $y\in V$, show that the map $f(x)=x+y$ (translation by $y$ is an isometry on $V$.
+Given a nonzero scalar $a\in\R$, show that the map $g(x)=ax$ (dilation by $a$ is a homeomorphism on $V$.
 \end{exercise}
 \begin{proof}
-fill
+(Translation)
+For $x,x'\in V$, we have
+\begin{align*}
+    \norm{f(x)-f(x')}
+    =& \norm{x+y-x'-y}
+    = \norm{x-x'},
+\end{align*}
+so that the function is an isometry.
+
+(Dilation)
+Consider the function $f^{-1}:V\to V$ given by $x\mapsto (1/a)x$.
+We have $f\circ f^{-1}(x) = f((1/a)x) = x$ and $f^{-1}\circ f(x) = f^{-1}(ax) =x$.
+Thus $f$ has an inverse.
+Furthermore both functions are continuous (sketch: let $\norm{x-x'}<\delta=\epsilon/\absoluteValue{a}$)
+\begin{align*}
+ \norm{f(x)-f(x')} = \norm{ax-ax'} = \absoluteValue{a}\norm{x-x'} <\absoluteValue{a}\delta,
+\end{align*}
+so that $f$ is a homeomorphism on $V$.
+\end{proof}
+
+\begin{exercise}{52}
+Let $f:(M,d)\to(N,\rho)$ be one-to-one and onto.
+Then the following are equivalent:
+\begin{enumerate}
+    \item $f$ is a homeomorphism.
+    \item $x_n\xrightarrow[]{d}x \iff f(x_n)\xrightarrow[]{\rho}f(x)$.
+    \item $G$ is open in $M$ $\iff$ $f(G)$ is open in $N$.
+    \item $E$ is closed in $M$ $\iff$ $f(E)$ is closed in $N$.
+    \item $\hat{d}(x,y)=\rho(f(x),f(y))$ defines a metric on $M$ equivalent to $d$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+($f$ homeomorphism $\iff$ [$x_n\xrightarrow[]{d}x \iff f(x_n)\xrightarrow[]{\rho}f(x)$])
+
+($\Rightarrow$)
+Suppose $f$ is a homeomorphism.
+Then $f$ is continuous.
+Let $(x_n)$ with $x_n\to x$ in $M$, we have that $f(x_n)\to f(x)$ because of the continuity of $f$.
+Conversely, suppose $f(x_n)\to f(x)$.
+Since $f$ is a homeomorphism, we have that $f^{-1}$ is continuous.
+Thus $x_n = f^{-1}(f(x_n)) \to f^{-1}(f(x)) = x$, as required.
+
+($\Leftarrow$)
+Suppose $x_n\xrightarrow[]{d}x \iff f(x_n)\xrightarrow[]{\rho}f(x)$.
+By Theorem 5.1 $f$ is continuous.
+Moreover, let $f^{-1}(y)=x$ if $f(x)=y$.
+Then we have $f^{-1}(x_n)\to f^{-1}(x) \iff x_n = f^{-1}(f(x_n)) \to f^{-1}(f(x)) = x$, so that applying Theorem 5.1 once again, we get that $f^{-1}$ is continuous as well.
+Thus $f$ is a homeomorphism.
+
+($f$ homeomorphism $\iff$ [$G$ is open in $M$ $\iff$ $f(G)$ is open in $N$])
+
+($\Rightarrow$)
+Suppose $f$ is a homeomorphism.
+Let $G$ be open in $M$, since $f^{-1}$ is continuous, then the preimage of $f^{-1}$ of $G$, that is $f(G)$ is open in $N$.
+Conversely, let $f(G)$ be open in $N$.
+Then the preimage of $f$ of $G$, that is $f^{-1}(f(G))=G$ is open in $M$, as required.
+
+($\Leftarrow$)
+Suppose $G$ is open in $M$ $\iff$ $f(G)$ is open in $N$.
+We have that if $G=f^{-1}(f(G))$ is open in $M$, then $f(G)$ is open in $N$, so that $f^{-1}$ is continuous. 
+Likewise, $f(G)$ is open in $N$ implies $f^{-1}(f(G))=G$ is open in $M$, so that $f$ is continuous.
+Thus, $f$ is a homeomorphism.
+
+($f$ homeomorphism $\iff$ [$E$ is closed in $M$ $\iff$ $f(E)$ is closed in $N$])
+
+This is essentially the same result as with open sets, noticing that the preimage of continuous maps map closed sets to closed sets, as proven in Theorem 5.1.
+
+($f$ is a homeomorphism $\iff$ $\hat{d}(x,y)=\rho(f(x),f(y))$ is an equivalent metric to $d$)
+
+This is a corollary to the fact that $f$ is a homeomorphism if and only if $x_n\xrightarrow[]{d}x \iff f(x_n)\xrightarrow[]{\rho}f(x)$.
+This is the case because the equivalence between two metrics implies they produce the same convergent sequences, which is precisely what $x_n\xrightarrow[]{d}x \iff f(x_n)\xrightarrow[]{\rho}f(x)$ means.
+That is, $d(x_n,x)\to 0$ is the same as $x_n\xrightarrow[]{d} x$ which we proved is a necessary and sufficient condition of $f(x_n)\xrightarrow[]{\rho}f(x)$ which is equivalent to $\rho(f(x_n), f(x))\to 0$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{53}
+Suppose that we are given a point $x$ and a sequence $(x_n)$ in a metric space $M$, and suppose that $f(x_n)\to f(x)$ for every continuous real-valued function $f$ on $M$.
+Prove that $x_n\to x$ in $M$.
 \end{exercise}
 \begin{proof}
-fill
+Consider the function $f:M\to\R$ given by $f(y)=d(x,y)$.
+Since $f(x_n)\to f(x)$, then $d(x_n,x)\to d(x,x) =0$, so that $x_n\to x$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{54}
+Let $f:(M,d)\to(N,\rho)$ be one-to-one and onto.
+Prove that the following are equivalent:
+\begin{enumerate}
+    \item $f$ is a homeomorphism.
+    \item $g:N\to \R$ is continuous if and only if $g\circ f:M\to\R$ is continuous.
+\end{enumerate}
+[Hint: Use the characterization given in Theorem 5.5(ii)].
 \end{exercise}
 \begin{proof}
-fill
+($f$ is a homeomorphism $\Rightarrow$ [$g$ is continuous if and only if $g\circ f$ is continuous]) 
+Suppose $f$ is a homeomorphism so that $f$ and $f^{-1}$ are continuous.
+
+($\Rightarrow$) 
+Suppose $g$ is continuous.
+Since the composition of continuous functions is continuous, then $g\circ f$ is continuous, as required.
+
+($\Leftarrow$)
+Suppose $g\circ f$ is continuous.
+Consider $(g\circ f)\circ f^{-1}=g$ which is the composition of a continuous function ($g\circ f$) and a continuous function ($f^{-1}$), thus $g$ is continuous, as required.
+
+($f$ is a homeomorphism $\Leftarrow$ [$g$ is continuous if and only if $g\circ f$ is continuous]) 
+Consider the function $g(x) = \rho(x,f(y))$.
+$g$ is continuous for all $y$, so that $g\circ f$ is continuous by assumption.
+Let $(x_n)$ be a sequence in $M$ with $x_n\to y$.
+We have $g\circ f(x_n) = \rho(f(x_n),f(y)) \to \rho(f(y),f(y)) =0$.
+That is, $f(x_n)\to f(y)$ whenever $x_n\to y$, which is the same as $f$ being continuous.
+
+We will now prove that $f^{-1}$ is continuous.
+First, notice that by assumption $g$ is continuous if and only if $g\circ f$ is continuous. 
+Let $g=h\circ f^{-1}$ for $h:M\to \R$.
+Then we have that $g=h\circ f^{-1}$ is continuous if and only if $g\circ f =h\circ f^{-1}\circ f =h$ is continuous.
+This gives us a condition symmetric to that of the previous proof, with which we can prove that $x_n\to y$ whenever $f(x_n)\to f(y)$.
+This is equivalent to $f^{-1}$ being continuous.
+Alternatively Theorem 5.5.ii., as the hint suggests, tells us that $f$ is a homeomorphism, as required.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{55}
+Let $f:(M,d)\to(N,\rho)$ be a homeomorphism.
+Prove that $M$ is separable if and only if $N$ is separable.
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$) 
+We know $M$ is separable if and only if there exists a countable subset $M'$, so that $\overline{M'}=M$.
+That is, for any $x\in M$, there exists a sequence $(x_n)$ in $M'$ with $x_n\to x$.
+Let $y\in f(M)$, so that $f(x)=y$ and find a sequence $(x_n)\to x$ where $x_n\in f(M')$.
+Because $f$ is continuous, we have that $x_n\to x$ if and only if $f(x_n)\to f(x)=y$, giving us that $f(M')$ is countable and dense in $f(M)$.
+
+($\Leftarrow$)
+The essential results we used in the proof above are biconditional so that the proof of the converse follows using the same technique, mutatis mutandis.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{56}
+Let $f:(M,d)\to (N,\rho)$.
+\begin{enumerate}
+    \item We say that $f$ is an open map if $f(U)$ is open in $N$ whenever $U$ is open in $M$;
+    that is, $f$ maps open sets to open sets.
+    Give examples of a continuous map that is not open and an open map that is not continuous.
+    [Hint: Please note that the definition depends on the target space $N$].
+    \item Similarly, $f$ is called closed if it maps closed sets to closed set.
+    Give examples of a continuous map that is not closed and a closed map that is not continuous.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item 
+    (Continuous map that is not open)
+    Consider the set $X=\set{1,2}$, the trivial topology on $X$ $\tau$ and the discrete topology on $\tau'$ on $X$.
+    Now consider the function $f:(X,\tau')\to (X,\tau)$ given by $f(x)=x$.
+    The function is continuous because any function on the discrete topology is continuous.
+    On the other hand the function is not open.
+    Take $f(\set{1})=\set{1}$ so that an open set is not mapped to an open set.
+
+    (Open map that is not continuous)
+    On the setup above, the function $f^{-1}$ is open but not continuous.
+    $f^{-1}$ is open, given that $f^{-1}(\emptyset)=\emptyset$ and $f^{-1}(X)=X$, so that open sets are mapped to open sets.
+    On the other hand, $f(\set{1})=\set{1}$, so that the preimage of open sets are not open.
+    
+    \item
+    (Continuous map that is not closed)
+    $f$ above is an example of this, given that $\set{1}$ is a closed set in the discrete topology but $\set{1}$ is not on the trivial topology.
+
+    (Closed map that is not continuous)
+    The function $f^{-1}$ above is closed but not continuous.
+\end{enumerate}
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{57}
+Let $f:(M,d)\to(N,\rho)$ be one-to-one and onto.
+Show that the following are equivalent
+\begin{enumerate}
+    \item $f$ is open.
+    \item $f$ is closed.
+    \item $f^{-1}$ is continuous.
+\end{enumerate}
+Consequently, $f$ is a homeomorphism if and only if both $f$ and $f^{-1}$ are open (closed).
 \end{exercise}
 \begin{proof}
-fill
+We have that $f^{-1}$ is continuous if and only if $f$ maps open sets to open sets;
+that is, if and only if $f$ is open.
+The same result holds for closed sets, giving us the desired equivalence.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{58}
+Let $f:(M,d)\to(N,\rho)$ be one-to-one and onto.
+Prove that $f$ is a homeomorphism if and only if $f(\overline{A})=\overline{f(A)}$ for every subset $A$ of $M$.
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$)
+Suppose $f$ is a homeomorphism.
+
+($\subseteq$)
+Let $y\in f(\overline{A})$ with $f(x)=y$ for some $x\in\overline{A}$.
+If $x\in A$, then $y=f(x)\in \overline{f(A)}$, thus suppose $x\in \overline{A}\setminus A$;
+that is, $x$ is a limit point of $A$.
+Then there exists a sequence $(x_n)$ in $A$ such that $x_n\to x$, this gives us a sequence $(f(x_n))$ in $f(A)$ which we would like to converge to $f(x)=y$.
+Since $f$ is a homeomorphism, $f(x_n)\to f(x)=y$, as required.
+
+($\supseteq$)
+Let $y\in\overline{f(A)}$, so that $y$ is either in $f(A)$ or it is a limit point of it. 
+In the first case we would have that $y\in f(\overline{A})$ so suppose $y=f(x)$ is a limit of $f(A)$.
+This implies there exists a sequence $(f(x_n))$ in $f(A)$ with $f(x_n)\to f(x)=y$ where $(x_n)$ is in $A$.
+We would like $x\in\overline{A}$.
+But $f$ is a homeomorphism, so that $f(x_n)\to f(x)$ implies $x_n\to x$, then indeed $x\in\overline{A}$.
+
+($\Leftarrow$)
+From exercise 30, we know that $f$ is continuous if and only if $f(\overline{A})\subseteq \overline{f(A)}$, thus $f$ is continuous.
+To see $f^{-1}$ is continuous, we have
+\begin{align*}
+    f^{-1}(\overline{A}) 
+    = f^{-1}(\overline{f(f^{-1}(A))}) 
+    = f^{-1}(f(\overline{f^{-1}(A)})) 
+    = \overline{f^{-1}(A)},
+\end{align*}
+where the first equality follows from $f(f^{-1}(A))=A$, the second equality follows from the hypothesis that $f(\overline{A})=\overline{f(A)}$ for all sets, and the last equality from definition.
+Then we can use exercise 30 again to conclude $f^{-1}$ is continuous, making $f$ a homeomorphism, as required.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{61}
+Show that $\N$ is homeomorphic to the set $X=\set{e^{(n)}:n\geq 1}$ when considered as a subset of any one of the spaces $c_0$, $l_1$, $l_2$ or $l_\infty$.
+[Hint: the map $n\mapsto e^{(n)}$ is continuous and open].
+If we instead take the discrete metric on $\N$, show that the map $n\mapsto e^{(n)}$ is an isometry into $c_0$.
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
+(Homeomorphism)
+Notice that any subset of $\N$ under its usual metric is closed, as it is composed of isolated points (there are no limit points, because there are no two points closer than 1 in $\N$).
+Likewise, under the 1,2 and $\infty$ metric, any subset of $X$ is composed of isolated points. 
+In particular, for any $n\neq m$, $\norm{e^{(n)}-e^{(m)}}_p\geq 1$ for $p=1,2,\infty$.
+This implies that any map, for example the one in the hint between these two sets will map closed sets to closed sets, and thus, by Theorem 5.5 the sets will be homeomorphic.
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
+(Isometry)
+For $n,m\in\N$ with $n\neq m$, using the function in the hint, we have,
+\begin{align*}
+    \norm{f(n)-f(m)}_\infty
+    = \norm{e^{(n)}-e^{(m)}}_\infty
+    = \sup_{i}\absoluteValue{{e^{(n)}_i-e^{(m)}_i}}
+    = 1
+    = \norm{n-m},
+\end{align*}
+where the last norm is the discrete metric on $\N$.
 \end{proof} 

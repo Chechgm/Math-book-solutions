@@ -1,0 +1,98 @@
+\subsection{Totally bounded sets}
+
+
+\begin{exercise}{1}
+If $A\subseteq B\subseteq M$, and if $B$ is totally bounded, show that $A$ is totally bounded.
+\end{exercise}
+\begin{proof}
+Let $\epsilon>0$.
+By Lemma 7.1, $B$ is totally bounded if and only if, for any $\epsilon>0$, there exist finitely many sets $B_1,\dots,B_n\subseteq B$, with $\text{diam}(B_i)<\epsilon$ for all $i$, such that $B\subseteq \bigcup B_i$
+Thus consider the finitely many sets $A_1,\dots,A_n\subseteq A$ given by $A_i = B\cap A \subseteq A$.
+Since $A_i\subseteq B_i$, by exercise 3.30, we have that $\text{diam}(A_i)\leq \text{diam}(B_i)< \epsilon$.
+Furthermore, $\bigcup A_i = \bigcup (B_i\cap A) = A\cap(\bigcup B_i)$, so that since $A\subseteq B\subseteq \bigcup B_i$, then $A\subseteq A\cap \bigcup B_i = \bigcup A_i$.
+Invoking Lemma 7.1 again, we get the desired result.
+\end{proof} 
+
+\begin{exercise}{2}
+Show that a subset $A\subseteq \R$ is totally bounded if and only if it is bounded.
+In particular, if $I$ is a closed, bounded interval in $\R$ and $\epsilon>0$, show that $I$ can be covered by finitely many closed subintervals $J_1,\dots,J_n$, each of length at most $\epsilon$.
+\end{exercise}
+\begin{proof}
+($\Rightarrow$)
+We will prove this in the general metric space case.
+Let $A$ be a totally bounded set in a metric space.
+Thus, by Lemma 7.1, for all $\epsilon>0$ there exist finitely many sets $A_1,\dots,A_n$ with $\text{diam}(A_i) < \epsilon$ for all $i$ and $A\subseteq\bigcup A_i$.
+Notice that $d(A_i,A_j)$ is a finite quantity for all $i,j$.
+Thus, we have that $d(x,y)\leq \sum_{i,j}d(A_i,A_j)+2\epsilon \leq n(\max_{i,j}[d(A_i,A_j)]+ 2\epsilon)$, for all $x,y\in A$.
+From exercise 3.29, we know that if the diameter of a set is finite, then the set is bounded, giving us the desired result.
+
+($\Leftarrow$)
+Suppose $I$ is a bounded set in $\R$ and let $\epsilon>0$.
+Let $l = \sup I-\inf I$ and choose $n\in\N$, so that $l/n<\epsilon$.
+Now take $n$ intervals of the same length, intersected with $I$: $I\cap [\inf I, \inf I+l/n], I\cap [\inf I+l/n, \inf I +2l/n],\dots, I\cap [\inf I +(n-1)l/n, \sup I]$.
+There are finitely many of these sets, their diameter is less than $\epsilon$, and $I$ is a subset of their union, so that by Lemma 7.1, $I$ is totally bounded.
+\end{proof} 
+
+\begin{exercise}{3}
+Is total boundedness preserved by homeomorphisms?
+Explain.
+[Hint: $\R$ is homeomorphic to $(0,1)$].
+\end{exercise}
+\begin{proof}
+The hint is pretty much the answer, as $\R$ is not totally bounded, but homeomorphic to a totally bounded set.
+\end{proof} 
+
+\begin{exercise}{5}
+Prove that $A$ is totally bounded if and only if $\bar{A}$ is totally bounded.
+\end{exercise}
+\begin{proof}
+($\Rightarrow$)
+Suppose $A$ is totally bounded.
+To prove that $\bar{A}$ is totally bounded we will use the original definition of totally bounded;
+that is, $A$ is totally bounded, if given any $\epsilon>0$, there exist finitely many points $x_1,\dots,x_n\in M$ such that $A\subseteq \bigcup B_\epsilon(x_i)$.
+Since $\bar{A}$ is composed of all the points of $A$ and all the limit points of $A$, then for any $a\in\bar{A}\setminus A$, we can get arbitrarily close to $x$ with points in $A$, say $d(a_n,a)<\epsilon$ for $n>N$ after certain $N\in\N$.
+We thus have:
+\begin{align*}
+    d(x_i, a) \leq d(x_i, a_i) + d(a_i, a) = 2\epsilon.
+\end{align*}
+Meaning that $\bar{A}\subseteq \bigcup B_\epsilon(x_i)$ and so totally bounded, as required.
+
+($\Leftarrow$)
+Since $A\subseteq \bar{A}$ we can apply the result of exercise 1 to conclude that $A$ is totally bounded.
+\end{proof} 
+
+\begin{exercise}{8}
+If $A$ is not totally bounded, show that $A$ has an infinite subset $B$ that is homeomorphic to a discrete space (where $B$ is supplied with its relative metric).
+[Hint: Find $\epsilon>0$ and a sequence $(x_n)$ in $A$ such that $d(x_n,x_m)\geq\epsilon$ for all $n\neq m$.
+How does this help?].
+\end{exercise}
+\begin{proof}
+By Theorem 7.5, we know that there exists a sequence that doesn't have a Cauchy subsequence.
+That is, there exists a sequence, so that for a fixed $\epsilon>0$, for all $n\neq m$ it holds that $d(x_n,x_m) \geq \epsilon$. 
+Take the range of $(x_n)$ as the candidate $B$.
+Then every element of $B$ forms an open set of $B$, since $\set{x_i} = B_{\epsilon/2}(x_i)$.
+Thus, $B$ can be identified with $\N$ under the discrete metric.
+\end{proof} 
+
+\begin{exercise}{9}
+Give an example of a closed bounded subset of $l_\infty$ that is not totally bounded.
+\end{exercise}
+\begin{proof}
+Consider the set $E=\set{e^{(n)}:n\in\N}$, where $e^{(n)}=(0,\dots,0,1,0,\dots$, where the 1 appears in the nth position, as in example 7.2.d.
+This set is bounded in $l_\infty$, as every element on the set has norm 1.
+Furthermore, the set is closed, as it is only composed of isolated points.
+However, the set is not totally bounded, as for $1>\epsilon>0$ there are no finitely many points in $l_\infty$ so that $E$ is a subset of $\epsilon$-open balls around those points.
+\end{proof} 
+
+\begin{exercise}{10}
+Prove that a totally bounded metric space $M$ is separable.
+[Hint: for each $n$, let $D_n$ be a finite$(1/n)$-net for $M$.
+Show that $D=\bigcup D_n$ is a countable dense set].
+\end{exercise}
+\begin{proof}
+Define $D$ as in the hint.
+We conclude that $D$ is countable because it is the countable union of finite sets.
+Let $x\in M$.
+Consider the sequence $(x_n)$ in $D$ defined as the $d_i\in D_n$ with the property that $x\in B_{1/n}(d_i)$, this is guaranteed because $M$ is totally bounded.
+Since this holds for every $n$, then the sequence $(x_n)$ converges to $x$, and because $x\in M$ is arbitrary, then $D$ is dense in $M$ ($\bar{D}=M$), as desired.
+\end{proof} 
