@@ -1,27 +1,49 @@
 \subsection{Completions}
 
-Completions
-44C
-45C Another fun infinite dimensional space!
-46* This is intuitively something you want to be true, but it is not that easy to prove rigorously!
 
 \begin{exercise}{44}
-fill
+Given any set $M$, show that $l_\infty(M)$ is a complete normed vector space.
+Recall, $l_\infty(M)$ is the set of all bounded, real-valued functions $f:M\to\R$ with norm $\norm{f}_\infty=\sup_{x\in M}\absoluteValue{f(x)}$.
 \end{exercise}
 \begin{proof}
-fill
+Let $(f_n(x))$ be a Cauchy sequence in $l_\infty(M)$.
+Thus, for all $\epsilon>0$, there exists an $N\in\N$ such that whenever $n,m>N$, it holds that $\norm{f_n-f_m} = \sup_{x\in M}\absoluteValue{f_n(x)-f_m(x)} < \epsilon$.
+This means that for any $x\in M$, $(f_n(x))$ is a Cauchy sequence in $\R$ so that by the completeness of $\R$ it converges to say $f(x)$, so that we can define the limit $f$ naturally as the limit for all $x$.
+
+By letting $n\to\infty$, we get that $\absoluteValue{f_n(x)-f(x)}<\epsilon$ for all $x$, so that $\sup_{x\in M}\absoluteValue{f_n(x)-f(x)} = \norm{f_n-f} < \epsilon$ and thus $f_n\to f$.
+
+To see $f\in l_\infty(M)$, notice that $\norm{f}_\infty = \norm{f-f_n+f_n}_\infty = \norm{f-f_n}_\infty + \norm{f_n}_\infty = \epsilon + K$, since $f_n\in l_\infty(M)$ and thus it is bounded.
 \end{proof} 
 
 \begin{exercise}{45}
-fill
+If $M$ and $N$ are equivalent sets, show that $l_\infty(M)$ and $l_\infty(N)$ are isometric.
+[Hint: If $g:N\to M$ is any map, then $f\mapsto f\circ g$ defines a map from $l_\infty(M)$ to $l_\infty(N)$].
+Recall that Carothers calls two equivalent sets as two isomorphic sets.
 \end{exercise}
 \begin{proof}
-fill
+Since $M$ and $N$ are isomorphic, then there exists a bijection $g$ between them. 
+Thus we define the following two functions suggested by the hint: $f\mapsto f\circ g: l_\infty(M) \to l_\infty(N)$ and $h\circ g^{-1}: l_\infty(N) \to l_\infty(M)$.
+
+Let $f\in l_\infty(M)$, then applying the two functions sequentially, we obtain $(f\circ g) \circ g^{-1} = f$, by the associativity of function composition;
+that is $g^{-1}$ is a right inverse of $g$.
+
+Likewise, let $h\in l_\infty(N)$ and apply the two functions sequentially in the natural way.
+We have $(h\circ g^{-1})\circ g = h$, so that $g^{-1}$ is a left inverse of $g$.
+
+Thus $g$ has an inverse $g^{-1}$ and hence it is bijective, giving us that $l_\infty(M)\cong l_\infty(N)$.
 \end{proof} 
 
 \begin{exercise}{46}
-fill
+If $A$ is a dense subset of a metric space $(M,d)$, show that $(A,d)$ and $(M,d)$ have the same completion (isometrically).
+[Hint: If $\hat{M}$ is the completion of $M$, then $A$ is dense in $\hat{M}$].
 \end{exercise}
 \begin{proof}
-fill
+Suppose $\hat{M}$ is a completion of $M$.
+We will prove, as in the hint, that $A$ is dense in $\hat{M}$.
+To see this, let $x\in \hat{M}$.
+If $x\in M$, we are done because $\bar{A}=M$, so let $x$ be the limit of a Cauchy sequence, $(x_n)$ in $M$.
+Since $\lim x_n = x$, then for all $\epsilon>0$, we have that $B_\epsilon(x)\cap (x_n) \neq \emptyset$.
+Likewise, because $\bar{A}=M$, then $B_{\epsilon/2}(x_n)\cap A \neq \emptyset$, for all $n$ and thus $B_{2\epsilon}(x)\cap A\neq\emptyset$, so that $\bar{A}=\hat{M}$.
+
+Carothers defines $(\hat{M},d)$ to be the completion of $(M,d)$ if $(\hat{M},d)$ is complete (which we know because it is a completion of $(M,d)$ and if $(M,d)$ is isometric to a dense subset of $(\hat{M},d)$, since $(A,d)$ is dense in $\hat{M}$, then the condition is satisfied for $(A,d)$ and thus $(\hat{M},d)$ is a completion of $(A,d)$, as required.
 \end{proof} 

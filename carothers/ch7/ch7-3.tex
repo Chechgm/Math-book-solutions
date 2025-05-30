@@ -1,41 +1,110 @@
 \subsection{Fixed points}
- 
-Fixed Points
-36
-37 An interesting classification of fixed points and how to classify them using derivatives
-39L Iterating f won't work, but another iteration will!
-
-40L This shows how to find solutions to equations in general. Very useful in applications!
-
-41L So the fixed point theorem actually generalizes!
-42C Nice application of 41
-43* Some neat (but somewhat difficult) counterexamples
 
 
 \begin{exercise}{36}
-fill
+The function $f(x)=x^2$ has two obvious fixed points: $p_0=0$ and $p_1=1$.
+Show that there is a $0<\delta<1$ such that $\absoluteValue{f(x)-p_0}<\absoluteValue{x-p_0}$ whenever $\absoluteValue{x-p_0}$, $x\neq p_0$.
+Conclude that $f^n(x)\to p_0$ whenever $\absoluteValue{x-p_0}<\delta$, $x_0\neq p_0$.
+This means that $p_0$ is an attracting fixed point of $f$;
+every orbit that starts out near 0 converges to 0.
+In contrast, find a $\delta>0$ such that if $\absoluteValue{x-p_1}<\delta$, $x\neq p_1$, then $\absoluteValue{f(x)-p_1}$.
+This means that $p_1$ is a repelling fixed point of $f$;
+orbits that start out near 1 are pushed away from 1.
+In fact, given any $x\neq 1$, we have $f^n(x)\not\to 1$.
 \end{exercise}
 \begin{proof}
-fill
+($p_0$)
+If $0<\delta<1$, we have that if $\absoluteValue{x-p_0}<\delta$, then $\absoluteValue{x}<1$ and thus $\absoluteValue{f(x)-p_0} = \absoluteValue{x^2} = \absoluteValue{x}^2 < \absoluteValue{x} = \absoluteValue{x-p_0}$.
+This is telling us that, if we apply $f$ to $x$ we are getting closer to $p_0$, so that $f^n(x)\to p_0$, as required.
+
+($p_1$)
+For any $\delta>0$ we would have that $\absoluteValue{f(x)-p_1} > \absoluteValue{x-p_1}$.
+Thus, an iterative application of $f$ would yield $f^n(x)\not\to p_1$.
 \end{proof} 
 
 \begin{exercise}{37}
-fill
+Suppose that $f:(a,b)\to(a,b)$ has a fixed point $p$ in $(a,b)$ and that $f$ is differentiable at $p$.
+If $\absoluteValue{f'(p)}<1$, prove that $p$ is an attracting fixed point for $f$.
+If $\absoluteValue{f'(p)}>1$, prove that $p$ is a repelling fixed point for $f$.
 \end{exercise}
 \begin{proof}
-fill
+We will prove this using the definition of the derivative.
+We have that 
+\begin{align*}
+    \absoluteValue{f'(p)} = \lim_{x\to p} \frac{\absoluteValue{f(x)-f(p)}}{\absoluteValue{x-p}},
+\end{align*}
+so that, provided $x$ is sufficiently close to $p$, and by the hypothesis that $\absoluteValue{f'(p)}<1$, then we have that $\absoluteValue{x-p}<\absoluteValue{f(x)-f(p)}$.
+Since $p$ is a fixed point of $f$, using the same reasoning as the previous exercise, we can conclude that $p$ is an attracting fixed point of $f$.
+Using the same technique, mutatis mutandis, we can prove that if $\absoluteValue{f'(p)}>1$, then $p$ is a repelling fixed point of $f$.
 \end{proof} 
 
 \begin{exercise}{42}
-fill
+Define $T:C[0,1]\to C[0,1]$ by $T(f)(x)=\int_0^x f(t)dt$.
+Show that $T$ is not a strict contraction while $T^2$ is.
+What is the fixed point of $T^2$?
 \end{exercise}
 \begin{proof}
-fill
+To see $T$ is not a strict contraction, consider $f,g\in C[0,1]$ given by $f(x)=1$ and $g(x)=0$.
+We have
+\begin{align*}
+    \norm{\int_0^x 1dt - \int_0^x 0dt} 
+    = \norm{x} 
+    = \max_{x\in[0,1]}\absoluteValue{x} 
+    = 1 
+    = \max_{x\in[0,1]}\absoluteValue{1} 
+    = \norm{1- 0}
+    = \norm{f-g}.
+\end{align*}
+Since $\norm{T(f)(x)-T(g)(x)} = \norm{f-g}$, then $T$ is not a strict contraction.
+
+To see $T^2$ is a strict contraction, notice that
+\begin{align*}
+    \norm{T^2(f)(x) - T^2(g)(x)}_\infty
+    =& \norm{\int_0^x\int_0^y f(t)dtdy - \int_0^x\int_0^y g(t)dtdy}_\infty\\
+    =& \max_{x\in[0,1]}\absoluteValue{\int_0^x\int_0^y f(t)dtdy - \int_0^x\int_0^y g(t)dtdy}\\
+    =& \max_{x\in[0,1]}\absoluteValue{\int_0^x\int_0^y f(t)-g(t) dtdy}\\
+    \leq& \max_{x\in[0,1]}\int_0^x\int_0^y \absoluteValue{f(t)-g(t)} dtdy\\
+    \leq& \max_{x\in[0,1]}\int_0^x\int_0^y \max_{s\in[0,1]}\absoluteValue{f(s)-g(s)} dtdy\\
+    =& \max_{x\in[0,1]}\int_0^x\int_0^y \norm{f-g}_\infty dtdy\\
+    =& \norm{f-g}_\infty \max_{x\in[0,1]}\int_0^x\int_0^y 1 dtdy\\
+    =& \norm{f-g}_\infty \max_{x\in[0,1]}\int_0^x t|^y_0 dy\\
+    =& \norm{f-g}_\infty \max_{x\in[0,1]}\int_0^x y dy\\
+    =& \norm{f-g}_\infty \max_{x\in[0,1]}\frac{y^2}{2}\bigg|_0^x\\
+    =& \norm{f-g}_\infty \max_{x\in[0,1]}\frac{x^2}{2}\\
+    =& (1/2)\norm{f-g}_\infty,
+\end{align*}
+so that $T^2$ is a strict contraction, as required.
+
+The fixed point of $T^2$ is $f(x)=0$.
+To see this, notice that
+\begin{align*}
+    T^2(f)(x)
+    =& \int_0^x\int_0^y 0dtdy \\
+    =& \int_0^x 0|^y_0 dy\\
+    =& \int_0^x 0 dy\\
+    =&  0|^x_0 = 0,
+\end{align*}
+as required.
 \end{proof} 
 
 \begin{exercise}{43}
-fill
+Show that each of the hypotheses of the contraction mapping principle is necessary by finding examples of a space $M$ and a map $f:M\to M$ having no fixed point where:
+\begin{enumerate}
+    \item $M$ is incomplete (but $f$ is still a contraction).
+    \item $f$ satisfies only $d(f(x),f(y))<d(x,y)$ for all $x\neq y$ (but $M$ is still complete).
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item Consider example 7.15 where we defined $f(x)=x-(x^3-5)/8$ to find an approximation of $\sqrt[3]{5}$.
+    This time, however, define the function $f:\Q\to\Q$ instead of $f:\R\to\R$.
+    Since the fixed point of the function is $\sqrt[3]{5}\notin\Q$, then the function has no fixed point, even though it is a contraction.
+    \item Consider the function $f:[1,\infty]\to[1,\infty]$ given by $x\mapsto x+1/x$.
+    Notice that $f'(x) = 1-1/x^2$, so that $0<f'(x)\leq 1$ in $x\in[0,1]$.
+    Consider any $[a,b]\in [1,\infty]$.
+    By the Mean Value Theorem, there exists a $c\in[a,b]$ such that $1\geq \absoluteValue{f'(c)} = \absoluteValue{[f(b)-f(a)]/[b-a]}$ (where the absolute value comes from the bounds of $f'(x)$).
+    But notice that this is the same as $\absoluteValue{f(b)-f(a)}\leq \absoluteValue{b-a}$ for all $b,a\in[1,\infty]$.
+    $f$ does not have a fixed point.
+    Although $f(x)$ gets arbitrarily close to $f(x)=x$, it never reaches that point because there is always the extra $1/x$ factor.
+\end{enumerate}
 \end{proof} 
