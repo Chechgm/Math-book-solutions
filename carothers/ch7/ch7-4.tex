@@ -10,9 +10,9 @@ Let $(f_n(x))$ be a Cauchy sequence in $l_\infty(M)$.
 Thus, for all $\epsilon>0$, there exists an $N\in\N$ such that whenever $n,m>N$, it holds that $\norm{f_n-f_m} = \sup_{x\in M}\absoluteValue{f_n(x)-f_m(x)} < \epsilon$.
 This means that for any $x\in M$, $(f_n(x))$ is a Cauchy sequence in $\R$ so that by the completeness of $\R$ it converges to say $f(x)$, so that we can define the limit $f$ naturally as the limit for all $x$.
 
-By letting $n\to\infty$, we get that $\absoluteValue{f_n(x)-f(x)}<\epsilon$ for all $x$, so that $\sup_{x\in M}\absoluteValue{f_n(x)-f(x)} = \norm{f_n-f} < \epsilon$ and thus $f_n\to f$.
+To see $f\in l_\infty(M)$, notice that $\norm{f}_\infty = \norm{f-f_n+f_n}_\infty = \norm{f-f_n}_\infty + \norm{f_n}_\infty \leq \epsilon + K$, since $f_n\in l_\infty(M)$ and thus it is bounded.
 
-To see $f\in l_\infty(M)$, notice that $\norm{f}_\infty = \norm{f-f_n+f_n}_\infty = \norm{f-f_n}_\infty + \norm{f_n}_\infty = \epsilon + K$, since $f_n\in l_\infty(M)$ and thus it is bounded.
+By letting $n\to\infty$, we get that $\absoluteValue{f_n(x)-f(x)}<\epsilon$ for all $x$, so that $\sup_{x\in M}\absoluteValue{f_n(x)-f(x)} = \norm{f_n-f} < \epsilon$ and thus $f_n\to f$.
 \end{proof} 
 
 \begin{exercise}{45}

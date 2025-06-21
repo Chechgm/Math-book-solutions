@@ -1,173 +1,329 @@
 \subsection{Compact metric spaces}
 
-1* Interpretation of compactness in R
-2* Closed and bounded is not compact in general, but really only in $R^n$
-3* This is a really typical application of compactness. Compactness leans itself very well it existence arguments
-4* Easy but fundamental 
-6* This is a special case of a truly fundamental and powerful result, Tychonoff's theorem.
-7C Not that important, but good to reinforce concepts
-8C Don't be too fancy, show it is closed and bouded in the Euclidean norm
-10* I love this kind of stuff, showing things are equivalent with R being complete. Incidentally, it actually suffices to assume any closed interval [a,b] is compact to get completeness. Can you show this general version?
-11* Very important. We shown in previous chapter that connectedness is not relative, and neither is compact. So you are not compact IN a space, the space is compact in itself.
-15* This gives another interpretation of totally bounded and compact as the sets whose closure are compact.
-16* Link between totally bounded, compact and completions, very cool
-17* Both separable as compact can be seen as "smallness conditions". This shows that compact spaces are smaller than separable ones.
-
-20* Saying that all continuous functions to R are bounded is called pseudocompact. In topology, pseudocompact does not necessarily imply compact
-21* Filling in details from the theory 
-22*
-23* These two are probably among the most useful consequences of compactness. It shows that to show homeomorphism, we don't need to check the continuity of the inverse. Used all the time in practice.
-25* Compare to a previous exercise where it was shown these are connectedness.
-20L Cool generalization of the Banach fixed point theorem, but it does require compactness
-
-30* Working out details of the theory
-31* Far reaching generalization of the nested set theorem 
-32* Working out details of the theory
-36* Another typical existence proof which is so characteristic of compactness 
 
 \begin{exercise}{1}
-fill
+If $K$ is a nonempty compact subset of $\R$, show that $\sup K$ and $\inf K$ are elements of $K$.
 \end{exercise}
 \begin{proof}
-fill
+By Corollary 8.3 we know that $K$ is closed in $\R$, since $\sup K,\inf K\in \bar{K}$, then $\sup K, \inf K\in K$.
 \end{proof} 
 
 \begin{exercise}{2}
-fill
+Let $E=\set{x\in\Q: 2<x^2<3}$, considered as a subset of $\Q$ (with its usual metric).
+Show that $E$ is closed and bounded but not compact.
 \end{exercise}
 \begin{proof}
-fill
+$E$ is bounded because for every $x,y\in E$, $d(x,y)=\absoluteValue{x-y}<1$.
+Moreover, $E$ is closed because for every convergent sequence in $E\in\Q$ converges to some $x$ in $E$.
+However, $E$ is not complete because the sequence $x_n = (2+1/n)^2$ for $n=2,3,\dots$ does not converge to any point in $\Q$ (it would converge to $\sqrt{2}\notin \Q$).
 \end{proof} 
 
 \begin{exercise}{3}
-fill
+If $A$ is compact in $M$, prove that $\text{diam}(A)$ is finite.
+Moreover, if $A$ is nonempty, show that there exist points $x$ and $y$ in $A$ such that $\text{diam}(A)=d(x,y)$.
 \end{exercise}
 \begin{proof}
-fill
+If $A$ is compact in $M$, then it is totally bounded and thus by example 7.2.(a) also bounded so that by exercise 3.15 its diameter is finite.
+
+For the second part, $\text{diam}(A)=\sup{\set{d(x,y):x,y\in A}}$, so that there exists a sequence $d(x_n,y_n)\to \text{diam}(A)$, where $x_n,y_n\in A$.
+But $A$ is compact, so that by Theorem 8.2, $(x_n)$ has a convergent subsequence $x_{n_k}\to x\in A$.
+Likewise, since $A$ is compact, the sequence $(y_{n_k})$ has a convergent subsequence $y_{n_{k_l}}\to y \in A$.
+We have that $d(x_{n_{k_l}}, y_{n_{k_l}})$ is a subsequence of the convergent sequence $d(x_n,y_n)$, so $d(x_{n_{k_l}}, y_{n_{k_l}})$ must converge to the same limit;
+that is, $d(x_{n_{k_l}}, y_{n_{k_l}}) \to d(x,y) = \text{diam}(A)$, so that $x$ and $y$, both in $A$ satisfy the desired condition. 
 \end{proof} 
 
 \begin{exercise}{4}
-fill
+If $A$ and $B$ are compact sets in $M$, show that $A\cup B$ is compact.
 \end{exercise}
 \begin{proof}
-fill
+We know that the finite union of closed sets is closed.
+
+Furthermore, by Lemma 7.1, a set is totally bounded if and only if, given $\epsilon>0$, there are finitely many sets $A_1,\dots,A_n\subseteq A$ with $\text{diam}(A_i)<\epsilon$ for all $i$, such that $A\subseteq\bigcup A_i$.
+Thus, if both $A$ and $B$ are totally bounded, we will still have a finite number of sets $A_1,\dots,A_n,B_1,\dots, B_m$ satisfying $A\cup B\subseteq \bigcup A_i \cup \bigcup B_j$, so that $A\cup B$ is totally bounded too.
+
+Putting these two results together gives us the desired result.
 \end{proof} 
 
 \begin{exercise}{6}
-fill
+If $A$ is compact in $M$ and $B$ is compact in $N$, show that $A\times B$ is compact in $M\times N$ (see exercise 3.46).
 \end{exercise}
 \begin{proof}
-fill
+From exercise 7.17, we know that $M\times N$ is complete if and only if both $M$ and $N$ are complete. 
+
+We will now prove that $M\times N$ is totally bounded if and only if $M$ and $N$ are totally bounded:
+
+($\Leftarrow$)
+Suppose $N$ and $M$ are totally bounded.
+Then for all $\epsilon>0$, there exists a finite number of points $N'=\set{x_1,\dots,x_n}\subseteq N$ and $M'=\set{y_1,\dots,y_n}\subseteq M$ such that $N\subseteq\bigcup B_\epsilon(x_i)$ and $M\subseteq\bigcup B_\epsilon(y_i)$.
+Thus, the finite set of points $N'\times M'$ as the property that $N\times M\subseteq\bigcup B_\epsilon((x,y)_i)$, because for any $(x,y)\in N\times M$, there exists a $x_i\in N'$ and a $y_j\in M'$ with $d(x_i,x)<\epsilon$ and $d(y_j,y)<\epsilon$ so that $d_\infty((x_i,y_j), (x,y)) = \max\set{d(x_i,x), d(y_j,y)}<\epsilon$.
+
+($\Rightarrow$)
+Suppose $N\times M$ is totally bounded.
+Then for all $\epsilon>0$, there exists a finite set of points $(x,y)_1,\dots, (x,y)_n$ such that 
+\begin{align*}
+    N\times M
+    \subseteq\bigcup B_\epsilon((x,y)_i) 
+    = \bigcup \set{(x,y) &\in N\times M:\\
+    &d_\infty((x,y)_i, (x,y)) 
+    = \max\set{d(x_i,x),d(y_i,y)} 
+    <\epsilon},
+\end{align*}
+where $x_i$ and $y_i$ correspond to $x$ and $y$ in $(x,y)_i$.
+Notice, however, that this implies $N$ and $M$ are themselves totally bounded, as the set of points $x_1,\dots,x_n$ have the property that 
+\begin{align*}
+    N\subseteq\bigcup B_\epsilon(x_i) = \bigcup \set{x\in N: d(x_i,x) < d_\infty((x,y)_i, (x,y)) < \epsilon}.    
+\end{align*}
+And likewise for $M$.
+
+Thus, we get the $N\times M$ is complete and totally bounded (hence compact) if and only if $N$ and $M$ are each complete and totally bounded (so each is compact).
 \end{proof} 
 
 \begin{exercise}{7}
-fill
+If $K$ is a compact subset of $\R^2$, show that $K\subseteq [a,b]\times[c,d]$ for some pair of compact intervals $[a,b]$ and $[c,d]$.
 \end{exercise}
 \begin{proof}
-fill
+From example 8.1, a subset $K$ of $\R^n$ is compact if and only if $K$ is closed and bounded.
+Thus, since $K$ must be bounded, then there exist intervals $(a',b')$ and $(c',d')$ such that $K\subseteq (a',b')\times (c',d')$.
+Furthermore, $K$ must be closed, so that we can make the intervals smaller to include the limit points of $K$, that is, there exist closed intervals $[a,b]$ and $[c,d]$ such that $K\subseteq [a,b]\times[c,d]$.
+Since $[a,b]$ and $[c,d]$ are closed and bounded intervals of $\R$, they are compact, as desired.
 \end{proof} 
 
 \begin{exercise}{8}
-fill
+Prove that the set $X=\set{x\in\R^n: \norm{x}_1=1}$ is compact in $\R^n$ under the euclidean norm.
 \end{exercise}
 \begin{proof}
-fill
+(Bounded)
+By exercise 3.18, we know that for all $x\in X$, $\norm{x}_2 \leq \norm{x}_1 = 1$, thus $X$ is bounded under the euclidean norm.
+
+(Closed)
+Let $(x^m_n)_{m=1,\dots}$ be a sequence in $\R^n$.
+Then for all $\epsilon>0$, there exists an $M\in\N$ such that whenever $m>M$, it holds that $\norm{x^m-x}_2<\epsilon/\sqrt{n}$.
+We have
+\begin{align*}
+    \epsilon 
+    >& \sqrt{n}\norm{x^m-x}_2\\
+    =& \norm{x^m-x}_1\\
+    =& \sum_{i=1}^n \absoluteValue{x^m_i-x_i}\\
+    \geq& \sum_{i=1}^n \absoluteValue{\absoluteValue{x^m_i}-\absoluteValue{x_i}}\\
+    \geq& \sum_{i=1}^n \absoluteValue{x^m_i}-\absoluteValue{x_i}\\
+    =& \sum_{i=1}^n \absoluteValue{x^m_i}- \sum_{i=1}^n\absoluteValue{x_i}\\
+    =& 1- \sum_{i=1}^n\absoluteValue{x_i}.
+\end{align*}
+Where the first lines follows again from exercise 3.18.
+Thus $\absoluteValue{\norm{x}_1-1}<\epsilon$;
+that is $x\in X$, as required.
+
+Since $X$ is closed and bounded, $X$ is compact under the euclidean norm.
 \end{proof} 
 
 \begin{exercise}{10}
-fill
+Show that the Heine-Borel Theorem (closed and bounded sets in $\R$ are compact) implies the Bolzano-Weierstrass Theorem.
+Conclude that the Heine-Borel Theorem is equivalent to the completeness of $\R$.
 \end{exercise}
 \begin{proof}
-fill
+Proving that the Heine-Borel Theorem implies the Bolzano-Weierstrass in $\R$ is equivalent (by Theorem 8.2 and Theorem 1.11) to prove that every sequence in a compact subset $X\subseteq\R$, that is a sequence in a closed and bounded subset of $\R$, has a subsequence that converges to a point in $X$ implies that every bounded sequence of real numbers has a convergent subsequence.
+
+However, the Bolzano-Weierstrass Theorem does not require the limit point of the convergent subsequence to be an element of the sequence itself. 
+Thus, we let $X=(x_n)$, the set composed of all the elements of a bounded sequence, and take its closure $\bar{X}$, obtaining a closed and bounded set, which by the Heine-Borel Theorem is compact.
+By Theorem 8.2, every sequence on the compact set has a convergent subsequence, so we take the sequence $(x_n)$, giving us the desired result.
+
+The fact that Heine-Borel is equivalent to the completeness of $\R$ follows from Theorem 7.11 which says that $(M,d)$ being complete is equivalent to the Bolzano-Weierstrass Theorem.
+We have just proved that the Heine-Borel Theorem implies the Bolzano-Weierstrass Theorem.
+In the other direction, the Bolzano-Weierstrass trivially implies the Heine-Botel Theorem. 
+To see this, take $X$ to be closed and bounded in $\R$.
+By exercise 7.2, $X\subseteq\R$ is bounded if and only if it is totally bounded.
+Furthermore, since $X$ is bounded, then there is a compact interval $[a,b]$ such that $X\subseteq [a,b]$, by Corollary 8.2, $X$ is compact.
 \end{proof} 
 
 \begin{exercise}{11}
-fill
+Prove that compactness is not a relative property.
+That is, if $K$ is compact in $M$, show that $K$ is compact in any metric space that contains it (isometrically).
 \end{exercise}
 \begin{proof}
-fill
+To see this, we analyse whether the two conditions for compactness change in an isometric space.
+Total boundedness does not change, as it is a property defined by distances between a finite number of points and the rest of the set.
+Thus in a different (but isometric) space from $M$, $K$ still will be totally bounded.
+Likewise completeness, the fact that Cauchy sequences converge is preserved when distances are preserved, so that $K$ would be complete in a different but isometric space.
+Thus, $K$ is compact regardless of what space it is contained in, as long as the new space is isometric to the first where $K$ was originally defined.
 \end{proof} 
 
 \begin{exercise}{15}
-fill
+If $A$ is a totally bounded subset of a complete metric space $M$, show that $\bar{A}$ is compact in $M$.
+For this reason, totally bounded sets are sometimes called precompact or conditionally compact.
+In fact, any set with compact closure might be labeled precompact.
 \end{exercise}
 \begin{proof}
-fill
+Recall that the closure of a set is a closed set.
+By Theorem 7.9, $(A,d)$ is a complete if and only if $A$ is closed in $M$, and by exercise 7.5, $A$ is totally bounded if and only if $\bar{A}$ is totally bounded.
+Thus, $A$ is totally bounded and complete, so it is compact.
 \end{proof} 
 
 \begin{exercise}{16}
-fill
+Show that a metric space $M$ is totally bounded if and only if its completion $\hat{M}$ is compact.
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$)
+Suppose $M$ is totally bounded.
+To see its completion $\hat{M}$ is also totally bounded, let $\epsilon>0$, then there exist a finite number of points $x_1,\dots,x_n\in M$ so that $M\subseteq\bigcup B_\epsilon(x_i)$;
+that is, for all $x\in M$, it holds that $d(x_i,x)<\epsilon$.
+Now let $y\in \hat{M}$, either $y$ is in $M$, in which case $y\in\bigcup B_\epsilon(x_i)$ for some $i$, or $y$ is the limit of some Cauchy sequence, $(y_n)$ in $M$.
+In the second case, we know there exists an $N\in\N$ such that $d(y_n,y)<\epsilon$ for $n\geq N$.
+We then have
+\begin{align*}
+    d(y,x_i) \leq d(y,y_n) + d(y_n,x_i) < 2\epsilon.
+\end{align*}
+So that $y\in B_{2\epsilon}(x_i)$, and thus, $\hat{M}$ is totally bounded.
+
+By definition, $\hat{M}$ is complete, so that $\hat{M}$ is totally bounded and complete and thus compact.
+
+($\Leftarrow$)
+Suppose $\hat{M}$ is compact.
+Then $\hat{M}$ is totally bounded.
+In exercise 7.1 we proved that a subset of a totally bounded subset is totally bounded, so that $M\subseteq\hat{M}$ is totally bounded (isometrically, of course).
 \end{proof} 
 
 \begin{exercise}{17}
-fill
+If $M$ is compact, show that $M$ is also separable.
 \end{exercise}
 \begin{proof}
-fill
+We will construct a countable dense subset of $M$.
+Since $M$ is totally bounded, then for all $n\in\N$, there exists a finite set of points in $M$, $M_n=\set{x_1,\dots,x_k}$ such that $M\subseteq\bigcup B_{1/n}(x_i)$.
+Thus, let our countable set be $X=\bigcup M_n$ ($X$ is countable because it is the countable union of finite sets).
+To see $X$ is dense in $M$, let $y\in M$ but $\notin X$.
+We can construct a sequence $(y_n)$ in $X$ that converges to $y$ by letting $y_n=x_i$ such that $y\in B_{1/n}(x_i)$, whose existence is guaranteed because of the total boundedness condition.
+Thus, $X$ is countable and dense in $M$ as desired.
 \end{proof} 
 
 \begin{exercise}{20}
-fill
+Let $E$ be a noncompact subset of $\R$.
+Find a continuous function $f:E\to\R$ that is 
+\begin{enumerate}
+    \item not bounded;
+    \item bounded but has no maximum value.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item Let $E$ be noncompact because it is not complete, say $y$ is a limit of $E$ not in $E$.
+    Then the function $f(x)=1/d(x,y)$ is not bounded.
+
+    If, on the other hand, $E$ is noncompact because it is not totally bounded, then choose any point in $y\in E$, and let $f(x)=d(x,y)$, which is also not bounded because in $\R$ being bounded and totally bounded are equivalent.
+    \item If $E$ is noncompact because it is not complete, then the function $f(x)=1/(1+d(x,y))$, where $y$ is a limit of $E$ not in $E$.
+
+    On the other hand, if $E$ is noncompact because $E$ is not totally bounded, then $f(x)=\arctan(d(x,y))$ for a fixed $y\in E$ is bounded but has no maximum value.
+\end{enumerate}
 \end{proof} 
 
-\begin{exercise}{21}
-fill
+\begin{exercise}{21 Corollary 8.6}
+If $f:[a,b]\to\R$ is continuous, then the range of $f$ is a compact interval $[c,d]$ for some $c,d\in\R$.
 \end{exercise}
 \begin{proof}
-fill
+In Corollary 6.7 we concluded that if $I\subseteq\R$ is an interval and $f$ is a nonconstant continuous function, then $f(I)$ is an interval. 
+Moreover, Theorem 8.4 tells us that the continuous image of a compact set is itself compact, so that $I$ must be compact too.
+Putting these two results together gives us that $f([a,b])=[c,d]$.
 \end{proof} 
 
 \begin{exercise}{22}
-fill
+If $M$ is compact and $f:M\to N$ is continuous, prove that $f$ is a closed map.
 \end{exercise}
 \begin{proof}
-fill
+Let $f(A)$ be a subset of the range of $f$ with $A\subseteq M$.
+Let $(f(x_n))$ be a convergent sequence in $f(A)$, so that $f(x_n)\to y$, for $x_n\in A$.
+We want to prove that $y\in f(A)$.
+Notice, first, that since $M$ is compact, then $x_n$ has a convergent subsequence $(x_{n_k})$ with $x_{n_k}\to x$.
+Hence, $\lim f(x_{n_k}) = y = f(x)$, since a subsequence of an already convergent sequence converges to the same limit.
+Since $A$ is closed, then $x\in A$ and thus $f(x)=y\in A$, as required.
 \end{proof} 
 
 \begin{exercise}{23}
-fill
+Suppose that $M$ is compact and that $f:M\to N$ is continuous, one-to-one and onto.
+Prove that $f$ is a homeomorphism.
 \end{exercise}
 \begin{proof}
-fill
+This is a Corollary to the previous exercise (8.22) and exercise 5.57 which says that if $f$ is continuous, one-to-one, and onto, then $f$ being closed and $f^{-1}$ being continuous are equivalent.
+Since $f$ is bijective and both $f$ and $f^{-1}$ are continuous, then $f$ is a homeomorphism.
 \end{proof} 
 
 \begin{exercise}{25}
-fill
+Let $V$ be a normed vector space, and let $x\neq y\in V$.
+Show that the map $f(t)=x-t(y-x)$ is a homeomorphism from $[0,1]$ into $V$.
+The range of $f$ is the line segment joining $x$ and $y$;
+it is often written $[x,y]$.
 \end{exercise}
 \begin{proof}
-fill
+We proved this in 6.27.
 \end{proof} 
 
-\begin{exercise}{30}
-fill
+\begin{exercise}{30 Lemma 8.8}
+In a metric space $M$, the following are equivalent:
+\begin{enumerate}
+    \item If $\GGG$ is any collection of open sets in $M$ with $M\subseteq \bigcup\set{G:G\in\GGG}$, then there are finitely many sets $G_1,\dots, G_n \in \GGG$ with $M\subseteq \bigcup G_i$.
+    \item If $\FFF$ is any collection of closed sets in $M$ such that $\bigcap F_i \neq \emptyset$ for all choices of finitely many sets $F_1,\dots, F_n\in \FFF$, then $\bigcap \set{F:F\in\FFF} \neq \emptyset$.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$)
+Suppose, for the sake of contradiction, that $\bigcap \set{F:F\in\FFF} = \emptyset$, so that by the DeMorgan law, we have that $\bigcup \set{F^c:F\in\FFF} = M$, however for all choices of finite sets in $\FFF$, $f_1,\dots,F_n$ it holds that $\bigcap F_i \neq \emptyset$.
+The contradiction statement tells us that the set $\set{F^c:\FFF}$ is a collection of open sets in $M$, so that by the first condition and the DeMorgan law, we get that there are finitely many sets $F_1^c,\dots,F_n^c$ such that $M\subseteq \bigcup F_i^c$.
+Applying again the DeMorgan law, we get that $\bigcap F_i^c \subseteq M^c = \emptyset$, arising a contradiction.
+
+($\Leftarrow$)
+We will proceed as above.
+Suppose, for the sake of contradiction, that there exists a family of open sets $\GGG$ such that $\bigcup \set{G:G \in \GGG}$ but for all finite sets $G_1,\dots,G_n \in \GGG$, it is the case that $M\not\subseteq\bigcup G_i$.
+Then this implies, by the DeMorgan law, that $\bigcap G_i^c \not\subseteq\emptyset$;
+that is $\bigcap G_i^c \neq \emptyset$, so that by the second condition (which we assume), the family of sets $\FFF = \set{G^c:G\in\GGG}$ has the property that $\bigcap\set{F:F\in\FFF}$.
+By the DeMorgan law again, we get that $\bigcup \set{G: G\in\GGG}\neq M$, giving us a contradiction.
 \end{proof} 
 
 \begin{exercise}{31}
-fill
+Given an arbitrary metric space $M$, show that a decreasing sequence of nonempty compact sets in $M$ has nonempty intersection.
 \end{exercise}
 \begin{proof}
-fill
+Let $A_1\supseteq A_2\supseteq \dots$ be a decreasing sequence of nonempty compact sets in $M$.
+Let $(x_n)$ be a sequence defined as $x_n\in A_n$ for all $n$.
+Since $(x_n)$ is a sequence in a compact set, it contains a subsequence that converges in the set, and furthermore, the limit must be an element of all of the sets.
+Thus if $x_{n_k}\to x$, then $x\in\bigcap A_i$, as required.
 \end{proof} 
 
 \begin{exercise}{32}
-fill
+Prove Corollary 8.11 by showing that the following two statements are equivalent:
+\begin{enumerate}
+    \item Every decreasing sequence of nonempty closed sets in $M$ has a nonempty intersection.
+    \item Every countable open cover of $M$ admits a finite subcover;
+    that is, if $(G_n)$ is a sequence of open sets in $M$ satisfying $M \subseteq \bigcup G_i$, then $M\subseteq \bigcup_{i=1}^N G_i$ for some finite $N$.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$)
+Suppose, for the sake of contradiction, that there is an increasing sequence $G_1 \subseteq G_2 \subseteq \dots$ of open sets with $M\subseteq\bigcup G_i$, so that there is no finite subcover;
+that is, for all $N$ it holds that $M\not\subseteq \bigcup_{i=1}^N G_i$.
+By the DeMorgan law, we have that for all $N$, $\bigcap_{i=1}^N G_i^c \not\subseteq \emptyset$, that is, it is not empty.
+Let $F_n = \bigcap_{i=1}^n G_i^c$.
+We have that $F_1 \supseteq F_2 \supseteq \dots$, and as we saw before, $F_i$ is nonempty for all $i$.
+Thus by assumption, $\bigcap F_i \neq \emptyset$ so that by the DeMorgan law, $\bigcup G_i \neq M$, which contradicts the assumption that $(G_n)$ is a cover of $M$.
+
+($\Leftarrow$)
+Suppose, for the sake of contradiction, that there exists a decreasing sequence of nonempty closed sets $F_1\subseteq F_2\subseteq \dots \in M$ such that $\bigcap F_i = \emptyset$.
+By the DeMorgan law, we have that $\bigcup F_i^c = M$.
+Since $(F_n^c)$ is a sequence of open sets, the second condition tells us that there exists a finite $N$ so that $M \subseteq \bigcup_{i=1}^N F^c_i$.
+Using again the DeMorgan law, we get that $\bigcap_{i=1}^N F_i \subseteq \emptyset$.
+But if we sort $F_1,\dots,F_N$ by decreasing order (which we can because they were already decreasing), we get a contradiction: either they are not decreasing, because then there would be a point in common, are at least one of them is empty, giving us the desired result.
 \end{proof} 
 
 \begin{exercise}{36}
-fill
+Let $F$ and $K$ be disjoint, nonempty sets of a metric space $M$ with $F$ closed and $K$ compact.
+Show that $d(F,K) = \inf\set{d(x,y):x\in F, y\in K}>0$.
+Show that this may fail if we assume only that $F$ and $K$ are disjoint closed sets.
 \end{exercise}
 \begin{proof}
-fill
+Suppose $F$ and $K$ are disjoint and suppose $K$ is compact.
+Suppose, for the sake of contradiction, that $d(F,K)=0$, which implies there exists sequences $(x_n)$ in $F$ and $(y_n)$ in $K$, such that $d(x_n,y_n) \to 0$.
+Since $K$ is compact, then by Theorem 8.2, $(y_n)$ contains a subsequence $(y_{n_k})$ that converges, say to $y\in K$ (because $K$ is compact, so that the limit of convergent sequences are in $K$).
+We have that the subsequence given by $d(x_{n_k}, y_{n_k}) \to 0$ as it is the subsequence of a convergent sequence.
+But this also implies that $x_{n_k}\to y$.
+To see this, notice that $d(x_{n_k}, y) \leq d(x_{n_k},y_{n_k}) + d(y_{n_k}, y)$, and since both sequences on the right hand side converge to 0, then $d(x_{n_k},y)$ converges to 0;
+that is $x_{n_k}\to y$.
+Because $F$ is closed, this means that $y\in F$, and so $F$ and $K$ are not disjoint, giving us a contradiction.
+
+The second part is the content of exercise 4.32.
 \end{proof} 

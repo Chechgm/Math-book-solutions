@@ -1,125 +1,196 @@
 \subsection{Uniform continuity}
 
-44* Lipschitz is stronger than uniform continuity and is the strongest version of continuity we have
-45* Easy but cool
-46*
-47* Two important examples of uniform continuity 
-48* This is not equivalent to uniform continuity (counterexample?)
-49* Some elementary structure 
-54* In fact, for a metric space, compact is equivalent to saying all continuous real-valued maps on it are uniformly continuous!
-55* Bittersweet memories since this was once my exam question and I couldn't solve it in time 
-56* This is the sequential characterization of uniformly continuous which I personally find extremely interesting 
-57* This class of maps is very important for the future and try to interpolate between Lipschitz (of order 1) and uniformly continuous
-58* So bounded differentiable => Lipschitz of order 1 => Lipschitz of order a for decreasing a => uniformly continuous => continuous 
-59* I got a cool story related to this 
-61* There are three ways for two metric spaces to be "isomorphic". They can be homeomorphic, uniformly homeomorphic or isometric. These three give rise to three different categories of metric spaces. The fact that metric spaces don't have a unique category (as opposed to groups which do) makes category theory not as useful in analysis as in topology or abstract algebra!
-62* There are also three ways metrics can be equivalent. This is covered later.
-
 65C
 67C
 69* Providing details to proof
 70C Cool counterexample to a possible generalization of the fixed point theorems
 
 \begin{exercise}{44}
-fill
+Show that any Lipschitz map $f:(M,d)\to (N,\rho)$ is uniformly continuous. 
+In particular, any isometry is uniformly continuous.
 \end{exercise}
 \begin{proof}
-fill
+Let $f$ be Lipschitz.
+Then there exists a constant $K>0$ such that $\norm{f(x)-f(y)} < K\norm{x-y}$ for all $x$ and $y$.
+Let $\epsilon >0$, and choose $\delta = \epsilon/K$, we then have that for all $x$ and $y$ it holds that $\norm{f(x)-f(y)}<K\norm{x-y}=\epsilon$, as required.
 \end{proof} 
 
 \begin{exercise}{45}
-fill
+Prove that every map $f:\N\to\R$ is uniformly continuous.
 \end{exercise}
 \begin{proof}
-fill
+We have that for every $\epsilon>0$, $0<\delta<1$ is enough to have $f(B_\delta(x))\subseteq B_\epsilon(f(x))$, since $B_\delta(x)=\set{x}$.
+Given that this is true for all $x$, then $f$ is uniformly continuous.
 \end{proof} 
 
 \begin{exercise}{46}
-fill
+Show that $\absoluteValue{d(x,z)-d(y,z)} \leq d(x,y)$ and conclude that the map $x\mapsto d(x,z)$ is uniformly continuous on $M$ for each fixed $z\in M$.
 \end{exercise}
 \begin{proof}
-fill
+The first part is the content of exercise 5.20.
+Notice that when we proved continuity, the choice of $\delta$ did not depend on $x$ but only on $\epsilon$.
+Thus, $d(x,z)$ is uniformly continuous for any fixed $z$.
 \end{proof} 
 
 \begin{exercise}{47}
-fill
+Given a nonempty subset $A$ of $M$, show that $\absoluteValue{d(x,A) - d(y,A)} \leq d(x,y)$ and conclude that the map $x \mapsto d(x,A)$ is uniformly continuous on $M$.
 \end{exercise}
 \begin{proof}
-fill
+The first part of the exercise is the content of Proposition 5.4.
+To see that the map is uniformly continuous, notice that for any $\epsilon>0$, choosing $\delta=\epsilon$ suffices to satisfy $\absoluteValue{d(x,A) - d(y,A)}< \epsilon$ for all $x$ and $y$.
 \end{proof} 
 
 \begin{exercise}{48}
-fill
+Prove that a uniformly continuous map sends Cauchy sequences to Cauchy sequences.
 \end{exercise}
 \begin{proof}
-fill
+Let $f:M\to N$ be uniformly continuous and $(x_n)$ a Cauchy sequence in $M$.
+Thus for $\epsilon>0$, there exists a $\delta>0$ so that for all $x,y\in M$ we have $\norm{f(x)-f(y)}<\epsilon$ whenever $\norm{x-y}<\delta$.
+Let $N\in\N$ be such that whenever $n,m>N$, it holds that $\norm{x_n-x_m}<\delta$.
+Then we have that $\norm{f(x_n)-f(x_m)}<\epsilon$, giving us the Cauchy sequence $(f(x_n))$, as required.
 \end{proof} 
 
 \begin{exercise}{49}
-fill
+Show that the sum of two uniformly continuous maps is uniformly continuous.
+Is the product of uniformly continuous maps always uniformly continuous?
+Explain.
 \end{exercise}
 \begin{proof}
-fill
+The sum of two continuous functions is continuous:
+\begin{align*}
+    \norm{f(x)+g(x) - f(y)-g(y)}
+    \leq& \norm{f(x)-f(y)} +\norm{g(x)-g(y)}.
+\end{align*}
+Because both $f$ and $g$ are uniformly continuous, it suffices to choose the minimum of the $\delta_f$ and $\delta_g$ that makes the norm of the difference to be $\epsilon/2$ close.
+
+The product of to uniformly continuous functions might not be uniformly continuous.
+We have 
+\begin{align*}
+    \absoluteValue{f(x)g(x) - f(y)g(y)} 
+    =& \absoluteValue{f(x)g(x) + f(x)g(y) - f(x)g(y) - f(y)g(y)}\\
+    =& \absoluteValue{f(x)[g(x)-g(y)] - g(y)[f(y)-f(x)]}\\
+    \leq& \absoluteValue{f(x)[g(x)-g(y)]} + \absoluteValue{g(y)[f(y)-f(x)]}\\
+    \leq& \absoluteValue{f(x)}\absoluteValue{g(x)-g(y)} + \absoluteValue{g(y)}\absoluteValue{f(y)-f(x)}.
+\end{align*}
+Although the function is continuous, the function might not be uniformly continuous, given that the choice of the proximity between $x$ and $y$ depends on the values of the functions evaluated at $x$ and $y$.
+A concrete example is $f(x)=g(x)=x$ in $\R$.
+\end{proof} 
+
+\begin{exercise}{54}
+Let $E$ be a bounded, noncompact subset of $\R$.
+Show that there exists a continuous function $f:E\to\R$ that is not uniformly continuous.
+\end{exercise}
+\begin{proof}
+Let $E$ be a bounded noncompact subset of $\R$, so that $E$ is not closed.
+Because $E$ is not closed, then there exists a limit point of $E$, say $a$ not in $E$.
+The function $f(x)=1/d(x,a)$ is not uniformly continuous (for a general metric space $E$).
 \end{proof} 
 
 \begin{exercise}{55}
-fill
+Give an example of a bounded continuous map $f:\R\to\R$ that is not uniformly continuous.
+Can an unbounded continuous function $f:\R\to\R$ be uniformly continuous?
+Explain.
 \end{exercise}
 \begin{proof}
-fill
+The function $f(x)=\sin(x^2)$ is bounded but not uniformly continuous.
+
+A continuous unbounded function from $\R$ to $\R$ can be uniformly continuous, an example is the identity.
 \end{proof} 
 
 \begin{exercise}{56}
-fill
+Prove that $f:(M,d)\to(N,\rho)$ is uniformly continuous if and only if $\rho(f(x_n),f(y_n))\to 0$ for any pair of sequences $(x_n)$ and $(y_n)$ in $M$ satisfying $d(x_n,y_n)\to 0$.
+[Hint: For the backward implication, assume that $f$ is not uniformly continuous and work towards a contradiction].
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$)
+Suppose $f$ is uniformly continuous.
+Then for all $\epsilon>0$, there exists a $\delta>0$ so that for all $x$ and $y$ it holds that $\rho(f(x),f(y))<\epsilon$, whenever $d(x,y)<\delta$.
+Since $d(x_n,y_n) \to 0$, then there exists an $N\in\N$, such that for $n>N$, it holds that $d(x_n,y_n)<\delta$.
+But putting these two conclusions together, we have that for $n>N$, the condition $\rho(f(x_n),f(y_n))<\epsilon$ holds, given that the condition $d(x_n,y_n)<\delta$ holds too.
+
+($\Leftarrow$)
+Following the hint, suppose for the sake of contradiction that $f$ is not uniformly continuous.
+Then there exists an $\epsilon>0$, such that for all $\delta>0$ we can find a pair $x,y$ such that even though $d(x,y)<\delta$, we still have that $\rho(f(x),f(y))\geq\epsilon$.
+Let $\epsilon>0$ and $\delta=1/n$, moreover, let $(x_n)$ and $(y_n)$ be such that $x_n\to x$ and $y_n\to y$, where $x$ and $y$ are given by the non-uniform continuity of $f$.
+Thus $d(x_n,y_n)<1/n$ and $\rho(f(x_n), f(y_n))\geq \epsilon$.
+But this contradicts that $d(x_n,y_n)\to 0$ implies $\rho(f(x_n),f(y_n))\to 0$;
+indeed $\lim_{n\to\infty}\rho(f(x_n),f(y_n)) \geq \epsilon$, a contradiction.
 \end{proof} 
 
 \begin{exercise}{57}
-fill
+A function $f:\R \to \R$ is said to satisfy a Lipschitz condition of order $\alpha$, where $\alpha>0$, if there is a constant $K<\infty$ such that $\absoluteValue{f(x)-f(y)}\leq K\absoluteValue{x-y}^\alpha$ for all $x,y$.
+Prove that such a function is uniformly continuous.
 \end{exercise}
 \begin{proof}
-fill
+In exercise 59 we prove that a function with Lipschitz condition with $\alpha\geq 1$ is constant and hence uniformly continuous.
+Suppose $f$ has the Lipschitz condition for $\alpha>0$.
+Then $\absoluteValue{f(x)-f(y)} \leq K\absoluteValue{x-y}^\alpha$, then choosing $\delta<\sqrt[\alpha]{\epsilon}/K$ suffices, given that then $\absoluteValue{f(x)-f(y)} \leq K\absoluteValue{x-y}^\alpha < K(\sqrt[\alpha]{\epsilon})^\alpha/K = \epsilon$ for all $x$ and $y$, as required.
 \end{proof} 
 
 \begin{exercise}{58}
-fill
+Show that any function $f:\R\to\R$ having a bounded derivative is Lipschitz of order 1.
+[Hint: Use the mean value Theorem].
 \end{exercise}
 \begin{proof}
-fill
+Suppose $f$ has a bounded derivative, so that $\absoluteValue{f'(x)}<K$ for a real $K$.
+Let $[x,y]$ be an arbitrary closed interval.
+By the mean value Theorem, we have that there exists a $c\in[x,y]$, such that 
+\begin{align*}
+    \absoluteValue{f'(c)} 
+    = \frac{\absoluteValue{f(y)-f(x)}}
+    {\absoluteValue{y-x}} < K,
+\end{align*}
+so that $\absoluteValue{f(y)-f(x)}<K\absoluteValue{y-x}$; 
+that is, $f$ is Lipschitz of order 1.
 \end{proof} 
 
 \begin{exercise}{59}
-fill
+The Lipschitz condition is interesting only for $\alpha \leq 1$;
+show that a function satisfying a Lipschitz condition of order $\alpha>1$ is constant.
 \end{exercise}
 \begin{proof}
-fill
+By the Lipschitz condition, we have that
+\begin{align*}
+    K\absoluteValue{x-y}^{\alpha-1} 
+    = \frac{f(x)-f(y)}{x-y}.
+\end{align*}
+Taking the limit as $y\to x$ on both sides of the equation gives us that $f'(x)=\lim_{y\to x}K\absoluteValue{x-y}^{\alpha-1}=0$ for any $\alpha\geq 1$;
+that is, $f$ is constant for all $x$.
 \end{proof} 
 
 \begin{exercise}{61}
-fill
+Two metric spaces $(M,d)$ and $(N,\rho)$ are said to be uniformly homeomorphic if there is a one-to-one and onto map $f:M\to N$ such that both $f$ and $f^{-1}$ are uniformly continuous.
+In this case we say that $f$ is a uniform homeomorphism.
+Prove that completeness is preserved by uniform homeomorphisms.
 \end{exercise}
 \begin{proof}
-fill
+In 48 we proved that uniformly continuous functions preserve Cauchy sequences, so that if a Cauchy sequence $(x_n)$ in $M$ converges to a point in $M$, then the sequence $(f(x_n))$ in $N$ converges to a point in $N$.
+That is, $N$ is complete.
 \end{proof} 
 
 \begin{exercise}{62}
-fill
+Two metrics $d$ and $\rho$ on a set $M$ are said to be uniformly equivalent if the identity map between $(M,d)$ and $(M,\rho)$ is uniformly continuous in both directions (i.e., if the identity map is a uniform homeomorphism).
+If there are constants $0<c<C<\infty$ such that $c\rho(x,y)<d(x,y)<C\rho(x,y)$ for every points $x, y\in M$, prove that $d$ and $\rho$ are uniformly equivalent.
 \end{exercise}
 \begin{proof}
-fill
+Let $f$ be the identity in $M$.
+$f$ is trivially a bijection. 
+We will prove that $f$ is uniformly continuous, the proof that $f^{-1}$ is also uniformly continuous (and thus $d$ and $\rho$ are uniformly equivalent) follows mutatis mutandis using the same strategy.
+
+Let $\epsilon>0$ and $\delta<c\epsilon$.
+We have $\rho(f(x),f(y)) = \rho(x,y) \leq d(x,y)/c < \epsilon$, for all $x,y\in M$, thus $f$ is uniformly continuous.
 \end{proof} 
 
 \begin{exercise}{65}
-fill
+If $f:(0,1)\to\R$ is continuous, and if both $f(0+)=\lim_{x^+\to 0}f(x)$ and $f(-1)$ exist, show that the function $F$ defined by $F(0)=f(0+), F(1)=f(1-)$, and $F(x)=f(x)$ of $0<x<1$ is uniformly continuous on $[0,1]$.
 \end{exercise}
 \begin{proof}
-fill
+Theorem 8.15
 \end{proof} 
 
 \begin{exercise}{67}
-fill
+Define $f:l_2\to l_1$ by $f(x)=(x_n/n)_{n=1}^\infty$.
+Show that $f$ is uniformly continuous.
 \end{exercise}
 \begin{proof}
 fill

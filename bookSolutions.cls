@@ -26,6 +26,8 @@
 \usepackage{url}
 \usepackage{cleveref}
 
+\usepackage{enumitem}
+
 %%% To add svg files created with inkscape, see https://castel.dev/post/lecture-notes-2/
 \usepackage{import}
 \usepackage{xifthen}
@@ -55,6 +57,7 @@
 \newcommand{\CCC}{\mathcal{C}}
 \newcommand{\DDD}{\mathcal{D}}
 \newcommand{\FFF}{\mathcal{F}}
+\newcommand{\GGG}{\mathcal{G}}
 \newcommand{\III}{\mathcal{I}}
 \newcommand{\LLL}{\mathcal{L}}
 \newcommand{\MMM}{\mathcal{M}}
@@ -92,9 +95,20 @@
 
 % Probability
 \newcommand{\E}{\mathbb{E}} % Expected value
-\newcommand{\indep}{\perp \!\!\! \perp} % Conditional independence.
 \newcommand{\Var}{\mathrm{Var}}
 \newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+
+\newcommand{\indep}{\perp \!\!\! \perp} % Conditional independence.
+\newcommand{\mathdash}{\relbar\mkern-9mu\relbar}
+
+\newcommand{\prob}{\mathbb{P}}
+\newcommand{\cdf}{\mathrm{P}}
+\newcommand{\pdf}{\mathrm{p}}
+\newcommand{\cdfQ}{\mathrm{Q}}
+\newcommand{\pdfQ}{\mathrm{q}}
+
+
 
 % Math environments
 \newtheorem{thm}{Theorem}
