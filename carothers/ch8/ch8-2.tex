@@ -1,9 +1,5 @@
 \subsection{Uniform continuity}
 
-65C
-67C
-69* Providing details to proof
-70C Cool counterexample to a possible generalization of the fixed point theorems
 
 \begin{exercise}{44}
 Show that any Lipschitz map $f:(M,d)\to (N,\rho)$ is uniformly continuous. 
@@ -185,7 +181,8 @@ We have $\rho(f(x),f(y)) = \rho(x,y) \leq d(x,y)/c < \epsilon$, for all $x,y\in 
 If $f:(0,1)\to\R$ is continuous, and if both $f(0+)=\lim_{x^+\to 0}f(x)$ and $f(-1)$ exist, show that the function $F$ defined by $F(0)=f(0+), F(1)=f(1-)$, and $F(x)=f(x)$ of $0<x<1$ is uniformly continuous on $[0,1]$.
 \end{exercise}
 \begin{proof}
-Theorem 8.15
+Notice that the set $[0,1]$ is compact, and that $F$ by the way we defined it, is continuous in $[0,1]$.
+Thus, by Theorem 8.15, $F$ is uniformly continuous.
 \end{proof} 
 
 \begin{exercise}{67}
@@ -193,19 +190,74 @@ Define $f:l_2\to l_1$ by $f(x)=(x_n/n)_{n=1}^\infty$.
 Show that $f$ is uniformly continuous.
 \end{exercise}
 \begin{proof}
-fill
+For $x, y\in l_2$, we have
+\begin{align*}
+    \norm{f(x)-f(y)}_1
+    =& \sum_i \absoluteValue{\frac{x_i-y_i}{i}}\\
+    \leq& \parens{\sum_i\absoluteValue{x_i-y_i}^2}^{1/2} \parens{\sum_i 1/i^2}^{1/2}\\
+    =& (\pi/\sqrt{6})\norm{x-y}_2.
+\end{align*}
+Where the first inequality follows from the Cauchy-Schwarz inequality and the last inequality follows from the definition of the 2 norm and the Basel problem.
+Thus, choosing $\delta=\sqrt{6}\epsilon/\pi$, guarantees that $f(x)$ and $f(y)$ are $\epsilon$ close in the 1 norm, giving us the desired uniform continuity.
 \end{proof} 
 
-\begin{exercise}{69}
-fill
+\begin{exercise}{69 Theorem 8.15 (details of proof by picture)}
+If $M$ is a compact metric space, then every continuous $f:M\to N$ is uniformly continuous.
 \end{exercise}
 \begin{proof}
-fill
+Let $\epsilon>0$.
+We want to find a $\delta > 0$, so that whenever $x,y\in M$ satisfy $\rho(f(x),f(y)) \geq \epsilon$, then we have that $d(x,y) \geq \delta$, because if $f$ is uniformly continuous, if $d(x,y) < \delta$, then $\rho(f(x),f(y)) < \epsilon$.
+
+That is, we want to show that the function $d(x,y)$ is bounded away from the 0 on the set $E=\set{(x,y) \in M \times M : \rho(f(x),f(y)) \geq \epsilon}$.
+We have that $E$ does not contain the pair $(x,x)$ for all $x\in M$, as in that case $\rho(f(x),f(x)) = 0$.
+We want to prove $E$ is compact, which we will do by proving it is a closed subset of a compact set namely $M\times M$.
+
+To see this, we will first prove that the function $g(x,y) = \rho(f(x),f(y))$ is continuous on $M \times M$.
+Let $\epsilon>0$, and let $\delta >0$ such that whenever $d(x,x')<\delta$ and $d(y,y')<\delta$ (and thus $d_\infty((x,y), (x',y')) = \max\set{d(x,x'), d(y,y')} = \delta$), then $\rho(f(x),f(x'))<\epsilon/2$ and $\rho(f(y),f(y'))<\epsilon/2$, which is guaranteed by the continuity of $f$.
+We have 
+\begin{align*}
+    \absoluteValue{g(x,y)- g(x',y')}
+    =& \absoluteValue{\rho(f(x),f(y)) - \rho(f(x'),f(y'))}\\
+    =& \absoluteValue{\rho(f(x),f(y)) - \rho(f(x'),f(y))
+    + \rho(f(x'),f(y)) - \rho(f(x'),f(y'))}\\
+    \leq& \absoluteValue{\rho(f(x),f(y)) - \rho(f(x'),f(y))}
+    + \absoluteValue{\rho(f(x'),f(y)) - \rho(f(x'),f(y'))}\\
+    \leq& \rho(f(x),f(x')) + \rho(f(y),f(y')) < \epsilon
+\end{align*}
+where the last inequality follows from exercise 3.2.
+
+Since $g$ is continuous, $E=g^{-1}([\epsilon, \infty))$ is closed.
+Finally, since the function $d(x,y)$ is continuous, (and strictly positive) on $E$, it follows that $d$ attains a minimum value on $\delta>0$ on $E$.
 \end{proof} 
 
 \begin{exercise}{70}
-fill
+Let $K=\set{x \in l_\infty: \lim x_n = 1}$.
+Prove:
+\begin{enumerate}
+    \item $K$ is a closed (and hence complete) subset of $l_\infty$.
+    \item If $T:l_\infty\to l_\infty$ is given by $T(x) = (0,x_1,x_2,\dots)$ for $x=(x_1,x_2,x_3,\dots)$ in $l_\infty$, that is, $T$ shifts the entries forward and puts 0 in the empty slot, then $T(K)\subseteq K$.
+    \item $T$ is an isometry on $K$, but $T$ has no fixed point in $K$.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item Let $(x_n^m)$ a convergent sequence of sequences in $K$, say $x_n^m \to x_n$.
+    Thus, for all $\epsilon>0$, there exists an $M\in\N$, such that whenever $m>M$, it holds that $\norm{x^m-x} = \sup_n\absoluteValue{x^m_n-x_n} < \epsilon/2$.
+    Likewise, for the choice of $M$, there exists an $N\in\N$, such that whenever $n>N$, it holds that $\absoluteValue{x^M_n-1}<\epsilon/2$.
+    We then have that 
+    \begin{align*}
+        \absoluteValue{x_n-1} 
+        =& \absoluteValue{x_n - x_n^M + x_n^M - 1}\\
+        \leq& \absoluteValue{x_n - x_n^M} + \absoluteValue{x_n^M - 1}\\ 
+        \leq& \sup_n\absoluteValue{x_n - x_n^M} + \absoluteValue{x_n^M - 1} < \epsilon,
+    \end{align*}
+    so that $(x_n)\to 1$.
+    Since $l_\infty$ is complete and $K$ is a closed subset of $l_\infty$, then Theorem 7.9 tells us that $K$ is itself complete.
+    \item Notice that for all $(x_n)_{n=1}^\infty$ in $K$, $(y_n) = (x_n)_{n=2}^\infty$ is a subsequence, since subsequences of convergent sequences converge to the same limit, then $y_n\to 1$;
+    that is $y_n\in K$.
+    \item Notice that for $x,y\in K$, $\norm{T(x)-T(y)}_\infty = \sup_n\absoluteValue{x_n-y_n} = \norm{x-y}_\infty$, so that $T$ is an isometry in $K$.
+    $T$ has no fixed point because that requires $x_1$ to be 0 (because otherwise moving all the elements of the right and adding a 0 on the first position implies $x_1$ was initially 0.
+    But this also implies that $x_2$ is 0, and this holds for all $n$.
+    Thus, the only fixed point of $T$ is the 0 vector, which is not in $K$.
+\end{enumerate}
 \end{proof} 
