@@ -80,6 +80,7 @@
 \DeclareMathOperator*{\lcm}{lcm}
 \DeclareMathOperator*{\ord}{ord}
 \newcommand*\parens[1]{\left( #1\right)}
+\newcommand*\sqrBrackets[1]{\left[ #1\right]}
 \newcommand*\brackets[1]{\langle #1\rangle}
 \newcommand*\absoluteValue[1]{\left\lvert #1\right\rvert}
 \newcommand*\degree{°}

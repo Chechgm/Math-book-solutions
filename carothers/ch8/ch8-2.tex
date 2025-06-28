@@ -208,9 +208,9 @@ If $M$ is a compact metric space, then every continuous $f:M\to N$ is uniformly 
 Let $\epsilon>0$.
 We want to find a $\delta > 0$, so that whenever $x,y\in M$ satisfy $\rho(f(x),f(y)) \geq \epsilon$, then we have that $d(x,y) \geq \delta$, because if $f$ is uniformly continuous, if $d(x,y) < \delta$, then $\rho(f(x),f(y)) < \epsilon$.
 
-That is, we want to show that the function $d(x,y)$ is bounded away from the 0 on the set $E=\set{(x,y) \in M \times M : \rho(f(x),f(y)) \geq \epsilon}$.
+That is, we want to show that the function $d(x,y)$ is bounded away from 0 on the set $E=\set{(x,y) \in M \times M : \rho(f(x),f(y)) \geq \epsilon}$.
 We have that $E$ does not contain the pair $(x,x)$ for all $x\in M$, as in that case $\rho(f(x),f(x)) = 0$.
-We want to prove $E$ is compact, which we will do by proving it is a closed subset of a compact set namely $M\times M$.
+We want to prove $E$ is compact, which we will do by proving it is a closed subset of a compact set, namely $M\times M$.
 
 To see this, we will first prove that the function $g(x,y) = \rho(f(x),f(y))$ is continuous on $M \times M$.
 Let $\epsilon>0$, and let $\delta >0$ such that whenever $d(x,x')<\delta$ and $d(y,y')<\delta$ (and thus $d_\infty((x,y), (x',y')) = \max\set{d(x,x'), d(y,y')} = \delta$), then $\rho(f(x),f(x'))<\epsilon/2$ and $\rho(f(y),f(y'))<\epsilon/2$, which is guaranteed by the continuity of $f$.

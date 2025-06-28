@@ -1,14 +1,5 @@
 \subsection{Equivalent metrics}
 
-73* Good counterexample to one implication
-
-76* All linear maps between finite dimensions are continuous!
-78C Some infinite dimensional goodies 
-79* This is an extremely important normed space, central to the study of functional analysis 
-
-81C Some infinite dimensional goodies 
-82* Important characterization of the operator norm
-
 85* Filling in missing details 
 86* Obviously very importatn
 87* Filling in missing details
@@ -16,52 +7,186 @@
 89* Cool counter
 
 \begin{exercise}{73}
-fill
+Given any metric space $(M,d)$, show that the metric $\rho = d/(1+d)$ is always uniformly equivalent to $d$ but that there are cases in which the inequality $d\leq C\rho$ may fail to hold.
 \end{exercise}
 \begin{proof}
-fill
+Let $\epsilon > 0$.
+First, let $\delta=\epsilon$, we have 
+\begin{align*}
+    \rho(i(x),i(y)) 
+    = \rho(x,y)
+    = \frac{d(x,y)}{1+d(x,y)}
+    \leq d(x,y) 
+    < \delta
+    = \epsilon.
+\end{align*}
+
+On the other hand, let $\delta = \epsilon/(1+\epsilon)$.
+We have
+\begin{align*}
+    \rho(x,y)
+    = \frac{d(i^{-1}(x),i^{-1}(y))}{1 + d(i^{-1}(x),i^{-1}(y)}
+    = \frac{d(x,y)}{1 + d(x,y)}
+    < \delta
+    = \epsilon/(1+\epsilon),
+\end{align*}
+so that 
+\begin{align*}
+    &d(x,y)/(1+d(x,y)) < \epsilon/(1+\epsilon) &&\iff\\
+    &d(x,y)(1+\epsilon) < \epsilon(1+d(x,y))  &&\iff\\
+    &d(x,y) + \epsilon d(x,y) < \epsilon + \epsilon d(x,y))  &&\iff\\
+    & d(x,y) < \epsilon,
+\end{align*}
+as required.
+
+To see that $d$ and $\rho$ fail to be strongly equivalent, consider $\R$ with the usual metric.
+For any $C$ that we can pose, we can find $x,y\in\R$ so that $d(x,y)\geq C\rho$, given that for $x$ largely distant from each other, $\rho(x,y)$ is approximately 1, whereas $d(x,y)$ can be arbitrarily large.
 \end{proof} 
 
 \begin{exercise}{76}
-fill
+Fix $y\in\R^n$ and define a linear map $L:\R^n\to\R$ by $L(x)=\brackets{x,y}$.
+Show that $L$ is continuous and compute $\norm{L} = \sup_{x\neq 0}\absoluteValue{L(x)}/\norm{x}_2$.
+[Hint: Cauchy-Schwarz].
 \end{exercise}
 \begin{proof}
-fill
+Let $\epsilon>0$, and choose $\delta < \epsilon/\norm{y}_2$.
+We have 
+\begin{align*}
+    \absoluteValue{L(x)-L(z)} 
+    =& \absoluteValue{\brackets{x,y} - \brackets{z,y}}\\
+    =& \absoluteValue{\brackets{x-z,y}}\\
+    =& \absoluteValue{\sum (x_i-z_i)y_i}\\
+    \leq& \sum\absoluteValue{(x_i-z_i)y_i}\\
+    \leq& \parens{\sum\absoluteValue{x_i-z_i}^2}^{1/2}\parens{\sum\absoluteValue{y_i}^2}^{1/2}\\
+    =& \norm{x-z}_2\norm{y}_2 < \epsilon.
+\end{align*}
+
+For the norm of $L$, notice that by the Cauchy-Schwarz inequality, 
+\begin{align*}
+    \sum \absoluteValue{x_iy_i}
+    \leq \parens{\sum \absoluteValue{x_i}^2}^{1/2}\parens{\sum \absoluteValue{y_i}^2}^{1/2},
+\end{align*}
+holds with equality (and thus is maximised) if and only if $x$ is a scalar multiple of $y$, in which case $\norm{L} = \norm{x}_2\norm{y}_2/\norm{x}_2 = \norm{y}_2$.
 \end{proof} 
 
 \begin{exercise}{78}
-fill
+Define a linear map $f:l_2\to l_1$ by $f(x)=(x_n/n)_n^\infty$.
+Is $f$ bounded?
+If so, what is $\norm{f}$?
 \end{exercise}
 \begin{proof}
-fill
+Consider the sequence $x_n = 1/n$ which is in $l_2$, since $\sum\absoluteValue{1/n^2}<\infty$.
+We have
+\begin{align*}
+    \norm{f(x)} = \sum\absoluteValue{1/n^2} = \pi/\sqrt{6}.
+\end{align*}
+Any other sequence $x$ which is proportional to $1/n$ would result in the same norm of $f$ using the Cauchy-Schwarz inequality, and noticing that the inequality holds with equality whenever $x$ is a scalar product of $y$, which in this case is $1/n$.
 \end{proof} 
 
 \begin{exercise}{79}
-fill
+If $S,T\in B(V,W)$, show that $S+T \in B(V,W)$ and that $\norm{S+T} \leq \norm{S} + \norm{T}$.
+Using this, complete the proof that $B(V,W)$ is a normed space under the operator norm.
 \end{exercise}
 \begin{proof}
-fill
+We have 
+\begin{align*}
+    \norm{S+T} 
+    =& \sup_{x\neq 0} \frac{\norm{(S+T)x}}{\norm{x}}\\
+    =& \sup_{x\neq 0} \frac{\norm{Sx+Tx}}{\norm{x}}\\
+    =& \sup_{x\neq 0} \sqrBrackets{\frac{\norm{Sx}}{\norm{x}}
+    + \frac{\norm{Tx}}{\norm{x}}}\\
+    \leq& \sup_{x\neq 0} \frac{\norm{Sx}}{\norm{x}} 
+    + \sup_{x\neq 0} \frac{\norm{Tx}}{\norm{x}}\\
+    =& \norm{S} + \norm{T},
+\end{align*}
+where the inequality follows from the subadditivity of the supremum.
+This proves both the triangle inequality for the norm, and that $S+T\in B(V,W)$.
+In the previous section, Carothers proves that $B(V,W)$ is vector space, so that with the previous result, $B(V,W)$ is a normed space with norm given by the operator norm.
 \end{proof} 
 
 \begin{exercise}{81}
-fill
+Prove that the indefinite integral, defined by $T(f)(x) = \int_a^x f(t) dt$ is continuous as a map from $C[a,b]$ into $C[a,b]$.
+Estimate $\norm{T}$.
 \end{exercise}
 \begin{proof}
-fill
+Let $\delta <\epsilon/(b-a)$
+\begin{align*}
+    \norm{Tf-Tg}
+    =& \max_{x \in [a,b]} \absoluteValue{\int_a^x f(t)dt-\int_a^x g(t)dt}\\
+    =& \max_{x \in [a,b]} \absoluteValue{\int_a^x f(t)dt - g(t)dt}\\
+    \leq& \max_{x \in [a,b]} \int_a^x \absoluteValue{f(t)dt - g(t)}dt\\
+    \leq& (b-a)\max_{x \in [a,b]} \absoluteValue{f(x) - g(x)}\\
+    =& (b-a)\norm{f-g} < \epsilon.
+\end{align*}
+
+For the norm of $T$, notice that 
+\begin{align*}
+    \norm{Tf} = \max_{x\in[a,b]}\absoluteValue{\int_a^x f(t) dt} \leq (b-a)\max_{x\in [a,b]}\absoluteValue{f(x)}.
+\end{align*}
+This inequality holds with equality only when $f$ is a positive constant, in which case
+\begin{align*}
+    \sup_{f\neq 0}\frac{\norm{Tf}}{\norm{f}}
+    = \frac{(b-a) \max_{x\in [a,b]}\absoluteValue{f(x)}}{\max_{x\in [a,b]}\absoluteValue{f(x)}} = b-a.
+\end{align*}
 \end{proof} 
 
 \begin{exercise}{82}
-fill
+For $T\in B(V,W)$, prove that $\norm{T} = \sup\set{\norm{Tx}: \norm{x}=1}$
 \end{exercise}
 \begin{proof}
-fill
+This proof is due to Kreyszig, Lemma 2.7.2.
+Let $\norm{x}=a$ and let $y=(1/a)x$, where $x\neq 0$.
+Then $\norm{y}=\norm{x}/a$, and since $T$ is linear, 
+\begin{align*}
+    \norm{T} 
+    = \sup_{x\neq 0}(1/a)\norm{Tx}
+    = \sup_{x\neq 0}\norm{T([1/a]x)}
+    = \sup_{\norm{y}=1}\norm{Ty},
+\end{align*}
+as required.
 \end{proof} 
 
-\begin{exercise}{85}
-fill
+\begin{exercise}{85 (Theorem 8.22)}
+Any two norms on a finite dimensional vector space are equivalent.
 \end{exercise}
 \begin{proof}
-fill
+We reproduce the Carothers proof in whole, filling out the details, when missing.
+
+Let $V$ be an $n$-dimensional vector space with basis $x_1,\dots,x_n$.
+We will define a specific, convenient norm on $V$ and prove that any other norm on $V$ is equivalent to ours.
+To do this, recall that $V$ is isomorphic to $\R^n$, given that any $x\in V$ can be written as $x=\sum a_i x_i$, where $a_i\in\R$ and thus we can think of $x$ as the list $a_1,\dots,a_n$.
+This is the same as saying that the basis to basis map $x_i\to e_i=(0,\dots,0,1,0,\dots,0)$ is a vector isomorphism between $V$ and $\R^n$.
+
+Given this, we can define a norm on $V$ by ``borrowing'' a norm from $\R^n$.
+Specifically, let
+\begin{align*}
+    \norm{\sum a_ix_i} = \sum \norm{a_i} = \norm{\sum a_i e_i}_1
+\end{align*}
+for each $x=\sum a_i x_i \in V$.
+Since $x_1,\dots,x_n$ is a basis, this defines a norm on $V$: $\norm{x}=0 \iff a_i=0 \text{ for all } i \iff x=0$.
+Moreover, the basis to basis map is a linear isometry between $(V, \norm{\cdot})$ and $(\R^n, \norm{\cdot}_1)$.
+
+The unit sphere $S=\set{x\in V:\norm{x}=1}$ is compact in $(V,\norm{\cdot})$ because the corresponding set in $\R^n$ is compact (we proved this in exercise 8 of this chapter).
+
+To finish the proof, suppose that $\norm{\cdot}'$ is any other norm on $V$.
+Then for $\sum a_ix_i$ we have 
+\begin{align*}
+    \norm{\sum a_ix_i}'
+    \leq& \absoluteValue{a_i}\norm{x_i}'\\
+    \leq& \parens{\max_n \norm{x_n}'}\sum \absoluteValue{a_i}\\
+    =& \parens{\max_n \norm{x_n}'}\norm{x},
+\end{align*}
+so that $\norm{x}' \leq C\norm{x}$, where $C=\max_n \norm{x_n}'$ for every $x\in V$.
+
+For the other inequality, we will use our observation about the unit sphere $S$.
+The inequality we just proved tells us that $\norm{\cdot}'$ is a continuous function on $(V,\norm{\cdot})$.
+Indeed $\absoluteValue{\norm{x}'-\norm{y}'} \leq \norm{x-y}' \leq C\norm{x-y}$, for any $x,y\in V$.
+But then $\norm{\cdot}'$ is also continuous on $S$ and so $\norm{\cdot}'$ must assume a minimum value on $S$, say $c\in\R$, because it is a continuous function on a compact space.
+This implies it is a uniformly continuous function on $S$, and so the image of $S$ under $\norm{\cdot}'$ is compact, and thus closed.
+This implies $\norm{\cdot}' \geq c$ whenever $\norm{x}=1$.
+Since this minimum is attained, we must also have $c>0$, as otherwise, this would imply $\norm{x}'=0$ which is true if and only if $x=0$ which is not in $S$.
+Given $0\neq x\in V$, we have $x/\norm{x}\in S$, and hence $\norm{x/\norm{x}}'\geq c$.
+That is, $\norm{x}' \geq c\norm{x}$.
 \end{proof} 
 
 \begin{exercise}{86}

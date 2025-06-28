@@ -1,27 +1,67 @@
 \subsection{1A Review: Riemann integral}
 
-2 some easy practice with the definitions
-3 this should show that riemann integrals don't like functions that are too duscontinuous, to be continued later
 8 do note this limit can exist without the function being riemann integrable
 13 every monotone function is riemann integrable. Can monotone functions be very discontinuous?
 14 probably the most important property of this chapter. Interchanging limit and integral is crucial to analysis. The fact the riemann integrals only allow s this in uniform case, is extremely limiting and THE big reason why we want to look for a different integral
 
 \begin{exercise}{2}
-fill
+Suppose $a \leq s < t \leq b$.
+Define $f:[a,b]\to\R$ by $f(x)=1$ if $s<x<t$, and $f(x)=0$ otherwise.
+Prove that $f$ is Riemann integrable on $[a,b]$ and that $\int_a^b f = t-s$.
 \end{exercise}
 \begin{proof}
-fill
+We will follow a similar strategy as in example 1.10.
+Let $P$ be the following partition: $a,s,t,b$.
+By 1.5, we have
+\begin{align*}
+    \UUU(f,[a,b])
+    \leq (s-a)\sup_{x\in[a,s]} f(x) 
+    + (t-s)\sup_{x\in[s,t]} f(x) 
+    + (b-t)\sup_{x\in[t,b]} f(x)
+    = t-s,
+\end{align*}
+and
+\begin{align*}
+    t-s
+    =(s-a)\inf_{x\in[a,s]} f(x) 
+    + (t-s)\inf_{x\in[s,t]} f(x) 
+    + (b-t)\inf_{x\in[t,b]} f(x)
+    \leq L(f,[a,b]);
+\end{align*}
+that is $\UUU(f,[a,b]) \leq L(f,[a,b])$.
+From 1.8 we know the reverse inequality holds, so that $\int_a^b f = \UUU(f,[a,b]) = L(f,[a,b]) = t-s$.
 \end{proof} 
 
 \begin{exercise}{3}
-fill
+Suppose $f:[a,b]\to\R$ is a bounded function. 
+Prove that $f$ is Riemann integrable if and only if for each $\epsilon>0$, there exists a partition $P$ of $[a,b]$ such that $\UUU(f,P,[a,b]) - L(f,P,[a,b]) < \epsilon$.
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$)
+Suppose $f$ is Riemann integrable.
+Then 
+\begin{align*}
+    \inf_P \UUU(f,P,[a,b]) = \UUU(f,[a,b]) = L(f,[a,b]) = \sup_P L(f,P,[a,b]).
+\end{align*}
+Thus, for $\epsilon>0$, there exists a partition $P'$ such that $\UUU(f,[a,b]) + \epsilon/2 > \UUU(f,P',[a,b])$, and a partition $P''$ such that $L(f,[a,b]) - \epsilon/2 < L(f,P'',[a,b])$.
+Let $P = P' \cup P''$.
+\begin{align*}
+    \UUU(f,P,[a,b]) - L(f,P,[a,b]) 
+    \leq& \UUU(f,P',[a,b]) - L(f,P'',[a,b])\\
+    <& (\UUU(f,[a,b]) + \epsilon/2) 
+    - (L(f,[a,b]) - \epsilon/2) = \epsilon.
+\end{align*}
+
+($\Leftarrow$)
+If for every $\epsilon>0$ there exists a partition $P$ such that  $\UUU(f,P,[a,b]) - L(f,P,[a,b]) < \epsilon$, then it must be the case that $\UUU(f,[a,b]) = L(f,[a,b])$, that is, $f$ is integrable.
 \end{proof} 
 
 \begin{exercise}{8}
-fill
+Suppose $f:[a,b]\to\R$ is Riemann integrable.
+Prove that 
+\begin{align*}
+    \int_a^b f = \lim_{n\to\infty} \frac{b-a}{n}\sum_{j=1}^n f\parens{a+\frac{j(b-a)}{n}}.
+\end{align*}
 \end{exercise}
 \begin{proof}
 fill
