@@ -1,10 +1,5 @@
 \subsection{Equivalent metrics}
 
-85* Filling in missing details 
-86* Obviously very importatn
-87* Filling in missing details
-88* Filling in missing details 
-89* Cool counter
 
 \begin{exercise}{73}
 Given any metric space $(M,d)$, show that the metric $\rho = d/(1+d)$ is always uniformly equivalent to $d$ but that there are cases in which the inequality $d\leq C\rho$ may fail to hold.
@@ -190,29 +185,48 @@ That is, $\norm{x}' \geq c\norm{x}$.
 \end{proof} 
 
 \begin{exercise}{86}
-fill
+If $(V,\norm{\cdot})$ is an $n$-dimensional normed vector space, show that there is a norm $\norm{\cdot}'$ on $\R^n$ such that $(\R^n,\norm{\cdot}')$ is linearly isometric to $(V,\norm{\cdot})$.
 \end{exercise}
 \begin{proof}
-fill
+Let $T$ be a linear isomorphism between $\R^n$ and $V$.
+Define $\norm{x}' = \norm{Tx}$.
+To see $\norm{\cdot}'$ is linearly isometric, for $x,y\in \R^n$, we have $\norm{x-y}' = \norm{Tx - Ty} = \norm{T(x-y)}$, so that $\norm{\cdot}'$ is an isometry.
+
+We will now verify the axioms of norms.
+Notice that for an isomorphism $T$, $Tx=0$ if and only if $x=0$, so that $0 = \norm{x}' = \norm{Tx}$ if and only if $Tx=0$ if and only if $x=0$.
+Since $\norm{\cdot}\geq 0$, so is $\norm{\cdot}'$.
+Let $a\in\R$, then $\norm{ax}' = \norm{T(ax)} = \norm{aTx} = \absoluteValue{a}\norm{Tx} = \absoluteValue{a}\norm{x}'$, as required.
+Finally, since for $\norm{\cdot}$ the triangle inequality holds, then it holds for $\norm{\cdot}'$ as well.
 \end{proof} 
 
-\begin{exercise}{87}
-fill
+\begin{exercise}{87 (Corollary 8.24)}
+Any two finite-dimensional normed vector spaces of the same dimension are uniformly homeomorphic.
+In fact, we can find a linear (and hence Lipschitz) homeomorphism between them.
 \end{exercise}
 \begin{proof}
-fill
+Corollary 8.23 tells us that every map between normed vector spaces where the domain is finite dimensional is continuous.
+In particular, an isomorphism between two $n$-dimensional vector spaces is continuous.
+Furthermore, Theorem 8.20 tells us that a linear map between two normed vector spaces is continuous if and only if it is Lipschitz, giving us the desired result.
 \end{proof} 
 
-\begin{exercise}{88}
-fill
+\begin{exercise}{88 (Corollary 8.25)}
+Every finite-dimensional normed vector space is complete.
 \end{exercise}
 \begin{proof}
-fill
+From Corollary 8.24 we know that any $n$-dimensional vector space, V, is uniformly homeomorphic to $\R^n$.
+Completeness is preserved under uniform homeomorphisms, because Cauchy sequences are preserved under uniformly continuous functions.
+Since $\R^n$ is complete, then $V$ is complete.
 \end{proof} 
 
 \begin{exercise}{89}
-fill
+Corollary 8.26 is of interest because an infinite dimensional normed space may have nonclosed subspaces.
+For example, show that $X=\set{x\in l_1: x_n=0\text{ for all but finitely many }n}$ is a proper dense linear subspace of $l_1$.
 \end{exercise}
 \begin{proof}
-fill
+The fact that $X$ is a linear subspace of $l_1$ follows directly from its definition.
+
+For the density of $X$ in $l_1$, let $x\in l_1$, so that for all $\epsilon>0$, there exists an $N\in\N$ such that $\sum_{i=N}^\infty \absoluteValue{x_i} <\epsilon$, given that $x$ converges absolutely.
+Let $y\in X$ be the sequence equal to $x$ up to the $N$-th element.
+We have $\sum_{i=1}^\infty \absoluteValue{x_i - y_i} = \sum_{i=1}^{N-1} \absoluteValue{x_i - y_i} + \sum_{i=N}^\infty\absoluteValue{x_i} < 0 + \epsilon$.
+That is, $y\in X$ is $\epsilon$-close to $x$, and thus $X$ is dense in $l_1$.
 \end{proof} 
