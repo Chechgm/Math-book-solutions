@@ -56,6 +56,22 @@ Let $P = P' \cup P''$.
 If for every $\epsilon>0$ there exists a partition $P$ such that  $\UUU(f,P,[a,b]) - L(f,P,[a,b]) < \epsilon$, then it must be the case that $\UUU(f,[a,b]) = L(f,[a,b])$, that is, $f$ is integrable.
 \end{proof} 
 
+\begin{exercise}{7}
+Suppose $f:[a,b]\to\R$ is a bounded function.
+For $n\in\N$, let $P_n$ denote the partition that divides $[a,b]$ into $2^n$ intervals of equal size.
+Prove that
+\begin{align*}
+    L(f,[a,b]) = \lim_{n\to\infty} L(f,P_n,[a,b])
+\end{align*}
+and
+\begin{align*}
+    \UUU(f,[a,b]) = \lim_{n\to\infty} \UUU(f,P_n,[a,b])
+\end{align*}
+\end{exercise}
+\begin{proof}
+fill
+\end{proof} 
+
 \begin{exercise}{8}
 Suppose $f:[a,b]\to\R$ is Riemann integrable.
 Prove that 
@@ -64,7 +80,24 @@ Prove that
 \end{align*}
 \end{exercise}
 \begin{proof}
-fill
+Notice that for any $n$, the partition $P$ of $[a,b]$ given by $a=x_1<x_2<\dots<x_{n-1}<x_n=b$, where $x_j-x_{j-1} = (b-a)/n$, gives us that
+\begin{align*}
+    L(f, P, [a,b]) 
+    =& \sum_{j=2}^n (x_j-x_{j-1}) \inf_{x\in[x_j,x_{j-1}]}f(x)\\
+    \leq& \sum_{j=2}^n (x_j-x_{j-1}) f\parens{a+\frac{j(b-a)}{n}}\\
+    =& \frac{b-a}{n}\sum_{j=1}^n f\parens{a+\frac{j(b-a)}{n}} 
+\end{align*}
+and
+\begin{align*}
+    \sum_{j=2}^n (x_j-x_{j-1}) f\parens{a+\frac{j(b-a)}{n}}
+    =& \frac{b-a}{n}\sum_{j=1}^n f\parens{a+\frac{j(b-a)}{n}}\\
+    \geq& \sum_{j=2}^n (x_j-x_{j-1}) \sup_{x\in[x_j,x_{j-1}]}f(x)\\
+    =& \UUU(f,P,[a,b]).
+\end{align*}
+Now we know that $\UUU(f,[a,b]) = \inf_P \UUU(f,P,[a,b])$ and $L(f,[a,b]) = \sup_P L(f,P,[a,b])$ over all partitions, so that by taking the limit as $n\to \infty$, we have that 
+\begin{align*}
+    L(f, [a,b]) = \lim_{n\to\infty} \frac{b-a}{n}\sum_{j=1}^n f\parens{a+\frac{j(b-a)}{n}} = \UUU(f,[a,b]).
+\end{align*}
 \end{proof} 
 
 \begin{exercise}{13}
@@ -75,8 +108,43 @@ fill
 \end{proof} 
 
 \begin{exercise}{14}
-fill
+Suppose $f_1, f_2,\dots$ is a sequence of Riemann integrable functions on $[a,b]$ such that $f_1,f_2,\dots$ converges uniformly on $[a,b]$ to a function $f:[a,b]\to\R$.
+Prove that $f$ is Riemann integrable and $\lim_{n\to\infty}\int_a^b f_n = \int_a^b f$.
 \end{exercise}
 \begin{proof}
-fill
+First we will prove that $f$ is Riemann integrable.
+Let $\epsilon>0$, from the uniform convergence of $(f_n)$, we know there exists an $N\in\N$, such that whenever $n>N$, it holds that $\absoluteValue{f_n-f}<m\epsilon/3(b-a)$ for all $x\in [a,b]$.
+Now, using exercise 3, we know there exists a partition $P$, $a=x_1,\dots,x_m=b$ such that $\UUU(f_N,P,[a,b])-L(f_N,P,[a,b])<m\epsilon/3(b-a)$.
+We have
+\begin{align*}
+    \UUU(f,P,[a,b]) - L(f,P,[a,b])
+    =&  \sum_j (x_j-x_{j-1})[\sup_{[x_j-x_{j-1}]} f - \inf_{[x_j-x_{j-1}]}f]\\
+    =&  \sum_j (x_j-x_{j-1})
+    [\sup_{[x_j-x_{j-1}]} f - \inf_{[x_j-x_{j-1}]}f\\
+    +& \sup_{[x_j-x_{j-1}]} f_N - \sup_{[x_j-x_{j-1}]}f_N\\
+    +& \inf_{[x_j-x_{j-1}]} f_N - \inf_{[x_j-x_{j-1}]}f_N]\\
+    =&  \sum_j (x_j-x_{j-1})
+    [\sup_{[x_j-x_{j-1}]} f - \sup_{[x_j-x_{j-1}]}f_N] \\
+    +& \sum_j (x_j-x_{j-1}) 
+    [\inf_{[x_j-x_{j-1}]} f_N - \inf_{[x_j-x_{j-1}]}f] \\
+    +& \sum_j (x_j-x_{j-1})
+    [\sup_{[x_j-x_{j-1}]} f_N - \inf_{[x_j-x_{j-1}]}f_N]\\
+    <& \sum_j (x_j-x_{j-1}) m\epsilon/3(b-a)\\
+    +& \sum_j (x_j-x_{j-1}) m\epsilon/3(b-a)\\
+    +& \sum_j (x_j-x_{j-1}) m\epsilon/3(b-a)\\
+    = \epsilon.
+\end{align*}
+The first sums being less than $m\epsilon/3(b-a)$ because of uniform convergence and the last sum follows from the Riemann integrability of $f_N$.
+
+Now we will see that the limit of Riemann integrals converges to the integral of the limit.
+Let $\epsilon>0$, and choose $N\in\N$ be such that whenever $n>N$, it holds that $\absoluteValue{f_n - f} < \epsilon/(b-a)$ (for all $x\in[a,b]$, given that $(f_n)$ converges uniformly).
+We have
+\begin{align*}
+    \absoluteValue{\int_a^b f_n - \int_a^b f}
+    =& \absoluteValue{\int_a^b f_n - \int_a^b f}\\
+    \leq& \int_a^b \absoluteValue{f_n - f}\\
+    \leq& (b-a)\sup_{x\in[a,b]}\absoluteValue{f_n - f} 
+    < \epsilon,
+\end{align*}
+where the first equality follows from the algebraic rules of the Riemann integral, the first inequality follows from exercise 12, the second to last inequality follows from 1.13, and the last inequality follows from the uniform convergence of $(f_n)$.
 \end{proof} 
