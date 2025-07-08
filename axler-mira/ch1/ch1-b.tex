@@ -1,134 +1,20 @@
-\subsection{1B Riemann integral is not enough}
+\subsection{1B Riemann integral is not good enough}
 
-\begin{exercise}{x}
-fill
+
+\begin{exercise}{5}
+Give an example of a sequence of continuous real-valued functions $f_1,f_2,\dots$ on $[0,1]$ and a continuous real-valued function on $[0,1]$ such that $\lim_{n\to\infty} f_n(x)= f(x)$ for each $x\in [0,1]$ but $\lim_{n\to\infty}\int_0^1 f_n(x) \neq \int_0^1 f(x)$.
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
+This example is due to Capinski and Kopp.
+Consider the sequence of functions in $[0,1]$ given by
+\begin{align*}
+    f_n(x) =
+    \begin{cases}
+        4n^2x &\text{if }0\leq x<1/2n\\
+        4n-4n^2x &\text{if }1/2n\leq x < 1/n\\
+        0 &1/n\leq x < 1.
+    \end{cases}
+\end{align*}
+We then have that $f_n\to f$, where $f(x)=0$ for all $x$.
+We also have that $\int_0^1 f_n=1$ for all $n$, but $\int_0^1 f=0$, so that $\lim_n \int_0^1 f_n \neq \int_0^1 f$.
 \end{proof} 

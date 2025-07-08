@@ -1,141 +1,63 @@
 \subsection{Discontinuous functions}
 
-
-1*
-2* Some important (and i hope intuitive) computations for the oscillation
 4* Not sure why this is starred tbh, don't see why this is supposed to be important
-5* Not sure why this is in this chapter
 9* This shows that at least every closed set is a set of discontinuity points of a function. But these are not all!
 
 12* Interesting property of open and closed sets, especially in light of D(f)
 
-\begin{exercise}{x}
+\begin{exercise}{1}
+If $f$ is increasing, show that $\omega_f(a)=f(a+)-f(a-)$.
+\end{exercise}
+\begin{proof}
+We have that 
+\begin{align*}
+    \omega_f(a) = \lim_{h\to0+}\omega(f;(a-h,a+h)) = \lim_{h \to 0+} \sup\set{\absoluteValue{f(x)-f(y)}: x,y\in (a-h,a+h)}.
+\end{align*}
+Since $f$ is increasing, we have that for all $h>0$, $f(a-h)<f(a)$ and $f(a)<f(a+h)$, so that $\absoluteValue{f(a+h)-f(a-h)} = f(a+h)-f(a-h)$.
+Taking the limit as $h$ goes to 0 gives us the desired result.
+\end{proof} 
+
+\begin{exercise}{2}
+Prove that $f$ is continuous at $a$ if and only if $\omega_f(a)=0$.
+\end{exercise}
+\begin{proof}
+($\Rightarrow$)
+Suppose $f$ is continuous.
+Then for all $\epsilon>0$, we can find a $\delta>0$ such that whenever $\norm{a-x}<\delta$, it holds that $\norm{f(a)-f(x)}<\epsilon$. 
+Since this holds for all $\epsilon$, then $\omega_f(a) = \inf_{a\in I, I\text{ open}}\omega(f; I) = 0$.
+
+($\Leftarrow$)
+Suppose $\omega_f(a)= \lim_{h\to 0+}\text{ diam}f(B_h(a)) = 0$, then for $\epsilon>0$, we can find an $h>0$, so that whenever $x\in B_h(a)$, it holds that $f(x) \in B_\epsilon(f(B_h(a))$;
+that is, $f$ is continuous.
+\end{proof} 
+
+\begin{exercise}{4}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{5}
+If $A$ is a subset of $\R$, and if $x$ is in the interior of $A$, show that $x$ is a point of continuity for $\chi_A$ (the characteristic function of $A$).
+Are there any other points of continuity?
 \end{exercise}
 \begin{proof}
-fill
+Recall that $\text{int}(A)=\set{x\in A:B_\epsilon(x)\subseteq A\text{ for some }\epsilon>0}$.
+Thus, $\omega_{\chi_A}(x) = \lim_{h\to 0+}\text{diam}\chi_A(B_h(x)) = 0$, and by exercise 2, $\chi_A$ is continuous in $x$.
+The other points of continuity of $\chi_A$ are the interior of the complement of $A$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{9}
+If $E$ is a closed set in $\R$, show that $E=D(f)$ for some bounded function $f$.
+[Hint: A sum of two characteristic functions will do the trick].
 \end{exercise}
 \begin{proof}
-fill
+Consider the characteristic function in $E$, $\chi_E$.
+This is certainly a bounded function, and furthermore, the set of discontinuities is precisely $E$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
+\begin{exercise}{12}
 fill
 \end{exercise}
 \begin{proof}

@@ -109,21 +109,10 @@
 \newcommand{\cdfQ}{\mathrm{Q}}
 \newcommand{\pdfQ}{\mathrm{q}}
 
-
-
 % Math environments
 \newtheorem{thm}{Theorem}
 \crefname{thm}{theorem}{theorems}
 \Crefname{thm}{Theorem}{Theorems}
-
-% Exercise with box
-%\usepackage{mdframed}
-% \mdfdefinestyle{exercise-box}{backgroundcolor=gray!20,
-%                                 topline=false,bottomline=false,rightline=false,
-%                                 linewidth=0.075cm,linecolor=gray!80}
-% \newenvironment{exercise}[2][Exercise]
-%     { \begin{mdframed}[style=exercise-box] \sloppy\textbf{#1 #2}  \\}
-%     {  \end{mdframed}}
 
 % Exercise with box, and no break errors.
 \usepackage{tcolorbox}

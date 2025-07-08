@@ -1,8 +1,6 @@
 \subsection{1A Review: Riemann integral}
 
 8 do note this limit can exist without the function being riemann integrable
-13 every monotone function is riemann integrable. Can monotone functions be very discontinuous?
-14 probably the most important property of this chapter. Interchanging limit and integral is crucial to analysis. The fact the riemann integrals only allow s this in uniform case, is extremely limiting and THE big reason why we want to look for a different integral
 
 \begin{exercise}{2}
 Suppose $a \leq s < t \leq b$.
@@ -56,22 +54,6 @@ Let $P = P' \cup P''$.
 If for every $\epsilon>0$ there exists a partition $P$ such that  $\UUU(f,P,[a,b]) - L(f,P,[a,b]) < \epsilon$, then it must be the case that $\UUU(f,[a,b]) = L(f,[a,b])$, that is, $f$ is integrable.
 \end{proof} 
 
-\begin{exercise}{7}
-Suppose $f:[a,b]\to\R$ is a bounded function.
-For $n\in\N$, let $P_n$ denote the partition that divides $[a,b]$ into $2^n$ intervals of equal size.
-Prove that
-\begin{align*}
-    L(f,[a,b]) = \lim_{n\to\infty} L(f,P_n,[a,b])
-\end{align*}
-and
-\begin{align*}
-    \UUU(f,[a,b]) = \lim_{n\to\infty} \UUU(f,P_n,[a,b])
-\end{align*}
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
 \begin{exercise}{8}
 Suppose $f:[a,b]\to\R$ is Riemann integrable.
 Prove that 
@@ -80,9 +62,9 @@ Prove that
 \end{align*}
 \end{exercise}
 \begin{proof}
-Notice that for any $n$, the partition $P$ of $[a,b]$ given by $a=x_1<x_2<\dots<x_{n-1}<x_n=b$, where $x_j-x_{j-1} = (b-a)/n$, gives us that
+Notice that for any $n$, the partition $P_n$ of $[a,b]$ given by $a=x_1<x_2<\dots<x_{n-1}<x_n=b$, where $x_j-x_{j-1} = (b-a)/n$, gives us that
 \begin{align*}
-    L(f, P, [a,b]) 
+    L(f, P_n, [a,b]) 
     =& \sum_{j=2}^n (x_j-x_{j-1}) \inf_{x\in[x_j,x_{j-1}]}f(x)\\
     \leq& \sum_{j=2}^n (x_j-x_{j-1}) f\parens{a+\frac{j(b-a)}{n}}\\
     =& \frac{b-a}{n}\sum_{j=1}^n f\parens{a+\frac{j(b-a)}{n}} 
@@ -92,19 +74,37 @@ and
     \sum_{j=2}^n (x_j-x_{j-1}) f\parens{a+\frac{j(b-a)}{n}}
     =& \frac{b-a}{n}\sum_{j=1}^n f\parens{a+\frac{j(b-a)}{n}}\\
     \geq& \sum_{j=2}^n (x_j-x_{j-1}) \sup_{x\in[x_j,x_{j-1}]}f(x)\\
-    =& \UUU(f,P,[a,b]).
+    =& \UUU(f,P_n,[a,b]).
 \end{align*}
-Now we know that $\UUU(f,[a,b]) = \inf_P \UUU(f,P,[a,b])$ and $L(f,[a,b]) = \sup_P L(f,P,[a,b])$ over all partitions, so that by taking the limit as $n\to \infty$, we have that 
+That is, for all $P_n$, it is the case that
+\begin{align*}
+    \UUU(f,P_n,[a,b]) 
+    \geq \sum_{j=2}^n (x_j-x_{j-1}) f\parens{a+\frac{j(b-a)}{n}}
+    \geq L(f,P_n,[a,b]).
+\end{align*}
+Notice that as $n\to\infty$, $[a,b]$ is divided into $2^m$ intervals of equal size, where $m = \log_2 n$, so that we can use exercise 7, and the fact that $f$ is integrable, to conclude
 \begin{align*}
     L(f, [a,b]) = \lim_{n\to\infty} \frac{b-a}{n}\sum_{j=1}^n f\parens{a+\frac{j(b-a)}{n}} = \UUU(f,[a,b]).
 \end{align*}
 \end{proof} 
 
 \begin{exercise}{13}
-fill
+Suppose $f:[a,b]\to\R$ is an increasing function, meaning that $c,d\in [a,b]$ with $c<d$ implies $f(c)\leq f(d)$.
+Prove that $f$ is Riemann integrable on $[a,b]$.
 \end{exercise}
 \begin{proof}
-fill
+Let $\epsilon>0$.
+Let $P$ be a partition of $[a,b]$ with $n$ elements, such that all the subintervals have the same length, and such that $(f(b)-f(a))/n(b-a)< \epsilon$.
+We have
+\begin{align*}
+    \UUU(f,P,[a,b]) - L(f,P,[a,b])
+    =& \sum (x_j - x_{j-1})[\sup_{[x_j, x_{j-1}]} f - \inf_{[x_j, x_{j-1}]} f]\\
+    =& \frac{b-a}{n} \sum [f(x_j) - f(x_{j-1})]\\
+    =& \frac{b-a}{n} [f(a) - f(b)] < \epsilon.
+\end{align*}
+Where the second equality follows from the increasing assumption, and the last equality follows because the sum telescopes.
+
+Thus, by exercise 3, $f$ is Riemann integrable.
 \end{proof} 
 
 \begin{exercise}{14}
@@ -114,25 +114,25 @@ Prove that $f$ is Riemann integrable and $\lim_{n\to\infty}\int_a^b f_n = \int_a
 \begin{proof}
 First we will prove that $f$ is Riemann integrable.
 Let $\epsilon>0$, from the uniform convergence of $(f_n)$, we know there exists an $N\in\N$, such that whenever $n>N$, it holds that $\absoluteValue{f_n-f}<m\epsilon/3(b-a)$ for all $x\in [a,b]$.
-Now, using exercise 3, we know there exists a partition $P$, $a=x_1,\dots,x_m=b$ such that $\UUU(f_N,P,[a,b])-L(f_N,P,[a,b])<m\epsilon/3(b-a)$.
+Now, using exercise 3, we know there exists a partition $P$, $a=x_1<\dots<x_m=b$ such that $\UUU(f_N,P,[a,b])-L(f_N,P,[a,b])<m\epsilon/3(b-a)$.
 We have
 \begin{align*}
     \UUU(f,P,[a,b]) - L(f,P,[a,b])
     =&  \sum_j (x_j-x_{j-1})[\sup_{[x_j-x_{j-1}]} f - \inf_{[x_j-x_{j-1}]}f]\\
     =&  \sum_j (x_j-x_{j-1})
     [\sup_{[x_j-x_{j-1}]} f - \inf_{[x_j-x_{j-1}]}f\\
-    +& \sup_{[x_j-x_{j-1}]} f_N - \sup_{[x_j-x_{j-1}]}f_N\\
-    +& \inf_{[x_j-x_{j-1}]} f_N - \inf_{[x_j-x_{j-1}]}f_N]\\
+    &+ \sup_{[x_j-x_{j-1}]} f_N - \sup_{[x_j-x_{j-1}]}f_N\\
+    &+ \inf_{[x_j-x_{j-1}]} f_N - \inf_{[x_j-x_{j-1}]}f_N]\\
     =&  \sum_j (x_j-x_{j-1})
     [\sup_{[x_j-x_{j-1}]} f - \sup_{[x_j-x_{j-1}]}f_N] \\
-    +& \sum_j (x_j-x_{j-1}) 
+    &+ \sum_j (x_j-x_{j-1}) 
     [\inf_{[x_j-x_{j-1}]} f_N - \inf_{[x_j-x_{j-1}]}f] \\
-    +& \sum_j (x_j-x_{j-1})
+    &+ \sum_j (x_j-x_{j-1})
     [\sup_{[x_j-x_{j-1}]} f_N - \inf_{[x_j-x_{j-1}]}f_N]\\
     <& \sum_j (x_j-x_{j-1}) m\epsilon/3(b-a)\\
-    +& \sum_j (x_j-x_{j-1}) m\epsilon/3(b-a)\\
-    +& \sum_j (x_j-x_{j-1}) m\epsilon/3(b-a)\\
-    = \epsilon.
+    &+ \sum_j (x_j-x_{j-1}) m\epsilon/3(b-a)\\
+    &+ \sum_j (x_j-x_{j-1}) m\epsilon/3(b-a)\\
+    =& \epsilon.
 \end{align*}
 The first sums being less than $m\epsilon/3(b-a)$ because of uniform convergence and the last sum follows from the Riemann integrability of $f_N$.
 
