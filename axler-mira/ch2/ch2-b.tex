@@ -1,134 +1,330 @@
-\subsection{fill}
+\section{2B Measurable spaces and functions}
+\addcontentsline{toc}{section}{2B Measurable spaces and functions}
 
-\begin{exercise}{x}
-fill
+
+\begin{exercise}{2}
+\begin{enumerate}
+    \item Suppose $X$ is a set and $\cA$ is the set of subsets of $X$ that consist of exactly one element: $\cA = \set{ \set{x} : x \in X}$. 
+    Then the smallest $\sigma$-algebra on $X$ containing $\cA$ is the set of all subsets $E$ of $X$ such that $E$ is countable or $X \setminus E$ is countable.
+    \item Suppose $\cA = \set{ (0,1), (0,\infty)}$.
+    Then the smallest $\sigma$-algebra on $\R$ containing $\cA$ is $\set{ \emptyset, (0,1), (0,\infty), (-\infty, 0] \cup [1,\infty), (-\infty, 0], [1,\infty), (-\infty, 1), \R}$
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item Certainly $\emptyset$ and $X$ are either countable or their complement is countable.
+    Furthermore, the smallest $\sigma$-algebra containing $\cA$ will contain all countable unions of elements in $\cA$ and countable unions of these countable unions, which we know are themselves countable. 
+    Thus, any element of the $\sigma$-algebra or its complements are themselves countable.
+    \item We have that both $\emptyset$ and $\R$ belong to the $\sigma$-algebra directly from the definitions.
+    Furthermore, for any $E \in \cA$ we have that $\R \setminus E$ belongs to the $\sigma$-algebra;
+    that is, $(-\infty,0] \cup [1,\infty)$ and $(-\infty, 0]$ belong to the $\sigma$-algebra.
+    We also know that the countable union of sets in the $\sigma$-algebra belong to it.
+    Combining this with the complement rule, we get that $[1,\infty) = \R \setminus [(-\infty, 0] \cup (0,1) ]$.
+    Finally, taking the complement of $[1, \infty)$ gives us $(-\infty, 1)$, the last element of the sigma algebra.
+\end{enumerate}
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{3}
+Suppose $\cS$ is the smallest $\sigma$-algebra on $\R$ containing $\set{(r,s]:r,s\in\Q}$.
+Prove that $\cS$ is the collection of Borel subsets of $\R$.
 \end{exercise}
 \begin{proof}
-fill
+We will prove this by double containment.
+Let $\cB$ by the Borel subsets of $\R$.
+
+($\subseteq$)
+Let $r,s\in\Q$.
+We have that $(r,s] = \bigcap (r, s+1/n)$.
+By 2.25 and the definition of Borel set, we know that the right hand side of this equality belongs to $\cB$, thus $\cS \subseteq \cB$, as we can construct any element of $\cS$ using complements or countable unions of intervals of the form $(r,s]$.
+
+($\supseteq$)
+Now let $r,s\in\R$.
+We have that $(r,s) = \bigcup (r_n, s+\epsilon] \cap \bigcup (r-\epsilon', s_n]$, where $\epsilon$ and $\epsilon' \in \Q$ are chosen to guarantee that $s+\epsilon$ and $r-\epsilon'$ belong to $\Q$, and $r_n \to r$ and $s_n \to s$ are sequences in $\Q$.
+As in the proof of the other direction, we know that the right hand side of the equality belongs to $\cS$, and because any Borel subset can be written as arbitrary unions of elements of the form $(r,s)$, $r,s\in\R$, then we have that $\cB \subseteq \cS$, giving us the desired result.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{4}
+Suppose $\cS$ is the smallest $\sigma$-algebra on $\R$ containing $\set{(r,s]:r\in\Q, s\in\Z}$.
+Prove that $\cS$ is the collection of Borel subsets of $\R$.
 \end{exercise}
 \begin{proof}
-fill
+We will prove this by double containment, with the $\sigma$-algebra (denote it $\cA$) of exercise 3, which we already proved to be equivalent to the Borel subsets of $\R$.
+
+($\subseteq$)
+By definition, $\set{(r,s]:r\in\Q, s\in\Z} \subseteq \set{(r,s]:r,s\in\Q}$.
+
+($\supseteq$)
+Conversely, let $(r,s]$ with $r,s \in \Q$.
+We have that let $r'$ be the smallest integer greater than $r$.
+The set $(r,\infty) = \bigcup_{n=r'}^\infty (r,n]$ belongs to $\cS$, and similarly the set $(s,\infty) \in \cS$.
+Furthermore, the set $(-\infty, s] = \R \setminus (s,\infty) \in \cS$.
+Finally, $(-\infty,s] \cap (r,\infty) = (r,s] \in \cS$, so that $\cA \subseteq \cS$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{5}
+Suppose $\cS$ is the smallest $\sigma$-algebra on $\R$ containing $\set{(r,r+1): r \in \Q}$.
+Prove that $\cS$ is the collection of Borel subsets of $\R$.
 \end{exercise}
 \begin{proof}
-fill
+Let $\cA$ the $\sigma$-algebra of exercise 3, which we proved to be equivalent to the Borel subsets of $\R$.
+We will prove that $\cS = \cA$ by double containment.
+
+($\subseteq$)
+Let $r\in\Q$, we have that $(r,r+1) = \bigcup (r, r+1-1/n] \in \cA$, so that $\cS \subseteq \cA$
+
+($\supseteq$)
+Let $(a,b]$ with $a,b\in\Q$.
+Using countable unions, we have that $(a,b) \in \cS$.
+Without loss of generality, consider $(0,1) \in \cS$, we have that $\R \setminus (0,1) = (-\infty, 0] \cup [1,\infty) \in \cS$, and $(s,0] = (s,s+1) \cap [(-\infty, 0] \cup [1,\infty)]$, for some $-1<s<0$.
+Thus, we can find an interval, say $I$, such that $(a,b) \cup I = (a,b]$, giving us that $\cA \subseteq \cS$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{6}
+Suppose $\cS$ is the smallest $\sigma$-algebra on $\R$ containing $\set{(r,\infty]: r \in \Q}$.
+Prove that $\cS$ is the collection of Borel subsets of $\R$.
 \end{exercise}
 \begin{proof}
-fill
+Let $\cA$ the $\sigma$-algebra of exercise 3, which we proved to be equivalent to the Borel subsets of $\R$.
+We will prove that $\cS = \cA$ by double containment.
+
+($\subseteq$)
+For any $r\in\Q$, we have that $\bigcup_n^\infty (r, n] = (r,\infty) \in \cA$, so that $\cS \in \cA$.
+
+($\supseteq$)
+Let $r<s$ with $r,s\in\Q$.
+We have that $(-\infty, s] = \R \setminus (s,\infty]$, so that $(r,s] = (-\infty, s] \cap (r,\infty] \in \cS$;
+that is $\cA \subseteq \cS$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{7}
+Prove that the collection of Borel subsets of $\R$ is translation invariant.
+More precisely, prove that if $B \subset \R$ is a Borel subset and $t \in \R$, then $t+B$ is a Borel set.
 \end{exercise}
 \begin{proof}
-fill
+Let $\cB' = \set{B: t+B \text{ is a Borel set}}$.
+We will first proof that $\cB'$ is a $\sigma$-algebra.
+We have that $t+\emptyset = \emptyset$, which is a Borel set, so that $\emptyset \in \cB'$.
+Let $B\in\cB'$, thus $t+B$ is Borel and so is $\R \setminus (t+B)$.
+We have
+\begin{align*}
+    x \in \R \setminus (t+B) 
+    \iff& x \notin t+B\\
+    \iff& x \neq t+b,\, b \in B\\
+    \iff& x-t \neq b,\, b \in B\\
+    \iff& x \in (\R \setminus B) - t,
+\end{align*}
+so that $\R \setminus B \in \cB'$, since $(-t) + (\R \setminus B)$ is Borel.
+
+Now let $B_1, B_2, \dots$ be in $\cB'$, so that $t+B_1, t+B_2, \dots$ are Borel sets.
+We have that $\bigcup (t+B_i)$ is Borel, and 
+\begin{align*}
+    x \in \bigcup (t+B_i)
+    \iff& x \in t + B_i \text{ for some } i\\
+    \iff& x = t + b_i \text{ for some } i \text{ and }b_i \in B_i\\
+    \iff& x-t = b_i  \text{ for some } i \text{ and }b_i \in B_i\\
+    \iff& x-t \in B_i  \text{ for some } i;
+\end{align*}
+that is, $x \in t+\bigcup B_i$, so that $\bigcup B_i \in \cB'$, since $t + \bigcup B_i$ is Borel.
+
+Now let $(a,b)$ be an open interval in $\R$.
+We have that $(a,b) \in \cB'$ because $t + (a-t, b-t) = (a,b)$ is a Borel set.
+Thus the Borel sets are contained in $\cB'$, so that if $B$ is Borel, it is contained in $\cB'$ and thus $t+B$ is itself Borel.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{8}
+Prove that the collection of Borel subsets of $\R$ is dilation invariant.
+More precisely, prove that if $B \subset \R$ is a Borel subset and $t \in \R$, then $tB$ (which is defined to be $\set{tb: b\in B}$) is a Borel set.
 \end{exercise}
 \begin{proof}
-fill
+Fir $t\in\R$, where $t \neq 0$.
+Let $\cB' = \set{B: tB\text{ is a Borel set}}$.
+We will first prove that $\cB'$ is a $\sigma$-algebra and then we will prove that it contains all the Borel subsets.
+
+Notice that $t\emptyset = \emptyset$, which is a Borel set, so that $\emptyset \in \cB'$.
+Now let $B \in \cB'$, so that $tB$ is a Borel set and so is $X \setminus tB$.
+We have 
+\begin{align*}
+    x \in X \setminus tB 
+    \iff& x \notin tB\\
+    \iff& x \neq tb, b\in B\\
+    \iff& x/t \neq b, b\in B\\
+    \iff& x/t \in X\setminus B\\
+    \iff& x \in t(X\setminus B),
+\end{align*}
+so that $X\setminus B$ is Borel, since $t (X \setminus B)$ is Borel.
+
+Finally, let $B_1,B_2,\dots \in \cB'$, so that $tB_1, tB_2,\dots$ is Borel and so is $\bigcup tB_i$.
+We have
+\begin{align*}
+    x \in \bigcup tB_i
+    \iff& x \in tB_i \text{ for some $i$}\\
+    \iff& x = tb_i \text{ for some $i$ and }b_i \in B_i\\
+    \iff& x/t = b_i \text{ for some $i$ and }b_i \in B_i\\
+    \iff& x/t \in B_i \text{ for some $i$}\\
+    \iff& x/t \in \bigcup B_i\\
+    \iff& x \in t(\bigcup B_i);
+\end{align*}
+that is, $t(\bigcup B_i)$ is Borel, and so $\bigcup B_i \in \cB'$.
+
+Now let $(a,b)$ be an open interval in $\R$.
+We have that $(a,b) \in \cB'$.
+To see this, notice that $t(a/t, b/t) = (a,b)$ is a Borel set.
+Thus, all the Borel sets are contained in $\cB'$ so that if $B$ is Borel, it is contained in $\cB'$ and as a result $tB$ is itself Borel.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{11}
+Suppose $\cT$ is a $\sigma$-algebra on a set $Y$ and $X \in \cT$.
+Let $\cS = \set{E\in\cT : E \subseteq X}$.
+\begin{enumerate}
+    \item Show that $\cS = \set{F\cap X : F\in\cT}$.
+    \item Show that $\cS$ is a $\sigma$-algebra on $X$.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item We will prove this by double containment.
+    First, suppose $E \in \cT$ and $E \subseteq X$.
+    We have that $E \in \set {F\cap X: F\in\cT}$, because $E\cap X= E$.
+    Conversely, let $E \in \set{F\cap X : F\in\cT}$, so that there exists an $F \in \cT$ with $E = F\cap X$.
+    Since $\cT$ is a $\sigma$-algebra, then we know from 2.25 that $E$ itself is in $\cT$ and by definition, $E \subseteq X$;
+    that is, $E \in \set{E\in\cT : E \subseteq X}$, as required.
+    \item We have that $\emptyset \in \cT$ and $\emptyset \cap X =\emptyset $, so that $\emptyset \in \cS$.
+    Moreover, let $E \in \cS$, thus $E \in \cT$ and furthermore $Y \setminus E \in \cT$.
+    But since $Y \setminus E \in \cT$, then $(Y \setminus E) \cap X = (X \setminus Y) \cap (X \setminus E) = X \setminus E \in \cS$.
+    Lastly, let $E_1,E_2,\dots$ be a sequence of sets in $\cS$, so that each of them is also in $\cT$ and thus $E = \bigcup E_i \in \cT$ as well.
+    We have that $E \cap X = (\bigcup E_i) \cap X = \bigcup (E_i \cap X) =\bigcup E_i \in \cS$.
+    Putting these three properties together, we proved that $\cS$ is a $\sigma$-algebra.
+\end{enumerate}
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{12}
+Suppose $f : \R \to \R$ is a function.
+\begin{enumerate}
+    \item For $k \in \N$, let $G_k = \set{a\in\R : \text{ there exists } \delta >0 \text{ such that } \absoluteValue{f(b)-f(c)}<1/k \text{ for all } b,c\in(a-\delta,a+\delta)}$.
+    Prove that $G_k$ is an open subset of $\R$ for each $k\in\N$.
+    \item Prove that the set of points at which $f$ is continuous equals $\bigcup G_k$.
+    \item Conclude that the set of points at which $f$ is continuous is a Borel set.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item If $G_k=\emptyset$, then $G_k$ is open.
+    Thus, let $a \in G_k$.
+    By definition, there exists a $\delta>0$, such that for any $b,c\in (a-\delta, a+\delta)$, it holds that $\absoluteValue{f(b)-f(c)} < 1/k$. 
+    But notice that $b \in G_k$.
+    To see this, let $\delta' = \min\set{\absoluteValue{a-\delta-b}, \absoluteValue{a+\delta-b}}$, and notice that for any $p,q \in (b-\delta', b+\delta')$, it holds that $\absoluteValue{f(p)-f(q)} < 1/k$.
+    Since the proof is independent of $k$, it holds for all $k \in \N$.
+    \item We can see this by the definition of continuity, we say that $f$ is continuous at $a$, if for any $\epsilon>0$, there exists a $\delta>0$ such that whenever $\absoluteValue{a-x}<\delta$, it holds that $\absoluteValue{f(a)-f(x)}<\epsilon$.
+    Thus for an element to be in $\bigcap G_k$, then the defining property of $G_k$ has to hold for all $k\in\N$, which in turn implies that $f$ is continuous at $a$, by choosing a suitable $k$ for a specific $\epsilon>0$.
+    \item Notice that any open subset of $\R$ can be written as the countable union of open intervals, which is itself a Borel set.
+    Now that we know that $G_k$ are Borel sets for all $k$, then we can use the properties of $\sigma$-algebras again, to conclude that the countable intersection of Borel sets is itself Borel, as required.
+\end{enumerate}
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{14}
+\begin{enumerate}
+    \item Suppose $f_1,f_2,\dots$ is a sequence of functions from a set $X$ to $\R$.
+    Explain why
+    \begin{align*}
+        \set{ x\in X:& \text{ the sequence } f_1(x),f_2(x),\dots \text{ has a limit in } \R}\\
+        &= \bigcap_{n=1}^\infty \bigcup_{j=1}^\infty \bigcap_{k=j}^\infty (f_j-f_k)^{-1}((-1/n,1/n)).
+    \end{align*}
+    \item Suppose $(X,\cS)$ is a measurable space and $f_1,f_2,\dots$ is a sequence of $\cS$-measurable functions from $X$ to $\R$.
+    Prove that 
+    $\set{ x\in X: \text{ the sequence } f_1(x),f_2(x),\dots \text{ has a limit in } \R}$
+    is an $\cS$-measurable subset of $X$.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item We will analyse the statement piece by piece.
+    For a fixed $x$, saying that the sequence $f_1(x), f_2(x), \dots$ has a limit in $\R$ means that for $\epsilon>0$, there exists an $N\in\N$, such that whenever $n>N$, it holds that $\absoluteValue{f_n(x)-f(x)} <\epsilon$ for the limit of the sequence, $f(x)$.
+    This condition implies that the sequence is also Cauchy, so that there exists an $N\in\N$, such that whenever $j,k>N$, it holds that $\absoluteValue{f_j(x) - f_k(x)}<\epsilon$;
+    that is, the function given by $f_j(x)-f_k(x)$ ``gets closer'' to the zero function, as $j,k \to \infty$, for any point $x\in X$ so that the sequence has a limit.
+    This is represented by $\bigcup_{j=1}^\infty \bigcap_{k=j}^\infty (f_j-f_k)$.
+    The preimage of $f_j-f_k$ around and increasingly small neighborhood of 0 looks at the points in $X$ such that $f_j-f_k$ maps to 0.
+    That is precisely what $\bigcap_{n=1}^\infty$ is doing for $(-1/n, 1/n)$. 
+    Putting everything together,
+    \begin{align*}
+        \bigcap_{n=1}^\infty \bigcup_{j=1}^\infty \bigcap_{k=j}^\infty (f_j-f_k)^{-1}((-1/n,1/n))
+    \end{align*}
+    is looking at all the points in $X$ such that the preimage of $f_j-f_k$, a function that should be 0 when the sequence $(f_n)$ has a limit, indeed map to 0, which is precisely what $\set{ x\in X: \text{ the sequence } f_1(x),f_2(x),\dots \text{ has a limit in } \R}$ describes.
+    \item By 2.46, we have that $f_j-f_k$ is measurable for all $k,j$, so that for any Borel set, say $B$, $(f_j-f_k)^{-1}(B)$ is $\cS$-measurable.
+    To see the result holds, notice that countable unions and countable intersections of measurable sets are measurable.
+\end{enumerate}
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{18}
+Suppose $f:\R\to\R$ is differentiable at every element of $\R$.
+Prove that $f'$ is a Borel measurable function from $\R$ to $\R$.
 \end{exercise}
 \begin{proof}
-fill
+By the definition of the derivative we can write
+\begin{align*}
+    f'(x) = \lim_{n\to\infty}\frac{f(x+1/n)-f(x)}{1/n} = \lim_{n\to\infty}n[f(x+1/n)-f(x)],
+\end{align*}
+for any $x\in\R$.
+Thus, $n[f(x+1/n)-f(x)]$ defines a sequence of functions that converges pointwise to $f'$.
+Since $f$ is differentiable at every element of $\R$, then $f$ is continuous and so by 2.41, it is Borel measurable.
+Furthermore, by the algebraic properties of measurable functions in 2.46, we have that $n[f(x+1/n)-f(x)]$ itself is also Borel measurable.
+Putting this together, we have a sequence of Borel measurable functions that converges to $f'$ and thus, by 2.48, $f'$ is Borel measurable too.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{21}
+Suppose $(X,\cS)$ is a measurable space and $f: X \to [-\infty,\infty]$ is a function such that $f^{-1}((a,\infty]) \in \cS$ for all $a\in\R$.
+Then $f$ is an $\cS$-measurable function.
 \end{exercise}
 \begin{proof}
-fill
+Let $\cT = \set{A\subseteq\R: f^{-1}(A)\in \cS}$.
+To prove the statement, we will prove that $\cT$ is a $\sigma$-algebra and that $\cT$ contains all the Borel subsets.
+
+We have that $f^{-1}(\emptyset) = \emptyset \in \cS$, so that $\emptyset \in \cT$.
+Now let $A\in \cT$.
+Then we have that $f^{-1}(A) \in \cS$, so that $X\setminus f^{-1}(A) \in \cS$.
+By the properties of preimages, we also have that $f^{-1}(X\setminus A) \in \cS$ which in turn implies that $X\setminus A \in \cT$.
+Finally, let $A_1,A_2,\dots \in \cT$, so that $f^{-1}(A_1),f^{-1}(A_2),\dots \in \cS$.
+This implies that $\bigcup f^{-1}(A_i) \in \cS$ and by the properties of preimages we also have that $f^{-1}(\bigcup A_i) \in \cS$, so that $\bigcup A_i \in \cT$.
+
+To see that $\cT$ contains all Borel subsets, notice that we have $(a,\infty] \in \cT$, so that $\R\setminus (a,\infty] =  [-\infty, a] \in \cT$.
+This implies that $[-\infty, b] \cap (a,\infty] = (a,b] \in \cT$, so that by exercise 3, all the Borel subsets belong to $\cT$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{24}
+Suppose $f:\R\to\R$ is a strictly increasing function and $B \subseteq \R$ is a Borel set.
+Prove that $f(B)$ is a Borel set.
 \end{exercise}
 \begin{proof}
-fill
+By exercise 2.B.23, we know that $f^{-1}$ is continuous.
+Thus, 2.41 tells us that $f^{-1}$ is Borel measurable;
+that is, if $B$ is a Borel set, then $(f^{-1})^{-1}(B) = f(B)$ is Borel.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{27}
+Prove of give a counterexample.
+If $(X,\cS)$ is a measurable space and $f: X \to [-\infty, \infty]$ is a function such that $f^{-1}((a,\infty)) \in \cS$ for every $a\in\R$, then $f$ is an $\cS$-measurable function.
 \end{exercise}
 \begin{proof}
-fill
+Consider the function $f: \R \to [-\infty, \infty]$ given by $f(x) = -\infty$ if $x<0$, $f(x) = \infty$ if $x>0$ and $f(0) = 0$, we define $\cS$ as the countable-cocountable $\sigma$-algebra in example 2.24.
+Let $a \in \R$.
+If $a<0$, then $f^{-1}((a,\infty)) = \set{0}$, if $a\geq 0$, then $f^{-1}((a,\infty)) = \emptyset$, both of which are countable.
+However, $f^{-1}((a,\infty]) = (0,\infty]$ is itself not countable, so that $f$ is not $\cS$-measurable.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{30}
+Show that 
+\begin{align*}
+    \lim_{j\to\infty} (\lim_{k\to\infty} (\cos (j! \pi x))^{2k})
+    =\begin{cases}
+    1 \text{ if $x$ is rational}\\
+    0 \text{ if $x$ is irrational}
+    \end{cases}
+\end{align*}
+for every $x\in\R$.
+[This example is due to Henri Lebesgue]
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
+Notice that if $x$ is rational, $x$ can be written as the quotient between two integers. 
+Moreover, $\lim_{j\to\infty} j!$ includes in its factorisation the denominator of the quotient of $x$, and it includes a factor of 2 (by simply considering the next even number after the denominator of $x$.
+Putting this together, we can conclude that if $x$ is even, then the argument to $\cos$ is a product of $2\pi$, so that $\cos (j! \pi x) = 1$, and the limit is 1, too.
+On the other hand, if $x$ is irrational, it cannot be written as a quotient of integers, so that the argument to $\cos$ will not be exactly a product of $2\pi$, so that $\cos (j! \pi x) < 1$ and thus $\lim_{k\to\infty} (\cos (j! \pi x))^{2k} = 0$ for any $j$.
 \end{proof} 

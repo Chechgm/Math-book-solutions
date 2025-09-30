@@ -1,8 +1,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{booksSolutions}[15/08/2023 Class for book solutions]
 
-% article is our base class
-\LoadClass{article}
+% book is our base class
+\LoadClass{book}
 
 
 \usepackage{mathtools} % Improved amsmath
@@ -52,20 +52,21 @@
 \newcommand{\D}{\mathbb{D}}
 
 % Calligraphic and bold
-\newcommand{\AAA}{\mathcal{A}}
-\newcommand{\BBB}{\mathcal{B}}
-\newcommand{\CCC}{\mathcal{C}}
-\newcommand{\DDD}{\mathcal{D}}
-\newcommand{\FFF}{\mathcal{F}}
-\newcommand{\GGG}{\mathcal{G}}
-\newcommand{\III}{\mathcal{I}}
-\newcommand{\LLL}{\mathcal{L}}
-\newcommand{\MMM}{\mathcal{M}}
-\newcommand{\NNN}{\mathcal{N}}
-\newcommand{\PPP}{\mathcal{P}}
-\newcommand{\RRR}{\mathcal{R}}
-\newcommand{\SSS}{\mathcal{S}}
-\newcommand{\UUU}{\mathcal{U}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\dD}{\mathcal{D}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
 
 \newcommand{\bx}{\mathbf{x}}
 
@@ -116,16 +117,21 @@
 
 % Exercise with box, and no break errors.
 \usepackage{tcolorbox}
+\tcbuselibrary{magazine}
+
 \newtcolorbox{exercise}[1]
 {
-  colframe = black!25,
   /tcb/leftrule  =0.5mm,
   /tcb/rightrule =0.5mm,
-  /tcb/bottomrule=0.5mm,
-  colback  = gray!10,
-  coltitle = black!20!black,
+  /tcb/bottomrule=0.5mm, 
+  title    = {Exercise #1},
+  colframe = black, %black!25,
+  colbacktitle = black, %white, %white, %
+  coltitle = white, %black!20!black,
+  colback  = white, %gray!10,
   fonttitle= \bfseries,
-  title    = {Exercise #1}
+  sharp corners, % Quitar si quiero redondas
+  breakable,
 }
 
 \setcounter{tocdepth}{2}

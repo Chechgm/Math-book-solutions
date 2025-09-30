@@ -1,4 +1,4 @@
-\subsection{Equivalence and cardinality}
+\section{Equivalence and cardinality}
 
 
 \begin{exercise}{1}
@@ -16,9 +16,9 @@ Check that the relation ``is equivalent to '' defines an equivalence relation. T
 If $A$ is an infinite set, prove that $A$ contains a subset of size $n$ for any $n\geq 1$.
 \end{exercise}
 \begin{proof}
-We prove this by induction. We have that $A=\set{a_i: i\in\III}$, where $\III$ is an arbitrary indexing set. 
+We prove this by induction. We have that $A=\set{a_i: i\in\cI}$, where $\cI$ is an arbitrary indexing set. 
 
-Base case: Let $B=\set{a_i}$ for any $i\in\III$. The size of $B$ is $n=1$, and we know such set exists because $A$ is infinite (thus nonempty).
+Base case: Let $B=\set{a_i}$ for any $i\in\cI$. The size of $B$ is $n=1$, and we know such set exists because $A$ is infinite (thus nonempty).
 
 For the induction step, suppose a set $B'$ of size $n-1$ exists. Then let $B=\set{a_j}\cup B'$, where $a_j\in A\setminus B'$. We know that $A\setminus B'$ is nonempty because $B'$ is finite and $(A\setminus B')\cup B'$ is infinite. $B$ is the set of the desired size.
 \end{proof} 
@@ -90,8 +90,8 @@ Let $A$ be a collection of such nonempty open intervals in $\R$. As the hint sug
 \end{proof} 
 
 \begin{exercise}{19}
-Show that the set of functions $f:A\to\set{0,1}$ is equivalent to $\PPP(A)$, the power set of $A$ (i.e., the set of all subsets of $A$).
+Show that the set of functions $f:A\to\set{0,1}$ is equivalent to $\cP(A)$, the power set of $A$ (i.e., the set of all subsets of $A$).
 \end{exercise}
 \begin{proof}
-Call the set of functions $\FFF$. Notice that any function $f_i:A\to\set{0,1}$, implies that for any $a\in A$, either $f_i(a)=0$ or $f_i(a)=1$. Now consider the function $h:\PPP(A)\times A\to\set{0,1}$ given by $h(A_i,a)=0$ if $a\notin A_i$ and 1 otherwise. For a fixed $A_i$, let $h_{A_i}:A\to\set{0,1}$ be defined as $h_{A_i}(a)=h(A_i,a)$. We can see that for all $f_i\in\FFF$ there exists a unique $h_{A_j}$ that maps $A$ to the same values. Since each $h_{A_j}$ is associated to a unique $A_j$, then we get our desired result.
+Call the set of functions $\cF$. Notice that any function $f_i:A\to\set{0,1}$, implies that for any $a\in A$, either $f_i(a)=0$ or $f_i(a)=1$. Now consider the function $h:\cP(A)\times A\to\set{0,1}$ given by $h(A_i,a)=0$ if $a\notin A_i$ and 1 otherwise. For a fixed $A_i$, let $h_{A_i}:A\to\set{0,1}$ be defined as $h_{A_i}(a)=h(A_i,a)$. We can see that for all $f_i\in\cF$ there exists a unique $h_{A_j}$ that maps $A$ to the same values. Since each $h_{A_j}$ is associated to a unique $A_j$, then we get our desired result.
 \end{proof} 

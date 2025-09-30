@@ -1,9 +1,6 @@
-\subsection{Discontinuous functions}
+\section{Discontinuous functions}
 
-4* Not sure why this is starred tbh, don't see why this is supposed to be important
 9* This shows that at least every closed set is a set of discontinuity points of a function. But these are not all!
-
-12* Interesting property of open and closed sets, especially in light of D(f)
 
 \begin{exercise}{1}
 If $f$ is increasing, show that $\omega_f(a)=f(a+)-f(a-)$.
@@ -31,13 +28,6 @@ Suppose $\omega_f(a)= \lim_{h\to 0+}\text{ diam}f(B_h(a)) = 0$, then for $\epsil
 that is, $f$ is continuous.
 \end{proof} 
 
-\begin{exercise}{4}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
 \begin{exercise}{5}
 If $A$ is a subset of $\R$, and if $x$ is in the interior of $A$, show that $x$ is a point of continuity for $\chi_A$ (the characteristic function of $A$).
 Are there any other points of continuity?
@@ -53,13 +43,17 @@ If $E$ is a closed set in $\R$, show that $E=D(f)$ for some bounded function $f$
 [Hint: A sum of two characteristic functions will do the trick].
 \end{exercise}
 \begin{proof}
-Consider the characteristic function in $E$, $\chi_E$.
-This is certainly a bounded function, and furthermore, the set of discontinuities is precisely $E$.
+fill
 \end{proof} 
 
 \begin{exercise}{12}
-fill
+More generally, in any metric space, show that every open set is an $F_\sigma$ and that every closed set is a $G_\delta$.
 \end{exercise}
 \begin{proof}
-fill
+To see the closed set $A\subseteq X$ is a $G_\delta$, let $A_n=\set{x\in X: d(x,A)<1/n}$, each of which are open.
+We have that $\bigcap A_n = A$, since $a\in A$ if and only if $d(a,A)=0$ which is the case given the previous countable intersection.
+
+Now to see an open set $B\subseteq X$ is $F_\sigma$, consider $B^C$ which is open.
+We know we can write $B^C$ as the intersection of open sets $B_n^C$, so that $B^C = \bigcap B_n^C$ and thus $B = \parens{\bigcap B_n^C}^C = \bigcup B_n$, where $B_n$ is closed for all $n$. 
+Thus $B$ is $F_\sigma$, as required.
 \end{proof} 

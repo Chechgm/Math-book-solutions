@@ -1,4 +1,4 @@
-\subsection{Compact metric spaces}
+\section{Compact metric spaces}
 
 
 \begin{exercise}{1}
@@ -257,22 +257,22 @@ We proved this in 6.27.
 \begin{exercise}{30 Lemma 8.8}
 In a metric space $M$, the following are equivalent:
 \begin{enumerate}
-    \item If $\GGG$ is any collection of open sets in $M$ with $M\subseteq \bigcup\set{G:G\in\GGG}$, then there are finitely many sets $G_1,\dots, G_n \in \GGG$ with $M\subseteq \bigcup G_i$.
-    \item If $\FFF$ is any collection of closed sets in $M$ such that $\bigcap F_i \neq \emptyset$ for all choices of finitely many sets $F_1,\dots, F_n\in \FFF$, then $\bigcap \set{F:F\in\FFF} \neq \emptyset$.
+    \item If $\cG$ is any collection of open sets in $M$ with $M\subseteq \bigcup\set{G:G\in\cG}$, then there are finitely many sets $G_1,\dots, G_n \in \cG$ with $M\subseteq \bigcup G_i$.
+    \item If $\cF$ is any collection of closed sets in $M$ such that $\bigcap F_i \neq \emptyset$ for all choices of finitely many sets $F_1,\dots, F_n\in \cF$, then $\bigcap \set{F:F\in\cF} \neq \emptyset$.
 \end{enumerate}
 \end{exercise}
 \begin{proof}
 ($\Rightarrow$)
-Suppose, for the sake of contradiction, that $\bigcap \set{F:F\in\FFF} = \emptyset$, so that by the DeMorgan law, we have that $\bigcup \set{F^c:F\in\FFF} = M$, however for all choices of finite sets in $\FFF$, $f_1,\dots,F_n$ it holds that $\bigcap F_i \neq \emptyset$.
-The contradiction statement tells us that the set $\set{F^c:\FFF}$ is a collection of open sets in $M$, so that by the first condition and the DeMorgan law, we get that there are finitely many sets $F_1^c,\dots,F_n^c$ such that $M\subseteq \bigcup F_i^c$.
+Suppose, for the sake of contradiction, that $\bigcap \set{F:F\in\cF} = \emptyset$, so that by the DeMorgan law, we have that $\bigcup \set{F^c:F\in\cF} = M$, however for all choices of finite sets in $\cF$, $f_1,\dots,F_n$ it holds that $\bigcap F_i \neq \emptyset$.
+The contradiction statement tells us that the set $\set{F^c:\cF}$ is a collection of open sets in $M$, so that by the first condition and the DeMorgan law, we get that there are finitely many sets $F_1^c,\dots,F_n^c$ such that $M\subseteq \bigcup F_i^c$.
 Applying again the DeMorgan law, we get that $\bigcap F_i^c \subseteq M^c = \emptyset$, arising a contradiction.
 
 ($\Leftarrow$)
 We will proceed as above.
-Suppose, for the sake of contradiction, that there exists a family of open sets $\GGG$ such that $\bigcup \set{G:G \in \GGG}$ but for all finite sets $G_1,\dots,G_n \in \GGG$, it is the case that $M\not\subseteq\bigcup G_i$.
+Suppose, for the sake of contradiction, that there exists a family of open sets $\cG$ such that $\bigcup \set{G:G \in \cG}$ but for all finite sets $G_1,\dots,G_n \in \cG$, it is the case that $M\not\subseteq\bigcup G_i$.
 Then this implies, by the DeMorgan law, that $\bigcap G_i^c \not\subseteq\emptyset$;
-that is $\bigcap G_i^c \neq \emptyset$, so that by the second condition (which we assume), the family of sets $\FFF = \set{G^c:G\in\GGG}$ has the property that $\bigcap\set{F:F\in\FFF}$.
-By the DeMorgan law again, we get that $\bigcup \set{G: G\in\GGG}\neq M$, giving us a contradiction.
+that is $\bigcap G_i^c \neq \emptyset$, so that by the second condition (which we assume), the family of sets $\cF = \set{G^c:G\in\cG}$ has the property that $\bigcap\set{F:F\in\cF}$.
+By the DeMorgan law again, we get that $\bigcup \set{G: G\in\cG}\neq M$, giving us a contradiction.
 \end{proof} 
 
 \begin{exercise}{31}

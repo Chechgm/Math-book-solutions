@@ -1,140 +1,51 @@
-\subsection{fill}
+\section{2A Outer measure on R}
+\addcontentsline{toc}{section}{2A Outer measure on R}
 
-Axler 2A Outer Measure on R
-1 Intuitive and a good practice
-2 This dilation property of the Lebesgue measure generalized to $R^n$, but in its full generality requires determinants, so I'm not sure Axler will even do it lol
-6 This should be true for any good notionof length on R 
-11 Hence Q has measure 0 and is thus "negligible"
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{1}
+Prove that if $A$ and $B$ are subsets of $\R$ and $\absoluteValue{B}=0$, then $\absoluteValue{A\cup B} = \absoluteValue{A}$.
 \end{exercise}
 \begin{proof}
-fill
+Notice that $A\subseteq A\cup B$, so that $\absoluteValue{A}\leq \absoluteValue{A\cup B}$. 
+On the other hand, from 2.8, we have that $\absoluteValue{A\cup B}\leq \absoluteValue{A} + \absoluteValue{B} = \absoluteValue{A}$.
+The two inequalities together give us the desired result.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{2}
+Suppose $A\subseteq\R$ and $t\in\R$.
+Let $tA=\set{ta:a\in A}$.
+Prove that $\absoluteValue{t}\absoluteValue{A}$.
+[Assume that $0\cdot\infty$ is defined to be to be 0].
 \end{exercise}
 \begin{proof}
-fill
+Notice that $t(a,b) = (ta,tb)$, so that $\ell((ta,tb))= tb-ta = \absoluteValue{t}(b-a) = \absoluteValue{t}\ell((a,b))$ (where the first equality follows with a suitable renaming of $a$ and $b$, if $t<0$).
+Thus, any cover $I_1,I_2,\dots$ of $A$, can be converted into an open cover $tI_1,tI_2,\dots$ of $tA$, and any open cover of $tA$, $J_1,J_2,\dots$ of $tA$ can be converted into an open cover $J_1/t, J_2/t,\dots$ of $A$.
+We would then obtain $\absoluteValue{tA} = \inf\set{\sum_k^\infty \ell(tI_k) = \sum_k^\infty \absoluteValue{t}\ell(I_k) = \absoluteValue{t}\sum_k^\infty \ell(I_k): A\subseteq \bigcup_k^\infty I_k}$.
+Finally, by the properties of the infimum, we get that $\absoluteValue{tA} = \absoluteValue{t}\absoluteValue{A}$, as required.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{6}
+Prove that if $a,b\in\R$ and $a<b$, then $\absoluteValue{(a,b)} = \absoluteValue{[a,b)} = \absoluteValue{(a,b]} = b-a$.
 \end{exercise}
 \begin{proof}
-fill
+Notice that $[a,b), (b,a] \subseteq [a,b]$, so that by 2.5 and 2.14, we have that $\absoluteValue{[a,b)}, \absoluteValue{(a,b]} \leq b-a$.
+Likewise, notice that $(a,b)\subseteq [a,b)$ and $(a,b)\subseteq (a,b]$, so that by 2.1 and 2.5, we have that $b-a = \absoluteValue{(a,b)} \leq \absoluteValue{[a,b)}$ and $b-a = \absoluteValue{(a,b)} \leq \absoluteValue{(a,b]}$, giving us the desired result.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{11}
+Prove that if $I_1,I_2,\dots$ is a disjoint sequence of open intervals, then
+\begin{align*}
+    \absoluteValue{\bigcup_{k=1}^\infty I_k} = \sum_{k=1}^\infty \ell(I_k).
+\end{align*}
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
+An obvious remark is that $\bigcup_k^\infty I_k$ is covered exactly by $I_1,I_2,\dots$.
+So that the infimum of sum of lengths over covers with open intervals of $\bigcup_k^\infty I_k$ is going to be precisely the sum of lengths of each of $I_k$.
+Suppose this were not the case, that is, there is another covering of $\bigcup_k^\infty I_k$, such that the sum of lengths of the open intervals in the covering is less than the sum of lengths of $I_k$.
+Then that would imply that the outer measure of at least one of the intervals of this potential new covering is less than the outer measure of one $I_k$, which is not possible.
+As a result,
+\begin{align*}
+    \absoluteValue{\bigcup_{k=1}^\infty I_k} = \sum_{k=1}^\infty \ell(I_k),
+\end{align*}
+as required.
 \end{proof} 

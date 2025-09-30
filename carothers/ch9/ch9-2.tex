@@ -1,8 +1,5 @@
-\subsection{The Baire category Theorem}
+\section{The Baire category Theorem}
 
-The Baire Category Theorem
-14* Useful for intuition, it means properties of nowhere dense and everywhere dense are very similar 
-15* Good for intuition 
 16* Link between nowhere dense and isolated point, good for intuition 
 19* Interesting characterizations of nowhere dense 
 21C Some interesting properties for your intuition 
@@ -28,24 +25,46 @@ The Baire Category Theorem
 
 
 \begin{exercise}{14}
-fill
+Prove that $A$ has an empty interior in $M$ if and only if $A^C$ is dense in $M$.
 \end{exercise}
 \begin{proof}
-fill
+This is the content of exercise 4.46.
 \end{proof} 
 
 \begin{exercise}{15}
-fill
+If $G$ is open and dense in $\R$, show that the same is true of $G\setminus\set{x}$ for any $x\in\R$. 
+Is this true in any metric space?
+Explain.
 \end{exercise}
 \begin{proof}
-fill
+Let $G$ be open and dense in $\R$, so that $\bar{G}=\R$.
+Thus, for any $\epsilon>0$, and any $x\in\R$, $B_\epsilon(x)\cap G\neq \emptyset$.
+In fact, $B_\epsilon(x)\cap G$ is infinite.
+If this were not the case, say if $B_\epsilon(x)\cap G = A$ was finite, then we could take $\epsilon' < \min\set{d(x,a): a\in A}$, and certainly $B_{\epsilon'}(x)\cap G$ would be empty. 
+Thus, $G\setminus\set{x}$ must be dense in $\R$ as well.
+
+This is not true in every metric space.
+Consider the space $M=[0,1]\cup \set{10}$ with the usual metric of $\R$.
+The set $G = (\Q\cap[0,1]) \cup \set{10}$ is dense in $M$ but certainly $G\setminus\set{10}$ is not.
+The important characteristic of this metric space is that $10$ is an isolated point.
+The statement holds for any infinite metric space without isolated points.
 \end{proof} 
 
 \begin{exercise}{16}
-fill
+Show that $\set{x}$ is nowhere dense in $M$ if and only if $x$ is not an isolated point of $M$.
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$)
+Suppose $x$ is an isolated point of $M$.
+Then there exists an $\epsilon > 0$, such that $B_\epsilon(x)\cap M = \set{x}$.
+
+A set is nowhere dense if its closure contains no nonempty open set.
+Alternatively, a set is nowhere dense if the complement of its closure is open and dense in the space.
+
+($\Leftarrow$)
+Suppose $\set{x}$ is not nowhere dense in $M$.
+
+
 \end{proof} 
 
 \begin{exercise}{19}

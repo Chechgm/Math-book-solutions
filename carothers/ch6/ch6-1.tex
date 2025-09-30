@@ -1,4 +1,4 @@
-\subsection{Connected sets}
+\section{Connected sets}
 
 
 \begin{exercise}{1 Lemma 6.3}
@@ -42,21 +42,21 @@ Hence, $E\cup F$ and $\emptyset$ are the only clopen subsets of $E\cup F$ so tha
 \end{proof} 
 
 \begin{exercise}{6}
-More generally, if $\CCC$ is a collection of connected subsets of $M$, all having a point in common, prove that $\bigcup\CCC$ is connected.
+More generally, if $\cC$ is a collection of connected subsets of $M$, all having a point in common, prove that $\bigcup\cC$ is connected.
 Use this to give another proof that $\R$ is connected.
 \end{exercise}
 \begin{proof}
 We will follow a similar approach as the previous exercise.
-Suppose for the sake of contradiction, that there exists a subset $A\subseteq\bigcup\CCC$ with $A\neq\emptyset$ and $A\neq\bigcup\CCC$.
+Suppose for the sake of contradiction, that there exists a subset $A\subseteq\bigcup\cC$ with $A\neq\emptyset$ and $A\neq\bigcup\cC$.
 
-i) If there exists $C\subseteq\CCC$ such that $A\cap C\neq \empty$ and $A\cap C\neq C$, then $A\cap C$ is clopen in $C$ and $C$ is not connected.
+i) If there exists $C\subseteq\cC$ such that $A\cap C\neq \empty$ and $A\cap C\neq C$, then $A\cap C$ is clopen in $C$ and $C$ is not connected.
 
-ii) Now suppose that $A\cap C=\emptyset$ for all but $C'\in\CCC$ (this is guaranteed because $A\neq\emptyset$ and $A\subseteq\bigcup\CCC$).
-Then $A\cap C'=C'$ is the only way in which $C'$ is also connected, but this is not possible, because by assumption $C'$ contains a point that is also in all other $C\in\CCC$.
+ii) Now suppose that $A\cap C=\emptyset$ for all but $C'\in\cC$ (this is guaranteed because $A\neq\emptyset$ and $A\subseteq\bigcup\cC$).
+Then $A\cap C'=C'$ is the only way in which $C'$ is also connected, but this is not possible, because by assumption $C'$ contains a point that is also in all other $C\in\cC$.
 Thus, $A\cap C'$ must be a proper clopen subset of $C'$, giving us that $C'$ is not connected, a contradiction.
 
-iii) Likewise, suppose that $A\cap C$ for all but $C'\in\CCC$ (this is guaranteed because $A\neq\bigcup\CCC$).
-Then $A\cap C'\neq\emptyset$, because there is a point common to all $C\in\CCC$, thus $A\cap C'$ is a proper clopen subset of $C'$ and thus $C'$ is not connected, a contradiction.
+iii) Likewise, suppose that $A\cap C$ for all but $C'\in\cC$ (this is guaranteed because $A\neq\bigcup\cC$).
+Then $A\cap C'\neq\emptyset$, because there is a point common to all $C\in\cC$, thus $A\cap C'$ is a proper clopen subset of $C'$ and thus $C'$ is not connected, a contradiction.
 
 To see $\R$ is connected, consider $\bigcup_n [-n,n]$.
 \end{proof} 
@@ -66,9 +66,9 @@ If every pair of points in $M$ is contained in some connected set, show that $M$
 \end{exercise}
 \begin{proof}
 This is a corollary to the previous exercise.
-We can construct a collection of connected subsets, $\CCC$, of $M$, all having a point in common, with $\bigcup\CCC=M$ as follows.
+We can construct a collection of connected subsets, $\cC$, of $M$, all having a point in common, with $\bigcup\cC=M$ as follows.
 Choose any point in $x\in M$ and for any other element $y\in M$, let $C_y$ be the connected set containing $x$ and $y$.
-We have that $\bigcup_{y\in M\setminus\set{x}}C_y =\bigcup\CCC =M$, all $C_y$ connected and $x\in C_y$ for all $y$ so that exercise 6 applies giving us the desired result.
+We have that $\bigcup_{y\in M\setminus\set{x}}C_y =\bigcup\cC =M$, all $C_y$ connected and $x\in C_y$ for all $y$ so that exercise 6 applies giving us the desired result.
 \end{proof} 
 
 \begin{exercise}{9}

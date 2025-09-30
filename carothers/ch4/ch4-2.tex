@@ -1,4 +1,4 @@
-\subsection{Closed sets}
+\section{Closed sets}
 
 
 \begin{exercise}{1}
@@ -67,7 +67,7 @@ By Theorem 4.9, $A$ is closed.
 
 \begin{exercise}{7}
 Show that every open set in $\R$ is the union of (countably many) open intervals with rational endpoints. 
-Use this to show that the collection $\UUU$ of all open subset of $\R$ has the same cardinality as $\R$ itself.
+Use this to show that the collection $\cU$ of all open subset of $\R$ has the same cardinality as $\R$ itself.
 \end{exercise}
 \begin{proof}
 We will prove that we can construct any open interval as the countable union of open intervals with rational endponints. 
@@ -78,17 +78,17 @@ Thus, we have that $\cup_n^\infty (a_n,b) =(a,b)$.
 If $b$, or $a$ and $b$ were not rational, we can find a countable union of open intervals mutatis mutandis.
 From Theorem 4.6 we know that any open subset of $\R$ can be written as a countable union of disjoint open intervals, say $U=\cup_m^\infty (a_m,b_m)$, but from our previous conclusion, we have $U =\cup_m^\infty (a_m,b_m) =\cup_m^\infty \cup_n^\infty(a_{m_n},b_{m_n})$ which is a countable union, as required.
 
-To prove that $\UUU$ and $\R$ have the same cardinality, we will use a Cantor-Schr\"oder-Bernstein argument.
+To prove that $\cU$ and $\R$ have the same cardinality, we will use a Cantor-Schr\"oder-Bernstein argument.
 
 For the injective function, recall that $\Q^\N\cong\R\setminus\set{0}$, and the function $r\in\R$ given by $r\mapsto (0,r)$ if $r>0$ and $(r,0)$ otherwise is injective.
 
-Second, to find an injection from $\Q^\N$ to $\UUU$ we will first proof the following Lemma: 
+Second, to find an injection from $\Q^\N$ to $\cU$ we will first proof the following Lemma: 
 for any two sets $X$ and $Y$, the existence of a surjection from $X$ to $Y$ guarantees the existence of an injection from $Y$ to $X$.
 \textit{Proof:} Let $f:X\to Y$ be surjective.
 For $y\in Y$, take any $x\in X$ so that $f(x)=y$ and label such $x=g(y)$, then $g:Y\to X$ is injective.
 
 A surjective function is given by the following mapping $(a_1,b_1,\dots,a_n,b_n,\dots)\mapsto \cup_n (a_n,b_n)$.
-So that by our lemma, there exists an injective function from $\UUU$ to $\Q^\N$, and by the Cantor-Schr\"oder-Bernstein Theorem, $\Q^\N\cong\R\cong\UUU$.
+So that by our lemma, there exists an injective function from $\cU$ to $\Q^\N$, and by the Cantor-Schr\"oder-Bernstein Theorem, $\Q^\N\cong\R\cong\cU$.
 \end{proof} 
 
 \begin{exercise}{8}
@@ -488,7 +488,7 @@ That is, $x_n\in B_\epsilon(x)$, so that $B_\epsilon(x)\cap A \neq\emptyset$ for
 
 ($2\Rightarrow 3$)
 Suppose $B_\epsilon(x)\cap A \neq\emptyset$ for every $x\in M$ and every $\epsilon>0$.
-Since the previous statement is true for all $x\in M$, we can construct $U$ in $M$ as an arbitrary union of open sets $U=\cup_{i\in\III} B_{\epsilon_i}(x_i)$.
+Since the previous statement is true for all $x\in M$, we can construct $U$ in $M$ as an arbitrary union of open sets $U=\cup_{i\in\cI} B_{\epsilon_i}(x_i)$.
 However, we assume that for any of those such open balls $B_{\epsilon_i}(x_i)\cap A\neq\emptyset$, thus $U\cap A\neq\emptyset$.
 
 ($3\Rightarrow 4$)
@@ -539,7 +539,7 @@ If $M$ is separable, show that any collection of disjoint open sets in $M$ is at
 \begin{proof}
 If $M$ is separable, then there exists a countable subset of $A\subseteq M$ so that $A$ is dense in $M$, mathematically $\bar{A}=M$.
 Thus, for all $m\in M$, either $m\in A$, or for all $\epsilon>0$, $B_\epsilon(b)\cap A\neq\emptyset$.
-Consider a collection $\BBB$ of disjoint open sets in $M$.
-Then for any $B\in \BBB$, it is the case that $B\cap A\neq\emptyset$. 
-Furthermore, since $\BBB$ consists of disjoint sets, then there are at most countable number of elements in $\BBB$, since i) each one of them has to contain at least one element of $A$, ii) no two sets can contain the same elements, and iii) $A$ is countable.
+Consider a collection $\cB$ of disjoint open sets in $M$.
+Then for any $B\in \cB$, it is the case that $B\cap A\neq\emptyset$. 
+Furthermore, since $\cB$ consists of disjoint sets, then there are at most countable number of elements in $\cB$, since i) each one of them has to contain at least one element of $A$, ii) no two sets can contain the same elements, and iii) $A$ is countable.
 \end{proof} 

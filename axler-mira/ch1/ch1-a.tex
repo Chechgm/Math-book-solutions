@@ -1,6 +1,5 @@
-\subsection{1A Review: Riemann integral}
-
-8 do note this limit can exist without the function being riemann integrable
+\section{1A Review: Riemann integral}
+\addcontentsline{toc}{section}{1A Review: Riemann integral}
 
 \begin{exercise}{2}
 Suppose $a \leq s < t \leq b$.
@@ -12,7 +11,7 @@ We will follow a similar strategy as in example 1.10.
 Let $P$ be the following partition: $a,s,t,b$.
 By 1.5, we have
 \begin{align*}
-    \UUU(f,[a,b])
+    \cU(f,[a,b])
     \leq (s-a)\sup_{x\in[a,s]} f(x) 
     + (t-s)\sup_{x\in[s,t]} f(x) 
     + (b-t)\sup_{x\in[t,b]} f(x)
@@ -26,32 +25,32 @@ and
     + (b-t)\inf_{x\in[t,b]} f(x)
     \leq L(f,[a,b]);
 \end{align*}
-that is $\UUU(f,[a,b]) \leq L(f,[a,b])$.
-From 1.8 we know the reverse inequality holds, so that $\int_a^b f = \UUU(f,[a,b]) = L(f,[a,b]) = t-s$.
+that is $\cU(f,[a,b]) \leq L(f,[a,b])$.
+From 1.8 we know the reverse inequality holds, so that $\int_a^b f = \cU(f,[a,b]) = L(f,[a,b]) = t-s$.
 \end{proof} 
 
 \begin{exercise}{3}
 Suppose $f:[a,b]\to\R$ is a bounded function. 
-Prove that $f$ is Riemann integrable if and only if for each $\epsilon>0$, there exists a partition $P$ of $[a,b]$ such that $\UUU(f,P,[a,b]) - L(f,P,[a,b]) < \epsilon$.
+Prove that $f$ is Riemann integrable if and only if for each $\epsilon>0$, there exists a partition $P$ of $[a,b]$ such that $\cU(f,P,[a,b]) - L(f,P,[a,b]) < \epsilon$.
 \end{exercise}
 \begin{proof}
 ($\Rightarrow$)
 Suppose $f$ is Riemann integrable.
 Then 
 \begin{align*}
-    \inf_P \UUU(f,P,[a,b]) = \UUU(f,[a,b]) = L(f,[a,b]) = \sup_P L(f,P,[a,b]).
+    \inf_P \cU(f,P,[a,b]) = \cU(f,[a,b]) = L(f,[a,b]) = \sup_P L(f,P,[a,b]).
 \end{align*}
-Thus, for $\epsilon>0$, there exists a partition $P'$ such that $\UUU(f,[a,b]) + \epsilon/2 > \UUU(f,P',[a,b])$, and a partition $P''$ such that $L(f,[a,b]) - \epsilon/2 < L(f,P'',[a,b])$.
+Thus, for $\epsilon>0$, there exists a partition $P'$ such that $\cU(f,[a,b]) + \epsilon/2 > \cU(f,P',[a,b])$, and a partition $P''$ such that $L(f,[a,b]) - \epsilon/2 < L(f,P'',[a,b])$.
 Let $P = P' \cup P''$.
 \begin{align*}
-    \UUU(f,P,[a,b]) - L(f,P,[a,b]) 
-    \leq& \UUU(f,P',[a,b]) - L(f,P'',[a,b])\\
-    <& (\UUU(f,[a,b]) + \epsilon/2) 
+    \cU(f,P,[a,b]) - L(f,P,[a,b]) 
+    \leq& \cU(f,P',[a,b]) - L(f,P'',[a,b])\\
+    <& (\cU(f,[a,b]) + \epsilon/2) 
     - (L(f,[a,b]) - \epsilon/2) = \epsilon.
 \end{align*}
 
 ($\Leftarrow$)
-If for every $\epsilon>0$ there exists a partition $P$ such that  $\UUU(f,P,[a,b]) - L(f,P,[a,b]) < \epsilon$, then it must be the case that $\UUU(f,[a,b]) = L(f,[a,b])$, that is, $f$ is integrable.
+If for every $\epsilon>0$ there exists a partition $P$ such that  $\cU(f,P,[a,b]) - L(f,P,[a,b]) < \epsilon$, then it must be the case that $\cU(f,[a,b]) = L(f,[a,b])$, that is, $f$ is integrable.
 \end{proof} 
 
 \begin{exercise}{8}
@@ -73,18 +72,18 @@ and
 \begin{align*}
     \sum_{j=2}^n (x_j-x_{j-1}) f\parens{a+\frac{j(b-a)}{n}}
     =& \frac{b-a}{n}\sum_{j=1}^n f\parens{a+\frac{j(b-a)}{n}}\\
-    \geq& \sum_{j=2}^n (x_j-x_{j-1}) \sup_{x\in[x_j,x_{j-1}]}f(x)\\
-    =& \UUU(f,P_n,[a,b]).
+    \leq& \sum_{j=2}^n (x_j-x_{j-1}) \sup_{x\in[x_j,x_{j-1}]}f(x)\\
+    =& \cU(f,P_n,[a,b]).
 \end{align*}
 That is, for all $P_n$, it is the case that
 \begin{align*}
-    \UUU(f,P_n,[a,b]) 
+    \cU(f,P_n,[a,b]) 
     \geq \sum_{j=2}^n (x_j-x_{j-1}) f\parens{a+\frac{j(b-a)}{n}}
     \geq L(f,P_n,[a,b]).
 \end{align*}
 Notice that as $n\to\infty$, $[a,b]$ is divided into $2^m$ intervals of equal size, where $m = \log_2 n$, so that we can use exercise 7, and the fact that $f$ is integrable, to conclude
 \begin{align*}
-    L(f, [a,b]) = \lim_{n\to\infty} \frac{b-a}{n}\sum_{j=1}^n f\parens{a+\frac{j(b-a)}{n}} = \UUU(f,[a,b]).
+    L(f, [a,b]) = \lim_{n\to\infty} \frac{b-a}{n}\sum_{j=1}^n f\parens{a+\frac{j(b-a)}{n}} = \cU(f,[a,b]).
 \end{align*}
 \end{proof} 
 
@@ -97,7 +96,7 @@ Let $\epsilon>0$.
 Let $P$ be a partition of $[a,b]$ with $n$ elements, such that all the subintervals have the same length, and such that $(f(b)-f(a))/n(b-a)< \epsilon$.
 We have
 \begin{align*}
-    \UUU(f,P,[a,b]) - L(f,P,[a,b])
+    \cU(f,P,[a,b]) - L(f,P,[a,b])
     =& \sum (x_j - x_{j-1})[\sup_{[x_j, x_{j-1}]} f - \inf_{[x_j, x_{j-1}]} f]\\
     =& \frac{b-a}{n} \sum [f(x_j) - f(x_{j-1})]\\
     =& \frac{b-a}{n} [f(a) - f(b)] < \epsilon.
@@ -114,10 +113,10 @@ Prove that $f$ is Riemann integrable and $\lim_{n\to\infty}\int_a^b f_n = \int_a
 \begin{proof}
 First we will prove that $f$ is Riemann integrable.
 Let $\epsilon>0$, from the uniform convergence of $(f_n)$, we know there exists an $N\in\N$, such that whenever $n>N$, it holds that $\absoluteValue{f_n-f}<m\epsilon/3(b-a)$ for all $x\in [a,b]$.
-Now, using exercise 3, we know there exists a partition $P$, $a=x_1<\dots<x_m=b$ such that $\UUU(f_N,P,[a,b])-L(f_N,P,[a,b])<m\epsilon/3(b-a)$.
+Now, using exercise 3, we know there exists a partition $P$, $a=x_1<\dots<x_m=b$ such that $\cU(f_N,P,[a,b])-L(f_N,P,[a,b])<m\epsilon/3(b-a)$.
 We have
 \begin{align*}
-    \UUU(f,P,[a,b]) - L(f,P,[a,b])
+    \cU(f,P,[a,b]) - L(f,P,[a,b])
     =&  \sum_j (x_j-x_{j-1})[\sup_{[x_j-x_{j-1}]} f - \inf_{[x_j-x_{j-1}]}f]\\
     =&  \sum_j (x_j-x_{j-1})
     [\sup_{[x_j-x_{j-1}]} f - \inf_{[x_j-x_{j-1}]}f\\
