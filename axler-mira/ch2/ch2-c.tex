@@ -1,35 +1,68 @@
 \section{2C Measures and their properties}
 \addcontentsline{toc}{section}{2C Measures and their properties}
 
-2 These kind of measures correspond to discrete probabilities.
-8 There is a certain theorem, that this exercise is impossible if A is closed under intersections
-10 We say here that continuity "from above" is false in general for measures, but it IS true for probability measures!
-11 Inclusion-exclusion formula!
 
 \begin{exercise}{2}
-fill
+Let $2^\N$ denote the $\sigma$-algebra consisting of all subsets of $\N$.
+Suppose $\mu$ is a measure on $(\N, 2^\N)$.
+Prove that there is a sequence $w_1,w_2,\dots$ in $[0,\infty]$ such that $\mu(E) = \sum_{k\in E} w_k$ for every set $E \subseteq \N$.
 \end{exercise}
 \begin{proof}
-fill
+notice that for any $n\in\N$, we have that $\set{n} \in 2^\N$, so that $\mu(\set{n}) = w_n$ for some $w_n \in [0,\infty]$.
+Furthermore, we can write $E \in 2^\N$ as the disjoint countable union of singletons: $E = \bigcup_{k \in E} \set{k}$.
+By countable additivity, we have 
+\begin{align*}
+    \mu(E) 
+    = \mu( \bigcup_{k\in E} \set{k}) 
+    = \sum_{k \in E} \mu(\set{k}) 
+    = \sum_{k \in E} w_k,
+\end{align*}
+as required.
 \end{proof} 
 
 \begin{exercise}{8}
-fill
+Give an example of a set $X$, a $\sigma$-algebra $\cS$ of subsets of $X$, a set $\cA$ of subsets of $X$ such that the smallest $\sigma$-algebra on $X$ containing $\cA$ is $\cS$, and two measures $\mu$ and $\nu$ on $(X,\cS)$ such that $\mu(A) = \nu(A)$ for all $A \in \cA$ and $\mu(X) = \nu(X) < \infty$ but $\mu \neq \nu$.
 \end{exercise}
 \begin{proof}
-fill
+We will use a combination of examples 2.28.a and 2.55.d to build such measures.
+Let $X$ be a set and $\cA = \set{\set{x}: x \in X}$.
+From example 2.28.a, we know that the smallest $\sigma$-algebra containing $\cA$ is the $\sigma$-algebra where either $E$ is countable or $X \setminus E$ is countable.
+Now let $\mu$ and $\nu$ on $(X, \cS)$ be defined as $\mu(E) = \nu(E) = 0$ if $E$ is countable, and $\mu(E) = 2$ and $\nu(E) = 3$ if $E$ is uncountable.
+From example 2.55.d we know that both $\mu$ and $\nu$ are valid measures on $(X,\cS)$, and by definition, we have the property that $\mu(A) = \nu(A) = 0$ for all $A\in\cA$, but clearly $\mu \neq \nu$, as required.
 \end{proof} 
 
 \begin{exercise}{10}
-fill
+Give an example of a measure space $(X, \cS, \mu)$ and a decreasing sequence $E_1 \supseteq E_2 \supseteq \dots$ of sets in $\cS$ such that $\mu( \bigcap E_k) \neq \lim_{k\to\infty} \mu(E_k)$.
 \end{exercise}
 \begin{proof}
-fill
+Take $(\R, \cB, \mu)$, where $\cB$ is the Borel $\sigma$-algebra and $\mu$ is the outer measure.
+Now consider the decreasing sequence of sets $E_k = (k,\infty)$.
+We have that $\bigcap E_k = \emptyset$, however since for all $E_k$, $\mu(E_k) = \infty$, then $\lim_{k\to \infty} \mu(E_k) = \infty$.
 \end{proof} 
 
 \begin{exercise}{11}
-fill
+Suppose $(X, \cS, \mu)$ is a measure space and $C, D, E \in \cS$ are such that $\mu(C \cap D) < \infty,\, \mu(C \cap E) < \infty,\, \mu(D \cap E) <\infty$.
+Find and prove a formula for $\mu(C \cup D \cup E)$ in terms of $\mu(C),\, \mu(D),\, \mu(E),\, \mu(C \cap D),\, \mu(C \cap E),\, \mu(D \cap E$ and $\mu(C \cap D \cap E)$.
 \end{exercise}
 \begin{proof}
-fill
+Repeated application of 2.61.
+By a repeated application of 2.61, we have:
+\begin{align*}
+    \mu(C \cup [D \cup E])
+    =& \mu(C) + \mu(D \cup E) - \mu(C \cap [D \cup E])\\
+    =& \mu(C) + \mu(D) + \mu(E) - \mu(D \cap E) - \mu(C \cap [D \cup E]),
+\end{align*}
+now
+\begin{align*}
+    \mu(C \cap [D \cup E])
+    =& \mu([C \cap D] \cup [C \cap E])\\
+    =& \mu(C \cap D) + \mu(C \cap E) - \mu([C \cap D] \cap [C \cap E]).
+\end{align*}
+Noticing that $\mu([C \cap D] \cap [C \cap E]) = \mu(C \cap D \cap E)$ and replacing the second equality on the first one, we obtain
+\begin{align*}
+    \mu(C \cup D \cup E)
+    =& \mu(C) + \mu(D) + \mu(E)\\
+    &- \mu(D \cap E) - \mu(C \cap D) - \mu(C \cap E)\\
+    &+ \mu(C \cap D \cap E).
+\end{align*}
 \end{proof} 

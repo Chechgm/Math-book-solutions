@@ -1,16 +1,16 @@
 \section{The Baire category Theorem}
 
-16* Link between nowhere dense and isolated point, good for intuition 
-19* Interesting characterizations of nowhere dense 
-21C Some interesting properties for your intuition 
-24*
-25*
+16* Link between nowhere dense and isolated point, good for intuition. Solve exercise 4.54...
+19* Interesting characterizations of nowhere dense. Solve exercise 4.60
+
 26* Filling in details from the theory 
+
 28* This makes sense since first category sets are intuitive "small sets". This property makes sense in light of that intuition
 29* Second category sets are intuitively big sets 
 30* first category is a relative property!
 31* Showing completeness is crucial in Baire 
 32* 
+
 33* Test your intuition! 
 36* Relate this again to the notion of big/small 
 37* Again related to big/small intuition. First category is so small that its complement is big in the sense of cardinality 
@@ -54,49 +54,65 @@ The statement holds for any infinite metric space without isolated points.
 Show that $\set{x}$ is nowhere dense in $M$ if and only if $x$ is not an isolated point of $M$.
 \end{exercise}
 \begin{proof}
-($\Rightarrow$)
-Suppose $x$ is an isolated point of $M$.
-Then there exists an $\epsilon > 0$, such that $B_\epsilon(x)\cap M = \set{x}$.
-
-A set is nowhere dense if its closure contains no nonempty open set.
-Alternatively, a set is nowhere dense if the complement of its closure is open and dense in the space.
-
-($\Leftarrow$)
-Suppose $\set{x}$ is not nowhere dense in $M$.
-
-
+This is the content of exercise 4.54.
 \end{proof} 
 
 \begin{exercise}{19}
-fill
+Show that each of the following is equivalent to the statement ``$A$ is nowhere dense'':
+\begin{enumerate}
+    \item $\bar{A}$ contains no nonempty open set.
+    \item Each nonempty open set in $M$ contains a nonempty open subset that is disjoint from $A$.
+    \item Each nonempty open set in $M$ contains an open ball that is disjoint from $A$.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+This is the content of exercise 4.60.
 \end{proof} 
 
 \begin{exercise}{21}
-fill
+If $x_n \to x$ in $\R$, show that the set $E = \set{x} \cup \set{x_n: n \geq 1}$ is nowhere dense in $\R$.
+Is the same true if $\R$ is replaced by an arbitrary metric space $M$?
+Is every countable set nowhere dense?
+Explain
 \end{exercise}
 \begin{proof}
-fill
+Let $\epsilon >0$ and $x \in E$.
+We have that $B_\epsilon(x) \not\subseteq E$, since $B_\epsilon(x)$ is an uncountable set (Theorem 2.9), while $E$ is not.
+Thus, $E = \bar{E}$ is nowhere dense, as required.
+
+This is not true for all metric spaces, a discrete metric space being a simple example.
+Likewise, it is not true that every countable set is nowhere dense.
+In example 9.9.b we discussed how $\Q$, is not nowhere dense in $\R$.
 \end{proof} 
 
 \begin{exercise}{24}
-fill
+If $\R = \bigcup E_n$, then the closure of some $E_n$ contains an interval;
+that is, $\operatorname{int}(\bar{E}) \neq \emptyset$ for some $n$.
 \end{exercise}
 \begin{proof}
-fill
+We will use a proof technique similar to that of Corollary 9.6.
+Because $\R = \bigcup E_n$, we have that $\R = \bigcup \bar{E}_n$, so that for the open sets $G_n = \R \setminus \bar{E}_n$, it holds that $\bigcap G_n = \emptyset$.
+By the Baire's Category Theorem, it must be the case that some $G_n$ is not dense, so that it misses an entire open interval. 
+Thus $\bar{E}_n$ contains an entire open interval.
 \end{proof} 
 
 \begin{exercise}{25}
-fill
+If $\R \setminus \Q = \bigcup E_n$, then the closure of some $E_n$ contains an interval.
+Deduce that the conclusion of Baire's Theorem holds for $\R \setminus \Q$.
 \end{exercise}
 \begin{proof}
-fill
+We have that $\R \setminus \Q \subseteq \bigcup \bar{E}_n$, so that by adding the (at most countably many) points in $\R \setminus \bigcup \bar{E}_n$ for $\R$, we get that $\R = \bigcup \bar{E}_n \cup \bigcup \set{x_n}$.
+Thus, for a sequence of open sets $G_n$, we have that $\emptyset = \bigcap G_n$, so that for some $n$, $G_n$ is not dense, implying that it misses a whole open interval.
+We have that $\R \setminus \set{x_n}$ is dense in $\R$, so it must be the case that the not dense $G_n$ corresponds to the complement of $\bar{E}_n$, giving us that $\bar{E}_n$ contains an open interval.
+
+This proof tells us precisely that Baire's Category Theorem also holds for $\R \setminus \Q$.
 \end{proof} 
 
-\begin{exercise}{26}
-fill
+\begin{exercise}{26 [The Baire Category Theorem]}
+A complete metric space is of the second category in itself.
+That is, if $M$ is a complete metric space, and if we write $M = \bigcup E_n$, then the closure of some $E_n$ contains an open ball.
+Equivalently, if $(G_n)$ is a sequence of dense open sets in $M$, then $\bigcap G_n \neq \emptyset$;
+in fact $\bigcap G_n$ is dense in $M$.
 \end{exercise}
 \begin{proof}
 fill

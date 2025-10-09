@@ -28,8 +28,8 @@ Finally, by the properties of the infimum, we get that $\absoluteValue{tA} = \ab
 Prove that if $a,b\in\R$ and $a<b$, then $\absoluteValue{(a,b)} = \absoluteValue{[a,b)} = \absoluteValue{(a,b]} = b-a$.
 \end{exercise}
 \begin{proof}
-Notice that $[a,b), (b,a] \subseteq [a,b]$, so that by 2.5 and 2.14, we have that $\absoluteValue{[a,b)}, \absoluteValue{(a,b]} \leq b-a$.
-Likewise, notice that $(a,b)\subseteq [a,b)$ and $(a,b)\subseteq (a,b]$, so that by 2.1 and 2.5, we have that $b-a = \absoluteValue{(a,b)} \leq \absoluteValue{[a,b)}$ and $b-a = \absoluteValue{(a,b)} \leq \absoluteValue{(a,b]}$, giving us the desired result.
+We prove it for $(a,b)$, the proof for the other intervals is similar.
+From exercise 1, $(a,b) \cup \set{a,b} = [a,b]$ with $\absoluteValue{\set{a,b}} = 0$, so that $\absoluteValue{(a,b)} = \absoluteValue{(a,b) \cup \set{a,b}} = \absoluteValue{[a,b]} = b-a$.
 \end{proof} 
 
 \begin{exercise}{11}
