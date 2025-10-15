@@ -3,21 +3,19 @@
 16* Link between nowhere dense and isolated point, good for intuition. Solve exercise 4.54...
 19* Interesting characterizations of nowhere dense. Solve exercise 4.60
 
-26* Filling in details from the theory 
-
-28* This makes sense since first category sets are intuitive "small sets". This property makes sense in light of that intuition
-29* Second category sets are intuitively big sets 
-30* first category is a relative property!
-31* Showing completeness is crucial in Baire 
 32* 
-
 33* Test your intuition! 
+
 36* Relate this again to the notion of big/small 
 37* Again related to big/small intuition. First category is so small that its complement is big in the sense of cardinality 
+
 38* Nice example 
+
 40C Seeing how these notions behave with functions 
 42C Cool way to extend Baire to other spaces 
+
 43* This suggest a topological property. Baire spaces are the ones that satisfy the conclusion of Baire's theorem.
+
 46* This property would not at all be easy to prove without Baire!
 47* This shows how Baire's theorem can be used to show spaces not being complete, see exercise 49
 48* I think this should be intuitive enough, but still not easy to prove 
@@ -115,49 +113,82 @@ Equivalently, if $(G_n)$ is a sequence of dense open sets in $M$, then $\bigcap 
 in fact $\bigcap G_n$ is dense in $M$.
 \end{exercise}
 \begin{proof}
-fill
+Let $x_0 \in M$ and let $I_0$ be an open set containing $x_0$.
+We will prove both conclusions at the same time by showing that $I_0 \cap (\bigcap G_n) \neq \emptyset$.
+
+Since $G_1$ is dense, we know that $I_0 \cap G_1 \neq \emptyset$ (because $I_0$ is open and it contains $x_0$, which must be the limit of a sequence contained in $G_1$).
+But since $G_1$ is also open, this means that we can find some open interval $I_1 \subseteq I_0 \cap G_1$.
+By shrinking $I_1$ (if necessary), we may suppose that $\operatorname{diam}(I_1) \leq 1$ and $\bar{I}_1 \subseteq I_0 \cap G_1$.
+
+Now use $I_1$ in place of $I_0$ and $G_2$ in place of $G_1$.
+Since $G_2$ is dense we have that $I_1 \cap G_2 \neq \emptyset$.
+But $G_2$ is open, so there is some open interval $I_2$ with $\operatorname{diam}(I_2) \leq 1/2$ such that $\bar{I}_2 \subseteq I_1 \cap G_2 \subseteq I_0 \cap G_1 \cap G_2$.
+
+Repeat this using $I_2$ and $G_3$ in place of $I_1$ and $G_2$, and so on.
+What we get is a sequence of nested closed intervals, $\bar{I}_1 \supseteq \bar{I}_2 \supseteq \dots$ with $\operatorname{diam}(I_n) \leq 1/n$ and $\bar{I}_n \subseteq I_0 \cap (\bigcap G_k)$.
+Thus by the nested set Theorem (7.11.ii), $I_0 \cap (\bigcap G_k) \supseteq \bigcap I_n \neq \emptyset$. 
+Consequently, $\bigcap G_k$ is nonempty and dense.
 \end{proof} 
 
 \begin{exercise}{28}
-fill
+In a metric space $M$, show that any subset of a first category set is still first category, and that a countable union of first category sets is again first category.
 \end{exercise}
 \begin{proof}
-fill
+A subset $A$ of $M$ is said to be of the first category in $M$ if $A$ can be written as a countable union of sets, each of which is nowhere dense in $M$.
+
+Taking a subset of $A$ does not affect this property, as we will only have to take elements of the sets of such union, which will still render them nowhere dense in $M$.
+
+Likewise, since countable unions of countable sets are still countable, a countable union of first category sets can still be written as the countable union (the countable union of countable unions) of nowhere dense sets.
 \end{proof} 
 
 \begin{exercise}{29}
-fill
+In a metric space $M$, prove that any superset of a second category set is itself a second category set.
 \end{exercise}
 \begin{proof}
-fill
+A subset $B$ is a second category set in $M$ if, whenever we write $B = \bigcup E_n$ some $E_n$ fails to be nowhere dense in $M$;
+that is, $\operatorname{int}(\bar{E}_n) \neq \emptyset$ for some $n$.
+
+Taking a supserset of a second category set will not affect this property, as we will only be adding to the sets $E_n$ which compose the union.
+If we either add elements to a $E_n$, or we add more sets to the countable union, some $E_n$ will still fail to be nowhere dense in $M$.
 \end{proof} 
 
 \begin{exercise}{30}
-fill
+Show that $\N$ is first category in $\R$ but second category in itself.
 \end{exercise}
 \begin{proof}
-fill
+We can write $\N = \bigcup \set{n}$.
+We have that $\set{n}$ is a nowhere dense set in $\R$ for all $n$ (this is because $(\overline{\set{n}})^c$ is open and dense in $\R$).
+Thus $\N$ is of first category in $\R$.
+On the other hand, in $\N$, $\operatorname{int}(\overline{\set{n}})$ is nonempty for all $n$, as it contains the open set $B_\epsilon(n)$, where $\epsilon < 1$.
+Hence, $\N$ is of second category in itself.
 \end{proof} 
 
 \begin{exercise}{31}
-fill
+Show that $\Q$ is first category in itself (thus completeness is essential in Baire's Theorem).
 \end{exercise}
 \begin{proof}
-fill
+Let $(E_n)$ be a sequence of sets enumerating $\Q$, so that $\Q = \bigcup E_n$.
+Take any $E_n = \set{q}$ for some rational $q$.
+Now $\overline{\set{q}} = \set{q}$, but we have that for any $\epsilon > 0$, $B_\epsilon(q) \not\subseteq \set{q}$, as there exists infinitely many rationals in $(q-\epsilon, q+\epsilon)$.
+Thus $\operatorname{int}(\overline{\set{q}}) = \emptyset$;
+that is, $\Q$ is of first category in itself.
 \end{proof} 
 
 \begin{exercise}{32}
-fill
+In $\R$, show that any open interval (and hence nonempty, open set) is a second category set.
 \end{exercise}
 \begin{proof}
-fill
+This is a Corollary to exercise 33.
 \end{proof} 
 
 \begin{exercise}{33}
-fill
+If $M$ is complete, is every nonempty, open set a second category set?
 \end{exercise}
 \begin{proof}
-fill
+Yes.
+By exercise 7.30, we know that every nonempty open set is homeomorphic to a complete metric space.
+Furthermore, in exercise 43 we prove that if $N$ is homeomorphic to a complete metric space $M$, the conclusion of Baire's Theorem holds in $N$.
+Both of these results give us in conjuction the desired result.
 \end{proof} 
 
 \begin{exercise}{36}
@@ -175,10 +206,15 @@ fill
 \end{proof} 
 
 \begin{exercise}{38}
-fill
+Is the complement of a first category set necessarily a second category set?
+Likewise, is the complement of a second category set necessarily a first category set?
+Explain.
 \end{exercise}
 \begin{proof}
-fill
+Neither of those is true. 
+In exercise 33 we proved that in a complete metric space, every nonempty open set is a second category set.
+Take any discrete metric, which we know is complete.
+In this case any subset of the underlying set is open, so that it is of second category, importantly, its complement is also open, so that its complement is also a second category set.
 \end{proof} 
 
 \begin{exercise}{40}
@@ -199,21 +235,21 @@ fill
 fill
 \end{exercise}
 \begin{proof}
-fill
+Theorem 5.5.
 \end{proof} 
 
 \begin{exercise}{46}
 fill
 \end{exercise}
 \begin{proof}
-fill
+Use exercise 45
 \end{proof} 
 
 \begin{exercise}{47}
 fill
 \end{exercise}
 \begin{proof}
-fill
+We can probably write all the polynomials as the countable union of nowhere dense sets through monomials
 \end{proof} 
 
 \begin{exercise}{48}
@@ -227,5 +263,5 @@ fill
 fill
 \end{exercise}
 \begin{proof}
-fill
+This is a Corollary to the previous exercise, as in this case, each $W_n$ is a proper closed (WHY), linear subspace of $V$, implying that $V$ can be written as the countable union of nowhere dense sets.
 \end{proof} 

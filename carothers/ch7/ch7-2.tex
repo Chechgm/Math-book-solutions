@@ -240,6 +240,34 @@ The distance between any of these sequences and $0\in l_2$ is 1, so that the sub
 However,  there is no limit point in $l_2$ of such subset because the distance between any two sequences is 2, so that we cannot get arbitrarily close to a point in $l_2$.
 \end{proof} 
 
+\begin{exercise}{30}
+If $(M,d)$ is complete, prove that every open subset $G$ of $M$ is homeomorphic to a complete metric space.
+[Hint: Let $F = M\setminus G$, and consider the metric $\rho(x,y) = d(x,y) \absoluteValue{d(x,F)^{-1} - d(y,F)^{-1}}$]. 
+\end{exercise}
+\begin{proof}
+Let $(G, \rho)$ be a metric space with $\rho$ as defined in the hint.
+Let the potential homeomorphism be the identity function on $G$.
+We will prove that $d$ and $\rho$ are equivalent to prove that indeed the identity is a homeomorphism, and then we will prove that $(G,\rho)$ is complete to prove the problem statement.
+
+Let $x_n \stackrel{d}{\to} x$, so that for all $\epsilon>0$ there exists an $N\in\N$, such that whenever $n>N$, it holds that $d(x_n, x) < \epsilon$.
+We then have that 
+\begin{align*}
+    \rho(x_n, x)
+    =& d(x_n, x) + \absoluteValue{d(x_n,F)^{-1} - d(x,F)^{-1}},
+\end{align*}
+the first term in the right hand side can be made arbitrarily small, by choosing a suitable $N$.
+Furthermore, we that $f(x) = d(x,F)$ is a continuous function (check proposition 5.4 and the comment before it), so that $d(x_n, F) \to d(x,F)$.
+Likewise, since $x_n \in G$ for all $n$, then $d(x_n, F)^{-1} \neq 0$ for all $n$, and importantly, it is a continuous function of $x_n$.
+Putting these results together, we have that $d(x_n, F)^{-1} \to d(x,F)$, so that $\rho(x_n, x) \to d(x_n, x) < \epsilon$.
+Notice that $\rho(x,y) \leq d(x,y)$ for all $x,y$, so that $\rho$ and $d$ induce the same convergent sequences, and thus are equivalent metrics.
+
+To see that $(G, \rho)$ is complete, let $(x_n)$ be Cauchy.
+Thus, for all $\epsilon >0$, there exists an $N\in\N$, so that whenever $n,m>N$, it holds that $\rho(x_n, x_m) < \epsilon$.
+Fix $n$, and consider $\lim_{m\to \infty}\rho(x_n, x_m)$.
+If $\lim_{m\to\infty} x_m \in F$, then we would have that $\lim_{m\to \infty} \rho(x_n, x_m) = \infty$, which is a contradiction.
+Thus, it must be the case that $\lim_{m \to \infty} x_m = x \in G$, as required.
+\end{proof} 
+
 \begin{exercise}{31}
 If $\sum^\infty_{n=1}x_n$ is a convergent series in a normed vector space $X$, show  that $\norm{\sum^\infty_{n=1}x_n}\leq \sum^\infty_n{n=1}\norm{x_n}$.
 \end{exercise}
