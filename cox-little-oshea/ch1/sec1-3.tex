@@ -1,4 +1,6 @@
-\subsection{Parametrizations of Affine Varieties}
+\section{Parametrizations of Affine Varieties}
+
+
 \begin{exercise}{1}
 Parametrize all solutions of the linear equations
 \begin{eqnarray*}
@@ -128,7 +130,7 @@ Consider the parametric representation
         We get $y^2 = a^2 - 1$. This has $0$, $1$, or $2$ solution depending on whether $a^2 > 0$, $a^2 = 0$ or $a^2 < 0$. This is illustrated in the following picture:
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.5\linewidth]{cox-little-oshea/assets/sec1-3-ex5b.png}
+            \includegraphics[width=0.5\linewidth]{cox-little-oshea/ch1/assets/sec1-3-ex5b.png}
             \caption{The hyperbola with the vertical lines $x=3$, $x=1$ and $x=1/2$.}
             \label{fig:sec1-3-ex5b}
         \end{figure}
@@ -147,7 +149,7 @@ Consider the parametric representation
         According to whether this is positive, negative, or zero, we see that the lines have zero, one or two solutions. This is illustrated in the following picture
 \begin{figure}
     \centering
-    \includegraphics[width=0.5\linewidth]{cox-little-oshea/assets/sec1-3-ex5bb.png}
+    \includegraphics[width=0.5\linewidth]{cox-little-oshea/ch1/assets/sec1-3-ex5bb.png}
             \caption{The hyperbola with the lines $y = 2x+1$, $y=2x+4$ and $y = 2x-\sqrt{3}$.}
             \label{fig:sec1-3-ex5bb}
 \end{figure}
@@ -188,7 +190,7 @@ The idea is to adapt the argument used for the circle $x^2+y^2=1$ to 3-dimension
     \item Since the described line intersects the unit sphere in only one point, and for all points of the sphere (besides $(0,0,1)$ we can find $u$ and $v$ so that the point of the sphere is the intersection with the line, then the whole sphere (with the exception of the north pole) is identified with $(u,v)$. 
     \begin{figure}[H]
      \centering
-     \includegraphics[width=.5\textwidth]{cox-little-oshea/assets/sec1-3-ex6a.png}
+     \includegraphics[width=.5\textwidth]{cox-little-oshea/ch1/assets/sec1-3-ex6a.png}
      \caption{Line between $(u,v,0)$ and $(0,0,1)$ for $u=v=2$ and the unit sphere.}
      \label{fig:sec1-3-ex8a}
     \end{figure}
@@ -232,7 +234,7 @@ The idea is to adapt the argument used for the circle $x^2+y^2=1$ to 3-dimension
 Consider the curve defined by $y^2=cx^2-x^3$, where $c$ is some constant. Here is a picture of the curve when $c>0$:
 \begin{figure}[H]
      \centering
-     \includegraphics[width=.5\textwidth]{cox-little-oshea/assets/sec1-3-ex8.png}
+     \includegraphics[width=.5\textwidth]{cox-little-oshea/ch1/assets/sec1-3-ex8.png}
      \label{fig:sec1-2-ex8}
 \end{figure}
 Our goal is to parametrise this curve.
@@ -269,14 +271,14 @@ Our goal is to parametrise this curve.
     My intuition of why this happens is that as we saw on (*), and replacing $b=0$, we must have 3 real roots, 0 being repeated. Hence, we are only left with $x+m^2-c=0$ which is a single intersection between the curves.
     \begin{figure}[H]
          \centering
-         \includegraphics[width=.5\textwidth]{cox-little-oshea/assets/sec1-3-ex8-sol2.png}
+         \includegraphics[width=.5\textwidth]{cox-little-oshea/ch1/assets/sec1-3-ex8-sol2.png}
          \label{fig:sec1-2-ex8-sol2}
     \end{figure}
 
     \item We just argued in the previous exercise that a line that goes through the origin meets the curve at a single point. Geometrically, this is a parametrisation of the whole curve because the line through $(1,t)$ and the origin will have any slope we want, with functional form $y=mx$. Since the intersection between this line and $y$ is given by (*) (with $b=0$), we cover all values of $y$. To see this, just choose $(1,t)$ so that $m$ gives the desired value of $y$ whenever we replace $x=c-m^2$ in the original function of the equation.
     \begin{figure}[H]
          \centering
-         \includegraphics[width=.5\textwidth]{cox-little-oshea/assets/sec1-3-ex8-sol3.png}
+         \includegraphics[width=.5\textwidth]{cox-little-oshea/ch1/assets/sec1-3-ex8-sol3.png}
          \label{fig:sec1-2-ex8-sol3}
     \end{figure}
     \item We just argued before about $x=c-m^2$, which translates to $x=c-t^2$ given that we are using the vertical curve $x=1$. To see the parametrisation for $y$, we substitute as we intuitively argued above: $y=\sqrt{c(c-t^2)^2-(c-t^2)^3}=\sqrt{t^2(c-t^2)^2}=t(c-t^2)$, as required.
@@ -441,7 +443,7 @@ Consider the variety $V = \bV(y-x^2,z-x^4)\subseteq\mathbb{R}^3$.
         \item We get
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.5\linewidth]{cox-little-oshea/assets/sec1-3-ex12.png}
+            \includegraphics[width=0.5\linewidth]{cox-little-oshea/ch1/assets/sec1-3-ex12.png}
             \caption{Graph of the variety $V = \bV(y-x^2,z-x^4)$}
             \label{fig:sec1-3-ex12}
         \end{figure}
@@ -539,10 +541,41 @@ This problem deals with convex sets and will be used in the next exercise to sho
         x & = & (1-t)^3 x_0 + 3t(1-t)^2 x_1 + 3t^2 (1-t) x_2 + t^3 x_3,\\
         x & = & (1-t)^3 y_0 + 3t(1-t)^2 y_1 + 3t^2 (1-t) y_2 + t^3 y_3.        
     \end{eqnarray*}
-    \item Use the previous exercise to show that a B\`ezier cubic always lies inside its control polygon.
+    
     \begin{enumerate}
         \item Show that the above equations can be written in vector form
-        $$\left(\begin{array}{c} x\\ y\end{array}\right) = (1-t)^3 \left(\begin{array}{c} x_0\\ y_0\end{array}\right) + 3t(1-t)^2\left(\begin{array}{c} x_1\\ y_1\end{array}\right) + 3t^2 (1-t) \left(\begin{array}{c} x_2\\ y_2\end{array}\right) + t^3 \left(\begin{array}{c} x_3\\ y_3\end{array}\right).$$
+        \begin{align*}
+            \parens{
+            \begin{array}{c} 
+                x\\ 
+                y
+            \end{array}}
+            = (1-t)^3 
+            \parens{
+            \begin{array}{c} 
+                x_0\\ 
+                y_0
+            \end{array}} 
+            + 3t(1-t)^2 
+            \parens{
+            \begin{array}{c} 
+                x_1\\ 
+                y_1
+            \end{array}} 
+            + 3t^2 (1-t) 
+            \parens{
+            \begin{array}{c} 
+                x_2\\ 
+                y_2
+            \end{array}} 
+            + t^3 
+            \parens{
+            \begin{array}{c} 
+                x_3\\ 
+                y_3
+            \end{array}}.
+        \end{align*}
+        \item Use the previous exercise to show that a B\'{e}zier cubic always lies inside its control polygon.
     \end{enumerate}
 \end{exercise}
 \begin{proof}
@@ -573,12 +606,12 @@ for $0\leq t\leq 1$. The constants $w,x_1,y_1,x_2,y_2,x_3,y_3$ are specified by 
         \item Evaluate the above formulas at $t=0$ and $t=1$. This should tell you what $x_1$, $y_1$, $x_3$, $y_3$ mean.
         \item Now compute $(x'(0), y'(0))$ and $(x'(1), y'(1))$. Use this to show that $(x_2,y_2)$ is the intersection of the tangent lines at the start and end of the curve. Explain why $(x_1,y_1)$, $(x_2,y_2)$ and $(x_3,y_3)$ are called the control points of the curve.
         \item Define the control polygon (it is actually a triangle in this case), and prove that the curve defined by the above equations always lies in its control polygon. This gives the following picture:\\
-        \includegraphics[width=0.8\linewidth]{cox-little-oshea/assets/sec1-3-ex16.png}
+        \includegraphics[width=0.8\linewidth]{cox-little-oshea/ch1/assets/sec1-3-ex16.png}
         It remains to explain the constant $w$, which is called the shape factor. A hint should come from the answer to part (c), for note that $w$ appears in the formulas for the tangent vectors when $t=0$ and $1$. So $w$ somehow controls the ``velocity,'' and a larger $w$ should force the curve closer to $(x_2,y_2)$. In the last two parts of the problem, we will determine exactly what $w$ does.
         \item Prove that
         $$\left(\begin{array}{c}x\left(\frac{1}{2}\right)\\ y\left(\frac{1}{2}\right)\end{array}\right) = \frac{1}{1+w}\left(\frac{1}{2}\left(\begin{array}{c}x_1\\ y_1\end{array}\right) + \frac{1}{2}\left(\begin{array}{c}x_3\\ y_3\end{array}\right) \right) + \frac{w}{1+w}\left(\begin{array}{c}x_2\\ y_2\end{array}\right).$$
         Use this formula to show that $\left(x\left(\frac{1}{2}\right),y\left(\frac{1}{2}\right)\right)$ lies on the line segment connecting $(x_2,y_2)$ to the midpoint between $(x_1,y_1)$ and $(x_3,y_3)$.\\
-        \includegraphics[width=0.8\linewidth]{cox-little-oshea/assets/sec1-3-ex16a.png}
+        \includegraphics[width=0.8\linewidth]{cox-little-oshea/ch1/assets/sec1-3-ex16a.png}
         \item Notice that $\left(x\left(\frac{1}{2}\right), y\left(\frac{1}{2}\right)\right)$ divides this line segment into two pieces, say of length $a$ and $b$ as indicated in the above picture. Then prove that
         $$w = \frac{a}{b},$$
         so that $w$ tells us exactly where the curve crosses this line segment.

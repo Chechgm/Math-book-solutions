@@ -1,23 +1,18 @@
 \section{The Baire category Theorem}
 
-16* Link between nowhere dense and isolated point, good for intuition. Solve exercise 4.54...
 19* Interesting characterizations of nowhere dense. Solve exercise 4.60
-
-32* 
-33* Test your intuition! 
 
 36* Relate this again to the notion of big/small 
 37* Again related to big/small intuition. First category is so small that its complement is big in the sense of cardinality 
 
-38* Nice example 
+38
 
 40C Seeing how these notions behave with functions 
 42C Cool way to extend Baire to other spaces 
 
-43* This suggest a topological property. Baire spaces are the ones that satisfy the conclusion of Baire's theorem.
-
 46* This property would not at all be easy to prove without Baire!
 47* This shows how Baire's theorem can be used to show spaces not being complete, see exercise 49
+
 48* I think this should be intuitive enough, but still not easy to prove 
 49* What is more, is that V does not admit ANY norm that makes it a complete normed space! This is an example of a vector space which can never be made into a Banach space, no matter what norm you pick. Very cool. 
 
@@ -211,8 +206,10 @@ Likewise, is the complement of a second category set necessarily a first categor
 Explain.
 \end{exercise}
 \begin{proof}
-Neither of those is true. 
-In exercise 33 we proved that in a complete metric space, every nonempty open set is a second category set.
+Neither of those is true.
+For the first example consider ... in Q...
+
+For the second example, in exercise 33 we proved that in a complete metric space, every nonempty open set is a second category set.
 Take any discrete metric, which we know is complete.
 In this case any subset of the underlying set is open, so that it is of second category, importantly, its complement is also open, so that its complement is also a second category set.
 \end{proof} 
@@ -232,10 +229,23 @@ fill
 \end{proof} 
 
 \begin{exercise}{43}
-fill
+If $N$ is homeomorphic to a complete metric space $M$, show that the conclusion of Baire's Theorem holds in $N$.
+[Hint: homeomorphisms preserve open dense sets
+Why?].
 \end{exercise}
 \begin{proof}
-Theorem 5.5.
+As the hint suggests, we just need to prove that homeomorphisms preserve dense open sets.
+We want to prove that if $(G_n)$ is a sequence of dense open sets in $M$, then $\bigcap G_n \neq \emptyset$ and indeed, $\bigcap G_n$ is dense in $M$ implies that given a sequence of dense open sets $(O_n)$ in $N$, then $\bigcap O_n \neq \emptyset$ and $\bigcap O_n$ is dense in $N$.
+
+Let $f: N\to M$ be a homeomorphism and let $O_n$ be a sequence of open dense sets in $N$.
+By Theorem 5.5, we have that $f(O_n)$ is open for all $n$.
+We will now prove that $f(O_n)$ is dense for all $n$.
+Let $y \in M$.
+Since $f$ is a homeomorphism, then there exists an $x \in N$ (but not necessarily in $f(O_n)$ such that $f(x) = y$.
+However, we know that $O_n$ is dense in $N$, so that there exists a sequence $(x_n)$ in $O_n$ with $x_n \to x$.
+Finally, since $f$ is continuous, we have that $f(x_n) \to f(x) = y$, so that $O_n$ is dense.
+
+We now have a sequence of open dense sets in $M$, namely $(f(O_n))$, by the Baire's category Theorem, we have that $\bigcap f(O_n)$ is dense in $M$, so that $f^{-1}(\bigcap f(O_n)) = \bigcap f^{-1}(f(O_n)) = \bigcap O_n$ is dense in $N$ (by the same argument as above, just now applied to $f^{-1})$, giving us the desired result.
 \end{proof} 
 
 \begin{exercise}{46}

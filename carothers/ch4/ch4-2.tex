@@ -543,3 +543,43 @@ Consider a collection $\cB$ of disjoint open sets in $M$.
 Then for any $B\in \cB$, it is the case that $B\cap A\neq\emptyset$. 
 Furthermore, since $\cB$ consists of disjoint sets, then there are at most countable number of elements in $\cB$, since i) each one of them has to contain at least one element of $A$, ii) no two sets can contain the same elements, and iii) $A$ is countable.
 \end{proof} 
+
+\begin{exercise}{54}
+A set $A$ is said to be nowhere dense in $M$ if $\operatorname{int}(\operatorname{cl}(A)) = \emptyset$.
+Show that $\set{x}$ is nowhere dense in $M$ if and only if $x$ is not an isolated point of $M$.
+\end{exercise}
+\begin{proof}
+($\Rightarrow$)
+We will prove this by contrapositive.
+Suppose $x$ is an isolated point, so that by exercise 4.40, there exists an $\epsilon >0$, so that $B_\epsilon(x)\setminus \set{x} \cap A = \emptyset$.
+But we have that $\overline{\set{x}} = \set{x}$, so that $\overline{\set{x}}$ contains no nonempty open set.
+
+($\Leftarrow$)
+Suppose $\set{x}$ is nowhere dense in $M$.
+Thus, $\emptyset = \operatorname{int}(\operatorname{cl}(\set{x})) = \operatorname{int}(\overline{\set{x}}) = \operatorname{int}(\set{x})$.
+Which implies, that for any $\epsilon>0$, $B_\epsilon(x) \setminus \set{x} \cap A =\emptyset$;
+thus $x$ is an isolated point.
+\end{proof} 
+
+\begin{exercise}{60}
+Show that each of the following is equivalent to the statement ``$A$ is nowhere dense'':
+\begin{enumerate}
+    \item $\bar{A}$ contains no nonempty open set.
+    \item Each nonempty open set in $M$ contains a nonempty open subset that is disjoint from $A$.
+    \item Each nonempty open set in $M$ contains an open ball that is disjoint from $A$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+($1 \Rightarrow 2$)
+Let $G$ be a nonempty subset of $M$ and consider $G \setminus \bar{A} = G \cap \bar{A}^C$.
+We have that $\bar{A}^C$ is open (because $\bar{A}$ is closed by definition, so that $G \cap \bar{A}^C$ itself is open because it is the intersection of two open sets.
+We have that $G \setminus \bar{A} \subseteq G$ and we have that it is disjoint from $\bar{A}$.
+Notice that if $G\setminus \bar{A}$ is nonempty, it would mean that $G\subseteq \bar{A}$ so that $\bar{A}$ contains a nonempty open set which contradicts our hypothesis.
+
+($2 \Rightarrow 3$)
+This is fairly clear, as if each nonempty open set in $M$ contains a nonempty open subset that is disjoint from $A$, then this open subset contains an open ball, so that this open ball is also disjoint from $A$.
+
+($3 \Rightarrow 1$)
+By contradiction suppose $\bar{A}$ contains a nonempty open set, say $B$, but each nonempty subset of $M$ contains an open ball that is disjoint from $A$. 
+This produces an instantaneous contradiction, $B \subseteq \bar{A} \subseteq M$, but by hypothesis, there should be an open ball in $B$ disjoint of $A$ which is not possible, since $B$ is fully contained in $\bar{A}$, and $\operatorname{bdry}(A) = \bar{A}\setminus A$ contains no open ball.
+\end{proof} 
