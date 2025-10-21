@@ -1,21 +1,8 @@
 \section{The Baire category Theorem}
 
-19* Interesting characterizations of nowhere dense. Solve exercise 4.60
-
-36* Relate this again to the notion of big/small 
-37* Again related to big/small intuition. First category is so small that its complement is big in the sense of cardinality 
-
-38
 
 40C Seeing how these notions behave with functions 
 42C Cool way to extend Baire to other spaces 
-
-46* This property would not at all be easy to prove without Baire!
-47* This shows how Baire's theorem can be used to show spaces not being complete, see exercise 49
-
-48* I think this should be intuitive enough, but still not easy to prove 
-49* What is more, is that V does not admit ANY norm that makes it a complete normed space! This is an example of a vector space which can never be made into a Banach space, no matter what norm you pick. Very cool. 
-
 
 \begin{exercise}{14}
 Prove that $A$ has an empty interior in $M$ if and only if $A^C$ is dense in $M$.
@@ -187,17 +174,25 @@ Both of these results give us in conjuction the desired result.
 \end{proof} 
 
 \begin{exercise}{36}
-fill
+If $M$ is complete, show that the complement of a first category set in $M$ is a dense set of the second category in $M$.
+In particular, a first category set in a complete metric space must have an empty interior.
 \end{exercise}
 \begin{proof}
-fill
+Let $A$ be a set of the first category in $M$.
+Thus, $A = \bigcup \bar{E}_n$, where $E_n$ is nowhere dense.
+By the DeMorgan law, we have that $A^C = \bigcap (\bar{E}_n)^C$, where now $(\bar{E}_n)^C$ is each an open dense set in $M$.
+By the Baire's category Theorem, we have that $A^C$ is a dense set in $M$.
 \end{proof} 
 
 \begin{exercise}{37}
-fill
+Show that the complement of a first category set in $\R$ is uncountable.
 \end{exercise}
 \begin{proof}
-fill
+We will prove this by contrapositive.
+To do so, we have to prove that if for a set $A$, $A^C$ is countable, then $A$ is not of the first category.
+If $A^C$ is countable, then it is a set of the first category, since it can be written as a countable union of singletons.
+This is because $\R$ has no isolated points so that applying exercise 16, every singleton is nowhere dense.
+Now applying exercise 36, and using the fact that $\R$ is complete, then $A$ is of the second category.
 \end{proof} 
 
 \begin{exercise}{38}
@@ -207,7 +202,10 @@ Explain.
 \end{exercise}
 \begin{proof}
 Neither of those is true.
-For the first example consider ... in Q...
+For the first example consider $\N \subseteq \Q$.
+$\N$ is a set of the first category in $\Q$, as it can be written as a countable union of singletons, which are nowhere dense sets in $\Q$ given that each natural is not an isolated point in $\Q$.
+However, $\N^C \subseteq \Q$ is not a set of the second category in $\Q$.
+We proved in exercise 31 that $\Q$ is first category in itself, and on exercise 28 that any subset of a set of the first category is in itself of the first category.
 
 For the second example, in exercise 33 we proved that in a complete metric space, every nonempty open set is a second category set.
 Take any discrete metric, which we know is complete.
@@ -215,17 +213,44 @@ In this case any subset of the underlying set is open, so that it is of second c
 \end{proof} 
 
 \begin{exercise}{40}
-fill
+Let $f: \R \to \R$ be a continuous function that is nonconstant on any interval.
+If $A$ is a second category set in $\R$, show that $f(A)$ is also second category.
+[Hint: if B is closed and nowhere dense, show that $f^{-1}(B)$ is closed and nowhere dense].
 \end{exercise}
 \begin{proof}
-fill
+Following the hint, we will prove this by contrapositive
+That is, we will prove that if $f(A)$ is a set of the first category then $A$ is a set of the first category too.
+In other words, $f(A)$ can be written as $f(A) = \bigcup E_n$ where all $E_n$ are nowhere dense implies that $A = \bigcup F_n$ where all $F_n$ are nowhere dense.
+By the properties of inverse functions, we have that 
+\begin{align*}
+    f^{-1}(f(A)) = A = f^{-1}(\bigcup E_n) = \bigcup f^{-1}(E_n).
+\end{align*}
+We want to prove that each $f^{-1}(E_n)$ is a closed nowhere dense set.
+
+The fact that $f^{-1}(E_n)$ is closed follows by continuity.
+Furthermore, we can prove that $f^{-1}(E_n)$ is nowhere dense.
+If $f^{-1}(E_n)$ were not nowhere dense, then it would contain a nonempty open set, say $B \subseteq f^{-1}(E_n)$.
+We then have $f(B) \subseteq f(f^{-1}(E_n)) \subseteq E_n$, where the second containment follows by the properties of inverses (see 5.1).
+Since $B$ is an open set, it contains some interval, so that by the corollary to the generalised intermediate value Theorem (Corollary 6.7), and given that $f$ is nonconstant, $f$ maps such interval to an interval.
+This would imply that some interval is contained in $f(B) \subseteq E_n$ and $E_n$ wouldn't be nowhere dense.
+
+Thus, we have that $A = \bigcup f^{-1}(E_n)$ where each $f^{-1}(E_n)$ is nowhere dense;
+that is, $A$ is of the first category.
 \end{proof} 
 
 \begin{exercise}{42}
-fill
+While completeness is essential in the proof of Baire's Theorem, the conclusion may still hold for some incomplete spaces.
+Show that it holds in $\N$ if we us the metric $d(m,n) = \absoluteValue{m-n}/mn$, but that $(\N,d)$ is not complete.
+[Hint: $d$ is equivalent to the usual metric.
+See exercise 7.14].
 \end{exercise}
 \begin{proof}
-fill
+As written in the hint, we proved in exercise 7.14 that $d$ is equivalent to the usual metric and that $(\N,d)$ is not complete.
+We will now prove that the conclusion of Baire's Theorem still holds in such space.
+
+Thus, we need to prove that if $\N = \bigcup E_n$, then the closure of some $E_n$ contains an open ball.
+To see why this is the case, notice (trivially) that any nonempty $E_n$ must contain an element of $x$ of $\N$ and that every element of $\N$ is an isolated point of $\N$ under the usual metric.
+Hence, $\set{x}$ is not nowhere dense, as we proved in exercise 16, giving us that Baire's category Theorem holds in $(\N,d)$.
 \end{proof} 
 
 \begin{exercise}{43}
@@ -241,7 +266,7 @@ Let $f: N\to M$ be a homeomorphism and let $O_n$ be a sequence of open dense set
 By Theorem 5.5, we have that $f(O_n)$ is open for all $n$.
 We will now prove that $f(O_n)$ is dense for all $n$.
 Let $y \in M$.
-Since $f$ is a homeomorphism, then there exists an $x \in N$ (but not necessarily in $f(O_n)$ such that $f(x) = y$.
+Since $f$ is a homeomorphism, then there exists an $x \in N$ (but not necessarily in $f(O_n)$) such that $f(x) = y$.
 However, we know that $O_n$ is dense in $N$, so that there exists a sequence $(x_n)$ in $O_n$ with $x_n \to x$.
 Finally, since $f$ is continuous, we have that $f(x_n) \to f(x) = y$, so that $O_n$ is dense.
 
@@ -249,29 +274,50 @@ We now have a sequence of open dense sets in $M$, namely $(f(O_n))$, by the Bair
 \end{proof} 
 
 \begin{exercise}{46}
-fill
+Show that $\R^2$ cannot be written as a countable union of lines.
 \end{exercise}
 \begin{proof}
-Use exercise 45
+We can write a line as the set $l = \set{(x,f(x) = ax+b): a,b,x \in \R} \subseteq \R^2$.
+For all $a,b \in \R$, we have that $l$ nowhere dense in $\R^2$.
+To see this, simply consider $\epsilon>0$ and notice that any point within $\epsilon$ above or below of $x$ is not contained in $l$ (of course with the exception of any vertical line, in which case any point left or right of $f(x)$ will not be contained in $l$).
+Thus, $\bar{l}$ contains no nonempty open set.
+
+If we could write $\R^2$ as the countable union of lines, then we would contradict the Baire's category Theorem.
 \end{proof} 
 
 \begin{exercise}{47}
-fill
+Let $\cP$ be the vector space of all polynomials supplied with the norm $\norm{p} = \max\set{\absoluteValue{a_i}: i=0,\dots,n}$, where $p(x) = a_0 + a_1x + \dots + a_nx^n \in \cP$.
+Show that $\cP$ is not complete.
 \end{exercise}
 \begin{proof}
-We can probably write all the polynomials as the countable union of nowhere dense sets through monomials
+This is a Corollary to exercise 48, as the set of monomials is a proper, closed, linear subspace of $\cP$.
+That is, for every $k\in\N$, the set consisting of $\vecspan\set{x^k}$ is a closed, linear subspace of $\cP$.
+Furthermore, we have that each of these spaces is finite dimensional and $\cP$ is the countable union of such sets.
+Thus by the Baire's category Theorem, $\cP$ cannot be complete. 
 \end{proof} 
 
 \begin{exercise}{48}
-fill
+If $W$ is a proper, closed, linear subspace of a normed vector space $V$, show that $W$ is nowhere dense in $V$.
+[Hint: if $B_r(x) \subseteq W$, then $nB_1(0) \subseteq W$ for every $n$.
+Why?]
 \end{exercise}
 \begin{proof}
-fill
+We will prove this by contrapositive.
+Suppose $W$ is not nowhere dense in $V$, so that there exists an $r>0$ and $x\in W$, such that $B_r(x) \subseteq W$.
+Because $W$ is a vector space, then $-x \in W$ for all $x$, but also $(1/r)x \in W$ for all $x$.
+Thus we can transform all the elements of $B_r(x)$ using the linear map $f_n(w) = (n/r)(w-x)$ to obtain the open set $B_n(0) \subseteq W$, for all $n\in\N$.
+
+However, this implies that all $V$ is in $W$.
+To see this, take any $v\in V$ and let $\epsilon = \norm{v}$.
+We just need to choose $n>\epsilon$, so that $v \in B_n(0) \subseteq W$.
+Thus, $W$ is not a proper subspace of $V$, as required.
 \end{proof} 
 
 \begin{exercise}{49}
-fill
+Let $V$ be an infinite-dimensional normed vector space, and suppose that $V = \bigcup W_n$, where each $W_n$ is a finite-dimensional subspace of $V$.
+Prove that $V$ is not complete.
 \end{exercise}
 \begin{proof}
-This is a Corollary to the previous exercise, as in this case, each $W_n$ is a proper closed (WHY), linear subspace of $V$, implying that $V$ can be written as the countable union of nowhere dense sets.
+This is a Corollary to the previous exercise, as in this case, each $W_n$ is a proper closed, linear subspace of $V$, implying that $V$ can be written as the countable union of nowhere dense sets.
+Thus, by the Baire's category Theorem, $V$ cannot be complete.
 \end{proof} 
