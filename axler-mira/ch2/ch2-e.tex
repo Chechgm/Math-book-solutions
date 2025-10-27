@@ -1,132 +1,83 @@
-\section{fill}
+\section{2E Convergence of measurable functions}
+%\addcontentsline{toc}{section}{2E Convergence of measurable functions}
 
-\begin{exercise}{x}
+7 This is a surprisingly useful property. It shows that in many cases, pointwise convergence is enough to conclude uniform convergence. And uniform convergence is useful to swap integral and limit and other things.
+13 This goes with the usual idea that it is very hard to construct non-Borel measurable functions and that they definitely don't show up "in nature". The sup is an easy well-behaved operations that does not yield non-measurable monsters
+15 This shows that Borel measurable functions really are all we need. Any Lebesgue measurable functions differs from one except for measure 0 sets. And a measure 0 set will be shown to be totally irrelevant for integrals and other applications of measure theory.
+
+2.D.24
+
+\begin{exercise}{1}
+Suppose $X$ is a finite set.
+Explain why a sequence of functions from $X$ to $\R$ that converges pointwise on $X$ also converges uniformly on $X$.
+\end{exercise}
+\begin{proof}
+If a sequence of functions $(f_n)$ converges pointwise on $X$, it means that for all $x\in X$ and all $\epsilon>0$, there exists an $N_x \in \N$, such that whenever $n > N_x$, it holds that $\absoluteValue{f_n(x) -f(x)} < \epsilon$.
+If we take $N = \max \set{N_x: x \in X}$, then we have that whenever $n>N$, it holds that $\absoluteValue{f_n(x) - f(x)} < \epsilon$, for all $x \in X$.
+This is precisely the definition of uniform convergence.
+\end{proof} 
+
+\begin{exercise}{2}
+Give an example of a sequence of functions from $\N$ to $\R$ that converges pointwise on $\N$ but does not converge uniformly on $\N$.
+\end{exercise}
+\begin{proof}
+Consider the sequence of functions given by $f_n(x) = \chi_{\set{n}}(x)$ for all $n$.
+This sequence converges to $f(x) = 0$ for all $n$ pointwise, but there is no $N \in \N$, such that whenever $n>N$ it holds that $\absoluteValue{f_n(x)} < \epsilon$.
+\end{proof} 
+
+\begin{exercise}{3}
+Give an example of a sequence of functions $f_1, f_2, \dots$ from $[0,1]$ to $\R$ that converges pointwise to a function $f:[0,1] \to \R$ that is not a bounded function.
+\end{exercise}
+\begin{proof}
+Consider the sequence of functions given by $f_n(x) = n^2 x$, whenever $0 \leq x \leq 1/n$ and $f_n(x) = 1/x$ whenever $1/n < x \leq 0$.
+Both of the pieces that define the function are continuous in themselves and furthermore $n^2 x= 1/x$ at $x=1/n$ for all $n$, so that the function is continuous there. 
+$(f_n)$ converges pointwise to $f(x) = 1/x$ in $(0,1]$ and $f(0) = 0$ but $f$ is not bounded.
+\end{proof} 
+
+\begin{exercise}{4}
+Prove or give a counterexample:
+If $A \subseteq \R$ and $f_1,f_2,\dots$ is a sequence of uniformly continuous functions from $A$ to $\R$ that converges uniformly to a function $f: A \to \R$, then $f$ is uniformly continuous on $A$.
+\end{exercise}
+\begin{proof}
+Let $\epsilon > 0$.
+Since $f_n \to f$ uniformly, then there exists an $N \in \N$, such that whenever $n \geq N$, it holds that $\absoluteValue{f_n(x) - f(x)} < \epsilon/3$, for all $x \in A$.
+Furthermore, since $f_N$ (notice that $N$ is fixed here) is uniformly continuous, then there exists a $\delta > 0$ such that whenever $\absoluteValue{x - y} < \delta$, it holds that $\absoluteValue{f_N(x) - f_N(y)} < \epsilon/3$.
+
+Putting these together, we have
+\begin{align*}
+    \absoluteValue{f(x) - f(y)}
+    =& \absoluteValue{f(x) - f_n(x) + f_N(x) - f_N(y) + f_N(y) -f(y)}\\
+    \leq& \absoluteValue{f(x) - f_N(x)} 
+    + \absoluteValue{f_N(x) - f_N(y)}
+    + \absoluteValue{f_N(y) -f(y)} < \epsilon,
+\end{align*}
+for all $x,y \in A$.
+\end{proof} 
+
+\begin{exercise}{5}
+Give an example to show that Egorov's Theorem can fail without the hypothesis that $\mu(X) < \infty$.
+\end{exercise}
+\begin{proof}
+We can modify the function in exercise 2 as follows.
+Let $f_n : \R_{\geq 0} \to \R$ be defined as $f_n(x) = \chi_{[n-1,n)}(x)$.
+We have that this sequence of functions converges pointwise to $f(x) = 0$ but there is no subset, $E$ with $\mu(E) = \infty$ such that $f_n$ converges uniformly to the zero function.
+\end{proof} 
+
+\begin{exercise}{7}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
+\begin{exercise}{13}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
+\begin{exercise}{15}
 fill
 \end{exercise}
 \begin{proof}

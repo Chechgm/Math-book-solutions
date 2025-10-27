@@ -1,5 +1,6 @@
 \section{Ideals}
 
+work on exercise 9
 
 \begin{exercise}{1}
 Consider the equations
@@ -10,25 +11,34 @@ Consider the equations
 which describe the intersection of a circle with a hyperbola.
 \begin{enumerate}
     \item Use algebra to eliminate $y$ from the above equations.
-    \item Show how the polynomial found in part 1 lies in $\brackets{x^2+y^2-1, xy-1}$. Your answer should be similar to what we did in equation (1), page 30. Hint: multiply the second equation by $xy-1$.
+    \item Show how the polynomial found in part 1 lies in $\brackets{x^2+y^2-1, xy-1}$. 
+    Your answer should be similar to what we did in equation (1), page 30. 
+    Hint: multiply the second equation by $xy-1$.
 \end{enumerate}
 \end{exercise}
 \begin{proof}
 \begin{enumerate}
     \item To eliminate $y$ from the above equations, multiply the first one by $x^2$ to obtain $x^4+x^2y^2-x^2=0$ and notice that from the second we have $xy=1$, so that $x^2y^2=1$, giving us $x^4+1-x^2=0$.
-    \item Following the hint, we have $x^2(x^2+y^2-1)-(xy-1)(xy+1) =(x^4+x^2y^2-x^2)-(x^2y^2-1) =x^4+1-x^2$, as required.
+    \item Following the hint, we have 
+    $x^2(x^2+y^2-1)-(xy-1)(xy+1) 
+    =(x^4+x^2y^2-x^2)-(x^2y^2-1) 
+    =x^4+1-x^2$, as required.
 \end{enumerate}
 \end{proof}
 
 \begin{exercise}{2}
-Let $I\subseteq k[x_1\dots,x_n]$ be an ideal, and let $f_1,\dots,f_s\in k[x_1,\dots,x_n]$. Prove that the following statements are equivalent:
+Let $I\subseteq k[x_1\dots,x_n]$ be an ideal, and let $f_1,\dots,f_s\in k[x_1,\dots,x_n]$. 
+Prove that the following statements are equivalent:
 \begin{enumerate}
     \item $f_1,\dots,f_s\in I$.
     \item $\brackets{f_1,\dots,f_s}\subseteq I$.
 \end{enumerate}
 \end{exercise}
 \begin{proof}
-Suppose $f_1,\dots,f_s\in I$. Then for $f_i$ there exists polynomials $g_{i,1},\dots,g_{i,t_i}$ so that $f_i=\sum_r^{t_i}h_rg_{i,r}$. Now take any linear combination of $f_1,\dots,f_s$, say $r=\sum_i^sl_if_i$. Replacing each $f_i$ as a linear combination of $g_{i,k}$ gives us that $r\in I$ hence $\brackets{f_1,\dots,f_s}\subseteq I$. 
+Suppose $f_1,\dots,f_s\in I$. 
+Then for $f_i$ there exists polynomials $g_{i,1},\dots,g_{i,t_i}$ so that $f_i=\sum_r^{t_i}h_rg_{i,r}$. 
+Now take any linear combination of $f_1,\dots,f_s$, say $r=\sum_i^sl_if_i$. 
+Replacing each $f_i$ as a linear combination of $g_{i,k}$ gives us that $r\in I$ hence $\brackets{f_1,\dots,f_s}\subseteq I$. 
 
 If we assume 2, clearly 1 holds.
 \end{proof}
@@ -36,7 +46,7 @@ If we assume 2, clearly 1 holds.
 \begin{exercise}{3}
     Use the previous exercise to prove the following equalities of ideals in $\mathbb{Q}[x,y]$:
     \begin{enumerate}
-        \item $\langle x+y,x-y\rangle = \langle x,y\rangle$.
+        \item $\brackets{x+y,x-y} = \brackets{x,y}$.
         \item $\langle x+xy, y+xy, x^2, y^2\rangle = \langle x,y\rangle$.
         \item $\langle 2x^2 + 3y^2 - 11, x^2 - y^2 - 3\rangle = \langle x^2 - 4, y^2 -1\rangle$.
     \end{enumerate}
@@ -44,43 +54,78 @@ If we assume 2, clearly 1 holds.
 \end{exercise}
 \begin{proof}
     \begin{enumerate}
-        \item It is obvious that $x+y, x-y\in \langle x,y\rangle$, and thus $\langle x+y,x-y\rangle \subseteq \langle x,y\rangle$. Conversely, note that
-        $$x = \frac{1}{2}(x-y) + \frac{1}{2}(x+y),$$
+        \item It is obvious that $x+y, x-y\in \langle x,y\rangle$, and thus $\langle x+y,x-y\rangle \subseteq \langle x,y\rangle$. 
+        Conversely, note that
+        \begin{align*}
+            x = \frac{1}{2}(x-y) + \frac{1}{2}(x+y),
+        \end{align*}
         hence $x\in \langle x+y,x-y\rangle$, and
-        $$y = \frac{1}{2}(x+y) - \frac{1}{2}(x-y),$$
+        \begin{align*}
+            y = \frac{1}{2}(x+y) - \frac{1}{2}(x-y),
+        \end{align*}
         from which we get $y\in \langle x+y,x-y\rangle$. We obtain $\langle x,y\rangle \subseteq \langle x+y,x-y\rangle$. Together, we infer $\langle x,y\rangle = \langle x+y,x-y\rangle$.
-        \item It is obvious that $x+xy, y+xy, x^2, y^2\in \langle x,y\rangle$, and thus $\langle x+y,x-y\rangle \subseteq \langle x,y\rangle$. Conversely, note that
-        $$x-y = (x+xy) - (y+xy)\in \langle x+xy, y+xy, x^2, y^2\rangle.$$
+        \item It is obvious that $x+xy, y+xy, x^2, y^2\in \langle x,y\rangle$, and thus $\langle x+y,x-y\rangle \subseteq \langle x,y\rangle$. 
+        Conversely, note that
+        \begin{align*}
+            x-y = (x+xy) - (y+xy)\in \langle x+xy, y+xy, x^2, y^2\rangle.
+        \end{align*}
         Thus,
-        $$xy = \frac{1}{2}(x^2 + y^2 - (x-y)^2)\in \langle x+xy, y+xy, x^2, y^2\rangle.$$
+        \begin{align*}
+            xy = \frac{1}{2}(x^2 + y^2 - (x-y)^2)\in \langle x+xy, y+xy, x^2, y^2\rangle.
+        \end{align*}
         Thus,
-        $$x = (x+xy) - xy \in \langle x+xy, y+xy, x^2, y^2\rangle$$
+        \begin{align*}
+            x = (x+xy) - xy \in \langle x+xy, y+xy, x^2, y^2\rangle
+        \end{align*}
         and
-        $$y = (y+xy) - xy \in \langle x+xy, y+xy, x^2, y^2\rangle.$$
+        \begin{align*}
+            y = (y+xy) - xy \in \langle x+xy, y+xy, x^2, y^2\rangle.
+        \end{align*}
         This implies that $\langle x,y\rangle \subseteq \langle x+xy, y+xy, x^2, y^2\rangle$. Thus,
-        $$\langle x,y\rangle = \langle x+xy, y+xy, x^2, y^2\rangle.$$
+        \begin{align*}
+            \langle x,y\rangle = \langle x+xy, y+xy, x^2, y^2\rangle.
+        \end{align*}
         \item Note first that
-        $$2x^2 + 3y^2 - 11 = 2(x^2 - 4) + 3(y^2 - 1)\in \langle x^2 - 4, y^2 - 1\rangle,$$
+        \begin{align*}
+            2x^2 + 3y^2 - 11 = 2(x^2 - 4) + 3(y^2 - 1)\in \langle x^2 - 4, y^2 - 1\rangle,
+        \end{align*}
         and
-        $$x^2 - y^2 - 3 = (x^2 - 4) - (y^2 - 1)\in \langle x^2 - 4, y^2 - 1\rangle,$$
+        \begin{align*}
+            x^2 - y^2 - 3 = (x^2 - 4) - (y^2 - 1)\in \langle x^2 - 4, y^2 - 1\rangle,
+        \end{align*}
         and thus
-        $$\langle 2x^2 + 3y^2 - 11, x^2 - y^2 - 3\rangle \subseteq \langle x^2 - 4, y^2 -1\rangle.$$
+        \begin{align*}
+            \langle 2x^2 + 3y^2 - 11, x^2 - y^2 - 3\rangle \subseteq \langle x^2 - 4, y^2 -1\rangle.
+        \end{align*}
         Conversely,
-        $$x^2 - 4 = \frac{1}{5}(2x^2 + 3y^2 - 11) + \frac{3}{5}(x^2 - y^2 - 3)\in \langle 2x^2 + 3y^2 - 11, x^2 - y^2 - 3\rangle,$$
+        \begin{align*}
+            x^2 - 4 = \frac{1}{5}(2x^2 + 3y^2 - 11) + \frac{3}{5}(x^2 - y^2 - 3)\in \langle 2x^2 + 3y^2 - 11, x^2 - y^2 - 3\rangle,
+        \end{align*}
         and
-        $$y^2 -1 = \frac{1}{5}(2x^2 + 3y^2 - 11) - \frac{2}{5}(x^2 - y^2 - 3)\in \langle 2x^2 + 3y^2 - 11, x^2 - y^2 - 3\rangle,$$
+        \begin{align*}
+            y^2 -1 = \frac{1}{5}(2x^2 + 3y^2 - 11) - \frac{2}{5}(x^2 - y^2 - 3)\in \langle 2x^2 + 3y^2 - 11, x^2 - y^2 - 3\rangle,
+        \end{align*}
         and thus
-        $$\langle x^2 - 4, y^2 -1\rangle\subseteq \langle 2x^2 + 3y^2 - 11, x^2 - y^2 - 3\rangle.$$
+        \begin{align*}
+            \langle x^2 - 4, y^2 -1\rangle\subseteq \langle 2x^2 + 3y^2 - 11, x^2 - y^2 - 3\rangle.
+        \end{align*}
         We obtain then finally that
-        $$\langle 2x^2 + 3y^2 - 11, x^2 - y^2 - 3\rangle = \langle x^2 - 4, y^2 -1\rangle.$$
+        \begin{align*}
+            \langle 2x^2 + 3y^2 - 11, x^2 - y^2 - 3\rangle = \langle x^2 - 4, y^2 -1\rangle.
+        \end{align*}
     \end{enumerate}
 \end{proof}
 
 \begin{exercise}{4}
-Prove proposition 4: If $f_1,\dots,f_s$ and $g_1,\dots,g_t$ are bases of the same ideal in $k[x_1,\dots,x_n]$, so that $\brackets{f_1,\dots,f_s}=\brackets{g_1,\dots,g_t}$, then we have $\bV(f_1,\dots,f_s)=\bV(g_1,\dots,g_t)$.
+Prove proposition 4: 
+If $f_1,\dots,f_s$ and $g_1,\dots,g_t$ are bases of the same ideal in $k[x_1,\dots,x_n]$, so that $\brackets{f_1,\dots,f_s} = \brackets{g_1,\dots,g_t}$, then we have $\bV(f_1,\dots,f_s) = \bV(g_1,\dots,g_t)$.
 \end{exercise}
 \begin{proof}
-Let $x\in \bV(f_1,\dots,f_s)$. Then $f_1(x)=\dots=f_s(x)=0$. Since $\brackets{f_1,\dots,f_s}=\brackets{g_1,\dots,g_t}$, then we can represent $g_i$ as a linear combination of $f_1,\dots,f_s$, say $g_i=\sum_i^sh_if_i$, but this implies $g_i(x)=0$ and hence $x\in\bV(g_1,\dots,g_t)$, so that $\bV(f_1,\dots,f_s)\subseteq\bV(g_1,\dots,g_t)$. The converse of the proof is symmetric to this one. Hence $\bV(f_1,\dots,f_s)=\bV(g_1,\dots,g_t)$, as required.
+Let $x\in \bV(f_1,\dots,f_s)$. 
+Then $f_1(x) = \dots = f_s(x) = 0$. 
+Since $\brackets{f_1,\dots,f_s} = \brackets{g_1,\dots,g_t}$, then we can represent $g_i$ as a linear combination of $f_1,\dots,f_s$, say $g_i = \sum_i^sh_if_i$, but this implies $g_i(x) = 0$ and hence $x\in\bV(g_1,\dots,g_t)$, so that $\bV(f_1,\dots,f_s)\subseteq\bV(g_1,\dots,g_t)$. 
+The converse of the proof is symmetric to this one. 
+Hence $\bV(f_1,\dots,f_s) = \bV(g_1,\dots,g_t)$, as required.
 \end{proof}
 
 \begin{exercise}{5}
@@ -88,48 +133,99 @@ Let $x\in \bV(f_1,\dots,f_s)$. Then $f_1(x)=\dots=f_s(x)=0$. Since $\brackets{f_
 \end{exercise}
 \begin{proof}
     We know from 3(b), that
-    $$\langle x+xy, y+xy, x^2, y^2\rangle = \langle x,y\rangle.$$
+    \begin{align*}
+        \langle x+xy, y+xy, x^2, y^2\rangle = \langle x,y\rangle.
+    \end{align*}
     We get then immediately from Proposition $4$, that
-    $$\bV(x+xy,y+xy,x^2,y^2) = \bV(x,y).$$
+    \begin{align*}
+        \bV(x+xy,y+xy,x^2,y^2) = \bV(x,y).
+    \end{align*}
 \end{proof}
 
 \begin{exercise}{6}
-The word ``basis'' is used in various ways in mathematics. In this exercise, we will see that ``a basis of an ideal,'' as defined in this section, is quite different from ``a basis of a subspace,'' which is studied in linear algebra.
+The word ``basis'' is used in various ways in mathematics. 
+In this exercise, we will see that ``a basis of an ideal,'' as defined in this section, is quite different from ``a basis of a subspace,'' which is studied in linear algebra.
 \begin{enumerate}
-    \item First, consider the ideal $I = \langle x\rangle\subseteq k[x]$. As an ideal, $I$ has a basis consisting of the one element $x$. But $I$ can also be regarded as a subspace of $k[x]$, which is a vector space over $k$. Prove that any vector space basis of $I$ over $k$ is infinite.
-    \item In linear algebra, a basis must span and be linearly independent over $k$, whereas for an ideal, a basis is concerned only with spanning - there is no mention of any sort of independence. The reason is that once we allow polynomial coefficients, no independence is possible. To see this, consider the ideal $\langle x,y\rangle \subseteq k[x,y]$. Show that zero can be written as a linear combination of $y$ and $x$ with nonzero polynomial coefficients.
-    \item More generally, suppose that $f_1$, ..., $f_s$ is the basis of an ideal $I\subseteq k[x_1,...,x_n]$. If $s\geq 2$ and $f_i\neq 0$ for all $i$, then show that for any $i$ and $j$, zero can be written as a linear combination of $f_i$ and $f_j$ with nonzero polynomial coefficients.
-    \item A consequence of the lack of independence is that when we write an element $f\in \langle f_1,...,f_s\rangle$ as $f = \sum_{i=1}^s h_i f_i$, the coefficients $h_i$ are not unique. As an example, consider $f = x^2 + xy + y^2\in \langle x,y\rangle$. Express $f$ as a linear combination of $x$ and $y$ in two different ways. (Even though the $h_i$'s are not unique, one can measure their lack of uniqueness. This leads to the interesting topic of syzygies.)
-    \item A basis $f_1$, ..., $f_s$ of an ideal $I$ is said to be minimal if no proper subset of $f_1$, ..., $f_s$ is a basis of $I$. For example, $x$, $x^2$ is a basis of an ideal, but not a minimal basis since $x$ generates the same ideal. Unfortunately, an ideal can have minimal bases consisting of different numbers of elements. To see this, show that $x$ and $x+x^2$, $x^2$ are minimal bases of the same ideal of $k[x]$. Explain how this contrasts with the situation in linear algebra.
+    \item First, consider the ideal $I = \langle x\rangle\subseteq k[x]$. 
+    As an ideal, $I$ has a basis consisting of the one element $x$. 
+    But $I$ can also be regarded as a subspace of $k[x]$, which is a vector space over $k$. 
+    Prove that any vector space basis of $I$ over $k$ is infinite.
+    \item In linear algebra, a basis must span and be linearly independent over $k$, whereas for an ideal, a basis is concerned only with spanning - there is no mention of any sort of independence. 
+    The reason is that once we allow polynomial coefficients, no independence is possible. 
+    To see this, consider the ideal $\langle x,y\rangle \subseteq k[x,y]$. 
+    Show that zero can be written as a linear combination of $y$ and $x$ with nonzero polynomial coefficients.
+    \item More generally, suppose that $f_1$, \dots, $f_s$ is the basis of an ideal $I\subseteq k[x_1,\dots,x_n]$. 
+    If $s\geq 2$ and $f_i\neq 0$ for all $i$, then show that for any $i$ and $j$, zero can be written as a linear combination of $f_i$ and $f_j$ with nonzero polynomial coefficients.
+    \item A consequence of the lack of independence is that when we write an element $f\in \langle f_1,\dots,f_s\rangle$ as $f = \sum_{i=1}^s h_i f_i$, the coefficients $h_i$ are not unique. 
+    As an example, consider $f = x^2 + xy + y^2\in \langle x,y\rangle$. 
+    Express $f$ as a linear combination of $x$ and $y$ in two different ways. 
+    (Even though the $h_i$'s are not unique, one can measure their lack of uniqueness. 
+    This leads to the interesting topic of syzygies.)
+    \item A basis $f_1$, \dots, $f_s$ of an ideal $I$ is said to be minimal if no proper subset of $f_1$, \dots, $f_s$ is a basis of $I$. 
+    For example, $x$, $x^2$ is a basis of an ideal, but not a minimal basis since $x$ generates the same ideal. 
+    Unfortunately, an ideal can have minimal bases consisting of different numbers of elements. 
+    To see this, show that $x$ and $x+x^2$, $x^2$ are minimal bases of the same ideal of $k[x]$. 
+    Explain how this contrasts with the situation in linear algebra.
 \end{enumerate}
 \end{exercise}
 \begin{proof}
     \begin{enumerate}
-        \item It suffices to show that $\{x,x^2,x^3, ...\}$ is linear independent. Indeed, they are clearly in $I$, but take a finite linear combination
-        $$\alpha_1 x + \alpha_2 x^2 + ... + \alpha_n x^n = 0,$$
-        it is clear from properties of polynomials over a field that this holds if all $\alpha_i = 0$. This implies linear independence. Thus any basis of $I$ over $k$ is infinite.
+        \item It suffices to show that $\{x,x^2,x^3, \dots\}$ is linear independent. 
+        Indeed, they are clearly in $I$, but take a finite linear combination
+        \begin{align*}
+            \alpha_1 x + \alpha_2 x^2 + \dots + \alpha_n x^n = 0,
+        \end{align*}
+        it is clear from properties of polynomials over a field that this holds if all $\alpha_i = 0$. 
+        This implies linear independence. 
+        Thus any basis of $I$ over $k$ is infinite.
         \item This follows immediately from
-        $$0 = (-y)x + xy.$$
+        \begin{align*}
+            0 = (-y)x + xy.
+        \end{align*}
         \item This is simply because
-        $$0 = (-f_i)f_j + f_jf_i.$$
+        \begin{align*}
+            0 = (-f_i)f_j + f_jf_i.
+        \end{align*}
         \item We have
-        $$f = x\cdot x + (x+y)y = (x+y)x + y\cdot y,$$
+        \begin{align*}
+            f = x\cdot x + (x+y)y = (x+y)x + y\cdot y,
+        \end{align*}
         as two different ways of writing $f$ in a linear combination of $x$ and $y$.
     \item We clearly that
     $x+x^2, x\in \langle x\rangle,$
     and thus
-    $$\langle x+x^2, x^2\rangle \subseteq \langle x\rangle.$$
+    \begin{align*}
+        \langle x+x^2, x^2\rangle \subseteq \langle x\rangle.
+    \end{align*}
     On the other hand,
-    $$x = (x+x^2) - 1\cdot x^2 \in \langle x+x^2, x^2\rangle,$$
+    \begin{align*}
+        x = (x+x^2) - 1\cdot x^2 \in \langle x+x^2, x^2\rangle,
+    \end{align*}
     and thus
-    $$\langle x\rangle \subseteq \langle x+x^2, x^2\rangle.$$
+    \begin{align*}
+        \langle x\rangle \subseteq \langle x+x^2, x^2\rangle.
+    \end{align*}
     We obtain that
-    $$\langle x+x^2, x^2\rangle = \langle x\rangle.$$
-    We show that $x+x^2$ is not a basis for the ideal. Indeed, assume that $x\in \langle x+x^2\rangle$, then there is some polynomial $P$ such that
-    $$x = (x + x^2)P(x).$$
+    \begin{align*}
+        \langle x+x^2, x^2\rangle = \langle x\rangle.
+    \end{align*}
+    We show that $x+x^2$ is not a basis for the ideal. 
+    Indeed, assume that $x\in \langle x+x^2\rangle$, then there is some polynomial $P$ such that
+    \begin{align*}
+        x = (x + x^2)P(x).
+    \end{align*}
     Substituting in $x=-1$, we get that
-    $$0 = (-1 + (-1)^2)P(-1) = -1.$$
-    This is a contradiction. Similarly, assume that $x \in \langle x^2\rangle$. We know that each element of $\langle x^2 \rangle$ is of the form $x^2 P(x)$ and has degree greater than $2$. We know that $x$ does not satisfy this. Thus neither $x+x^2$ and $x^2$ are bases of $\langle x+x^2, x^2\rangle$. Thus the basis is minimal. Thus the same ideal is generated by a minimal basis of size $1$, and a minimal basis of size $2$. This is in contrast with linear algebra, where all linear bases have the same cardinality.
+    \begin{align*}
+        0 = (-1 + (-1)^2)P(-1) = -1.
+    \end{align*}
+    This is a contradiction. 
+    Similarly, assume that $x \in \langle x^2\rangle$. 
+    We know that each element of $\langle x^2 \rangle$ is of the form $x^2 P(x)$ and has degree greater than $2$. 
+    We know that $x$ does not satisfy this. 
+    Thus neither $x+x^2$ and $x^2$ are bases of $\langle x+x^2, x^2\rangle$. 
+    Thus the basis is minimal. 
+    Thus the same ideal is generated by a minimal basis of size $1$, and a minimal basis of size $2$. 
+    This is in contrast with linear algebra, where all linear bases have the same cardinality.
     \end{enumerate}
 \end{proof}
 
@@ -137,28 +233,46 @@ The word ``basis'' is used in various ways in mathematics. In this exercise, we 
 Show that $\bI(\bV(x^n,y^m))=\brackets{x,y}$ for any positive integers $n$ and $m$.
 \end{exercise}
 \begin{proof}
-We have that $\bV(x^n,y^m)$ implies $x^n=y^m=0$, so that $\bV(x^n,y^m)=\set{(0,0)}$. However, any polynomial in $\brackets{x,y}$ equals 0 when evaluated at $(0,0)$. Now consider any polynomial $p(x,y)\in\brackets{x,y}$ and $r\in k$ so that $q(x,y)=p(x,y)+r\notin\brackets{x,y}$. We have $q(0,0)=p(0,0)+r=r\neq 0$, hence $q(x,y)\notin\bI(\bV(x^n,y^m))$. That is, $\bI(\bV(x^n,y^m))=\brackets{x,y}$, as required.
+We have that $\bV(x^n,y^m)$ implies $x^n=y^m=0$, so that $\bV(x^n,y^m)=\set{(0,0)}$. 
+However, any polynomial in $\brackets{x,y}$ equals 0 when evaluated at $(0,0)$. 
+Now consider any polynomial $p(x,y)\in\brackets{x,y}$ and $r\in k$ so that $q(x,y)=p(x,y)+r\notin\brackets{x,y}$. 
+We have $q(0,0)=p(0,0)+r=r\neq 0$, hence $q(x,y)\notin\bI(\bV(x^n,y^m))$. 
+That is, $\bI(\bV(x^n,y^m))=\brackets{x,y}$, as required.
 \end{proof}
 
 \begin{exercise}{8}
-The ideal $\bI(V)$ of a variety has a special property not shared by all ideals. Specifically, we define an ideal $I$ to be the radical if whenever a power of $f^m$ of a polynomial $f$ is in $I$, then $f$ itself is in $I$. More succinctly, $I$ is a radical when $f\in I$ if and only if $f^m\in I$ for some positive integer $m$.
+The ideal $\bI(V)$ of a variety has a special property not shared by all ideals. 
+Specifically, we define an ideal $I$ to be the radical if whenever a power of $f^m$ of a polynomial $f$ is in $I$, then $f$ itself is in $I$. 
+More succinctly, $I$ is a radical when $f\in I$ if and only if $f^m\in I$ for some positive integer $m$.
 \begin{enumerate}
     \item Prove that $\bI(V)$ is always a radical ideal.
-    \item Prove that $\brackets{x^2,y^2}$ is not a radical ideal. This implies that $\brackets{x^2,y^2}\neq \bI(V)$ for any variety $V\subseteq k^2$.
+    \item Prove that $\brackets{x^2,y^2}$ is not a radical ideal. 
+    This implies that $\brackets{x^2,y^2}\neq \bI(V)$ for any variety $V\subseteq k^2$.
 \end{enumerate}
-Radical ideals will play an important role in Chapter 4. In particular, the Nullstellensatz will imply that there is a one-to-one correspondence between varieties in $\C^n$ and radical ideals in $\C[x_1,\dots,x_n]$.
+Radical ideals will play an important role in Chapter 4. 
+In particular, the Nullstellensatz will imply that there is a one-to-one correspondence between varieties in $\C^n$ and radical ideals in $\C[x_1,\dots,x_n]$.
 \end{exercise}
 \begin{proof}
 \begin{enumerate}
-    \item ($\Rightarrow$) Suppose $f\in\bI(V))$, because $\bI(V))$ is an ideal, then all powers of $f$ are in $\bI(V))$. Hence, $f^m\in\bI(V))$.
+    \item ($\Rightarrow$) 
+    Suppose $f\in\bI(V))$, because $\bI(V))$ is an ideal, then all powers of $f$ are in $\bI(V))$. 
+    Hence, $f^m\in\bI(V))$.
 
-    ($\Leftarrow$) Suppose $f^m\in\bI(V))$. Then $f^m(x)=0$ for some $\bx\in k^n$. However, we have that $f^m(x) =f^{m-1}(x)f(x)=0$. If $f(x)=0$, we are done, otherwise, we can argue similarly with $f^{m-1}$ until $f^2(x)$ which gives us $f(x)=0$, so that $f\in\bI(V))$ as well.
-    \item Well, we have that all polynomials in $\brackets{x^2,y^2}$ are of the form $h_1x^2+h_2y^2$ for $h_1,h_2\in k^n[x,y]$. By choosing $h_1=1$ and $h_2=0$, we have that $x^2\in\brackets{x^2,y^2}$. However, $x\notin\brackets{x^2,y^2}$, as all the polynomials in $\brackets{x^2,y^2}$ are of degree at least 2. Hence, $\brackets{x^2,y^2}$ is not a radical ideal.
+    ($\Leftarrow$) 
+    Suppose $f^m\in\bI(V))$. 
+    Then $f^m(x)=0$ for some $\bx\in k^n$. 
+    However, we have that $f^m(x) = f^{m-1}(x)f(x) = 0$. 
+    If $f(x)=0$, we are done, otherwise, we can argue similarly with $f^{m-1}$ until $f^2(x)$ which gives us $f(x)=0$, so that $f\in\bI(V))$ as well.
+    \item Well, we have that all polynomials in $\brackets{x^2,y^2}$ are of the form $h_1x^2+h_2y^2$ for $h_1,h_2\in k^n[x,y]$. 
+    By choosing $h_1=1$ and $h_2=0$, we have that $x^2\in\brackets{x^2,y^2}$. 
+    However, $x\notin\brackets{x^2,y^2}$, as all the polynomials in $\brackets{x^2,y^2}$ are of degree at least 2. 
+    Hence, $\brackets{x^2,y^2}$ is not a radical ideal.
 \end{enumerate}
 \end{proof}
 
 \begin{exercise}{9}
-Let $V = \bV(y-x^2, z-x^3)$ be the twisted cubic. In the text, we showed that $\bI(V) = \langle y-x^2, z-x^3\rangle$.
+Let $V = \bV(y-x^2, z-x^3)$ be the twisted cubic. 
+In the text, we showed that $\bI(V) = \langle y-x^2, z-x^3\rangle$.
 \begin{enumerate}
     \item Use the parametrization of the twisted cubic to show that $y^2 - xz\in \bI(V)$.
     \item Use the argument given in the text to express $y^2 - xz$ as a combination of $y-x^2$ and $z-x^3$.
@@ -166,7 +280,8 @@ Let $V = \bV(y-x^2, z-x^3)$ be the twisted cubic. In the text, we showed that $\
 \end{exercise}
 \begin{proof}
     \begin{enumerate}
-        \item We know the twisted cubic has the parametrization $(t,t^2,t^3)$. So it suffices to plug this into the polynomial:
+        \item We know the twisted cubic has the parametrization $(t,t^2,t^3)$. 
+        So it suffices to plug this into the polynomial:
         \begin{eqnarray*}
             y^2 - xz
             & = & (t^2)^2 - t\cdot t^3\\
@@ -394,20 +509,20 @@ In the text, we defined $\bI(V)$ for a variety $V\subseteq k^n$. We can generali
 \end{proof}
 
 \begin{exercise}{16}
-Here is more practice with ideals. Let $f$ be an ideal in $k[x_1,...,x_n]$.
+Here is more practice with ideals. Let $f$ be an ideal in $k[x_1,\dots,x_n]$.
 \begin{enumerate}
-    \item Prove that $1\in I$ if and only if $I = k[x_1,...,x_n]$.
-    \item More generally, prove that $I$ contains a nonzero constant if and only if $I = k[x_1,...,x_n]$.
-    \item Suppose $f,g\in k[x_1,...,x_n]$ satisfy $f^2,g^2\in I$. Prove that $(f+g)^3\in I$.
-    \item Now suppose $f,g\in k[x_1,...,x_n]$ satisfy $f_r, g^s\in I$. Prove that $(f+g)^{r+s-1}\in I$.
+    \item Prove that $1\in I$ if and only if $I = k[x_1,\dots,x_n]$.
+    \item More generally, prove that $I$ contains a nonzero constant if and only if $I = k[x_1,\dots,x_n]$.
+    \item Suppose $f,g\in k[x_1,\dots,x_n]$ satisfy $f^2,g^2\in I$. Prove that $(f+g)^3\in I$.
+    \item Now suppose $f,g\in k[x_1,\dots,x_n]$ satisfy $f_r, g^s\in I$. Prove that $(f+g)^{r+s-1}\in I$.
 \end{enumerate}
 \end{exercise}
 \begin{proof}
     \begin{enumerate}
-        \item Assume that $1\in I$, and take any $f\in k[x_1,...,x_n]$. Then since $I$ is an ideal, it satisfies the absorption law and thus $f = f\cdot 1\in I$. Thus $I = k[x_1,...,x_n]$. The converse implication is trivial.
+        \item Assume that $1\in I$, and take any $f\in k[x_1,\dots,x_n]$. Then since $I$ is an ideal, it satisfies the absorption law and thus $f = f\cdot 1\in I$. Thus $I = k[x_1,\dots,x_n]$. The converse implication is trivial.
         \item Assume $c\in I$ for $0\neq c\in k$. Then since ideals satisfy the absorption law, we get that
         $$1 = c^{-1}c \in I,$$
-        and part (a) applies to prove that $I = k[x_1,...,x_n]$. The converse implication is again trivial.
+        and part (a) applies to prove that $I = k[x_1,\dots,x_n]$. The converse implication is again trivial.
         \item We see that
         \begin{eqnarray*}
             (f+g)^3
@@ -454,35 +569,35 @@ In the proof of Lemma $7$, we showed that $x\notin \langle x^2,y^2\rangle$ in $k
 \begin{exercise}{18}
 In the text, we showed that $\bI(\{(0,0)\}) = \langle x,y\rangle$ in $k[x,y]$.
 \begin{enumerate}
-    \item Generalize this by proving that the origin $0 = (0,...,0)\in k^n$ has the property that $\bI(\{0\}) = \langle x_1,...,x_n\rangle$ in $k[x_1,...,x_n]$.
-    \item What does part (a) say about polynomials in $k[x_1,...,x_n]$ with zero constant term?
+    \item Generalize this by proving that the origin $0 = (0,\dots,0)\in k^n$ has the property that $\bI(\{0\}) = \langle x_1,\dots,x_n\rangle$ in $k[x_1,\dots,x_n]$.
+    \item What does part (a) say about polynomials in $k[x_1,\dots,x_n]$ with zero constant term?
 \end{enumerate}
 \end{exercise}
 \begin{proof}
     \begin{enumerate}
-        \item Any polynomial of the form $\sum_{k=1}^n A_n x_n$ obviously vanishes at the origin, so clearly $\langle x_1,...,x_n\rangle \subseteq \bI(\{0\})$. Going the other way, suppose that
-        $$f = \sum_{k_1,...,k_n} a_{k_1...k_n} x^{k_1} ... x^{k_n}$$
-        vanishes at the origin. Then $a_{0...0} = f(0,...,0) = 0$ and, consequently,
+        \item Any polynomial of the form $\sum_{k=1}^n A_n x_n$ obviously vanishes at the origin, so clearly $\langle x_1,\dots,x_n\rangle \subseteq \bI(\{0\})$. Going the other way, suppose that
+        $$f = \sum_{k_1,\dots,k_n} a_{k_1\dotsk_n} x^{k_1} \dots x^{k_n}$$
+        vanishes at the origin. Then $a_{0\dots0} = f(0,\dots,0) = 0$ and, consequently,
         \begin{eqnarray*}
             f
-            & = & a_{0...0} + \sum_{k_1,...,k_n\neq 0,...,0} a_{k_1...k_n} x^{k_1}...x^{k_n}\\
-            & = & 0 + x_1 \sum_{\substack{k_1,...,k_n\\ k_1>0}} a_{k_1...k_n} x^{k_1-1}...x^{k_n} + x_2\sum_{\substack{k_2,...,k_n\\ k_2 > 0}} a_{0 k_2...k_n} x^{k_2 - 1}...x^{k_n}\\
-            & & + ... + x_{k_n}\sum_{k_n>0} a_{0...0k_n} x^{k_n - 1}\\
-            & \in & \langle x_1,...,x_n\rangle.
+            & = & a_{0\dots0} + \sum_{k_1,\dots,k_n\neq 0,\dots,0} a_{k_1\dotsk_n} x^{k_1}\dotsx^{k_n}\\
+            & = & 0 + x_1 \sum_{\substack{k_1,\dots,k_n\\ k_1>0}} a_{k_1\dotsk_n} x^{k_1-1}\dotsx^{k_n} + x_2\sum_{\substack{k_2,\dots,k_n\\ k_2 > 0}} a_{0 k_2\dotsk_n} x^{k_2 - 1}\dotsx^{k_n}\\
+            & & + \dots + x_{k_n}\sum_{k_n>0} a_{0\dots0k_n} x^{k_n - 1}\\
+            & \in & \langle x_1,\dots,x_n\rangle.
         \end{eqnarray*}
         This proves the claim.
-        \item The polynomials with zero constant term form an ideal. They form exactly the ideal $\bI(\{0\})$, hence they are exactly the polynomials vanishing at $(0,...,0)$. Since $\bI(\{0\}) = \langle x_1,...,x_n\rangle$, any such polynomial can be written as $A_1 x_1 + ... + A_n x_n$.
+        \item The polynomials with zero constant term form an ideal. They form exactly the ideal $\bI(\{0\})$, hence they are exactly the polynomials vanishing at $(0,\dots,0)$. Since $\bI(\{0\}) = \langle x_1,\dots,x_n\rangle$, any such polynomial can be written as $A_1 x_1 + \dots + A_n x_n$.
     \end{enumerate}
 \end{proof}
 
 \begin{exercise}{19}
-One of the key ideas of this section is that a system of equations $f_1 = ... = f_s = 0$ gives the ideal $I=\langle f_1,...,f_s\rangle$ of polynomial consequences. Now suppose that the system has a consequence of the form $f=g$ and we take the $m$th power of each side to obtain $f^m = g^m$. In terms of the ideal $I$, this means that $f-g\in I$ should imply $f^m - g^m\in I$. Prove this by factoring $f^m - g^m$.    
+One of the key ideas of this section is that a system of equations $f_1 = \dots = f_s = 0$ gives the ideal $I=\langle f_1,\dots,f_s\rangle$ of polynomial consequences. Now suppose that the system has a consequence of the form $f=g$ and we take the $m$th power of each side to obtain $f^m = g^m$. In terms of the ideal $I$, this means that $f-g\in I$ should imply $f^m - g^m\in I$. Prove this by factoring $f^m - g^m$.    
 \end{exercise}
 \begin{proof}
     Assume that $f-g\in I$. Then,
     \begin{eqnarray*}
         f^m - g^m
-        & = & (f-g)(f^{m-1} + f^{m-2}g + ... + fg^{m-2} + g^{m-1})\\
+        & = & (f-g)(f^{m-1} + f^{m-2}g + \dots + fg^{m-2} + g^{m-1})\\
         & \in & I.
     \end{eqnarray*}
 \end{proof}

@@ -1,55 +1,183 @@
 \section{2D Lebesgue measure}
 \addcontentsline{toc}{section}{2D Lebesgue measure}
 
-5 This statement, and many like it would be known as the approximation theorem, which allows us to approximate a Lebesgue measurable set by "nice" sets 
-7 Similar Comment
-8
-9 Two fundamental properties of Lebesgue measurable sets 
-11 This shows there are a lot of Lebesgue measurable sets
-14
-15
-20
-21 use Wolframalpha
-22
 
 \begin{exercise}{5}
-fill
+Prove that if $A \subseteq \R$ is Lebesgue measurable, then there exists an increasing sequence $F_1 \subseteq F_2 \subseteq \dots$ of closed sets contained in $A$ such that $\absoluteValue{A \setminus \bigcup F_k} = 0$.
 \end{exercise}
 \begin{proof}
-fill
+From 2.71, we know there exist closed sets $E_1,E_2,\dots$ contained in $A$, such that $\absoluteValue{A \setminus \bigcup E_n} = 0$.
+Now define $F_1 = E_1, F_2 = E_1 \cup E_2, \dots, F_N = \bigcup^N_{k=1} E_k, \dots$.
+These sets have three desirable properties.
+Each $F_i$ is closed, since it is a finite union of closed sets.
+Second, $F_1 \subseteq F_2 \subseteq \dots$, that is, it is an increasing sequence of sets.
+Finally $\bigcup F_k = \bigcup E_n$.
+Thus we have that $\absoluteValue{A \setminus \bigcup F_k} = \absoluteValue{A \setminus \bigcup E_n} = 0$, as required.
 \end{proof} 
 
 \begin{exercise}{7}
-fill
+Prove that if $A \subseteq \R$ is Lebesgue measurable, then there exists a decreasing sequence $G_1 \supseteq G_2 \supseteq \dots$ of open sets containing $A$ such that $\absoluteValue{\parens{\bigcap G_k} \setminus A} = 0$.
 \end{exercise}
 \begin{proof}
-fill
+By 2.71, let $O_1, O_2, \dots$ be a sequence of open sets each containing $A$ such that $\absoluteValue{\parens{\bigcap O_k} \setminus A} = 0$.
+Now consider the following sequence: $G_1 = O_1, G_2 = O_1 \cup O_2, \dots, G_N = \bigcap_{i=1}^N O_i,\dots$.
+We have three important properties of the sequence $G_1, G_2, \dots$.
+First, the sequence consists of open sets, because each $G_n$ is a finite intersection of open sets.
+Second, the sequence is decreasing.
+Third, the countable union of $O_1, O_2, \dots$ is the same as the countable union of $G_1, G_2, \dots$; 
+that is, $\bigcap G_k = \bigcap_{k=0} \bigcap_{i=1}^k O_i = \bigcap O_k$.
+Thus $\absoluteValue{\parens{\bigcap O_k} \setminus A} = \absoluteValue{\parens{\bigcap G_k} \setminus A} = 0$, as required.
 \end{proof} 
 
 \begin{exercise}{8}
-fill
+Prove that the collection of Lebesgue measurable subsets of $\R$ is translation invariant.
+More precisely, prove that if $A \subseteq \R$ is Lebesgue measurable and $t \in \R$, then $t+A$ is Lebesgue measurable.
 \end{exercise}
 \begin{proof}
-fill
+Let $A$ be a Lebesgue measurable set.
+Then by 2.71, there exists a Borel set $B$, with $B \subseteq A$ and $\absoluteValue{A \setminus B}=0$.
+Consider $t+A$ for a fixed $t\in\R$.
+We want to prove that there exists a Borel set, such that the outer measure of $t+A$ minus such Borel set is zero.
+We conjecture that $t+B$ is such set.
+First, $t+B$ is Borel by exercise 2B.7.
+Now, if $x\in t+B$, then $x = t+b$ for some $b \in B \subseteq A$, so that $x \in t+A$.
+Finally, notice that $t+A = ((t+A) \setminus (t+B)) \cup (t+B)$ is a disjoint union of sets, where $t+B$ is Borel.
+Thus, we can apply 2.66 to conclude that 
+\begin{align*}
+    \absoluteValue{t+A} 
+    = \absoluteValue{[(t+A) \setminus (t+B)] \cup (t+B)} 
+    = \absoluteValue{(t+A) \setminus (t+B)} + \absoluteValue{t+B},
+\end{align*}
+so that $\absoluteValue{t+A} = \absoluteValue{(t+A) \setminus (t+B)} + \absoluteValue{t+B}$.
+Finally, we know that the outer measure is translation invariant, so that $\absoluteValue{t+A} = \absoluteValue{A}$.
+Thus,
+\begin{align*}
+    \absoluteValue{(t+A) \setminus (t+B)} 
+    = \absoluteValue{t+A} - \absoluteValue{t+B}
+    = \absoluteValue{A} - \absoluteValue{B}
+    = \absoluteValue{A \setminus B}
+    = 0,
+\end{align*}
+where the second to last equality follows from applying a similar logic as above.
+We can conclude that $t+A$ is Lebesgue measurable.
 \end{proof} 
 
 \begin{exercise}{9}
-fill
+Prove that the collection of Lebesgue measurable subsets of $\R$ is dilation invariant.
+More precisely, prove that if $A\subseteq\R$ is Lebesgue measurable and $t\in\R$, then $tA$ (which is defined to be $\set{ta: a\in A}$) is Lebesgue measurable.
 \end{exercise}
 \begin{proof}
-fill
+Let $A$ be Lebesgue measurable and $0\neq t\in\R$.
+Then by 2.71, there exists a Borel set $B$ such that $B \subseteq A$ and $\absoluteValue{A \setminus B} = 0$.
+We want to prove that there exists a Borel set which is a subset of $tA$ and whenever we consider the outer measure of $tA$ minus such set we obtain 0.
+We conjecture that such set is $tB$.
+From exercise 2.B.8 we know that $tB$ is Borel, we now need to prove that $tB \subseteq tA$ and that $\absoluteValue{tA \setminus tB} = 0$.
+
+We have $x \in tB \iff x = tb$ for some $b\in B\subseteq A$.
+Thus $x\in tA$ and $tB \subseteq tA$.
+From exercise 2.A.2 we know that for any subset $A\subseteq\R$ and any $0\neq t \in \R$, $\absoluteValue{tA} = \absoluteValue{t}\absoluteValue{A}$ holds.
+Now, $tA = (tA \setminus tB) \cup tB$ is a disjoint union where $tB$ is Borel, as argued above. 
+Applying 2.66 we get:
+\begin{align*}
+    \absoluteValue{tA}
+    = \absoluteValue{t}\absoluteValue{A}
+    = \absoluteValue{tA \setminus tB} + \absoluteValue{tB}
+    = \absoluteValue{tA \setminus tB} + \absoluteValue{t}\absoluteValue{tB}.
+\end{align*}
+That is,
+\begin{align*}
+    \absoluteValue{tA \setminus tB} + \absoluteValue{tB}
+    = \absoluteValue{t}[\absoluteValue{A} - \absoluteValue{B}]
+    = \absoluteValue{t}[\absoluteValue{A \setminus B}]
+    = \absoluteValue{t}0
+    = 0,
+\end{align*}
+as required.
+\end{proof} 
+
+\begin{exercise}{10}
+Prove that if $A$ and $B$ are disjoint subsets of $\R$ and $B$ is Lebesgue measurable, then $\absoluteValue{A \cup B} = \absoluteValue{A} + \absoluteValue{B}$.
+\end{exercise}
+\begin{proof}
+We know from countable subadditivity that $\absoluteValue{A \cup B} \leq \absoluteValue{A} + \absoluteValue{B}$.
+Thus it is left to us to proof the other inequality.
+To do this, recall that 2.71 tells us that there is a Borel set $B' \subseteq B$, such that $\absoluteValue{B \setminus B'} = 0$.
+This allows us to conclude that $\absoluteValue{B} = \absoluteValue{(B \setminus B') \cup B'} = \absoluteValue{B \setminus B'} + \absoluteValue{B'} = \absoluteValue{B'}$, where the second to last equality follows from 2.66.
+Now
+\begin{align*}
+    \absoluteValue{A \cup B}
+    \geq \absoluteValue{A \cup B'}\\
+    = \absoluteValue{A} + \absoluteValue{B'}\\
+    = \absoluteValue{A} + \absoluteValue{B},
+\end{align*}
+where the first inequality follows from 2.5, and the first equality follows from 2.66.
+Putting the two inequalities together gives us the desired result.
 \end{proof} 
 
 \begin{exercise}{11}
-fill
+Prove that if $A \subseteq \R$ and $\absoluteValue{A} > 0$, then there exists a subset of $A$ that is not Lebesgue measurable.
 \end{exercise}
 \begin{proof}
-fill
+We construct an explicit non Lebesgue measurable set in $A$.
+Let $V$ be the Vitali set in $[-1,1]$ as we constructed in 2.18.
+That is, $V$ is the set that chooses exactly one element of the equivalence classes given by $\tilde{a} = \set{c \in [-1,1]: a-c \in \Q}$.
+That is, $V \cap\tilde{a}$ contains exactly one element for all $a \in [-1,1]$.
+We have that $A = \bigcup \set{A \cap (q+V): q\in\Q}$, since we can obtain any real by ``adding back'' all the rationals to each equivalent class (any rational beyond $[-2,2]$;
+if we ``add back'' the rationals between $[-2,2]$ we get $[-1,1]$, as in 2.18).
+
+We claim that one of $A \cap (q+V)$ is nonmeasurable.
+We have that $A \cap (q+V)$ is measurable if and only if $(-q+A) \cap V$ is measurable by exercise 8, in which case both have the same measure.
+However, because of how the Vitali set is constructed, we know that any measurable subset of $V$ must be null, so that $A = \bigcup \set{A \cap (q+V): q\in\Q}$ itself would have to be null, which would contradict the hypothesis that $\absoluteValue{A} > 0$.
 \end{proof} 
 
 \begin{exercise}{14}
-fill
+Show that both $1/4$ and $9/13$ are in the Cantor set.
 \end{exercise}
 \begin{proof}
-fill
+Using Wolfram alpha, we get that $1/4 = 0.020202\dots_3$ and $9/13 = 0.2002002\dots_3$ so that by 2.73 both belong to $C$.
 \end{proof} 
+
+\begin{exercise}{15}
+Show that $13/17$ is not in the Cantor set.
+\end{exercise}
+\begin{proof}
+Using Wolfram alpha we get that $13/17 = 0.2021221\dots_3$, so that by 2.73, $13/17$ does not belong to $C$.
+\end{proof} 
+
+\begin{exercise}{20}
+Evaluate each of the following:
+\begin{enumerate}
+    \item $\Lambda(9/13)$
+    \item $\Lambda(0.93)$
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+\begin{enumerate}
+    \item From exercise 14, we know that the base 3 representation of $9/13$ is $9/13 = 0.2002002\dots_3$, so that using the definition of the Cantor function, we get 
+    \begin{align*}
+        \Lambda(9/13) 
+        =& 0.1001001\dots_2\\
+        =& \frac{1}{2} + \frac{1}{2^4} \sum \frac{1}{2^{3k}}\\
+        =& \frac{1}{2} + \frac{1}{2^4} \parens{\frac{1}{1-(1/2^3)}}\\
+        =& \frac{1}{2} + \frac{1}{2^4} \frac{2^3}{2^3-1}\\
+        =& \frac{1}{2} + \frac{1}{2(2^3-1)}\\
+        =& \frac{1}{2}\parens{1 + \frac{1}{2^3-1}}\\
+        =& \frac{1}{2}\parens{\frac{2^3 + 1}{2^3-1}}.
+    \end{align*}
+    \item We have that $0.93 = 93/100 = 0.2210022\dots_3$, so that by the definition of the Cantor function, we get $\Lambda(0.93) = 0.111_2 = 0.875 = 7/8$.
+\end{enumerate}
+\end{proof} 
+
+\begin{exercise}{21}
+Find each of the following sets:
+\begin{enumerate}
+    \item $\Lambda^{-1}(\set{1/3})$.
+    \item $\Lambda^{-1}(\set{5/16})$
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+\begin{enumerate}
+    \item We have that $1/3 = 0.010101\dots_2$, so that replacing all the 1s by 2s, we get $\Lambda^{-1}(\set{1/3}) = 0.02020202\dots_3 = 1/4$, the last equality following from exercise 14.
+    \item We have that $5/16 = 0.0101_2$, so that $\Lambda^{-1}(\set{5/16}) = 0.0202_3 = 20/81$.
+\end{enumerate}
+\end{proof}
