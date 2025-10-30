@@ -1,4 +1,4 @@
-\subsection{Open set, closed set, neighborhood}
+\section{Open set, closed set, neighborhood}
 
 
 \begin{exercise}{1}
@@ -117,9 +117,9 @@ A boundary point $x$ of a set $A\subseteq (X,d)$ is a point of $X$ (which may or
  Show that $B[a,b]$, $a<b$ is not separable (Cf. 1.2-2).
 \end{exercise}
 \begin{proof}
-Suppose, for the sake of contradiction, that $B[a,b]$ is separable. Then there exists a countable set, call it $\FFF$, of functions so that for all functions in $g\in B[a,b]$, either $g\in\FFF$, or for all $\epsilon>0$, there exists a function $f\in\FFF$ with $f\in B(g;\epsilon)$.
+Suppose, for the sake of contradiction, that $B[a,b]$ is separable. Then there exists a countable set, call it $\cF$, of functions so that for all functions in $g\in B[a,b]$, either $g\in\cF$, or for all $\epsilon>0$, there exists a function $f\in\cF$ with $f\in B(g;\epsilon)$.
 
-Since $\FFF$ is countable we can find a bijection between $\FFF$ and $\N$, so that we can have a sequence of distinct numbers, $(x_n)$ where each $x_i\in[a,b]$ and $x_n$ can be mapped to a function, say $f_n\in\FFF$. Now let $h\in B[a,b]$ be defined as follows: for $h(x_n)=f_n(x_n)+1$ and 0 otherwise. We have that the open ball $B(h;1/2)$ does not contain any element of $\FFF$, so that $h$ is not an accumulation point of $\FFF$. Thus, $\overline{\FFF}\neq B[a,b]$ and $B[a,b]$ is not separable. 
+Since $\cF$ is countable we can find a bijection between $\cF$ and $\N$, so that we can have a sequence of distinct numbers, $(x_n)$ where each $x_i\in[a,b]$ and $x_n$ can be mapped to a function, say $f_n\in\cF$. Now let $h\in B[a,b]$ be defined as follows: for $h(x_n)=f_n(x_n)+1$ and 0 otherwise. We have that the open ball $B(h;1/2)$ does not contain any element of $\cF$, so that $h$ is not an accumulation point of $\cF$. Thus, $\overline{\cF}\neq B[a,b]$ and $B[a,b]$ is not separable. 
 \end{proof}
 
 \begin{exercise}{13}

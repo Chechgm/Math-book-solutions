@@ -55,7 +55,7 @@
 \newcommand{\cA}{\mathcal{A}}
 \newcommand{\cB}{\mathcal{B}}
 \newcommand{\cC}{\mathcal{C}}
-\newcommand{\dD}{\mathcal{D}}
+\newcommand{\cD}{\mathcal{D}}
 \newcommand{\cF}{\mathcal{F}}
 \newcommand{\cG}{\mathcal{G}}
 \newcommand{\cI}{\mathcal{I}}

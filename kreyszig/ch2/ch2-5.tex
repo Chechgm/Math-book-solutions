@@ -1,4 +1,4 @@
-\subsection{Compactness and finite dimension}
+\section{Compactness and finite dimension}
 
 
 \begin{exercise}{1}
@@ -65,5 +65,5 @@ Let $X$ and $Y$ be metric spaces, $X$ is compact, and $T:X\to Y$ bijective and c
 \begin{proof}
 Since $T$ is bijective, its inverse is bijective, we need to show that $T^{-1}$ is continuous to complete the proof. We will prove that if $y^n\to y$ then $T^{-1}y^n\to T^{-1}y$.
 
-Let $y^n\to y$, where $(y^n)$ is a sequence in $\RRR(T)$. Since $T$ is bijective, then there exists a sequence $(x^n)$ in $X$ so that $y^n=Tx^n\to Tx$. Given that $X$ is compact, then $(x^n)$ has a subsequence $(x^{n_k})$ that converges to $x'$. We first prove that $x=x'$. If this wasn't the case, then $T$ would not be continuous, as $Tx^n$ and $Tx^{n_k}$ must both converge to $Tx$, so that $Tx=Tx'$, so that by injectivity $x=x'$. We can reason in a similar way to conclude that any subsequence of $(x^{n_k})$ converges to $x$. By exercise 33 of Carothers, we know that $(x^n)$ converges to $x$ if and only if every subsequence has a further subsequence that converges to $x$, which we argued is the case. Thus $(x^n)$ converges to $x$ and thus $T^{-1}y^n =x^n \to x=T^{-1}y$, so that $T^{-1}$ is continuous. 
+Let $y^n\to y$, where $(y^n)$ is a sequence in $\cR(T)$. Since $T$ is bijective, then there exists a sequence $(x^n)$ in $X$ so that $y^n=Tx^n\to Tx$. Given that $X$ is compact, then $(x^n)$ has a subsequence $(x^{n_k})$ that converges to $x'$. We first prove that $x=x'$. If this wasn't the case, then $T$ would not be continuous, as $Tx^n$ and $Tx^{n_k}$ must both converge to $Tx$, so that $Tx=Tx'$, so that by injectivity $x=x'$. We can reason in a similar way to conclude that any subsequence of $(x^{n_k})$ converges to $x$. By exercise 33 of Carothers, we know that $(x^n)$ converges to $x$ if and only if every subsequence has a further subsequence that converges to $x$, which we argued is the case. Thus $(x^n)$ converges to $x$ and thus $T^{-1}y^n =x^n \to x=T^{-1}y$, so that $T^{-1}$ is continuous. 
 \end{proof}

@@ -1,4 +1,4 @@
-\subsection{Linear operators and functional on finite dimensional spaces}
+\section{Linear operators and functional on finite dimensional spaces}
 
 
 \begin{exercise}{3}
@@ -9,7 +9,7 @@ The dual basis would be $\delta_{j,k}=f_k(e_j)=1$ if $k=j$ and 0 otherwise.
 \end{proof}
 
 \begin{exercise}{5}
-If $f$ is a linear functional on an $n$-dimensional vector space $X$, what dimension can the null-space $\NNN(f)$ have?
+If $f$ is a linear functional on an $n$-dimensional vector space $X$, what dimension can the null-space $\cN(f)$ have?
 \end{exercise}
 \begin{proof}
 We assume that $X$ is finite dimensional, thus we can use the rank-nullity Theorem to conclude that $\dim X = n=\dim\range f +\dim\nullspace f$.
@@ -41,7 +41,7 @@ Furthermore, if $\alpha\in\R$, we have
 \end{align*}
 as required.
 
-For any $z_i\in Z$ we have $f(z_i)$ so that $\NNN(f)=Z$.
+For any $z_i\in Z$ we have $f(z_i)$ so that $\cN(f)=Z$.
 And furthermore, if we had defined $f(x)=ca_n$ for any scalar $c$ we would have obtained the same result, giving us the family of linear functionals with the desired property.
 \end{proof}
 
@@ -50,11 +50,11 @@ Let $Z$ be a proper subspace of an $n$-dimensional vector space $X$, and let $x_
 Show that there is a linear functional $f$ on $X$ such that $f(x_0)=1$ and $f(x)=0$ for all $x\in Z$.
 \end{exercise}
 \begin{proof}
-From exercise 8, we know that for any subspace, $Z'$, of dimension $n-1$ there is a linear functional $f$ so that $\NNN(f)=Z'$.
-Furthermore, from exercise 5 we know that $\NNN(f)$ must be either $n$ or $n-1$-dimensional.
+From exercise 8, we know that for any subspace, $Z'$, of dimension $n-1$ there is a linear functional $f$ so that $\cN(f)=Z'$.
+Furthermore, from exercise 5 we know that $\cN(f)$ must be either $n$ or $n-1$-dimensional.
 Let $Z$ have $k<n$ dimensions, and extend a basis of $Z$ so that the space, $Z'$, spanned by the new basis is such that $\vecspan(x_0)\oplus Z'=X$.
 Given that $\dim(Z')=n-1$, we can choose $f$ using exercise 8 with $f(x_0)=1$.
-Furthermore, $Z\subseteq\NNN(f)$ and $f(x)=0$ for all $x\in Z$, as desired.
+Furthermore, $Z\subseteq\cN(f)$ and $f(x)=0$ for all $x\in Z$, as desired.
 \end{proof}
 
 \begin{exercise}{11}
@@ -75,12 +75,12 @@ If $f_1,\dots,f_p$ are linear functionals on an $n$-dimensional vector space whe
 What consequences does does this result have with respect to linear equations?
 \end{exercise}
 \begin{proof}
-Consider the nullspaces of each of the functionals, $\NNN(f_1),\dots,\NNN(f_p)\subseteq X$ all of which have dimension $n-1$.
-Now consider the intersection between these subspaces $Z=\NNN(f_1)\cap\dots\cap\NNN(f_p)$.
+Consider the nullspaces of each of the functionals, $\cN(f_1),\dots,\cN(f_p)\subseteq X$ all of which have dimension $n-1$.
+Now consider the intersection between these subspaces $Z=\cN(f_1)\cap\dots\cap\cN(f_p)$.
 We have that $\dim(Z)\leq n-p$.
 To see this consider the case where $p=2$.
-In that case, $\NNN(f_1)\cap\NNN(f_2)$, if $f_1$ and $f_2$ have the same nullspace then $\NNN(f_1)=\NNN(f_2)$ and $\NNN(f_1)\cap\NNN(f_2)=\NNN(f_1)$ has dimension $n-1$.
-Otherwise, $\NNN(f_1)\cap\NNN(f_2)$ agree on all but 1 dimension, since they are both $n-1$-dimensional, and thus $\NNN(f_1)\cap\NNN(f_2)$ has dimension $n-2$.
+In that case, $\cN(f_1)\cap\cN(f_2)$, if $f_1$ and $f_2$ have the same nullspace then $\cN(f_1)=\cN(f_2)$ and $\cN(f_1)\cap\cN(f_2)=\cN(f_1)$ has dimension $n-1$.
+Otherwise, $\cN(f_1)\cap\cN(f_2)$ agree on all but 1 dimension, since they are both $n-1$-dimensional, and thus $\cN(f_1)\cap\cN(f_2)$ has dimension $n-2$.
 We can reason inductively to conclude the $n-p$ statement.
 Now since $n>p$, then $n-p>0$ and thus $Z\neq \set{0}$, so any element of $Z$ will fulfill the desired property.
 

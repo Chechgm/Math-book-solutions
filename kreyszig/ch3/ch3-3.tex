@@ -1,18 +1,27 @@
-\subsection{Orthogonal complements and direct sums}
+\section{Orthogonal complements and direct sums}
 
-1 This is an interesting example where norm convergence gives actual convergence in the Hilbert space
-2
 3 Simple example to reinforce the ideas
-6 Simple example to reinforce the ideas
-7 Some important identites
 9
 10 Two very important theorems related to the orthogonal complement and double complement. Used all the time!
 
 \begin{exercise}{1}
-fill
+Let $H$ be a Hilbert space, $M \subseteq H$ a convex subset, and $(x_n)$ a sequence in $M$ such that $\norm{x_n} \to d$, where $d = \inf_{x \in M} \norm{x}$.
+Show that $(x_n)$ converges in $H$.
+Give an illustrative example in $\R^2$ or $\R^3$.
 \end{exercise}
 \begin{proof}
-fill
+We will follow a strategy similar to Theorem 3.3-1.
+To do that, we will prove $(x_n)$ is Cauchy, and then it will follow by the completeness of $H$, that $(x_n)$ converges in $H$.
+Let $\norm{x_n} = d_n$.
+We have that $\norm{x_n + x_m} = 2\norm{1/2(x_n + x_m)} \geq 2d$, because $x_n/2 + x_m/2$ is in $M$ due to its convexity.
+Now by the parallelogram equality, we have that
+\begin{align*}
+    \norm{x_n - x_m} 
+    =& -\norm{x_n + x_m}^2 + 2(\norm{x_n} + \norm{x_m})\\
+    \leq& -(2d)^2 + 2(d_n + d_m) \to 0,
+\end{align*}
+where the convergence to 0 follows from the fact that $d_n,d_m \to d$.
+Thus $(x_n)$ is Cauchy and by the completeness of $H$ it must converge to a point in $H$.
 \end{proof}
 
 \begin{exercise}{2}
@@ -51,10 +60,16 @@ The vector that minimises such norm is $x_i=1/n$ for all $i$.
 \end{proof}
 
 \begin{exercise}{3}
-fill
+\begin{enumerate}
+    \item Show that the vector space $X$ of all real-valued continuous functions on $[-1,1]$ is the direct sum of of the set of all even continuous functions and the set of all odd functions on $[-1,1]$.
+    \item Give examples of representations of $\R^3$ as a direct sum (i) of a subspace and its orthogonal complement, (ii) of any complementary pair of subspaces.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item even: $f(-x) = f(x)$, odd: $f(-x) = -f(x)$.
+    \item 
+\end{enumerate}
 \end{proof}
 
 \begin{exercise}{5}
@@ -74,24 +89,58 @@ find $M^\perp$ if $M$ is
         x' = y -\text{proj}_x(y) = y - \frac{\brackets{x,y}}{\brackets{y,y}}y
     \end{align*}
     is orthogonal to $x$.
-    So that $M^\perp = \vecspan{x}$.
+    So that $M^\perp = \vecspan{(x)}$.
     \item Since the set is linearly independent, its span constitutes a basis of $\R^2$. 
     Thus, the only vector orthogonal to both of them simultaneously is 0.
 \end{enumerate}
 \end{proof}
 
 \begin{exercise}{6}
-fill
+\begin{enumerate}
+    \item Show that $Y = \set{x \mid x = (x_n) \in l^2, x_{2n}=0, n\in\N}$ is a closed subspace of $l^2$ and find $Y^\perp$.
+    \item What is $Y^\perp$ if $y = \vecspan{e_1, e_2, \dots, e_n} \subseteq l^2$, where $e_j = (\delta_{jk})$
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item To see that $Y$ is closed, consider any convergent sequence in $Y$, $(x_n^k) \to (x_n)$. 
+    We have that for all $k$, $x_{2n}^k = 0$ for all $n\in\N$.
+    Since convergence in $l^2$ implies convergence of each one of the elements of the sequence, it must be the case that $x_{2n} = 0$ for all $n\in\N$.
+    Thus $(x_n) \in Y$ and $Y$ is closed.
+    
+    We have that $Y^\perp = \set{x \mid x = (x_n) \in l^2, x_{2n+1}=0, n\in\N}$.
+    We can see this from two perspectives.
+    The first is that $l^2 = Y \oplus Y^\perp$.
+    The second is that any element from $Y^\perp$ (and only from $Y^\perp$) has zero inner product with $Y$.
+    \item As in the previous numeral, $Y^\perp$ is $\overline{\vecspan{(e_{n+1}, e_{n+2},\dots)}}$ given that the inner product between $Y$ and $Y^\perp$ is 0.
+\end{enumerate}
 \end{proof}
 
 \begin{exercise}{7}
-fill
+Let $A$ and $B$ with $A \subseteq B$ be nonempty subsets of an inner product space $X$.
+Show that
+\begin{enumerate}
+    \item $A \subseteq A^{\perp \perp}$.
+    \item $B^\perp \subseteq A^\perp$.
+    \item $A^{\perp \perp \perp} = A^\perp$.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item Let $a \in A$, we have that $\brackets{a,a'} = 0$ for all $a'\in A^\perp$.
+    We also have that $\brackets{a', a''} = 0$ for all $a'' \in A^{\perp \perp}$, that is, $a \in A^{\perp \perp}$ so that $A \subseteq A^{\perp \perp}$.
+    \item Let $b' \in B^\perp$.
+    We have that $\brackets{b', b} = 0$ for all $b \in B$, but this implies $\brackets{b', a} = 0$ for all $a \in A$, because $A \subseteq B$;
+    that is, $b' \in A^\perp$, so that $B^\perp \subseteq A^\perp$.
+    \item To prove this, we will use a combination of the previous results.
+    
+    ($\subseteq$)
+    We proved that $A \subseteq A^{\perp \perp}$.
+    Using this in conjunction with the second result, we have that $(A^{\perp \perp})^\perp \subseteq A^\perp$.
+
+    ($\supseteq$)
+    We proved that $A \subseteq A^{\perp \perp}$, replacing $A$ for $A^\perp$, we have that $A^\perp \subseteq (A^\perp)^{\perp \perp}$.
+\end{enumerate}
 \end{proof}
 
 \begin{exercise}{9}

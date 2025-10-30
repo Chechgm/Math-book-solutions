@@ -1,4 +1,4 @@
-\subsection{Linear operators}
+\section{Linear operators}
 
 
 \begin{exercise}{5}
@@ -44,7 +44,7 @@ If the product (the composite) of two linear operators exist, show that it is li
 \begin{proof}
 Let $T:X\to Y$ and $S:Y\to Z$ be linear operators. Then it holds for $TS$:
 
-(i) The domain, $X$, of $TS$ is a vector space and the range $\RRR(TS)\subseteq Z$ is a vector space too. Furthermore;
+(i) The domain, $X$, of $TS$ is a vector space and the range $\cR(TS)\subseteq Z$ is a vector space too. Furthermore;
 
 (ii) if $x,x'\in X$, then $T(S(x+x')) =T(Sx+Sx') =TSx+TSx'$, so that $TS$ is additive; and if $a\in K$, then $TS(ax) =T(aSx) =aTSx$ so that $TS$ is homogenous.
 \end{proof}
@@ -52,12 +52,12 @@ Let $T:X\to Y$ and $S:Y\to Z$ be linear operators. Then it holds for $TS$:
 \begin{exercise}{10}
 Formulate the conditions in 2.6-10(a) in terms of the null space of $T$.
 
-2.6-10(a): Let $X$ and $Y$ be vector spaces, both real or both complex. Let $T:\DDD(T)\to Y$ be a linear operator with domain $\DDD(T)\subseteq X$ and range $\RRR(T)\subseteq Y$. Then:
+2.6-10(a): Let $X$ and $Y$ be vector spaces, both real or both complex. Let $T:\cD(T)\to Y$ be a linear operator with domain $\cD(T)\subseteq X$ and range $\cR(T)\subseteq Y$. Then:
 
-(a) The inverse $T^{-1}:\RRR(T)\to\DDD(T)$ exists if and only if $Tx=0$ implies $x=0$.
+(a) The inverse $T^{-1}:\cR(T)\to\cD(T)$ exists if and only if $Tx=0$ implies $x=0$.
 \end{exercise}
 \begin{proof}
-There are two equivalent ways in which we can write this condition: First, the inverse exists, if and only if $\dim\NNN(T)=0$. Second, the inverse exists, if and only if $\NNN(T)=\set{0}$.
+There are two equivalent ways in which we can write this condition: First, the inverse exists, if and only if $\dim\cN(T)=0$. Second, the inverse exists, if and only if $\cN(T)=\set{0}$.
 \end{proof}
 
 \begin{exercise}{11}
@@ -66,30 +66,30 @@ Let $X$ be the vector space of all $2\times 2$ matrices and define $T:X\to X$ by
 \begin{proof}
 Let $x,y\in X$ and $\alpha,\beta\in K$. Then, $T(\alpha x+\beta y) =b(\alpha x+\beta y) =\alpha bx+\beta by =\alpha T(x)+\beta T(y)$, so that $T$ is linear. 
 
-From exercise 10, $T^{-1}$ exists if and only if $\NNN(T)=\set{0}$, which is true if and only if $\det b\neq 0$, which is the same as invertible $b$.
+From exercise 10, $T^{-1}$ exists if and only if $\cN(T)=\set{0}$, which is true if and only if $\det b\neq 0$, which is the same as invertible $b$.
 \end{proof}
 
 \begin{exercise}{13}
-Let $T:\DDD(T)\to Y$ be a linear operator whose inverse exists. If $\set{x_1,\dots,x_n}$ is a linearly independent set in $\DDD(T)$, show that the set $\set{Tx_1,\dots,Tx_n}$ is linearly independent.
+Let $T:\cD(T)\to Y$ be a linear operator whose inverse exists. If $\set{x_1,\dots,x_n}$ is a linearly independent set in $\cD(T)$, show that the set $\set{Tx_1,\dots,Tx_n}$ is linearly independent.
 \end{exercise}
 \begin{proof}
 Consider $0 =a_1Tx_1+\dots+a_nTx_n =T(a_1x_1)+\dots+T(a_nx_n) =T(a_1x_1+\dots+a_nx_n)$. Then we have that $T(a_1x_1+\dots+a_nx_n)=0$, so that $a_1x_1+\dots+a_nx_n=0$. Since $\set{x_1,\dots,x_n}$ is linearly independent, then $a_1=\dots=a_n=0$, so that $\set{Tx_1,\dots,Tx_n}$ is independent too.
 \end{proof}
 
 \begin{exercise}{14}
-Let $T:X\to Y$ be a linear operator and $\dim X =\dim Y =n <\infty$. Show that $\RRR(T)=Y$ if and only if $T^{-1}$ exists.
+Let $T:X\to Y$ be a linear operator and $\dim X =\dim Y =n <\infty$. Show that $\cR(T)=Y$ if and only if $T^{-1}$ exists.
 \end{exercise}
 \begin{proof}
-($\Rightarrow$) Suppose $\RRR(T)=Y$, so that $\dim\RRR(T)=\dim Y=n$. Since we assume $X$ and $Y$ are finite dimensional, then the fundamental Theorem of linear algebra which asserts that $\dim X=\dim\RRR(T)+\dim\NNN(T)$ applies. That is, $n=n+\dim\NNN(T)$. Since $\dim\NNN(T)=0$, then $T$ is injective, and by 2.6-10.a, then $T^{-1}$ exists.
+($\Rightarrow$) Suppose $\cR(T)=Y$, so that $\dim\cR(T)=\dim Y=n$. Since we assume $X$ and $Y$ are finite dimensional, then the fundamental Theorem of linear algebra which asserts that $\dim X=\dim\cR(T)+\dim\cN(T)$ applies. That is, $n=n+\dim\cN(T)$. Since $\dim\cN(T)=0$, then $T$ is injective, and by 2.6-10.a, then $T^{-1}$ exists.
 
-($\Leftarrow$) Suppose $T^{-1}$ exists. Then by Theorem 2.6-10.c $\dim\DDD(T)=\dim X=\dim\RRR(T)=\dim Y$, so that $\RRR(T)=Y$, because finite dimensional spaces of the same dimension are isomorphic to each other.
+($\Leftarrow$) Suppose $T^{-1}$ exists. Then by Theorem 2.6-10.c $\dim\cD(T)=\dim X=\dim\cR(T)=\dim Y$, so that $\cR(T)=Y$, because finite dimensional spaces of the same dimension are isomorphic to each other.
 \end{proof}
 
 \begin{exercise}{15}
-Consider the vector space $X$ of all real-value functions which are defined on $\R$ and have derivatives of all orders everywhere on $\R$. Define $T:X\to X$ by $y(t)=Tx(t)=x'(t)$. Show that $\RRR(T)$ is all of $X$ but $T^{-1}$ does not exist. Compare with exercise 14 and comment.
+Consider the vector space $X$ of all real-value functions which are defined on $\R$ and have derivatives of all orders everywhere on $\R$. Define $T:X\to X$ by $y(t)=Tx(t)=x'(t)$. Show that $\cR(T)$ is all of $X$ but $T^{-1}$ does not exist. Compare with exercise 14 and comment.
 \end{exercise}
 \begin{proof}
-Since $X$ consists of all the real-valued functions that have derivatives of all orders everywhere on $\R$, then $X$ consists of continuous functions. Thus, we can apply the Fundamental Theorem of Calculus (see Theorem 7.5.1.ii of Abbott) so that if $F\in X$ is differentiable at $x$, then $F(x)=f'(x)$ for some continuous function in $X$. Thus, $\RRR(T)=X$. 
+Since $X$ consists of all the real-valued functions that have derivatives of all orders everywhere on $\R$, then $X$ consists of continuous functions. Thus, we can apply the Fundamental Theorem of Calculus (see Theorem 7.5.1.ii of Abbott) so that if $F\in X$ is differentiable at $x$, then $F(x)=f'(x)$ for some continuous function in $X$. Thus, $\cR(T)=X$. 
 
 To see that $T^{-1}$ does not exist, it suffices to find two functions that have the same preimage under $T$, so that $T$ is not injective. Consider $f(x)=x$ and $g(x)=x+c$ for a constant $c$. Both $f,g\in X$ and $Tf=Tg=1$, so that $T^{-1}1$ is not uniquely defined.
 

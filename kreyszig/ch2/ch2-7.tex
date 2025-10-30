@@ -1,4 +1,4 @@
-\subsection{Bounded and continuous linear operators}
+\section{Bounded and continuous linear operators}
 
 
 \begin{exercise}{1}
@@ -9,7 +9,7 @@ Let $X,Y,Z$ be normed spaces, and $T_1:Y\to Z$ and $T_2:Y\to Z$ and $T:X\to X$ b
 \end{enumerate}
 \end{exercise}
 \begin{proof}
-Notice that for all $x\in\DDD(T_1,T_2)$ we have
+Notice that for all $x\in\cD(T_1,T_2)$ we have
 \[
 \norm{T_1T_2x}\leq\norm{T_1}\norm{T_2x}\leq\norm{T_1}\norm{T_2}\norm{x},
 \]
@@ -25,7 +25,7 @@ Show that a linear operator $T:X\to Y$ is bounded if and only if $T$ maps bounde
 \begin{proof}
 ($\Rightarrow$) Let $T$ be bounded. Then there exists a constant $c$ so that for all $x\in X$, we have $\norm{Tx}\leq c\norm{x}$. Let $A\subseteq X$ be bounded. Hence, $\sup_{x,y\in A}\norm{x-y}=M<\infty$. Thus, $\norm{T(x-y)}=\norm{Tx-Ty}\leq c\norm{x-y}<\infty$ so that the set $T(A)$ is bounded too.
 
-($\Leftarrow$) Let $T$ map bounded sets to bounded sets, so that if $A\subseteq X$ is a bounded set, then $T(A)\subseteq Y$ is bounded too. Let $A=\set{x\in X:\norm{x}=1}$. To see this is a bounded set, notice that if $x,y\in A$, then $d(x,y)\leq d(x,0)+d(0,y) =\norm{x}+\norm{y}=2$. By exercise 2.2.15, we have that $A$ is bounded if and only if there is a positive number $c$ such that $\norm{x}\leq c$ for all $x\in A$. Thus, since $T(A)$ is bounded, such $c$ exists (notice this is an alternative proof that $A$ itself is bounded, by taking $c=1$). Finally, by definition, we have that $\norm{T} =\sup_{x\in\DDD(T),\norm{x}=1}\norm{Tx} =\sup_{x\in A}\norm{Tx}<\infty$, so that $T$ is bounded, as required.
+($\Leftarrow$) Let $T$ map bounded sets to bounded sets, so that if $A\subseteq X$ is a bounded set, then $T(A)\subseteq Y$ is bounded too. Let $A=\set{x\in X:\norm{x}=1}$. To see this is a bounded set, notice that if $x,y\in A$, then $d(x,y)\leq d(x,0)+d(0,y) =\norm{x}+\norm{y}=2$. By exercise 2.2.15, we have that $A$ is bounded if and only if there is a positive number $c$ such that $\norm{x}\leq c$ for all $x\in A$. Thus, since $T(A)$ is bounded, such $c$ exists (notice this is an alternative proof that $A$ itself is bounded, by taking $c=1$). Finally, by definition, we have that $\norm{T} =\sup_{x\in\cD(T),\norm{x}=1}\norm{Tx} =\sup_{x\in A}\norm{Tx}<\infty$, so that $T$ is bounded, as required.
 \end{proof}
 
 \begin{exercise}{5}
@@ -40,7 +40,7 @@ Thus $\sup_{n\in\N}\absoluteValue{x^n/n} =\norm{Tx} \leq\norm{x} =\sup_{n\in\N}\
 \end{proof}
 
 \begin{exercise}{6 (Range)}
-Show that the range $\RRR(T)$ of a bounded linear operator $T:X\to Y$ need not be closed in $Y$. 
+Show that the range $\cR(T)$ of a bounded linear operator $T:X\to Y$ need not be closed in $Y$. 
 Hint: Use $T$ in exercise 5.
 \end{exercise}
 \begin{proof}
@@ -62,7 +62,7 @@ To see $T^{-1}$ is bounded, notice that $\norm{x} =\norm{T(T^{-1}x)} \geq b\norm
 \end{proof}
 
 \begin{exercise}{8}
-Show that the inverse $T^{-1}:\RRR(T)\to X$ of a bounded linear operator $T:X\to Y$ need not be bounded. 
+Show that the inverse $T^{-1}:\cR(T)\to X$ of a bounded linear operator $T:X\to Y$ need not be bounded. 
 Hint: Use $T$ in exercise 5.
 \end{exercise}
 \begin{proof}
@@ -70,17 +70,17 @@ We argued on exercise 6 that any finite sequence of $n$ sequential 1s is the ima
 Now consider the sequence (of sequences), where $x^n$ is the sequence of $n$ 1s.
 For each $x^n$, we have $\norm{x^n}_\infty=\sup_j\absoluteValue{x^n_j}=1$.
 Furthermore, for all $n$ we have $\norm{T^{-1}x^n} =\sup_j\absoluteValue{nx^n_j} =n$ so
-$\norm{T^{-1}}=\sup_{x\in\DDD(T^{-1}),\norm{x}=1}\norm{T^{-1}x}=\infty$, so that $T^{-1}$ is not bounded.
+$\norm{T^{-1}}=\sup_{x\in\cD(T^{-1}),\norm{x}=1}\norm{T^{-1}x}=\infty$, so that $T^{-1}$ is not bounded.
 \end{proof}
 
 \begin{exercise}{9}
 Let $T:C[0,1]\to C[0,1]$ be defined by $y(t)=\int_0^t x(\tau)d\tau$. 
-Find $\RRR(T)$ and $T^{-1}:\RRR(T)\to C[0,1]$. Is $T^{-1}$ linear and bounded?
+Find $\cR(T)$ and $T^{-1}:\cR(T)\to C[0,1]$. Is $T^{-1}$ linear and bounded?
 \end{exercise}
 \begin{proof}
-We have that $\RRR(T)$ is the set of functions in $[0,1]$ that are differentiable at least once and whose derivative is continuous (that is, in $C^1[0,1]$), and for which $f(0)=0$ (since whenever we integrate with predetermined limits we don't get any constant).
+We have that $\cR(T)$ is the set of functions in $[0,1]$ that are differentiable at least once and whose derivative is continuous (that is, in $C^1[0,1]$), and for which $f(0)=0$ (since whenever we integrate with predetermined limits we don't get any constant).
 $T^{-1}$ is the differentiation operator, which is linear but not bounded.
-To see that $T^{-1}$ is not bounded, notice that $x=t^n$ for an arbitrary $n$, which is in $\RRR(T)$, and use the argument in 2.7-5.
+To see that $T^{-1}$ is not bounded, notice that $x=t^n$ for an arbitrary $n$, which is in $\cR(T)$, and use the argument in 2.7-5.
 \end{proof}
 
 \begin{exercise}{10}

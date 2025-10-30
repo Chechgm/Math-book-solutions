@@ -1,4 +1,4 @@
-\subsection{Linear functionals}
+\section{Linear functionals}
 
 
 \begin{exercise}{2}
@@ -215,33 +215,33 @@ where the inequality follows because $f$ is bounded.
 \end{proof}
 
 \begin{exercise}{9}
-Let $f\neq 0$ be any linear functional on a vector space $X$ and $x_0$ any fixed element of $X\setminus \NNN(f)$, where $\NNN(f)$ is the null space of $f$.
-Show that any $x\in X$ has a unique representation $x=\alpha x_0+y$, where $y\in\NNN(f)$.
+Let $f\neq 0$ be any linear functional on a vector space $X$ and $x_0$ any fixed element of $X\setminus \cN(f)$, where $\cN(f)$ is the null space of $f$.
+Show that any $x\in X$ has a unique representation $x=\alpha x_0+y$, where $y\in\cN(f)$.
 \end{exercise}
 \begin{proof}
 Theorem 1.45 in Axler's Linear Algebra says that the sum of two subspaces of $X$ is a direct sum if and only if the intersection of the subspaces is zero.
-That condition is precisely satisfied for the subspaces $\vecspan(x_0)$ and $\NNN(f)$.
-Since $x_0\in X\setminus\NNN(f)$, then $f(\alpha x_0)\neq 0$ for $\alpha\neq 0$ and $f(\alpha x_0)=0$ if $\alpha=0$, thus $\vecspan(x_0)\cap \NNN(f)=\set{0}$.
+That condition is precisely satisfied for the subspaces $\vecspan(x_0)$ and $\cN(f)$.
+Since $x_0\in X\setminus\cN(f)$, then $f(\alpha x_0)\neq 0$ for $\alpha\neq 0$ and $f(\alpha x_0)=0$ if $\alpha=0$, thus $\vecspan(x_0)\cap \cN(f)=\set{0}$.
 
 Now to see that $x\in X$ can be represented as such, choose $\alpha = f(x)/f(x_0)$ and $y=x-\alpha x_0$.
-Since $x_0\in X\setminus\NNN(f)$, then $\alpha$ is defined and $f(y) =f(x-\alpha x_0) =f(x)-\alpha f(x_0) =f(x)-f(x)=0$, so that $y\in\NNN(f)$.
+Since $x_0\in X\setminus\cN(f)$, then $\alpha$ is defined and $f(y) =f(x-\alpha x_0) =f(x)-\alpha f(x_0) =f(x)-f(x)=0$, so that $y\in\cN(f)$.
 Last, we have $\alpha x_0+y =\alpha x_0 +x-\alpha x_0=x$, as required.
 \end{proof}
 
 \begin{exercise}{10}
-Show that in exercise 9, two elements $x_1,x_2\in X$ belong to the same element of the quotient space $\quot{X}{\NNN(f)}$ if and only if $f(x_1)=f(x_2)$;
-show that $\text{codim }\NNN(f)=1$.
+Show that in exercise 9, two elements $x_1,x_2\in X$ belong to the same element of the quotient space $\quot{X}{\cN(f)}$ if and only if $f(x_1)=f(x_2)$;
+show that $\text{codim }\cN(f)=1$.
 (Cf. 2.1.14).
 \end{exercise}
 \begin{proof}
-Recall that $x_1$ and $x_2$ are equivalent if and only if $x_1-x_2\in\NNN(f)$.
+Recall that $x_1$ and $x_2$ are equivalent if and only if $x_1-x_2\in\cN(f)$.
 Suppose $x_1$ and $x_2$ belong to the same element of the quotient space.
-Then $x_1+y_1=x_2+y_2$ for $y_1,y_2\in\NNN(f)$, but this implies $f(x_1+y_1) =f(x_1)+f(y_1) =f(x_1) =f(x_2+y_2) =f(x_2)$, as required.
+Then $x_1+y_1=x_2+y_2$ for $y_1,y_2\in\cN(f)$, but this implies $f(x_1+y_1) =f(x_1)+f(y_1) =f(x_1) =f(x_2+y_2) =f(x_2)$, as required.
 
 Now suppose $f(x_1)=f(x_2)$.
-Then $f(x_1)-f(x_2) =f(x_1-x_2) =0$, so that $x_1-x_2\in\NNN(f)$, so that they are elements of the quotient space.
+Then $f(x_1)-f(x_2) =f(x_1-x_2) =0$, so that $x_1-x_2\in\cN(f)$, so that they are elements of the quotient space.
 
-Too see $\text{codim }\NNN(f)=1$ we use the result we just proved.
+Too see $\text{codim }\cN(f)=1$ we use the result we just proved.
 That is, we just proved that the points in $X$ are collapsed to elements in the codomain in $f$, the reals.
 Since the reals is a one-dimensional vector space, then the quotient space (and the codimension of $f$) are one dimensional too.
 \end{proof}
@@ -252,19 +252,19 @@ Show that two linear functionals $f_1\neq 0$ and $f_2\neq 0$ which are defined o
 \begin{proof}
 This is a corollary to exercise 9.
 The definition of direct sum (see 1.40 in Axler) tells us that each element of the sum can be written in only one way as the sum of elements of each of the subspaces.
-Since $\NNN(f_1)=\NNN(f_2):=\NNN(f)$, for a fixed $x_0$, every $x\in X$ can be written as $x=\alpha x_0+y$, where $y\in\NNN(f)$, with a unique $\alpha$.
+Since $\cN(f_1)=\cN(f_2):=\cN(f)$, for a fixed $x_0$, every $x\in X$ can be written as $x=\alpha x_0+y$, where $y\in\cN(f)$, with a unique $\alpha$.
 The choice of $\alpha$ we found in exercise 9 is $\alpha=f_1(x)/f_1(x_0)=f_2(x)/f_2(x_0)$.
 Since $x_0$ is fixed before hand, this implies $cf_1(x)=f_2(x)$, where $c=f_2(x_0)/f_1(x_0)$, giving us the desired result.
 \end{proof}
 
 \begin{exercise}{12 (Hyperplane)}
 If $Y$ is a subspace of a vector space $X$ and $\text{codim }Y=1$ (cf. 2.1.14), then every element of $\quot{X}{Y}$ is called a hyperplane parallel to $Y$.
-Show that for any linear functional $f\neq 0$ on $X$, the set $H_1=\set{x\in X: f(x)=1}$ is a hyperplane parallel to the null space $\NNN(f)$ of $f$.
+Show that for any linear functional $f\neq 0$ on $X$, the set $H_1=\set{x\in X: f(x)=1}$ is a hyperplane parallel to the null space $\cN(f)$ of $f$.
 \end{exercise}
 \begin{proof}
 This is a Corollary to exercise 10.
 Since all elements of $x_1$ and $x_2$ of $H_1$ map to the same value under $f$, then they belong to the same element of the quotient space.
-$H_1$ constitutes the whole element of $\quot{X}{\NNN(f)}$ because any other $x$ whose value under $f$ would be different would belong to another element of the quotient space.
+$H_1$ constitutes the whole element of $\quot{X}{\cN(f)}$ because any other $x$ whose value under $f$ would be different would belong to another element of the quotient space.
 \end{proof}
 
 \begin{exercise}{13}
@@ -273,7 +273,7 @@ If $Y$ is a subspace of a vector space $X$ and $f$ is a linear functional on $X$
 \begin{proof}
 Suppose there exists $y\in Y$ so that $f(y)\neq 0$.
 Then since $f$ is linear and homogenous, and $Y$ is a vector space itself, then for all $k$ in the scalar field we can choose $a=k/f(y)$, so that $f(ay)=af(y)=k$.
-Now if $Y\subseteq\NNN(f)$, then $f(y)=0$ for all $y\in Y$, and $f$ would still be a valid functional on $X$.
+Now if $Y\subseteq\cN(f)$, then $f(y)=0$ for all $y\in Y$, and $f$ would still be a valid functional on $X$.
 \end{proof}
 
 \begin{exercise}{14}
