@@ -1,8 +1,113 @@
 \section{Series related to orthonormal sequences and sets}
 
+
 \begin{exercise}{1}
-fill
+If $\sum \alpha_k e_k$ converges with sum $x$, show that  $\sum \absoluteValue{\alpha_k}^2$ has the sum $\norm{x}^2$.
 \end{exercise}
 \begin{proof}
-fill
-\end{proof}
+We have $x = \sum \alpha_k e_k$, so that
+\begin{align*}
+    \norm{x}^2
+    =& \norm{\sum \alpha_k e_k}^2\\
+    =& \brackets{\sum \alpha_k e_k, \sum \alpha_j e_j}\\
+    =& \sum_k \alpha_k \brackets{e_k, \sum \alpha_j e_j}\\
+    =& \sum_k \alpha_k \overline{\brackets{\sum \alpha_j e_j, e_k}}\\
+    =& \sum_k \sum_j \alpha_k \overline{\alpha_j} \overline{\brackets{e_j, e_k}}\\
+    =& \sum_k \absoluteValue{\alpha_k}^2,
+\end{align*}
+where the last equality follows from the fact that $\brackets{e_j, e_k} = \overline{\brackets{e_j, e_k}} = 1$ whenever $j=k$ and 0 otherwise.
+\end{proof} 
+
+\begin{exercise}{4}
+If $(x_n)$ is a sequence in an inner product space $X$ such that the series $\norm{x_1} + \norm{x_2} + \dots$ converges, show that $(s_n)$ is a Cauchy sequence, where $s_n = x_1 + \dots + x_n$.
+\end{exercise}
+\begin{proof}
+First notice that $\norm{s_n - s_m} = \norm{\sum_{i=m+1}^n x_i} \leq \sum_{i=m+1}^n \norm{x_i}$, where the last inequality follows by the triangle inequality.
+We have that $\sum \norm{x_i}$ is convergent by hypothesis, so that the sequence of partial sums is Cauchy.
+Thus, for any $\epsilon > 0$, we can find an $N\in\N$, such that whenever $n,m > N$, it holds that 
+\begin{align*}
+    \absoluteValue{\sum^n \norm{x_i} - \sum^m \norm{x_i}} 
+    = \absoluteValue{\sum_{i=m+1}^n \norm{x_i}} 
+    = \sum_{i=m+1}^n \norm{x_i} 
+    < \epsilon.
+\end{align*}
+Since the second to last element of the inequality is the same as above, we have that $(s_n)$ is Cauchy.
+\end{proof} 
+
+\begin{exercise}{5}
+Show that in a Hilbert space $H$, convergence in $\sum \norm{x_j}$ implies convergence in $\sum x_i$.
+\end{exercise}
+\begin{proof}
+From exercise 4, we know that if $\sum \norm{x_j}$ converges, then the sequence $(s_n)$, where $s_n = \sum^n x_j$ is Cauchy.
+Since $(s_n)$ is a sequence in $H$, a Hilbert space, it converges, giving us the desired result.
+\end{proof} 
+
+\begin{exercise}{6}
+Let $(e_n)$ be an orthonormal sequence in a Hilbert space $H$.
+Show that if $x = \sum \alpha_j e_j$, $y = \sum \beta_j e_j$, then $\brackets{x, y} = \sum \alpha_j \bar{\beta}_j$, the series being absolutely convergent.
+\end{exercise}
+\begin{proof}
+We have
+\begin{align*}
+    \brackets{x, y}
+    =& \brackets{\sum \alpha_j e_j, \sum \beta_k e_k}\\
+    =& \sum \alpha_j \brackets{e_j, \sum \beta_k e_k}\\
+    =& \sum \alpha_j \overline{\brackets{\sum \beta_k e_k, e_j}}\\
+    =& \sum \alpha_j \sum \bar{\beta}_k \overline{\brackets{e_k, e_j}}\\
+    =& \sum \alpha_k \bar{\beta}_k,
+\end{align*}
+where the last equality follows from the fact that $\overline{\brackets{e_j, e_k}} = \brackets{e_k, e_j} = 1$ if $j = k$ and $0$ otherwise.
+\end{proof} 
+
+\begin{exercise}{7}
+Let $(e_n)$ be an orthonormal sequence in a Hilbert space $H$.
+Show that for every $x \in H$, the vector $y = \sum \brackets{x, e_k} e_k$ exists in $H$ and $x-y$ is orthogonal to every $e_k$.
+\end{exercise}
+\begin{proof}
+By 3.5-2 for all $x\in H$, $\sum \alpha_k e_k$ converges with $\alpha_k \brackets{x, e_k}$, so that $\sum \brackets{x, e_k} e_k = y$ for some $y \in H$.
+Furthermore,
+\begin{align*}
+    \brackets{x-y, e_k}
+    =& \brackets{x - \sum \brackets{x, e_j}e_j, e_k}\\
+    =& \brackets{x, e_k} - \brackets{\sum \brackets{x, e_j}e_j, e_k}\\
+    =& \brackets{x, e_k} - \sum \brackets{x, e_j}\brackets{e_j, e_k}\\
+    =& \brackets{x, e_k} - \brackets{x, e_k} = 0,
+\end{align*}
+where the second to last equality follows from the orthogonality of $(e_n)$.
+Thus $x-y \perp e_k$ for all $k$.
+\end{proof} 
+
+\begin{exercise}{8}
+Let $(e_n)$ be an orthonormal sequence in a Hilbert space $H$, and let $M = \vecspan(e_n)$.
+Show that for any $x \in H$ we have $x \in \bar{M}$ if and only if $x$ can be represented by $x = \sum \alpha_j e_j$ with coefficients $\alpha_j = \brackets{x, e_j}$.
+\end{exercise}
+\begin{proof}
+Notice that $\bar{M}$ is itself a Hilbert space from the fact that it is itself closed and using 3.2-4.
+Thus, for the forward direction of the statement, we can apply 3.5-2.c.
+The converse follows from the fact that $x$ is the limit of a linear combination of elements in $M$ and the closure of a set respects limits.
+\end{proof} 
+
+\begin{exercise}{9}
+Let $(e_n)$ and $(e_n')$ be orthonormal sequences in a Hilbert space $H$, and let $M = \vecspan(e_n)$ and $M' = \vecspan(e_n')$.
+Using problem 8, show that $\bar{M} = \bar{M'}$ if and only if $e_n = \sum \alpha_{n m} e_m'$ and $e_n' = \sum \bar{\alpha}_{m n} e_m$, where $\alpha_{n m} = \brackets{e_n, e_m'}$.
+\end{exercise}
+\begin{proof}
+($\Rightarrow$)
+If $M = \bar{M}$, then from 3.5-2.c, we can write $e_n' = \sum \beta_m e_m$, where $\beta_m = \brackets{e_n', e_m} = \overline{\brackets{e_m,e_n'}} = \bar{\alpha}_{mn}$.
+The expression for $e_n$ can be found using the same strategy mutatis mutandis.
+
+($\Leftarrow$)
+Let $x \in \bar{M}$.
+Thus,
+\begin{align*}
+    x 
+    =& \sum_k \brackets{x, e_k}e_k\\
+    =& \sum_k \brackets{x, e_k} \sum_m \alpha_{km}e_m'\\
+    =& \sum_m \sum_k \brackets{x, e_k} \alpha_{km} e_m'\\
+    =& \sum_m \beta_m e_m',
+\end{align*}
+where $\beta_m =\sum_k \brackets{x, e_k} \alpha_{km}$, that is, $x \in \bar{M}'$, meaning that $\bar{M} \subseteq \bar{M}'$
+As above, we can prove that $\bar{M}' \subseteq \bar{M}$ using the same strategy mutatis mutandis.
+Putting these results together we get the desired result that $\bar{M} = \bar{M}'$.
+
+\end{proof} 

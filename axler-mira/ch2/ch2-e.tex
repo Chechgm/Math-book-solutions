@@ -1,11 +1,6 @@
 \section{2E Convergence of measurable functions}
 %\addcontentsline{toc}{section}{2E Convergence of measurable functions}
 
-7 This is a surprisingly useful property. It shows that in many cases, pointwise convergence is enough to conclude uniform convergence. And uniform convergence is useful to swap integral and limit and other things.
-13 This goes with the usual idea that it is very hard to construct non-Borel measurable functions and that they definitely don't show up "in nature". The sup is an easy well-behaved operations that does not yield non-measurable monsters
-15 This shows that Borel measurable functions really are all we need. Any Lebesgue measurable functions differs from one except for measure 0 sets. And a measure 0 set will be shown to be totally irrelevant for integrals and other applications of measure theory.
-
-2.D.24
 
 \begin{exercise}{1}
 Suppose $X$ is a finite set.
@@ -64,22 +59,89 @@ We have that this sequence of functions converges pointwise to $f(x) = 0$ but th
 \end{proof} 
 
 \begin{exercise}{7}
-fill
+Suppose $F$ is a closed bounded subset of $\R$ and $g_1, g_2, \dots$ is an increasing of continuous real valued functions on $F$ (thus $g_1(x) \leq g_2(x) \leq \dots$ for all $x \in F$) such that $\sup\set{g_1(x), g_2(x),\dots} < \infty$ for each $x \in F$.
+Define a real valued function $g$ on $F$ by $g(x) = \lim g_k(x)$.
+Prove that $g$ is continuous on $F$ if and only if $g_1,g_2,\dots$ converges uniformly on $F$ to $g$.
+[The result above is called Dini's Theorem].
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$)
+Suppose $g$ is continuous and let $f_n(x) - g(x) - g_n(x)$.
+Because $g_n \to g$, then $f_n(x) \to 0$.
+Additionally $f_n$ is decreasing, because $g_n$ is increasing (for all $x \in F)$.
+Let $\epsilon > 0$ and define $A_n = \set{x \in F: f_n(x) < \epsilon}$.
+The sequence $(A_n)$ is an open cover of $F$, this is true because as we argued, $f_n$ converges pointwise to 0, so that for all $\epsilon > 0$, there exists an $N\in\N$, such that whenever $n>N$, it holds that $\absoluteValue{f_n(x)} < \epsilon$.
+We have that $F$ is a closed and bounded set, so that by the Heine-Borel Theorem, $(A_n)$ must contain a finite subcover of $F$.
+Thus, if we define $N$ to be the minimum of the indices of the finite subcover, we have that for $n>N$, it holds for all $x\in F$ that $\absoluteValue{f_n(x)} < \epsilon$.
+Adding $g$ back to $f_n$ does not change this property and thus $g_n \to g$ uniformly.
+
+($\Leftarrow$)
+Let $\epsilon > 0$ and suppose $g_n \to g$ uniformly.
+Then there exists an $N \in \N$, such that whenever $n \geq N$, it holds that $\absoluteValue{g_n(x) - g(x)} < \epsilon/3$ for all $x \in F$.
+Likewise, since each $g_n$ is continuous, we have that there exists a $\delta > 0$ such that whenever $\absoluteValue{x - y} < \delta$, we have that $\absoluteValue{g_N(x) - g_N(y)} < \epsilon/3$ for all $x,y \in F$.
+We have
+\begin{align*}
+    \absoluteValue{g(x) -g(y)}
+    =& \absoluteValue{g(x) - g_N(x) + g_N(x) - g_N(y) + g_N(y) - g(y)}\\
+    =& \absoluteValue{g(x) - g_N(x)} 
+    + \absoluteValue{g_N(x) - g_N(y)} 
+    + \absoluteValue{g_N(y) - g(y)}\\
+    <& 3\epsilon/3 = \epsilon,
+\end{align*}
+whenever $\absoluteValue{x - y} < \delta$.
+Thus $g$ is continuous.
+\end{proof} 
+
+\begin{exercise}{9}
+Suppose $F_1, \dots, F_n$ are disjoint closed subsets of $\R$.
+Prove that if $g: F_1 \cup \dots \cup F_n \to \R$ is a function such that $g|_{F_k}$ is a continuous function for each $k \in \set{1,\dots, n}$, then $g$ is a continuous function.
+\end{exercise}
+\begin{proof}
+Since each $g|_{F_k}$ is continuous, then for all $\epsilon > 0$, there exists a $\delta_k > 0$, such that whenever $\absoluteValue{x-y} < \delta_k$, it holds that $\absoluteValue{g|_{F_k}(x) - g|_{F_k}(y)} < \epsilon$.
+Take $\delta = \min\set{\delta_1,\dots, \delta_k}$ and let $\absoluteValue{x - y} < \delta$, we then have that $\absoluteValue{g(x) - g(y)} < \epsilon$, as required.
 \end{proof} 
 
 \begin{exercise}{13}
-fill
+Prove or give a counterexample:
+If $f_t: \R \to \R$ is a Borel measurable function for each $t \in \R$ and $f: \R \to (-\infty, \infty]$ is defined by $f(x) = \sup\set{f_t(x): t\in\R}$, then $f$ is a Borel measurable function.
 \end{exercise}
 \begin{proof}
-fill
+Let $V$ be the Vitali set from 2.18. 
+Let $t \in V$ and consider the Borel measurable function $f_t(x) = 1$ if $x=t$ and 0 otherwise.
+We have that $f(x) = \sup\set{f_t(x): t\in\R} = \chi_V(x)$, which is not measurable because $V$ is not measurable (see 2.38), giving us the desired counterexample.
 \end{proof} 
 
 \begin{exercise}{15}
-fill
+Suppose $B$ is a Borel set and $f: B \to \R$ is a Lebesgue measurable function.
+Show that there exists a Borel measurable function $g: B \to \R$ such that $\absoluteValue{\set{x \in B: g(x) \neq f(x)}} = 0$.
 \end{exercise}
 \begin{proof}
-fill
+To prove this we will follow closely the approach in 2.95.
+Let $(\R, \cB)$ be the measurable space given by the reals and the borel sets.
+Now define $(B, \cS)$, where $\cS = \set{F \cap B, F \in \cB}$, we know $\cS$ is a $\sigma$-algebra because of exercise 2.B.11.
+
+Using 2.89 we can approximate $f$ by $f_1, f_2, \dots$, where $f_k$ is simple and Lebesgue measurable (because $f$ is itself Lebesgue measurable).
+For a fixed $k \in \N$, $f_k = \chi_{A_1}c_1 + \dots + \chi_{A_n}c_n$, where each $A_i$ is Lebesgue measurable.
+
+From 2.71, we know there exists $B_i \subseteq A_i$ where $B_i$ is Borel measurable and $\absoluteValue{A_i \setminus B_i} = 0$, for all $i$.
+Define $g_k = \chi_{B_1}c_1 + \dots + \chi_{B_n}c_n$.
+Then $g_k$ is Borel measurable and $\absoluteValue{\set{x \in B: g_k(x) \neq f_k(x)}} = 0$.
+
+If $x \notin \bigcup \set{x \in B: g_k(x) \neq f_k(x)}$, then $g_k(x) = f_k(x)$ for all $k \in \N$ and hence $\lim g_k(x) = f(x)$.
+Let $E = \set{x \in B: \lim g_k(x) \text{ exists in }B}$.
+Then by exercise 2.B.14, $E$ is a Borel subset of $B$.
+Furthermore, since $\lim g_k(x)$ exists, then $f_k(x) = g_k(x)$ for all $k \in \N$ and thus $B\setminus E = \bigcup \set{x \in B: g_k(x) \neq f_k(x)}$, so that $\absoluteValue{B \setminus E} = 0$.
+To see this, notice that 
+\begin{align*}
+    \absoluteValue{B \setminus E} \leq \absoluteValue{\bigcup \set{x \in B: g_k(x) \neq f_k(x)}} \leq \sum \absoluteValue{\set{x \in B: g_k(x) \neq f_k(x)}} = 0.
+\end{align*}
+
+For $x \in B$, let $g(x) = \lim (\chi_E g_k)(x)$.
+If $x \in E$, then the limit exists by definition, if $x \in B\setminus E$, the limit also exists because $(\chi_E g_k)(x) = 0$ for all $k \in \N$.
+For all $k \in \N$, we have that $\chi_E g_k$ is Borel measurable.
+This is true because of 2.44 and the fact that both $\chi_E$ and $g_k$ are Borel measurable, so that their composition is measurable too.
+Furthermore, since since $g$ is the limit of Borel measurable functions, then 2.48 tells us $g$ is Borel measurable too.
+
+Finally, we have that $\set{x \in B: g(x) \neq f(x)} \subseteq \bigcup \set{x \in B: g_k(x) \neq f_k(x)}$ so that $\absoluteValue{\set{x \in B: g(x) \neq f(x)}} = 0$, completing the proof. 
+
 \end{proof} 

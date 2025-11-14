@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{booksSolutions}[15/08/2023 Class for book solutions]
+\ProvidesClass{bookSolutions}[15/08/2023 Class for book solutions]
 
 % book is our base class
 \LoadClass{book}

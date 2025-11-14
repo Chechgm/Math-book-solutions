@@ -1,8 +1,5 @@
 \section{Orthogonal complements and direct sums}
 
-3 Simple example to reinforce the ideas
-9
-10 Two very important theorems related to the orthogonal complement and double complement. Used all the time!
 
 \begin{exercise}{1}
 Let $H$ be a Hilbert space, $M \subseteq H$ a convex subset, and $(x_n)$ a sequence in $M$ such that $\norm{x_n} \to d$, where $d = \inf_{x \in M} \norm{x}$.
@@ -67,8 +64,23 @@ The vector that minimises such norm is $x_i=1/n$ for all $i$.
 \end{exercise}
 \begin{proof}
 \begin{enumerate}
-    \item even: $f(-x) = f(x)$, odd: $f(-x) = -f(x)$.
-    \item 
+    \item Recall that a function is even if $f(-x) = f(x)$ and odd if $f(-x) = -f(x)$.
+    Let $f:[-1,1] \to \R$ be continuous.
+    Let $o(x) = 1/2(f(x) - f(-x))$ and $e(x) = 1/2(f(x)+f(-x))$.
+    We can verify using the above definitions that $o(x)$ is odd and $e(x)$ is even.
+    We have 
+    \begin{align*}
+        f(x)
+        = o(x) + e(x)
+        = 1/2(f(x) - f(-x)) + 1/2(f(x) + f(-x))
+        = f(x),
+    \end{align*}
+    so that an arbitrary continuous function in $[-1,1]$ is the sum of an even and an odd function.
+    To finish the proof that the sum is direct, we prove that the intersection between the set of odd functions and even functions is 0.
+    So let $f$ be odd and even.
+    We then have that $f(-x) = f(x)$ and $f(-x) = -f(x)$, so that $f(x) = - f(x)$, so that $f(x) = 0$ for all $x$.
+    \item $\R^3$ can be written as the direct sum of $\vecspan{(e_1,e_2)}$ and $\vecspan{(e_3)}$, these subspaces are orthogonal to each other.
+    Furthermore, consider the subspaces given by $\vecspan{((1,1,1), (1,2,3))}$ and $\vecspan{((3,1,1))}$, these subspaces are not orthogonal, but their sum is $\R^3$ given that they are not linearly independent, and their dimension equals that of the dimension of $\R^3$.
 \end{enumerate}
 \end{proof}
 
@@ -143,16 +155,35 @@ Show that
 \end{enumerate}
 \end{proof}
 
-\begin{exercise}{9}
-fill
+\begin{exercise}{8}
+Show that the annihilator $M^\perp$ of a set $M\neq \emptyset$ in an inner product space $X$ is a closed subspace of $X$.
 \end{exercise}
 \begin{proof}
-fill
+Let $(y_n)$ be a sequence in $M^\perp$ so that $y_n \to y$.
+We want to prove $y\in M^\perp$
+For all $n$ we have that $\brackets{y_n, x} = 0$ for all $x \in M$.
+Hence, $\brackets{y,x} = \brackets{\lim y_n, x} = \lim \brackets{y_n, x} = 0$, for all $x \in M$, where the second equality follows from the continuity of the inner product (Lemma 3.2-2).
+Thus $M^\perp$ is closed.
+\end{proof}
+
+\begin{exercise}{9}
+Show that a subspace $Y$ of a Hilbert space $H$ is closed in $H$ if and only if $Y = Y^{\perp \perp}$.
+\end{exercise}
+\begin{proof}
+The forward direction is the content of Lemma 3.3-6.
+To prove the converse, suppose $Y = Y^{\perp \perp}$.
+From exercise 8, we know that $Y^{\perp \perp}$ is a closed subspace of $H$ because $Y^{\perp \perp}$ is the annihilator of $Y^\perp$.
+Thus, by the hypothesis, $Y$ is closed too, as desired.
 \end{proof}
 
 \begin{exercise}{10}
-fill
+If $M \neq \emptyset$ is any subset of a Hilbert space $H$, show that $M^{\perp \perp}$ is the smallest closed subspace of $H$ which contains $M$, that is, $M^{\perp \perp}$ is contained in any closed subspace $Y \subseteq H$ such that $M \subseteq Y$.
 \end{exercise}
 \begin{proof}
-fill
+Notice that by exercise 8, $M^{\perp \perp}$ is closed in $H$.
+By 3.2-4, $M^{\perp \perp}$ is  complete, so that $M^{\perp \perp}$ is itself a Hilbert space, with $M \subseteq M^{\perp \perp}$.
+We will prove that $M$ is dense in $M^{\perp \perp}$.
+To do this, notice that by definition $M^\perp \perp M^{\perp \perp}$, so that the only element of $M^\perp$ in $M^{\perp \perp}$ is $0$;
+that is $M^\perp = \set{0}$ as a subset of the Hilbert space $M^{\perp \perp}$.
+Thus, by exercise 9, $M$ is dense in $M^{\perp \perp}$, which implies that any closed subspace containing $M^{\perp \perp}$ must also contain $M$ itself.
 \end{proof}
