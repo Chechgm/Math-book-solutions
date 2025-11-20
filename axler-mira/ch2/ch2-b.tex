@@ -110,10 +110,10 @@ We have
     x \in \R \setminus (t+B) 
     \iff& x \notin t+B\\
     \iff& x \neq t+b,\, b \in B\\
-    \iff& x-t \neq b,\, b \in B\\
-    \iff& x \in (\R \setminus B) - t,
+    \iff& x-t = a,\, a \in \R\setminus B\\
+    \iff& x \in t+(\R \setminus B),
 \end{align*}
-so that $\R \setminus B \in \cB'$, since $(-t) + (\R \setminus B)$ is Borel.
+so that $\R \setminus B \in \cB'$, since $t + (\R \setminus B)$ is Borel.
 
 Now let $B_1, B_2, \dots$ be in $\cB'$, so that $t+B_1, t+B_2, \dots$ are Borel sets.
 We have that $\bigcup (t+B_i)$ is Borel, and 
@@ -202,7 +202,7 @@ Suppose $f : \R \to \R$ is a function.
 \begin{enumerate}
     \item For $k \in \N$, let $G_k = \set{a\in\R : \text{ there exists } \delta >0 \text{ such that } \absoluteValue{f(b)-f(c)}<1/k \text{ for all } b,c\in(a-\delta,a+\delta)}$.
     Prove that $G_k$ is an open subset of $\R$ for each $k\in\N$.
-    \item Prove that the set of points at which $f$ is continuous equals $\bigcup G_k$.
+    \item Prove that the set of points at which $f$ is continuous equals $\bigcap G_k$.
     \item Conclude that the set of points at which $f$ is continuous is a Borel set.
 \end{enumerate}
 \end{exercise}

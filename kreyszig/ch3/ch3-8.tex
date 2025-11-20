@@ -1,134 +1,105 @@
 \section{Representation of functionals on Hilbert spaces}
 
-\begin{exercise}{x}
-fill
+
+\begin{exercise}{1 (Space $\R^3$)}
+Show that any linear functional $f$ on $\R^3$ can be represented by a dot product $f(x) = x \cdot z = x_1z_1 + x_2z_2 + x_3z_3$.
 \end{exercise}
 \begin{proof}
-fill
+This is an application of the Riesz's Theorem, by recalling that in $\R^3$ the inner product is the dot product.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{2 (Space $l^2$)}
+Show that every bounded linear functional $f$ on $l^2$ can be represented in the form $f(x) = \sum x_i\bar{z}_i$, where $z = l^2$.
 \end{exercise}
 \begin{proof}
-fill
+This is an application of the Riesz's Theorem, recalling that in $l^2$, the inner product is the given expression (3.1-6).
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{3}
+If $z$ is a fixed element of an inner product space $X$, show that $f(x) = \brackets{x, z}$ defines a bounded linear functional $f$ on $X$, of norm $\norm{z}$.
 \end{exercise}
 \begin{proof}
-fill
+We have that $\brackets{\cdot, \cdot}: X\times X\to K$, so that by fixing the second position of the function we obtain a function $f(x) = \brackets{x, z}: X \to K$, a functional.
+Furthermore, linearity follows from the linearity of the inner product on the first position.
+
+To see that $\norm{f} = \norm{z}$ we will follow a similar strategy to that in the proof of 3.8-1.
+First, if $f(x) = 0$ for all $x$, then $z=0$ and the equality holds.
+Thus suppose $f(x) \neq 0$ for some $x$.
+With $x=z$, and Equation (3) in 2.8, we get $\norm{z}^2 = \brackets{z,z} = f(z) \leq \norm{f}\norm{z}$, so that dividing both sides of the inequality by $\norm{z}$, we obtain $\norm{z} \leq \norm{f}$.
+
+For the other inequality, using the Schwarz inequality in 3.2, we get $\absoluteValue{f(x)} = \absoluteValue{\brackets{x, z}} \leq \norm{x}\norm{z}$, so that $\norm{f} = \sup_{\norm{x}=1} \absoluteValue{\brackets{x,z}} \leq \norm{z}$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{4}
+Consider exercise 3.
+If the mapping $X \to X'$ given by $z \mapsto f$ is surjective, show that $X$ must be a Hilbert space.
 \end{exercise}
 \begin{proof}
-fill
+From Theorem 3.8-1, we know that the function defined in exercise 3 is injective.
+Thus, if we also add the condition that the function is surjective we get a bijection.
+The bijectivity of the function, in addition to linearity and the fact that is isometric, tells us that $X$ and $X'$ are isomorphic.
+Finally, the dual of any space is a Banach space (see 2.10-4) so that $X'$ is a Hilbert space, since completeness is preserved under isomorphisms, we get that $X$ is Hilbert too.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{5}
+Show that the dual space of the real space $l^2$ is $l^2$.
+(Use 3.8-1)
 \end{exercise}
 \begin{proof}
-fill
+In exercise 2 we showed that every functional on $l^2$ can be represented as $f(x) = \sum x_iz_i$ for $(z_n) \in l^2$, so that $(z_n) \in l^2$ can be identified with a functional on $l^2$.
+Furthermore, exercise 7, tells us that the dual space of $l^2$ is a Hilbert space with inner product given by $\brackets{f_z, f_v}_1 = \overline{\brackets{z,v}} = \brackets{z,v}$.
+However, since we are working on the real space $l^2$, we have that $\overline{\brackets{z,v}} = \brackets{z,v} = \brackets{f_z, f_v}_1$, so that the dual of $l^2$ is precisely $l^2$, as required.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{6}
+Show that Theorem 3.8-1 defines an isometric bijection $T: H \to H'$, $z \mapsto f_z = \brackets{\cdot, z}$ which is not linear but conjugate linear, that is, $az + bv \mapsto \bar{a}f_z + \bar{b}f_v$.
 \end{exercise}
 \begin{proof}
-fill
+We have 
+\begin{align*}
+    az + bv
+    =& f_{az +bv}\\
+    =& \brackets{\cdot, az + bv}\\
+    =& \overline{\brackets{az + bv, \cdot}}\\
+    =& \overline{\brackets{az, \cdot}} + \overline{\brackets{bv, \cdot}}\\
+    =& \bar{a}\overline{\brackets{z, \cdot}} + \bar{b}\overline{\brackets{v, \cdot}}\\
+    =& \bar{a}\brackets{\cdot, z} + \bar{b}\brackets{\cdot, v}\\
+    =& \bar{a}f_z + \bar{b}f_v,
+\end{align*}
+as required.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{7}
+Show that the dual space $H'$ of a Hilbert space $H$ is a Hilbert space with inner product $\brackets{\cdot, \cdot}_1$ defined by $\brackets{f_z, f_v}_1 = \overline{\brackets{z,v}} = \brackets{v, z}$, where $f_z(x) = \brackets{x, z}$.
 \end{exercise}
 \begin{proof}
-fill
+Let $f_v, f_w, f_z$ be elements of $H'$ and $a$ a scalar in the field, $K$ in which $H$ is defined.
+We have 
+\begin{align*}
+    \brackets{f_z+f_w, f_v}_1
+    = \overline{\brackets{z+w, v}}
+    = \overline{\brackets{z,v}} + \overline{\brackets{w,v}}
+    = \brackets{f_z, f_v}_1 + \brackets{f_w, f_v}_1.
+\end{align*}
+
+Moreover, first, we have that $af_z = a\brackets{x,z} = a\overline{\brackets{z, x}} = \overline{\brackets{\bar{a}z, x}} = \brackets{x, \bar{a}z} = f_{\bar{a}z}$.
+Hence, $\brackets{af_z, f_v}_1 = \brackets{f_{\bar{a}z}, f_v}_1 = \overline{\brackets{\bar{a}z, v}} = a\overline{\brackets{z, v}} = a\brackets{f_z, f_v}_1$
+
+For conjugacy of the inner product, we have that $\overline{\brackets{f_v, f_z}_1} = \overline{\overline{\brackets{v, z}}} = \brackets{v, z} = \brackets{f_z, f_v}_1$
+
+Finally, we have that $\brackets{f_z, f_z}_1 = \brackets{z, z} \geq 0$ with equality if and only if $z=0$ so that $\brackets{f_z, f_z} \geq 0$ with equality if and only if $f_z = 0$.
+
+From 2.10-4 we know that the dual of a normed space is a Banach space, thus, $H'$ is a Hilbert space.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{8}
+Show that any Hilbert space $H$ is isomorphic (see 3.6) with its second dual space $H'' = (H')'$.
+(This property is called reflexivity of $H$.
+It will be considered in more detail for normed spaces in 4.6).
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
+We proved in exercise 6 that $T: H \to H'$ given by $z \to f_z = \brackets{\cdot, z}$ is a conjugate linear isometric bijection.
+Taking this a step further, we can define $T': H' \to H''$, given by $f_z\mapsto f_z' = \brackets{\cdot, f_z}$, which using again exercise 6 is also a conjugate linear isometric bijection.
+Thus, the composition $T'T: H \to H''$ is a linear isometric bijection, since the composition of isometric bijections is an isometric bijection, and furthermore, linearity (as opposed to conjugate linearity) follows from the fact that we take the conjugate of the conjugate.
+Thus, $H$ and $H''$ are isomorphic.
 \end{proof} 

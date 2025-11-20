@@ -1,74 +1,174 @@
 \section{Total orthonormal sets and sequences}
 
-1 The answer is yes for finite dimensions, but you should find a counterexample in infinite dimensions. This makes finite linear combinations not particularly useful in functional analysis
-2 So all the different notions of dimension all equal eachother in finite dimensions. Things are much more complicated in infinite dimensions. 
-3
-4 Another equivalent form of the Parseval theorem, this time dealing with inner product instead of norm.
-5 So we see that total <-> Parseval theorem <-> Parseval relation
-6
-7 So any separable Hilbert space admits an orthonormal basis, and it can be constructed explicitly, on the other hand, if the Hilbert space is not separable, the axiom of choice becomes a necessary tool. The orthonormal basis cannot be given explicitly anymore
-8 A bit of a generalization, saying that an orthonormal sequence can be completed to an orthonormal basis. This holds in general Hilbert spaces without separable, but the separable case allows for an explicit basis
-9 Useful to show when two vectors are equal.
 
 \begin{exercise}{1}
-fill
+If $F$ is an orthonormal basis in an inner product space $X$, can we represent every $x \in X$ as a linear combination of elements of $F$?
+(By definition, a linear combination consists of finitely many terms).
 \end{exercise}
 \begin{proof}
-fill
+No, consider the Hilbert space $l^2$ and its canonical basis which turns out to be orthonormal. 
+Any element of $l^2$ that has a nonzero value on infinitely many entries cannot be represented by a linear combination of the canonical basis.
 \end{proof} 
 
 \begin{exercise}{2}
-fill
+Show that if the orthogonal dimension of a Hilbert space $H$ is finite, it equals the dimension of $H$ regarded as a vector space;
+conversely, if the latter is finite, show that so is the former.
 \end{exercise}
 \begin{proof}
-fill
+Suppose the orthogonal dimension is finite. 
+Then there exists a finite orthonormalisation set $e_1, \dots, e_n$ such that $H = \overline{\vecspan(e_1, \dots, e_n)} = \vecspan(e_1, \dots, e_n)$, where the second equality follows from the fact that finite dimensional vector spaces are closed (2.4-3).
+Thus the dimension of $H$ is finite.
+
+Conversely, suppose that the dimension of $H$ is finite.
+Thus, $H$ has a basis $v_1, \dots, v_n$.
+Using the Gram-Schmidt procedure, we can turn such basis into an orthonormal basis $e_1, \dots, e_n$.
+We then have that $H = \overline{\vecspan(e_1, \dots, e_n)}$ so that the orthogonal dimension of $H$ is finite.
 \end{proof} 
 
 \begin{exercise}{3}
-fill
+From what Theorem of elementary geometry does $\sum \absoluteValue{\brackets{x, e_k}}^2 = \norm{x}^2$ follow in the case of Euclidean $n$-space?
 \end{exercise}
 \begin{proof}
-fill
+This would be the Pythagorean Theorem.
 \end{proof} 
 
 \begin{exercise}{4}
-fill
+Derive from $\sum \absoluteValue{\brackets{x, e_k}}^2 = \norm{x}^2$ the following formula (which is often called the Parseval relation):
+$\brackets{x, y} = \sum_k \brackets{x, e_k} \overline{\brackets{y, e_k}}$.
 \end{exercise}
 \begin{proof}
-fill
+We will go beyond what is being asked and instead we will prove derive each equation from the other.
+
+First compute the following norms to be later used with the polarisation identity:
+\begin{align*}
+    \norm{x + y}^2
+    =& \sum \absoluteValue{\brackets{x+y, e_k}}^2\\
+    =& \sum \absoluteValue{\brackets{x, e_k} + \brackets{y, e_k}}^2\\
+    =& \sum [\brackets{x, e_k} + \brackets{y, e_k}][\overline{\brackets{x, e_k} + \brackets{y, e_k}}]\\
+    =& \sum \brackets{x, e_k}\overline{\brackets{x, e_k}}
+    + \brackets{x, e_k}\overline{\brackets{y, e_k}}
+    + \brackets{y, e_k}\overline{\brackets{x, e_k}}
+    + \brackets{y, e_k}\overline{\brackets{y, e_k}},
+\end{align*}
+and also,
+\begin{align*}
+    \norm{x - y}^2
+    =& \sum \absoluteValue{\brackets{x-y, e_k}}^2\\
+    =& \sum \absoluteValue{\brackets{x, e_k} - \brackets{y, e_k}}^2\\
+    =& \sum [\brackets{x, e_k} - \brackets{y, e_k}][\overline{\brackets{x, e_k} - \brackets{y, e_k}}]\\
+    =& \sum \brackets{x, e_k}\overline{\brackets{x, e_k}}
+    - \brackets{x, e_k}\overline{\brackets{y, e_k}}
+    - \brackets{y, e_k}\overline{\brackets{x, e_k}}
+    + \brackets{y, e_k}\overline{\brackets{y, e_k}}.
+\end{align*}
+Thus
+\begin{align*}
+    \norm{x + y}^2 - \norm{x - y}^2
+    =& \sum 2\brackets{x, e_k}\overline{\brackets{y, e_k}}
+    + 2\brackets{y, e_k}\overline{\brackets{x, e_k}}.
+\end{align*}
+Likewise, we can conclude that
+\begin{align*}
+    \norm{x + iy}^2
+    =& \sum \brackets{x, e_k}\overline{\brackets{x, e_k}}
+    + \brackets{x, e_k}\overline{i\brackets{y, e_k}}
+    + i\brackets{y, e_k}\overline{\brackets{x, e_k}}
+    + i\brackets{y, e_k}\overline{\brackets{y, e_k}},
+\end{align*}
+and
+\begin{align*}
+    \norm{x - iy}^2
+    =& \sum \brackets{x, e_k}\overline{\brackets{x, e_k}}
+    - \brackets{x, e_k}\overline{i\brackets{y, e_k}}
+    - i\brackets{y, e_k}\overline{\brackets{x, e_k}}
+    + \brackets{y, e_k}\overline{i\brackets{y, e_k}},
+\end{align*}
+so that
+\begin{align*}
+    \norm{x + iy}^2 - \norm{x - iy}^2
+    =& \sum 2\brackets{x, e_k}\overline{i\brackets{y, e_k}}
+    + 2i\brackets{y, e_k}\overline{\brackets{x, e_k}}.
+\end{align*}
+We are now equipped to use the complex polarisation identity to obtain the desired expression:
+\begin{align*}
+    \brackets{x, y}
+    =& \operatorname{Re}\brackets{x, y} + i\operatorname{Im}\brackets{x, y}\\
+    =& (1/4)\parens{\norm{x + y}^2 - \norm{x - y}^2] + i/4[\norm{x + iy}^2 - \norm{x - iy}^2}\\
+    =& (1/4)\parens{\sum 2\brackets{x, e_k}\overline{\brackets{y, e_k}}
+    + 2\brackets{y, e_k}\overline{\brackets{x, e_k}}}\\
+    &+ (i/4)\parens{\sum 2\brackets{x, e_k}\overline{i\brackets{y, e_k}}
+    + 2i\brackets{y, e_k}\overline{\brackets{x, e_k}}}\\
+    =& (1/4)\parens{\sum 2\brackets{x, e_k}\overline{\brackets{y, e_k}}
+    + 2\brackets{y, e_k}\overline{\brackets{x, e_k}}}\\
+    &+ (i/4)\parens{\sum2i\brackets{y, e_k}\overline{\brackets{x, e_k}}
+    - 2i\brackets{x, e_k}\overline{\brackets{y, e_k}}}\\
+    =& (1/4)\parens{\sum 2\brackets{x, e_k}\overline{\brackets{y, e_k}}
+    + 2\brackets{y, e_k}\overline{\brackets{x, e_k}}}\\
+    &+ (1/4)\parens{\sum 2\brackets{x, e_k}\overline{\brackets{y, e_k}}
+    - 2\brackets{y, e_k}\overline{\brackets{x, e_k}}}\\
+    =& (1/4)\sum 4\brackets{x, e_k}\overline{\brackets{y, e_k}}\\
+    =& \sum \brackets{x, e_k}\overline{\brackets{y, e_k}},
+\end{align*}
+as required.
+
+To prove the equivalence of the equations in the other direction, we start with the squared norm of $x$:
+\begin{align*}
+    \norm{x}^2 = \brackets{x, x} = \sum \brackets{x, e_k}\overline{\brackets{x, e_k}} = \sum \absoluteValue{\brackets{x,e_k}}^2,
+\end{align*}
+and the second equality follows from the given equality where $y=x$.
 \end{proof} 
 
 \begin{exercise}{5}
-fill
+Show that an orthonormal family $(e_k)$, $k \in I$, in a Hilbert space $H$ is total if and only if $\brackets{x, y} = \sum_k \brackets{x, e_k}\overline{\brackets{y, e_k}}$ holds for every $x$ and $y$ in $H$.
 \end{exercise}
 \begin{proof}
-fill
+In exercise 4 we showed that Parseval’s relation and $\brackets{x, y} = \sum_k \brackets{x, e_k}\overline{\brackets{y, e_k}}$ are equivalent.
+Furthermore, Theorem 3.6-3 tells as that Parseval’s relation and the totality of $(e_k)$ are equivalent.
+Thus the totality of $(e_k)$ and $\brackets{x, y} = \sum_k \brackets{x, e_k}\overline{\brackets{y, e_k}}$ are equivalent too.
 \end{proof} 
 
 \begin{exercise}{6}
-fill
+Let $H$ be a separable Hilbert space and $M$ a countable dense subset of $H$.
+Show that $H$ contains a total orthonormalisation sequence which can be obtained from $M$ by the Gram-Schmidt procedure.
 \end{exercise}
 \begin{proof}
-fill
+First remove from $M$ all linearly dependent vectors to obtain a sequence of linearly independent vectors $(v_n)$.
+Notice that $\overline{\vecspan(v_n)} = \overline{\vecspan(M)} = H$, so that $\vecspan(v_n)$ remains dense in $H$.
+Now apply the Gram-Schmidt procedure to $(v_n)$ to obtain the desired orthonormal set.
 \end{proof} 
 
 \begin{exercise}{7}
-fill
+Show that if a Hilbert space $H$ is separable, the existence of a total orthonormal set in $H$ can be proved without the use of Zorn’s lemma.
 \end{exercise}
 \begin{proof}
-fill
+This is precisely what we showed above.
+Start with a dense countable subset of $H$ and apply the procedure described in exercise 6.
 \end{proof} 
 
 \begin{exercise}{8}
-fill
+Show that for any orthonormal sequence $F$ in a separable Hilbert space $H$ there is a total orthonormal sequence $\bar{F}$ which contains $F$.
 \end{exercise}
 \begin{proof}
-fill
+Let $K = \overline{\vecspan(F)}$.
+This subspace is itself a Hilbert space, since it is a closed subspace contained in a Hilbert space.
+Furthermore, $K^\perp$ is also a Hilbert space because of the projection Theorem (3.3-4), but moreover, because $H$ is separable, so is $K^\perp$.
+Thus, we can find an orthonormal basis of $K^\perp$, say $F'$.
+Now we define $\bar{F} = F \cup F'$.
+We have that $\bar{F}$ is a total orthonormal sequence because $F$ spans $K$, $F'$ spans $K^\perp$ and as argued above $H = K \oplus K^\perp$, as it was to be proven.
 \end{proof} 
 
 \begin{exercise}{9}
-fill
+9. Let $M$ be a total set in an inner product space $X$.
+If $\brackets{v, x} = \brackets{w, x}$ for all $x \in M$, show that $v = w$.
 \end{exercise}
 \begin{proof}
-fill
+We have 
+\begin{align*}
+	&\brackets{v, x} = \brackets{w, x} &&\iff\\
+	&\brackets{v, x} - \brackets{w, x} = 0 &&\iff\\
+	&\brackets{v - w, x} = 0 &&\iff\\
+	& v - w = 0 &&\iff\\
+	& v = w,
+\end{align*}
+Where the second to last equality follows from 3.6-2.a, since $v-w \perp M$.
 \end{proof} 
