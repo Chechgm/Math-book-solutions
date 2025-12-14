@@ -24,7 +24,13 @@ Prove that if $f: X \to [0, \infty]$ is $\cS$-measurable then $\int f d\delta_c 
 [Careful: $\set{c}$ may not be in $\cS$].
 \end{exercise}
 \begin{proof}
-fill
+Let $\cP$ be any partition of $\cS$.
+We have that
+\begin{align}
+    \cL(f, \cP) = \sum_{A_j \in \cP} \delta_c(A_j) \inf_{A_j}f = \inf_{A_i} f \leq f(c),
+\end{align}
+for the unique $A_i$ such that $c \in A_i$.
+Thus, $\int f = \sup \cL(f,\cP) \leq f(c)$.
 \end{proof} 
 
 \begin{exercise}{5}

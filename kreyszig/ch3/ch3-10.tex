@@ -1,134 +1,259 @@
-\section{Seld-adjoint, unitary and normal operators}
+\section{Self-adjoint, unitary and normal operators}
 
-\begin{exercise}{x}
-fill
+
+\begin{exercise}{1}
+If $S$ and $T$ are bounded self-adjoint linear operators on a Hilbert space $H$ and $a$ and $b$ are real, show that $\bar{T} = aS + bT$ is self-adjoint.
 \end{exercise}
 \begin{proof}
-fill
+We have $(aS + bT)^\ast = \bar{a}S^\ast + \bar{b}T^\ast = aS + bT$, where the first equality follows from applying 3.9.4.b and c, and the last equality follows from the fact that $a$ and $b$ are real, and $S$ and $T$ are self-adjoint.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{2}
+How could we use Theorem 3.10-3 to prove Theorem 3.10-5 for a complex Hilbert space $H$?
 \end{exercise}
 \begin{proof}
-fill
+Theorem 3.10-3.b says that if $H$ is complex and $\brackets{Tx, x}$ is real for all $x \in H$, the operator $T$ is self-adjoint.
+We want to prove that the limit of a sequence of self-adjoint operators is itself self-adjoint. 
+So we let $(T_n)$ be a sequence of self-adjoint operators and let $x \in H$.
+We have that the sequence $\brackets{T_nx, x}$ is real for all $n$ and $x$.
+Since the reals numbers constitute a closed set, then it must be the case that its limit, namely $\brackets{Tx, x}$ is real for all $x$.
+Thus, using 3.10-3.b, we get that $T$ is self-adjoint.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{3}
+Show that if $T: H \to H$ is a bounded self-adjoint linear operator, so is $T^n$, where $n$ is a positive integer.
 \end{exercise}
 \begin{proof}
-fill
+We will show this using induction.
+For the base case, we have that $(T^2)^\ast = (TT)^\ast = T\ast T^\ast = T T = T^2$.
+For the inductive hypothesis, suppose $(T^n)^\ast = T^n$.
+Consider $(T^{n+1})^\ast = (T^nT)^\ast = T^\ast (T^n)^\ast = TT^n = T^{n+1}$, as required.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{4}
+Show that for any bounded linear operator $T$ on $H$, the operators $T_1 = (1/2)(T + T^\ast)$ and $T_2 = (1/2i)(T- T^\ast)$ are self adjoint.
+Show that $T = T_1 + iT_2$, and $T^\ast = T_1 - iT_2$.
+Show uniqueness, that is, $T_1 + iT_2 = S_1 + iS_2$ implies $T_1 = S_1$ and $T_2 = S_2$;
+here $S_1$ and $S_2$ are self-adjoint by assumption.
 \end{exercise}
 \begin{proof}
-fill
+First,
+\begin{align*}
+    T_1^\ast
+    =& [(1/2)(T + T^\ast)]^\ast\\
+    =& (1/2)(T + T^\ast)^\ast\\
+    =& (1/2)(T^\ast + (T^\ast)^\ast)\\
+    =& (1/2)(T^\ast + T)
+    = T_1,
+\end{align*}
+where we used the properties of the Hilbert adjoint as in Theorem 3.9-4.
+The self-adjointness of $T_2$ can be proved in a similar manner.
+
+Second,
+\begin{align*}
+    T_1 + iT_2 
+    =& (1/2)(T + T^\ast) + (i/2i)(T - T^\ast)\\
+    =& (1/2)T + (1/2)T^\ast + (1/2)T - (1/2)T^\ast
+    = T.
+\end{align*}
+The equality $T^\ast = T_1 - iT_2$ can be proved in a similar way.
+
+Finally, assume $T_1 + iT_2 = S_1 + iS_2$.
+Let $T = T_1 + iT_2$ so that $T^\ast = (T_1 + iT_2)^\ast = T_1 - iT_2$ (because $T_1$ and $T_2$ are assumed to be self-adjoint), and furthermore $T_1 = (1/2)(T + T^\ast) = (1/2)[(T_1 + iT_2) + (T_1 - iT_2)]$.
+The same relations hold mutatis mutandis with $S, S^\ast, S_1$ and $S_2$.
+From the previous numerals, we know we can write $S_1 = (1/2)(S + S^\ast) = (1/2)(T + T^\ast) = T_1$.
+The same holds for $S_2$ and $T_2$, giving us the desired equality.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{6}
+If $T: H \to H$ is a bounded self-adjoint linear operator and $T \neq 0$, then $T^n \neq 0$.
+Prove this for
+\begin{enumerate}
+    \item $n = 2, 4, 8, 16, \dots$,
+    \item for every $n \in \N$.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item Suppose for the sake of contradiction that $T^n = 0$ let $n=2^m$.
+    We have  $\brackets{T^{2^m}x, x} = \brackets{T^{2^{m-1}}T^{2^{m-1}}x, x} = \brackets{T^{2^{m-1}}x, T^{2^{m-1}}x} = \norm{T^{2^{m-1}}x}^2$ for all $x$, implying that $T = 0$.
+    \item Suppose, again, for the sake of contradiction, that $T^n = 0$ for some $n \in \N$, with $n \neq 2^m$ for some $m$. 
+    We can compose $T$ with itself enough times so as to reach an exponent of the form $n = 2^m$.
+    Since such a composition will necessarily be 0 (since $T^n = 0$), then this would contradict the first numeral in this exercise.
+\end{enumerate}
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{7}
+Show that the column vectors of a unitary matrix constitute an orthonormal set with respect to the inner product on $\C^n$.
 \end{exercise}
 \begin{proof}
-fill
+Let $M$ be unitary.
+Since $MM^\ast = MM^{-1} = I$, then we must have that $M\bar{M}^\top = I$.
+Hence, $\brackets{c_i, c_j} = 1$ if $i=j$ and 0 otherwise, where $c_i$ are the columns of $M$.
+That is, $c_1, \dots, c_n$ is an orthonormal set.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{8}
+Show that an isometric linear operator $T$ satisfies $T^\ast T = I$, where $I$ is the identity operator on $H$.
 \end{exercise}
 \begin{proof}
-fill
+First we consider the case of real $H$.
+We will first prove the following Lemma: 
+an isometric linear operator has the following property: $\brackets{Tx, Ty} = \brackets{x,y}$.
+To see this, first $\norm{Tx} = d(Tx, 0) = d(x, 0) = \norm{x}$.
+Now, using the polarisation identity, we have that 
+\begin{align*}
+    \brackets{Tx, Ty}
+    =& (1/4)[\norm{Tx + Ty}^2 - \norm{Tx - Ty}^2]\\
+    =& (1/4)[\norm{T(x + y)}^2 - \norm{T(x - y)}^2]\\
+    =& (1/4)[\norm{x + y}^2 - \norm{x - y}^2]\\
+    =& \brackets{x, y}.
+\end{align*}
+
+With this in mind, we have $\brackets{TT^\ast x, y} = \brackets{Tx, Ty} = \brackets{x,y} = \brackets{Ix, y}$.
+Using 3.9-3.a with $Q = T^\ast T -I$, we get that $T^\ast T = I$.
+
+In the case $H$ is complex, we have $\brackets{T^\ast Tx, x} = \brackets{Tx, Tx} = \brackets{x, x} = \brackets{Ix, x}$, so that by applying 3.9-3.b with $Q = T^\ast T - I$ we get that $T^\ast T = I$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{9}
+Show that an isometric linear operator $T: H \to H$ which is not unitary maps the Hilbert space $H$ onto a proper closed subspace of $H$.
 \end{exercise}
 \begin{proof}
-fill
+We know that $\cR(T)$ is a subspace of $H$.
+We will now prove that $\cR(T)$ is closed.
+First, consider a sequence $(y_n)$ in $\cR(T)$, so that $y_n \to y$, where $y \in \overline{\cR(T)}$.
+We also have that $y_n = Tx_n$, for some $x_n \in H$.
+
+We want to prove that $y \in \cR(T)$.
+First, since $(y_n)$ converges, $(y_n)$ is Cauchy so that $\norm{x_n - x_m} = \norm{Tx_n - Tx_m} = \norm{y_n - y_m}$, where the first equality follows because $T$ is an isometry and we can make the last element of the equality arbitrarily small;
+that is $(x_n)$ is also Cauchy.
+Now, since $(x_n)$ is Cauchy, it converges because $H$ is a Hilbert space and thus complete, say $x_n \to x$.
+Finally, $T$ is continuous ($\norm{Tx - Ty} = \norm{x - y}$, and make the right hand side arbitrarily small), so that $y_n = Tx_n \to Tx = y$, and $y = Tx \in \cR(T)$, as required.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{10}
+Let $X$ be an inner product space and $T: X \to X$ an isometric linear operator.
+If $\dim X < \infty$, show that $T$ is unitary.
 \end{exercise}
 \begin{proof}
-fill
+We will first prove that $T$ is invertible.
+From linear algebra, we know that $\cN(T) = \set{0}$ is equivalent to $T$ being injective which is itself equivalent to $T$ having an inverse.
+Let $Tx = Ty$, so that 
+\begin{align*}
+    0 
+    = \brackets{Tx - Ty, Tx - Ty} 
+    = \brackets{T(x-y), T(x-y)} 
+    = \brackets{x-y, x-y} 
+    = \norm{x-y}^2,
+\end{align*}
+which we know to be equal to 0 if and only if $x-y=0$, as required.
+
+We proved in exercise 8 that $T^\ast T = I$, and we can use the same technique, mutatis mutandis, to prove that $T^\ast T = I$, so that $T^\ast = T^{-1}$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{11 (Unitary equivalence)}
+Let $S$ and $T$ be linear operators on a Hilbert space $H$.
+The operator $S$ is said to be unitarily equivalent to $T$ if there is a unitary operator $U$ on $H$ such that $S = UTU^{-1} = UTU^\ast$.
+If $T$ is self-adjoint, show that $S$ is self-adjoint.
 \end{exercise}
 \begin{proof}
-fill
+We have 
+\begin{align*}
+    S^\ast 
+    =& (UTU^\ast)^\ast\\
+    =& (U^\ast)^\ast (UT)^\ast\\
+    =& U T^\ast U^\ast\\
+    =& UTU^\ast,
+\end{align*}
+since we assume $T$ is self-adjoint.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{12}
+Show that $T$ is normal if and only if $T_1$ and $T_2$ in exercise 4 commute.
+Illustrate part of the situation by two rowed normal matrices.
 \end{exercise}
 \begin{proof}
-fill
+We have the following two equalities:
+\begin{align*}
+    T_1 T_2 
+    =& (1/2)(T + T^\ast)(1/2i)(T - T^\ast)\\
+    =& (1/2)(1/2i)(TT - TT^\ast + T^\ast T -T^\ast T^\ast),
+\end{align*}
+and
+\begin{align*}
+    T_2 T_1 
+    =& (1/2i)(T - T^\ast)(1/2i)(T + T^\ast)\\
+    =& (1/2)(1/2i)(TT + TT^\ast - T^\ast T -T^\ast T^\ast).
+\end{align*}
+These two are equal if and only if $-TT^\ast + T^\ast T = TT^\ast - T^\ast T$ which implies $2T^\ast T = 2 TT^\ast$;
+that is, $T$ and $T^\ast$ commute, so that $T$ is normal.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{13}
+IF $T_n : H \to H$, where $n = 1, 2, \dots$ are normal linear operators and $T_n \to T$, show that $T$ is a normal linear operator.
 \end{exercise}
 \begin{proof}
-fill
+We proved in exercise 3.9.3 that the function $f(T) = T^\ast$ is continuous.
+Furthermore, the function defined by $g(S,T) = ST$ is also continuous.
+Thus, we have that $T_nT_n^\ast \to TT^\ast$ and $T_n^\ast T_n \to T^\ast T$, so that $T$ is normal.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{14}
+If $S$ and $T$ are normal linear operators satisfying $ST^\ast = T^\ast S$ and $TS^\ast = S^\ast T$, show that their sum $S+T$ and product $ST$ are normal.
 \end{exercise}
 \begin{proof}
-fill
+We have 
+\begin{align*}
+    (S + T)(S + T)^\ast
+    = (S + T)(S^\ast + T^\ast)
+    = SS^\ast + ST^\ast + TS^\ast  + TT^\ast,
+\end{align*}
+and
+\begin{align*}
+    (S + T)^\ast (S + T)
+    = (S^\ast + T^\ast)(S + T)
+    = S^\ast S + S^\ast T + T^\ast S + T^\ast T.
+\end{align*}
+Since $S^\ast S = S S^\ast$, $S T^\ast + T^\ast S$, $S^\ast T = T S^\ast$ and $T T^\ast = T^\ast T$, then the two equalities coincide;
+that is, $S+T$ is normal.
+
+The property for $ST$ can be proved in a similar manner.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{15}
+Show that a bounded linear operator $T: H \to H$ on a complex Hilbert space $H$ is normal if and only if $\norm{T^\ast x} = \norm{Tx}$ for all $x \in H$.
+Using this, show that for a normal linear operator, $\norm{T^2} = \norm{T}^2$.
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
+($\Rightarrow$)
+Suppose $T$ is normal, so that $T T^\ast = T^\ast T$.
+We have 
+\begin{align*}
+    \norm{Tx}^2 
+    =& \brackets{Tx, Tx}\\ 
+    =& \brackets{T^\ast T x, x}\\ 
+    =& \brackets{T T^\ast x, x}\\
+    =& \brackets{T^\ast x, T^\ast x}
+    = \norm{T^\ast x}^2.
+\end{align*}
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
+($\Leftarrow$)
+Now suppose $\brackets{Tx, Tx} = \brackets{T^\ast x, T^\ast x}$.
+We have
+\begin{align*}
+    &\brackets{Tx, Tx} = \brackets{T^\ast x, T^\ast x} && \iff\\
+    &\brackets{T^\ast Tx, x} = \brackets{T T^\ast x, x} && \iff\\
+    &\brackets{T^\ast Tx, x} - \brackets{T T^\ast x, x} = 0 && \iff\\
+    &\brackets{(T^\ast T - T T^\ast)x, x} = 0.
+\end{align*}
+Using 3.9-2.b with $Q = T^\ast T - TT^\ast$, we get $T^\ast T = T T^\ast$, so that $T$ is normal.
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
+To see that $\norm{T^2} = \norm{T}^2$, first let $x = Ty$, where $y \in H$.
+We have $\norm{T^\ast T y} = \norm{T^2 y}$ (by replacing $x =Ty$ in $\norm{T^\ast x} = \norm{Tx}$).
+Hence, 
+\begin{align*}
+    \norm{T^2} = \sup_{\norm{y}=1} \norm{T^2 y} = \sup_{\norm{y}=1} \norm{T^\ast T y} = \norm{T^\ast T} = \norm{T}^2,
+\end{align*}
+the last equality following from 3.9-6e.
 \end{proof} 

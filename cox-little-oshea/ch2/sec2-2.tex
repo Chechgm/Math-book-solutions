@@ -9,14 +9,41 @@
 Show that grlex is a monomial order according to Definition 1.
 \end{exercise}
 \begin{proof}
-fill
+Recall the definition of grlex:
+Let $\alpha, \beta \in \N^n$.
+We say $\alpha >_{\text{grlex}} \beta$ if $\absoluteValue{\alpha} = \sum \alpha_i > \sum \beta_i = \absoluteValue{\beta}$, or $\absoluteValue{\alpha}=\absoluteValue{\beta}$ and $\alpha >_{\text{lex}} \beta$.
+
+First, since $>$ is an ordering on the naturals, and $>_{\text{lex}}$ is an ordering on $\N^n$, $>_{\text{grlex}}$ is an ordering on $\N^n$.
+
+Second, let $\gamma \in \N^n$ and $\alpha > \beta$.
+We need to prove that $\alpha + \gamma > \beta + \gamma$ for the first condition of grlex, because we know the condition holds for lex, thus we assume $\absoluteValue{\alpha} > \absoluteValue{\beta}$.
+We have $\sum \alpha_i > \sum \beta_i$ and adding each $\gamma_i$ on both sides of the inequality, we obtain $\sum \alpha_i + \gamma_i > \sum \beta_i \gamma_i$ which is the same as $\absoluteValue{\alpha + \gamma} > \absoluteValue{\beta + \gamma}$, as required.
+
+Third, $>_{\text{grlex}}$ is a well-ordering because $>$ is a well ordering on the naturals (the first condition) and $>_{\text{lex}}$ is a well-ordering on $\N^n$.
 \end{proof} 
 
 \begin{exercise}{7}
-fill
+Let $>$ be any monomial order.
+\begin{enumerate}
+    \item Show that $\alpha \geq 0$ for all $\alpha \in \N^n$.
+    [Hint: Proof by contradiction].
+    \item If $x^\alpha$ divides $x^\beta$, then $\alpha \leq \beta$.
+    Is the converse true?
+    \item If $\alpha \in \N^n$, then $\alpha$ is the smalles element of $\alpha + \N^n = \set{\alpha + \beta: \beta \N^n}$.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item fill
+    \item If $x^\alpha$ divides $x^\beta$, then there exists a $\gamma \in \N^n$ such that $x^\beta = x^\alpha x^\gamma + r$, thus $\beta = \alpha +\gamma$ (where equality here is in the monomial order). 
+    Hence either $\beta = \alpha$, if $\gamma = 0$ or $\beta > \alpha$, as required.
+    
+    The converse is not true.
+    Consider the lex order in $k[x,y]$.
+    We have that $x>y$ but $x$ does not divide $y$.
+    \item We have that $\beta \geq 0$ for all $\beta \in \N^n$.
+    By the second property of nomonomial orders, $\beta + \alpha \geq \alpha$, so that $\alpha$ is the smallest element of $\alpha + \N^n$.
+\end{enumerate}
 \end{proof} 
 
 \begin{exercise}{11}
