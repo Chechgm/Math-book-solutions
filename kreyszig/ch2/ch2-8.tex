@@ -284,3 +284,13 @@ Notice that, by definition, $\norm{f}$ is the smallest $c$ (the infimum) such th
 Now let $x\in H_1$, thus, $f(x)=1$ and so $1/\norm{x}\leq c$.
 Since the quantity on the left is maximised whenever $\norm{x}$ is the minimised, then $\norm{f}$ is the inverse (or reciprocal) of $\bar{d}=\inf\set{\norm{x}:f(x)=1}$, as required.
 \end{proof}
+
+\begin{exercise}{15 (Half space)}
+Let $f \neq 0$ be a bounded linear functional on a real normed space $X$.
+Then for any scalar $c$ we have a hyperplane $H_c = \set{x \in X: f(x) = c}$, and $H_c$ determines the two half-spaces $X_{c1} = \set{x: f(x) \leq c}$ and $X_{c2} = \set{x: f(x) \geq c}$.
+Show that the closed unit ball lies in $X_{c1}$, where $c = \norm{f}$, but for no $\epsilon > 0$, the half space $X_{c1}$ with $c = \norm{f} - \epsilon$ contains that ball.
+\end{exercise}
+\begin{proof}
+We have that $\absoluteValue{f(x)} \leq \norm{f}\norm{x} = \norm{f}$, for any $x$ with $\norm{x} \leq 1$, we get $\absoluteValue{f(x)} \leq \norm{f} = c$, so that $x \in X_{c1}$.
+By definition, $\norm{f} = \sup_{\norm{x} \leq 1} \absoluteValue{f(x)}$, thus for any $\epsilon > 0$, we can find an $x$ with $\norm{x} \leq 1$ and $\absoluteValue{f(x)} >  \norm{f} - \epsilon$, which implies $x$ does not belong to $X_{c1}$ with $c = \norm{f} - \epsilon$.
+\end{proof}
