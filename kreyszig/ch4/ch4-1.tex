@@ -1,139 +1,49 @@
 \section{Zorn's Lemma}
 
-Kreyszig 4.1 Zorn's Lemma
-2 Just an example of a frequently occuring partial order
-5 No need for the axiom of choice or Zorn's lemma for this one, it is only interesting for infinite sets 
-6 Notice the difference between "greatest" and "maximal". Maximal is not necessarily unique
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{2}
+Let $X$ be the set of all real-valued functions $x$ on the interval $[0,1]$, and let $x \leq y$ mean that $x(t) \leq y(t)$ for all $t \in [0,1]$.
+Show that this defines a partial ordering.
+Is it a total ordering?
+Does $X$ have maximal elements?
 \end{exercise}
 \begin{proof}
-fill
+We will first prove that $X$ is a partial ordering.
+
+(PO1) Reflexivity: We have that $x(t) = x(t)$ so that $x \leq x$ for all $x \in X$.
+
+(PO2) Antisymmetry: Suppose $x \leq y$ and $y \leq x$.
+Then $x(t) \leq y(t)$ and $y(t) \leq x(t)$ for all $t$ and thus $x = y$.
+
+(PO3) Transitivity: Suppose $x \leq y$ and $y \leq z$.
+Then $x(t) \leq y(t)$ and $y(t) \leq z(t)$ so that $x(t) \leq y(t) \leq z(t)$ for all $t$ so that $x \leq z$.
+
+$X$ is not a total order.
+Consider the function $x(t)=1$ for $t \in [0, 1/2)$ and $x(t) = 0$ otherwise, and the function $y(t) = 0$ for $t \in [1/2,1]$ and $y(t) = 0$ otherwise.
+The functions $x$ and $y$ are not comparable.
+
+Notice that $X$ does not have any maximal elements.
+To see this, suppose $m$ is a candidate maximal element, we have that the function $m'(t) = m(t) + 1 \geq m(t)$ for all $t$ and $m'(t) \neq m(t)$, so that $m(t)$ is not a maximal element.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{5}
+Prove that a finite partially ordered set $A$ has at least one maximal element.
 \end{exercise}
 \begin{proof}
-fill
+We will give a procedure to find such element.
+Take any element $a \in A$, and try to compare it to the rest of the elements in $A$.
+If we cannot compare $a$ to any other element, then $a$ is maximal, as $a \leq a$ implies $a = a$.
+Likewise, if $a \geq x$ for all $x$, then $a$ is maximal.
+If neither of this two is the case, consider the subset, $A'$, given by all of the elements of $A$ comparable with $a$.
+If all of the elements of $A$ are comparable with $a$, by transitivity there must be a maximal element.
+If not all the elements of $A$ are comparable with $a$, then $A'$ is a proper subset of $A$ and we can repeat the process until we find a maximal element.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{6 (Least element, greatest element)}
+Show that a partially ordered set can have at most one element $a$ such that $a \leq x$ for all $x \in M$ and at most one element $b$ such that $x \leq b$ for all $x \in M$.
+[If such an $a$ (or $b$) exists, it is called the least element (greatest element, respectively) of $M$].
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
+Suppose there are two such elements, say $a, a'$, then $a \leq a'$ and $a' \leq a$, in which case by antisymmetry we would have $a = a'$.
+The proof for $b$ follows using the same technique mutatis mutandis.
 \end{proof} 
