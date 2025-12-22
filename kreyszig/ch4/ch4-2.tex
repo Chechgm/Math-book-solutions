@@ -1,145 +1,139 @@
 \section{Hahn-Banach Theorem}
 
-Kreyszig 4.2 Hahn-Banach Theorem
-1 The absolute value of a functional is an important example of a seminorm, that we often use Hahn-Banach on 
-2 Obvious, but important 
-3 Notice the bar above the lim, means limsup. Take a look on wikipedia on the subject of "Banach Limits" which construct a limit operator for all bounded real-valued sequences which coincides with the usual limit for convergent sequences. To construct this, you'd use the limsup seminorm. Try to work out the details, it's pretty cool 
-4 Some easy properties
-5 In more advanced functional analysis texts, this exercise is really crucial. The Hahn-Banach theorem is most often written in terms of convex sets 
-6
-7 Some easy properties 
-9 What would Hahn-Banach yield in a situation like this? 
-10 Simple Hahn-Banach
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{1}
+Show that the absolute value of a linear functional has the following properties:
+\begin{itemize}
+    \item Sub-additivity: $p(x+y) \leq p(x) + p(y)$, for all $x,y \in X$,
+    \item Positive-homogeneity: $p(ax) = ap(x)$ for all $a \geq 0$ in $\R$ and $x \in X$.
+\end{itemize}
 \end{exercise}
 \begin{proof}
-fill
+Let $f$ and $g$ be linear functionals and $a \in \R$, with $a \geq 0$.
+\begin{itemize}
+    \item We have $\absoluteValue{f + g} \leq \absoluteValue{f} + \absoluteValue{g}$ and,
+    \item $\absoluteValue{af} = \absoluteValue{a}\absoluteValue{f} = a\absoluteValue{f}$, as required.
+\end{itemize}
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{2}
+Show that a norm on a vector space $X$ is a sublinear functional on $X$.
 \end{exercise}
 \begin{proof}
-fill
+Let $x, y \in X$ and $a \geq 0$ a scalar.
+\begin{itemize}
+    \item Sub-additivity: $\norm{x + y} \leq \norm{x} + \norm{y}$, and 
+    \item Positive-homogeneity: $\norm{ax} = \absoluteValue{a}\norm{x}$, but since $a \geq 0$, then $\absoluteValue{a}\norm{x} = a\norm{x}$, as required.
+\end{itemize}
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{3}
+Show that $p(x) = \limsup x_n$, where $x = (x_n) \in l_\infty$, $x_n$ real, defines a sublinear functional on $l^\infty$.
 \end{exercise}
 \begin{proof}
-fill
+Let $(x_n), (y_n) \in l^\infty$.
+We have 
+\begin{align*}
+    \limsup (x_n + y_n)
+    = \lim_{n \to \infty} \parens{\sup_{m \geq n} x_n + y_n}.
+\end{align*}
+For any $n$, we have that $\sup_{m \geq n} x_n + y_n \leq \sup_{m \geq n} x_n + \sup_{m \geq n} y_n$, so that by taking limits when $n \to \infty$ in the equality above we obtain the subadditivity of $p(x)$.
+Likewise, for $a \in \R$ and $a > 0$, we have
+\begin{align*}
+    \limsup ax_n 
+    = \lim_{n \to \infty} \parens{\sup_{m \geq n} ax_n}
+    = \lim_{n \to \infty} a\parens{\sup_{m \geq n} x_n}
+    = a\lim_{n \to \infty} \parens{\sup_{m \geq n} x_n},
+\end{align*}
+so that $p(ax) = ap(x)$.
+Thus $p$ is a sublinear functional on $l^\infty$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{4}
+Show that a sublinear functional $p$ satisfies $p(0) = 0$ and $p(-x) \geq -p(x)$
 \end{exercise}
 \begin{proof}
-fill
+We have $p(0) = p(0x) = \absoluteValue{0}p(x) = 0$.
+Furthermore, $p(x-x) \leq p(x) + p(-x)$, so that $-p(x) \leq p(-x)$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{5 (Convex set)}
+If $p$ is a sublinear functional on a vector space $X$, show that $M = \set{x : p(x) \leq \gamma, \gamma > 0 \text{ fixed}}$, is a convex set.
+(C.f. Section 3.3).
 \end{exercise}
 \begin{proof}
-fill
+Let $x, y \in M$ and $a \in [0,1]$.
+We have 
+\begin{align*}
+    p(ax + (1-a)y) 
+    \leq& p(ax) + p((1-a)y)\\ 
+    =& ap(x) + (1-a)p(y)\\ 
+    \leq& a\gamma + (1-a)\gamma = \gamma.
+\end{align*}
+Thus, $M$ is convex.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{6}
+If a subadditive functional $p$ on a normed space $X$ is continuous at 0 and $p(0) = 0$ show that $p$ is continuous for all $X$.
 \end{exercise}
 \begin{proof}
-fill
+Let $x,y \in X$ and $\epsilon >0$.
+Notice that the following property holds: 
+$p(x) = p(x-y + y) \leq p(x-y) + p(y)$, so that $p(x) - p(y) \leq p(x-y)$.
+We know that $p$ is continuous at 0, so that there exists a $\delta > 0$, such that whenever $\norm{x-y} < \delta$, it holds that $\absoluteValue{p(x-y) - p(0)} = \absoluteValue{p(x-y)} < \epsilon$, but given the property we proved above, we have that $\absoluteValue{p(x) - p(y)} \leq \absoluteValue{p(x-y)} < \epsilon$, giving us the desired result.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{7}
+If $p_1$ and $p_2$ are sublinear functionals on a vector space $X$ and $c_1$ and $c_2$ are positive constants, show that $p = c_1p_1 + c_2p_2$ is sublinear on $X$.
 \end{exercise}
 \begin{proof}
-fill
+Let $x, y\in X$ and $a > 0$ be a scalar.
+We have
+\begin{align*}
+    p(x + y)
+    =& c_1p_1(x + y) + c_2p_2(x + y)\\
+    \leq& c_1[p_1(x) + p_1(y)] + c_2[p_2(x) + p_2(y)]\\
+    =& [c_1p_1(x) + c_2p_2(x)] + [c_1p(y) + c_2p_2(y)]\\
+    =& p(x) + p(y),
+\end{align*}
+likewise
+\begin{align*}
+    p(ax)
+    =& c_1p_1(ax) + c_2p_2(ax)\\
+    =& ac_1p_1(x) +ac_2p_2(x)\\
+    =& ap(x),
+\end{align*}
+as required.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{9}
+Let $p$ be a sublinear functional on a real vector space $X$.
+Let $f$ be defined on $Z = \set{x \in X: x = ax_0,\, a \in \R}$ by $f(x) = ap(x_0)$ with fixed $x_0 \in X$.
+Show that $f$ is a linear functional on $Z$ satisfying $f(x) \leq p(x)$.
 \end{exercise}
 \begin{proof}
-fill
+Let $x,y \in Z$.
+Then there exist $a,b \in \R$ so that $x = ax_0$ and $y = bx_0$, so that $f(x) = ap(x_0)$ and $f(y) = bp(x_0)$.
+Furthermore $x+y = (a+b)x_0$ and $f(x+y) = (a+b)p(x_0) = ap(x_0) + bp(x_0) = f(x) + f(y)$.
+Now let $\alpha \in \R$.
+We have that $\alpha x = \alpha a x_0$, so that $\alpha x \in Z$ and $f(\alpha x) = \alpha a x = \alpha f(x)$.
+Thus, $f$ is linear.
+
+We will prove that $f(x) \leq p(x)$ by cases.
+If $x = 0$, then $x = 0x_0$, so that $f(0) = 0 = 0p(x_0)$ and the inequality holds.
+Now let $x = ax_0$, where $a > 0$.
+We then have $f(x) = ap(x_0) = ap(x/a) = p(x)$.
+Finally, we will prove the case where $x = ax_0$ with $a < 0$.
+First, notice that $f(-x_0) = -p(x_0) \leq p(-x_0)$.
+Thus, if we multiply the argument of the function by $\absoluteValue{a}$, we get $f(x) = f(-\absoluteValue{a}x_0) = \absoluteValue{a}f(-x_0) = -\absoluteValue{a}p(x_0) \leq p(-\absoluteValue{a}x_0) = p(x)$, proving the last case.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{10}
+If p is a sublinear functional on a real vector space $X$, show that there exists a linear functional $\tilde{f}$ on $X$ such that $-p(-x) \leq \tilde{f} \leq p(x)$.
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
+Consider $f$ as in exercise 9, so that $f(x) \leq p(x)$.
+We can now use the Hahn-Banach Theorem to conclude there exists a linear functional $\tilde{f}$ with $\tilde{f} \leq p(x)$.
+Now, $\tilde{f}(-x) \leq p(-x)$, and $-\tilde{f}(x) \leq \tilde{f}(-x) \leq p(-x)$, so that $\tilde{f}(x) \geq p(-x)$.
+Putting these two inequalities together, we obtain $-p(-x) \leq \tilde{f}(x) \leq p(x)$, as required.
 \end{proof} 
