@@ -1,144 +1,159 @@
 \section{Hahn-Banach Theorem for complex vector spaces and normed spaces}
 
-1
-2 Some easy properties of seminorms
-4 A very typical application of the Hahn-Banach theorem
-5 This implies that we can always choose the seminorm in order to imply that our extension functional has a certain norm 
-8 It is surprising that an easier proof is not possible. In finite dimensions this is pretty easy to prove. But no, complicated machinery Hahn-Banach is actually necessary here in general.
-9 It is well known among functional analysts that separability can often be used to avoid the axiom of choice. You have already seen an example of this with the existence of an orthonormal basis in separable Hilbert space. Here is yet another version. Hahn-Banach for separable spaces is thus not dependent on axiom of choice, and it is actually the separable version that is used most of the time.
-11 This is yet another useful result which is typically seen to rely on Hahn-Banach. It is actually a very useful technique in functional analysis that instead of proving a certain "fact" in Banach spaces, it is often useful to prove f("fact") for every bounded linear functional, and then to use Hahn-Banach to deduce "fact". This is easier since f("fact") is a statement of real/complex numbers and thus presumably easier to prove!
-13 Another example of Hahn-Banach 
-15 Similar comment to that of exercise 11.
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{1 (Seminorm)}
+Show that $p(x+y) \leq p(x) + p(y)$ and $p(\alpha x) = \absoluteValue{\alpha} p(x)$ for every scalar $\alpha$ imply $p(0) = 0$ and $p(x) \geq 0$ so that $p$ is a seminorm.
 \end{exercise}
 \begin{proof}
-fill
+First, take $\alpha = 0$, so that $p(0) = p(0 x) = \absoluteValue{0} p(x) = 0$.
+Furthermore, $0 = p(0) = p(x + (-x)) \leq p(x) + p(-x) = 2p(x)$, thus $p(x) \geq 0$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{2}
+Show that $p(x+y) \leq p(x) + p(y)$ and $p(\alpha x) = \absoluteValue{\alpha} p(x)$ for every scalar $\alpha$ imply $\absoluteValue{p(x) - p(y)} \leq p(x-y)$.
 \end{exercise}
 \begin{proof}
-fill
+First, we have that $p(x) = p(x-y + y) \leq p(x-y) + p(y)$, so that $p(x) - p(y) \leq p(x-y)$.
+Furthermore $p(y) = \absoluteValue{-1}p(y) = p(-y) = p(x-y + x) \leq p(x-y) + p(x)$;
+that is $-p(x-y) \leq p(x) - p(y)$.
+Putting these together, we get the desired result.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{4}
+Let $p$ be defined on a vector space $X$ and satisfy $p(x+y) \leq p(x) + p(y)$ and $p(\alpha x) = \absoluteValue{\alpha} p(x)$ for every scalar $\alpha$.
+Show that for any given $x_0 \in X$ there is a linear functional $\tilde{f}$ on $X$ such that $\tilde{f}(x_0) = p(x_0)$ and $\absoluteValue{\tilde{f}(x)} \leq p(x)$ for all $x \in X$.
 \end{exercise}
 \begin{proof}
-fill
+Let $Z \subseteq X$, where $Z = \set{x \in X: x = \alpha x_0, \alpha \in \R}$, with $x_0$ fixed.
+Now we define $f$ to be a linear functional on $Z$ such that $ f(x) = \alpha p(x_0)$.
+We know from exercise 4.2.9 that $f$ is linear on $Z$ and $f(x) \leq p(x)$.
+Using the Hahn-Banach Theorem, we extend $f$ to $\tilde{f}$ so that $\tilde{f}(x) \leq p(x)$.
+Finally, $\tilde{f}(-x) \leq p(-x)$ which implies $-\tilde{f}(x) \leq p(x)$; that is, $\tilde{f}(x) \geq -p(x)$, so that putting there inequalities together we obtain $\absoluteValue{\tilde{f}(x)} \leq p(x)$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{5}
+If $X$ in Theorem 4.3-1 is a normed space and $p(x) \leq k\norm{x}$ for some $k > 0$, show that $\norm{\tilde{f}} \leq k$.
 \end{exercise}
 \begin{proof}
-fill
+We have that $\absoluteValue{\tilde{f}(x)} \leq p(x) \leq k\norm{x}$, so that $\absoluteValue{\tilde{f}(x)}/\norm{x} \leq k$.
+Taking the supremum with respect to all $x$ such that $\norm{x}=1$ we get the desired result.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{8}
+Let $X$ be a normed space and $X'$ its dual space.
+If $X \neq \set{0}$, show that $X'$ cannot be $\set{0}$.
 \end{exercise}
 \begin{proof}
-fill
+We will prove this by contrapositive.
+Let $x_0 \in X$.
+If $X = \set{0}$, then $f(x_0) = 0$ for all $f \in X'$, thus $x_0 = 0$ by 4.3-4.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{9}
+Show that for a separable normed space $X$, Theorem 4.3-2 can be proved directly, without the use of Zorn's Lemma (which was used indirectly, namely in the proof of Theorem 4.2-1).
 \end{exercise}
 \begin{proof}
-fill
+Since $X$ is a separable normed space, there exists a countable subset, $Y \subseteq X$, such that $\bar{Y} = X$.
+Let $f$ be the bounded linear functional defined on $Z \subseteq X$, as in Theorem 4.3-2.
+Let $y_1 \in Y \setminus Z$, and define $Z_1$ to be the subspace spanned by $Z$ and $y_1$.
+Any $x \in Z_1$ can be written uniquely as $x = z + ay_1$.
+We now define a functional, $g_1$ on $Z_1$ by $g_1(z + ax_1) = f(z) + ac$, where $c$ is any real constant.
+For $a=0$, we have $g_1(z) = f(z)$.
+Hence $g_1$ is a proper extension of $f$.
+
+We will now prove that $g_1(x) \leq p(x)$ for all $x \in Z_1$.
+Let $z, z' \in Z$ and $y_1$ be fixed.
+We have 
+\begin{align*}
+    f(z) - f(z') = f(z - z') 
+    \leq& p(z - z')\\
+    =& p(z + y_1 - y_1 - z')\\
+    \leq& p(z + y_1) + p(- y_1 - z'),
+\end{align*}
+so that $-p(- y_1 - z') - f(z') \leq p(z + y_1) - f(z)$.
+Since $z$ does not appear on the left and $z'$ does not appear on the right, the inequality continues to hold if we take the supremum over $z \in Z$ on the left (say $m_0$) and the infimum over $z' \in Z$ on the right (say $m_1$).
+Hence $m_0 \leq m_1$ and for a $c$ with $m_0 \leq c \leq m_1$. 
+We then have 
+\begin{align*}
+    -p(-y_1 - z') - f(z') \leq c \text{ for all } z' \in Z
+\end{align*}
+and 
+\begin{align*}
+    c \leq p(z +y_1) - f(z) \text{ for all } z \in Z.
+\end{align*}
+
+Using the first inequality we will show that $g_1(x) \leq p(x)$ holds for negative $a$. 
+For $a < 0$, replace $ z' = a^{-1}z$;
+that is $-p(-y_1 - a^{-1}z) - f(a^{-1}z) \leq c$, so that multiplying by $-a$ we obtain $ap(-y_1 - a^{-1}z) + f(z) \leq -ac$ giving us
+\begin{align*}
+    g_1(x) 
+    = f(z) + ac 
+    \leq -ap(-y_1 - a^{-1}z)
+    = p(ay_1 + z)
+    = p(x).
+\end{align*}
+
+Now using the second inequality above, and $a > 0$.
+Let $z = a^{-1}z$, we have that $c \leq p(a^{-1}z + y_1) - f(a^{-1}z$ so that multiplying by $a$, we get 
+\begin{align*}
+    ac 
+    \leq ap(a^{-1}z + y_1) - f(z)
+    = p(x) - f(z).
+\end{align*}
+That is, $g_1(x) = f(z) + ac \leq p(x)$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+We have proved that the inequality holds for the extension of $f$ in $Z_1$.
+By induction, this holds for any $n \in \N$, so that $Y = \bigcup Z_i$;
+that is, we have an extension of $f$, say $g$, in a dense set in $X$. 
+Finally, we use Theorem 2.7-11 to conclude there is an extension of $g$, $\bar{g}$ in $\bar{Y} = X$, and furthermore $\norm{g} = \norm{\bar{g}}$.
+Thus, 4.3-2 holds in separable spaces without using Zorn's Lemma.
+\begin{exercise}{11}
+If $f(x) = f(y)$ for every bounded linear functional $f$ on a normed space $X$ show that $x = y$.
 \end{exercise}
 \begin{proof}
-fill
+We have $f(x-y) = 0$ for every functional.
+By 4.3-4 we have that $x-y = 0$, giving us the desired result.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{13}
+Let $X$ be a normed space and let $x_0 \neq 0$ be any element of $X$.
+Then there is a bounded linear functional $\hat{f}$ on $X$ such that $\norm{\hat{f}} = \norm{x_0}^{-1}$ and $\hat{f}(x_0) = 1$.
 \end{exercise}
 \begin{proof}
-fill
+We are going to follow a similar strategy as Theorem 4.3-3.
+Let $Z$ be the subspace of $X$ defined as $x = ax$, where $a$ is a scalar.
+Let $f(x) = f(a x_0) = a\norm{x_0}^{-1}\norm{x_0}$.
+$f$ has norm $\norm{f} = \norm{x_0}^{-1}$ because $\absoluteValue{f(x)} = \absoluteValue{f(a x_0)} = \absoluteValue{a}\norm{x_0}^{-1}\norm{x_0} = \norm{x_0}^{-1}\norm{a x_0} = \norm{x_0}^{-1}\norm{x}$ implying that $\absoluteValue{f(x)}/\norm{x} = \norm{x_0}^{-1}$ and taking the supremum with respect to $x$ such that $\norm{x} = 1$ gives us the desired norm.
+Finally, we have that $f(x_0) = \norm{x_0}^{-1}\norm{x_0} = 1$.
+By the Hahn-Banach Theorem we can extend this functional to a functional, $\hat{f}$ in $X$, so that $\norm{\hat{f}} = \norm{f} = \norm{x_0}^{-1}$, as required.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{14 (Hyperplane)}
+Show that for any sphere $S(0;r)$ in a normed space $X$ and any point $x_0 \in S(0;r)$ there is a hyperplane $H_0$ with $x_0 \in H_0$ such that the Ball $\tilde{B}(0;r)$ lies entirely in one of the two half spaces determined by $H_0$.
+(See exercises 12 and 15, Section 2.8).
+A simple illustration is shown in the following figure:
+\begin{figure}[H]
+    \centering
+    \input{kreyszig/assets/sec4-3-ex14}
+    \caption{Illustration of exercise 14 in the case of Euclidean plane $\R^2$.}
+    \label{fig:sec4-3-ex14}
+\end{figure}
 \end{exercise}
 \begin{proof}
-fill
+Another way of thinking about this exercise, is that we want a functional $\tilde{f} \in X'$, such that $\tilde{f}(x_0) = \norm{x_0} = r$, then the fact that $\tilde{B}(0;r) \subseteq H_0 = \set{x \in X: \tilde{f}(x) \leq \norm{x_0} = r}$ is guaranteed by definition.
+The existence of such functional is follows by Theorem 4.3-3, as required.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{15}
+If $x_0$ in a normed space $X$ is such that $\absoluteValue{f(x_0)} \leq c$ for all $f \in X'$ of norm 1, show that $\norm{x_0} \leq c$.
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
+From 4.3-4, we have 
+\begin{align*}
+    \norm{x_0} 
+    =& \sup_{f \in X', f \neq 0} \frac{\absoluteValue{f(x_0)}}{\norm{f}^{-1}}\\
+    =& \sup_{f \in X', \norm{f}=1} \absoluteValue{f(x_0)}.
+\end{align*}
+By assumption, $\sup_{f \in X', \norm{f}=1} \absoluteValue{f(x_0)} \leq c$, thus $\norm{x_0} \leq c$, as required.
 \end{proof} 

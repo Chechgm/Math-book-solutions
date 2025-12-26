@@ -12,6 +12,7 @@
 \usepackage{thmtools} % Most of what you need for mathematical statements. Check out the excellent guide: https://ctan.math.illinois.edu/macros/latex/contrib/thmtools/doc/thmtools-manual.pdf
 \usepackage{thm-restate} % Allows to have proofs separated from the statements
 \usepackage{tikz-cd}
+\usetikzlibrary{calc}
 
 \usepackage{algorithm}
 \usepackage{algorithmic}

@@ -1,0 +1,41 @@
+\begin{tikzpicture}[
+    scale=1.5,
+    % Style for the hollow points (center and x0)
+    point/.style={draw, circle, inner sep=0pt, minimum size=4pt, fill=white, thick}
+]
+
+    % --- Parameters ---
+    \def\R{2.0}      % Radius of the circle
+    \def\ang{-40}    % Angle of point x0 on the circle (approx based on image)
+    \def\lenTop{2.5} % Length of tangent line extending upwards
+    \def\lenBot{2.5} % Length of tangent line extending downwards
+
+    % --- Coordinates ---
+    \coordinate (O) at (0,0);
+    \coordinate (X0) at (\ang:\R);
+
+    % --- Drawing ---
+
+    % 1. The Circle
+    \draw[thick] (O) circle (\R);
+
+    % 2. The Tangent Line (H0)
+    % Calculated perpendicular to the radius at x0
+    \draw[thick] 
+        ($(X0) + (\ang+90:\lenTop)$) -- 
+        ($(X0) + (\ang-90:\lenBot)$) 
+        node[pos=1.0, below left] {$H_0$};
+
+    % 3. The Center Point (0)
+    \node[point] at (O) {}; 
+    \node[below=5pt] at (O) {$0$};
+
+    % 4. The Tangent Point (x0)
+    % Drawn after the line so the hollow fill covers the line segment
+    \node[point] at (X0) {};
+    \node[above left=3pt] at (X0) {$x_0$};
+
+    % 5. The Circle Label S(0; r)
+    \node at (40:{\R+0.4}) {$S(0; r)$};
+
+\end{tikzpicture}

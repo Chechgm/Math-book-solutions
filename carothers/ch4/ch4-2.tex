@@ -551,14 +551,14 @@ Show that $\set{x}$ is nowhere dense in $M$ if and only if $x$ is not an isolate
 \begin{proof}
 ($\Rightarrow$)
 We will prove this by contrapositive.
-Suppose $x$ is an isolated point, so that by exercise 4.40, there exists an $\epsilon >0$, so that $B_\epsilon(x)\setminus \set{x} \cap A = \emptyset$.
-But we have that $\overline{\set{x}} = \set{x}$, so that $\overline{\set{x}}$ contains no nonempty open set.
+Suppose $x$ is an isolated point, so that by exercise 4.40, there exists an $\epsilon >0$, so that $B_\epsilon(x)\setminus \set{x} \cap M = \emptyset$.
+But we have that $\overline{\set{x}} = \set{x}$, so that $\overline{\set{x}}$ contains an open set, in particular, it contains $B_\epsilon(x)$.
 
 ($\Leftarrow$)
-Suppose $\set{x}$ is nowhere dense in $M$.
-Thus, $\emptyset = \operatorname{int}(\operatorname{cl}(\set{x})) = \operatorname{int}(\overline{\set{x}}) = \operatorname{int}(\set{x})$.
-Which implies, that for any $\epsilon>0$, $B_\epsilon(x) \setminus \set{x} \cap A =\emptyset$;
-thus $x$ is an isolated point.
+Suppose $x$ is not an isolated point of $M$.
+Then there exists a sequence in $M$, say $(x_n)$ with $x_n \to x$.
+That implies that for every $\epsilon > 0$, it holds that $B_\epsilon(x) \setminus \set{x} \cap (x_n) \neq \empty$.
+Since $\operatorname{int}(\operatorname{cl}(\set{x})) = \set{x}$, we have that $\set{x}$ is nowhere dense, as it does not contain an open set $B_\epsilon(x)$, for any $\epsilon > 0$.
 \end{proof} 
 
 \begin{exercise}{60}
