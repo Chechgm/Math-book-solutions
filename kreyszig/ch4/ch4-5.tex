@@ -1,19 +1,10 @@
 \section{Adjoint operator}
 
-Kreyszig 4.5 Adjoint Operator
-1
-2
-3
-4
-5
-6 These are some standard but important verifications
-7 All of the laws you have seen in this chapter thus hold in general for transposition of matrices. What is more, our definition in Kreyszig of the transpose did not need a basis, while to form a matrix, you do. So this point of view is called the basis-free perspective of the transpose. 
-8
-9
-10 The annihilator may seem abstract, but it is something we are actually intrinsically interested in. Take a system of linear equations, like x+y=0, 2x+3y=0. This induces functions f(x,y) = x+y and g(x,y) = 2x+3y. The solution set of the system is now simply the annihilator of the set {f,g}. So annihilators are nothing more than solution sets of systems of equations.
 
 \begin{exercise}{1}
-fill
+Let $X$ and $Y$ be normed spaces.
+Let $T: X \to Y$ be a bounded linear operator and $g$ a bounded linear functional on $Y$.
+Show that $f(x) = g(Tx)$ is linear.
 \end{exercise}
 \begin{proof}
 Let $x, z \in Z$ and $a, b \in K$.
@@ -28,7 +19,7 @@ We have
 \end{proof} 
 
 \begin{exercise}{2}
-fill
+What are the adjoints of a zero operator 0 and an identity operator $I$?
 \end{exercise}
 \begin{proof}
 We have $g(0x) = 0$ for all $g$ and $x$, so that $(T^\times g)(x) = 0$ and $T^\times = 0$.
@@ -36,57 +27,110 @@ Likewise $g(Ix) = g(x)$ for all $g$ and $x$, so that $(T^\times g)(x) = g(x) = g
 \end{proof} 
 
 \begin{exercise}{3}
-fill
+Prove $(S+T)^\times = S^\times + T^\times$.
 \end{exercise}
 \begin{proof}
-fill
+We have 
+\begin{align*}
+    (S+T)^\times(g)(x)
+    =& g((S+T)x)\\
+    =& g(Sx + Tx)\\
+    =& g(Sx) + g(Tx)\\
+    =& (S^\times g)(x) + (T^\times g)(x).
+\end{align*}
+
 \end{proof} 
 
 \begin{exercise}{4}
-fill
+Prove $(aT)^\times = aT^\times$
 \end{exercise}
 \begin{proof}
-fill
+We have
+\begin{align*}
+    (aT^\times g)(x)
+    = g(aTx)
+    = ag(Tx)
+    = a(T^\times g)(x)
+\end{align*}
 \end{proof} 
 
 \begin{exercise}{5}
-fill
+Prove $(ST)^\times = T^\times S^\times$.
 \end{exercise}
 \begin{proof}
-fill
+We have
+\begin{align*}
+    ((ST)^\times g)(x)
+    =& g((ST)x)\\
+    =& g(S(Tx))\\
+    =& (T^\times (gS))(x)\\
+    =& T^\times (g(Sx))\\
+    =& (S^\times(T^\times g))(x)\\
+    =& ((S^\times T^\times) g)(x).
+\end{align*}
 \end{proof} 
 
 \begin{exercise}{6}
-fill
+Show that $(T^n)^\times = (T^\times)^n$.
 \end{exercise}
 \begin{proof}
-fill
+We will prove this by induction.
+The base case is exercise 5 where $S=T$.
+As an inductive hypothesis, suppose $(T^n)^\times = (T^\times)^n$ holds for $n$.
+Now using exercise 5, where $S = T^n$ gives us the desired result.
 \end{proof} 
 
 \begin{exercise}{7}
-fill
+What formula for matrices do we obtain by combining exercise 5 and example 4.5-3?
 \end{exercise}
 \begin{proof}
-fill
+We get the usual $(AB)^\top = B^\top A^\top$ for matrices $A$ and $B$.
 \end{proof} 
 
 \begin{exercise}{8}
-fill
+Prove that if $T^{-1}$ exists, then $(T^\times)^{-1}$ also exists and $(T^\times)^{-1} = (T^{-1})^\times$.
 \end{exercise}
 \begin{proof}
-fill
+We have
+\begin{align*}
+    T^\times (T^{-1})^\times
+    = (T^{-1} T)^\times
+    = I^\times
+    = I
+    = I^\times
+    = (T T^{-1})^\times
+    = (T^{-1})^\times T^\times,
+\end{align*}
+proving the desired result.
 \end{proof} 
 
-\begin{exercise}{9}
-fill
+\begin{exercise}{9 (Annihilator)}
+Let $X$ and $Y$ be normed spaces, $T: X \to Y$ a bounded linear operator and $M = \overline{\cR(T)}$, the closure of the range of $T$.
+Show that $M^a = \cN(T^\times)$.
+(See exercise 2.10.13).
 \end{exercise}
 \begin{proof}
-fill
+Let $g \in \cN(T^\times)$.
+Then $(T^\times g)(x) = 0x = 0$ so that $g \in M^a$, which implies $\cN(T^\times) \subseteq M^a$.
+Conversely, Suppose $g \in M^a$, so that $g(Tx) = 0$ for all $x \in \overline{\cR(T)}$.
+Thus $(T^\times g)(x) = 0$ and $g \in \cN(T^\times)$, which implies $M^a \subseteq \cN(T^\times)$.
+Putting these two containments together gives us the desired result.
 \end{proof} 
 
-\begin{exercise}{10}
-fill
+\begin{exercise}{10 (Anihilator)}
+Let $B$ be a subset of the dual space $X'$ of a normed space $X$.
+The anihilator $\prescript{a}{}{B}$ of $B$ is defined to be $\prescript{a}{}{B} = \set{x \in X: f(x)=0 \text{ for all }f \in B}$.
+Show that in exercise 9, $\cR(T) \subseteq \prescript{a}{}{\cN(T^\times)}$.
+What does this mean with respect to the task of solving an equation $Tx = y$.?
 \end{exercise}
 \begin{proof}
-fill
+Let $y \in \cR(T)$, thus $y = Tx$ for some $x \in X$.
+For any $g \in \cN(T^\times)$, we have $(T^\times g)(x) = g(Tx) = 0$, so that $y \in \prescript{a}{}{\cN(T^\times)}$.
+
+Micro's comment on the task of solving an equation:
+The annihilator may seem abstract, but it is something we are actually intrinsically interested in. 
+Take a system of linear equations, like $x+y = 0$, $2x+3y = 0$. 
+This induces functions $f(x,y) = x+y$ and $g(x,y) = 2x+3y$. 
+The solution set of the system is now simply the annihilator of the set $\set{f,g}$. 
+So annihilators are nothing more than solution sets of systems of equations.
 \end{proof} 
