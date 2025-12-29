@@ -1,143 +1,86 @@
 \section{Reflexive spaces}
 
-Kreyszig 4.6 Reflexive Spaces
-3
-4 The idea is that if you keep taking duals, like X, X', X'', ... you don't really hit anything new with reflexive spaces, while with nonreflexive spaces you can hit some really big spaces eventually
-6 Compare this with algebraic geometry, where a variety has different set of polynomials which become 0 on it. It is the same here.
-7
-8
-9 This gives us ways to reason about the original space by using the dual. It is reasons like this that the dual space is important in practice.
-10 Notice that in finite dimensions, X and its dual have the same dimension!
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{3}
+If a normed space $X$ is reflexive, show that $X'$ is reflexive.
 \end{exercise}
 \begin{proof}
-fill
+We will begin with notation, since this exercise requires a lot of bookkeeping.
+Let $x \in X, f \in X', g \in X''$, and $h \in X'''$.
+Let $C: X \to X''$ and $C': X' \to X''$ the canonical mappings in their defined spaces;
+that is, $Cx = g_x$ and $C'(f) = h_f$, where the elements on the right are evaluation functionals.
+
+Lemma 4.6-7 tells us that a space is reflexive if its canonical map is surjective.
+This gives us that, for all $g \in X''$, there exists an $x \in X$, such that $g = Cx = g_x$ (slightly overloading the notation by stating $g = g_x$).
+To get the desired result we take an arbitrary $h \in X'''$ and we need to find an $f \in X'$ such that $h(g_x) = C'(f)(g_x)$, for all $x \in X$ (we consider $g_x$ given the reflexivity of $X$).
+But $f$ is precisely the required element, as $C'(f)(g_x) = h_f(g_x) = g_x(f) = f(x)$.
+Thus $X'$ is reflexive, as required.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{4}
+Show that a Banach space $X$ is reflexive if and only if its dual space $X'$ is reflexive.
+[Hint: it can be shown that a closed subspace of a reflexive Banach space is reflexive.
+Use this fact without proving it].
 \end{exercise}
 \begin{proof}
-fill
+We only need to prove the converse, since we proved the forward direction in the previous exercise.
+Suppose then that $X'$ is reflexive.
+By the forward condition proved in the previous exercise, we have that $X''$ is reflexive too.
+We have that $C(X) = \cR(C)$ is a subspace of $X''$, where $C$ is the canonical map from $X$ to its second dual.
+We have that $\cR(C)$ is itself a Banach space, because it is isomorphic to $X$, and hence it is closed.
+By the result given in the exercise hint, we have that $\cR(C)$ is reflexive and so (by the same isomorphism), we have that $X$ itself is reflexive, giving us the desired result.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{6}
+Show that different closed subspaces $Y_1$ and $Y_2$ of a normed space $X$ have different annihilators.
 \end{exercise}
 \begin{proof}
-fill
+Let $x_0 \in Y_2 \subseteq X \setminus Y_1$ and and define $\delta = \inf_{y \in Y_1}\norm{x_0 - y} > 0$, the last inequality following because $Y_1$ is closed.
+By Lemma 4.6-7, there exists $f \in X'$ such that for all $y \in Y_1$ it holds that $f(y) = 0$ but $f(x_0) = \delta$, so that $f$ is an annihilator of $Y_1$ but not of $Y_2$.
+Using the same technique, mutatis mutandis, we can find an annihilator of $Y_2$, which is not an annihilator of $Y_1$ so that these two closed subspaces have different annihilators, as required.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{7}
+Let $Y$ be a closed subspace of a normed space $X$ such that every $f \in X'$ which is zero everywhere on $Y$ is zero everywhere on the whole space $X$.
+Show that then $Y = X$.
 \end{exercise}
 \begin{proof}
-fill
+Suppose, for the sake of contradiction that $Y \neq X$.
+Let $x_0 \in X \setminus Y$, and $\delta = \inf_{y\in Y} \norm{x-y} > 0$, because $Y$ is a closed subspace of $X$, so that $x$ is not a limit point of $Y$.
+By Lemma 4.6-7, there exists an $f \in X'$ such that $\norm{f} = 1$, $f(y) = 0$ for all $y \in Y$, but critically, $f(x) = \delta$, which contradicts our hypothesis that $f(x) = 0$, as required.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{8}
+Let $M$ be any subset of a normed space $X$.
+Show that an $x_0 \in X$ is an element of $A = \overline{\vecspan(M)}$ if and only if $f(x_0) = 0$ for every $f \in X'$ such that $f|_M = 0$.
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$)
+Suppose $x_0 \in A$, then there exists a sequence of linear combinations in $M$, say $(y_n)$ such that $y_n \to x_0$.
+But $f(y_n) = 0$ for all $y_n$, so that by the continuity of $f$, it must be the case that $f(x_0) = 0$.
+
+($\Leftarrow$)
+Suppose $f(x_0) = 0$ for every $f \in X'$ such that $f|_M = 0$.
+If $x_0 \notin A$, we can use the same Lemma 4.6-7 as in exercise 7, mutatis mutandis, to produce a contradiction. 
+Thus, $x_0$ must be in $A$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{9 (Total set)}
+Show that a subset $M$ of a normed space $X$ is total in $X$ if and only if every $f \in X'$ which is zero everywhere on $M$ is zero everywhere on $X$.
 \end{exercise}
 \begin{proof}
-fill
+This is a Corollary to the previous exercise, where $A=X$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{10}
+Show that if a normed space $X$ has a linearly independent subset of $n$ elements, so does the dual space $X'$.
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
+Let $x_1, \dots, x_n$ be linearly independent vectors in $X$.
+Consider the subspace given by $Y = \vecspan(x_1, \dots, x_n)$ and $n$ linear functionals defined on $Y$ given by $f_i(x_j) = 1$ if $i=j$ and 0 otherwise.
+Using 4.3-2, the Hahn-Banach Theorem for normed spaces, extend $f_i$ to a functional $\tilde{f_i}$ in $X$.
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
+We will now prove that $\tilde{f_1}, \dots, \tilde{f_n}$ is linearly independent in $X'$.
+Consider $(\sum a_i \tilde{f_i})(x) = 0$.
+For $x=x_i$, we get that $a_i = 0$, and since this is true for all $i$, we get that $f_1, \dots, f_n$ are linearly independent, as required.
 \end{proof} 
