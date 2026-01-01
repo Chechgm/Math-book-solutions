@@ -1,9 +1,5 @@
 \section{Orderings on the monomials in $k[x_1,\dots, x_n]$}
 
-4*
-7* 
-11* 
-12* 
 
 \begin{exercise}{4}
 Show that grlex is a monomial order according to Definition 1.
@@ -34,7 +30,9 @@ Let $>$ be any monomial order.
 \end{exercise}
 \begin{proof}
 \begin{enumerate}
-    \item fill
+    \item Suppose, for the sake of contradiction, that there exists an $\alpha \in \N^n$ such that $\alpha < 0$.
+    By the second property of monomial orderings, we have $\alpha + \alpha = 2\alpha < \alpha$ and, in general, $n\alpha < (n-1)\alpha$.
+    But this implies that there is a decreasing sequence that never terminates, in particular, $\alpha > 2\alpha > 3\alpha > \dots$ which contradicts Lemma 2.
     \item If $x^\alpha$ divides $x^\beta$, then there exists a $\gamma \in \N^n$ such that $x^\beta = x^\alpha x^\gamma + r$, thus $\beta = \alpha +\gamma$ (where equality here is in the monomial order). 
     Hence either $\beta = \alpha$, if $\gamma = 0$ or $\beta > \alpha$, as required.
     
@@ -47,15 +45,57 @@ Let $>$ be any monomial order.
 \end{proof} 
 
 \begin{exercise}{11}
-fill
+Let $>$ be a monomial order on $k[x_1, \dots, x_n]$.
+\begin{enumerate}
+    \item Let $f \in k[x_1, \dots, x_n]$ and let $m$ be a monomial.
+    Show that $\operatorname{LT}(m\cdot f) = m \cdot \operatorname{LT}(f)$.
+    \item Let $f,g \in k[x_1, \dots, x_n]$.
+    Is $\operatorname{LT}(f \cdot g)$ necessarily the same as $\operatorname{LT}(f) \cdot \operatorname{LT}(g)$?
+    \item If $f_i, g_i \in k[x_1, \dots, x_n], 1 \leq i \leq s$, is $\operatorname{LM}(\sum_i^s f_i \cdot g_i)$ necessarily equal to $\operatorname{LM}(f_i) \cdot \operatorname{LT}(g_i)$ for some $i$?
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item Let $m = x^\alpha$, $f = a_1x^{\alpha_1} + \dots + a_nx^{\alpha_n}$ and $\operatorname{LT}(f) = a_i x^{\alpha_i}$ for some $i$.
+    We have that $\alpha_i > \alpha_j$ for $j \neq i$.
+    By the second property of monomial orderings, we have $\alpha_i + \alpha > \alpha_j + \alpha$ so that $mf = a_1x^{\alpha_1 + \alpha} + \dots + a_nx^{\alpha_n + \alpha}$ with $\operatorname{LT}(mf) = a_ix^{\alpha_i + \alpha}$.
+    Thus $m\operatorname{LT}(f) = a_ix^{\alpha_i + \alpha} = \operatorname{LT}(mf)$, as required.
+    \item Yes, the argument is similar as above.
+    Let $\alpha_f = \operatorname{multideg}(f)$ so that for any other degree of $f$. say $\beta$ we have $\alpha_f > \beta$.
+    Using the second property of the monomial orderings, we have that $\alpha_j + \gamma > \beta + \gamma$, in particular, if $\gamma = \operatorname{multideg}(g)$, we have that the multi degree remains unchanged under polynomial product (the same argument follows for the multidegree of $g$).
+    But this is precisely saying that $\operatorname{LM}(fg) = \operatorname{LM}(f)\operatorname{LM}(g)$.
+    Since the leading coefficient has no effect in this calculation, the desired result follows.
+    \item No, let $f_1 = f_2 \neq 0$ be arbitrary, let $g_1 = 1$ and $g_2 = -1$, then $f_1 \cdot g_1 + f_2 \cdot g_2 = 0$.
+    The sum has a different leading monomial than any of the individual products.
+\end{enumerate}
 \end{proof} 
 
 \begin{exercise}{12}
-fill
+Lemma 8 gives two properties of the multidegree.
+\begin{enumerate}
+    \item Prove Lemma 8. 
+    Hint: the arguments used in exercise 11 may be relevant.
+    \item Suppose that $\operatorname{multideg}(f) = \operatorname{multideg}(g)$ and $f + g \neq 0$.
+    Give examples to show that $\operatorname{multideg}(f+g)$ may or may not be equal $\max(\operatorname{multideg}(f), \operatorname{multideg}(g))$.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item Lemma 8:
+    Let $f, g \in k[x_1, \dots, x_n]$ be nonzero polynomials.
+    Then:
+    \begin{enumerate}
+        \item $\operatorname{multideg}(fg) = \operatorname{multideg}(f) + \operatorname{multideg}(g)$.
+        \item If $f + g \neq 0$, then $\operatorname{multideg}(f + g) \leq \max(\operatorname{multideg}(f), \operatorname{multideg}(g))$.
+        If, in addition, $\operatorname{multideg}(f) \neq \operatorname{multideg}(g)$, then equality occurs.
+    \end{enumerate}
+    The argument for the first part is the same argument as in exercise 11.2, where we don't focus anymore on the leading coefficient but only on the multidegrees.
+
+    For the second part, if $f$ and $g$ have the same multidegree, then either it gets canceled in the sum or not. 
+    If it gets canceled, then the multidegree of the sum is certainly less than the multidegree of either of them.
+    If it doesn't get canceled, then the multidegree of the sum is essentially the multidegree of either of them.
+    Furthermore, if $\operatorname{multideg}(f) \neq \operatorname{multideg}(g)$, then adding the polynomials together doesn't cancel the highest multidegree between them, so that the equality holds.
+    \item Let $f \neq 0$ and $g = 1$, then $\operatorname{multideg}(f + g) = \max(\operatorname{multideg}(f), \operatorname{multideg}(g)) = \operatorname{multideg}(f)$, so equality holds.
+    For an example where the inequality is strict and $f + g \neq 0$, consider $f = x$ and $g = -x + 1$, then $\operatorname{multideg}(f + g) = \operatorname{multideg}(1) \leq \max(\operatorname{multideg}(f), \operatorname{multideg}(g))$.
+\end{enumerate}
 \end{proof} 
