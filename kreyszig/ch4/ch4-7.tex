@@ -1,107 +1,141 @@
 \section{Category Theorem. Uniform boundedness Theorem}
 
-1
-2 Note that category is a relative notion, it depends on the ambient space, unlike concepts like connected and compact
-3 simple exercise
-4 This shows that meager sets can still be large in the sense of being dense 
-5
-6 Some nice general theorems on meager and their complements
-7 Cool first exercise on Uniform Boundedness
-8 Showing completeness is essential for uniform Boundedness 
-10 This is surprisingly tricky to prove without uniform Boundedness, I once spent an entire weekend trying to prove a similar thing without realizing you needed uniform Boundedness. I didn't manage
-11
-12 sometimes useful 
-13
-14 another extension on a previous theme, where you use the values under a functional to prove something significant about a sequence in X
-
 
 \begin{exercise}{1}
-fill
+Of what category is the set of rational numbers in $\R$ and in itself (taken with the usual metric)?
 \end{exercise}
 \begin{proof}
-fill
+In both cases $\Q$ is of the first category. 
+For the details of the proof, see exercise 9.31 in Carothers.
 \end{proof} 
 
 \begin{exercise}{2}
-fill
+Of what category is the set of all integers in $\R$ in itself (taken with the metric induced from $\R$)?
 \end{exercise}
 \begin{proof}
-fill
+$\Z$ is of the second category in itself and first category in $\R$.
+For the details of the proof, see exercise 9.42 in Carothers.
 \end{proof} 
 
 \begin{exercise}{3}
-fill
+Find all rare sets in a discrete metric space $X$.
 \end{exercise}
 \begin{proof}
-fill
+Since all subsets of $X$ are open in a discrete metric space, then there is no subset of $X$ that contains no nonempty open set.
+Thus the only rare set in $X$ is the empty set.
 \end{proof} 
 
 \begin{exercise}{4}
-fill
+Find a meager dense subset in $\R^2$.
 \end{exercise}
 \begin{proof}
-fill
+$\Q^2$ would be such a set.
 \end{proof} 
 
 \begin{exercise}{5}
-fill
+Show that a subset $M$ of a metric space $X$ is rare in $X$ if and only if $(\bar{M})^C$ is dense in $X$.
 \end{exercise}
 \begin{proof}
-fill
+This is the content of exercises 4.46 and 9.14 in Carothers (the exercise is repeated there).
 \end{proof} 
 
 \begin{exercise}{6}
-fill
+Show that the complement $M^C$ of a meager subset $M$ of a complete metric space $X$ is nonmeager.
 \end{exercise}
 \begin{proof}
-fill
+This is the content of exercise 9.36 in Carothers.
 \end{proof} 
 
-\begin{exercise}{7}
-fill
+\begin{exercise}{7 (Resonance)}
+Let $X$ be a Banach space, $Y$ a normed space $T_n \in B(X,Y), n=1, 2, \dots$, such that $\sup_n \norm{T_n} = \infty$.
+Show that there is an $x_0 \in X$ such that $\sup_n \norm{T_n x_0} = \infty$.
+[The point $x_0$ is often called a point of resonance, and our problem motivates the term resonance Theorem for the uniform boundedness Theorem].
 \end{exercise}
 \begin{proof}
-fill
+Since $\sup_n \norm{T_n} = \infty$, it means that $\norm{T_n}$ is unbounded, so that if we consider the contrapositive of the uniform boundedness Theorem, we get that $\norm{T_n x_0}$ is not bounded for some $x_0 \in X$, as required.
 \end{proof} 
 
 \begin{exercise}{8}
-fill
+Show that the completeness of $X$ is essential in Theorem 4.7-3 and cannot be omitted.
+[Consider the subspace $X \subseteq l^\infty$ consisting of all $x = (x_n)$ such that $x_n = 0$ for $n > N \in \N$, where $N$ depends on $x$, and let $T_n$ be defined by $T_n x = f_n(x) = n x_n$].
 \end{exercise}
 \begin{proof}
-fill
+Consider the subspace and sequence of functionals given in the hint.
+For all $x$, we have that $f_n(x)$ is bounded by $\max\set{x_1, 2x_2, \dots, Jx_j}$, where $J \in \N$.
+However, notice that $\norm{f_n}$ is not bounded.
+To see this, let $K \in \R$ be a candidate bound for $\norm{f_n}$.
+Let $N \geq K$, and let $x \in X$, be defined as 1 for all $n$ until $N+1$ and 0 otherwise, we then have that $\norm{f_n} \geq \absoluteValue{f_n(x)}/\norm{x} = N$, proving that $\norm{f_n}$ is not bounded.
 \end{proof} 
 
-\begin{exercise}{10}
-fill
+\begin{exercise}{10 (Space $c_0$)}
+Let $y = (y_n), y_n \in \C$, be such that $\sum x_n y_n$ converges for every $x = (x_n) \in c_0$, where $c_0 \subseteq l^\infty$ is the subspace of all complex sequences converging to zero.
+Show that $\sum \absoluteValue{y_n} < \infty$.
+(Use 4.7-3).
 \end{exercise}
 \begin{proof}
-fill
+Consider the sequence $g_n \in (c_0)'$ given by $g_n(x) = \sum^n_i x_i y_i$.
+To see $\absoluteValue{g_n(x)}$ is bounded, consider the sequence $(z_n)$ where each element is defined as $z_i = \absoluteValue{x_i}\bar{y}_i/\absoluteValue{y_i}$.
+We have that $\absoluteValue{z_i} = \absoluteValue{x_i}$ and $x_n \to 0$, so that $z_n \to 0$, meaning that $(z_n) \in c_0$.
+Furthermore for all $n$,
+\begin{align*}
+    \absoluteValue{g_n(x)} 
+    \leq \sum^n_i \absoluteValue{x_i y_i} 
+    \leq \sum^\infty_i \absoluteValue{x_i y_i} 
+    = \sum^\infty_i z_i y_i 
+    < \infty,
+\end{align*}
+where the last equality follows by assumption, so that $\absoluteValue{g_n(x)}$ is bounded, and the bound depends on $x$ and not $n$.
+By the uniform boundedness Theorem $\norm{g_n} < C$ for all $n$.
+Since $(c_0)' = l^1$ (so that $\norm{g_n}$ is the norm on $l^1$), we have that $\norm{g_n} = \sum^n_i \absoluteValue{y_i} < C$.
+Thus, taking limits on both sides of the inequality gives us that $\sum^\infty_i \absoluteValue{y_i} < C$, as required.
 \end{proof} 
 
 \begin{exercise}{11}
-fill
+Let $X$ be a Banach, $Y$ a normed space $T_n \in B(X,Y)$ such that $(T_n x)$ is Cauchy in $Y$ for every $x \in X$.
+Show that $(\norm{T_n})$ is bounded.
 \end{exercise}
 \begin{proof}
-fill
+All Cauchy sequences are bounded, so that $(T_n x)$ as a sequence is bounded, applying the uniform boundedness Theorem, we get the desired result.
 \end{proof} 
 
 \begin{exercise}{12}
-fill
+If, in addition $Y$ in exercise 11 is complete, show that $T_n x \to Tx$, where $T \in B(X,Y)$.
 \end{exercise}
 \begin{proof}
-fill
+Let $Tx = \lim T_n x$.
+We have to prove $T$ is a bounded linear operator.
+First, let $x, x' \in X$.
+We have $T(x+y) = \lim T_n (x_n + y_n) = \lim T_n x_n + \lim T_n y_n = Tx + Ty$.
+Furthermore, if $a$ is a scalar, $T(ax) = \lim T_n ax = a \lim T_n x = a Tx$.
+In both cases we have used the usual algebraic properties of limits and linear operators. 
+To see $T$ is bounded, we have $\norm{Tx} = \lim \norm{T_n x} \leq \lim \norm{T_n} \norm{x} \leq K \norm{x}$, where $K$ is the bound on $(\norm{T_n})$ whose existence we argued in exercise 11.
 \end{proof} 
 
 \begin{exercise}{13}
-fill
+If $(x_n)$ in a Banach space $X$ is such that $(f(x_n))$ is bounded for all $f \in X'$, show that $(\norm{x_n})$ is bounded.
 \end{exercise}
 \begin{proof}
-fill
+Consider the sequence of bounded linear operators given by $g_{x_n}(f) = f(x_n)$.
+By assumption $\absoluteValue{f(x_n)} \leq c_{x_n}$ for all $f$, so that $\absoluteValue{g_{x_n}} \leq c_{x_n}$, using the uniform boundedness Theorem, we can conclude that $\norm{g_{x_n}}$ is bounded too.
+To see $\norm{x_n}$ is bounded, notice that there is a isomorphism between $x_n$ and $g_{x_n}$, namely the canonical embedding map $C: X \to X''$, this isomorphism preserves norms, so that $\norm{g_{x_n}} = \norm{x_n}$, so that the latter is bounded, as required.
 \end{proof} 
 
 \begin{exercise}{14}
-fill
+If $X$ and $Y$ are Banach spaces $T_n \in B(X,Y), n = 1,2,\dots$, show that equivalent statements are:
+\begin{enumerate}
+    \item $(\norm{T_n})$ is bounded,
+    \item $(\norm{T_n x})$ is bounded for all $x \in X$,
+    \item $\absoluteValue{g(T_n x)}$ is bounded for all $x \in X$ and all $g \in Y'$.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+($2 \Rightarrow 1$)
+This is the uniform boundedness Theorem.
+
+($3 \Rightarrow 2$)
+This is the content of exercise 13, where $x_n$ in the notation of exercise 13 becomes $T_n x$ here.
+
+($1 \Rightarrow 3$)
+For a fixed $x \in X$ and $g \in Y'$, we have $\absoluteValue{g(T_n x)} \leq \norm{g} \norm{T_n x} \leq \norm{g} \norm{T_n} \norm{x}$.
+Since $\norm{T_n}$ is bounded and that is the only element in the inequality depending on $n$, we get the desired result.
 \end{proof} 

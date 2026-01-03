@@ -1,138 +1,75 @@
-\section{}
+\section{A division algorithm in $k[x_1, \dots ,x_n]$}
 
-Cox 2.3 A Division Algorithm in k[x1,...,xn]
-4*
-5*
+4
+5
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{4}
+Let $f = q_1f_1 + \dots + q_sf_s + r$ be the output of the division algorithm.
+\begin{enumerate}
+    \item Complete the proof begun in the text that $\operatorname{multideg}(f) \geq \operatorname{multideg}(q_if_i)$ provided that $q_if_i \neq 0$.
+    \item Prove that $\operatorname{mutlideg}(f) \geq \operatorname{r}$, when $r \neq 0$.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item As stated in the proof of Theorem 3, every term of $q_i$ is of the form $\operatorname{LT}(p)/\operatorname{LT}(f_i)$ for some value of $p$.
+    As in the proof of Theorem 3, we have
+    \begin{align*}
+        \operatorname{LT}\parens{
+        \frac
+        {\operatorname{LT}(p)}
+        {\operatorname{LT}(f_i)}
+        f_i}
+        = 
+        \frac
+        {\operatorname{LT}(p)}
+        {\operatorname{LT}(f_i)}
+        \operatorname{LT}(f_i)
+        = \operatorname{LT}(p)
+        \leq \operatorname{LT}(f),
+    \end{align*}
+    where the last inequality follows from the last sentence in the proof of Theorem 3, and the fact that $p$ is initialised to $f$ and decreasing in multidegree at every step, as argued in the proof of Theorem 3.
+    \item Notice that $r$ is initialised to 0.
+    Furthermore, if $r$ is updated, it is updated by adding the leading term of the current $p$.
+    Since $p$ decreases in multidegree at every step, then any update of $r$ must have multidegree less than $f$, as required.
+\end{enumerate}
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{5}
+We will study the division of $f = x^3 - x^2y - x^2z + x$ by $f_1 = x^2y -z$ and $f_2 = xy - 1$.
+\begin{enumerate}
+    \item Compute using grlex order:
+    \begin{align*}
+        &r_1 = \text{ remainder of $f$ on division by } (f_1, f_2).\\
+        &r_2 = \text{ remainder of $f$ on division by } (f_2, f_1).
+    \end{align*}
+    Your results should be different.
+    Where in the division algorithm did the difference occur?
+    (You may need to do a few steps by hand here).
+    \item Is $r = r_1 - r_2$ in the ideal $\brackets{f_1, f_2}$?
+    If so, find an explicit expression $r = Af_1 + Bf_2$.
+    If not, say why not.
+    \item Compute the remainder of $r$ on division by $\brackets{f_1, f_2}$.
+    Why could you have predicted your answer before doing the division?
+    \item Find another polynomial $g \in \brackets{f_1, f_2}$ such that the remainder on division of $g$ by $(f_1, f_2)$ is nonzero.
+    Hint: $(xy+1) f_2 = x^2 y^2 -1$, whereas $y f_1 = x^2 y^2 - yz$.
+    \item Does the division algorithm give us a solution for the ideal membership problem for the ideal $\brackets{f_1, f_2}$?
+    Explain your answer.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
+\begin{enumerate}
+    \item For $(f_1, f_2)$, we have $f = (x^2 y-z)(-1) + x^3 - x^2 z + x - z$, so that $r_1 = x^3 - x^2 z + x - z$.
+    On the other hand, for $(f_2, f_1)$, we have $f = (xy - 1)(-x) + x_3 - x^2 z$, so that $r_2 = x^3 - x^2 z$.
+    The difference arises after we find the factor that divides $-x^2 y$, since neither $f_1$ nor $f_2$ divides $x_3$ so that $x_3$ is part of the remainder in both cases.
+    \item We have that $r = r_1 - r_2 = x - z$.
+    Notice that $f = A_1 f_1 + B_1 f_2 + r_1$ and $f = A_2 f_1 + B_2 f_2 + r_2$, so that $r = r_1 - r_2 = (A_1-A_2) f_1 - (B_1-B_2) f_2$ meaning that $r \in \brackets{f_1, f_2}$.
+    In particular, $r = (x^2 y-z)(-1) - (xy - 1)(-x)$.
+    \item The remainder of $r$ when dividing by $(f_1, f_2)$ is zero because we already found an expression for $r$ as a function of $f_1$ and $f_2$ with no remainders.
+    \item Following the hint, the polynomial $x^2 y^2 - yz - 1$ produces different remainders when divided by $(f_1, f_2)$ and $(f_2, f_1)$.
+    In particular, $r_1 = -yz$ and $r_2 = -1$.
+    \item It is not.
+    As we have seen in the previous examples, the remainder of division of $f$ under $(f_1, f_2)$ and $(f_2, f_2)$ is different.
+    In fact, using the fourth part of this exercise we can come up with an example so that under $(f_1, f_2)$ we get a remainder of 0 (in which case membership is guaranteed) and a non zero remainder (in which case membership is not guaranteed), so that the division algorithm is not ``complete'' in computer science terms.
+\end{enumerate}
 \end{proof} 
