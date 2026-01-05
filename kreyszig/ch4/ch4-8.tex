@@ -1,82 +1,104 @@
 \section{Strong and weak convergence}
 
-1 Notice that convergence in C[a,b] is uniform, while weak convergence implies pointswise
-2
-3 Some easy properties
-4 How does this relate to Fatous lemma in $L^1$
-5
-6
-7 these three exercises show how weak convergence relates to closures and how they are still useful there
-8
-9
-10 Some properties on weak cauchy and weak completeness. It is now interesting to see if weak convergence has an underlying structure, this is true, it is called the weak topology. This is a very interesting topology that nevertheless doesn't come from a metric space, and this is one of the main reasons topology is interesting in analysis
 
-\begin{exercise}{1}
-fill
+\begin{exercise}{1 (Pointwise convergence)}
+If $x_n \in C[a,b]$ and $x_n \wto x \in C[a,b]$, show that $(x_n)$ is pointwise convergent on $[a,b]$, that is, $(x_n(t))$ converges for every $t \in [a,b]$.
 \end{exercise}
 \begin{proof}
-fill
+Let $f_t \in (C[a,b])'$ be the evaluation functional, defined by $f_t(x) = x(t)$.
+Since $(x_n)$ converges weakly, we have that $f_t(x) \to f_t(x)$, so that $x_n(t) \to x(t)$, since this holds for every $t \in [a,b]$, we get the desired result.
 \end{proof} 
 
 \begin{exercise}{2}
-fill
+Let $X$ and $Y$ be normed spaces $T \in B(X,Y)$ and $(x_n)$ a sequence in $X$.
+If $x_n \wto x$, show that $T x_n \wto Tx$.
 \end{exercise}
 \begin{proof}
-fill
+Consider $g \in Y'$, notice that $g \circ T \in X'$, so that $(g \circ T)(x_n) \to (g \circ T)(x)$, since $f(x_n) \to f(x)$ due to the weak convergence of $(x_n)$.
+But this is the same as saying that $g(T x_n) \to g(T x)$, so that $T x_n \wto T x$, as required.
 \end{proof} 
 
 \begin{exercise}{3}
-fill
+IF $(x_n)$ and $(y_n)$ are sequences in the same normed space $X$, show that $x_n \wto x$ and $y_n \wto y$ implies $x_n + y_n \wto x+y$ as well as $ax_n \wto ax$ where $a$ is any scalar.
 \end{exercise}
 \begin{proof}
-fill
+We have that for all $f \in X'$, $f(x_n) \to f(x)$ and $f(y_n) \to f(y)$.
+This gives us that $f(x_n + y_n) = f(x_n) + f(y_n) \to f(x) + f(y) = f(x+y)$, so that $x_n + y_n \wto x+y$.
+Likewise, for any scalar $a$, $f(ax_n) = af(x_n) \to af(x) = f(ax)$, so that $ax_n \wto ax$.
+In both cases we have used the algebraic properties of limits and properties of linear operators.
 \end{proof} 
 
 \begin{exercise}{4}
-fill
+Show that $x_n \wto x$ implies $\liminf \norm{x_n} \geq \norm{x}$.
+(Use Theorem 4.3-3).
 \end{exercise}
 \begin{proof}
-fill
+From Theorem 4.3-3 we know there exists a functional $f \in X'$ such that $\norm{f} = 1$ and $f(x) = \norm{x}$.
+By the weak convergence of $x_n$, we have that $f(x_n) \to f(x) = \norm{x}$ so that $\absoluteValue{f(x)} \to \absoluteValue{f(x)} = \norm{x}$.
+We have
+\begin{align*}
+    \norm{x}
+    =& \lim \absoluteValue{f(x_n)}\\
+    =& \liminf \absoluteValue{f(x_n)}\\
+    \leq& \liminf \parens{\norm{f}\norm{x_n}}\\
+    =& \liminf \norm{x_n},
+\end{align*}
+where the second equality follows from the fact that $\lim f(x_n) = \liminf f(x_n) = \limsup f(x_n)$ when $(f(x_n))$ is a convergent sequence in the reals.
 \end{proof} 
 
 \begin{exercise}{5}
-fill
+If $x_n \wto x$ in a normed space $X$, show that $x \in \bar{Y}$, where $Y = \vecspan(x_n)$.
+(Use Lemma 4.6-7).
 \end{exercise}
 \begin{proof}
-fill
+Suppose, for the sake of contradiction, that $x \notin \overline{\vecspan(x_n)}$.
+Then, from Lemma 4.6-7, there exists a functional with $f(x_n) = 0$ for all $n$, and $f(x) = \delta$, where $\delta = \inf_{y \in Y} \norm{y -x}$, but then $f(x_n) \not\to f(x)$, which contradicts $x_n \wto x$.
 \end{proof} 
 
 \begin{exercise}{6}
-fill
+If $(x_n)$ is a weakly convergent sequence in a normed space $X$, say $x_n \wto x$, show that there is a sequence $(y_n)$ of linear combinations of elements of $(x_n)$ which converges strongly to $x$.
 \end{exercise}
 \begin{proof}
-fill
+This is a Corollary to exercise 5, given that $x \in \overline{\vecspan{x_n}}$, which means exactly the desired result.
 \end{proof} 
 
 \begin{exercise}{7}
-fill
+Show that any closed subspace $Y$ of a normed space $X$ contains the limits of all weakly convergent sequences of its elements.
 \end{exercise}
 \begin{proof}
-fill
+This is a Corollary to exercise 5.
+For any weakly convergent sequence $(x_n)$ in a closed subspace $Y$, $\overline{\vecspan(x_n)} \subseteq Y$, furthermore from exercise 5, we know $x \in \overline{\vecspan(x_n)}$ so that $x \in Y$, as required.
 \end{proof} 
 
-\begin{exercise}{8}
-fill
+\begin{exercise}{8 (Weak Cauchy sequence)}
+A weak Cauchy sequence in a real or complex normed space $X$ is a sequence $(x_n)$ in $X$ such that for every $f \in X'$ the sequence $(f(x_n))$ is Cauchy in $\R$ or $\C$, respectively.
+[Note that then $\lim f(x_n)$ exists].
+Show that a Cauchy sequence is bounded.
 \end{exercise}
 \begin{proof}
-fill
+Notice that in the proof of Lemma 4.8-3.c, the property of the weak convergence of $(x_n)$ we used is that $(f(x_n))$ is bounded.
+This property also holds for weak Cauchy sequences (since $(f(x_n))$ is Cauchy).
+Thus, we can use the same proof, mutatis mutandis, to conclude that $\norm{x_n}$ is bounded, as required.
 \end{proof} 
 
 \begin{exercise}{9}
-fill
+Let $A$ be a normed space $X$ such that every nonempty subset of $A$ contains a weak Cauchy sequence. 
+Show that $A$ is bounded.
 \end{exercise}
 \begin{proof}
-fill
+Suppose for the sake of contradiction, that $A$ is not bounded. 
+Then there exists a sequence in $A$, say $(x_n)$ such that $\lim \norm{x_n} = \infty$.
+Furthermore, we can choose a subsequence $(x_{n_k})$ so that $\norm{x_{n_k}}$ is monotonically increasing.
+Thus, assuming that the sequence must be injective (so non-trivial same element sequences), then the set consisting of the elements of $(x_{n_k})$ has no (injective) Cauchy sequence.
 \end{proof} 
 
-\begin{exercise}{10}
-fill
+\begin{exercise}{10 (Weak completeness)}
+A normed space $X$ is said to be weakly complete if each weak Cauchy sequence in $X$ converges weakly in $X$.
+If $X$ is reflexive, show that $X$ is weakly complete.
 \end{exercise}
 \begin{proof}
-fill
+Notice that a weak Cauchy sequence $(x_n)$ corresponds to a to a sequence $(g_{x_n})$ in $X''$ that is pointwise Cauchy;
+that is, for every $f \in X'$, $(g_{x_n}(f))$ is Cauchy.
+By Theorem 4.6-4 and the fact that $X$ is reflexive, then $X$ (and $X''$) is complete.
+Hence, we can use exercise 4.8.12 to conclude that $f(x_n) = g_{x_n}(f) \to g_x(f) = f(x)$, so that $f(x_n) \to f(x)$, meaning that $x_n \wto x$ in $X$ and as a result, $X$ is weakly complete.
 \end{proof} 

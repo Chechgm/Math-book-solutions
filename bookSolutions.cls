@@ -111,6 +111,9 @@
 \newcommand{\cdfQ}{\mathrm{Q}}
 \newcommand{\pdfQ}{\mathrm{q}}
 
+% Convergence
+\newcommand{\wto}{\stackrel{w}{\to}}
+
 % Math environments
 \newtheorem{thm}{Theorem}
 \crefname{thm}{theorem}{theorems}
