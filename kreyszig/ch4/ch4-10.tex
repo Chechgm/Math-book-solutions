@@ -1,11 +1,5 @@
 \section{Application to summability of sequences}
 
-1
-2
-3
-4 Cesaro summability is quite important in harmonic analysis. It turns out that the Fourier series of a continuous function need not converge to this function, which is bad. But the good thing is that it always is Cesaro summable to the continuous function. This is often good enough to ensure things like uniqueness of Fourier coefficients, etc. 
-6 Abel summability is another cool method used in Fourier series. Of note here is Abel's theorem which gives conditions when Abel summability implies actual convergence of the series. 
-8 I met Euler's method first in an exercise in SICP. There the method is used to accelerate convergence of series. We can see that happen here. The given series for log(2) converges slowly, but the transformed series converges waaay more rapidly. If it is still too slow for your taste, you can Euler transform it again and again!
 
 \begin{exercise}{1 (Cesaro's summability method $C_1$)}
 $C_1$ is defined by $y_n = (1/n)(x_1 + \dots + x_n)$, for $n = 1,2,\dots$, that is, one takes arithmetic means.
@@ -44,12 +38,78 @@ An infinite series is said to be A-summable if the sequence of its partial sums 
 Show that $1 + z + z^2 + \dots$ is $C_1$-summable for $\absoluteValue{z} = 1$, $z \neq 1$ and the $C_1$-sum is $1/(1-z)$
 \end{exercise}
 \begin{proof}
-fill
+Notice that the sequence of partial $C_1$-sums is given by $s_n = \sum^n_{i=0} z^i/(i+1)$.
+To see this series converges we can use Dirichlet's test.
+Thus we write the series $\sum a_n b_n$, where $a_n = 1/(n-1)$ is a sequence of real numbers and $s'_n = \sum b_n = \sum z^n$ is complex.
+We need to prove that $a_n \to 0$ and $s'_n$ is bounded to guarantee convergence of $\sum a_n b_n$.
+It is clear that $a_n \to 0$, so that the first condition for the Dirichlet test is satisfied. 
+To see $s'_n$ is bounded, notice that 
+\begin{align*}
+    \absoluteValue{s'_n}
+    = \absoluteValue{\sum_{i=0}^n z^n}
+    = \absoluteValue{\frac{1-z^{n+1}}{1-z}}
+    \leq \frac{1+\absoluteValue{z^{n+1}}}{\absoluteValue{1-z}}
+    = \frac{1+\absoluteValue{z}^{n+1}}{\absoluteValue{1-z}}
+    = 2/\absoluteValue{1-z}.
+\end{align*}
+Thus, by the Dirichlet's test, the series converges and by an application of the geometric series we get the resulting sum.
 \end{proof} 
 
-\begin{exercise}{8}
-fill
+\begin{exercise}{8 (Euler's method)}
+Euler's method for series associates with a given series $\sum_{j=0}^\infty (-1)^j a_j$ the transformed series $\sum_{n=0}^\infty \Delta^n a_0/2^{n+1}$, where $\Delta^0 a_j = a_j$, $\Delta^n a_j = \Delta^{n-1}a_j - \Delta^{n-1} a_{j+1}$, for $j=1,2,\dots$, and $(-1)^j$ is written for convenience (hence the $a_j$ need not be positive).
+It can be shown that the method is regular, so that the convergence of the given series implies that of the transformed series, the sum being the same.
+Show that the method gives: $\ln 2 = 1 - 1/2 + 1/3 - 1/4 + \dots = 1/(1\cdot 2^1) + 1/(2 \cdot 2^2) + 1/(3 \cdot 2^3) + 1/(4 \cdot 2^4) + \dots$.
 \end{exercise}
 \begin{proof}
-fill
+We have 
+\begin{align*}
+    \Delta^0 a_0 = 1,
+\end{align*}
+moreover,
+\begin{align*}
+    \Delta^1 a_0 = \Delta^0 a_0 - \Delta^0 a_1,
+\end{align*}
+so that if 
+\begin{align*}
+    \Delta^0 a_1 = a_1
+\end{align*}
+then $\Delta^1 a_0 = 1-1/2 = 1/2$.
+Next, 
+\begin{align*}
+    \Delta^2 a_0 = \Delta^1 a_0 - \Delta^1 a_1,
+\end{align*}
+so that if 
+\begin{align*}
+    \Delta^1 a_1 
+    = \Delta^0 a_1 - \Delta^0 a_2
+    = 1/2 - 1/3 
+    = 1/6
+\end{align*}
+and
+\begin{align*}
+    \Delta^2 a_0 
+    = 1/2 - 1/6
+    = 1/3.
+\end{align*}
+Finally,
+\begin{align*}
+    \Delta^3 a_0
+    = \Delta^2 a_0 - \Delta^2 a_1
+    = \Delta^2 a_0 - [\Delta^1 a_1 - \Delta^1 a_2],
+\end{align*}
+where
+\begin{align*}
+    \Delta^1 a_2 
+    = \Delta^0 a_2 - \Delta^0 a_3
+    = 1/3 - 1/4
+    = 1/12,
+\end{align*}
+giving us that
+\begin{align*}
+    \Delta^3 a_0 
+    = 1/3 - [1/6 - 1/12]
+    = 1/3 - 1/12
+    = 1/4.
+\end{align*}
+Replacing these values in the formula for Euler's method gives us the desired result.
 \end{proof} 
