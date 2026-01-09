@@ -1,42 +1,62 @@
 \section{Convergence of sequences of operators and functionals}
 
-1
-2
-3
-4
-5
-6 This is a nice exercise motivating the word uniform and showing it actually is the uniform convergence we're used to 
-7
-8
-9
-10 This is kind of an alternative to something like compactness or the Bolzano-Weierstrass theorem
 
 \begin{exercise}{1}
 Show that uniform operator convergence $T_n \to T, T_n \in B(X,Y)$, implies strong operator convergence with the same limit $T$.
 \end{exercise}
 \begin{proof}
-fill
+Suppose $T_n \to T$ and let $x \in X$.
+We have
+\begin{align*}
+    \norm{T_nx - Tx}
+    = \norm{(T_n - T)x}
+    \leq \norm{T_n - T}\norm{x} \to 0,
+\end{align*}
+as required.
 \end{proof} 
 
 \begin{exercise}{2}
 If $S_n, T_n \in B(X,Y)$ and $(S_n)$ and $(T_n)$ are strongly operator convergent with limits $S$ and $T$, show that $(S_n + T_n)$ is strongly operator convergent with the limit $(S+T)$.
 \end{exercise}
 \begin{proof}
-fill
+Suppose $T_nx \to Tx$ and $S_nx \to Sx$ for all $x \in X$.
+We have
+\begin{align*}
+    \norm{(S_n + T_n)x - (S+T)x}
+    =& \norm{(S_nx - Sx) + (T_nx - Tx)}\\
+    \leq& \norm{S_nx - Sx} + \norm{T_nx - Tx} \to 0,
+\end{align*}
+so that $S_n + T_n \to S + T$, as required.
 \end{proof} 
 
 \begin{exercise}{3}
 Show that strong operator convergence in $B(X,Y)$ implies weak operator convergence with the same limit.
 \end{exercise}
 \begin{proof}
-fill
+Suppose $T_nx \to Tx$ for all $x \in X$ and let $f \in Y'$.
+We have 
+\begin{align*}
+    \absoluteValue{f(T_nx) - f(Tx)}
+    = \absoluteValue{f(T_nx - Tx)}
+    \leq \norm{f}\norm{T_nx - Tx} \to 0,
+\end{align*}
+as required.
 \end{proof} 
 
 \begin{exercise}{4}
-Show that weak operator
+Show that the usual weak convergence in functionals implies weak* convergence.
+Show that the converse holds if $X$ is reflexive.
 \end{exercise}
 \begin{proof}
-fill
+Suppose $f_n \wto f$.
+Then for all $g \in X''$ it holds that $g(f_n) \to g(f)$.
+In particular, let $g = g_x$, the evaluation functional. 
+Then $f_n(x) = g_x(f_n) \to g_x(f) = f(x)$.
+Since $x \in X$ was arbitrary, then $f_n \stackrel{w*}{\to}f$.
+
+For the converse, suppose $f_n \stackrel{w*}{\to}f$. and suppose $X$ is reflexive.
+Then $X \cong X''$ so that $X''$ is composed only of the evaluation functionals $g_x$.
+We have $f_n(x) = g_x(f_n) \to g_x(f) = f(x)$ for all $g \in X''$, and $f_n \wto f$, as required.
 \end{proof} 
 
 \begin{exercise}{5}
@@ -44,40 +64,90 @@ Strong operator convergence does not imply uniform operator convergence.
 Illustrate this by considering $T_n = f_n: l^1 \to \R$, where $f_n(x) = x_n$ and $x = (x_n)$.
 \end{exercise}
 \begin{proof}
-fill
+Recall that $x \in l^1$ implies $\sum \absoluteValue{x_i} < \infty$ which in turn also implies that $x_n \to 0$.
+Now consider the functional in the hint, we have that for every $x$, $f_n(x) \to 0$.
+Furthermore, $\norm{f_n} = 1$, which we can see by considering the sequence $x_n = 1$ and 0 otherwise whose 1-norm is 1 and $\absoluteValue{f_n(x)} = 1$ (for all $n$).
+Now, $\norm{f_n - f} = \norm{f_n} = 1 \neq 0$ so that $f_n$ does not converge uniformly.
 \end{proof} 
 
 \begin{exercise}{6}
-fill
+Let $T_n \in B(X,Y)$, where $n = 1, 2, \dots$.
+To motivate the term ``uniform'' in definition 4.9-1, show that $T_n \to T$ if and only if for every $\epsilon > 0$ there is an $N$, depending only on $\epsilon$, such that for all $n > N$, and all $x \in X$ of norm 1, we have $\norm{T_nx - Tx} < \epsilon$.
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$)
+Let $\epsilon > 0$ and let $N \in \N$ such that $\norm{T_n - T} < \epsilon$ for $n > N$.
+We have 
+\begin{align*}
+    \norm{T_nx - Tx}
+    = \norm{(T_n - T)x}
+    \leq \norm{T_n - T}\norm{x}
+    < \epsilon.
+\end{align*}
+
+($\Leftarrow$)
+Let $\epsilon >0$ and let $N \in \N$ such that whenever $n > N$ and $\norm{x} = 1$, it holds that $\norm{T_nx - Tx} < \epsilon$.
+We have $\norm{T_n -T} = \sup_{\norm{x}=1} \norm{T_n - T} \leq \epsilon$, as required.
 \end{proof} 
 
 \begin{exercise}{7}
-fill
+Let $T_n \in B(X,Y)$, where $X$ is a Banach space.
+If $(T_n)$ is strongly operator convergent, show that $(T_n)$ is bounded.
 \end{exercise}
 \begin{proof}
-fill
+Since $(T_n x)$ converges for all $x$ (because of strong operator convergence), then $\norm{T_nx} \leq c_x$ for all $n$.
+Using the uniform boundedness Theorem, we get that $\norm{T_n} < c$, for all $n$, as required.
 \end{proof} 
 
 \begin{exercise}{8}
-fill
+Let $T_n \to T$, where $T_n \in B(X,Y)$.
+Show that for every $\epsilon > 0$ and every closed ball $K \subseteq X$, there is an $N$ such that $\norm{T_nx - Tx} < \epsilon$ for all $n >N$ and all $x \in K$.
 \end{exercise}
 \begin{proof}
-fill
+This is a Corollary to exercise 4.9.6 the only modification we need to make is to consider $N \in \N$ such that $\norm{T_n - T} < \epsilon/R$, where $R$ is $\norm{x_0} + 2r$, the norm of the center of the ball and $r$ the radius of the ball, since $\norm{x} < R$ for all $x \in K$.
 \end{proof} 
 
 \begin{exercise}{9}
-fill
+Show that $\norm{T} \leq \liminf \norm{T_n}$ in Lemma 4.9-5.
 \end{exercise}
 \begin{proof}
-fill
+Lemma 4.9-5 says that if $X$ is Banach and $Y$ is normed, then if $(T_n)$ in $B(X,Y)$ is strong operator convergent to $T$, then $T \in B(X, Y)$.
+We know that the norm is continuous, so that
+\begin{align*}
+    \norm{Tx}
+    = \liminf \norm{T_n x}
+    \leq \liminf \norm{T_n}\norm{x}
+    = \norm{x} \liminf \norm{T_n}.
+\end{align*}
+Since $\norm{T} = \sup_{x \neq 0} \norm{Tx}/\norm{x}$, dividing both sides of the equality gives us the desired result.
 \end{proof} 
 
 \begin{exercise}{10}
-fill
+Let $X$ be a separable Banach space and $M \subseteq X'$ a bounded set.
+Show that every sequence of elements of $M$ contains a subsequence which is weak* convergent to an element of $X'$.
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
+Let $x_1, x_2, \dots$ be a countable dense subset of $X$ and let $f_n$ be a sequence of functionals in $M$.
+Since $M$ is bounded, then $\norm{f} \leq K$ for all $f \in M$.
+Thus, $f_n(x)$ is bounded for all $n$.
+Thus, there is a subsequence of $(f_n)$, which converges for $x_1$.
+Let's call this sequence $(f_n^1)$;
+that is, $f_n^1(x_1) \to f^1(x_1)$.
+We can now find a subsequence of $(f_n^1)$ that converges for $x_2$.
+We call this sequence $(f_n^2)$ and, more generally, let $(f_n^m)$ the subsequence of $(f_n^{m-1})$ that converges for $x_m$.
+Now let $g_n = f_n^n$, the ``diagonal'' element of the sequence of convergent subsequences of $(f_n)$.
+
+Let $g(x_i) = \lim g_n(x_i)$, by the way we defined $(g_n)$ we know $g$ itself is well-defined.
+By Theorem 2.7-11, we can extend $g$ to a bounded linear functional $g'$ on $X$ with $\norm{g} = \norm{g'}$.
+For any $x \in X$, there exists a sequence $(x_m)$ with $x_m \to x$.
+We have
+\begin{align*}
+    \absoluteValue{g_n(x) - g'(x)}
+    =& \absoluteValue{g_n(x) - g_n(x_m) + g_n(x_m) - g'(x)}\\
+    =& \absoluteValue{g_n(x) - g_n(x_m) + g_n(x_m) - g'(x_m) + g'(x_m) - g'(x)}\\
+    \leq& \absoluteValue{g_n(x) - g_n(x_m)} + \absoluteValue{g_n(x_m) - g'(x_m)} + \absoluteValue{g'(x_m) - g'(x)}
+    \to 0,
+\end{align*}
+because $g_n(x_m) \to g_n(x)$ from the continuity of each $g_n$, $g_n(x_m) \to g'(x_m)$ from the definition of $g'$, and $g'(x_m) \to g(x)$ from the continuity of $g'$.
+Putting these together, we have that $(g_n)$ converges for all $x \in X$ and thus it is weak* convergent.
+\end{proof}

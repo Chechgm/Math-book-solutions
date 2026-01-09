@@ -7,36 +7,41 @@
 6 Abel summability is another cool method used in Fourier series. Of note here is Abel's theorem which gives conditions when Abel summability implies actual convergence of the series. 
 8 I met Euler's method first in an exercise in SICP. There the method is used to accelerate convergence of series. We can see that happen here. The given series for log(2) converges slowly, but the transformed series converges waaay more rapidly. If it is still too slow for your taste, you can Euler transform it again and again!
 
-\begin{exercise}{1}
-fill
+\begin{exercise}{1 (Cesaro's summability method $C_1$)}
+$C_1$ is defined by $y_n = (1/n)(x_1 + \dots + x_n)$, for $n = 1,2,\dots$, that is, one takes arithmetic means.
+Find the corresponding matrix $A$.
 \end{exercise}
 \begin{proof}
-fill
+The matrix would be $a_{n,k} = 1/n$ for $k \leq n$ and 0 otherwise.
 \end{proof} 
 
 \begin{exercise}{2}
-fill
+Apply the method $C_1$ in exercise 1 to the sequences $x = (1,0,1,0,1,0,\dots)$ and $x' = (1, 0, -1/4, -2/8, -3/16, -4/32, \dots)$.
 \end{exercise}
 \begin{proof}
-fill
+For $x$ we get the sequence $(1, 1/2, 2/3, 1/4, 3/5, 1/2, \dots)$.
+For $x'$ we get the sequence $(1, 1/2, 1/3-1/12, 1/4-1/16-2/32, 1/5-1/20-2/40-3/80, \dots)$.
 \end{proof} 
 
 \begin{exercise}{3}
-fill
+In exercise 1, express $(x_n)$ in terms of $(y_n)$.
+Find $(x_n)$ such that $y_n = 1/n$.
 \end{exercise}
 \begin{proof}
-fill
+we have $x_n = ny_n - x_1 - \dots - x_{n-1}$.
+The sequence $x = (1, 0, 0, \dots)$ gives us $y_n = 1/n$ for all $n$.
 \end{proof} 
 
 \begin{exercise}{4}
-fill
+Use the formula in exercise 3 for obtaining a sequence which is not $C_1$ summable.
 \end{exercise}
 \begin{proof}
-fill
+Without using the sequence in the previous exercise, the sequence $(1,2,3,4,\dots)$ is not $C_1$ summable, given that its $C_1$ sequence is $(1, 1/2 + 1, 1/3 + 2/3 + 1, \dots)$ which does not converge.
 \end{proof} 
 
-\begin{exercise}{6}
-fi
+\begin{exercise}{6 (Series)}
+An infinite series is said to be A-summable if the sequence of its partial sums is A-summable, and the A-limit of that sequence is called the A-sum of the series.
+Show that $1 + z + z^2 + \dots$ is $C_1$-summable for $\absoluteValue{z} = 1$, $z \neq 1$ and the $C_1$-sum is $1/(1-z)$
 \end{exercise}
 \begin{proof}
 fill
