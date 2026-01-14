@@ -1,42 +1,214 @@
 \section{Numerical integration and $\text{Weak}^\ast$ convergence}
 
-1
-2
-3
-4 These are some interesting approximation to integrals, for which the functional analysis framework ends up being ideal
-8
-9
+As a separate note to this chapter, we will present a general Theorem to derive the error bound of Newton-Cotes quadrature (integration) rules.
+The theory here presented follows 2003 notes by Mark Embree, which as of January 2026 can be found \href{https://home.iitk.ac.in/~pranab/ESO208/rajesh/03-04/Quadrature.pdf}{here}.
+Newton-Cotes quadrature rules are integration rules based on evaluating the integrand at equally spaced points, we will define the quadrature rule of $f$ between $a$ and $b$ mathematically as $I(f) = \sum_{j=0}^m A_j f(x_j)$, for $a \leq x_0 < x_1 < \dots < x_{m-1} < x_m \leq b$.
+
+We are interested in finding the error of this function
+\begin{align*}
+    E(f)
+    = \int_a^b f(x) dx - I(f).
+\end{align*}
+Since both $I$ and the integral are linear, we see $E$ itself is linear, so that for functions $f,g$ and a scalar $\alpha$, we have $E(\alpha f + g) = \alpha E(f) + E(g)$.
+
+In order to describe $E(f)$ using properties of $f$ and $I(f)$, we will prove the following Theorem (at first do not worry much about the definition of $K(f)$, as it will become clearer with the proof of the Theorem. 
+However, make sure to come back and read the statement of the Theorem again afterwards):
+
+\begin{theorem}\textbf{(Peano Kernel Theorem)}
+    Suppose $f \in C^{n+1}[a,b]$, that is, $f$ is differentiable at least $n+1$ times.
+    Let $I(f) = \sum_{j=0}^m A_j f(x_j)$ be a quadrature (integration) rule that exactly integrates all polynomials of degree $n$ or less on $[a,b]$.
+    Then
+    \begin{align*}
+        E(f) = \frac{1}{n!}\int_a^b f^{(n+1)}(t)K(t) dt, \text{ where } K(t) = E((x-t)_+^n).
+    \end{align*}
+\end{theorem}
+\begin{proof}
+    First, notice that since $f \in C^{n+1}[a,b]$, we can expand $f$ in a Taylor series around a point $x' \in [a,b]$:
+    \begin{align*}
+        f(x) 
+        = \sum_{k=0}^n \frac{f^{(n)}(a)(x-x')^k}{k^1} 
+            + \frac{1}{n!}\int_a^x f^{(n+1)}(t)(x-t)^n dt,
+    \end{align*}
+where the last term is the integral remainder term for the Taylor series, which we call $r_n$.
+The sum in the Taylor expansion of $f$, the first $n$ terms, form a polynomial of degree $n$ or less.
+We call this polynomial $p_n$.
+We then have
+\begin{align*}
+    &p_n(x) = \sum_{k=0}^n \frac{f^{(n)}(a)(x-x')^k}{k^1}\\
+    &r_n(x) = \frac{1}{n!}\int_a^x f^{(n+1)}(t)(x-t)^n dt.
+\end{align*}
+Now since $p_n$ is a polynomial of degree $n$ or less and $I$ integrates it exactly, then $E(p_n) = 0$, so that by the linearity of $E$, we get $E(f) = E(p_n + r_n) = E(p_n) + E(r_n) = E(r_n)$.
+Thus, to describe $E(f)$ we need only derive an expression for 
+\begin{align*}
+    E(r_n)
+    = \int_a^b r_n(x) dx - I(r_n)
+    = \frac{1}{n!} \int_a^b \int_a^x f^{(n+1)}(t) (x-t)^n dt dx - I(r_n).
+\end{align*}
+
+In order to remove $x$ from the upper limit in the integral above, we introduce the truncated power function:
+\begin{align*}
+    (x-t)_+^n =
+    \begin{cases}
+        (x-t)^n \text{ if } x \geq t,\\
+        0 \text{ if } x < t.
+    \end{cases}
+\end{align*}
+Using this, we have
+\begin{align*}
+    r_n(x)
+    =& \frac{1}{n!} \int_a^x f^{(n+1)}(t)(x-t)^n dt\\
+    =& \frac{1}{n!} \int_a^x f^{(n+1)}(t)(x-t)^n dt
+        + \frac{1}{n!} \int_x^b f^{(n+1)}(t)(x-t)_+^n dt\\
+    =& \frac{1}{n!} \int_a^b f^{(n+1)}(t)(x-t)_+^n dt,
+\end{align*}
+so that
+\begin{align*}
+    E(r_n)
+    =& E \parens{\frac{1}{n!} \int_a^b f^{(n+1)}(t) (x - t)_+^n dt}\\
+    =& \frac{1}{n!} E \parens{\int_a^b f^{(n+1)}(t) (x - t)_+^n dt}\\
+    =& \frac{1}{n!} \parens{\int_a^b \int_a^b f^{(n+1)}(t) (x - t)_+^n dt dx      - I \parens{\int_a^b f^{(n+1)}(t) (x - t)_+^n dt}}\\
+    =& \frac{1}{n!} \parens{\int_a^b \int_a^b f^{(n+1)}(t) (x - t)_+^n dt dx      - \sum_{j=0}^m A_j \parens{\int_a^b f^{(n+1)}(t) (x_j - t)_+^n dt}}\\
+    =& \frac{1}{n!} \int_a^b f^{(n+1)}(t) \parens{\int_a^b  (x - t)_+^n dx      - \sum_{j=0}^m A_j (x_j - t)_+^n} dt\\
+    =& \frac{1}{n!} \int_a^b f^{(n+1)}(t) E((x-t)_+^n) dt,
+\end{align*}
+as required.
+\end{proof}
+
+\textit{Remark.}
+A way to interpret this result is that the error in the quadrature of $f$ is related to the integral of a canonical function $K(t)$ which is independent of $f$.
+In typical circumstances, the mean value Theorem for integrals is applied to this formula for $E(f)$ to extract $f$ from inside the integral.
+This allows $E(f)$ to be described as a constant (dependent on $f$) times the integral of the error of the kernel function.
+We will see this in practice for the Trapezoid rule in exercise 2.
+
 
 \begin{exercise}{1}
-fill
+The rectangular (midpoint) rule is
+\begin{align*}
+    \int_a^b f(x) dx 
+    \approx h[f(x_1^\ast) + \dots + f(x_n^\ast)],
+\end{align*}
+where $h = (b-a)/n$ and $x_k^\ast = a + h(k-1/2)$.
+How is this formula obtained?
+What are the nodes and coefficients?
+How can we obtain error bounds for the approximate value given by the formula?
 \end{exercise}
 \begin{proof}
 The coefficients are $h = (b-a)/n$, the interval of integration divided in $n$ equal segments.
-The nodes are $t_n^\ast = a + h(k - 1/2)$, the midpoints of these segments.
+The nodes are $x_k^\ast = a + h(k - 1/2)$, the midpoints of these segments.
 \end{proof} 
 
-\begin{exercise}{2}
-fill
+\begin{exercise}{2 (Trapezoidal rule)}
+The trapezoidal rule is 
+\begin{align*}
+    \int_{x_0}^{x_1} f(x) dx 
+    \approx \frac{h}{2}(x_0 + x_1)
+\end{align*}
+or
+\begin{align*}
+    \int_a^b f(x) dx
+    \approx h((1/2) f(x_0) + f(x_1) + \dots + f(x_{n-1}) + (1/2)f(x_n)) 
+\end{align*}
+where $h = (b-a)/n$ and $x_k = a+kh$.
+Explain how the formulas are obtained if we approximate $x$ by a piecewise linear function.
 \end{exercise}
 \begin{proof}
 The coefficients are as in the rectangular rule, with the difference that the first and last coefficients are also multiplied by $1/2$.
 The nodes are the endpoints of those segments.
-To see how we can arrive to those choices, consider the approximation of a function by a piecewise linear function:
+To see how we can arrive to those choices, consider the approximation of a function given the line
+\begin{align*}
+    g(x) = (x-a) \frac{f(b)-f(a)}{b-a} + f(a).
+\end{align*}
+We approximate the integral of $f(x)$ with the integral of the line:
+\begin{align*}
+    \int_a^b f(x) dx 
+    \approx& \int_a^b g(x)dx\\
+    =& \int_a^b (x-a) \frac{f(b)-f(a)}{b-a} + f(a) dx\\
+    =& \sqrBrackets{\frac{(x-a)^2}{2} \frac{f(b)-f(a)}{b-a} + f(a)x}_a^b\\
+    =& \frac{(b-a)(f(b)-f(a))}{2} + f(a)(b-a)\\
+    =& \frac{(b-a)(f(b)+f(a))}{2}.
+\end{align*}
+For $n$ subintervals, we obtain the following sum
+\begin{align*}
+    \int_a^b f(x) dx 
+    \approx& \frac{b-a}{n} \sum_{j=0}^n \frac{f(x_{j+1})+f(x_j)}{2}\\
+    =& \frac{b-a}{n} \parens{\frac{f(x_0)+f(x_n)}{2} + \sum_{j=1}^{n-1} f(x_j)},
+\end{align*}
+which is precisely the given formula for the trapezoidal rule.
 
+We will now derive the error bound using the Peano kernel Theorem.
+To do this, we will need the following Lemma which we will state without proof.
+\begin{lemma}\textbf{(Mean value Theorem for integrals)}
+    If $h,g \in C[a,b]$ and $h$ does not change sign on $[a,b]$, then there exists a $c \in [a,b]$ such that $\int_a^b g(x)h(x) dx = g(c) \int_a^b h(x)dx$.
+\end{lemma}
 
-FILL ERROR
+For a single interval, we have $I(f) = (b-a)(f(a)+f(b))/2$ which exactly integrates linear polynomials, so that in the Theorem, we take $n=1$.
+We start computing the kernel function:
+\begin{align*}
+    K(t)
+    =& E((x-t)_+)\\
+    =& \int_a^b (x-t)_+ dx - I((x-t)_+)\\
+    =& \int_t^b (x-t) dx - I((x-t)_+)\\
+    =& \sqrBrackets{\frac{(x-t)^2}{2}}_t^b 
+        - \parens{\frac{b-a}{2}}((a-t)_+ + (b-t)_+)\\
+    =& \frac{(b-a)^2}{2} - \frac{(b-a)(b-t)}{2}\\
+    =& \frac{(b-t)}{2}((b-t) - (b-a)) = \frac{(a-t)(b-t)}{2},
+\end{align*}
+where we used that $a < t$, so that $(a-t)_+ = 0$.
+Furthermore, notice that for $t \in [a,b]$, $b-t \geq 0$ and $0 \geq a-t$, so that $K(t) \leq 0$for all $t \in [a,b]$.
+In particular, $K(t)$ does not change signs on $[a,b]$ so that we can apply the mean value Theorem for integrals.
+Thus, the error for trapezoid rule is
+\begin{align*}
+    E(f)
+    =& \frac{1}{1!} \int_a^b f''(t)K(t) dt\\
+    =& f''(c) \int_a^b K(t) dt,
+\end{align*}
+for some $c \in [a,b]$.
+Computing the integral, we have
+\begin{align*}
+    \int_a^b K(t) dt
+    =& \frac{1}{2} \int_a^b (a-t)(b-t) dt\\
+    =& \frac{1}{2} \sqrBrackets{\int_a^b ab - at - bt + t^2 dt}\\
+    =& \frac{1}{2} \sqrBrackets{abt - \frac{at^2}{2} - \frac{bt^2}{2} + \frac{t^3}{3}}_a^b\\
+    =& \frac{1}{2} \sqrBrackets{ab^2 - \frac{ab^2}{2} - \frac{b^3}{2} + \frac{b^3}{3}}
+        - \frac{1}{2} \sqrBrackets{a^2b - \frac{a^3}{2} - \frac{ba^2}{2} + \frac{a^3}{3}}\\
+    =& \frac{1}{2} \sqrBrackets{\frac{ab^2}{2} - \frac{b^3}{6}}
+        - \frac{1}{2} \sqrBrackets{\frac{a^2b}{2} - \frac{a^3}{6}}\\
+    =& -\frac{1}{12}(b-a)^3,
+\end{align*}
+giving us the error in the Trapezoid rule for a single interval:
+\begin{align*}
+    E(f)
+    = -\frac{1}{12}C(b-a)^3
+    = -\frac{1}{12}Ch^3,
+\end{align*}
+where $C = \max_{x \in [a,b]}f''(x)$, and $h = b-a$, since this is a single interval and uses a single point.
+
+Since the error function is linear, we have that the total error $E_{\text{total}}$, is simply the sum of the error for every interval, where $h = (b-a)/n$;
+that is, 
+\begin{align*}
+    E_{\text{total}} 
+    = -\frac{nCh^3}{12} 
+    = -\frac{nC(b-a)^3}{n^3} 
+    = -\frac{C(b-a)^3}{n^2}
+\end{align*}
+
 \end{proof} 
 
-\begin{exercise}{3}
-fill
+\begin{exercise}{3 (Simpson's rule)}
+Simpson's rule is 
+\begin{align*}
+    \int_{x_0}^{x^2} f(x) dx 
+    \approx \frac{h}{3}(f(x_0) + 4f(x_1) + x_2)
+\end{align*}
+or
+\begin{align*}
+    \int_a^b f(x) dx
+    \approx \frac{h}{3} (f(x_0) + 4f(x_1) + 2f(x_2) + \dots + 4f(x_{n-1}) + f(x_n))
+\end{align*}
+where $n$ is even, $h = (b-a)/n$ and $x_k = a + kh$.
+Show that these formulas are obtained if we approximate $f$ on $[x_0,x_2]$ by a quadratic polynomial with values at $x_0, x_1, x_2$ equal to those of $f$;
+similarly on $[t_2, t_4]$, etc.
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{4}
-fill
-\end{exercise}
-\begin{proof}
-fill
+We take an arbitrary quadratic equation $f(x) = ax^2 + bx + c$, integrate it between $-h$ and $h$, and given three points $(-h, y_0)$, $(0, y_1)$ (the midpoint) and $(h, y_2)$ we can find the values for $a, b$ and $c$ as functions of $y_0, y_1$ and $y_2$ which results in the given integration rule.
 \end{proof} 

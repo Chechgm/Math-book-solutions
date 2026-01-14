@@ -115,9 +115,13 @@
 \newcommand{\wto}{\stackrel{w}{\to}}
 
 % Math environments
-\newtheorem{thm}{Theorem}
-\crefname{thm}{theorem}{theorems}
-\Crefname{thm}{Theorem}{Theorems}
+\newtheorem{theorem}{Theorem}
+\crefname{theorem}{theorem}{theorems}
+\Crefname{theorem}{Theorem}{Theorems}
+
+\newtheorem{lemma}{Lemma}
+\crefname{theorem}{lemma}{lemmas}
+\Crefname{theorem}{Lemma}{Lemmas}
 
 % Exercise with box, and no break errors.
 \usepackage{tcolorbox}
