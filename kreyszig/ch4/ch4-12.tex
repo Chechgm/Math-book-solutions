@@ -1,66 +1,127 @@
 \section{Open mapping Theorem}
 
-1 Easy, but it's showing surjective is necessary
-2 That would be called a closed mapping
-5 Showing that completeness is necessary 
-6 A slightly stronger version of the bounded inverse theorem
-7 The following few exercises deal with equivalent norms, and show that in Banach spaces, different notions of equivalence coincide, as we know from Carothers already
-8
-9
-10
 
 \begin{exercise}{1}
-fill
+Show that $T: \R^2 \to \R$ defined by $(x_1, x_2) \mapsto (x_1)$ is open.
+Is the mapping $S: \R^2 \to \R^2$ given by $(x_1, x_2) \to (x_1, 0)$ an open mapping?
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
+Notice that $\norm{Tx} = \absoluteValue{x_1} \leq \sqrt{x_1^2 + x_2^2} = \norm{x}$, so that $T$ is linear and bounded.
+The desired result follows from the open mapping Theorem.
+
+Consider the open ball in $\R^2$ given by $B_\epsilon(0)$ for some $\epsilon > 0$.
+For any $\epsilon' > 0$, we have that the point $(0, \epsilon')$ is not in $S(B_\epsilon(0))$, so that $S(B_\epsilon(0))$ is not open and thus $S$ is not an open mapping.
+\end{proof}
 
 \begin{exercise}{2}
-fill
+Show that an open mapping need not map closed sets onto closed sets.
 \end{exercise}
 \begin{proof}
-fill
+Let $f(x) = \arctan(x)$ and let $A = \R$, which is closed.
+We have $f(A)=(-\pi/2,\pi/2)$, which is not closed.
+To see $\arctan$ is open, notice that $\tan$ is a continuous map, so that its inverse, $\arctan$, maps open sets to open sets.
 \end{proof} 
 
 \begin{exercise}{5}
-fill
+Let $X$ be the normed space whose points are sequences of complex numbers $x = (x_n)$ with only finitely many nonzero terms and norm defined by $\norm{x} = \sup_j \absoluteValue{x_j}$.
+Let $T: X \to X$ de defined by $y = Tx = (x_1, (1/2)x_2 , (1/3)x_3, \dots)$.
+Show that $T$ is linear and bounded but $T^{-1}$ is unbounded.
+Does this contradict 4.12-2?
 \end{exercise}
 \begin{proof}
-fill
+We have that 
+\begin{align*}
+    \norm{T} 
+    = \sup_{\norm{x}=1} \norm{Tx} 
+    = \sup_{\norm{x}=1} \sup_j (\absoluteValue{x_1}, (1/2) \absoluteValue{x_2}, (1/3) \absoluteValue{x_3}, \dots).
+\end{align*}
+The highest value this can attain, for which $\norm{x}=1$ is essentially $x_1$ where $x_1=1$.
+Thus $\norm{T} =1 $, giving us that $T$ is linear and bounded.
+
+To see $T^{-1}$ is unbounded, notice that $T^{-1}x = (x_1, 2x_2, 3x_3, \dots)$, so that for any potential bound on $T^{-1}$, say $K$, we can choose and $x$ with $x_i = 1$, for $i = K+1$ and 0 otherwise, so that $\norm{x}=1$, however $\norm{Tx} = K+1$, so that $K$ is not a bound.
+
+This does not contradict 4.12-1.
+In exercise 1.5.3 we proved $X$ is not complete so that not all hypotheses for the Theorem hold.
 \end{proof} 
 
 \begin{exercise}{6}
-fill
+Let $X$ and $Y$ be Banach spaces and $T: X \to Y$ an injective bounded linear operator.
+Show that $T^{-1}: \cR(T) \to X$ is bounded if and only if $\cR(T)$ is closed in $Y$.
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$)
+Suppose $T^{-1}: \cR(T) \to X$ is bounded.
+Since $T$ is bounded, $T$ is continuous.
+Let $(y_n)$ be a sequence in $\cR(T)$ so that $y_n \to y$.
+We want to prove $y \in \cR(T)$.
+We have that there exists a sequence $(x_n)$ in $X$ such that $y_n = Tx_n$.
+We will now prove that $(x_n)$ is Cauchy, so that it converges.
+Let $\epsilon > 0$ and choose $N \in \N$ such that whenever $n > N$, it holds that $\norm{y_n - y} < \epsilon/(2\norm{T^{-1}})$.
+Let $n,m >N$, notice that
+\begin{align*}
+    \norm{x_n - x_m}
+    =& \norm{T^{-1}(Tx_n) - T^{-1}(Tx_m)}\\
+    =& \norm{T^{-1}} \norm{Tx_n - Tx_m}\\
+    =& \norm{T^{-1}} \norm{Tx_n - y + y - Tx_m}\\
+    \leq& \norm{T^{-1}} (\norm{y_n - y} + \norm{y - y_m})
+    < \epsilon.
+\end{align*}
+Since $x_n \to x$, and $T$ is continuous, we have that $y = \lim Tx_n = T (\lim x_n) = Tx$ meaning that $y \in \cR(T)$ and $\cR(T)$ is closed.
+
+($\Leftarrow$)
+Suppose $\cR(T)$ is closed in $Y$.
+Then by Theorem 1.4-7, $\cR(T)$ is complete and so it is a Banach space.
+Thus, the mapping $T$ is linear, bounded and surjective, so that by the bounded inverse Theorem, $T^{-1}$ is bounded.
 \end{proof} 
 
 \begin{exercise}{7}
-fill
+Let $T: X \to Y$ be a bounded linear operator, where $X$ and $Y$ are Banach spaces.
+If $T$ is bijective, show that there are positive real numbers $a$ and $b$ such that $a\norm{x} \leq \norm{Tx} \leq b\norm{x}$ for all $x \in X$.
 \end{exercise}
 \begin{proof}
-fill
+Let $b = \norm{T}$, we have $\norm{Tx} \leq \norm{T}\norm{x}$.
+Furthermore, since $T$ is bijective, then $T^{-1}$ exists and it is continuous and bounded by the open mapping Theorem and the bounded inverse Theorem.
+We have $\norm{x} = \norm{T^{-1}Tx} \leq \norm{T^{-1}}\norm{Tx}$, so that if we choose $a = 1/\norm{T^{-1}}$, we get the desired result.
 \end{proof} 
 
-\begin{exercise}{8}
-fill
+\begin{exercise}{8 (Equivalent norms)}
+Let $\norm{\cdot}_1$ and $\norm{\cdot}_2$ be norms on a vector space $X$ such that $X_1 = (X, \norm{\cdot}_1)$ and $X_2 = (X, \norm{\cdot}_2)$ are complete.
+If $\norm{x_n}_1 \to 0$ always implies $\norm{x_n}_2 \to 0$, show that convergence in $X_1$ implies convergence in $X_2$, and conversely, and there are positive numbers $a$ and $b$ such that for all $x \in X$, $a\norm{x}_1 \leq \norm{x}_2 \leq b\norm{x}_1$.
+(Note that then these norms are equivalent;
+C.f., definition 2.4-4).
 \end{exercise}
 \begin{proof}
-fill
+Suppose $(x_n)$ in $X_1$ converges, say $x_n \to x$.
+Then the sequence $y_n = x_n - x$ in $X_1$ (since $X_1$ is complete), with $\norm{y_n}_1 \to 0$ so that by assumption $\norm{y_n}_2 \to 0$, but this implies $\norm{x_n - x}_2 \to 0$, so that $(x_n)$ is convergent in $X_2$.
+The converse follows the same strategy mutatis mutandis.
+
+To see the second part holds, consider $T: X_1 \to X_2$ given by $x \mapsto x$, which is bijective.
+Furthermore, let $(x_n)$ be an arbitrary sequence in $X_1$ with $x_n \to 0$, so that $\norm{x_n}_1 \to 0$ and $\norm{x_n}_2 \to 0$.
+We then have $\norm{Tx_n}_2 = \norm{x_n}_2 \to 0$ for an arbitrary sequence converging to 0, meaning that $T$ is continuous at 0.
+We can now use Theorem 2.7-9 to conclude $T$ is continuous and thus bounded.
+Putting everything together, $T$ is a bounded linear operator and $T$ is bijective, so that exercise 7 gives us that $a\norm{x}_1 \leq \norm{Tx}_2 = \norm{x}_2 \leq b\norm{x}_1$, as required.
 \end{proof} 
 
 \begin{exercise}{9}
-fill
+Let $X_1 = (X, \norm{\cdot}_1)$ and $X_2 = (X, \norm{\cdot}_2)$ be Banach spaces.
+If there is a positive constant $c$ such that $\norm{x}_1 \leq c\norm{x}_2$ for all $x \in X$, show that there is a positive constant $k$ such that $\norm{x}_2 \leq k\norm{x}_1$ for all $x \in X$ (so that the two norms are equivalent;
+C.f., definition 2.4-4)
 \end{exercise}
 \begin{proof}
-fill
+Consider the operator $T: X_2 \to X_1$ given by $x \mapsto x$.
+The operator is linear and bijective.
+Furthermore, we can see that $T$ is bounded because $\norm{T} = \sup_{\norm{x}=1} \norm{Tx}_1 /\norm{x}_2 = \sup_{\norm{x}=1} \norm{x}_1 /\norm{x}_2 \leq c$.
+Thus, applying exercise 7 gives us the desired result.
 \end{proof} 
 
 \begin{exercise}{10}
-fill
+From Section 1.3, we know that the set $\cT$ of all open subsets of a metric space $X$ is called a topology for $X$.
+Consequently, each norm on a vector space $X$ defines a topology for $X$.
+If we have two norms on $X$ such that $X_1 = (X, \norm{\cdot}_1)$ and $X_2 = (X, \norm{\cdot}_2)$ are Banach spaces and the topologies $\cT_1$ and $\cT_2$ defined by $\norm{\cdot}_1$ and $\norm{\cdot}_2$ satisfy $\cT_2 \subseteq \cT_1$, show that $\cT_1 = \cT_2$.
 \end{exercise}
 \begin{proof}
-fill
+Consider the operator $T : X_1 \to X_2$ given by $Tx = x$.
+To see $T$ is continuous, let $A$ be an open set in $\cT_2$, then $T^{-1}(A) = A \subseteq \cT_1$, given that $\cT_2 \subseteq \cT1$.
+Since $T$ is continuous, then it is bounded and by the bounded inverse Theorem, $T^{-1}$ is bounded and continuous too.
+This means $T$ is a homeomorphism, which implies $\cT_1 =\cT_2$, as required.
 \end{proof} 
