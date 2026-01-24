@@ -1,134 +1,88 @@
 \section{Closed linear operators. Closed graph Theorem}
 
-\begin{exercise}{x}
-fill
+
+\begin{exercise}{5 (Inverse)}
+If the inverse $T^{-1}$ of a closed linear operator exists, show that $T^{-1}$ is a closed linear operator.
 \end{exercise}
 \begin{proof}
-fill
+By definition, if $T$ is a closed linear operator, then the graph $G = \set{(x,Tx): x \in \cD(T)}$ is a closed set in $X \times Y$.
+But this means that $T^{-1}$ a closed linear operator because the graph of $T^{-1}$, $\set{(y, T^{-1}y): y \in \cR(T)}$, can be identified with the graph of $T$ by noticing that $T^{-1}y = x$ for some $x \in \cD(T)$, giving us that the graph of $T^{-1}$ is closed, too.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{6}
+Let $T$ be a closed linear operator.
+If two sequences $(x_n)$ and $(x_n')$ in $\cD(T)$ converge with the same limit $x$ and if $(Tx_n)$ and $(Tx_n')$ both converge, show that $(Tx_n)$ and $(Tx_n')$ have the same limit.
 \end{exercise}
 \begin{proof}
-fill
+By assumption $x_n \to x$ and $x_n' \to x$.
+Furthermore, the graph of $T$ is closed, so that $(x_n, Tx_n)$ belongs to $G = \set{(x,y): x \in \cD(T), y = Tx}$;
+that is, $(x_n, Tx_n) \to (x, y)$ with $y = Tx$.
+We can that the same holds for $(x_n', Tx_n')$, mutatis mutandis, so that $(x_n, Tx_n)$ and $(x_n', Tx_n')$ have the same limit, meaning that $(Tx_n)$ and $(Tx_n')$ have the same limit, as required.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{8}
+Let $X$ and $Y$ be normed spaces and let $T: X \to Y$ be a closed linear operator.
+\begin{enumerate}
+    \item Show that the image $A$ of a compact subset $C \subseteq X$ is closed in $Y$.
+    \item Show that the inverse image of $B$ of a compact subset $K \subseteq Y$ is closed in $X$.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+We will only prove the first statement, the second statement follows using the same technique, mutatis mutandis.
+Let $y_n \in A$ with $y_n \to y$.
+We want to prove $y \in A$, meaning that $Tx = y$, for some $x \in C$.
+Since $y_n \in C$ for all $n$, we have that there exists a sequence $(x_n)$ in $C$ with $y_n = Tx_n$.
+Furthermore, since $C$ is compact, there exists a subsequence, say $(x_{n_k})$ with $x_{n_k} \to x$ and $x \in C$.
+Now, since $T$ is a closed linear operator, we have that $(x_{n_k}, y_{n_k}) = (x_{n_k}, Tx_{n_k})$ converges in the graph of $T$;
+that is, $(x_{n_k}, Tx_{n_k}) \to (x, Tx)$.
+But since $(y_n)$ is a convergent sequence, then any of its subsequences converges to the limit of $(y_n)$.
+Putting these together, $y_n \to y = Tx$, so that $y \in A$, as required.
+\end{proof}
+
+\begin{exercise}{11 (Null space)}
+Show that the null space $\cN(T)$ of a closed linear operator $T: X \to Y$ is a closed subspace of $X$.
+\end{exercise}
+\begin{proof}
+Let $(x_n)$ be in $\cN(T)$, with $x_n \to x$.
+We want to prove $x \in \cN(T)$ meaning that $Tx = 0$.
+Since $T$ is a closed linear operator, its graph is closed in $X \times Y$;
+that is, the sequence $(x_n, Tx_n) = (x_n, 0)$ converges to $(x, 0)$, but that also means that $Tx = 0$, as required.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{12}
+Let $X$ and $Y$ be normed spaces.
+If $T_1: X \to Y$ is a closed linear operator and $T_2 \in B(X, Y)$, show that $T_1 + T_2$ is a closed linear operator.
 \end{exercise}
 \begin{proof}
-fill
+We will first prove $T_1$ is bounded.
+To see this, notice that $\cD(T_1) = X$ is closed in $X$, so that we can apply the closed graph Theorem to conclude $T_1$ is bounded.
+This also implies $T_1 + T_2$ is bounded.
+Now, $\cD(T_1 + T_2) = X$, which again is closed in $X$, so that by Lemma 4.13-5.a, we can conclude that $T_1 + T_2$ is closed, as required.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{14}
+Assume that the terms of the series $f_1 + f_2 + \dots$ are continuously differentiable functions on the interval $J = [0,1]$ and that the series is uniformly convergent on $J$ and has the sum $f$.
+Furthermore, suppose that $f_1' + f_2' + \dots$ also converges uniformly on $J$.
+Show that then $f$ is continuously differentiable on $(0,1)$ and $f' = f_1' + f_2' + \dots$.
 \end{exercise}
 \begin{proof}
-fill
+We proved in example 4.13-4 that the differential operator, $T$ in this case, is a closed operator, thus, its graph is closed.
+Moreover, we have that the sequence of partial sums $s_n = \sum_i^n f_i$ is a sequence of functions in $J$.
+Since $T$ is closed, we have that the limit of $(s_n, Ts_n) = (s_n, \sum_i^n f_i') = (f, g), $ is in the graph of $T$, so that $g = T(\sum_i^\infty f_i) = \sum_i^\infty f_i'$, as required.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{15 (Closed extension)}
+Let $T: \cD(T) \to Y$ be a linear operator with graph $G(T)$, where $\cD(T) \subseteq X$ and $X$ and $Y$ are Banach spaces.
+Show that $T$ has an extension $T'$ which is a closed linear operator with graph $\overline{G(T)}$ if only if $\overline{G(T)}$ does not contain an element of the form $(0,y)$, where $y \neq 0$.
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
+($\Rightarrow$)
+We know that linear operators map 0 to 0 so that the necessary condition holds almost by definition.
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
+($\Leftarrow$)
+We will prove that $\overline{G(T)}$ with the given hypothesis can be identified with a closed linear operator $T'$.
+First, for any $(x,y) \in G(T)$, we have that $y = Tx$ so that it is well defined. 
+Now consider the sequence $(x, y)$ in $\overline{G(T)}$.
+There exists a sequence $(x_n, Tx_n)$ that converges to such point, and furthermore if $(x, z) = (x, z')$, where $y \neq y'$, were both in $\overline{G(T)}$, we would have that $(0, y) \in \overline{G(T)}$, with $y \neq 0$, which contradicts our assumption.
+This means that every $x \in \overline{D(T)}$ maps uniquely to an element in $\overline{\cR(T)}$, giving us the desired extension with the desired properties.
 \end{proof} 
