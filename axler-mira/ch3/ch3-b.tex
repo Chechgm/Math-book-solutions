@@ -1,133 +1,75 @@
-\section{fill}
-\addcontentsline{toc}{section}{fill}
+\section{3B Limits of integrals and integrals of limits}
+\addcontentsline{toc}{section}{3B Limits of integrals and integrals of limits}
 
-\begin{exercise}{x}
+1 The purpose of the Lebesgue integral was to behave better with limits, hence we got the MCT and DCT. Still, these two exercises show that we cannot expect all integrals and all limits to commute.
+2
+6 In fact, in this example it can be shown that the extended Riemann integral even exists, but still the Lebesgue integral does not. This shows that the Lebesgue integral is very much not perfect. The Henstock integral is the perfect integral on R. But it only really exists on $R^n$. The benefit of Lebesgue is that it works on very general measure spaces, like in probability, not that it can integrate many functions on R.
+8 Verifying theory 
+9 Verifying theory 
+10 How does this relate to $L^p$ spaces? What inclusion is shown here?
+
+\begin{exercise}{1}
+Give an example of a sequence $f_1, f_2, \dots$ of functions from $\N$ to $[0, \infty)$ such that $\lim_{k \to \infty} f_k(m) = 0$ for every $m \in \N$ but $\lim_{k \to \infty} \int f_k d\mu = 1$ where $\mu$ is counting measure on $\N$.
+\end{exercise}
+\begin{proof}
+Personal note: 3b1 $f_k(x) =1$ if x=k and 0 otherwise
+The limit of $(f_k)$ is 0
+But the limit of the integral (under the counting measure) is 1
+And I see how the DCT doesn't work here: g(x) = 1 dominates every fk, but g doesn't have a finite integral
+\end{proof} 
+
+\begin{exercise}{2}
+Give an example of a sequence $f_1, f_2, \dots$ of continuous functions from $\R$ to $[0,1]$ such that $\lim_{k \to \infty} f_k(x) = 0$ for every $x \in \R$ but $\lim_{k \to \infty} f_k d\lambda = \infty$, where $\lambda$ is Lebesgue measure on $\R$
+\end{exercise}
+\begin{proof}
+fill
+\end{proof} 
+
+\begin{exercise}{3}
+Suppose $\lambda$ is Lebesgue measure on $\R$ and $f: \R \to \R$ is a Borel measurable function such that $\int \absoluteValue{f} d\lambda < \infty$.
+Define $g: \R \to \R$ by $g(x) = \int_(-\infty, x) f d\lambda$.
+Prove that $g$ is uniformly continuous on $\R$.
+\end{exercise}
+\begin{proof}
+We have 
+\begin{align*}
+    \absoluteValue{g(x) - g(y)}
+    =& \absoluteValue{\int_{(-\infty, x)}f d\lambda - \int_{(-\infty, y)}f d\lambda}\\
+    =& \absoluteValue{\int f\chi_{(-\infty, x)} d\lambda - \int f\chi_{(-\infty, y)} d\lambda}\\
+    =& \absoluteValue{\int f\chi_{(-\infty, x)} - f\chi_{(-\infty, y)} d\lambda}\\
+    =& \absoluteValue{\int f\chi_{[x, y)} d\lambda}\\
+    =& \absoluteValue{\int_{[x, y)} f d\lambda}\\
+    \leq& \int_{[x, y)}\absoluteValue{f} d\lambda,
+\end{align*}
+where the last inequality follows from 2.45, and we have assumed, without loss of generality, that $x < y$.
+
+Let $\epsilon > 0$.
+Since we assume $\int \absoluteValue{f} d\lambda < \infty$, we can use 3.29 to conclude there is a $\delta > 0$ such that $\int_B \absoluteValue{f} d\lambda < \epsilon$ for all Borel $B$ with $\lambda(B) < \delta$.
+translating this to our result above, we have that for any $x,y \in \R$ with $\absoluteValue{x - y} < \delta$, we get that $\absoluteValue{g(x) - g(y)} \leq \int_{[x, y)} \absoluteValue{f} d\lambda < \epsilon$, giving us the desired uniform continuity.
+\end{proof} 
+
+\begin{exercise}{6}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
+\begin{exercise}{8}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
+\begin{exercise}{9}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
+\begin{exercise}{10}
 fill
 \end{exercise}
 \begin{proof}

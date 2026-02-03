@@ -1,21 +1,6 @@
-\section{Integration with respect to a measure}
-\addcontentsline{toc}{section}{fill}
+\section{3A Integration with respect to a measure}
+\addcontentsline{toc}{section}{3A Integration with respect to a measure}
 
-Axler 3A Integration with Respect to a Measure
-2 In physics, there is a thing called the Dirac delta function which is zero everywhere except at x=0, and which has a total integral of 1. This function is not a usual function in math. This exercise gives one way in which math is able to rigorize the Dirac delta function.
-5 This is very cool since it means summation is a particular integral. So all theorem we prove about integrals (like swapping limit and integral, swapping derivative and integral, etc.) are all valid for summations too
-7
-9 in probability, f would be the pdf of the probability measure nu. 
-10 This allows us to swap infinite sum and integral of positive functions. in particular, we can swap any two infinite sums of positive numbers!
-13
-14 two examples showing the limitations of generalizing the monotone convergence theorem 
-15 Two results which allow for substitutions in the Lebesgue integral. It is interesting how the Lebesgue integral is a very strong integral, but doesn't really allow substitution theorems easily. The Riemann integral is much more superior when it comes to those. 
-17 Fatou's lemma is another landmark result in measure theory
-19 This should intuitively be true by comparing the area under a curve with two rectangles below and above the curve. 
-20 A fun generalization of the monotone convergence theorem
-21 This is the main intuition behind the Lebesgue integral, but it takes a while to see why the Lebesgue integral works like this. It is also not at all clear why it should lead to a stronger integral to begin with.
-
-2.D.24
 
 \begin{exercise}{2}
 Suppose $X$ is a set, $\cS$ is a $\sigma$-algebra, and $c \in X$.
@@ -24,88 +9,363 @@ Prove that if $f: X \to [0, \infty]$ is $\cS$-measurable then $\int f d\delta_c 
 [Careful: $\set{c}$ may not be in $\cS$].
 \end{exercise}
 \begin{proof}
-Let $\cP$ be any partition of $\cS$.
-We have that
-\begin{align}
-    \cL(f, \cP) = \sum_{A_j \in \cP} \delta_c(A_j) \inf_{A_j}f = \inf_{A_i} f \leq f(c),
-\end{align}
-for the unique $A_i$ such that $c \in A_i$.
-Thus, $\int f = \sup \cL(f,\cP) \leq f(c)$.
+To compute this integral we will follow the so-called bootstrapping method.
+We will compute the integral for 
+i) the characteristic function,
+ii) for linear combinations of characteristic functions, that is, simple functions,
+iii) use the monotone convergence Theorem to prove it for arbitrary positive functions,
+iv) prove it for general functions by using $f = f^+ - f^-$.
+
+We will then begin by computing the integral for the characteristic function,
+that is, we want to prove that $\int \chi_E d\delta_c = \chi_E(c)$.
+To see this is the case, notice that 3.4 gives us the first equality in
+\begin{align*}
+    \int \chi_E d\delta_c 
+    = \delta_c(E)
+    = \begin{cases}
+        1 \text{ if } c \in E\\
+        0 \text{ otherwise}
+    \end{cases}
+    = \chi_E(c),
+\end{align*}
+as required.
+
+Now let $f$ be a simple function, so that $f = \sum_{k=1}^n a_k \chi_{E_k}$, where the $E_k$ are disjoint.
+We want to prove $\int (\sum_{k=1}^n a_k \chi_{E_k}) d\delta_c = \sum_{k=1}^n a_k \chi_{E_k} (c)$.
+To see this is the case, notice that 3.7 tells us that
+\begin{align*}
+    \int (\sum_{k=1}^n a_k \chi_{E_k}) d\delta_c = \sum_{k=1}^n a_k \delta_c(E).
+\end{align*}
+Notice that $c$ can only belong to one of $E_k$, say $E_j$, so that 
+\begin{align*}
+    \sum_{k=1}^n a_k \delta_c(E)
+    = a_j \delta_c(E_j)
+    = a_j
+    = \sum_{k=1}^n a_k \chi_{E_k}(c) 
+    = f(c).
+\end{align*}
+
+For the third step, let $f$ be an arbitrary positive function.
+By 2.89, we can approximate $f$ with a sequence of simple functions, such that $0 \leq f_1 \leq f_2 \leq \dots$ and $f_n \to f$.
+Then by the monotone convergence Theorem, we have $\int f d\delta_c = \lim_{n \to \infty} \int f_n d\delta_c$.
+We have already seen that $\int f_n d\delta_c = f_n(c)$ for a simple function, so that 
+\begin{align*}
+    \int f d\delta_c 
+    = \lim_{n \to \infty} \int f_n d\delta_c 
+    = \lim_{n \to \infty} f_n(c) 
+    = f(c)
+\end{align*}
+
+To complete the proof, let $f$ be arbitrary.
+By the definition of the integral of a real valued function, we have that $\int f d\delta_c = \int f^+ d\delta_c - \int f^- d\delta_c = \int f^+ d\delta_c$, if $f(c) \geq 0$ and $\int f d\delta_c = \int f^- d\delta_c$ if $f(c) \leq 0$.
+In both cases, we get that $\int f d\delta_c = f(c)$, as required.
 \end{proof} 
 
 \begin{exercise}{5}
-fill
+Prove that integration with respect to counting measure is summation.
+Suppose $\mu$ is counting measure on $\N$ and $b_1, b_2, \dots$ is a sequence of nonnegative numbers.
+Think of $b$ as the function from $\N$ to $[0, \infty)$ defined by $b(k) = b_k$.
+Then $\int b d\mu = \sum_{k=1}^\infty b_k$.
 \end{exercise}
 \begin{proof}
-fill
+We will proceed using the bootstrap procedure as in exercise 2.
+We begin proving the statement for $b= \chi_E$;
+that is, we prove that $\int \chi_E d\mu = \sum b_k$, and $\chi_E(k) = b_k$ if $k \in E$, as usual.
+For a finite $E$, we have $\int \chi_E d\mu = \mu(E) = n = \sum_{k \in E} \chi_E(k)$.
+The statement holds for infinite $E$ mutatis mutandis.
+
+We will now prove the statement for a simple function $b = \sum_{m = 1}^M b_m \chi_{E_m}$, with $E_m$ disjoint, so that $b(k) = b_m$ if $k \in E_m$ for some $m$ and 0 otherwise.
+Let $n_m$ be the cardinality of $E_m$, we have $\int b d\mu = \sum_{m=1}^M b_m \mu(E_m) = \sum_{m=1}^M b_m n_m$, where the first equality follows by 3.7.
+Likewise, $\sum_{k \in \N}^\infty b(k) = \sum_{k \in \N}^\infty (\sum_{m = 1}^M b_m \chi_{E_m}(k)) = \sum_{m=1}^M b_m n_m$, so that $\int b d\mu = \sum_{k \in \N}^\infty b(k) = \sum_{k \in \N}^\infty b_k$.
+
+Let $b$ be an arbitrary positive function, that is, $b(k) = b_k \geq 0$.
+We can approximate $b$ by the sequence $b^n = \sum_{k = 1}^n b_k\chi_{\set{k}}$, we have that $b^n \to b$. 
+Thus, we can apply the monotone convergence Theorem to conclude that $\int b d\mu = \lim_{n \to \infty} \int b^n d\mu$.
+We have seen that $\int b^n d\mu = \sum_{k=1}^n b_k$, so that taking limit as $n \to \infty$ gives us the desired result.
+
+Since $b$ is defined to be positive from the start, we don't need to do the last step of the bootstrap for an arbitrary function.
 \end{proof} 
 
 \begin{exercise}{7}
-fill
+Suppose $X$ is a set, $\cS$ is the $\sigma$-algebra of all subsets of $X$, and $w: X \to [0, \infty]$ is a function.
+Define a measure $\mu$ on $(X, \cS)$ by $\mu(E) = \sum_{x \in E} w(x)$ for $E \subseteq X$.
+Prove that if $f: X \to [0,\infty]$ is a function, then $\int f d\mu = \sum_{x \in X} w(x)f(x)$, where the infinite sums above are defined as the supremum of all sums over finite subsets of $E$ (first sum) or $X$ (second sum).
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
+We will prove this through a double inequality, that is, we prove that 
+\begin{align*}
+    \int f d\mu \geq \sum_{x \in X} w(x)f(x) = \sup_{D \subseteq X; D \text{ finite}} \sum_{x \in D} w(x) f(x),
+\end{align*}
+and
+\begin{align*}
+    \int f d\mu \leq \sup_{D \subseteq X; D \text{ finite}} \sum_{x \in D} w(x) f(x).
+\end{align*}
+
+To see the first inequality holds, let $D \in X$ be finite.
+Consider the function $g(x) = f(x)\chi_{D}(x)$, so that $g$ is a simple function as we can write $f(x)\chi_{D}(x) = \sum_{x \in D} f(x) \chi_{\set{x}} = \sum_{x \in D} a_x \chi_{\set{x}}$.
+We know that the integral of $g$ is as follows (3.7):
+\begin{align*}
+    \int g d\mu
+    = \sum_{x \in D} f(x)\mu(\set{x})
+    = \sum_{x \in D} f(x)w(x).
+\end{align*}
+Now, notice that $g \leq f$ so that $\int g d\mu \leq \int f d\mu$.
+Since this is true for any finite set $D$, we have $\int f d\mu \geq \sup_{D \subseteq X; D \text{ finite}} \sum_{x \in D} f(x)w(x)$, giving us the first result.
+
+To see the second inequality holds, notice that $\int f d\mu$ is the supremum of the integrals over all simple functions, say $g =\sum_{k = 1
+}^n a_k \chi_{E_k}$ with $E_k$ disjoint, so that $g \leq f$.
+Using 3.7, the integral of a simple function, we have that 
+\begin{align*}
+    \int g d\mu 
+    = \sum_{k = 1}^n a_k \mu(E_k) 
+    = \sum_{k = 1}^n a_k \parens{\sup_{D_k \subseteq E_k; D_k \text{ finite}} \sum_{x \in D_k} w(x)}.
+\end{align*}
+By the homogeneity of the supremum, for each $k$ we can push the constant inside the supremum, giving us 
+\begin{align*}
+    \int g d\mu 
+    =  \sup_{D_1, \dots, D_k} \sum_{k = 1}^n \sum_{x \in D_k} a_k w(x),
+\end{align*}
+where, of course, we still have  $D_k \subseteq E_k$  and $D_k$ finite.
+Since $h(x) = a_k$ if $x \in E_k$ and $h(x) \leq f(x)$, we have $a_k w(x) \leq f(x) w(x)$, so that 
+\begin{align*}
+    \int h d\mu 
+    \leq \sup_{D \subseteq X; D \text{ finite}} \sum_{x \in D} f(x) w(x).
+\end{align*}
+Taking the supremum on both sides of this inequality gives us the other required inequality, completing the proof.
+\end{proof}
 
 \begin{exercise}{9}
-fill
+Suppose $\mu$ is a measure on a measurable space $(X, \cS)$ and $f: X \to [0,\infty]$ is and $\cS$-measurable function.
+Define $v: \cS \to [0, \infty]$ by $v(A) = \int \chi_A f d\mu$ for $A \in \cS$.
+Prove that $v$ is a measure on $(X, \cS)$.
 \end{exercise}
 \begin{proof}
-fill
+Since $f > 0$, we have that $\int \chi_A f d\mu \geq 0$ for all $A$, thus, the critical property of measures we want to prove is the countable additivity;
+that is, for a set of disjoint sets $E_1, E_2, \dots \in \cS$, we want that 
+\begin{align*}
+    v(\bigcup E_k) 
+    = \int \chi_{\bigcup E_k} f d\mu 
+    = \sum \int \chi_{E_k} f d\mu 
+    = \sum v(E_k).
+\end{align*}
+
+We know that for disjoint sets, $\chi_{\bigcup E_k} = \sum \chi_{E_k}$, so that we can write $\int \chi_{\bigcup E_k} f d\mu = \int \sum \chi_{E_k} f d\mu$.
+Additionally, we have that $\lim_{n\to \infty} \sum_{k=1}^n \chi{E_k}f = \sum_{k = 1}^\infty f$, and since $f$ is positive, $\sum_{k=1}^n \chi{E_k}f \leq \sum_{k=1}^{n+1} \chi{E_k}f$, for all $n$.
+Thus we can apply the monotone convergence Theorem (in the second equality), obtaining
+\begin{align*}
+    v(\bigcup E_k)
+    =& \int \sum_{k=1}^\infty \chi_{E_k}f d\mu\\
+    =& \lim_{n \to \infty} \int \sum_{k = 1}^n \chi_{E_k} f d\mu\\
+    =& \lim_{n \to \infty} \sum_{k = 1}^n \int \chi_{E_k}f d\mu\\
+    =& \sum_{k = 1}^\infty \int \chi_{E_k}f d\mu
+    = \sum v(E_k),
+\end{align*}
+completing the proof.
 \end{proof} 
 
 \begin{exercise}{10}
-fill
+Suppose $(X, \cS, \mu)$ is a measure space and $f_1, f_2, \dots$ is a sequence of nonnegative $\cS$-measurable functions.
+Define $f: X \to [0, \infty]$ by $f(x) = \sum_{k=1}^\infty f_k(x)$.
+Prove that $\int f d\mu = \sum_{k=1}^\infty \int f_k d\mu$.
 \end{exercise}
 \begin{proof}
-fill
+Notice that the sequence of functions $(g_n)$ defined by $g_n(x) = \sum_{k=1}^n f_k(x)$ has the property that $g_1 \leq g_2 \leq \dots$ and furthermore $g_n \to f$.
+We can now use the monotone convergence Theorem to conclude that $\lim_{n \to \infty} \int g_n d\mu = \int f d\mu$.
+But then we have that
+\begin{align*}
+    \int f d\mu
+    = \lim_{n \to \infty} \int g_n d\mu
+    = \lim_{n \to \infty} \int \sum_{k=0}^n f_k d\mu
+    = \lim_{n \to \infty} \sum_{k=0}^n \int f_k d\mu
+    = \sum_{k=0}^\infty \int f_k d\mu, 
+\end{align*}
+where the third equality follows from the linearity of the integral.
 \end{proof} 
 
 \begin{exercise}{13}
-fill
+Give an example to show that the monotone convergence Theorem can fail if the hypothesis that $f_1, f_2, \dots$ are nonnegative functions is dropped.
 \end{exercise}
 \begin{proof}
-fill
+Consider the sequence
+\begin{align*}
+    f_n(x) = 
+    \begin{cases}
+        1 \text{ if } x \in [0,n]\\
+        0 \text{ if } x > n\\
+        -1 \text{ if } x < 0.
+    \end{cases}
+\end{align*}
+We have that $\int f_n d\lambda = \int f^+ d\lambda - \int f^- d\lambda = n - \infty = -\infty$.
+Furthermore, $\lim f_n = f$, where $f$ is as in example 3.19.
+We have that $\lim_{n \to \infty} \int f_n d\lambda = -\infty$, however, we concluded in example 3.19, that $\int f d\lambda$ is not defined.
 \end{proof} 
 
 \begin{exercise}{14}
-fill
+Give an example to show that the monotone convergence Theorem can fail if the hypothesis of an increasing sequence of functions is replaced by a hypothesis of decreasing sequence of functions.
+[This exercise shows that the monotone convergence Theorem should be called the increasing convergence Theorem.
+However, see exercise 20].
 \end{exercise}
 \begin{proof}
-fill
+Consider the sequence of functions $f_n(x) = \chi_{\R \setminus [-n, n]}(x)$.
+We have that $f_n \to 0$ and $\int f_n d\lambda = \lambda(\R \setminus [-n,n]) = -\infty - 2n = -\infty$, so that 
+\begin{align*}
+    \lim \int f_n d\lambda = -\infty \neq \int f d\lambda = 0,
+\end{align*}
+completing the proof.
 \end{proof} 
 
 \begin{exercise}{15}
-fill
+Suppose $\lambda$ is Lebesgue measure on $\R$ and $f: \R \to [-\infty, \infty]$ is a Borel measurable functions such that $\int f d\lambda$ is defined.
+\begin{enumerate}
+    \item For $t \in \R$, define $f_t: \R \to [-\infty, \infty]$ by $f_t(x) = f(x-t)$.
+    Prove that $\int f_t d\lambda = \int f d\lambda$ for all $t \in \R$.
+    \item For $t \in \R$, define $f_t: \R \to [-\infty, \infty]$ by $f_t(x) = f(tx)$.
+    Prove that $\int f_t d\lambda = (1/\absoluteValue{t}) \int f d\lambda$ for all $t \in \R \setminus \set{0}$.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+We will proceed as in exercise 2 and 5.
+Thus, we begin by proving the statement holds when $f = \chi_E$;
+that is, we prove that $\int \chi_{t,E} d\lambda = \int \chi_E d\lambda$, where $\chi_{t,E}(x) = \chi_E(x-t)$.
+Notice that $\chi_{t,E}(x) = \chi_E(x-t) = 1$ when $x \in E+t$.
+Furthermore, we have that $\int \chi_E d\lambda = \lambda(E) = \lambda(E+t)$, where the last equality follows from 2.7.
+Thus, $\int \chi_E d\lambda = \int \chi_{t,E} d\lambda$.
+
+For the second step, suppose $f = \sum_{k = 1}^n a_k \chi_{E_k}$, for disjoint $E_k$.
+We have $\int f d\lambda = \sum_{k = 1}^n a_k \lambda(E_k) = \sum_{k = 1}^n a_k\lambda(E_k + t)$, so that using a similar strategy as above for each $E_k$ we can conclude that $\int f d\lambda = \int f_t d\lambda$.
+
+For the third step, let $f$ be positive, and approximate $f$ with an increasing sequence of simple functions $(f^n)$ (we use an upper script instead of a lower one given that $f_t$ is already in use in the problem statement).
+Using the monotone convergence Theorem, we have $\lim_{n \to \infty} \int f^n d\lambda = \int f d\lambda$, so that 
+\begin{align*}
+    \lim_{n \to \infty} \int \sum_{k = 1}^n a_k\chi_{E_k} d\lambda
+    = \lim_{n \to \infty} \sum_{k = 1}^n a_k \lambda(E_k) 
+    = \lim_{n \to \infty} \sum_{k = 1}^n a_k \lambda(E_k + t).
+\end{align*}
+Using a similar argument as in the previous two cases, and the limit on the series, we get that $\int f d\lambda = \int f_t d\lambda$.
+
+The result follows for an arbitrary function by using $\int f d\lambda = \int f^+ d\lambda - \int f^- d\lambda$.
+
+The second result follows using a similar strategy, where instead we use the result in exercise 2A.2, where we concluded that the outer measure and thus Lebesgue measure) has the following property: for $t \in \R$, $\lambda(tA) = \absoluteValue{t} \lambda(A)$.
 \end{proof} 
 
 \begin{exercise}{17}
-fill
+For $x_1, x_2, \dots$ a sequence in $[-\infty, \infty]$, define $\liminf_{k \to \infty} x_k$ by $\liminf_{k \to \infty} x_k = \lim_{k \to \infty} \inf\set{x_k, x_{k+1}, \dots}$.
+Note that $\inf \set{x_k, x_{k+1}, \dots}$ is an increasing function of $k$;
+thus the limit above on the right exists in $[-\infty, \infty]$.
+
+Suppose that $(X, \cS, \mu)$ is a measure space and $f_1, f_2, \dots$ is a sequence of non-negative $\cS$-measurable functions on $X$.
+Define a function $f: X \to [0, \infty]$ by $f(x) = \liminf_{k \to \infty} f_k(x)$.
+\begin{enumerate}
+    \item Show that $f$ is an $\cS$-measurable function.
+    \item Prove that $\int f  d\mu \leq \liminf_{k \to \infty} \int f_k d\mu$.
+    \item Give an example showing that this inequality can be a strict inequality even when $\mu(X) < \infty$ and the family of functions $\set{f_k}_{k \in \N}$ is uniformly bounded.
+\end{enumerate}
+[The second result is called Fatou's Lemma.
+Some textbooks prove Fatou's Lemma and then use it to prove the monotone convergence Theorem.
+Here we are taking the reverse approach, you should be able to use the monotone convergence Theorem to give a clean proof of Fatou's Lemma].
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item In 2.53 we proved that the function $g(x) = \inf\set{f_n(x): n \in \N}$ is a $\cS$-measurable function.
+    This property is not changed if instead of taking $n \in \N$ inside the set we take $n > k$, so that the function $g_k(x) = \inf\set{f_n(x): n > k}$ is a $\cS$-measurable function.
+    Now we have that $f(x) = \liminf_{k \to \infty} f_k(x) = \lim_{k \to \infty} \inf \set{f_n(x): n > k} = \lim_{k\to \infty} g_k(x)$, which we know is a $\cS$-measurable function by 2.48.
+    \item As stated in the exercise, $g_k(x) = \inf{f_n(x): n > k}$ is an increasing function of $k$, so that $g_k$ are nonnegative and increasing, giving us the possibility to use the monotone convergence Theorem;
+    that is, $\int f d\mu = \lim \int g_k d\mu$.
+    
+    Notice that for each $k$, it holds that $g_k = \inf \set{f_n(x): n > k} \leq f_k(x)$ which implies that $\int g_k d\mu \leq \int f d\mu$, by the order Theorem of the Lebesgue integrals (3.22).
+    We can now take liminf in both sides of the inequality to obtain $\liminf_{k \to \infty} \int g_k d\mu \leq \liminf_{k \to \infty} \int f_k d\mu$.
+    Finally, we know that $\liminf_{k \to \infty} \int g_k d\mu = \lim_{k \to \infty}\int g_k d\mu$, since when a sequence of real numbers converges, the the limit and the liminf coincide.
+    Putting all of these together we have $\int f d\mu = \lim \int g_k d\mu \leq \liminf \int f_k d\mu$, completing the proof.
+    \item Consider the sequence of functions $f_n: [-1,1] \to \R$ given by
+    \begin{align*}
+        &f_n
+        = \begin{cases}
+            1 \text{ if } x \in [-1, 0),\\
+            0 \text{ if } x \in [0, 1];
+        \end{cases}
+        &&f_{2n}
+        = \begin{cases}
+            0 \text{ if } x \in [-1, 0),\\
+            1 \text{ if } x \in [0, 1],
+        \end{cases}
+    \end{align*}
+    for $n \in \N$.
+    We have that $f_n \to 0$ (0 as a function), so that $\int f d\lambda = 0$.
+    However, $\liminf \int f_k d\lambda = 1$, since $\int f_k d\lambda = 1$ for all $k$, so that the inequality is strict.
+\end{enumerate}
 \end{proof} 
 
 \begin{exercise}{19}
-fill
+Show that if $(X, \cS, \mu)$ is a measure space and $f: X \to [0,\infty)$ is $\cS$-measurable, then $\mu(X) \inf_X f \leq \int f d\mu \leq \mu(X) \sup_X f$.
 \end{exercise}
 \begin{proof}
-fill
+Consider the partition $P$, give by $X, \emptyset$.
+We then have $\cL (f, P) = \mu(\emptyset) \inf_\emptyset f + \mu(X) \inf_X f$, and since $\int f d\mu = \sup_P \cL(f,P)$, we get that $\mu(X)\inf_X f \leq \int f d\mu$.
+
+Moreover, for any partition $P$, we have 
+\begin{align*}
+    \cL(f, P) 
+    = \sum_{j=0}^m \mu(A_j) \inf_{A_j} f 
+    \leq \sum_{j=0}^m \mu(A_j) \sup_{A_j} f 
+    \leq \sup_X f \sum_{j=0}^m \mu(A_j)
+    = \sup_X f \mu(X),
+\end{align*}
+so that $\sup_P \cL(f, P) = \int f d\mu \leq \mu(X) \sup_X f$, completing the proof.
 \end{proof} 
 
 \begin{exercise}{20}
-fill
+Suppose $(X, \cS, \mu)$ is a measure space and $f_1, f_2, \dots$ is a monotone (meaning either increasing or decreasing) sequence of $\cS$-measurable functions.
+Define $f: X \to [-\infty, \infty]$ by $f(x) = \lim_{k \to \infty} f_k(x)$.
+Prove that if $\int \absoluteValue{f_1} d\mu < \infty$, then $\lim_{k \to \infty} \int f_k d\mu = \int f d\mu$.
 \end{exercise}
 \begin{proof}
-fill
+We will prove this by cases.
+
+\paragraph{Case 1} If $(f_n)$ is increasing and positive, the result follows by the monotone convergence Theorem.
+
+\paragraph{Case 2} Suppose $(f_n)$ is increasing, but $f_1$ is negative in at least one $x$.
+Consider then the sequence $g_n = f_n + f_1^-$, so that $0 \leq g_1 \leq g_2 \leq \dots$.
+We have that $\lim_{n \to \infty} g_n = f + f_1^-$.
+We can now apply the monotone convergence Theorem to conclude that 
+\begin{align*}
+    \lim \int f_n + f_1^- d\mu
+    = \lim \int g_n d\mu 
+    = \int \lim g_n d\mu 
+    = \int f + f_1^- d\mu.
+\end{align*}
+Since $\int \absoluteValue{f} d\mu = \int f^+ + f^- d\mu < \infty$, then $\int f^- d\mu < \infty$, so that from the equality above and the additivity of integration (3.21), we get 
+\begin{align*}
+    \lim \int f_n d\mu + \lim \int f_1^- d\mu
+    = \int f d\mu + \int f_1^- d\mu,
+\end{align*}
+so that $\lim \int f_n d\mu = \int f d\mu$, as desired.
+
+\paragraph{Case 3} Suppose $(f_n)$ is negative and decreasing $0 \geq f_1 \geq f_2 \geq \dots$.
+Then the sequence $g_n = -f_n$ is increasing and positive so that the result follows from the monotone convergence Theorem and the homogeneity of integration (3.20).
+
+\paragraph{Case 4} Suppose $(f_n)$ is decreasing but for some $x$, $f_1$ is positive.
+This case follows the same strategy of case 2 mutatis mutandis.
+Specifically, we use $-f_1^+$ instead of $f_1^-$.
+
+The 4 cases exahust all the possibilities, completing the proof.
 \end{proof} 
 
 \begin{exercise}{21}
-fill
+Henri Lebesgue wrote the following about his method of integration:
+\begin{quotation}
+I have to pay a certain sum, which I have collected in my pocket.
+I take the bills and coins out of my pocket and give them to the creditor in the order I find them  until I have reached the total sum.
+This is the Riemann integral.
+But I can proceed differently.
+After I have taken all the money out of my pocket I order the bills and coins according to identical values and then I pay the several heaps one after the other to the creditor.
+This is my integral.
+\end{quotation}
+Use 3.15 to explain what Lebesgue meant and to explain why integration of a function with respect to a measure can be thought of as partitioning the range of the function, in contrast to Riemann integration, which depends on partitioning the domain of the function.
+[The quote above is taken from page 796 of the Princeton companion to mathematics, edited by Timothy Gowers].
 \end{exercise}
 \begin{proof}
-fill
+The way I interpret this quote is as follows:
+Every bill or coin in Lebesgue's pocket is an `$x$' in the domain of our function and the denomination of the bill is the function evaluation $f(x)$.
+The Riemann integral consists of adding up the function evaluations of each of our elements in the domain of our function (we partition it), we can think of this as a Riemann sum.
+On the other hand, the Lebesgue integral takes all the elements in our domain that have a specific function evaluation and then the integral is simply the product of the `quantity' (measure) of that set times the particular function evaluation, so that we are partitioning the range.
 \end{proof} 
