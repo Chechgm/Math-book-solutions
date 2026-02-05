@@ -226,10 +226,10 @@ Suppose $\lambda$ is Lebesgue measure on $\R$ and $f: \R \to [-\infty, \infty]$ 
 \begin{proof}
 We will proceed as in exercise 2 and 5.
 Thus, we begin by proving the statement holds when $f = \chi_E$;
-that is, we prove that $\int \chi_{t,E} d\lambda = \int \chi_E d\lambda$, where $\chi_{t,E}(x) = \chi_E(x-t)$.
-Notice that $\chi_{t,E}(x) = \chi_E(x-t) = 1$ when $x \in E+t$.
+that is, we prove that $\int \chi_{E,t} d\lambda = \int \chi_E d\lambda$, where $\chi_{E,t}(x) = \chi_E(x-t)$.
+Notice that $\chi_{E,t}(x) = \chi_E(x-t) = 1$ when $x \in E+t$.
 Furthermore, we have that $\int \chi_E d\lambda = \lambda(E) = \lambda(E+t)$, where the last equality follows from 2.7.
-Thus, $\int \chi_E d\lambda = \int \chi_{t,E} d\lambda$.
+Thus, $\int \chi_E d\lambda = \int \chi_{E,t} d\lambda$.
 
 For the second step, suppose $f = \sum_{k = 1}^n a_k \chi_{E_k}$, for disjoint $E_k$.
 We have $\int f d\lambda = \sum_{k = 1}^n a_k \lambda(E_k) = \sum_{k = 1}^n a_k\lambda(E_k + t)$, so that using a similar strategy as above for each $E_k$ we can conclude that $\int f d\lambda = \int f_t d\lambda$.

@@ -24,11 +24,11 @@ as required.
 Give an example of a set $X$, a $\sigma$-algebra $\cS$ of subsets of $X$, a set $\cA$ of subsets of $X$ such that the smallest $\sigma$-algebra on $X$ containing $\cA$ is $\cS$, and two measures $\mu$ and $\nu$ on $(X,\cS)$ such that $\mu(A) = \nu(A)$ for all $A \in \cA$ and $\mu(X) = \nu(X) < \infty$ but $\mu \neq \nu$.
 \end{exercise}
 \begin{proof}
-We will use a combination of examples 2.28.a and 2.55.d to build such measures.
-Let $X$ be a set and $\cA = \set{\set{x}: x \in X}$.
-From example 2.28.a, we know that the smallest $\sigma$-algebra containing $\cA$ is the $\sigma$-algebra where either $E$ is countable or $X \setminus E$ is countable.
-Now let $\mu$ and $\nu$ on $(X, \cS)$ be defined as $\mu(E) = \nu(E) = 0$ if $E$ is countable, and $\mu(E) = 2$ and $\nu(E) = 3$ if $E$ is uncountable.
-From example 2.55.d we know that both $\mu$ and $\nu$ are valid measures on $(X,\cS)$, and by definition, we have the property that $\mu(A) = \nu(A) = 0$ for all $A\in\cA$, but clearly $\mu \neq \nu$, as required.
+Consider the sets $X = \set{a,b,c,d}$, $\cA = \set{\set{a,b}, \set{b,c}, \set{c,d}}$.
+The smallest $\sigma$-algebra containing $\cA$ is the power set of $X$, as can be verified by finding all the singletons through finite union and intersections and complements from elements in $\cA$.
+
+Let $\mu(\set{a}) = 2, \mu(\set{b}) = 3, \mu(\set{c}) = 4, \mu(\set{d}) = 5$, and $\nu(\set{a}) = 1, \nu(\set{b}) = 4, \nu(\set{c}) = 3, \nu(\set{d}) = 6$.
+The measure entailed by these functions (through additivity) gives us that $\mu(A) = \nu(A)$  for all $A \in \cA$ and $\mu(X) = \nu(X)$, though they are not the same measure, completing the proof.
 \end{proof} 
 
 \begin{exercise}{10}

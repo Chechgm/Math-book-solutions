@@ -49,28 +49,39 @@ translating this to our result above, we have that for any $x,y \in \R$ with $\a
 \end{proof} 
 
 \begin{exercise}{6}
-fill
+Let $\lambda$ denote Lebesgue measure on $\R$.
+Give an example of a continuous function $f: [0, \infty) \to \R$ such that $\lim_{t \to \infty} \int_{[0,t]} f d\lambda$ exists (in $\R$) but $\int_{[0, \infty)} f d\lambda$ is not defined.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{8}
-fill
+Let $f: [a,b] \to \R$ be a bounded function and $P_n$ be a partition that divides $[a,b]$ into $2^n$ subintervals of equal size with $I_1, I_2, \dots, I_{2^n}$ the corresponding closed subintervals.
+Define $g_n = \sum_{j=1}^{2^n} (\inf_{I_j}) \chi_{I_j}$, $h_n = \sum_{j=1}^{2^n} (\sup_{I_j}) \chi_{I_j}$, and the limits of these functions as $f^L(x) = \lim g_n(x)$, and $f^U(x) = \lim h_n(x)$.
+Prove that $\set{x \in [a,b]: f^U(x) \neq f^L(x)} = \set{x \in [a,b]: f \text{ is not continuous at } x}$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{9}
-fill
+Suppose $(X, \cS, \mu)$ is a measure space and $E_1, E_2, \dots, E_n$ are disjoint subsets of $X$.
+Suppose $a_1, \dots, a_n$ are distinct nonzero real numbers.
+Prove that $a_1 \chi_{E_1} + \dots a_n \chi_{E_n} \in \cL^1(\mu)$ if and only if $E_k \in \cS$ and $\mu(E_k) < \infty$ for all $k \in \set{1, \dots, n}$.
+Furthermore, $\norm{a_1 \chi_{E_1} + \dots + a_n \chi_{E_n}}_1 = \absoluteValue{a_1} \mu(E_1) + \dots + \absoluteValue{a_n} \mu(E_n).$
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{10}
-fill
+\begin{enumerate}
+    \item Suppose $(X, \cS, \mu)$ is a measure space such that $\mu(X) < \infty$.
+    Suppose $p, r$ are positive numbers with $p < r$.
+    Prove that if $f: X \to [0, \infty)$ is an $\cS$-measurable function such that $\int f^r d\mu < \infty$, then $\int f^p d\mu < \infty$.
+    \item Give an example to show that the previous result can be false without the hypothesis that $\mu(X) < \infty$.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
 fill
