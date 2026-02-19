@@ -1,132 +1,82 @@
 \section{Applications of Banach's Theorem to linear equations}
 
-\begin{exercise}{x}
+1 Details from the theory
+2 Applying the theory to a simple example. Don't do this one if you don't like programming it
+4 One of my absolute favorite results in linear algebra. This is so beautiful and amazing. Notice that eigenvalues relate to roots of polynomials, so this also gives a theorem on where to find roots of polynomials!
+5
+6 These two questions tells us that both methods are not better than one another!
+7 Some more criteria
+8
+9
+
+\begin{exercise}{1}
+Consider the system of $n$ linear equations in $n$ unknowns given by $Ax = c$, the Jacobi and the Gauss-Seidel iteration solves this system as the fixed point of the system given by $x = Cx + b$.
+We can write $A = -L + D - U$, where $D$ is the matrix with the diagonal of $A$ and 0 everywhere else, $L$ is a lower triangular matrix (with zeros on the diagonal) and $U$ is an upper triangular matrix (with zeros on the diagonal).
+Verify that in the Jacobi iteration with $C = -D^{-1}(A-D)$ and $b = D^{-1}c$ and the Gauss-Seidel iteration with $C = (D-L)^{-1}U$ and $b = (D-L)^{-1}c$ solve the original system.
+\end{exercise}
+\begin{proof}
+(Jacobi iteration)
+Replacing $C$ and $b$ in the iterative system, we have 
+\begin{align*}
+    x 
+    = -D^{-1}(A - D)x + D^{-1}c
+    = -D^{-1}Ax + x + D^{-1}c
+\end{align*}
+so that $0 = -D^{-1}Ax + D^{-1}c$, which implies $D^{-1}Ax = D^{-1}c$ and $Ax = c$, as required.
+
+(Gauss-Seidel)
+Replacing as above
+\begin{align*}
+    x
+    = (D - L)^{-1}Ux + (D - L)^{-1}c
+    = (D - L)^{-1}(Ux + c),
+\end{align*}
+so that $(D - L)x = Ux + c$, which gives us that $(D - L - U)x = c$, as required.
+\end{proof} 
+
+\begin{exercise}{2}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
+\begin{exercise}{4}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
+\begin{exercise}{5}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
+\begin{exercise}{6}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
+\begin{exercise}{7}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
+\begin{exercise}{8}
 fill
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
+\begin{exercise}{9}
 fill
 \end{exercise}
 \begin{proof}

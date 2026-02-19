@@ -1,8 +1,6 @@
 \section{3B Limits of integrals and integrals of limits}
 \addcontentsline{toc}{section}{3B Limits of integrals and integrals of limits}
 
-1 The purpose of the Lebesgue integral was to behave better with limits, hence we got the MCT and DCT. Still, these two exercises show that we cannot expect all integrals and all limits to commute.
-2
 6 In fact, in this example it can be shown that the extended Riemann integral even exists, but still the Lebesgue integral does not. This shows that the Lebesgue integral is very much not perfect. The Henstock integral is the perfect integral on R. But it only really exists on $R^n$. The benefit of Lebesgue is that it works on very general measure spaces, like in probability, not that it can integrate many functions on R.
 8 Verifying theory 
 9 Verifying theory 
@@ -12,17 +10,26 @@
 Give an example of a sequence $f_1, f_2, \dots$ of functions from $\N$ to $[0, \infty)$ such that $\lim_{k \to \infty} f_k(m) = 0$ for every $m \in \N$ but $\lim_{k \to \infty} \int f_k d\mu = 1$ where $\mu$ is counting measure on $\N$.
 \end{exercise}
 \begin{proof}
-Personal note: 3b1 $f_k(x) =1$ if x=k and 0 otherwise
-The limit of $(f_k)$ is 0
-But the limit of the integral (under the counting measure) is 1
-And I see how the DCT doesn't work here: g(x) = 1 dominates every fk, but g doesn't have a finite integral
+Consider the sequence given by $f_k(m) = 1$ if $m = k$ and 0 otherwise.
+We see that for any $m$, $\lim_{k \to \infty} f_k(m) = 0$ but also $\int f_k d\mu = 1$ under the counting measure, so that $\lim f_k d\mu = 1$, completing the proof.
+Notice that this even though $g(m) = 1$ dominates every $f_k$, the dominated convergence Theorem does not apply, as $g$ has no finite integral.
 \end{proof} 
 
 \begin{exercise}{2}
 Give an example of a sequence $f_1, f_2, \dots$ of continuous functions from $\R$ to $[0,1]$ such that $\lim_{k \to \infty} f_k(x) = 0$ for every $x \in \R$ but $\lim_{k \to \infty} f_k d\lambda = \infty$, where $\lambda$ is Lebesgue measure on $\R$
 \end{exercise}
 \begin{proof}
-fill
+Let 
+\begin{align*}
+    f_k(x) = 
+    \begin{cases}
+        0   &\text{ if }    x < k\\
+        x-k &\text{ if }  x \in [k, k+1]\\
+        1   &\text{ if }    x > k+1.
+    \end{cases}
+\end{align*}
+Each function in this sequence is continuous.
+Moreover, we have that for all $x$, $\lim_{k \to \infty} f_k(x) = 0$, but also for all $k$, $\int f_k d\lambda = \infty$, so that $\lim_{k \to \infty} f_k d\lambda = \infty$, completing the proof.
 \end{proof} 
 
 \begin{exercise}{3}
@@ -53,7 +60,9 @@ Let $\lambda$ denote Lebesgue measure on $\R$.
 Give an example of a continuous function $f: [0, \infty) \to \R$ such that $\lim_{t \to \infty} \int_{[0,t]} f d\lambda$ exists (in $\R$) but $\int_{[0, \infty)} f d\lambda$ is not defined.
 \end{exercise}
 \begin{proof}
-fill
+$\sin(x)/x$
+
+
 \end{proof} 
 
 \begin{exercise}{8}
@@ -72,7 +81,31 @@ Prove that $a_1 \chi_{E_1} + \dots a_n \chi_{E_n} \in \cL^1(\mu)$ if and only if
 Furthermore, $\norm{a_1 \chi_{E_1} + \dots + a_n \chi_{E_n}}_1 = \absoluteValue{a_1} \mu(E_1) + \dots + \absoluteValue{a_n} \mu(E_n).$
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$)
+Notice that if $E_k \in \cS$ then $\chi_{E_k}$ is measurable (2.38), so that given that the sum of measurable functions is measurable (2.46), then $\sum_{k=1}^n a_n \chi_{E_k}$ is itself measurable.
+Furthermore, since 
+\begin{align*}
+    \norm{\sum a_k \chi_{E_k}}_1
+    =& \int \absoluteValue{\sum a_k \chi_{E_k}} d\mu\\
+    \leq& \sum \int \absoluteValue{ a_k \chi_{E_k}} d\mu\\
+    =& \sum \int \absoluteValue{a_k} \chi_{E_k} d\mu\\
+    =& \sum\absoluteValue{a_k} \mu(E_k),
+\end{align*}
+which is finite only if $\mu(E_k) < \infty$, for all $k$.
+
+($\Leftarrow$)
+Prove exercise 2B.13 using the same technique as 2.38, so that this follows as a Corollary.
+
+
+Suppose $\sum a_k \chi_{E_k} \in \cL^1(\mu)$.
+Then $\sum a_k \chi_{E_k}$ is measurable so that each $E_k$ must be in $\cS$.
+Suppose this were not the case, so that $E_i$ is not in $\cS$ for some $E_i$.
+There are two cases, either $\sum_{k\neq i} a_k \chi_{E_k}$ is measurable, in which case we get a contradiction, because the subtraction of two measurable functions is measurable (2.46).
+The second case is when $\sum_{k\neq i} a_k \chi_{E_k}$ is not measurable, in which case we can repeat the process, until we arrive at a contradiction of the same nature, otherwise, there will be $E_i$ and $E_j$ such that $a_i \chi_{E_i} + a_j \chi_{E_j}$ is not measurable, 
+
+
+
+This would imply that $\sum_{k\neq i} a_k \chi_{E_k}$
 \end{proof} 
 
 \begin{exercise}{10}
@@ -84,5 +117,14 @@ fill
 \end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{itemize}
+    \item Notice that for any partition $P$ of $X$, we have 
+    \begin{align*}
+        \cL(f^r, P) 
+        = \sum_{j=1}^m \mu(A_j) \inf_{A_j}f^r 
+        \geq \sum_{j=1}^m \mu(A_j) \inf_{A_j}f^p 
+        = \cL(f^p, P),
+    \end{align*}
+    the inequality holding true since for all $x \in X$ and all positive functions 
+\end{itemize}
 \end{proof} 
