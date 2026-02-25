@@ -1,11 +1,5 @@
 \section{Applications of Banach's Theorem to linear equations}
 
-1 Details from the theory
-2 Applying the theory to a simple example. Don't do this one if you don't like programming it
-4 One of my absolute favorite results in linear algebra. This is so beautiful and amazing. Notice that eigenvalues relate to roots of polynomials, so this also gives a theorem on where to find roots of polynomials!
-5
-6 These two questions tells us that both methods are not better than one another!
-7 Some more criteria
 8
 9
 
@@ -35,50 +29,261 @@ so that $(D - L)x = Ux + c$, which gives us that $(D - L - U)x = c$, as required
 \end{proof} 
 
 \begin{exercise}{2}
-fill
+Consider the system 
+\begin{align*}
+\begin{matrix}
+    5x_1  & - x_2   &= 7\\
+    -3x_1 & +10 x_2 &= 24.
+\end{matrix}
+\end{align*}
+\begin{enumerate}
+    \item Determine the exact solution.
+    \item Apply the Jacobi iteration.
+    Does $C$ satisfy the row-sum criterion?
+    Starting from $x^0$ with components 1, 1, calculation $x^1, x^2$ and the error bounds for $x^2$.
+    Compare these bounds with the actual error of $x^2$.
+    \item Apply the Gauss-Seidel iteration, performing the same tasks as above.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item The exact solution is $(2,3)$.
+    \item Using a computer program we calculate $x^2 = [1.94, 2.88]$, the true error is 0.12, the prior error is 0.22 and the posterior error is 0.15.
+    $C$ satisfies the row sum criterion.
+    \item Using a computer program we calculate $x^2 = [1.976, 2.9928]$, the true error is 0.024, the prior error is 0.094 and the posterior error is 0.094.
+    $C$ satisfies the row sum criterion.
+\end{enumerate}
 \end{proof} 
 
-\begin{exercise}{4}
-fill
+\begin{exercise}{4 (Gershgorin's Theorem)}
+Gershgorin's Theorem states that if $\lambda$ is an eigenvalue of a square matrix $C = (c_{jk})$, then for some $j$, where $1 \leq j \leq n$, $\absoluteValue{c_jj - \lambda} \leq \sum_{k \neq j}^n \absoluteValue{c_{jk}}$.
+(An eigenvalue of $C$ is a number $\lambda$ such that $Cx = \lambda x$ for some $x \neq 0$).
+\begin{enumerate}
+    \item Show that $x = Cx + b$ can be written $Kx = b$, where $K = I - C$, and Gershgorin's Theorem and the row sum criterion together imply that $K$ cannot have an eigenvalue 0 
+    (so that $K$ is nonsingular, that is, $\det K \neq 0$, and $Kx = b$ has a unique solution).
+    \item Show that the row sum criterion and Geshgorin's Theorem imply that $C$ in $x = Cx + b$ has a spectral radius less than 1.
+    (It can be show that this is necessary and sufficient for the convergence of the iteration.
+    The spectral radius of $C$ is $\max_j \absoluteValue{\lambda_j}$, where $\lambda_1, \dots \lambda_n$ are the eigenvalues of $C$).
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item For the first part, notice that $Kx = (I - C)x = b$ is the same as $x = Cx + b$.
+    For the second part, notice that from Gershgorin's Theorem, we have
+    \begin{align*}
+        \absoluteValue{\lambda - c_{jj}} + \absoluteValue{c_{jj}}
+        \leq \sum_{k=1}^n \absoluteValue{c_{jk}}
+        < 1,
+    \end{align*}
+    where the last inequality follows from the row sum criterion.
+    By the triangle inequality, we have 
+    \begin{align*}
+        \absoluteValue{\lambda} 
+        = \absoluteValue{\lambda - c_{jj} + c_{jj}}
+        = \absoluteValue{\lambda - c_{jj}} + \absoluteValue{c_{jj}}
+        < 1,
+    \end{align*}
+    which precludes the possibility that $1 - \lambda = 0$.
+
+    To see how this relates to the eigenvalues of $K$, let $\lambda'$ be an eigenvalue of $K$, so that $Kx = \lambda' x = (I - C)x$, which is the same as $(I - C - I\lambda)x = ((1-\lambda')I - C)x = 0$;
+    that is, $1-\lambda'$ is an eigenvalue of $C$.
+    Putting this together with the above result, we see that $\lambda' \neq 0$, as required.
+    \item This follows using an intermediate result from above.
+    We concluded that $\absoluteValue{\lambda}  < 1$ for all $\lambda$, which implies the spectral radius is less than 1.
+\end{enumerate}
 \end{proof} 
 
 \begin{exercise}{5}
-fill
+An example of a system for which the Jacobi iteration diverges, whereas the Gauss-Seidel iteration converges is 
+\begin{align*}
+\begin{matrix}
+    2x_1 & + x_2   & + x_3 &  = 4\\
+    x_1  & + 2x_2  & + x_3  & = 4\\
+    x_1  & + x_2   & + 2x_3 & = 4.
+\end{matrix}
+\end{align*}
+Starting from $x^0 = 0$ verify divergence of the Jacobi iteration and perform the first few steps of the Gauss-Seidel iteration to obtain the impression that the iteration seems to converge to the exact solution $x_1 = x_2 = x_3 = 1$.
 \end{exercise}
 \begin{proof}
-fill
+Instead of doing the first iterations of the Jacobi procedure, we will prove it diverges using the results in exercise 4.
+Using the definitions of 
+\begin{align*}
+    &A = 
+\begin{pmatrix}
+    2 & 1 & 1 \\
+    1 & 2 & 1 \\
+    1 & 1 & 2
+\end{pmatrix},
+    c =
+\begin{pmatrix}
+    4\\
+    4\\
+    4
+\end{pmatrix},
+    D = 
+\begin{pmatrix}
+    2 & 0 & 0 \\
+    0 & 2 & 0 \\
+    0 & 0 & 2
+\end{pmatrix},\\
+    &-U = 
+\begin{pmatrix}
+    0 & 1 & 1 \\
+    0 & 0 & 1 \\
+    0 & 0 & 0
+\end{pmatrix},
+    -L = 
+\begin{pmatrix}
+    0 & 0 & 0 \\
+    1 & 0 & 0 \\
+    1 & 1 & 0
+\end{pmatrix}.
+\end{align*}
+Then using the definitions of $C$ and $b$ in the Jacobi iteration, we obtain
+\begin{align*}
+    C 
+    = - D^{-1} (A - D) =
+\begin{pmatrix}
+    0    & -1/2 & -1/2 \\
+    -1/2 &    0 & -1/2 \\
+    -1/2 & -1/2 & 0
+\end{pmatrix},
+\end{align*}
+which has eigenvalues $\lambda = -1$ and $\lambda = 1/2$, so exercise 4 tells us that this iteration does not converge.
+
+For the Gauss-Seidel iteration, we have
+\begin{align*}
+    C 
+    = (D - L)^{-1} U =
+\begin{pmatrix}
+    0 & -4 & -4 \\
+    0 &  2 & -2 \\
+    0 &  1 & 3
+\end{pmatrix},
+\end{align*}
+which has eigenvalues $\lambda = 0$ and $\lambda \approx 0.3 \pm 0.2i$, both of which have absolute value less than 1, so that by exercise 4, the Gauss-Seidel iteration converges.
 \end{proof} 
 
 \begin{exercise}{6}
-fill
+It is plausible to think that the Gauss-Seidel iteration is better than the Jacobi iteration in all cases.
+Actually the two methods are not comparable.
+This is surprising.
+For example, in the case of the system
+\begin{align*}
+\begin{matrix}
+    x_1  &        & + x_3  & = 2\\
+    -x_1 & + x_2  &        & = 0\\
+    x_1  & + 2x_2 & - 3x_3 & = 0.
+\end{matrix}
+\end{align*}
+the Jacobi iterations converges whereas the Gauss-Seidel iteration diverges.
+Derives these two facts from the necessary and sufficient conditions stated in exercise 4.
 \end{exercise}
 \begin{proof}
-fill
+We will proceed as in exercise 5.
+We have
+\begin{align*}
+    &A = 
+\begin{pmatrix}
+    1  & 0 & 1 \\
+    -1 & 1 & 0 \\
+    1  & 2 & -3
+\end{pmatrix},
+    c =
+\begin{pmatrix}
+    2\\
+    0\\
+    0
+\end{pmatrix},
+    D = 
+\begin{pmatrix}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & -3
+\end{pmatrix},\\
+    &-U = 
+\begin{pmatrix}
+    0 & 0 & 1 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0
+\end{pmatrix},
+    -L = 
+\begin{pmatrix}
+    0  & 0 & 0 \\
+    -1 & 0 & 0 \\
+    1  & 2 & 0
+\end{pmatrix}.
+\end{align*}
+Then using the definitions of $C$ and $b$ in the Jacobi iteration, we obtain
+\begin{align*}
+    C 
+    = - D^{-1} (A - D) =
+\begin{pmatrix}
+    0   &  0  & -1 \\
+    1   &  0  & 0  \\
+    1/3 & 2/3 & 0
+\end{pmatrix},
+\end{align*}
+which has eigenvalues $\lambda \approx 0.37 \pm 0.87i$ and $\lambda \approx -0.75$, both of which have absolute value less than 1 so exercise 4 tells us that this iteration converges.
+
+For the Gauss-Seidel iteration, we have
+\begin{align*}
+    C 
+    = (D - L)^{-1} U =
+\begin{pmatrix}
+    0 & 0 & -1 \\
+    0 & 0 & -1 \\
+    0 & 0 & -1
+\end{pmatrix},
+\end{align*}
+which has eigenvalues $\lambda = 0$ and $\lambda 1$ so that by exercise 4, the Gauss-Seidel iteration does not converge.
 \end{proof} 
 
-\begin{exercise}{7}
-fill
+\begin{exercise}{7 (Column sum criterion)}
+To the max metric corresponds the row sum condition. 
+If we use on $X$ the metric $d$ defined by $d(x, y) = \sum_{j=1}^n \absoluteValue{x_j - y_j}$, show that instead we obtain the condition $\sum_{j=1}^n \absoluteValue{c_{jk}} < 1$, for all $k = 1, 2, \dots$.
 \end{exercise}
 \begin{proof}
-fill
+We have 
+\begin{align*}
+    d(Tx, Ty)
+    =& \sum_{j=1}^n \absoluteValue{\sum_{k=1}^n c_{jk} (x_k - y_k)}\\
+    \leq& \sum_{j=1}^n \max_k \absoluteValue{c_{jk}} \sum_{k=1}^n  \absoluteValue{(x_k - y_k)}\\
+    =& \sum_{j=1}^n \max_k \absoluteValue{c_{jk}} d(x,y)\\
+    =& d(x,y) \sum_{j=1}^n \max_k \absoluteValue{c_{jk}},
+\end{align*}
+so that $\alpha = \max_k \sum_{j=1}^n \absoluteValue{c_{jk}}$, meaning that for all $k$, we require $\sum_{j=1}^n \absoluteValue{c_{jk}} < 1$
 \end{proof} 
 
-\begin{exercise}{8}
-fill
+\begin{exercise}{8 (Square sum criterion)}
+As in exercise 7, if we use on $X$ the Euclidean metric $d$ defined by $d(x, y) = \parens{\sum_{j=1}^n (x_j - y_j)^2}^{1/2}$, show that instead we obtain the condition $\sum_{j=1}^n \sum_{k=1}^n c_{jk}^2 < 1$.
 \end{exercise}
 \begin{proof}
-fill
+We have, using the Cauchy-Schwarz inequality,
+\begin{align*}
+    d(Tx, Ty)
+    =& \parens{\sum_{j=1}^n \parens{\sum_{k=1}^n c_{jk} (x_k - y_k)}^2}^{1/2}\\
+    =& \parens{
+    \sum_{j=1}^n \parens{\parens{\sum_{k=1}^n c_{jk}^2}^{1/2} 
+    \parens{\sum_{k=1}^n(x_k - y_k)^2}^{1/2}}^2 }^{1/2}\\
+    =& \parens{\sum_{j=1}^n \parens{\parens{\sum_{k=1}^n c_{jk}^2}^{1/2}  d(x,y)}^2 }^{1/2}\\
+    =& \parens{ \sum_{j=1}^n \sum_{k=1}^n c_{jk}^2 d(x,y)^2 }^{1/2}\\
+    =& d(x,y) \parens{\sum_{j=1}^n \sum_{k=1}^n c_{jk}^2}^{1/2},
+\end{align*}
+so that we require $\alpha = \parens{\sum_{j=1}^n \sum_{k=1}^n c_{jk}^2}^{1/2} < 1$ for $T$ to be a contraction.
+Taking squares on both sides of the inequality completes the proof.
 \end{proof} 
 
-\begin{exercise}{9}
-fill
+\begin{exercise}{9 (Jacobi iteration)}
+Show that for the Jacobi iteration the sufficient convergence conditions: row sum criterion, column sum criterion (exercise 7) and square sum criterion (exercise 8) take the form:
+\begin{align*}
+    \sum_{k \neq j}^n \frac{\absoluteValue{a_{jk}}}{\absoluteValue{a_{jj}}} < 1,
+    \sum_{j \neq k}^n \frac{\absoluteValue{a_{jk}}}{\absoluteValue{a_{jj}}} < 1,
+    \sum_{k \neq j}^n \sum_{j \neq k}^n \frac{a_{jk}^2}{a_{jj}^2} < 1.
+\end{align*}
 \end{exercise}
 \begin{proof}
-fill
+Recall that in the Jacobi iteration $C = -D^{-1} (A - D)$, where $D$ is the matrix of the diagonal of $A$ and zeroes everywhere else.
+In all these sums we divide by $a_{jj}$ because of $-D^{-1}$ and sum over all of the indices -but- $j,j$ because we subtract $D$ from $A$.
+Thus, although we don't prove the inequalities algebraically, they are intuitively clear by the definition of $C$ itself.
 \end{proof} 

@@ -1,133 +1,95 @@
 \section{Applications of Banach's Theorem to integral equations}
 
-\begin{exercise}{x}
-fill
+4 A different way of solving integral equations
+5
+6
+7 I hope this reminds you of convolution in probability theory
+8
+9
+10
+
+\begin{exercise}{2 (Nonlinear integral equation)}
+If $v$ and $k$ are continuous on $J = [a,b]$ and $C = [a,b] \times [a,b] \times \R$, respectively, and $k$ satisfies on $G$ a Lipschitz condition of the form $\absoluteValue{k(t, \tau, u_1) - k(t, \tau, u_2)} \leq l \absoluteValue{u_1 - u_2}$, show that the nonlinear integral equation $x(t) - \mu \int_a^b k(t, \tau, x(\tau)) d\tau = v(t)$ has a unique solution $x$ for any $\mu$ such that $\absoluteValue{\mu} < 1/l(b-a)$.
+\end{exercise}
+\begin{proof}
+As in the text, let $Tx(t) = v(t) = \mu \int_a^b k(t, \tau, x(\tau)) d\tau$, which is well a well-defined operator $T: C[a,b] \to C[a,b]$, since $v$ and $k$ are continuous.
+We have
+\begin{align*}
+    d(Tx, Ty)
+    =& \max_{t \in J} \absoluteValue{Tx(t) - Ty(t)}\\
+    =& \max_{t \in J} \absoluteValue{\mu \int_a^b k(t, \tau, x(\tau)) - k(t, \tau, y(\tau)) d\tau}\\
+    \leq& \max_{t \in J} \absoluteValue{\mu} \int_a^b \absoluteValue{k(t, \tau, x(\tau)) - k(t, \tau, y(\tau))} d\tau\\
+    \leq& \absoluteValue{\mu} \int_a^b l \absoluteValue{x(\tau)) - y(\tau)} d\tau\\
+    \leq& \absoluteValue{\mu} l \max_{s \in J} \absoluteValue{x(s) - y(s)} \int_a^b d\tau\\
+    =& \absoluteValue{\mu} l d(x,y) (b-a),
+\end{align*}
+that is, $d(Tx, Ty) \leq \alpha d(x, y)$, where $\alpha = \absoluteValue{mu} l (b-a)$.
+$T$ is a contraction, if $\absoluteValue{\mu} < 1/l(b-a)$, in which case we can apply Banach's fixed point Theorem, giving us that the integral equation has a unique solution, completing the proof.
+\end{proof} 
+
+\begin{exercise}{3}
+It is important to understand that integral equations also arise from problems in differential equations.
+\begin{enumerate}
+    \item For example, write the initial value problem $dx/dt = f(t, x)$, $x(t_0) = x_0$ as an integral equation and indicate what kind of equation it is.
+    \item Show that an initial value problem $d^2x / dt^2 = f(t, x)$, $x(t_0) = x_0$, $x'(t_0) = x_1$ involving a second order differential equation can be transformed into a Volterra integral equation.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+\begin{enumerate}
+    \item We can write the integral equation as $x(t) = x_0 + \int_{t_0}^t f(\tau, x(\tau)) d\tau$.
+    This is a Volterra equation.
+    \item For the second one, we have $x(t) = \int_{t_0}^t (t - \tau) f(\tau, x(\tau)) d\tau + (t - t_0) x_1 + x_0$, for which the three conditionds hold.
+\end{enumerate}
+\end{proof} 
+
+\begin{exercise}{4 (Neumann series)}
+Defining an operator $S$ by $Sx(t) = \int_a^b k(t, \tau) x(\tau) d\tau$ and setting $z_n = x_n - x_{n-1}$, show that the iterative sequence in the Fredholm's integral equation Theorem implies $z_{n+1} = \mu Sz_n$.
+Choosing $x_0 = v$ show that the iteration yields the Neumann series $x = \lim x_n = v + \mu Sv + \mu^2 S^2 v + \mu^3 S^3 v + \dots$.
+\end{exercise}
+\begin{proof}
+For the 
+\end{proof} 
+
+\begin{exercise}{5}
+Solve the following integral equation $x(t) - \mu \int_0^1 x(\tau) d\tau = 1$ by a Neumann Series and by a direct approach.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{6}
+Solve $x(t) 0- \mu \int_a^b c x(\tau) d\tau = \tilde{v}(t)$ where $c$ is a constant, and indicate how the corresponding Neumann series can be used to obtain the convergence condition $\absoluteValue{\mu} < 1/(c(b-a))$ for the Neumann series of a Fredholm equation of the second kind.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{7 (Iterated kernel, resolvent kernel)}
+Show that in the Neumann series in exercise 4, we can write $(S^n v)(t) = \int_a^b k_{(n)}(t, \tau) v(\tau) d\tau$, for $n = 2, 3, \dots$, where the iterated kernel $k_{(n)}$ is given by $k_{(n)} = \int_a^b \dots \int_a^b k(t, t_1) k(t_1, t_2) \dots k(t_{n-1}, \tau dt_1 \dots dt_{n-1}$ so that the Neumann series can be written $x(t) = v(t) + \mu \int_a^b k(t, \tau) v(\tau) d\tau + \mu^2 \int_2^b k_{(2)}(t, \tau) v(\tau) d\tau + \dots$, or by the use of the resolvent kernel $\tilde{k}$ defined by $\tilde{k}(t, \tau, \mu) = \sum_{j=0}^\infty \mu^j k_{(j+1)}(t, \tau)$, with $k_{(1)} = k$ it can be written $x(t) = v(t) + \mu \int_a^b \tilde{t}(t, \tau, \mu) v(\tau) d\tau$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{8}
+It is of interest that the Neumann series in exercise 4 can also be obtained by substituting a power series in $\mu$, $x(t) = v_0(t) + \mu v_1(t) + \mu^2 v_2(t) + \dots$ into a Fredholm equation of the second kinds, integrating termwise and comparing coefficients.
+Show that this gives $v_0(t) = v(t)$ and $v_n(t) = \int_a^b k(t, \tau) v_{n-1}(\tau) d\tau$, for $n = 1, 2, \dots$.
+Assuming that $\absoluteValue{v(t)} \leq c_0$ and $\absoluteValue{k(t, \tau)} \leq c$, show that $\absoluteValue{v_n(t)} \leq c_0[c(b - a)]^n$, so that the convergence condition $\absoluteValue{\mu} < 1/(c(b-a))$, implying convergence.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{9}
+Using exercise 7, solve a Fredholm equation of the second kind, where $a = 0$, $b = 2\pi$ and $k(t, \tau) = \sum_{n=1}^N a_n \sin nt \cos n\tau$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
+\begin{exercise}{10}
+In a Fredholm equation of the second kind, let $a = 0$, $b = \pi$ and $k(t, \tau) = a_1 \sin t \sin 2\tau + a_2 \sin 2t \sin 3\tau$.
+Write the solution in terms of the resolvent kernel (see exercise 7).
 \end{exercise}
 \begin{proof}
 fill
