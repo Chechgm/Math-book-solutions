@@ -1,40 +1,59 @@
 \section{Applications of Banach's Theorem to differential equations}
 
-1 This is the case you'll use in practice since it's a lot easier to check than to check Lipschitz directly
-7 So the initial value doesn't really matter
-9 An example of a system that might have more than one solution. Interestingly, this gives rise to a system in classical mechanics called Norton's Dome, which is a nondeterministic system in Newtonian mechanics.
 
 \begin{exercise}{1}
 If the partial derivative $\partial f/ \partial x$ of $f$ exists and is continous on the rectangle $R$ (as in Picard's Theorem), show that $f$ satisfies a Lipschitz condition on $R$ with respect to the second argument.
 \end{exercise}
 \begin{proof}
-fill
+Fix $t \in R$, so that we can consider $f(t, x)$ a real valued function of one argument.
+Thus, by the mean value Theorem, for any $x, x' \in R$ (the rectangle in the main text), there exists $c \in [x, x']$ such that 
+\begin{align*}
+    \absoluteValue{\frac{\partial f(t, x)}{\partial x}(c)} 
+    = \frac{\absoluteValue{f(t, x') - f(t, x)}}{\absoluteValue{x' - x}}.
+\end{align*}
+Furthermore, since $\partial f(t,x) / \partial x$ is continuous, it attains its maximum, say $M$, which gives us
+\begin{align*}
+    M
+    \geq \absoluteValue{\frac{\partial f(t, x)}{\partial x}(c)} 
+    = \frac{\absoluteValue{f(t, x') - f(t, x)}}{\absoluteValue{x' - x}},
+\end{align*}
+which is the same as $\absoluteValue{f(t, x') - f(t, x)} \leq M\absoluteValue{x' - x}$, meaning that $f$ satisfies a Lipschitz condition on its second argument.
 \end{proof} 
 
 \begin{exercise}{5}
-Explain the reasons for the restrictions $\beta < b/c$ and $\beta 1/k$ in Picard's Theorem.
+Explain the reasons for the restrictions $\beta < b/c$ and $\beta <  1/k$ in Picard's Theorem.
 \end{exercise}
 \begin{proof}
-fill
+($\beta < b/c$)
+This choice is required so that $Tx(t) = x_0 + \int_{t_0}^t f(\tau, x(\tau)) d\tau$ is well defined, given that $T$ is defined on $\tilde{C}$ which, by definition, is the subspace of $C[a,b]$ with $\absoluteValue{x(t) - x_0} \leq c\beta < b$, implying that $(\tau, x(\tau) \in R$ (the rectangle in the main text), and the integral in $T$ exists, because $f$ is continuous on $R$.
+
+($\beta < 1/k$)
+This is required for $T$ to be a contraction, since we concluded $d(Tx, Ty) \leq \alpha d(x, y)$, with $\alpha = k \beta < 1$.
 \end{proof} 
 
 \begin{exercise}{6}
 Show that in Picard's Theorem, the subspace $\tilde{C} \subseteq C(J)$, where $J = [t_0 - \beta, t_0 + \beta]$, given by the functions such that $\absoluteValue{x(t) - x_0} \leq c\beta$ is closed in $C(J)$.
 \end{exercise}
 \begin{proof}
-fill
+Notice that $\absoluteValue{x(t) - x_0} \leq c\beta$ for all $t \in J$ implies $\max_{t \in J} \absoluteValue{x(t) - x_0(t)} c\beta$, where $x_0(t) = x_0$ for all $t$.
+Thus, we can identify $\tilde{C}$ with the closed ball $B_{c\beta}(x_0) \subseteq C(J)$ so that $\tilde{C}$ is closed.
 \end{proof} 
 
 \begin{exercise}{7}
 Show that in Picard's Theorem, instead of the constant $x_0$ we can take any other function $y_0 \in \tilde{C}$, with $y_0(t_0) = x_0$ as the initial function of the iteration.
 \end{exercise}
 \begin{proof}
-fill
+Using $y_0(t)$ instead of $x_0$, we have that for all $n$ in the iteration, we obtain $x_{n+1}(t) = y_0(t) + \int_{t_0}^t f(\tau , x_n(\tau)) d\tau$.
+Thus $x_{n+1}(t_0) = y_0(t_0) = x_0$, so that $x_n(t_0) \to x_0$.
+Furthermore, we see that $(x_n)$ still converges to a unique solution, since $T$ being a contraction does not depend on $x_0$, so that $(x_n)$ converges and in particular the solution is not affected by what we use for $x_0$, as long as $y_0(t_0) = x_0$.
 \end{proof} 
 
 \begin{exercise}{9}
 Show that $x' = 3x^{2/3}$, $x(0) = 0$, has infinitely many solutions $x$, given by $x(t) = 0$ if $t < c$, and $x(t) = (t - c)^3$ if $t \geq c$.
 \end{exercise}
 \begin{proof}
-fill
+If $t < c$, we have that $x'(t) = 0 = 3x^{2/3}$ with $x(0) = 0$, trivially.
+If $t \geq c$, for $x = (t - c)^3$, we have $x'(t) = 3(t - c)^2$, which corresponds to $x'(t) = 3x^{2/3} = 3(t - c)^{3\cdot 2/3} = 3(t - c)^2$, as required.
+
+The function does not satisfy a Lipschitz condition otherwise we would obtain a unique solution to the differential equation.
 \end{proof} 
