@@ -1,12 +1,5 @@
 \section{Applications of Banach's Theorem to integral equations}
 
-4 A different way of solving integral equations
-5
-6
-7 I hope this reminds you of convolution in probability theory
-8
-9
-10
 
 \begin{exercise}{2 (Nonlinear integral equation)}
 If $v$ and $k$ are continuous on $J = [a,b]$ and $C = [a,b] \times [a,b] \times \R$, respectively, and $k$ satisfies on $G$ a Lipschitz condition of the form $\absoluteValue{k(t, \tau, u_1) - k(t, \tau, u_2)} \leq l \absoluteValue{u_1 - u_2}$, show that the nonlinear integral equation $x(t) - \mu \int_a^b k(t, \tau, x(\tau)) d\tau = v(t)$ has a unique solution $x$ for any $\mu$ such that $\absoluteValue{\mu} < 1/l(b-a)$.
@@ -47,50 +40,115 @@ Defining an operator $S$ by $Sx(t) = \int_a^b k(t, \tau) x(\tau) d\tau$ and sett
 Choosing $x_0 = v$ show that the iteration yields the Neumann series $x = \lim x_n = v + \mu Sv + \mu^2 S^2 v + \mu^3 S^3 v + \dots$.
 \end{exercise}
 \begin{proof}
-For the 
+For the first part, notice that
+\begin{align*}
+    \mu S z_n 
+    =& \mu S(x_n - x_{n-1})\\
+    =& \mu Sx_n - \mu Sx_{n-1}\\
+    =& \mu \int_a^b k(t, \tau) x_n(\tau) d\tau
+        - \mu \int_a^b k(t, \tau) x_{n-1}(\tau) d\tau\\
+    =& \mu \int_a^b k(t, \tau) (x_n(\tau) - x_{n-1}(\tau)) d\tau.
+\end{align*}
+On the other hand,
+\begin{align*}
+    z_{n+1}
+    =& x_{n+1} - x_n\\
+    =& v(t) + \mu \int_a^b k(t, \tau) x_n(\tau) d\tau
+        - v(t) - \mu \int_a^b k(t, \tau) x_{n-1}(\tau) d\tau\\
+    =& \mu \int_a^b k(t, \tau) (x_n(\tau) - x_{n-1}(\tau)) d\tau,
+\end{align*}
+completing the proof.
+
+For the second part, notice that $x_n = (x_n - x_{n-1}) + (x_{n-1} - x_{n-2}) + \dots + (x_1 - x_0) = z_n + z_{n-1} + \dots + z_1$, so that taking limits as $n$ tends to infinity on both sides of the equality, and using the previous result, namely that $z_{n+1} = \mu S z_n$, we obtain the desired result.
 \end{proof} 
 
 \begin{exercise}{5}
 Solve the following integral equation $x(t) - \mu \int_0^1 x(\tau) d\tau = 1$ by a Neumann Series and by a direct approach.
 \end{exercise}
 \begin{proof}
-fill
+This is a Fredholm integral equation of the second kind where $v(t) = 1$ and $k(t, \tau) = 1$.
+
+(Neumann series) 
+The corresponding Neumann series solution would be 
+\begin{align*}
+    \lim x_n
+    = v + \mu Sv + \mu^2 S^2 v + \dots
+    = 1 + \mu \int_0^1 d\tau + \mu^2 \int_0^1 d\tau + \dots
+    = \sum_{k=0}^\infty \mu^k,
+\end{align*}
+which for $\absoluteValue{\mu} < 1$ corresponds to a geometric series with solution $1/(1-\mu)$.
+
+(Direct approach)
+Defining $c = \int_0^1 x(\tau) d\tau$, we can write the integral equation as $x(t) = 1 + \mu c$, and replacing $x$ back into $c$ we get $c = \int_0^1 + \mu c d\tau$ which evaluates to $c = 1 + \mu c$;
+that is $c = 1/(1-\mu)$, replacing once more in $x(t) = 1 + \mu c$, gives us that $x(t) = (1 - \mu + \mu)/(1 - \mu) = 1/(1 - \mu)$, as with the Neumann series solution.
 \end{proof} 
 
 \begin{exercise}{6}
-Solve $x(t) 0- \mu \int_a^b c x(\tau) d\tau = \tilde{v}(t)$ where $c$ is a constant, and indicate how the corresponding Neumann series can be used to obtain the convergence condition $\absoluteValue{\mu} < 1/(c(b-a))$ for the Neumann series of a Fredholm equation of the second kind.
+Solve $x(t) - \mu \int_a^b c x(\tau) d\tau = \tilde{v}(t)$ where $c$ is a constant, and indicate how the corresponding Neumann series can be used to obtain the convergence condition (Eq. 5 is $\absoluteValue{\mu} < 1/(c(b-a))$) for the Neumann series of a Fredholm equation of the second kind.
 \end{exercise}
 \begin{proof}
-fill
+We have that $k(t,\tau) = c$, so that $S \tilde{v} = \int_a^b c \tilde{v}(\tau) d\tau$.
+Let $M = \int_a^b \tilde{v}(\tau) d\tau$, then the Neumann series of the integral equation is 
+\begin{align*}
+    \lim x_n
+    =& \tilde{v} + \mu S \tilde{v} + \mu^2 S^2 \tilde{v} + \dots\\
+    =& \tilde{v} + c \mu M + c^2 \mu^2 M + \dots\\
+    =& \tilde{v} - M + M \sum_{k=0}^\infty c^k \mu^k,
+\end{align*}
+which is a geometric series that converges if $\absoluteValue{c \mu} < 1$;
+that is, if $\absoluteValue{\mu} < 1/c$. 
+Of course this is not exactly $\absoluteValue{\mu} < 1/(c(b-a))$, because the structure of the problem is slightly different.
 \end{proof} 
 
 \begin{exercise}{7 (Iterated kernel, resolvent kernel)}
-Show that in the Neumann series in exercise 4, we can write $(S^n v)(t) = \int_a^b k_{(n)}(t, \tau) v(\tau) d\tau$, for $n = 2, 3, \dots$, where the iterated kernel $k_{(n)}$ is given by $k_{(n)} = \int_a^b \dots \int_a^b k(t, t_1) k(t_1, t_2) \dots k(t_{n-1}, \tau dt_1 \dots dt_{n-1}$ so that the Neumann series can be written $x(t) = v(t) + \mu \int_a^b k(t, \tau) v(\tau) d\tau + \mu^2 \int_2^b k_{(2)}(t, \tau) v(\tau) d\tau + \dots$, or by the use of the resolvent kernel $\tilde{k}$ defined by $\tilde{k}(t, \tau, \mu) = \sum_{j=0}^\infty \mu^j k_{(j+1)}(t, \tau)$, with $k_{(1)} = k$ it can be written $x(t) = v(t) + \mu \int_a^b \tilde{t}(t, \tau, \mu) v(\tau) d\tau$.
+Show that in the Neumann series in exercise 4, we can write $(S^n v)(t) = \int_a^b k_{(n)}(t, \tau) v(\tau) d\tau$, for $n = 2, 3, \dots$, where the iterated kernel $k_{(n)}$ is given by 
+\begin{align*}
+    k_{(n)} = \int_a^b \dots \int_a^b k(t, t_1) k(t_1, t_2) \dots k(t_{n-1}, \tau) dt_1 \dots dt_{n-1}
+\end{align*}
+so that the Neumann series can be written 
+\begin{align*}
+    x(t) = v(t) + \mu \int_a^b k(t, \tau) v(\tau) d\tau + \mu^2 \int_2^b k_{(2)}(t, \tau) v(\tau) d\tau + \dots,
+\end{align*}
+or by the use of the resolvent kernel $\tilde{k}$ defined by $\tilde{k}(t, \tau, \mu) = \sum_{j=0}^\infty \mu^j k_{(j+1)}(t, \tau)$, with $k_{(1)} = k$ it can be written $x(t) = v(t) + \mu \int_a^b \tilde{k}(t, \tau, \mu) v(\tau) d\tau$.
 \end{exercise}
 \begin{proof}
-fill
+We have
+\begin{align*}
+    S^n v
+    =& S(S^{n-1} v)\\
+    =& \int_a^b k(t, \tau) (S^{n-1} v)(\tau) d\tau\\
+    =& \int_a^b k(t, t_1) \int_a^b k(t_1, \tau) (S^{n-2} v)(\tau) d\tau dt_1\\
+    =& \int_a^b k(t, t_1) \int_a^b k(t_1, t_2) \int_a^b k(t_2, \tau) (S^{n-3} v)(\tau) d\tau dt_1 dt_2\\
+    =& \dots\\
+    =& \int_a^b k(t, t_1) \dots \int_a^b k(t_{n-1}, \tau) v(\tau) d\tau dt_1 \dots dt_{n-1}\\
+    =& \int_a^b k(t, t_{n-1}) \dots k(t_1, \tau) v(\tau) d\tau dt_1 \dots dt_{n-1}\\
+    =& \int_a^b k_{(n)}(t, \tau) v(\tau) d\tau,
+\end{align*}
+proving the desired result.
 \end{proof} 
 
 \begin{exercise}{8}
 It is of interest that the Neumann series in exercise 4 can also be obtained by substituting a power series in $\mu$, $x(t) = v_0(t) + \mu v_1(t) + \mu^2 v_2(t) + \dots$ into a Fredholm equation of the second kinds, integrating termwise and comparing coefficients.
 Show that this gives $v_0(t) = v(t)$ and $v_n(t) = \int_a^b k(t, \tau) v_{n-1}(\tau) d\tau$, for $n = 1, 2, \dots$.
-Assuming that $\absoluteValue{v(t)} \leq c_0$ and $\absoluteValue{k(t, \tau)} \leq c$, show that $\absoluteValue{v_n(t)} \leq c_0[c(b - a)]^n$, so that the convergence condition $\absoluteValue{\mu} < 1/(c(b-a))$, implying convergence.
+Assuming that $\absoluteValue{v(t)} \leq c_0$ and $\absoluteValue{k(t, \tau)} \leq c$, show that $\absoluteValue{v_n(t)} \leq c_0[c(b - a)]^n$, so that the convergence condition $\absoluteValue{\mu} < 1/(c(b-a))$, implies convergence.
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
+Replacing the power series into the Fredholm equation, we obtain
+\begin{align*}
+    v_0(t) +& \mu v_1(t) + \mu^2 v_2(t) + \dots\\
+    &= \mu \int_a^b k(t, \tau)(v_0(\tau) + \mu v_1(\tau) + \mu^2 v_2(\tau) + \dots) d\tau +  v(t).
+\end{align*}
+Comparing the terms accompanying each power of $\mu$, we get $v_0(t) = v(t)$ ($\mu^0$), and more generally, $\mu^n v_n(t) = \mu \int_a^b k(t, \tau) \mu^{n-1}v_{n-1}(\tau) d\tau$, so that $v_n(t) = \int_a^b k(t, \tau) v_{n-1}(\tau) d\tau$, as required.
 
-\begin{exercise}{9}
-Using exercise 7, solve a Fredholm equation of the second kind, where $a = 0$, $b = 2\pi$ and $k(t, \tau) = \sum_{n=1}^N a_n \sin nt \cos n\tau$.
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{10}
-In a Fredholm equation of the second kind, let $a = 0$, $b = \pi$ and $k(t, \tau) = a_1 \sin t \sin 2\tau + a_2 \sin 2t \sin 3\tau$.
-Write the solution in terms of the resolvent kernel (see exercise 7).
-\end{exercise}
-\begin{proof}
-fill
+We have that $v_n(t) = \int_a^b k(t, \tau) v_{n-1}(\tau) d\tau$.
+Using the results of the previous exercise and the exercise assumptions, this can be written as 
+\begin{align*}
+    \absoluteValue{v_n(t)}
+    &= \absoluteValue{\int_a^b k_{(n)}(t, \tau) v(\tau) d\tau}\\
+    &= \absoluteValue{\int_a^b k(t, t_{n-1}) \dots k(t_1, \tau) v(\tau) d\tau dt_1 \dots dt_{n-1}}\\
+    &\leq \int_a^b \absoluteValue{k(t, t_{n-1}) \dots k(t_1, \tau) v(\tau)} d\tau dt_1 \dots dt_{n-1}\\
+    &\leq \int_a^b c^n c_0 d\tau dt_1 \dots dt_{n-1}\\
+    &= c^n(b-a)^n c_0,
+\end{align*}
+completing the proof.
 \end{proof} 
