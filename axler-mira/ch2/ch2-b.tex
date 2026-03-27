@@ -221,6 +221,20 @@ Suppose $f : \R \to \R$ is a function.
 \end{enumerate}
 \end{proof} 
 
+\begin{exercise}{13}
+Suppose $(X, \cS)$ is a measurable space, $E_1, \dots. E_n$ are disjoint subsets of $X$, and $c_1, \dots, c_n$ are distinct nonzero real numbers.
+Prove that $f(x) = c_1 \chi_{E_1} + \dots + c_n \chi_{E_n}$ is an $\cS$-measurable function if and only if $E_1, \dots, E_n \in \cS$.
+\end{exercise}
+\begin{proof}
+($\Rightarrow$)
+If $f(x)$ is measurable, then  for every Borel set $B$, it holds that $f^{-1}(B) \in \cS$.
+We know that $\set{c_i}$ is Borel, so that $f^{-1}(\set{c_i}) = E_i \in \cS$ for all $i$, as required.
+
+($\Leftarrow$)
+Suppose $E_1, \dots, E_n \in \cS$, then the functions $f_i(x) = c_i \chi_{E_i}$ are measurable (2.38).
+By the algebraic properties of measurable functions (2.46), $f_1(x) + \dots + f_n(x) = c_1 \chi_{E_1} + \dots + c_n \chi_{E_n}$ is measurable, completing the proof.
+\end{proof} 
+
 \begin{exercise}{14}
 \begin{enumerate}
     \item Suppose $f_1,f_2,\dots$ is a sequence of functions from a set $X$ to $\R$.
