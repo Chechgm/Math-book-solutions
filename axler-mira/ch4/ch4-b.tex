@@ -1,135 +1,76 @@
-\section{fill}
-\addcontentsline{toc}{section}{fill}
+\section{4B Derivatives of integrals}
+\addcontentsline{toc}{section}{4B Derivatives of integrals}
 
-\begin{exercise}{x}
-fill
+3 A kind of L² version of the Differentiation Theorem
+7
+
+\begin{exercise}{3}
+Suppose $f: \R \to \R$ is a Lebesgue measurable function such that $f^2 \in \cL(\R)$.
+Prove that
+\begin{align*}
+    \lim_{t \downarrow 0} \frac{1}{2t} \int_{b-t}^{b+t} \absoluteValue{f - f(b)}^2 = 0
+\end{align*}
+for almost every $b in \R$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{6}
+Prove that if $h \in \cL^1(\R)$ and $\int_\infty^s h = 0$ for all $s \in \R$, then $h(s) = 0$ for almost every $s \in \R$.
+\end{exercise}
+\begin{proof}
+Let $g(x) = \int_{-\infty}^x h$.
+By the Lebesgue differentiation Theorem (4.19), we have that $g'(b) = h(b)$ for a.e. $b$.
+Since $g(b) = 0$ (at a.e. $b$), then $g'(b) = 0$ (at a.e. $b$), and thus $h(b) = 0$ (at a.e. $b$), completing the proof.
+\end{proof} 
+
+\begin{exercise}{7}
+Give an example of a Borel subset of $\R$ whose density at 0 is not defined.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{9}
+Prove that if $c \in [0, 1]$, then there exists a Borel set $E \subseteq \R$ such that the density of $E$ at 0 is $c$.
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
+This proof is due to Davide Ravotti.
+Let $c \in [0,1]$.
+For an interval $I_n = [1/(n+1), 1/n]$, let $c_n \in I_n$ denote the point such that $\absoluteValue{[1/(n+1), c_n]} = c\absoluteValue{I_n}$.
+Now let 
+\begin{align*}
+    E = \bigcup \sqrBrackets{-c_n, -\frac{1}{n+1}} \cup \sqrBrackets{\frac{1}{n+1}, c_n}. 
+\end{align*}
+Notice that for any $n$, we have
+\begin{align*}
+    \absoluteValue{E \cap \parens{0, \frac{1}{n}}}
+    = \sum_{k \geq n} \absoluteValue{E \cap I_k}
+    = \sum_{k \geq n} c \absoluteValue{I_k}
+    = \frac{c}{n},
+\end{align*}
+so that for any $n \in \N$, we have $\absoluteValue{E \cap (-1/n, 1/n)} = 2c/n$.
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
+Fix $t \in (0,1)$ and let $n \in \N$ be such that $1/(n+1) < t \leq 1/n$.
+We have 
+\begin{align*}
+    \frac{\absoluteValue{E \cap (-t, t)}}{2t}
+    \leq \frac{\absoluteValue{E \cap (-1/n, 1/n)}}{2/(n+1)}
+    = \frac{2c/n}{2/(n+1)}
+    = c\frac{n+1}{n}.
+\end{align*}
+Similarly,
+\begin{align*}
+    \frac{\absoluteValue{E \cap (-t, t)}}{2t}
+    \geq \frac{\absoluteValue{E \cap (-1/(n+1), 1/(n+1))}}{2/n}
+    = \frac{2c/(n+1)}{2/n}
+    = c\frac{n}{n+1}.
+\end{align*}
+By the sandwich Theorem of limits, we have that the limit as $t \to 0$ exists and
+\begin{align*}
+    \lim_{t \downarrow 0} \frac{\absoluteValue{E \cap (-t, t)}}{2t} 
+    = c,
+\end{align*}
+completing the proof.
 \end{proof} 

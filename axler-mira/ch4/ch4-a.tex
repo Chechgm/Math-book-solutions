@@ -1,143 +1,246 @@
-\section{fill}
-\addcontentsline{toc}{section}{fill}
+\section{4A Hardy-Littlewood maximal function}
+\addcontentsline{toc}{section}{4A Hardy-Littlewood maximal function}
 
-Axler 4A Hardy-Littlewood Maximal Function
-1 Known sometimes as Markov's inequality
-2 These should be pretty well known from probability theory
-5 Part of the theory
-6
 7
-8 Some examples of the Hardy-Littlewood function 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{1}
+Suppose $(X, \cS, \mu)$ is a measure space and $h: X \to \R$ is an $\cS$-measurable function.
+Prove that 
+\begin{align*}
+    \mu(\set{x \in X: \absoluteValue{h(x)} \geq c}) 
+    \leq \frac{1}{c^p} \int \absoluteValue{h}^p d\mu
+\end{align*}
+for all positive numbers $c$ and $p$.
 \end{exercise}
 \begin{proof}
-fill
+Let $c$ and $p$ be positive.
+We have
+\begin{align*}
+    \mu(\set{x \in X: \absoluteValue{h(x)} \geq c}) 
+    =& \int_{\mu(\set{x \in X: \absoluteValue{h(x)} \geq c})} d\mu\\
+    \leq& \frac{1}{c^p} \int_{\mu(\set{x \in X: \absoluteValue{h(x)} \geq c})} c^p d\mu\\
+    \leq& \frac{1}{c^p} \int_{\mu(\set{x \in X: \absoluteValue{h(x)} \geq c})} \absoluteValue{h(x)}^p d\mu\\
+    \leq& \frac{1}{c^p} \int \absoluteValue{h}^p d\mu,
+\end{align*}
+where the second to last inequality follows because $\absoluteValue{h(x)} > c$, and the last inequality follows because the integral of the absolute value of a function is nonnegative everywhere.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{2}
+Suppose $(X, \cS, \mu)$ is a measure space with $\mu(X) = 1$ and $h \in \cL^1(\mu)$.
+Prove that
+\begin{align*}
+    \mu(\set{x \in X: \absoluteValue{h(x) - \int h d\mu} \geq c}) 
+    \leq \frac{1}{c^2} \parens{\int h^2 d\mu - \parens{\int h d\mu}^2}
+\end{align*}
+for all $c > 0$.
+[The result above is called Chebyshev's inequality;
+it plays an important role in probability theory.
+Pafnuty Chebyshev (1821-1894) was Markov's thesis advisor.]
 \end{exercise}
 \begin{proof}
-fill
+Let $c > 0$.
+By exercise 1, we have
+\begin{align*}
+    \mu(\set{x \in X:& \absoluteValue{h(x) - \int h d\mu} \geq c})\\ 
+    \leq& \frac{1}{c^2} \int \absoluteValue{h - \int h d\mu}^2 d\mu\\
+    =& \frac{1}{c^2} \parens{\int \absoluteValue{h}^2 d\mu 
+        - 2\int \absoluteValue{h}\absoluteValue{\int h d\mu} d\mu 
+        + \int \absoluteValue{\int h d\mu}^2 d\mu}\\
+    \leq& \frac{1}{c^2} \parens{\int \absoluteValue{h}^2 d\mu 
+        + \absoluteValue{\int h d\mu}^2 \int 1 d\mu}\\
+    =& \frac{1}{c^2} \parens{\int \absoluteValue{h}^2 d\mu
+        + \mu(X) \absoluteValue{\int h d\mu}^2}\\
+    =& \frac{1}{c^2} \parens{\int h^2 d\mu - \parens{\int h d\mu}^2},
+\end{align*}
+as required.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{5}
+Prove the assertion left as an exercise in the last sentence of the proof of the Vitali Covering Lemma (4.4);
+that is, prove that if a disjoint sublist $I_{k_1}, \dots, I_{k_m}$ is chosen in a greedy fashion (choosing the disjoint interval with maximum outer measure) from $I_1, \dots, I_n$, then for any $I_j$, there exists and interval $I_{k_L}$ in the sublist, such that $I_j \subseteq 3 \ast I_{k_L}$.
 \end{exercise}
 \begin{proof}
-fill
+First, notice that the algorithm terminates whenever there are no more disjoint sets in the list.
+Thus, it must be the case that there is an interval $I_{k_L}$ such that $I_j \cap I_{k_L} \neq \emptyset$.
+
+We explore two cases:
+if $I_j$ is in the list, then we are done.
+Otherwise, in the worst case scenario, these intervals intersect only at their bounds.
+By definition, $3 \ast I_{k_L}$ has outer measure three times the outer measure of $I_{k_L}$ centered at $I_{k_L}$, since $I_{k_L}$ was chosen by the algorithm and $I_j$ not, then $\absoluteValue{I_j} \leq \absoluteValue{I_{k_L}}$.
+But this already implies the desired result, as $3 \ast I_{k_L}$ extends at least $\absoluteValue{I_{k_L}} \geq \absoluteValue{I_j}$ from its bounds, so that $I_j$ is covered by $3 \ast I_{k_L}$;
+mathematically, $I_j \subseteq 3 \ast I_{k_L}$, completing the proof.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{6}
+Verify the Hardy-Littlewood maximal function of $\chi_{[0,1]}$:
+\begin{align*}
+    (\chi_{[0,1]})^\ast(b) =
+    \begin{cases}
+        \frac{1}{2(1-b)} &\text{ if } b \leq 0,\\
+        1 &\text{ if } 0 < b < 1,\\
+        \frac{1}{2b} &\text{ if } b\geq 1.
+    \end{cases}
+\end{align*}
 \end{exercise}
 \begin{proof}
-fill
+To prove the formula we will analyse three cases: 
+$b \in (0,1)$, $b \leq 0$, and $b \geq 1$.
+
+($b \in (0,1)$)
+We have
+\begin{align*}
+    (\chi_{[0,1]})^\ast(b)
+    = \frac{1}{2t} \int_{b-t}^{b+t} \absoluteValue{h}
+    = \frac{1}{2t} \int_{b-t}^{b+t} 1
+    = \frac{1}{2t} (b + t - b + t)
+    = 1,
+\end{align*}
+as long as $b + t \leq 1$ and $b - t \geq 0$.
+If $b + t > 1$, then the second to last equality becomes
+\begin{align*}
+    \frac{1}{2t}(1 - b + t) < \frac{1}{2t},
+\end{align*}
+and likewise, if $b - t < 0$, we obtain a smaller value, so that the supremum is attained at 1.
+
+($b \geq 1$)
+We have
+\begin{align*}
+    (\chi_{[0,1]})^\ast(b)
+    = \frac{1}{2t} \int_{b-t}^{1} \absoluteValue{h}
+    = \frac{1}{2t} \int_{b-t}^{1} 1.
+\end{align*}
+We have two cases here, if $t \geq b$ (so that $0 \geq b - t$, the integral evaluates to $1/2t$, which is maximised when $t = b$.
+If, on the other hand $t < b$ (so that $b - t > 0$), then the integral evaluates to $(1/2t)(1 - b + t) < 1/2t$.
+Meaning that $1/2b$ is the supremum in this case.
+
+($b \leq 0$)
+The analysis for this case follows exactly as the previous case, mutatis mutandis, where instead we evaluate the integral in the cases where $t \geq -b + 1$, and $t < -b + 1$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{7}
+Find a formula for the Hardy-Littlewood maximal function of the characteristic function of $[0,1] \cup [2,3]$.
 \end{exercise}
 \begin{proof}
-fill
+We will proceed as in the previous exercises.
+We will explore the cases $b \leq -1$, $b \in (-1, 0]$, $b \in (0, 1)$, and $b \in [1,2]$. 
+The cases $b \in (2, 3)$, $b \in [3, 4]$ and $b > 4$ will follow by symmetry.
+
+($b \leq 0$)
+We have
+\begin{align*}
+    (\chi_{[0,1]})^\ast(b)
+    = \frac{1}{2t} \int_{0}^{b+t} \absoluteValue{h},
+\end{align*}
+From exercise 6, we know that the Hardy-Littlewood maximal function will attain its supremum if $t$ is large enough so that the integral covers one or two intervals.
+
+Thus, if $t = 1 - b$, so that $t$ is large enough so that the integral covers $[0,1]$, the function evaluates to $1/2(1-b)$.
+On the other hand, if $t = 3 - b$, the function evaluates to $2/2(3-b) = 1/(3-b)$.
+
+For which value of $b$ do these functions have the same value?
+\begin{align*}
+    \frac{1}{2(1-b)} - \frac{1}{(3-b)}
+    = \frac{3 - b - 2 + 2b}{2(1-b)(3-b)}
+    = \frac{1 + b}{2(1-b)(3-b)},
+\end{align*}
+so that the difference between the two equals 0 whenever $b = -1$. 
+That is, we choose two cover both intervals if $b \leq -1$ and to cover one interval if $b \in (-1, 0]$.
+
+From exercise 6, we know that $(\chi_{[0,1]})^\ast(b) = 1$ if $b \in (0,1)$ or in $(2,3)$.
+
+($b \in (1, 1.5)$)
+In this case, we have
+\begin{align*}
+    (\chi_{[0,1]})^\ast(b)
+    = \frac{1}{2t} \int_{b-t}^{b+t} \absoluteValue{h},
+\end{align*}
+We have two options again, either we cover one or two intervals.
+In the first case, we choose $t = b$, giving us
+\begin{align*}
+    (\chi_{[0,1]})^\ast(b)
+    = \frac{1}{2t} \int_{0}^{b+t} \absoluteValue{h}
+    = \frac{1 - 2 + b + t}{2t}
+    = \frac{b + t - 1}{2t}
+    = \frac{2b - 1}{2b}.
+\end{align*}
+
+If we cover both intervals, meaning choosing $b = 3 - b$, we have
+\begin{align*}
+    (\chi_{[0,1]})^\ast(b)
+    = \frac{1}{2t} \int_{0}^{3} \absoluteValue{h}
+    = \frac{2}{2(3-b)}
+    = \frac{1}{3-b}.
+\end{align*}
+Thus, we want to know which of these quantities is larger:
+\begin{align*}
+    \frac{2b - 1}{2b} - \frac{1}{(3-b)}
+    = \frac{(2b - 1)(3-b) - 2b}{2b(3-b)}
+    = \frac{-(2b - 1)(b - 3)}{2b(3-b)}
+    = \frac{2b - 1}{2b} 
+    > 0,
+\end{align*}
+for all $b \in (1, 1.5)$.
+
+By the symmetry of the problem we obtain all the other cases, giving us the following solution:
+\begin{align*}
+    (\chi_{[0,1]})^\ast(b) =
+    \begin{cases}
+        \frac{1}{3-b}    &\text{ if } b \leq -1,\\
+        \frac{1}{2(1-b)} &\text{ if } b \in (-1, 0],\\
+        1                &\text{ if } b \in [0,1] \cup [2,3]\\
+        1 - \frac{1}{2b} &\text{ if } 1 \leq b < 1.5\\
+        \frac{2(3-b) - 1}{2(3-b)} &\text{ if } 1.5 \leq b < 2\\
+        \frac{1}{2(b-2)} &\text{ if } b \in [3, 4)\\
+        \frac{1}{b}      &\text{ if } b \geq 4.
+    \end{cases}
+\end{align*}
+completing the proof.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{8}
+Find a formula for the Hardy-Littlewood maximal function of the function $h: \R \to [0, \infty)$ defined by 
+\begin{align*}
+    h(x)
+    = 
+    \begin{cases}
+        x \text{ if } 0 \leq x \leq 1,\\
+        0 \text{ otherwise}.
+    \end{cases}
+\end{align*}
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
+We will analyse three cases:
+$b \in (0, 1)$, $b \leq 0$, and $b \geq 1$.
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
+($b \in (0, 1)$)
+We have
+\begin{align*}
+    h^\ast(b)
+    = \frac{1}{2t} \int_{b - t}^{b + t} x 
+    = \frac{1}{2t}\sqrBrackets{\frac{x^2}{2}}_{b - t}^{b + t}
+    = \frac{1}{4t}(b + t)^2 - (b - t)^2 
+    = \frac{4bt}{4t}
+    = b,
+\end{align*}
+as long as $b + t \leq 1$ and $b - t \geq 0$.
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
+($b \leq 0$)
+We have
+\begin{align*}
+    h^\ast(b)
+    = \frac{1}{2t} \int_{0}^{b + t} x,
+\end{align*}
+and we analyse two cases.
+First, if $t \geq -b + 1$, then the upper limit of the integral is greater than or equal to 1 evaluating to $1/4t$, which is maximised when $t = -b + 1$;
+and second, if $t < -b + 1$, in which case the upper limit of the integral is $b+t$, so that the integral evaluates to $(b + t)^2/4t < 1/4t$.
+Thus, $h^\ast(b) = 1/4(1-b)$.
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
+($b \geq 1$)
+We have
+\begin{align*}
+    h^\ast(b)
+    = \frac{1}{2t} \int_{b - t}^{1} x.
+\end{align*}
+As above, we analyse two cases, if $t \geq b$, then the lower limit is 0, and evaluating the integral gives us $1/4t$, which is maximised whenever $t = b$.
+In the case where $t < b$, the lower limit of the integral is $b - t$, in which case the integral evaluates to $(1-(b-t)^2)/4t < 1/4t$.
+Thus, in this case $h^\ast(b) = 1/4b$.
 \end{proof} 
