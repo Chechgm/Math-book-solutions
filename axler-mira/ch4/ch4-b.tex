@@ -1,8 +1,6 @@
 \section{4B Derivatives of integrals}
 \addcontentsline{toc}{section}{4B Derivatives of integrals}
 
-3 A kind of L² version of the Differentiation Theorem
-7
 
 \begin{exercise}{3}
 Suppose $f: \R \to \R$ is a Lebesgue measurable function such that $f^2 \in \cL(\R)$.
@@ -10,10 +8,26 @@ Prove that
 \begin{align*}
     \lim_{t \downarrow 0} \frac{1}{2t} \int_{b-t}^{b+t} \absoluteValue{f - f(b)}^2 = 0
 \end{align*}
-for almost every $b in \R$.
+for almost every $b \in \R$.
 \end{exercise}
 \begin{proof}
-fill
+To prove this result, we need the following Lemma:
+If $\int_{[a,b]} \absoluteValue{f}^2 d\lambda < \infty$, then $\int_{[a,b]} \absoluteValue{f} d\lambda < \infty$.
+
+First, if $\absoluteValue{f(x)} \geq 1$, then the result is clear, as $\absoluteValue{f(x)} \leq \absoluteValue{f(x)}^2$, and the result follows by the order Theorem of Lebesgue integration (3.22).
+Thus, we assume $\absoluteValue{f(x)} < 1$.
+There exists a $c \in [0,1]$, such that $\absoluteValue{f(x)} \leq c + \absoluteValue{f(x)}^2$, we then have
+\begin{align*}
+    \int_{[a,b]} \absoluteValue{f}
+    \leq \int_{[a,b]} c + \absoluteValue{f}
+    = c(a-b) + \int_{[a,b]} \absoluteValue{f}
+    < \infty.
+\end{align*}
+Completing the proof of the Lemma requires separating $f$ into two functions $g_1(x) = f(x)$ if $\absoluteValue{f(x)} \leq \absoluteValue{f(x)}^2$ and 0 otherwise and $g_2(x) = f(x)$ if $\absoluteValue{f(x)} > \absoluteValue{f(x)}^2$ and 0 otherwise.
+The result would follow by the additivity of the integrals, and the fact that both integrals are finite, completing the proof of the Lemma.
+
+For the main result, let $g = \absoluteValue{f-f(b)}^2 \leq \absoluteValue{f}^2 + \absoluteValue{2f(b)f} + \absoluteValue{f(b)}^2$, which by the previous result has a finite integral so that $g \in \cL^1(\R)$ by the order Theorem of Lebesgue integrals (3.22).
+Knowing that $g \in \cL^1(\R)$ lets us apply the Lebesgue differentiation Theorem (4.10), completing the proof.
 \end{proof} 
 
 \begin{exercise}{6}
@@ -29,7 +43,42 @@ Since $g(b) = 0$ (at a.e. $b$), then $g'(b) = 0$ (at a.e. $b$), and thus $h(b) =
 Give an example of a Borel subset of $\R$ whose density at 0 is not defined.
 \end{exercise}
 \begin{proof}
-fill
+Consider the set given by 
+\begin{align*}
+    E = \bigcup \sqrBrackets{\frac{1}{3^{2n+1}}}, \frac{1}{3^{2n}}.
+\end{align*}
+
+The density of $E$ at 0 is defined by 
+\begin{align*}
+    \lim_{t \downarrow 0} \frac{\absoluteValue{E \cap (-t, t)}}{2t}.
+\end{align*}
+
+For $t = 3^{-2m}$, where $m \in \N$, we have 
+\begin{align*}
+    \absoluteValue{E \cap (-3^{-2m}, 3^{-2m})} 
+    =& \sum_{k=m}^\infty 3^{-2k} - 3^{-(2k+1)}\\
+    =& \sum_{k=m}^\infty 3^{-2k} (1 - 1/3)\\
+    =& \frac{2}{3}\sum_{k=m}^\infty 9^{-k}\\
+    =& \frac{2}{3}\frac{9^{-m}}{1-9^{-1}}\\
+    =& \frac{2}{3} \cdot \frac{9}{8} \cdot 3^{-2m}\\
+    =& \frac{3}{4} \cdot 3^{-2m},
+\end{align*}
+so that the density evaluates to $3/8$.
+
+We will now do the same process for $t = 3^{-(2m+1)}$.
+Notice that in this case, $t$ is the left end point of the interval, so that $3^{-(2m+1)} - 3^{-2m}$ is excluded from the measure.
+This gives us a similar calculation as above, where we shift the summation index:
+\begin{align*}
+    \absoluteValue{E \cap (-3^{-(2m+1)}, 3^{-(2m+1)})} 
+    =& \sum_{k=m+1}^\infty 3^{-2k} - 3^{-(2k+1)}\\
+    =& \frac{2}{3}\sum_{k=m+1}^\infty 9^{-k}\\
+    =& \frac{2}{3}\frac{9^{-(m+1)}}{1-9^{-1}}\\
+    =& \frac{2}{3} \cdot \frac{9}{8} \cdot 3^{-2(m+1)}\\
+    =& \frac{3}{4} \cdot 3^{-2(m+1)},
+\end{align*}
+and now the density evaluates to $(3/8)(3^{-2(m+1)}/3^{-(2m+1)}) = 1/8$.
+
+This means that the density at 0 oscillates between $1/8$ and $3/8$, so that the limit does not exist, completing the proof.
 \end{proof} 
 
 \begin{exercise}{9}
