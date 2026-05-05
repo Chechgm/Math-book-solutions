@@ -1,50 +1,96 @@
 \section{Uniqueness, strict convexity}
 
 2 Typical compactness argument which allows this kind of approximation to be made. Notice Y does not need (and will not) be a subspace
-3 Special case of finite dimensions
-4
-7 This should be good to get some intuition for what strict convex means 
 10 Some $l^p$ fun and finding which are strict convex and which not. Notice the same holds in $R^n$: the 1-norm is not strict convex while the p>1 norms are. Graph the unit balls to see 
 12 Another equivalent form of strict convexity that will be useful
 
 
 \begin{exercise}{2}
-fill
+Show that if $(X, d)$ is a metric space an $Y$ a compact subset, then every $x \in X$ has a best approximation $y$ out of $Y$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{3}
-fill
+If $Y$ is a finite dimensional subspace of a normed space $X$ and we want to approximate an $x \in X$ out of $Y$, it is natural to choose a basis $e_1, e_2, \dots, e_n$ for $Y$ and approximate $x$ by a linear combination $\sum a_i e_i$.
+Show that the corresponding function $f$ defined by $f(a) = \norm{x - \sum a_j e_j}$, $a = (a_1, \dots, a_n)$ depends continuously on the $a_j$'s
 \end{exercise}
 \begin{proof}
-fill
+Let $a, b \in \R^n$ be such that $\norm{a-b}_\infty < \epsilon/\sum\norm{e_i}$.
+We have:
+\begin{align*}
+    \norm{f(a) - f(b)}
+    =& \norm{x - \sum a_i e_i - x + \sum b_j e_j}\\
+    =& \norm{\sum(a_i - b_i) e_i}\\
+    \leq& \sum \absoluteValue{a_i - b_i}\norm{e_i}\\
+    \leq& \max_j \set{\absoluteValue{a_j - b_j}} \sum \norm{e_i}\\
+    =& \norm{a-b}_\infty (\sum \norm{e_i}),
+\end{align*}
+giving us the desired continuity.
 \end{proof} 
 
-\begin{exercise}{4}
-fill
+\begin{exercise}{4 (Convex function)}
+Show that $f$ in exercise 3 has the interesting property of being convex.
+A function $f: \R^n \to \R$ is said to be convex if its domain $\cD(f)$ is a convex set and for every $u, v \in \cD(f)$,
+\begin{align*}
+    f(\lambda u + (1-\lambda) v) \leq \lambda f(u) + (1-\lambda) f(v),
+\end{align*}
+where $0 \leq \lambda \leq 1$.
+(An example for $n = 1$ is show below.
+Convex functions are useful in various minimisation problems.
+
+\begin{figure}[H]
+    \centering
+    \input{kreyszig/assets/sec6-2-ex4}
+    \caption{Convex function $f$ depending on a single variable $t$.
+    The dashed straight line segment represents $\lambda f(u) + (1-\lambda) f(v)$, where $0 \leq \lambda \leq 1$.}
+    \label{fig:sec6-2-ex4}
+\end{figure}
 \end{exercise}
 \begin{proof}
-fill
+We have
+\begin{align*}
+    f(\lambda a + (1-\lambda) b)
+    =& \norm{x - \sum (\lambda a_i + (1-\lambda) b_i) e_i}\\
+    =& \norm{\lambda x - \lambda \sum a_i e_i
+        + (1-\lambda) x - (1-\lambda) \sum b_i e_i}\\
+    \leq& \lambda \norm{x - \sum a_i e_i}
+        + (1-\lambda) \norm{x - \sum b_i e_i}\\
+    =& \lambda f(a) + (1-\lambda) f(b),
+\end{align*}
+where after using the triangle inequality we have used the fact that $\lambda \in [0,1]$, so that both $\absoluteValue{\lambda}$ and $\absoluteValue{1-\lambda}$ are positive.
+Thus, $f$ is convex.
 \end{proof} 
 
 \begin{exercise}{7}
-fill
+Show that the vector space of ordered pairs of real numbers with norm defined by $\norm{(x_1, x_2)} = \max\set{\absoluteValue{x_1}, \absoluteValue{x_2}}$ is not strictly convex.
+Graph the unit sphere.
 \end{exercise}
 \begin{proof}
-fill
+Consider the vectors $x = (0, 1)$ and $x' = (1, 1)$.
+We have $\norm{x} = \norm{x'} = 1$, but $\norm{x + x'} = 2$.
+
+\begin{figure}[H]
+    \centering
+    \input{kreyszig/assets/sec6-2-ex7}
+    \caption{The unit ball under $\norm{\cdot}_\infty$.}
+    \label{fig:sec6-2-ex7}
+\end{figure}
 \end{proof} 
 
 \begin{exercise}{10}
-fill
+It can be shown that $l^p$ with $p > 1$ is strictly convex wehereas $l^1$ is not.
+Prove that $l^1$ is not strictly convex.
 \end{exercise}
 \begin{proof}
-fill
+Consider the vectors $x = (1, 0, 0, \dots)$ and $x' = (0, 1, 0, \dots)$.
+We have that $\norm{x} = \sum \absoluteValue{x_i} = 1 = \norm{x'}$, but $\norm{x + x'} = 2$, so that $l^1$ is not strictly convex.
 \end{proof} 
 
 \begin{exercise}{12}
-fill
+Show that if a norm is strictly convex, then $\norm{x} = \norm{y} = 1$ and $x \neq y$ together imply that for all $a$ such that $0 < a < 1$ one has $\norm{ax + (1-a)y} < 1$.
+Show that this condition is also sufficient for strict convexity.
 \end{exercise}
 \begin{proof}
 fill

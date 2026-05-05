@@ -1,0 +1,30 @@
+\begin{tikzpicture}[>=stealth]
+    % Draw axes (without arrows to match the image)
+    \draw[thick] (0,5) -- (0,0) -- (10,0);
+
+    % Define the function f(x) = 0.2(x-4)^2 + 1
+    \draw[very thick, domain=0.5:9.5, smooth, variable=\x] plot ({\x}, {0.2*(\x-4)^2 + 1.5});
+    
+    % Label the function f
+    \node at (0.5, 3.1) [left] {$f$};
+
+    % Define points u and v
+    \def\u{1.2}
+    \def\v{8.5}
+    
+    % Calculate y-coordinates based on the function
+    \pgfmathsetmacro{\yu}{0.2*(\u-4)^2 + 1.5}
+    \pgfmathsetmacro{\yv}{0.2*(\v-4)^2 + 1.5}
+
+    % Draw the dashed line (chord)
+    \draw[dashed, thick] (\u, \yu) -- (\v, \yv);
+
+    % Draw dots at (u, f(u)) and (v, f(v))
+    \filldraw (\u, \yu) circle (2pt);
+    \filldraw (\v, \yv) circle (2pt);
+
+    % Draw tick marks and labels on x-axis
+    \draw[thick] (\u, 0.2) -- (\u, -0.1) node[below] {$u$};
+    \draw[thick] (\v, 0.2) -- (\v, -0.1) node[below] {$v$};
+
+\end{tikzpicture}

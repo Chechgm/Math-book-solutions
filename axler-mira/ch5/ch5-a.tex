@@ -1,142 +1,114 @@
-\section{fill}
-\addcontentsline{toc}{section}{fill}
-
-Axler 5A Products of Meausre Spaces
-4 Functions which are products of measurable functions are measurable, this is the least we should expect of our definition of measurability
-8 Very important characterization of sigma-finiteness which is used quite a lot
-9 This proves for example that the n-dimensional lebesgue measure is sigma-finite, not that that is very hard to show on its own 
-10 The uniqueness of the product measure! 
+\section{5A Products of measure spaces}
+\addcontentsline{toc}{section}{5A Products of measure spaces}
 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{4}
+Suppose $(X, \cS)$ and $(Y, \cT)$ are measurable spaces.
+Prove that if $f: X \to \R$ is $\cS$-measurable and $g: Y \to \R$ is $\cT$-measurable and $h: X \times Y \to \R$ is defined by $h(x, y) = f(x)g(y)$, then $h$ is $(\cS \otimes \cT)$-measurable.
 \end{exercise}
 \begin{proof}
-fill
+Let $B$ be a Borel set.
+We have that $x, y \in h^{-1}(B)$ if and only if $h(x, y) = f(x) g(y) \in B$.
+Since Borel sets are dilation invariant, for every $y \in Y$, we have that $f(x) g(y) \in D$ for some Borel set $D$.
+But that also implies that $x \in [h^{-1}(D)]^y \in \cS$.
+Likewise, $y \in [h^{-1}(E)]_x \in \cT$, for some Borel set $E$.
+Putting these together through example 5.5, we get that $x, y \in h^{-1}(B) \in \cS \times \cT$, so that $h$ is $(\cS \otimes \cT)$-measurable.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{8}
+Suppose $\mu$ is a measure on a measurable space $(X, \cS)$.
+Prove that the following are equivalent:
+\begin{enumerate}
+    \item The measure $\mu$ is $\sigma$-finite.
+    \item There exists an increasing sequence $X_1 \subseteq X_2 \subseteq \dots$ of sets in $\cS$ such that $X = \bigcup X_k$ and $\mu(X_k) < \infty$ for every $k \in \N$.
+    \item There exists a disjoint sequence $X_1, X_2, X_3, \dots$ of sets in $\cS$ such that $X = \bigcup X_k$ and $\mu(X_k) < \infty$ for every $k \in \N$.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+The fact that 2 and 3 imply 1 follows directly by the definition of $\sigma$-finite.
+Thus, to complete the proof, we will prove that 1 implies 2 and that 2 implies 3.
+
+($1 \Rightarrow$ 2)
+Suppose there exists a sequence of sets $X_1, X_2, \dots$ in $\cS$ such that $X = \bigcup X_k$ and $\mu(X_k) < \infty$ for all $k \in \N$.
+Consider the sequence of sets in $\cS$ given by $Y_1 = X_1$, $Y_2 = X_1 \cup X_2$, and more generally, $Y_N = \bigcup^N_k X_k$.
+We have that $(Y_n)$ is increasing, $X = \bigcup Y_k$, but furthermore, $\mu(Y_k) = \sum_k^N \mu(X_k) < \infty$, as required.
+
+($2 \Rightarrow$ 3)
+Suppose there exists an increasing sequence $X_1 \subseteq X_2 \subseteq \dots$, of sets in $\cS$, such that $X = \bigcup X_k$ and $\mu(X_k) < \infty$ for all $k \in \N$.
+Consider the sequence $(Y_n)$ of sets in $\cS$ given by $Y_1 = \emptyset$, $Y_2 = X_1 \setminus Y_1$, and more generally $Y_n = X_{n-1} \setminus Y_{n-1}$.
+We have that $(Y_n)$ is disjoint, $X = \bigcup Y_k = \bigcup X_k$, and also $\mu(Y_k) = \mu(X_k) - \sum_i^{k-1} \mu(X_i) < \infty$, completing the proof.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{9}
+Suppose $\mu$ and $\nu$ are $\sigma$-finite measures.
+Prove that $\mu \times \nu$ is a $\sigma$-finite measure.
 \end{exercise}
 \begin{proof}
-fill
+Suppose $(X, \cS, \mu)$ and $(Y, \cT, \nu)$ are such that $\mu$ and $\nu$ are $\sigma$-finite.
+Thus, there exists a sequence $X_1, X_2, \dots$ of sets in $\cS$ such that $X \bigcup X_i$ and $\mu(X_i) < \infty$ for all $i \in \N$, and likewise for $Y$, mutatis mutandis.
+
+We now want to prove there exists a sequence $(X \times Y)_i$ such that $X \times Y = \bigcup (X \times Y)_i$ and $(\mu \times \nu)((X \times Y)_i) < \infty$ for all $i \in \N$.
+Let the sequence be defined as the sequence of all combinations between $X_i$ and $Y_j$, that is, $X_i \times Y_j$, for all $i, j \in \N$, which is still countable.
+We have indeed that $X \times Y = \bigcup_{i,j} X_i \times Y_j$, because $\bigcup_{i,j} (X_i \times Y_j) = (\bigcup_i X_i) \times (\bigcup_j Y_j) = X \times Y$.
+
+To see that each of these have finite measure, we evaluate 
+\begin{align*}
+    (\mu \times \nu)(X_i \times Y_j) 
+    =& \int_X \parens{\int_Y \chi_{X_i \times Y_j}(x,y) d\nu(y)} d\mu(x)\\
+    =& \nu(Y_j) \int_X  \chi_{X_i}(x) d\mu(x)\\
+    =& \nu(Y_j)\mu(X_i)\\
+    <& \infty,
+\end{align*}
+which is the same proof as in example 5.26.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
+\begin{exercise}{10}
+Suppose $(X, \cS, mu)$ and $(Y, \cT, \nu)$ are $\sigma$-finite measure spaces.
+Prove that if $\omega$ is a measure on $\cS \otimes \cT$ such that $\omega(A \times B) = \mu(A) \nu(B)$ for all $A \in \cS$ and all $B \in \cT$, then $\omega = \mu \times \nu$.
 
-\begin{exercise}{x}
-fill
+[The exercise above means that $\mu \times \nu$ is the unique measure on $\cS \otimes \cT$ that behaves as we expect on measurable rectangles.]
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
+Let $\cM = \set{E \in \cS \otimes \cT: \omega(E) = (\nu \times \mu)(E)}$.
+We want to prove that $\cM = \cS \otimes \cT$.
+The $\subseteq$ direction is clear, to prove the other direction we will use the monotone class Theorem (5.17).
+We will do this in three steps:
+first, we prove that $\cM$ contains all measurable rectangles, then we prove that an algebra $\cA$ is contained in $\cM$, and last, we prove that $\cM$ is a monotone class, so that by the monotone class Theorem, we get the desired result.
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
+To see that $\cM$ contains all measurable rectangles, let $A \in \cS$ and $B \in \cT$, so that $A \times B \in \cM$.
+By example 5.26, we know that $(\nu \times \mu)(A \times B) = \mu(A)\nu(B)$, which equals $\omega(A \times B)$, giving us our first desired result.
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
+For our second result, let $\cA$ denote the set of finite unions of measurable rectangles in $\cS \otimes \cT$.
+Let $A \times B \in \cA$.
+By 5.13.b $A \times B$ is a union of disjoint measurable rectangles $(A \times B)_1, \dots, (A \times B)_n$.
+We have
+\begin{align*}
+    \omega(A \times B) 
+    =& \omega (\bigcup (A \times B)_i)\\
+    =& \sum_i \omega((A \times B)_i)\\
+    =& \sum_i \mu(A_i) \nu(B_i)\\
+    =& \int_X \int_Y \sum_i \chi_{(A \times B)_i}(x, y) d\nu(y) d\mu(x)\\
+    =& \int_X \int_Y \chi_{\bigcup (A \times B)_i}(x, y) d\nu(y) d\mu(x)\\
+    =& (\mu \times \nu)(\bigcup (A \times B)_i)\\
+    =& (\mu \times \nu)(A \times B).
+\end{align*}
+Hence $A \times B \in \cM$, so that $\cA \subseteq \cM$.
+By 5.13.a, $\cA$ is the algebra of all finite unions of measurable rectangles in $\cS \otimes \cT$.
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
+Finally, we prove that $\cM$ is a monotone class. 
+To do this, consider an increasing sequence of sets in $\cM$, say $E_1 \subseteq E_2 \subseteq \dots$.
+Notice that the sequence of functions $(\chi_{E_n})$ is positive and increasing with limit $\chi_{\bigcup E_i}$.
+By the measure of an increasing union (2.59) applied twice, we then have
+\begin{align*}
+    \omega(\bigcup E_i)
+    = \lim \omega(E_n)
+    = \lim (\mu \times \nu)(E_n)
+    = (\mu \times \nu)(\bigcup E_i),
+\end{align*}
+so that $\bigcup E_i \in \cM$.
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
+Likewise, for a decreasing intersection of sets $E_1 \supseteq E_2 \supseteq \dots$, we can prove that $\bigcap E_i \in \cM$ using the measure of a decreasing intersection (2.60), mutatis mutandis.
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
+Thus, we have proven that $\cM$ is a monotone class. 
+Now, by the monotone class Theorem (5.17), we have that $\cM = \cS \otimes \cT$, which is the same as saying that $\omega = \mu \times \nu$, as required.
 \end{proof} 

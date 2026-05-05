@@ -11,35 +11,43 @@ Kreyszig 6.3 Uniform Approximation
 10 This shows that even for inconsistent systems, this section ends up being rather useful. I think this should be related to the Moore-Penrose pseudoinverse, but I'm not sure
 
 \begin{exercise}{1}
-fill
+If $Y \subseteq C[a,b]$ is a subspace of dimension $n$ and satisfies the Haar condition, show that the restrictions of the elements of $Y$ to any subset of $[a,b]$ consisting of $n$ points constitute a vector space which still has dimension $n$ (whereas ordinarily the dimension would decrease under such a restriction).
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{2}
-fill
+Let $x_1(t) = 1$ and $x_2(t) = t^2$.
+Does $Y = \vecspan \set{x_1, x_2}$ satisfy the Haar condition if $Y$ is regarded as a subspace 
+\begin{enumerate}
+    \item of $C[0,1]$,
+    \item of $C[-1, 1]$?
+\end{enumerate}
+(To understand what is going on, approximate $x$ defined by $x(t) = t^3$ in both cases).
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{3}
-fill
+Show that $Y \vecspan \set{y_1, \dots, y_n} \subseteq C[a,b]$ satisfies the Haar condition if and only if, for every $n$-tuple $\set{t_1, \dots, t_n} \subset C[a,b]$ consisting of $n$ different points, the $n$ vectors $v_j = (y_1(t_j), \dots, y_n(t_j))$, $j = 1, \dots, n$, form a linearly independent set.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{6}
-fill
+In $C[0,1]$ find the best approximation to $x$ defined by $x(t) = e^t$ out of $Y = \vecspan \set{y_1, y_2}$, where $y_1(t) = 1$, $y_2(t) = t$.
+Compare the approximation with that by the linear Taylor polynomial given by $1+t$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{7}
-fill
+In $C[0,1]$ find the best approximation to $x$ defined by $x(t) = \sin(\pi t/2)$ out of $Y = \vecspan \set{y_1, y_2}$, where $y_1(t) = 1$, $y_2(t) = t$.
+Compare the approximation with that by the linear Taylor polynomial.
 \end{exercise}
 \begin{proof}
 fill
@@ -52,8 +60,8 @@ fill
 fill
 \end{proof} 
 
-\begin{exercise}{9}
-fill
+\begin{exercise}{9 (Inconsistent linear equation)}
+If a system of $r>n$ linear equations in $n$ unknowns $a_{j 1} x_1 + a_{j 2} x_2 + \dots + a_{j n} x_n = b_j$ is inconsistent, it does not have a solution $a = (x$
 \end{exercise}
 \begin{proof}
 fill
