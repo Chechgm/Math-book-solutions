@@ -1,7 +1,6 @@
 \section{Uniqueness, strict convexity}
 
 2 Typical compactness argument which allows this kind of approximation to be made. Notice Y does not need (and will not) be a subspace
-10 Some $l^p$ fun and finding which are strict convex and which not. Notice the same holds in $R^n$: the 1-norm is not strict convex while the p>1 norms are. Graph the unit balls to see 
 12 Another equivalent form of strict convexity that will be useful
 
 
@@ -93,5 +92,14 @@ Show that if a norm is strictly convex, then $\norm{x} = \norm{y} = 1$ and $x \n
 Show that this condition is also sufficient for strict convexity.
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$)
+
+($\Leftarrow$)
+Let $x, y$ and $a$ be as above and $\norm{ax + (1-a)y} < 1$.
+Then
+\begin{align*}
+    \norm{ax + (1-a)x + ay + (1-a)y}
+    \leq \norm{ax + (1-a)y} + \norm{ay + (1-a)x}
+    < 2.
+\end{align*}
 \end{proof} 

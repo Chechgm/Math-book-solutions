@@ -6,21 +6,48 @@
 3 This gives a nice and rather intuitive characterization of measurability, a function is measurable if the area under its graph is! This condition is solely in terms of areas too
 
 \begin{exercise}{1}
-fill
+\begin{enumerate}
+    \item Let $\lambda$ denote Lebesgue measure on $[0,1]$.
+    Show that 
+    \begin{align*}
+        \int_{[0,1]} \int_{[0,1]} \frac{x^2 - y^2}{(x^2 + y^2)^2} d\lambda(y) d\lambda(x)
+            = \frac{\pi}{4}
+    \end{align*}
+    and
+    \begin{align*}
+        \int_{[0,1]} \int_{[0,1]} \frac{x^2 - y^2}{(x^2 + y^2)^2} d\lambda(x) d\lambda(y)
+            = -\frac{\pi}{4}
+    \end{align*}
+    \item Explain why this violates neither Tonelli's Theorem nor Fubini's Theorem
+\end{enumerate}
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{2}
-fill
+\begin{enumerate}
+    \item Give an example of a doubly indexed collection $\set{x_{m, n}: m, n \in \N}$ of real numbers such that
+    \begin{align*}
+        \sum_{m=1}^\infty \sum_{n=1}^\infty x_{m,n} = 0
+    \end{align*}
+    and
+    \begin{align*}
+        \sum_{n=1}^\infty \sum_{m=1}^\infty x_{m,n} = \infty
+    \end{align*}
+    \item Explain why this violates neither Tonelli's Theorem nor Fubini's Theorem.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+Take $a_{n,m} = 1/n$ if $m=1$, $a_{n,m} = -1/n$ if $m=2$ and $0$ if $m > 2$.
+
+It doesn't violate the Theorems because the Theorem holds for nonnegative numbers.
 \end{proof} 
 
 \begin{exercise}{3}
-fill
+Suppose $(X, \cS)$ is a measurable space and $f: X \to [0, \infty]$ is a function.
+Let $\cB$ denote the $\sigma$-algebra of Borel subsets of $(0, \infty)$.
+Prove that $U_f \in \cS \otimes \cB$ if and only if $f$ is an $\cS$-measurable function.
 \end{exercise}
 \begin{proof}
 fill
