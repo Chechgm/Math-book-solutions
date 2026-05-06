@@ -1,14 +1,13 @@
 \section{Uniqueness, strict convexity}
 
-2 Typical compactness argument which allows this kind of approximation to be made. Notice Y does not need (and will not) be a subspace
-12 Another equivalent form of strict convexity that will be useful
-
 
 \begin{exercise}{2}
 Show that if $(X, d)$ is a metric space an $Y$ a compact subset, then every $x \in X$ has a best approximation $y$ out of $Y$.
 \end{exercise}
 \begin{proof}
-fill
+Let $\delta = \inf_{y \in Y} \norm{x - y}$.
+Thus, there exists a sequence $(y_n)$ in $Y$ such that $d(x,y_n) \leq L + 1/n$.
+Since $Y$ is compact, $(y_n)$ has a convergent subsequence $(y_{n_k})$ with $y_{n_k} \to y$, so that $d(x, y) \leq \delta$, giving us the desired best approximation point.
 \end{proof} 
 
 \begin{exercise}{3}
@@ -93,6 +92,16 @@ Show that this condition is also sufficient for strict convexity.
 \end{exercise}
 \begin{proof}
 ($\Rightarrow$)
+Notice that if $a \geq 1/2$, we have that $ax + (1-a)y = (1-a)(x+y) + (2a-1)x$.
+Thus, suppose $a \geq 1/2$.
+We have
+\begin{align*}
+    \norm{ax + (1-a)y}
+    =& \norm{(1-a)(x+y) + (2a-1)x}\\
+    \leq& (1-a)\norm{x+y} + (2a-1)\norm{x}\\
+    <& 2(1-a) + (2a-1) = 1.
+\end{align*}
+If $a \leq 1/2$, we can use the inequality $ax + (1-a)y = a(x+y) + (1-2)y$, mutatis mutandis, to arrive to the same conclusion.
 
 ($\Leftarrow$)
 Let $x, y$ and $a$ be as above and $\norm{ax + (1-a)y} < 1$.
