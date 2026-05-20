@@ -1,8 +1,6 @@
 \section{5B Iterated integrals}
 \addcontentsline{toc}{section}{5B Iterated integrals}
 
-1
-2 Two examples of where Tonelli's theorem does not hold true 
 3 This gives a nice and rather intuitive characterization of measurability, a function is measurable if the area under its graph is! This condition is solely in terms of areas too
 
 \begin{exercise}{1}
@@ -22,7 +20,25 @@
 \end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+We have the following:
+\begin{align*}
+    \int_{[0,1]} \int_{[0,1]} \frac{x^2 - y^2}{(x^2 + y^2)^2} d\lambda(y) d\lambda(x)
+    =& \int_{[0,1]}  \sqrBrackets{\frac{y}{x^2 + y^2}}^1_0  d\lambda(x)\\
+    =& \int_{[0,1]} \frac{1}{x^2 + 1} d\lambda(x)\\
+    =& \arctan(x)\lvert^1_0\\
+    =& \frac{\pi}{4},
+\end{align*}
+and
+\begin{align*}
+    \int_{[0,1]} \int_{[0,1]} \frac{x^2 - y^2}{(x^2 + y^2)^2} d\lambda(x) d\lambda(y)
+    =& \int_{[0,1]}  -\sqrBrackets{\frac{x}{x^2 + y^2}}^1_0  d\lambda(y)\\
+    =& \int_{[0,1]} -\frac{1}{y^2 + 1} d\lambda(y)\\
+    =& -\arctan(y)\lvert^1_0\\
+    =& -\frac{\pi}{4},
+\end{align*}
+as required.
+
+This doesn't violate Fubini's Theorem, because $\int_{X \times Y} \absoluteValue{f(x)} d(\mu \times \nu) = \infty$, and doesn't violate Tonelli's Theorem because the function takes on negative values.
 \end{proof} 
 
 \begin{exercise}{2}
@@ -39,9 +55,10 @@ fill
 \end{enumerate}
 \end{exercise}
 \begin{proof}
-Take $a_{n,m} = 1/n$ if $m=1$, $a_{n,m} = -1/n$ if $m=2$ and $0$ if $m > 2$.
+Consider the doubly indexed sequence $(a_{n,m})$ given by $a_{n,m} = 1/n$ if $m=1$, $a_{n,m} = -1/n$ if $m=2$ and $0$ if $m > 2$.
+We have that $\sum_m \sum_n a_{n,m} = \infty$, whereas $\sum_n \sum_m a_{n,m} = 0$.
 
-It doesn't violate the Theorems because the Theorem holds for nonnegative numbers.
+This sequence does not violate Fubini's Theorem, because $\int_\N \absoluteValue{a_{n,m}} d\mu(n) = \sum_n \absoluteValue{a_{n,m}} = \infty$ (and Fubini's Theorem requires it to be finite), and does not violate Tonelli's Theorem because $a_{n,m}$, understood as a function on $\N \times \N$ has negative values.
 \end{proof} 
 
 \begin{exercise}{3}
@@ -50,5 +67,16 @@ Let $\cB$ denote the $\sigma$-algebra of Borel subsets of $(0, \infty)$.
 Prove that $U_f \in \cS \otimes \cB$ if and only if $f$ is an $\cS$-measurable function.
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$)
+We have
+\begin{align*}
+    f^{-1}((a, \infty))
+    =& \set{x \in X: a < f(x)}\\
+    =& [ \set{(x, t) \in X \times (0,\infty): 0 < t < f(x)} ]_a\\
+    =& [U_f]_a,
+\end{align*}
+which we know is an $\cS$-measurable set because $U_f \in \cS \otimes \cB$ by assumption and 5.6.
+
+($\Leftarrow$)
+This is the content of the first part of Proposition 5.35, noticing that to prove that part we used only the fact that $f$ is an $\cS$-measurable function.
 \end{proof} 
