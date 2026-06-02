@@ -13,7 +13,7 @@ Let the distance $d(E,F)$ be defined by $m(E \triangle F)$.
     \item Define $Y = \quot{\cS}{\sim}$ the set of equivalence classes of $\sim$. 
     Show that d descends in a natural way to a metric on $Y$.
     \item Show that $Y$ is a complete metric space.
-    \item Show that $m:\cS \to \R$ descends to a function $Y \to R$ that is continuous.
+    \item Show that $m:\cS \to \R$ descends to a function $Y \to \R$ that is continuous.
 \end{enumerate}
 \end{exercise}
 \begin{proof}
@@ -50,16 +50,54 @@ Let the distance $d(E,F)$ be defined by $m(E \triangle F)$.
     Notice that $d$ is not a metric.
     Consider $(X, \cS, m)$ with $X = \set{1,2, 3}$, $\cS$ the discrete $\sigma$-algebra, and $m$ as follows $m(X) = 1$ and $m(A) = 0$ for any $A \subseteq X$ with $A \neq X$.
     Then $d(\set{1}, \set{2}) = m(\set{1, 2}) = 0$, but $\set{1} \neq \set{2}$.
+    
     \item For $E \in \cS$, $E \triangle E = \emptyset$, so that $d(E, E) = 0$ and $\sim$ is reflexive. 
     The symmetric difference is symmetric so that $E \triangle F = F \triangle E$ giving us that $d(E, F) = d(F, E)$, regardless of the value of $d(E, F)$, so it certainly holds for $d(E, F) = 0$.
     Finally, let $D \in \cS$, and suppose $d(E, F) = 0$ and $d(F, D) = 0$.
-    This implies either that $E$ and $F$ are the same set or that they have no elements in common and likewise for $F$ and $D$.
-    In both cases, this implies that $E$ and $D$ are either the same, or that they have no elements in common, which implies $d(E, D) = 0$ so that $\sim$ is transitive, finishing the proof that $\sim$ is an equivalence relation.
+    We have $d(E, D) \leq d(E, F) + d(F, D) = 0$, where we used the triangle inequality we prove in the first point.
+    Thus, $\sim$ is transitive, finishing the proof that $\sim$ is an equivalence relation.
+    
     \item We only need to prove that $d$ defined on $\quot{Y}{\sim}$ has the property that $E, F \in Y = \quot{\cS}{\sim}$ with $d(E, F) = 0$ if and only if $E = F$.
     To prove this, notice that $d(E, F) = 0$ if and only if $E \sim F$ by the definition of the quotient space, so that $E$ and $F$ belong to the same equivalence class;
     that is, $E = F$.
+    
     \item Let $(E_n)$ be Cauchy in $Y$.
-    Thus, for all $\epsilon >0$, there exists an $N \in \N$, such that whenever $n,m > N$, it holds that $d(E_n, E_m) < \epsilon$
+    Thus, for all $\epsilon >0$, there exists an $N \in \N$, such that whenever $n,m > N$, it holds that $d(E_n, E_m) < \epsilon$.
+    From this we can build a subsequence of $(E_n)$, such that after renaming the sequence we have $d(E_n, E_{n+1}) < 1/2^n$ (for the $i$'th element of the sequence, choose $N$ such that whenever $n > N$, the condition holds.
+    Do this for each $i \in \N$).
+    We claim that the subsequence converges to the limsup of $(E_n)$, $(\bigcap_{n \geq 1} \bigcup_{j \geq n} E_j)$;
+    that is, $d( \bigcup_{n = N} E_n, E_N) \to 0$.
+    To see this is the case, first notice that 
+    \begin{align*}
+        (\bigcup_{n=N} E_n) \triangle E_N 
+        =& ((\bigcup_{n=N} E_n )\setminus E_N) \cup (E_N \setminus (\bigcup_{n=N} E_n))\\
+        =& (\bigcup_{n=N} E_n) \setminus E_N\\
+        \subseteq& (\bigcup_{n=N} E_n) \setminus (\bigcap_{k=N} E_k)\\
+        \subseteq& \bigcup_{n=N} E_{n+1} \triangle E_n
+    \end{align*}
+    where the second equality followed because $E_N \subseteq \bigcup_{n=N} E_n$, the first containment follows because $(\bigcap_{k=N} E_k) \subseteq E_N$, and the second containment follows because if $x \in \bigcup_{n=N} E_n$, and $x \notin \bigcap_{k=N} E_k$, then there exists a first index $j$ such that $x \notin E_j$, but then $x \in E_{j-1} \setminus E_j \subseteq E_j \triangle E_{j-1}$.
+
+    Now taking the measure of the sets and using the order property of measure and measure subadditivity, we get
+    \begin{align*}
+        m((\bigcup_{n=N} E_n) \triangle E_N)
+        =& m((\bigcup_{n=N} E_n) \setminus E_N)\\
+        \leq& m(\bigcup_{n=N} E_{n+1} \triangle E_n)\\
+        \leq& \sum_{n=N} m(E_{n+1} \triangle E_n) \to 0
+    \end{align*}
+    Now since our Cauchy sequence has a convergent subsequence, then it is itself convergent, implying that $Y$ is a complete metric space, proving the desired result.
+    
+    \item Let $\tilde{m}: Y \to \R$ be the function we want to conclude is continuous.
+    We will first prove $m$ is well-defined in $Y$.
+    To do this, let $E \sim F$, thus $m(E \triangle F)$.
+    We can write $E \subseteq F \cup (E \triangle F)$, so that $m(E) \leq m(F) + m(E \triangle F) = m(F)$.
+    By symmetry we see $m(E) = m(F)$, proving the well-definedness of $m$ in $Y$.
+    
+    We will now prove $m$ is continuous in $Y$.
+    For that, notice that 
+    \begin{align*}
+        \absoluteValue{m(E) - m(F)} \leq d(E \triangle F)
+    \end{align*}
+    by the argument we used above, thus, by choosing $d(E, F) < \epsilon$ we obtain our desired continuity.
 \end{enumerate}
 \end{proof} 
 

@@ -141,6 +141,7 @@
   fonttitle= \bfseries,
   sharp corners, % Quitar si quiero redondas
   breakable,
+  boxrule=0.5pt,
 }
 
 \setcounter{tocdepth}{2}

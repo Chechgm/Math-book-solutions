@@ -106,9 +106,8 @@ Define $f_t: \R^n \to \R$ by $f_t(x) = f(tx)$.
 \begin{proof}
 \begin{enumerate}
     \item Let $B$ be a Borel set. 
-    Since $f$ is $\cB$-measurable, then $f^{-1}(B) \in \cB_n$, but we know that for $t \in \R \setminus \set{0}$, $B/t \in \cB_n$ (5.41).
-    Then, $f^{-1}_t(B/t) = f^{-1}(tB/t) \in \cB_n$, so that $f_t$ is $\cB_n$ measurable.
-    \item We will prove this in a similar way to our proofs in the integration chapter.
+    We have $f_t^{-1}(B) = f^{-1}(B/t)$, since $f$ is $\cB_n$-measurable, and $B/t$ is Borel (2.B.8) then $f_t^{-1}(B) \in \cB_n$, so that $f_t$ is $\cB_n$-measurable.
+    \item We will prove this using the bootstrap method used in the exercises of chapter 3, for simplicity, we will assume $t > 0$.
     For that purpose, we begin by proving the statement for $f = \chi_E$, for $E \in \cB_n$.
     Let $\chi_{E, t}(x) = \chi_E(tx)$.
     We have
@@ -136,9 +135,10 @@ Define $f_t: \R^n \to \R$ by $f_t(x) = f(tx)$.
     Now consider a positive function $f$ and let $0 \leq f^1 \leq f^2 \leq \dots$ be an increasing sequence of simple functions converging to $f$ (we use a upper index because we have reserved the lower index for $t$).
     The existence of such sequence is guaranteed by 2.89.
     Furthermore, if $f^k \to f$, then $f_t^k \to f_t$ (consider $\absoluteValue{f_t^k(x) - f_t(x)} = \absoluteValue{f^k(tx) - f(tx)}$, and find the $K$ that makes the right hand side less than $\epsilon$ for all $k > K$).
-    By the Monotone Convergence Theorem (3.11), we have that
+    By the Monotone Convergence Theorem (3.11) and the algebraic properties of limits, we have
     \begin{align*}
-        \lim_{k \to \infty} \int_{\R^n} f_t^k d\lambda_n
+        \int_{\R^n} f_t d\lambda_n
+        = \lim_{k \to \infty} \int_{\R^n} f_t^k d\lambda_n
         = \lim_{k \to \infty} t^n \int_{\R^n} f^k d\lambda_n
         = t^n \int_{\R^n} f d\lambda_n,
     \end{align*}
