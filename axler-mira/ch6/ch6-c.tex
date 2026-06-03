@@ -1,133 +1,36 @@
-\section{fill}
-\addcontentsline{toc}{section}{fill}
+\section{6C Normed Vector Spaces}
+\addcontentsline{toc}{section}{6C Normed Vector Spaces}
 
-\begin{exercise}{x}
-fill
+14 This is one of the workhorses in functional analysis. It says that continuous linear maps can be extended to a closure. So it suffices to define continuous linear maps on dense subspaces. This is incredibly helpful. One possible application can be to define an integration theory. You would define the integral of step functions first, and then extend the integral using this exercise. The step functions are dense in the continuous functions, hence this establishes an integration theory on continuous functions. This is a very typical argument.
+15 This is about quotients of Banach spaces with closed subspaces. Banach spaces might be a subject in analysis, but it has a surprisingly rich algebraic theory, and it also behaves very well in category theory. This exercise is one example of this. That said, part (b) is rather difficult. It is slightly easier not to prove completeness directly in (b), but to show instead that any absolutely convergent series is convergent (which is equivalent to completeness)
+16 This is probably already familiar to you in Kreyszig, but these four formulas for the norm of a linear map are often rather useful in different circumstances. Especially (c) is very useful in practice to find the norm of a linear map. It suggests a two-step approach for finding the norm that often (but not always) works. You would first prove that |Tf| <= c |f|, which alreayd shows that T is bounded. Then it suffices to just find one (nonzero) f such that equality holds. So if we can find an f such that |Tf| = c|f|, then we are done and |T| = c. This is a very simple approach which works surprisingly often.
+
+\begin{exercise}{14}
+Suppose $U$ is a subspace of a normed vector space $V$.
+Suppose also that $W$ is a Banach space and $S: U \to W$ is a bounded linear map.
+\begin{itemize}
+    \item Prove that there exists a unique continuous function $T: \bar{U} \to W$ such that $T|_U = S$.
+    \item Prove that the function $T$ in the previous point is a bounded linear map from $\bar{U}$ to $W$ and $\norm{T} = \norm{S}$.
+    \item Give an example to show that in the first point can fail if the assumption that $W$ is a Banach space is replaced by the assumption that $W$ is a normed vector space.
+\end{itemize}
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{15}
+For readers familiar with the quotient of a vector space and a subspace:
+Suppose $V$ is a normed vector space and $U$ is a subspace of $V$.
+Define $\norm{\cdot}$ on $\quot{V}{U}$ by $\norm{f+ U} = \inf\set{\norm{f + g}: g \in U}$.
+\begin{enumerate}
+    \item 
+\end{enumerate}
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
+\begin{exercise}{16}
 fill
 \end{exercise}
 \begin{proof}

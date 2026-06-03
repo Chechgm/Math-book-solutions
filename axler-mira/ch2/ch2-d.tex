@@ -41,25 +41,12 @@ We want to prove that there exists a Borel set, such that the outer measure of $
 We conjecture that $t+B$ is such set.
 First, $t+B$ is Borel by exercise 2B.7.
 Now, if $x\in t+B$, then $x = t+b$ for some $b \in B \subseteq A$, so that $x \in t+A$.
-Finally, notice that $t+A = ((t+A) \setminus (t+B)) \cup (t+B)$ is a disjoint union of sets, where $t+B$ is Borel.
-Thus, we can apply 2.66 to conclude that 
-\begin{align*}
-    \absoluteValue{t+A} 
-    = \absoluteValue{[(t+A) \setminus (t+B)] \cup (t+B)} 
-    = \absoluteValue{(t+A) \setminus (t+B)} + \absoluteValue{t+B},
-\end{align*}
-so that $\absoluteValue{t+A} = \absoluteValue{(t+A) \setminus (t+B)} + \absoluteValue{t+B}$.
-Finally, we know that the outer measure is translation invariant, so that $\absoluteValue{t+A} = \absoluteValue{A}$.
-Thus,
-\begin{align*}
-    \absoluteValue{(t+A) \setminus (t+B)} 
-    = \absoluteValue{t+A} - \absoluteValue{t+B}
-    = \absoluteValue{A} - \absoluteValue{B}
-    = \absoluteValue{A \setminus B}
-    = 0,
-\end{align*}
-where the second to last equality follows from applying a similar logic as above.
-We can conclude that $t+A$ is Lebesgue measurable.
+Finally, notice that $(t + A) \setminus (t + B) = t + (A \setminus B)$.
+If $x \in (t + A) \setminus (t + B)$, then $x = t + a$ for some $a \in A$ and $x \neq t + b$ for all $b \in B$.
+If $x \in t + (A \setminus B)$, then $x = t + a$, for some  $a \in A$ and $a \notin B$, that is $x - t \neq b$ for all $b \in B$.
+Thus, the sets are equivalent because they represent the same elements.
+
+Now, we have $\absoluteValue{(t+A) \setminus (t + B)} = \absoluteValue{t + (A \setminus B)} = \absoluteValue{A \setminus B} = 0$, because the outer measure is translation invariant.
 \end{proof} 
 
 \begin{exercise}{9}
@@ -76,23 +63,13 @@ From exercise 2.B.8 we know that $tB$ is Borel, we now need to prove that $tB \s
 We have $x \in tB \iff x = tb$ for some $b\in B\subseteq A$.
 Thus $x\in tA$ and $tB \subseteq tA$.
 From exercise 2.A.2 we know that for any subset $A\subseteq\R$ and any $0\neq t \in \R$, $\absoluteValue{tA} = \absoluteValue{t}\absoluteValue{A}$ holds.
-Now, $tA = (tA \setminus tB) \cup tB$ is a disjoint union where $tB$ is Borel, as argued above. 
-Applying 2.66 we get:
-\begin{align*}
-    \absoluteValue{tA}
-    = \absoluteValue{t}\absoluteValue{A}
-    = \absoluteValue{tA \setminus tB} + \absoluteValue{tB}
-    = \absoluteValue{tA \setminus tB} + \absoluteValue{t}\absoluteValue{tB}.
-\end{align*}
-That is,
-\begin{align*}
-    \absoluteValue{tA \setminus tB} + \absoluteValue{tB}
-    = \absoluteValue{t}[\absoluteValue{A} - \absoluteValue{B}]
-    = \absoluteValue{t}[\absoluteValue{A \setminus B}]
-    = \absoluteValue{t}0
-    = 0,
-\end{align*}
-as required.
+
+As in the previous exercise, we will prove $tA \setminus tB = t(A \setminus B)$.
+To see this, notice that $x \in tA \setminus tB$ means that $x = ta$ for some $a \in A$ and $x \neq tb$ for all $b \in B$.
+Likewise, $x \in t(A \setminus B)$ means that $x = ta$ for $a \in A$ and $a \notin B$, which is the same as $x \neq tb$ for all $b \in B$.
+Thus, the same sets are equivalent.
+
+Now, we have $\absoluteValue{tA \setminus tB} = \absoluteValue{t(A \setminus B)} = \absoluteValue{t}\absoluteValue{A \setminus B} = 0$, as required.
 \end{proof} 
 
 \begin{exercise}{10}

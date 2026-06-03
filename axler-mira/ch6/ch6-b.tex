@@ -1,35 +1,97 @@
 \section{6B Vector Spaces}
 \addcontentsline{toc}{section}{6B Vector Spaces}
 
-5 Some useful equivalent ways to describe measurability to C. Notice (b) and how it is a small modification of continuity
-6 These are obviously what you want to be true if measurability is the correct concept
-7 So limits of measurable functions are measurable too. In fact, you can use this to characterize measurable functions as the smallest set of functions that contains the continuous once and that is closed under pointwise limits 
-8 Obviously a generation of the real valued integral
 
 \begin{exercise}{5}
-fill
+Suppose $(X, \cS)$ is a measurable space and $f: X \to \C$ is a complex-valued function.
+For the following exercise, identify $\C$ with $\R^2$.
+Prove that the following are equivalent.
+\begin{itemize}
+    \item $f$ is $\cS$-measurable.
+    \item $f^{-1}(G) \in \cS$ for every open set $G$ in $\R^2$.
+    \item $f^{-1}(B) \in \cS$ for every Borel set $B \in \cB_2$.
+\end{itemize}
 \end{exercise}
 \begin{proof}
-fill
+$(1 \Rightarrow 3)$
+Suppose $f$ is $\cS$-measurable.
+We will prove this by the lioncage method.
+
+For that purpose, let $\cE = \set{E \in \R^2: f^{-1}(E) \in \cS}$.
+Notice that $f^{-1}(\emptyset) = \emptyset \in \cS$, so that $\emptyset \in \cE$.
+Furthermore $E \in \cE$, so that $f^{-1}(E) \in \cS$ and $f^{-1}(E^C) = (f^{-1}(E))^C \in \cS$ (given that $\cS$ is closed under complements), thus $E^C \in \cS$.
+Finally, let $E_1, E_2, \dots$ be a sequence in $\cE$, thus $f^{-1}(E_i) \in \cS$ for all $E_i$.
+We have $f^{-1}(\bigcup E_i) = \bigcup f^{-1}(E_i) \in \cS$, given that $\cS$ is closed under countable unions, thus $\bigcup E_i \in \cE$.
+
+We just proved $\cE$ is a $\sigma$-algebra, furthermore, notice that any open rectangle is in $\cE$ since both $Re(f)$ and $Im(f)$ are $\cS$-measurable so that the preimage of $Re(f)$ and $Im(f)$ of a Borel set is in $\cS$.
+Thus, $\cE$ is a $\sigma$-algebra containing all open rectangles and thus $f^{-1}(B) \in \cS$ for every Botel set in $B \in \cB_2$.
+
+$(3 \Rightarrow 2)$
+Suppose $f^{-1}(B) \in \cS$ for every Borel set $B \in \cB_2$, since every open set $G \in \R^2$ is Borel in $\cB_2$, 2 holds directly.
+
+$(2 \Rightarrow 1)$
+Suppose $f^{-1}(G) \in \cS$ for every open set in $\R^2$.
+Consider the open set $G = (a, \infty) \times \R$, so that  $f^{-1}(G) \in \cS$.
+Notice that this is the same as saying that $Re(f)$ is measurable since for any $b \in \R$, the cross section of $[f^{-1}(G)]^b = Re(f)^{-1}((a,\infty)) \in \cS$ (2.39 and 5.6).
+We can prove in a similar way that $Im(f)$ is $\cS$-measurable, so that $f$ is itself $\cS$-measurable.
 \end{proof} 
 
 \begin{exercise}{6}
-fill
+Suppose $(X, \cS)$ is a measurable space and $f, g: X \to \C$ are $\cS$-measurable.
+Prove that
+\begin{itemize}
+    \item $f+g, f-g$, and $fg$ are $\cS$-measurable functions;
+    \item if $g(x) \neq 0$ for all $x \in X$, then $f/g$ is an $\cS$-measurable function.
+\end{itemize}
 \end{exercise}
 \begin{proof}
-fill
+\begin{itemize}
+    \item Notice that $Re(f+g) = Re(f) + Re(g)$, a sum of $\cS$-measurable functions, so that $Re(f+g)$ is measurable. 
+    The measurability of $Im(f+g)$ can be proved in a similar way.
+    Since $Re(f+g)$ and $Im(f+g)$ are measurable, then $f+g$ is itself measurable.
+
+    The proof of the measurability of $f-g$ can be proved in a similar way, mutatis mutandis.
+
+    To prove that $fg$ is measurable, notice that $Re(fg) = Re(f)Re(g)-Im(f)Im(g)$, all of which are algebraic operations of $\cS$-measurable functions, which is itself measurable.
+    We can prove $Im(fg)$ is $\cS$-measurable in a similar way, so that $fg$ is itself measurable.
+    \item We have that 
+    \begin{align*}
+        \frac{f}{g} = [Re(f) + iIm(f)]\sqrBrackets{\frac{Re(g)}{Re(g)^2  + Im(g)^2} - \frac{Im(g)}{Re(g)^2  + Im(g)^2}i}.
+    \end{align*}
+    Accumulating terms with and without $i$, gives us algebraic expressions of $Re(f), Re(g), Im(f)$, and $Im(g)$, which are themselves $\cS$-measurable.
+    Thus, both $Re(f/g)$ and $Im(f/g)$ are $\cS$-measurable, and $f/g$ is measurable, as required.
+\end{itemize}
 \end{proof} 
 
 \begin{exercise}{7}
-fill
+Suppose $(X, \cS)$ is a measurable space and $f_1, f_2, \dots$ is a sequence of $\cS$-measurable functions from $X$ to $\C$.
+Suppose $\lim_{k to \infty} f_k(x)$ exists for each $x \in X$.
+Define $f: X \to \C$ by $f(x) = \lim_{k \to \infty} f_k(x)$.
+Prove that $f$ is an $\cS$-measurable function.
 \end{exercise}
 \begin{proof}
-fill
+Notice that for any $x \in X$, $\lim_{k to \infty} f_k(x)$ implies $\lim_{k \to \infty} Re(f_k(x)) = Re(f(x))$ and $\lim_{k \to \infty} Im(f_k(x)) = Im(f(x))$, both of which are measurable, because they are limits of measurable functions (2.48).
+Since $f(x) = Re(f(x)) + iIm(f(x))$;
+that is, $f(x)$ is a sum of measurable functions, then $f$ is itself measurable (2.46).
 \end{proof} 
 
 \begin{exercise}{8}
-fill
+Suppose $(X, \cS, \mu)$ is a measure space and $f: X \to \C$ is an $\cS$-measurable function such that $\int \absoluteValue{f} d\mu < \infty$.
+Prove that if $\alpha \in \C$, then $\int \alpha f d\mu = \alpha \int f d\mu$.
 \end{exercise}
 \begin{proof}
-fill
+Let $\alpha = a + ib$ where $a, b \in \R$
+We have
+\begin{align*}
+    \int \alpha f d\mu
+    =& \int (aRe(f) - bIm(f)) + i(aIm(f) + bRe(f)) d\mu\\
+    =& a\int Re(f) d\mu - b \int Im(f) d\mu + i \sqrBrackets{a\int aIm(f) d\mu + b \int Re(f) d\mu}
+\end{align*}
+on the other hand,
+\begin{align*}
+    \alpha \int f d\mu
+    =& (a + ib) \parens{\int Re(f) d\mu + i \int Im(f)} d\mu\\
+    =& a\int Re(f) d\mu - b \int Im(f) d\mu + i \sqrBrackets{a\int aIm(f) d\mu + b \int Re(f) d\mu},
+\end{align*}
+so that $\int \alpha f d\mu = \alpha \int f d\mu$, as required.
 \end{proof} 
