@@ -1,135 +1,29 @@
-\section{fill}
-\addcontentsline{toc}{section}{fill}
+\section{6D Linear functionals}
+\addcontentsline{toc}{section}{6D Linear functionals}
 
-\begin{exercise}{x}
-fill
+
+\begin{exercise}{2}
+Suppose $\phi$ is a linear functional on a vector space $V$.
+Prove that if $U$ is a subspace of $V$ such that $\nullspace \phi \subseteq U$, then $U = \nullspace \phi$ or $U = V$.
 \end{exercise}
 \begin{proof}
-fill
+Suppose $\nullspace \phi \subseteq U$ and suppose there exists $u \in U$ such that $\phi(u) \neq 0$ (so that $\nullspace \phi$ is a proper subspace of $U$).
+We will prove $U = V$.
+Let $v \in V$ and $u' = u/\phi(u)$, so that $\phi(u') = 1$.
+Now consider $v = (v - \phi(v)u') + \phi(v)u'$.
+We have $\phi(v - \phi(v)u') = 0$, so that $v - \phi(v)u' \in \nullspace \phi$.
+On the other hand, $\phi(v) u' \in U$ because it is a scalar multiple of $u' \in U$.
+Thus, $v \in U$ and $U = V$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{14}
+Show that there exists a linear function $\phi: \ell^\infty \to \bF$ such that $\absoluteValue{\phi(a_1, a_2, \dots)} \leq \norm{(a_1, a_2, \dots)}_\infty$ for all $(a_1, a_2, \dots) \in \ell^\infty$ and $\phi(a_1, a_2, \dots) = \lim a_k$ for all $(a_1, a_2, \dots) \in \ell^\infty$ such that the limit above on the right exists.
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
+Consider the subspace $c_0$ consisting of sequences in $\ell^\infty$ that converge;
+that is, for $(a_1, a_2, \dots) \in c_0$, $\lim a_k$ exists.
+Define the linear functional $\phi: c_0 \to \bF$ given by the limit.
+We know that the limit is linear, and furthermore for $a \in c_0$, $\absoluteValue{\phi(a)} = \absoluteValue{\lim a_k} \leq \sup \absoluteValue{a_k} = \norm{a}_\infty$.
+We can now extend $\phi$ to a linear functional on $\ell^\infty$ using the Hahn-Banach Theorem (6.69).
+The resulting linear functional has the desired properties.
 \end{proof} 

@@ -1,21 +1,55 @@
 \section{6C Normed Vector Spaces}
 \addcontentsline{toc}{section}{6C Normed Vector Spaces}
 
-14 This is one of the workhorses in functional analysis. It says that continuous linear maps can be extended to a closure. So it suffices to define continuous linear maps on dense subspaces. This is incredibly helpful. One possible application can be to define an integration theory. You would define the integral of step functions first, and then extend the integral using this exercise. The step functions are dense in the continuous functions, hence this establishes an integration theory on continuous functions. This is a very typical argument.
 15 This is about quotients of Banach spaces with closed subspaces. Banach spaces might be a subject in analysis, but it has a surprisingly rich algebraic theory, and it also behaves very well in category theory. This exercise is one example of this. That said, part (b) is rather difficult. It is slightly easier not to prove completeness directly in (b), but to show instead that any absolutely convergent series is convergent (which is equivalent to completeness)
 16 This is probably already familiar to you in Kreyszig, but these four formulas for the norm of a linear map are often rather useful in different circumstances. Especially (c) is very useful in practice to find the norm of a linear map. It suggests a two-step approach for finding the norm that often (but not always) works. You would first prove that |Tf| <= c |f|, which alreayd shows that T is bounded. Then it suffices to just find one (nonzero) f such that equality holds. So if we can find an f such that |Tf| = c|f|, then we are done and |T| = c. This is a very simple approach which works surprisingly often.
 
 \begin{exercise}{14}
 Suppose $U$ is a subspace of a normed vector space $V$.
 Suppose also that $W$ is a Banach space and $S: U \to W$ is a bounded linear map.
-\begin{itemize}
+\begin{enumerate}
     \item Prove that there exists a unique continuous function $T: \bar{U} \to W$ such that $T|_U = S$.
     \item Prove that the function $T$ in the previous point is a bounded linear map from $\bar{U}$ to $W$ and $\norm{T} = \norm{S}$.
     \item Give an example to show that in the first point can fail if the assumption that $W$ is a Banach space is replaced by the assumption that $W$ is a normed vector space.
-\end{itemize}
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item Let $(x_n)$ be a sequence in $U$ with $x_n \to x$.
+    We have that 
+    \begin{align*}
+        \norm{S(x_n) - S(x_m)} 
+        \leq \norm{S(x_n - x_m)} 
+        \leq \norm{S}\norm{x_n - x_m},
+    \end{align*}
+    so that $(S(x_n))$ is Cauchy, and since $W$ is a Banach space, $S(x_n) \to y \in W$.
+    Let $Tx = y = \lim S(x_n)$.
+
+    We have that $T$ is well defined because of the continuity of $S$, so that if $x_n \to x$ and $x_n' \to x$, then 
+    \begin{align*}
+        \lim S(x_n) 
+        = S(\lim x_n) 
+        = S(x) 
+        = S(\lim x_n') 
+        = \lim S(x_n').
+    \end{align*}
+
+    Furthermore, $T|_U = S$ by definition, and $T$ is a linear map by the algebraic properties of limits.
+    The continuity of $T$ will follow by the fact that $T$ bounded (6.48) which we prove in the next numeral.
+    
+    We will use the continuity of $T$ to prove it must be unique.
+    To see this, suppose there is another linear map $T'$ such that $T'|_U = S$, we then have $\norm{T(x_n) - T'(x_n)} = \norm{S(x_n) - S(x_n)} = 0$, so that $T = T'$.
+    
+    \item We have $\norm{Tx} = \norm{S(x_n)} \leq \norm{S}\norm{x_n} = \norm{S}\norm{x}$.
+    Hence, $\norm{Tx} \leq \norm{S}\norm{x}$, meaning $T$ is bounded. 
+    Of course since $T$ is an extension of $S$, $\norm{T} \geq \norm{S}$ giving us that $\norm{T} = \norm{S}$.
+    
+    \item Let $W$ be the subspace of $C[0,1]$ of polynomials.
+    Consider the identity, which is a linear map linear map $I: W \to W$.
+    Now let $f(x) = e^x \in C[0,1]$, and because $W$ is dense in $C[0,1]$, we know there is a sequence of polynomials $(f_n)$, such that $f_n(x) \to e^x$.
+    This means that $(f_n)$ is a Cauchy sequence in $W$ which converges to a point outside of $W$.
+    But we cannot extend $I$ to a continuous linear map $I': C[0,1] \to W$, we would then have that $f_n \to e^x$ and $I'(f_n) = f_n \to I'(e^x)$, meaning that $(f_n)$ actually converges in $W$, which we have argued is not true.
+\end{enumerate}
 \end{proof} 
 
 \begin{exercise}{15}
@@ -23,16 +57,118 @@ For readers familiar with the quotient of a vector space and a subspace:
 Suppose $V$ is a normed vector space and $U$ is a subspace of $V$.
 Define $\norm{\cdot}$ on $\quot{V}{U}$ by $\norm{f+ U} = \inf\set{\norm{f + g}: g \in U}$.
 \begin{enumerate}
-    \item 
+    \item Prove that $\norm{\cdot}$ is a norm on $\quot{V}{U}$ if and only if $U$ is a closed subspace of $V$.
+    \item Prove that if $V$ is a Banach space and $U$ is a closed subspace of $V$, then $\quot{V}{U}$ (with the norm defined above) is a Banach space.
+    \item Prove that if $U$ is a Banach space (with the norm it inherits from $V$) and $\quot{V}{U}$ is a Banach space (with the norm defined above), then $V$ is a Banach space.
 \end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item ($\Rightarrow$)
+    By contrapositive, suppose $U$ is not a closed subspace of $V$.
+    Then there exists a sequence $(f_n)$ in $U$ such that $f_n \to f$ but $f \notin U$.
+    That is, $\norm{f + U} = \inf{\norm{f + g}: g \in U} = 0$ (for any $\epsilon > 0$, consider $g = -f_N \in U$ for the required $N$), but $f + U$ is not the 0 element of $\quot{V}{U}$, so that $\norm{\cdot}$ is not a norm on $\quot{V}{U}$.
+
+    ($\Leftarrow$)
+    Suppose $U$ is a closed subspace of $V$.
+
+    (Positive definite) 
+    Let $f + U \in \quot{V}{U}$.
+    Then $\norm{f + U} = \inf\set{\norm{f + g}: g \in U}$, but such infimum is 0 if and only if $f \in U$, since $\norm{f - g} > \epsilon$ for all $g \in U$.
+    If this were not the case, $U$ wouldn't be closed.
+
+    (Homogeneity)
+    Let $\alpha \in \bF$.
+    We have 
+    \begin{align*}
+        \norm{\alpha(f + U)} 
+        =& \inf\set{\norm{\alpha(f + g)}: g \in U}\\
+        =& \inf\set{\absoluteValue{\alpha}\norm{f + g}: g \in U}\\
+        =& \absoluteValue{\alpha} \inf\set{\norm{f + g}: g \in U}\\
+        =& \absoluteValue{\alpha}\norm{f + U},
+    \end{align*}
+    as required.
+
+    (Triangle inequality)
+    Let $f' + U \in \quot{V}{U}$.
+    We have
+    \begin{align*}
+        \norm{f + U + f' + U}
+        =& \norm{f + f' + U}\\
+        =& \inf\set{\norm{f + f' + g}: g \in U}\\
+        =& \inf\set{\norm{f + f' + 2g}: g \in U}\\
+        \leq& \inf\set{\norm{f + g} + \norm{f' + g}: g \in U}\\
+        \leq& \inf\set{\norm{f + g}: g \in U} + \inf\set{\norm{f' + g'}: g' \in U}\\
+        =& \norm{f + U} + \norm{f' + U},
+    \end{align*}
+    completing the proof.
+
+    \item Let $(f + U)_n$ be Cauchy in $\quot{V}{U}$.
+    Thus, for all $\epsilon > 0$, there exists an $N \in \N$ so that whenever $n, m > N$, it holds that 
+    \begin{align*}
+        \norm{(f + U)_n - (f + U)_m}
+        =& \norm{f_n + U - f_m + U}\\
+        =& \norm{f_n - f_m + U}\\
+        =& \inf\set{\norm{f_n - f_m + g}: g \in U}
+        < \epsilon,
+    \end{align*}
+    where with slight abuse of notation, we wrote $(f + U)_n = f_n + U$.
+    Note that $\inf\set{\norm{f_n - f_m + g}: g \in U} \leq \inf\set{\norm{f_n - f_m} + \norm{g}: g \in U}$, meaning that there is a sequence of representatives in $V$, $(f_n)$ which is itself Cauchy.
+    By assumption $f_n \to f$.
+
+    We claim $(f + U)_n \to (f + U)$.
+    We have
+    \begin{align*}
+        \norm{(f + U)_n - (f + U)}
+        =& \norm{f_n + U - f + U}\\
+        =& \norm{f_n - f + U}\\
+        =& \inf\set{\norm{f_n - f + g}: g \in U}
+        < \epsilon,
+    \end{align*}
+    as required.
+    
+    \item 
+    
+\end{enumerate}
+
+
 \end{proof} 
 
 \begin{exercise}{16}
-fill
+Supose $V$ and $W$ are normed vector spaces with $V \neq \set{0}$ and $T: V \to W$ is a linear map.
+\begin{enumerate}
+    \item Show that $\norm{T} = \sup \set{\norm{Tf}: f \in V \text{ and } \norm{f} < 1}$.
+    \item Show that $\norm{T} = \sup \set{\norm{Tf}: f \in V \text{ and } \norm{f} = 1}$.
+    \item Show that $\norm{T} = \inf \set{c \in [0, \infty): \norm{Tf} \leq c\norm{f} \text{ for all } f \in V}$.
+    \item Show that $\norm{T} = \sup \set{\frac{\norm{Tf}}{\norm{f}}: f \in V \text{ and } f \neq 0}$.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+Before proving these formulas, notice that the definition of the norm of $T$ given by Axler is the following: 
+\begin{align*}
+    \norm{T} 
+    = \sup \set{\norm{Tf}: f \in V \text{ and } \norm{f} \leq 1}
+    = \sup_{f \in V, \norm{f} \leq 1} \norm{Tf}.
+\end{align*}
+
+\begin{enumerate}
+    \item By definition, $\norm{Tf} \leq \norm{T}$ for all $f$ with $\norm{f} \leq 1$.
+    If the supremum of the left hand side is attained with an $f$ with $\norm{f} < 1$, then we are done. 
+    Thus, assume that it is attained with an $f$ such that $\norm{f} = 1$.
+    By the definition of the supremum, we can find a sequence $(\norm{T(f)}_n)$ with $\norm{T(f)}_n < 1$ for all $n$, such that $\norm{T(f)}_n \to \norm{T}$.
+    Since the map $f \mapsto \norm{Tf}$ is continuous, we have that $f_n \to f$, where $\norm{f} = 1$
+    
+    \item Notice that we can transform any $f \in V$ with $\norm{f} \leq 1$ to one with norm 1 with the following mapping: $g = f/\norm{f}$.
+    In that case, 
+    \begin{align*}
+        \norm{T} 
+        = \sup_{\norm{f} \leq 1} \frac{\norm{Tf}}{\norm{f}} 
+        = \sup_{\norm{f} \leq 1} \norm{\frac{Tf}{\norm{f}}} 
+        = \sup_{\norm{g} = 1} \norm{Tg}.
+    \end{align*}
+    
+    \item If $\norm{T} = \inf \set{c \in [0, \infty): \norm{Tf}/\norm{f} \leq c \text{ for all } f \in V, f \neq 0}$, then $\norm{T} = \sup_{f \in V, f \neq 0}\norm{Tf}/\norm{f} = \sup_{g \in V, \norm{g} = 1}\norm{Tg}$, which is precisely the relation in the previous numeral.
+    
+    \item Starting from the previous numeral, if $\norm{T} = \inf \set{c \in [0, \infty): \norm{Tf}/\norm{f} \leq c \text{ for } f \in V, f \neq 0}$, then taking the supremum on the left hand side of the inequality gives us that $\norm{T} = \sup \set{\frac{\norm{Tf}}{\norm{f}}: f \in V \text{ and } f \neq 0}$.
+\end{enumerate}
 \end{proof} 
