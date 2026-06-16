@@ -1,9 +1,5 @@
 \section{6E Consequences of Baire's Theorem}
-\addcontentsline{toc}{section}{6E Consequences of Baire's Theorem}
 
-5 A supposed counterexample to Baire 
-6 Showing that completeness is in fact necessary for Baire to hold 
-8 A useful equivalent form to Baire 
 9 Very cool theorem about the size of a bases of Banach spaces, they can be either finite dim, or the basis has to be uncountable 
 10 A counterexample to the open mapping theorem if completeness is dropped
 11 Similar
@@ -12,63 +8,91 @@
 17 Pretty cool and useful result about the pointwise limit of bounded maps on a Banach space!
 
 \begin{exercise}{5}
-fill
+Suppose $X = \set{0} \cup \bigcup_{k = 1}^\infty \set{1/k}$ and $d(x, y) = \absoluteValue{x - y}$ for $x, y \in X$.
+\begin{enumerate}
+    \item Show that $(X, d)$ is a complete metric space.
+    \item Each set of the form $\set{x}$ for $x \in X$ is a closed subset of $\R$ that has an empty interior as a subset of $\R$.
+    Clearly $X$ is a countable union of such sets.
+    Explain why this does not violate the statement of Baire's Theorem that a complete metric space is not the countable union of closed subsets with empty interior.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item Any Cauchy sequence, say $(x_n)$ in $X$ must either be eventually constant or get closer to 0.
+    If this were not the case, then there would exist an $\epsilon > 0$ so that for all $n, m \in \N$, we would have $\absoluteValue{x_n - x_m} \geq \epsilon$.
+    Since 0 belongs to $X$, then $X$ is complete.
+    \item This doesn't contradict Baire's Theorem, given that for any $x \neq 0$, $\overline{\set{x}}$ does not have an empty interior.
+    In particular, if $x = 1/k$, then $B_r(x) \subseteq \overline{\set{1/k}}$, where $r = 1/(k+1)^2$.
+    The lesson here is that the ambient space matters when thinking about whether a closed subset has or not an empty interior, as we saw previously in Carothers' Real Analysis.
+\end{enumerate}
 \end{proof} 
 
 \begin{exercise}{6}
-fill
+Give an example of a metric space that is the countable union of closed subsets with empty interior.
+
+[This exercise shows that the completeness hypothesis in Baire's Theorem cannot be dropped.]
 \end{exercise}
 \begin{proof}
-fill
+$\Q = \bigcup_{r \in \Q} \overline{\set{r}} = \bigcup_{r \in \Q} \set{r}$, understood as a metric subspace of $\R$.
 \end{proof} 
 
 \begin{exercise}{8}
-fill
+Suppose $(X, d)$ is a complete metric space and $G_1, G_2, \dots$ is a sequence of dense open subsets of $X$.
+Prove that $\bigcap_{k=1}^\infty G_k$ is a dense subset of $X$.
 \end{exercise}
 \begin{proof}
-fill
+This is the content of exercise 9.2.26 in Carothers' Real Analysis.
 \end{proof} 
 
 \begin{exercise}{9}
-fill
+Prove that there does not exist an infinite-dimensional Banach space with a countable basis.
+[This exercise implies, for example, that there is not a norm that makes the vector space of polynomials with coefficients in $\bF$ into a Banach space.]
 \end{exercise}
 \begin{proof}
-fill
+Idea: Suppose there exists such a basis, then consider any consider the span of any (finite) subset of the basis.
+The span has empty interior because it will not contain the rest of the elements of the basis (they are linearly independent).
+Thus for any subset the span of such subset is closed and it has empty interior so that the Banach space cannot...
+
+(exercise 9.2.48 in Carothers)
 \end{proof} 
 
 \begin{exercise}{10}
-fill
+Give an example of a Banach space $V$, a normed vector space $W$, a bounded linear map $T$ of $V$ onto $W$, and an open subset of $G$ such that $T(G)$ is not an open subset of $W$.
+[This exercise shows that the hypothesis in the Open Mapping Theorem that $W$ is a Banach space cannot be relaxed to the hypothesis that $W$ is a normed vector space.]
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{11}
-fill
+Show that there exists a normed vector space $V$, a Banach space $W$, a bounded linear map $T$ of $V$ onto $W$, and an open subset $G$ of $V$ such that $T(G)$ is not an open subset of $W$.
+[This exercise shows that the hypothesis in the Open Mapping Theorem that $V$ is a Banach space cannot be relaxed to the hypothesis that $V$ is a normed vector space.]
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{13}
-fill
+Give an example of a Banach space $V$, a normed vector space $W$, and a one-to-one bounded linear map $T$ of $V$ onto $W$ such that $T^{-1}$ is a not a bounded linear map of $W$ onto $V$.
+[This exercise shows that the hypothesis in the Bounded Inverse Theorem (6.83) that $W$ is a Banach space cannot be relaxed to the hypothesis that $W$ is a normed vector space.]
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{14}
-fill
+Show that there exists a normed space $V$, a Banach space $W$, and a one-to-one bounded linear map $T$ of $V$ onto $W$ such that $T^{-1}$ is not a bounded linear map of $W$ onto $V$.
+[This exercise shows that the hypothesis in the Bounded Inverse Theorem (6.83) that $V$ is a Banach space cannot be relaxed to the hypothesis that $V$ is a normed vector space.]
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{17}
-fill
+Suppose $V$ is a Banach space, $W$ is a normed vector space, and $T_1, T_2, \dots$ is a sequence of bounded linear maps from $V$ to $W$ such that $\lim T_k f$ exists for each $f \in V$.
+Define $T: V \to W$ by $Tf = \lim T_k f$ for $f \in V$.
+Prove that $T$ is a bounded linear map from $V$ to $W$.
+[This result states that the pointwise limit of a sequence of bounded linear maps on a Banach space is a bounded linear map.]
 \end{exercise}
 \begin{proof}
 fill
