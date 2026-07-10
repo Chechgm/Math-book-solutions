@@ -106,7 +106,7 @@ Define $\norm{\cdot}$ on $\quot{V}{U}$ by $\norm{f+ U} = \inf\set{\norm{f + g}: 
     We can choose a sequence with elements $F_n = f_n + g_n \in  (f_n + U)$ such that $\norm{F_n} \leq 2\norm{f_n + U}$.
     We then have that $\sum \norm{F_n} \leq 2\sum \norm{f_n + U} < \infty$ so that $\sum F_n \to F \in V$ (because V is Banach).
 
-    Now let $\pi: V \to \quot{V}{U}$ be the quotient map which is continuous (because $\norm{\pi(f)} = \inf_{g \in U} \norm{f + g} \leq \norm{f}$), we then have that 
+    Now let $\pi: V \to \quot{V}{U}$ be the quotient map which is continuous (because $\norm{\pi(f)} = \inf_{g \in U} \norm{f + g} \leq \norm{f}$, so that it is bounded and hence uniformly continuous), we then have that 
     \begin{align*}
         \sum (f_n + U) 
         = \sum \pi(F_n) 
@@ -134,7 +134,7 @@ Define $\norm{\cdot}$ on $\quot{V}{U}$ by $\norm{f+ U} = \inf\set{\norm{f + g}: 
     That is, $(f_n + U)$ is a Cauchy sequence with a convergent subsequence, which means that $(f_n + U)$ is itself convergent, with limit $x + U$.
     
     \item Suppose $(f_n)$ is a Cauchy sequence in $V$.
-    We saw in the previous numeral that $\pi: V \to \quot{V}{U}$, the quotient function, is continuous, so that $(\pi(f_n)) = (f_n + U)$ is Cauchy in $\quot{V}{U}$.
+    We saw in the previous numeral that $\pi: V \to \quot{V}{U}$, the quotient function, is uniformly continuous, so that $(\pi(f_n)) = (f_n + U)$ is Cauchy in $\quot{V}{U}$.
     By assumption $(f_n + U)$ is also convergent: $(f_n + U) \to (f + U)$ (where we can choose $f \in V$ since $\pi$ is surjective).
     That is, for all $\epsilon > 0$, we can find an $N \in \N$ such that whenever $n > N$, it holds that $\norm{(f_n + U) - (f + U)} = \norm{f_n - f + U} = \inf_{g \ \in U}\norm{f_n - f + g} < \epsilon$.
 

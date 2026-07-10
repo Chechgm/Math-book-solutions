@@ -1,11 +1,5 @@
 \section{6E Consequences of Baire's Theorem}
 
-9 Very cool theorem about the size of a bases of Banach spaces, they can be either finite dim, or the basis has to be uncountable 
-10 A counterexample to the open mapping theorem if completeness is dropped
-11 Similar
-13 Similar but for the bounded inverse theorem 
-14 Similar but for the bounded inverse theorem 
-17 Pretty cool and useful result about the pointwise limit of bounded maps on a Banach space!
 
 \begin{exercise}{5}
 Suppose $X = \set{0} \cup \bigcup_{k = 1}^\infty \set{1/k}$ and $d(x, y) = \absoluteValue{x - y}$ for $x, y \in X$.
@@ -49,11 +43,16 @@ Prove that there does not exist an infinite-dimensional Banach space with a coun
 [This exercise implies, for example, that there is not a norm that makes the vector space of polynomials with coefficients in $\bF$ into a Banach space.]
 \end{exercise}
 \begin{proof}
-Idea: Suppose there exists such a basis, then consider any consider the span of any (finite) subset of the basis.
-The span has empty interior because it will not contain the rest of the elements of the basis (they are linearly independent).
-Thus for any subset the span of such subset is closed and it has empty interior so that the Banach space cannot...
+Let $X$ be an infinite dimensional Banach space and suppose, for the sake of contradiction, that such basis $(e_n)$ exists.
+Then we would have $X = \bigcup_{n=1}^\infty \vecspan{(e_1, \dots, e_n)}$.
+Note that each set $\vecspan{(e_1, \dots, e_n)}$ is a subspace of $X$, so that it contains 0 and the set is closed under scalar multiplication.
 
-(exercise 9.2.48 in Carothers)
+To see $X_n = \vecspan{(e_1, \dots, e_n)}$ has an empty interior, we will prove that no open ball around 0 is contained, which in turn implies that no open ball around any point in $X'$ is contained in $X_n$ (after translating the open ball around 0).
+Consider $e_{n+1}$ and any scalar $\epsilon' < \epsilon/\norm{e_{n+1}}$, we have that $\epsilon' e_{n+1} \notin X_n$, and also have that $\norm{\epsilon' e_{n+1}} = \epsilon$.
+Thus, $\epsilon' e_{n+1} \notin X_n$ for all $\epsilon > 0$, meaning that $B_\epsilon(0) \not\subseteq X_n$, as required.
+
+To finalise the proof, note that if $X = \bigcup_{n=1}^\infty \vecspan{(e_1, \dots, e_n)}$, as we assumed above, then we would contradict Baire's Theorem.
+Hence, there can be no such basis, completing the proof.
 \end{proof} 
 
 \begin{exercise}{10}
@@ -61,7 +60,13 @@ Give an example of a Banach space $V$, a normed vector space $W$, a bounded line
 [This exercise shows that the hypothesis in the Open Mapping Theorem that $W$ is a Banach space cannot be relaxed to the hypothesis that $W$ is a normed vector space.]
 \end{exercise}
 \begin{proof}
-fill
+Consider the identity, $I$, on $\ell^1$, where in the domain we use the 1-norm and the codomain we use the sup-norm, so that the domain is Banach but the codomain is not.
+We can prove in different ways that $I$ is not an open map, the technique we will use is to fix an arbitrary $\epsilon > 0$ and find an $x$ with $\norm{x}_\infty < \epsilon$ but $x \notin I(B_1(0)) = B_1(0)$.
+
+Let $N$ be such that $N > 1/\epsilon$, and define $x_N = 1/N$ if $n \leq N$ and $0$ otherwise.
+Then $\norm{x}_1 \geq 1$, meaning that $x \notin B_1(0) = I(B_1(0))$.
+However, $\norm{x}_\infty = 1/N < \epsilon$, so that it should be in the $\epsilon$ ball (using sup-norm) around 0.
+Thus $I$ is not an open map, completing the proof.
 \end{proof} 
 
 \begin{exercise}{11}
@@ -69,7 +74,14 @@ Show that there exists a normed vector space $V$, a Banach space $W$, a bounded 
 [This exercise shows that the hypothesis in the Open Mapping Theorem that $V$ is a Banach space cannot be relaxed to the hypothesis that $V$ is a normed vector space.]
 \end{exercise}
 \begin{proof}
-fill
+Consider the setup and map in exercise 14.
+Let $B_1(0)$ be the unit ball under the norm defined there.
+To prove $T$ is not an open map, we will fix an arbitrary $\epsilon > 0$, and find an $x$ with $\norm{Tx}_1 < \epsilon$, but $x \notin T(B_1(0))$.
+
+Let $r \in (0, 1)$ be such that $r < \epsilon$ and consider $x = e_r$.
+We have $\norm{x} = \absoluteValue{\alpha_r} = 1$, so that $x \notin B_1(0)$.
+However, $\norm{Tx}_1 = \norm{r e_r}_1 = r < \epsilon$.
+Thus, $T(B_1(0))$ does not contain an open ball around 0, meaning it is not open, as required.
 \end{proof} 
 
 \begin{exercise}{13}
@@ -77,7 +89,12 @@ Give an example of a Banach space $V$, a normed vector space $W$, and a one-to-o
 [This exercise shows that the hypothesis in the Bounded Inverse Theorem (6.83) that $W$ is a Banach space cannot be relaxed to the hypothesis that $W$ is a normed vector space.]
 \end{exercise}
 \begin{proof}
-fill
+Consider the identity on $\ell^1$, where in the domain we use the 1-norm and in the codomain we use the sup-norm, so that the codomain is not Banach.
+To see this, consider the sequence (of sequences) $(x_n) \in \ell^1$ where $x_n = (1, 1/2, \dots, 1/n, 0, \dots)$, this sequence is Cauchy in the sup-norm, but doesn't converge to a sequence in $\ell^1$, as the harmonic series diverges.
+
+Now for the main proof, we want to find some $x \in \ell^1$ with $\norm{x}_\infty = 1$ such that  $\norm{T^{-1}x}_1 = \norm{x}_1 > K$ for all $K$ (so that $\norm{T^{-1} x}_1 \leq \norm{T^{-1}}\norm{x}_\infty$ does not hold).
+We have that $x_N \in \ell^1$ with a carefully chosen $N$ suffices;
+that is, for  all $K$, we can choose an $N$, such that $\sum^N \absoluteValue{x_i} > K$, since the harmonic series diverges, completing the proof.
 \end{proof} 
 
 \begin{exercise}{14}
@@ -85,7 +102,39 @@ Show that there exists a normed space $V$, a Banach space $W$, and a one-to-one 
 [This exercise shows that the hypothesis in the Bounded Inverse Theorem (6.83) that $V$ is a Banach space cannot be relaxed to the hypothesis that $V$ is a normed vector space.]
 \end{exercise}
 \begin{proof}
-fill
+Let $W = V = \ell^1$.
+Let $E$ be a Hamel basis of $V$ such that $\norm{e_r}_1 = 1$ for all $e_r \in E$ and $r \in (0, 1)$ (because a Banach space cannot have a countable Hamel basis. by exercise 9).
+Consider the norm given by $\norm{ \sum_{r \in (0,1)} \alpha_r e_r } = \sum_{r \in (0,1)} \absoluteValue{\alpha_r}$ where the sum is finite because $E$ is a Hamel basis.
+
+For the counterexample, consider the linear map $T: \ell^1 \to \ell^1$, where the domain is endowed with the norm defined above and the codomain with the usual norm on $\ell^1$, given by 
+\begin{align*}
+    Tx 
+    = T\parens{\sum_{r \in (0,1)} \alpha_r e_r} 
+    = \sum_{r \in (0,1)} r \alpha_r e_r,
+\end{align*}
+which is bounded because 
+\begin{align*}
+    \norm{Tx}_1
+    = \norm{\sum_{r \in (0,1)} r \alpha_r e_r}_1
+    \leq \sum_{r \in (0,1)} \absoluteValue{\alpha_r} \norm{e_r}_1
+    = \sum_{r \in (0,1)} \absoluteValue{\alpha_r}
+    = \norm{x},
+\end{align*}
+and is one-to-one because if $Tx = Ty$, then $\sum_{r \in (0,1)} r \alpha_r e_r = \sum_{r' \in (0,1)} r' \beta_{r'} e_{r'}$ so that $\sum_{r \in (0,1)} r \alpha_r e_r - \sum_{r' \in (0,1)} r' \beta_{r'} e_{r'} = \sum_{s \in (0,1)} s \gamma_s e_s = 0$, where $\gamma_s$ corresponds to either some $\alpha_r$, $\beta_{r'}$, or $\alpha_r - \beta_{r'}$.
+Since $E$ is a Hamel basis, this implies $\gamma_s = 0$ for all $s$, which allows us to make two conclusions:
+first, if $\gamma_s$ would be $\alpha_r$ or $\beta_{r'}$ then they would be irrelevant in the linear combination.
+Second, if $\gamma_s$ is indeed $\alpha_r - \beta_{r'}$ then $x = y$, as required.
+
+Finally, we prove that $T^{-1}$ is not bounded.
+Note that $T^{-1} x = \sum_{r \in (0,1)} \alpha_r e_r / r$, thus fix $K > 1$ and let $x = e_{1/K}$, we then have
+\begin{align*}
+    \norm{T^{-1}x}
+    = \norm{\sum_{r \in (0,1)} \alpha_r e_r /r}
+    = \sum_{r \in (0,1)} \absoluteValue{\alpha_r} \norm{e_r}_1 / r
+    = \norm{e_r}_1 / r
+    > K\norm{x}_1,
+\end{align*}
+completing the proof.
 \end{proof} 
 
 \begin{exercise}{17}
@@ -95,5 +144,14 @@ Prove that $T$ is a bounded linear map from $V$ to $W$.
 [This result states that the pointwise limit of a sequence of bounded linear maps on a Banach space is a bounded linear map.]
 \end{exercise}
 \begin{proof}
-fill
+The linearity of $T$ follows by the linearity of $T$ and the linearity of the limit.
+Furthermore, since for each $f \in V$, $\lim T_k f$ exists, then $(T_k f)$ is bounded, so that we can apply the Principle of Uniform Boundedness to conclude that $\norm{T_k} = C < \infty$ for all $k$.
+Thus, we have that for all $k$ and all $f \in V$, $\norm{T_k f} \leq C \norm{f}$.
+We have
+\begin{align*}
+    \norm{Tf}
+    \leq \norm{T_k f} + \norm{(T - T_k)f}
+    \leq C\norm{f} + \norm{(T - T_k)f}.
+\end{align*}
+Taking limit as $k \to \infty$ we get that $\norm{(T - T_k)f} \to 0$ , so that $\norm{Tf} \leq C \norm{f}$, completing the proof.
 \end{proof} 
