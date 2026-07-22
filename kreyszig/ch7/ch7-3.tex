@@ -1,6 +1,5 @@
 \section{Spectral properties of bounded linear operators}
 
-Kreyszig 7.3 Spectral Properties of Bounded Linear Operators
 1 You'll get a pretty nice answer here that the spectrum is essentially the range of the continuous function v. N
 2 In fact it turns out that any compact subset of C can be the spectrum of some operator! This exercise shows this for intervals
 3
@@ -13,70 +12,89 @@ Kreyszig 7.3 Spectral Properties of Bounded Linear Operators
 10 These two exercises involve shift operators. It is not so easy to find the spectrum of these in general!
 
 \begin{exercise}{1}
-fill
+Let $X = C[0, 1]$ and define $T: X \to X$ by $Tf = gf$, where $g \in X$ is fixed.
+Find $\sigma(T)$.
+Note that $\sigma(T)$ is closed.
 \end{exercise}
 \begin{proof}
-fill
+We want to find $\lambda$ such that $R_\lambda(T) = (T - \lambda I)^{-1}$ either doesn't exists, is not bounded or is not defined on a dense subset of $X$.
+For a fixed $\lambda$, $R_\lambda(T) = f(t) / (g(t) - \lambda)$, so that $R_\lambda(T)$ does not exist if $\lambda \in \cR(g)$.
+Furthermore, since $g \in C[0, 1]$, then $g([0,1])$ is compact, so that $\sigma(T)$ is closed.
 \end{proof} 
 
 \begin{exercise}{2}
-fill
+Find a linear operator $T: C[0, 1] \to C[0, 1]$ whose spectrum is a given interval $[a, b]$.
 \end{exercise}
 \begin{proof}
-fill
+Based on our previous solution, choose $g \in C([0,1])$ with $\cR(g) = [a, b]$.
 \end{proof} 
 
 \begin{exercise}{3}
-fill
+If $Y$ is the eigenspace corresponding to an eigenvalue $\lambda$ of an operator $T$, what is the spectrum of $T|_Y$?
 \end{exercise}
 \begin{proof}
-fill
+It is precisely $\lambda$, because $\lambda$ is the value that solves $(T|_Y x - \lambda I)x = 0$, for all $x \in Y$.
 \end{proof} 
 
 \begin{exercise}{4}
-fill
+Let $T: \ell^2 \to \ell^2$ be defined by $y = Tx, x = (x_n), y = (y_n), y_n = \alpha_n x_n$, where $(\alpha_n)$ is dense in $[0, 1]$.
+Find $\sigma_p(T)$ and $\sigma(T)$.
 \end{exercise}
 \begin{proof}
-fill
+$\sigma_p(T)$ is composed of all points in $(\alpha_n)$.
+To see this, choose $x = (x_n)$ with 0 everywhere and $1$ at the $i$'th position and choose $\lambda = \alpha_i$.
+Then $T x = \alpha_i = \lambda x$, as required.
+
+For the rest of the spectrum, note that $(\alpha_n)$ is dense in $[0, 1]$, and that $\sigma(T)$ must be closed, thus $\sigma(T) = \overline{(\alpha_n)} = [0, 1]$.
 \end{proof} 
 
 \begin{exercise}{5}
-fill
+If $\lambda \in \sigma(T) \setminus \sigma_p(T)$ in exercise 4, show that $R_\lambda(T)$ is unbounded.
 \end{exercise}
 \begin{proof}
-fill
+Let $\lambda \in \sigma(T) \setminus \sigma_p(T)$, then $R_\lambda(T)(x)_j = (T - \lambda I)^{-1}(x_j) = x_j/(\alpha_j - \lambda)$.
+Since $(\alpha_n)$ is dense in $[0, 1]$ for all $\epsilon > 0$, there exists an $\alpha \in (\alpha_n)$ such that $\absoluteValue{\alpha - \lambda} < \epsilon$.
+Let $K$ be a candidate bound for $R_\lambda(T)$, so that for all $x$ with $\norm{x} = 1$, it should hold that $\norm{Tx} < K$.
+Thus if we choose $\alpha \in (\alpha_n)$ with $\absoluteValue{\alpha - \lambda}< 1/K$ and we choose $x$ to be 0 everywhere and 1 at $i$ where $\alpha = \alpha_i$, then $\norm{x} = 1$ and also $\norm{Tx} = 1/\absoluteValue{\alpha - \lambda} = K$, contradicting the bound.
 \end{proof} 
 
 \begin{exercise}{6}
-fill
+Extending exercise 4, find a linear operator $T: \ell^2 \to \ell^2$ whose eigenvalues are dense in a given compact set $K \subseteq \C$ and $\sigma(T) = K$.
 \end{exercise}
 \begin{proof}
-fill
+Choose $T$ as in exercise 4 with $(\alpha_n)$ dense in $K$.
 \end{proof} 
 
 \begin{exercise}{7}
-fill
+Let $T \in B(X, X)$.
+Show that $\norm{R_\lambda(T)} \to 0$ as $\lambda \to \infty$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{8}
-fill
+Let $X = C[0, \pi]$ and define $T: \cD(T) \to X$ by $f \mapsto f''$, where $\cD(T) = \set{f \in X: f', f'' \in X, f(0) = f(\pi) = 0}$.
+Show that $\sigma(T)$ is not compact.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{9}
-fill
+Let $T: \ell^\infty \to \ell^\infty$ be defined by $x \mapsto (x_2, x_3, \dots)$, where $x$ is given by $x = (x_1, x_2, \dots)$.
+\begin{enumerate}
+    \item If $\absoluteValue{\lambda} > 1$, show that $\lambda \in \rho(T)$.
+    \item If $\absoluteValue{\lambda} \leq 1$, show that $\lambda$ is an eigenvalue and find the eigenspace $Y$.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{10}
-fill
+Let $T: \ell^p \to \ell^p$ be defined by $x \mapsto (x_2, x_3, \dots)$, where $x$ is given by $x = (x_1, x_2, \dots)$ and $1 \leq p < \infty$.
+If $\absoluteValue{\lambda} = 1$, is $\lambda$ of $T$ (as in exercise 9).
 \end{exercise}
 \begin{proof}
 fill

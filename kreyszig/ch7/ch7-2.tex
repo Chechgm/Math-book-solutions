@@ -1,34 +1,60 @@
 \section{Basic concepts}
 
-1 Should be easy, but does it match what you expect?
-2 So the spectra and the residual form a partition of C 
-5 This already shows how functional analysis is going to be a lot harder. In finite dimensions, any operator/matrix always has a (possibly complex) eigenvalue, but here it is possible that there are no eigenvalues at all! On the other hand, the spectrum always is nonempty, so the spectrum takes over the role of the iegenvalues 
-6
-7
-8 
-10 Some useful inclusions of the spectrum
 
 \begin{exercise}{1 (Identity operator)}
 For the identity operator $I$ on a normed space $X$, find the eigenvalues and eigenspaces as well as $\sigma (I)$ and $R_\lambda(I)$.
 \end{exercise}
 \begin{proof}
-fill
+We want to find $\lambda$ such that $R_\lambda(I) = I_\lambda^{-1} = (I - \lambda I)^{-1}$ does not exist.
+This is the case whenever $\lambda = 1$.
+Furthermore, for $\lambda \neq 1$, $R_\lambda(I)$ is always bounded because $R_\lambda(I)x = Ix / (1 - \lambda)$, so that $\sup_x \norm{Ix / (1 - \lambda)} = 1 / \absoluteValue{1 - \lambda}$ (for any $x$ with $\norm{x} = 1)$).
+For $\lambda \neq 1$, $R_\lambda(I)$ is defined on all $X$.
 \end{proof} 
 
 \begin{exercise}{2}
 Show that for a given linear operator $T$, the sets $\rho(T), \sigma_p(T), \sigma_c(T)$, and $\sigma_r(T)$ are mutually disjoint and their union is the complex plane.
 \end{exercise}
 \begin{proof}
-fill
+We will do this through a logic argument.
+Let $P(\lambda)$ be the statement that $R_\lambda(T)$ exists, $Q(\lambda)$ the statement that $R_\lambda(T)$ is bounded and $S(\lambda)$ the statement that $R_\lambda(T)$ is defined on a dense subset of $X$:
+\begin{enumerate}
+    \item Either $P(\lambda)$ or not $P(\lambda)$.
+    \begin{enumerate}
+        \item Not $P(\lambda)$ precludes $Q(\lambda)$ and $S(\lambda)$, that is $\sigma_\lambda(T)$.
+        \item If $P(\lambda)$ then either $S(\lambda)$ or not $S(\lambda)$.
+        \begin{enumerate}
+            \item If $S(\lambda)$,
+            \begin{enumerate}
+                \item then either $Q(\lambda)$, in which case, $\lambda \in \rho(T)$;
+                \item or not $Q(\lambda)$, in which case $\lambda \in \sigma_c(T)$.
+            \end{enumerate}
+            \item If not $S(\lambda)$, then $\lambda \in \sigma_r(T)$.
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+These exhaust all possibilities, proving that the sets are disjoint and their union is all of $\C$.
 \end{proof} 
 
 \begin{exercise}{5}
-Let $(e_k)$ be a total orthonormal sequence in a separable Hilbert space $H$ and let $T: H \to H$ be defined at $e_k$ by $T e_k = e_{k+1}$ for $k = 1, 2, \dots$, and then linearly and continously extend to $H$.
+Let $(e_k)$ be a total orthonormal sequence in a separable Hilbert space $H$ and let $T: H \to H$ be defined at $e_k$ by $T e_k = e_{k+1}$ for $k = 1, 2, \dots$, and then linearly and continuously extend to $H$.
 Find invariant subspaces.
 Show that $T$ has no eigenvalues.
 \end{exercise}
 \begin{proof}
-fill
+The nontrivial invariant subspaces are the subspaces of the form $\vecspan(e_n, e_{n+1}, \dots)$ for all $e_n \in H$, given that for $x \in H$ with $x = \sum_{i \geq n} \alpha_i e_i$, where the sum is finite, and $T x = \sum_{i \geq n} \alpha_i T e_i = \sum_{i \geq n} \alpha_i e_{i+1} \in \vecspan(e_n, e_{n+1}, \dots)$.
+
+To find the eigenvalues of $T$, we have to find $\lambda$ and $x \neq 0$ such that $T x = \lambda x$;
+that is, 
+\begin{align*}
+    T x 
+    = T( \sum_{k=0}^\infty x_k e_k)
+    = \sum_{k=0}^\infty x_k e_{k+1}
+    = \lambda \sum_{k=0}^\infty x_k e_k.
+\end{align*}
+Equating the $e_k$ terms in both sides of the equality, we get $0 = \lambda x_0 e_0$ and for any $k \neq 0$, $x_k e_{k+1} = \lambda x_{k+1} e_{k+1}$. 
+If $\lambda = 0$, then $x_0 e_1 = \lambda x_1 e_1 = 0$, so that $x_0 = 0$ and then by the same logic all the subsequent $x_k$ are 0.
+If $\lambda \neq 0$, then $0 = \lambda x_0 e_0$, so that $x_0 = 0$ and using the same logic as above, we find that all subsequent $x_k$ are 0.
+Thus, regardless of the value of $\lambda$, we get that $x = 0$, which is not allowed for eigenvectors, proving that $T$ has no eigenvectors.
 \end{proof} 
 
 \begin{exercise}{6 (Extension)}
@@ -36,26 +62,54 @@ The behaviour of the various parts of the spectrum under extension of an operato
 If $T$ is a bounded linear operator and $T'$ is a linear extension of $T$, show that we have $\sigma_p(T) \subseteq \sigma_p(T')$ and for any $\lambda \in \sigma_p(T)$ the eigenspace of $T$ is contained in the eigenspace of $T'$.
 \end{exercise}
 \begin{proof}
-fill
+For the following exercises, think let $T, T': X \to X$, and more precisely, $T: \cD(T) \to X$ and $T': \cD(T') \to X$ with $\cD(T) \subseteq \cD(T')$.
+Since $\lambda \in \sigma(T)$ implies $Tx = \lambda x$, for some $x \neq 0$, this also holds for $T'$, since $T x = T' x$ for $x \in \cD(T)$.
+This also implies that $x$ will belong to both the eigenspace of $\lambda$ under $T$ and under $T'$, so that the former is contained in the latter, completing the proof.
 \end{proof} 
 
 \begin{exercise}{7}
 Show that $\sigma_r(T') \subseteq \sigma_r(T)$ in exercise 6.
 \end{exercise}
 \begin{proof}
-fill
+Let $\lambda \in \sigma_r(T')$, so that $R_\lambda(T') = (T'_\lambda)^{-1} =(T' - \lambda I)^{-1}$ exists and $\cD(R_\lambda(T')$ is not dense in $X$.
+Since $\cD(T) \subseteq \cD(T')$, then 
+\begin{align*}
+    \cD(T_\lambda) 
+    = \cD(T - \lambda I) 
+    \subseteq \cD(T'_\lambda) 
+    = \cD(T' - \lambda I)
+\end{align*}
+(to see this, evaluate an arbitrary $x$ on both sides of the containment).
+Furthermore,
+\begin{align*}
+    \cD(R_\lambda(T))
+    =& \cD((T_\lambda)^{-1})\\
+    =& \cD((T - \lambda I)^{-1})\\
+    \subseteq& \cD((T'_\lambda)^{-1})\\
+    =& \cD((T' - \lambda I)^{-1})\\
+    =& \cD(R_\lambda(T')),
+\end{align*}
+which means $\cD(R_\lambda(T))$ is not dense in $X$ either, so that $\lambda \in \sigma_r(T)$, as required.
 \end{proof} 
 
 \begin{exercise}{8}
 Show that $\sigma_c(T) \subseteq \sigma_c(T') \cup \sigma_p(T')$ in exercise 6.
 \end{exercise}
 \begin{proof}
-fill
+Let $\lambda \in \sigma_c(T)$ so that $\cD(R_\lambda(T))$ is dense in $X$, but $R_\lambda(T)$ is not bounded.
+Then there are two options:
+either $R_\lambda(T')$ does not exist, in which case $\lambda \in \sigma_p(T')$,
+or $R_\lambda(T')$ exists.
+Note that in exercise 7 we concluded that $\cD(R_\lambda(T)) \subseteq \cD(R_\lambda(T'))$ which implies $X = \overline{\cD(R_\lambda(T))} = \cD(R_\lambda(T'))$, so that $\cD(R_\lambda(T'))$ is dense in $X$.
+Furthermore, the points that make $R_\lambda(T)$ unbounded also make $R_\lambda(T')$ unbounded, that is, $\lambda \in \sigma_c(T')$.
+Thus, we can conclude that $\sigma_c(T) \subseteq \sigma_c(T') \cup \sigma_c(T')$.
 \end{proof} 
 
 \begin{exercise}{10}
 How does $\rho(T') \subseteq \rho(T) \cup \sigma_r(T)$ follow from exercises 6 and 8?
 \end{exercise}
 \begin{proof}
-fill
+We will prove this by contrapositive, that is, suppose there is a $\lambda \notin \rho(T)$ and $\lambda \notin \sigma_r(T)$, which implies $\lambda \in \sigma_p(T)$ or $\lambda \in \sigma_c(T)$.
+In the first case, exercise 6 tells us that $\lambda \in \sigma_p(T')$, so that $\lambda \notin \rho(T')$.
+In the second case, exercise 8 tells us that $\lambda \in \sigma_c(T')$ or $\lambda \in \sigma_p(T')$, both cases imply that $\lambda \notin \rho(T')$, completing the proof.
 \end{proof} 
