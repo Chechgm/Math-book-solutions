@@ -1,15 +1,5 @@
 \section{Spectral properties of bounded linear operators}
 
-1 You'll get a pretty nice answer here that the spectrum is essentially the range of the continuous function v. N
-2 In fact it turns out that any compact subset of C can be the spectrum of some operator! This exercise shows this for intervals
-3
-4 Think about how this is an infinite dimensional version of a diagonal operator
-5
-6 As said earlier: every compact subset of C is the spectrum of some operator, which is exactly what this problem shows!
-7
-8 This is an example of an unbounded operator, which has a spectrum that is also not bounded. So boundedness of the operator can often be seen just by the spectrum
-9
-10 These two exercises involve shift operators. It is not so easy to find the spectrum of these in general!
 
 \begin{exercise}{1}
 Let $X = C[0, 1]$ and define $T: X \to X$ by $Tf = gf$, where $g \in X$ is fixed.
@@ -43,9 +33,16 @@ Find $\sigma_p(T)$ and $\sigma(T)$.
 \begin{proof}
 $\sigma_p(T)$ is composed of all points in $(\alpha_n)$.
 To see this, choose $x = (x_n)$ with 0 everywhere and $1$ at the $i$'th position and choose $\lambda = \alpha_i$.
-Then $T x = \alpha_i = \lambda x$, as required.
+Then $T x = (0, \dots, 0, \alpha_i, 0, \dots) = \lambda x$, as required.
 
 For the rest of the spectrum, note that $(\alpha_n)$ is dense in $[0, 1]$, and that $\sigma(T)$ must be closed, thus $\sigma(T) = \overline{(\alpha_n)} = [0, 1]$.
+Furthermore, to see no other points are in $\sigma(T)$, note that by the spectral radius is given by $\absoluteValue{\lambda} \leq \norm{T}$ (Theorem 7.3-4), which in our case, for $x$ of norm 1, gives us $\norm{Tx} \leq \sup_i(\alpha_i) \leq 1$ (by choosing $x_i = 1$ with $\alpha_i$ arbitrarily close to 1).
+
+We finish the proof by proving that no negative $\lambda$ are in the spectrum.
+We do this by proving that the resolvent of $T$ for any $\lambda$ is bounded.
+First, for a \emph{fixed} $\lambda < 0$, we have that $R_\lambda(T)(x)_i = x_i/(\alpha_i - \lambda)$.
+Since $\alpha_i \geq 0$, then we have that $1/(\alpha_i - \lambda) < 1/\absoluteValue{\lambda} = K$.
+Thus, for any $x$ of norm 1, we have that $\norm{R_\lambda(T)(x)} \leq K$, meaning the resolvent is bounded, completing the proof.
 \end{proof} 
 
 \begin{exercise}{5}
@@ -63,6 +60,7 @@ Extending exercise 4, find a linear operator $T: \ell^2 \to \ell^2$ whose eigenv
 \end{exercise}
 \begin{proof}
 Choose $T$ as in exercise 4 with $(\alpha_n)$ dense in $K$.
+We know this is possible because compact sets are separable (Carothers exercise 8.7).
 \end{proof} 
 
 \begin{exercise}{7}
@@ -70,7 +68,10 @@ Let $T \in B(X, X)$.
 Show that $\norm{R_\lambda(T)} \to 0$ as $\lambda \to \infty$.
 \end{exercise}
 \begin{proof}
-fill
+From equation 9 in the proof of Theorem 7.3-4, we have that $R_\lambda (T) = -(1 / \lambda) \sum_n^\infty (T / \lambda)^n$.
+Taking the operator norm on both sides of the equality, we obtain $\norm{R_\lambda (T)} = (1 / \lambda) \norm{\sum_n^\infty (T / \lambda)^n}$.
+For a large enough $\lambda$, we get that $\norm{T}/\lambda < 1$, so that on the right we will have a convergent geometric series (which also decreases in value as $\lambda \to \infty$).
+Thus, $\norm{R_\lambda (T)} = (1 / \lambda) x_n$ for a decreasing bounded by 0 sequence, so that $\norm{R_\lambda (T)} \to 0$, completing the proof.
 \end{proof} 
 
 \begin{exercise}{8}
@@ -78,7 +79,8 @@ Let $X = C[0, \pi]$ and define $T: \cD(T) \to X$ by $f \mapsto f''$, where $\cD(
 Show that $\sigma(T)$ is not compact.
 \end{exercise}
 \begin{proof}
-fill
+Consider $f(x) = \sin (n x)$, with $f''(x) = -n^2 \sin (n x)$, both of with belong to $\cD(T)$, as long as $n \in \Z$.
+Thus, $n \in \Z$ gives us the eigenvalue $\lambda = -n^2$, since $T f = f'' = -n^2 \sin (n x) = -n^2 f = \lambda f$, meaning that $\sigma(T)$ is unbounded, proving that $\sigma(T)$ is not compact.
 \end{proof} 
 
 \begin{exercise}{9}
@@ -89,13 +91,21 @@ Let $T: \ell^\infty \to \ell^\infty$ be defined by $x \mapsto (x_2, x_3, \dots)$
 \end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item In exercise 3.9.10 we concluded that $\norm{T} = 1$.
+    Furthermore, the spectrum of $T$ lies in the disk given by $\absoluteValue{\lambda} \leq \norm{T}$ (Theorem 7.3-4), so that if $\absoluteValue{\lambda} > 1$, $\lambda \in \rho(T)$, as required.
+    \item Let $x \in \ell^\infty$ and $\absoluteValue{\lambda} \leq 1$ be an eigenvalue.
+    Note that $T x = \lambda x$ implies that $\lambda x = (\lambda x_1, \lambda x_2, \dots) = (x_2, x_3, \dots)$, meaning that $x_n = \lambda x_{n-1} = \lambda^2 x_{n-2} = \dots$, which in turn implies that $(x_n)$ is monotonically decreasing, so that $x \in \ell^\infty$.
+    The recurrence relation gives us a clue of what the eigenspace for each $\lambda$ is, namely, the sequences in $\ell^\infty$ that decrease at a rate of $\lambda$.
+\end{enumerate}
 \end{proof} 
 
 \begin{exercise}{10}
 Let $T: \ell^p \to \ell^p$ be defined by $x \mapsto (x_2, x_3, \dots)$, where $x$ is given by $x = (x_1, x_2, \dots)$ and $1 \leq p < \infty$.
-If $\absoluteValue{\lambda} = 1$, is $\lambda$ of $T$ (as in exercise 9).
+If $\absoluteValue{\lambda} = 1$, is $\lambda$ an eigenvalue of $T$ (as in exercise 9)?
 \end{exercise}
 \begin{proof}
-fill
+It isn't.
+Recall that for an element to be in $\ell^p$, it must hold that $\sum \absoluteValue{x_n}^p < \infty$.
+Thus $T x = \lambda x = x$ only holds if $x$ is constant, in which case $\sum \absoluteValue{x_n}^p = \infty$, or $x = 0$, so that $\absoluteValue{\lambda} = 1$ is not an eigenvalue.
 \end{proof} 
