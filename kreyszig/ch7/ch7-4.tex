@@ -1,30 +1,43 @@
 \section{Further properties of resolvent and spectrum}
 
-3 Useful equation
-4 
-7 Two interesting properties of the spectrul radius of an operator. The first property looks reasonably lie that of a norm, to be continued.
-9 What are the idempotent elements of C? Does this vibe well with the spectrum?
 
 \begin{exercise}{3}
-If $S, T \in B(X, X)$, show that for any $\lambda \in \rho(S) \cap \rho(T)$, $R_\lambda(S) \setminus R_\lambda(T) = R_\lambda(S)(T \setminus S)R_\lambda(T)$.
+If $S, T \in B(X, X)$, show that for any $\lambda \in \rho(S) \cap \rho(T)$, $R_\lambda(S) - R_\lambda(T) = R_\lambda(S)(T - S)R_\lambda(T)$.
 \end{exercise}
 \begin{proof}
-fill
+We have that $I = S_\lambda R_\lambda(S)$ and $I = T_\lambda R_\lambda(T)$, then
+\begin{align*}
+    R_\lambda(S) - R_\lambda(T)
+    =& R_\lambda(S) (T_\lambda R_\lambda(T)) - (R_\lambda(S) S_\lambda) R_\lambda(T)\\
+    =& R_\lambda(S) (T_\lambda - S_\lambda) R_\lambda(T)\\
+    =& R_\lambda(S) (T - \lambda I - S + \lambda I) R_\lambda(T)\\
+    =& R_\lambda(S) (T - S) R_\lambda(T),
+\end{align*}
+completing the proof.
 \end{proof} 
 
 \begin{exercise}{4}
 Let $X$ be a complex Banach space, $T \in B(X, X)$ and $p$ a polynomial.
-Show that the equation $\rho(T)x = y$, for $x, y \in X$ has a unique solution $x$ for every $y \in X$ if and only if $\rho(\lambda) \neq 0$ for all $\lambda \in \sigma(T)$.
+Show that the equation $p(T)x = y$, for $x, y \in X$ has a unique solution $x$ for every $y \in X$ if and only if $p(\lambda) \neq 0$ for all $\lambda \in \sigma(T)$.
 \end{exercise}
 \begin{proof}
-fill
+The condition that for all $y \in X$ there exists a unique solution $x \in X$ can be interpreted as saying that $p(T)$ is invertible: for all $y \in X$, there exists a unique (injectively) $x \in X$ that is mapped to $y$ (so that $p(T)$ is also a surjection).
+By Banach's Inverse Theorem, (the Bounded Inverse Theorem, 4.12-2) this is equivalent to $p(T)$ being invertible, continuous, and bounded;
+that is $p(T)^{-1} = (p(T) - 0I)^{-1}$ exists.
+Since $\sigma(p(T)) = p(\sigma(T))$ (Theorem 7.4-2), this condition is equivalent to $p(\lambda) \neq 0$ for all $\lambda \in \sigma(T)$, completing the proof.
 \end{proof} 
 
 \begin{exercise}{7}
 Show that for any operator $T \in B(X, X)$ on a complex Banach space $X$, $r_\sigma(\alpha T) = \absoluteValue{\alpha} r_\sigma(T)$, $r_\sigma(T^k) = [r_\sigma(T)]^k$, $k \in \N$, where $r_\sigma$ denotes the spectral radius (7.3-5).
 \end{exercise}
 \begin{proof}
-fill
+We defined spectral radius as $r_\sigma(T) = \sup_{\lambda \in \sigma(T)} \absoluteValue{\lambda}$.
+By Theorem 7.4-2, $p(\sigma(T)) = \sigma(p(T))$, so that the set we are taking supremum over $r_\sigma(T^k)$ and $r_\sigma(\alpha T)$ are the sets $p(\sigma(T))$.
+
+In the first case, we take the supremum over $\sigma(\alpha T)$ (in absolute value), so that the supremum is simply the product of the supremum of $\sigma(T)$ times the absolute value of $\alpha$ (by properties of the supremum).
+
+In the second case, we take the supremum over $\sigma(T^k)$, which we can think of as the supremum of $k$ products of the same set ($\sigma(T)$).
+Since the supremum of product of sets is the same as the products of the supremums, we then have that $r_\sigma(T^k) = r_\sigma(T)^k$, completing the proof.
 \end{proof} 
 
 \begin{exercise}{9 (Idempotent operator)}
@@ -35,5 +48,8 @@ Show that if $T \neq 0$ and $T \neq I$, then its spectrum is $\sigma(T) = \set{0
 prove this a) by means of (9) in section 7.3, (b) by Theorem 7.4-2.
 \end{exercise}
 \begin{proof}
-fill
+Consider the polynomial $p(x) = x^2 - x$. 
+We have that $p(T) = T^2 - T = 0$ because $T$ is idempotent.
+We also know that the spectrum of $0$ is $\set{0}$ and by Theorem 7.4-2, the spectrum of $p(\sigma(T)) = p(\sigma(0)) = \sigma(p(T))$;
+that is, $p(\lambda) = \lambda^2 - \lambda = \lambda (\lambda - 1) = 0$, which holds for $0$ and $1$, completing the proof.
 \end{proof} 
