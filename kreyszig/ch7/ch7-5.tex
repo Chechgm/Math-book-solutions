@@ -1,66 +1,77 @@
 \section{Use of complex analysis in spectral theory}
 
-1 In finite dimensional LA, it is already well known that 0 is the only eigenvalue of a nilpotent operator. But in infinite dimensions, can the spectrum contain more than 0? 
-2 Hint: a nilpotent operator is special since an infinite geometric series is a finite sum!
-4 So we have generalized the spectrum being bounded to having found the exact bound
-5
-6 It might occur to you that the spectral radius behaves in some way like a norm on some space of operators. This would show that this norm is multiplicative: behaves well on products (if they commute)
-7 Good to know 
-8 A very easy upper bound of the spectral radius given the entries of a matrix. Sadly of course, this only works in finite dimens
-9 In my  comment of 6, I said that the spectral radius behaves a bit like a norm. Well, this should come as no surprise that for normal operators, it exactly is the operator norm!
 
-\begin{exercise}{1}
-fill
+\begin{exercise}{1 (Nilpotent operator)}
+A linear operator $T$ is said to be nilpotent if there is a positive integer $m$ such that $T^m = 0$.
+Find the spectrum of a nilpotent operator $T: X \to X$ on a complex Banach space $X \neq \set{0}$.
 \end{exercise}
 \begin{proof}
-fill
+We can use Theorem 7.4-2 to solve this.
+That is, let $p(x) = x^m$ and $\sigma(T)$ be the spectrum of $T$. 
+We then know that $p(\sigma(T)) = \sigma(p(T)) = \set{0}$.
+Thus, $p(x) = x^m = $ so that $x = 0$ which implies $\sigma(T) = \set{0}$.
 \end{proof} 
 
 \begin{exercise}{2}
-fill
+How does the result of exercise 1 follow from $R_\lambda = -(1 / \lambda) \sum_j^\infty (T / \lambda)^j$ (for $\absoluteValue{\lambda} > \norm{T})$.
 \end{exercise}
 \begin{proof}
-fill
+Since for $j > m$, $T^{j} = T^m T^{j-m} = 0 T^{j-m} = 0$, the representation of the resolvent is a finite sum so it converges for any $\lambda \neq 0$, meaning that any $\lambda \neq 0$ is part of the resolvent set of $T$, which is the same conclusion as exercise 1.
 \end{proof} 
 
 \begin{exercise}{4}
-fill
+Clearly, Theorem 7.3-4 implies that $r_\lambda(T) \leq \norm{T}$.
+How does this follow from Theorem 7.5-5?
 \end{exercise}
 \begin{proof}
-fill
+From Theorem 7.5-5 we can obtain a sequence that converges to the supremum for which we only obtain a bound in 7.3-4.
+To be more precise, 7.3-4 gives us a bound on the absolute values of the spectrum of $T$;
+that is, it gives us any upper bound on the spectral radius of $T$.
+On the other hand, 7.5-5 gives us an explicit sequence, using the norm of the powers of $T$ of the supremum, the least upper bound of the absolute values of the spectrum of $T$.
+
+We have $\norm{T^n} \leq \norm{T}^n$, so that $(\norm{T^n})^{1/n} \leq \norm{T}$, and taking limit as $n \to \infty$, we get that $r_\sigma(T) \leq \norm{T}$, which is precisely the bound in Theorem 7.3-4, so that Theorem 7.5-5 is a tighter bound on the spectrum of $T$.
 \end{proof} 
 
 \begin{exercise}{5}
-fill
+If $X$ is a complex Banach space, $S, T \in B(X, X)$ and $ST = TS$, show that $r_\sigma(ST) \leq r_\sigma(S) r_\sigma(T)$.
 \end{exercise}
 \begin{proof}
-fill
+Note that for any $n$, $\norm{(ST)^n}^{1/n} = \norm{S^n T^n}^{1/n} \leq \norm{S^n}^{1/n} \norm{T^n}^{1/n}$.
+Taking limit as $n \to \infty$ on both sides of the equality and using Theorem 7.5-5 gives us the desired result.
 \end{proof} 
 
 \begin{exercise}{6}
-fill
+Show that in exercise 5, commutativity $ST = TS$ cannot be dropped.
 \end{exercise}
 \begin{proof}
-fill
+Consider $S$ and $T$ in a 2-dimensional space defined as $S(x,y) = (2y, 0)$ and $T(x,y) = (0,2x)$.
+We have that $r_\sigma(S) = r_\sigma(T) = 0$, since $S^2 = T^2 = 0$.
+However, $ST(x, y) = S(0,2x) = (4x, 0)$, so that $(ST)^n = (4^n x, 0)$, so that $r_\sigma(ST) = \norm{ST^n}^{1/n} = 4$, as required.
 \end{proof} 
 
 \begin{exercise}{7}
-fill
+It is worthwhile noting that the sequence $(\norm{T^n}^{1/n})$ in (10) need not be monotone.
+To illustrate this, consider $T: \ell^1 \to \ell^1$ defined by $x = (x_1, x_2, x_3, \dots) \mapsto (0, x_1, 2 x_2, x_3, 2 x_4, \dots)$. 
 \end{exercise}
 \begin{proof}
-fill
+For any odd $n$, $T^n x = (0, \dots, 0, 2^{n-1} x_1, 2^n x_2, 2^{n-1} x_3, 2^n x_4, \dots)$, where the first $n$ entries are 0, and for any even $n$, $T^n x = (0, \dots, 0, 2^n x_1, 2^n x_2, 2^n x_3, 2^n x_4, \dots)$.
+Thus, we get the sequence $(\norm{T^n}^{1/n}) = (2^{1/2}, 2^{1/3}, 4^{1/4}, 4^{1/5}, ...)$, which is not monotone and converges to 1, because the exponent decreases at a faster rate than the rate at which the base increases.
 \end{proof} 
 
-\begin{exercise}{8}
-fill
+\begin{exercise}{8 (Schur's inequality)}
+Let $A = (a_{jk})$ be an $n$-rowed square matrix and let $\lambda_1, \dots, \lambda_n$ be its eigenvalues.
+Then it can be shown that Schur's inequality $\sum_m^n \absoluteValue{\lambda_m}^2 \leq \sum_j^n \sum_k^n \absoluteValue{a_{jk}}^2$ holds, where the equality sign is valid if and only if $A$ is normal.
+Derive an upper bound for the spectral radius of $A$ from this inequality.
 \end{exercise}
 \begin{proof}
-fill
+Note that for any $m$, we have $\absoluteValue{\lambda_m}^2 \leq \sum_j^n \sum_k^n \absoluteValue{a_{jk}}^2$.
+Taking square root on both sides of the inequality gives us a straightforward bound on the spectral radius of $A$.
 \end{proof} 
 
 \begin{exercise}{9}
-fill
+If $T$ is a normal operator on a Hilbert space $H$, show that $r_\sigma(T) = \norm{T}$.
 \end{exercise}
 \begin{proof}
-fill
+In exercise 3.10.15 we concluded that for normal operators on Hilbert spaces we have $\norm{T^2} = \norm{T}^2$.
+Thus, we let $n = 2^k$, then $\norm{T^n}^{1/n} = \norm{T}^{n/n} = \norm{T}$, so that by taking the limit as $k \to \infty$, and using Theorem 7.5-5, we obtain the desired spectral radius.
 \end{proof} 
