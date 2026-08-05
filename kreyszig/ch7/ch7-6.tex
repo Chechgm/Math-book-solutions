@@ -1,134 +1,75 @@
 \section{Banach algebras}
 
-\begin{exercise}{x}
-fill
+
+\begin{exercise}{1}
+Why is the vector space $X$ of all complex $n \times n$ matrices ($n > 1$, fixed) with identity $I$ (the $n$-rowed unit matrix) complete?
 \end{exercise}
 \begin{proof}
-fill
+We can identify $X$ with $\C^{n^2}$, which we know is complete from 1.5-1, thus $X$ is itself complete.
+Since in finite dimension every norm is equivalent, then the choice of norm does not affect this result.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{2}
+Show that $\norm{x y} \leq \norm{x} \norm{y}$ holds in the space $C[a,b]$ with identity $e = 1$ the product being defined as usual $(xy)(t) = x(t)y(t)$.
 \end{exercise}
 \begin{proof}
-fill
+Note,
+\begin{align*}
+    \norm{x y}
+    = \max_t \absoluteValue{x(t) y(t)}
+    \leq \max_t \absoluteValue{x(t)} \max_t \absoluteValue{y(t)}
+    = \norm{x}\norm{y},
+\end{align*}
+as required.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{3}
+How can we make the vector space of all ordered $n$-tuples of complex numbers into a Banach algebra?
 \end{exercise}
 \begin{proof}
-fill
+We just need to define a suitable multiplication, which satisfies all the properties of the Algebra and a norm under which it will be a complete space.
+For the product, elementwise multiplication suffices, and for the norm, the max norm has the property that $\norm{x y} \leq \norm{x} \norm{y}$ for all $x, y \in \C^n$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{4}
+What are the invertible elements in the spaces of exercises 1, 2, and $X$ given by $\R$, $\C$, with identity $e=1$?
 \end{exercise}
 \begin{proof}
-fill
+In the exercise 1, the set of invertible matrices, or matrices with determinant different from 0.
+In exercise 2, the functions which do not evaluate to 0, since the space considered is $C[a,b]$, then these functions are the strictly positive or strictly negative functions.
+In $\R$ and $\C$ any element with the exception of 0.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{5}
+Show that for the elements of $X$ in exercise 1, the definition of a spectrum in 7.6-6 agrees with the definition of the spectrum in finite dimensional spaces (7.1-1).
 \end{exercise}
 \begin{proof}
-fill
+To see this agreement, we just need to translate one definition to the other.
+Since the set of $n$ by $n$ complex matrices forms a Banach algebra, the spectrum of any matrix, $x$, is defined as the set of scalars such that $(x - \lambda e)^{-1}$ is not defined.
+In the case of complex matrices, $e = I$, and so this is precisely the definition of eigenvalues and point spectrum (which in finite dimensions corresponds to the whole spectrum) of matrices.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{6}
+Find $\sigma(x)$ of $x \in C[0, 2\pi]$, where $x(t) = \sin t$.
+Find $\sigma(x)$ for any $x \in C[a,b]$.
 \end{exercise}
 \begin{proof}
-fill
+For any $x \in C[a,b]$ (including $x(t) = \sin t$ in $C[0,2\pi]$), $\sigma(x)$ is simply the of $x$, since for $\lambda \in \cR(x)$, $(x - \lambda e)(t) = 0$, so it is not invertible, and thus $\lambda \in \sigma(x)$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{8}
+Let $A$ be a complex Banach algebra with identity $e$.
+If for an $x \in A$ there are $y, z \in A$ such that $yx = e$ and $xz = e$, show that $x$ is invertible and $y = z = x^{-1}$.
 \end{exercise}
 \begin{proof}
-fill
+We have $x z x = x$, and $y x z x = y x$, simplifying $yx = e$ on both sides of the equality, we get $z x = e$, since $z x = e = x z$, then $x$ is invertible with $z = x^{-1}$.
+We can reason in a similar way to conclude that $x^{-1} = y$.
+Since inverses are unique, then $y = z$, completing the proof.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{9}
+If $x \in A$ is invertible and commutes with $y \in A$, show that $x^{-1}$ and $y$ also commute.
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
+We have $x^{-1} y = x^{-1} y x x^{-1} = x^{-1} x y x^{-1} = y x^{-1}$, as required.
 \end{proof} 
