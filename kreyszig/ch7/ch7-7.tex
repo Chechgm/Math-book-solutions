@@ -1,66 +1,111 @@
 \section{Further properties of Banach algebras}
 
-1 Very useful formula to find inverses. Don't forget to show the series converges!
-3 This is basically saying that the set of invertible elements is open. That is if x is invertible and y is close, then y-x is invertible too
-5 Elementary property of the spectrum
-6 Generalization of the resolvent equation for operators
-7 This answers a rather interesting question, what Banach algebras admit inverses for all nonzero elements. The answer is basically one 
-8 Notice it is then a homeomorphism on the set of invertible elements 
-9
-10 A generalization of something we know to be true in R, but it holds in much generality then. Don't forget that Cauchy sequences are bounded!
 
 \begin{exercise}{1}
-fill
+If $\norm{x - e} < 1$, show that $x$ is invertible, and $x^{-1} = e + \sum_{j=1}^\infty (e - x)^j$.
 \end{exercise}
 \begin{proof}
-fill
+This is a Corollary to Theorem 7.7-1, where instead of considering having the condition that $\norm{x} < 1$, we have that $\norm{x - e} < 1$.
+Replacing $x$ for $e - x$ (since $\norm{e - x} = \norm{x - e}$) everywhere in the Theorem gives us the desired result.
 \end{proof} 
 
 \begin{exercise}{3}
-fill
+If $x$ is invertible and $y$ is such that $\norm{y x^{-1}} < 1$, show that $x - y$ is invertible and, writing $a^0  = e$ for any $a \in A$, $(x - y)^{-1} = \sum_{j=0}^\infty x^{-1} (y x^{-1})^j$.
 \end{exercise}
 \begin{proof}
-fill
+This is also a Corollary to Theorem 7.7-1 but we are going to be slightly more explicit about the derivation here.
+We have that $e - y x^{-1}$ is invertible and that $(e - y x^{-1}) = e + \sum_{j=1}^\infty (y x^{-1})^j$.
+Multiplying both sides of the equality by $x^{-1}$, writing $x^{-1}e$ as $x^{-1} (y x^{-1})^0$, and collecting the terms in a single sum completes the proof.
 \end{proof} 
 
 \begin{exercise}{5}
-fill
+It should be noted that the spectrum $\sigma(x)$ of an element $x$ of a Banach algebra $A$ depends on $A$.
+In fact, show that if $B$ is a subalgebra of $A$, then $\sigma(x) \subseteq \sigma(x)'$, where $\sigma(x)'$ is the spectrum of $x$ regarded as an element of $B$.
 \end{exercise}
 \begin{proof}
-fill
+This follows by a set theoretic argument.
+Fix $x \in B$.
+If $\lambda \in \sigma(x)$, then $y = (x - \lambda e)^{-1}$ does not exist in $A$.
+But since $B \subseteq A$, then $y$ does not exist in $B$ either, so that $\sigma(x) \subseteq \sigma(x)'$.
 \end{proof} 
 
 \begin{exercise}{6}
-fill
+Let $\lambda, \mu \in \rho(x)$.
+Prove the resolvent equation $v(\mu) - v(\lambda) = (\mu - \lambda) v(\mu) v(\lambda)$, where $v(\lambda) = (x - \lambda e)^{-1}$.
 \end{exercise}
 \begin{proof}
-fill
+We will proceed as in Theorem 7.4-1.
+Note that $v(\mu) (x - \mu e) = (x - \mu e) v(\mu) = e$ and likewise $v(\lambda) (x - \lambda e) = (x - \lambda e) v(\lambda) = e$.
+Thus,
+\begin{align*}
+    v(\mu) - v(\lambda)
+    =& v(\mu) ((x - \lambda e) v(\lambda)) - (v(\mu) (x - \mu e)) v(\lambda)\\
+    =& v(\mu) (x - \lambda e - x + \mu e) v(\lambda)\\
+    =& v(\mu) (\mu e - \lambda e) v(\lambda)\\
+    =& \mu v(\mu) v(\lambda) - \lambda v(\mu) v(\lambda)\\
+    =& (\mu - \lambda) v(\mu) v(\lambda),
+\end{align*}
+completing the proof.
 \end{proof} 
 
 \begin{exercise}{7}
-fill
+A division algebra is an algebra with identity such that every nonzero element is invertible.
+If a complex Banach algebra $A$ is a division algebra, show that $A$ is the set of all scalar multiples of the identity.
 \end{exercise}
 \begin{proof}
-fill
+Suppose, for the sake of contradiction, that there is an invertible $x \in A$, such that $x$ is not a scalar multiple of $e$.
+Then for all $\lambda \in \C$, it is the case that $x \neq \lambda e$, so that $x - \lambda e \neq 0$ and thus invertible.
+Since this holds for all $\lambda$, this implies that $\sigma(x) = \emptyset$, which contradicts Theorem 7.7-4.
 \end{proof} 
 
 \begin{exercise}{8}
-fill
+Let $G$ be the group of invertible elements of a complex Banach algebra with identity.
+Show that the mapping $G \to G$ given by $x \mapsto x^{-1}$ is continuous.
 \end{exercise}
 \begin{proof}
-fill
+We will start by proving that the inverse is continuous at $e$.
+To see this, let $\norm{x - e} < 1$, so that by exercise 1, that $x^{-1}$ is invertible and 
+\begin{align*}
+    \norm{x^{-1} - e^{-1}} 
+    =& \norm{x^{-1} - e}\\
+    =& \norm{e + \sum_{j=1}^\infty (e - x)^j - e}\\
+    \leq& \sum_{j=1}^\infty \norm{(e - x)^j}\\
+    \leq& \sum_{j=1}^\infty \norm{(e - x)}^j.
+\end{align*}
+The series converges, and we can make it as small as possible by making $\norm{x - e}$ suitably small, since $\sum_{j=1}^\infty \norm{(e - x)}^j = \norm{e - x}/(1- \norm{e - x})$, we can choose $\norm{x - e} < \epsilon / (1 + \epsilon)$, for an arbitrary $\epsilon > 0$.
+
+To see taking inverse is continuous at $a$, we have
+\begin{align*}
+    \norm{x^{-1} - a^{-1}}
+    = \norm{a^{-1}} \norm{x^{-1} a - e}
+    \leq \norm{a^{-1}} \sum_{j=1}^\infty \norm{(e - x a^{-1})}^j.
+\end{align*}
+As above, we can choose $x$ so that the above series is a small as desired.
 \end{proof} 
 
 \begin{exercise}{9}
-fill
+A left inverse of an $x \in A$ is a $y \in A$ such that $y x = e$.
+Similarly, if $x z = e$, then $z$ is called a right inverse of $x$. If every element $x \neq 0$ of an algebra $A$ has a left inverse, show that $A$ is a division algebra.
 \end{exercise}
 \begin{proof}
-fill
+Let $x \in A$.
+We need to prove $x$ has an inverse.
+By assumption, $x$ has a left inverse, say $y$, so that $y x = e$.
+Let $v = x y$, by assumption there is $w \in A$ with $w v = w x y = e$.
+This means that $y$, the left inverse of $x$ has a right and left inverse:
+$w x$ and $x$.
+Since inverses are unique, that means $w x = x$.
+Replacing this equality in $w x y = e$, gives us that $x y = e$, so that $y$ is an inverse of $x$, completing the proof.
 \end{proof} 
 
 \begin{exercise}{10}
-fill
+If $(x_n)$ and $(y_n)$ are Cauchy sequences in a normed algebra $A$, show that $(x_n y_n)$ is Cauchy in $A$.
+Moreover, if $x_n \to x$ and $y_n \to y$, show that $x_n y_n \to xy$.
 \end{exercise}
 \begin{proof}
-fill
+The proofs are essentially the same as in $\R$ or any normed space (adding and subtracting terms and using the triangle inequality to obtain bounds that depend on the individual sequences and a factor $\norm{x_n}$ or $\norm{y_n}$).
+The only part I feel is worth reviewing is that Cauchy sequences are bounded:
+Let $\epsilon = 1$, and choose $N \in \N$ such that for all $n, m \geq N$, it holds that $\norm{x_m - x_n} < 1$.
+Fix $n = N$ so that $\norm{x_m} - \norm{x_N} \leq \norm{x_m - x_N} < 1$, and $\norm{x_m} < 1 + \norm{x_N}$.
+Choosing $K = \max_{i \leq N}\set{\norm{x_i}}$ gives us the bound $K + 1$.
 \end{proof} 

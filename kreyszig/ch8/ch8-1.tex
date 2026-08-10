@@ -1,133 +1,121 @@
 \section{Compact linear operators on normed spaces}
 
-\begin{exercise}{x}
-fill
+The point of compact linear operators is that they have a very pretty spectral theory. All finite-dim operators are compact, and compact operators are in a sense the next step beyond finite-dimensions. So we will find a spectral theory that resembles the finite dimensional spectral theorem quite a bit. Nevertheless there will already be differences.
+
+A useful intuition to keep in mind is that compact operators are in a sense "small". You will not be able to rigorize what that means precisely in this book, but a of results in the theory do point in this direction.
+
+1
+2
+3
+4 In fact, C(X,Y) is even a Banach algebra: if T and S are compact, it is true that TS is compact. Something more even holds, it is even an ideal. If S is any bounded operator and T is compact, then TS and ST are likewise compact. If we see compact operators as "infinitesimal things" and bounded operators as "finite things" then this makes sense: the sum of infinitesimals is infinitesimal. The product of something infinitesimal with something finite, is infinitesimal, etc.  This is exactly how in much more advanced theory compactness is being used, but this is not at all obvious at this point. 
+6
+7
+8 Since z is fixed, the range of T is finite dimensional. The range is almost infinitely small with respect to the huge full space X. So it makes sense for T to be compact!
+9
+10 The limit of $T_n$ need not have finite rank. But since it is the limit of things with finite rank, it will be small and thus compact intuitively. In fact, this is a equivalent definition
+11
+12
+13
+14 When will an operator of the form $T (x_n)_n = ( a_n x_n)_n$ be compact? You might be able to guess t he answer, but the answer is when $a_n$ -> 0. The absolute easiest way to prove this is by exercise 10. Consider $T_n (x_n)_n = (a_1 x_1,..., a_nx_n, 0,0,....)$ This is finite rank, thus compact, and T is the limit of $T_n$.
+15 A continuous map always sends relative compact to relative compact. But a ccompact map does more and sense bounded to relative compact! In a sense we could call compact something like "stronly continuous"
+
+
+\begin{exercise}{1}
+Show that the zero operator on any normed space is compact.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{2}
+If $S$ and $T$ are compact linear operators from a normed space $X$ into a normed space $Y$, show that $S + T$ is a compact linear operator.
+Show that the compact linear operators from $X$ to $Y$ constitute a subspace $C(X, Y)$ of $B(X, Y)$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{3}
+If $Y$ is a Banach space, show that $C(X, Y)$ in exercise 2 is a closed subset of $B(X, Y)$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{4}
+If $Y$ is a Banach space, show that $C(X, Y)$ in exercise 2 is a Banach space.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{6}
+It is worth noting that the condition in 8.1-1 could be weakened without altering the concept of a compact linear operator.
+In fact, show that a linear operator $T: X \to Y$ ($X, Y$ normed spaces) is compact if and only if the image $T(M)$ and the unit ball $M \subseteq X$ is relatively compact in $Y$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{7}
+Show that a linear operator $T: X \to X$ is compact if and only if for every sequence $(x_n)$ of vectors of norm not exceeding 1 the sequence $(Tx_n)$ has a convergent subsequence.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{8}
+If $z$ is a fixed element of a normed space $X$ and $f \in X'$, show that the operator $T: X \to X$ defined by $Tx = f(x) z$ is compact.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{9}
+If $X$ is an inner product space, show that $Tx = \brackets{x, y} z$ with fixed $y$ and $z$ defines a compact linear operator on $X$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{10}
+Let $Y$ be a Banach space and let $T_n: X \to Y$, $n = 1, 2, \dots$, be operators of finite rank.
+If $(T_n)$ is uniformly operator convergent show that the limit operator is compact.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{11}
+Show that the projection of a Hilbert space $H$ onto a finite dimensional subspace of $H$ is compact.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{12}
+Show that $T: \ell^2 \to \ell^2$ defined by $Tx = y = y_i$, $y_i = x_i/2^i$, is compact.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{13}
+Show that $T: \ell^p \to \ell^p$, $1 \leq p < \infty$ with $T$ defined by $y = (y_i) = Tx$, $y_i = x_i / i$ is compact.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{14}
+Show that $T: \ell^\infty \to \ell^\infty$ with $T$ defined by $y = (y_i) = Tx$, $y_i = x_i/i$, is compact.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
+\begin{exercise}{15 (Continuous mapping)}
+If $T: X \to Y$ is a continuous mapping of a metric space $X$ into a metric space $Y$, show that the image of a relatively compact set $A \subseteq X$ is relatively compact.
 \end{exercise}
 \begin{proof}
 fill
