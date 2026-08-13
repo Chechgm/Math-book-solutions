@@ -1,30 +1,11 @@
 \section{Compact linear operators on normed spaces}
 
-The point of compact linear operators is that they have a very pretty spectral theory. All finite-dim operators are compact, and compact operators are in a sense the next step beyond finite-dimensions. So we will find a spectral theory that resembles the finite dimensional spectral theorem quite a bit. Nevertheless there will already be differences.
-
-A useful intuition to keep in mind is that compact operators are in a sense "small". You will not be able to rigorize what that means precisely in this book, but a of results in the theory do point in this direction.
-
-1
-2
-3
-4 In fact, C(X,Y) is even a Banach algebra: if T and S are compact, it is true that TS is compact. Something more even holds, it is even an ideal. If S is any bounded operator and T is compact, then TS and ST are likewise compact. If we see compact operators as "infinitesimal things" and bounded operators as "finite things" then this makes sense: the sum of infinitesimals is infinitesimal. The product of something infinitesimal with something finite, is infinitesimal, etc.  This is exactly how in much more advanced theory compactness is being used, but this is not at all obvious at this point. 
-6
-7
-8 Since z is fixed, the range of T is finite dimensional. The range is almost infinitely small with respect to the huge full space X. So it makes sense for T to be compact!
-9
-10 The limit of $T_n$ need not have finite rank. But since it is the limit of things with finite rank, it will be small and thus compact intuitively. In fact, this is a equivalent definition
-11
-12
-13
-14 When will an operator of the form $T (x_n)_n = ( a_n x_n)_n$ be compact? You might be able to guess t he answer, but the answer is when $a_n$ -> 0. The absolute easiest way to prove this is by exercise 10. Consider $T_n (x_n)_n = (a_1 x_1,..., a_nx_n, 0,0,....)$ This is finite rank, thus compact, and T is the limit of $T_n$.
-15 A continuous map always sends relative compact to relative compact. But a ccompact map does more and sense bounded to relative compact! In a sense we could call compact something like "stronly continuous"
-
 
 \begin{exercise}{1}
 Show that the zero operator on any normed space is compact.
 \end{exercise}
 \begin{proof}
-fill
+For any bounded set $M$, $0(M) = 0$, whose closure is $\set{0}$, a compact set.
 \end{proof} 
 
 \begin{exercise}{2}
@@ -32,50 +13,67 @@ If $S$ and $T$ are compact linear operators from a normed space $X$ into a norme
 Show that the compact linear operators from $X$ to $Y$ constitute a subspace $C(X, Y)$ of $B(X, Y)$.
 \end{exercise}
 \begin{proof}
-fill
+The compactness criterion (Theorem 8.1-3), tells us that $T$ is compact if and only if it maps every bounded sequence $(x_n)$ in $X$ onto a sequence $(T x_n)$ in $Y$ which has a convergent subsequence.
+We want to prove that $(T + S)(x_n) = T x_n + S x_n$ has a convergent subsequence.
+First, note that $T x_n$ has a convergent subsequence, say $(x_{n_k})$ by definition, and that this convergent subsequence is a bounded sequence, because it is a subset of a bounded sequence.
+Thus, $(S x_{n_k})$ has a convergent subsequence by definition giving us that $(T + S)(x_n)$ has a convergent subsequence, so that $T + S$ is compact.
+
+We can reason in an analogous way to prove that for any scalar $\alpha$, $(\alpha T)(x_n)$ has a convergent subsequence.
+Putting these two results together proves that $C(X, Y)$ is a subspace of $B(X, Y)$.
 \end{proof} 
 
 \begin{exercise}{3}
 If $Y$ is a Banach space, show that $C(X, Y)$ in exercise 2 is a closed subset of $B(X, Y)$.
 \end{exercise}
 \begin{proof}
-fill
+Theorem 8.1-5 tells us that a sequence of compact linear operators $(T_n)$ from a normed space $X$ into a Banach space $Y$ with $T_n \to T$ (uniformly operator convergent, that is, in operator norm), then $T$ is compact.
+Since $Y$ is Banach by assumption, that means that a convergent sequence in $C(X, Y)$ converges to an element in $C(X, Y)$ which means $C(X, Y)$ is closed.
 \end{proof} 
 
 \begin{exercise}{4}
 If $Y$ is a Banach space, show that $C(X, Y)$ in exercise 2 is a Banach space.
 \end{exercise}
 \begin{proof}
-fill
+We proved in 3 that $C(X, Y)$ is a closed subset of $B(X, Y)$. 
+Furthermore, $B(X, Y)$ is itself Banach because $Y$ is Banach (Theorem 2.10-2). 
+By Theorem 2.3-1, a subspace of a Banach space is complete if and only if it is closed, giving us the desired result that $C(X, Y)$ is Banach.
 \end{proof} 
 
 \begin{exercise}{6}
 It is worth noting that the condition in 8.1-1 could be weakened without altering the concept of a compact linear operator.
-In fact, show that a linear operator $T: X \to Y$ ($X, Y$ normed spaces) is compact if and only if the image $T(M)$ and the unit ball $M \subseteq X$ is relatively compact in $Y$.
+In fact, show that a linear operator $T: X \to Y$ ($X, Y$ normed spaces) is compact if and only if the image $T(M)$ of the unit ball $M \subseteq X$ is relatively compact in $Y$.
 \end{exercise}
 \begin{proof}
-fill
+The forward direction follows by definition, since $M$ is a bounded set.
+For the converse, suppose the image of the unit ball is relatively compact.
+Let $B \subset X$ be bounded and let $(T x_n)$ be a sequence in $T(B)$.
+We can scale $x_n$ to have norm less than 1 by dividing by the bound of $B$: $x_n' = (1/K) x_n$.
+The scaled sequence is in $T(M)$, which by assumption has a convergent subsequence, say $(T x_{n_k}')$.
+By the algebraic properties of limits and the linearity of $T$, we can scale up $(T x_{n_k}')$ to obtain a convergent subsequence in $T(B)$.
+Since $B$ and $(x_n)$ are arbitrary, this proves that $\overline{T(B)}$ is compact, as required.
 \end{proof} 
 
 \begin{exercise}{7}
 Show that a linear operator $T: X \to X$ is compact if and only if for every sequence $(x_n)$ of vectors of norm not exceeding 1 the sequence $(Tx_n)$ has a convergent subsequence.
 \end{exercise}
 \begin{proof}
-fill
+We can use a similar technique, mutatis mutandis, as in the previous exercise.
 \end{proof} 
 
 \begin{exercise}{8}
 If $z$ is a fixed element of a normed space $X$ and $f \in X'$, show that the operator $T: X \to X$ defined by $Tx = f(x) z$ is compact.
 \end{exercise}
 \begin{proof}
-fill
+Since $f \in X'$, it is bounded and so $Tx$ is bounded too $\norm{Tx} = \norm{f(x) z} \leq \absoluteValue{f}\norm{x}\norm{z}$).
+Furthermore, $T(X)$ has dimension 1, namely the span of $z$.
+Hence, Theorem 8.1-4.a tells us that $T$ is compact.
 \end{proof} 
 
 \begin{exercise}{9}
 If $X$ is an inner product space, show that $Tx = \brackets{x, y} z$ with fixed $y$ and $z$ defines a compact linear operator on $X$.
 \end{exercise}
 \begin{proof}
-fill
+This is a Corollary to the previous exercise since for a fixed $y$, $f(x) = \brackets{x, y}$ is a bounded linear functional on $X$ (by the Schwarz inequality).
 \end{proof} 
 
 \begin{exercise}{10}
@@ -83,40 +81,79 @@ Let $Y$ be a Banach space and let $T_n: X \to Y$, $n = 1, 2, \dots$, be operator
 If $(T_n)$ is uniformly operator convergent show that the limit operator is compact.
 \end{exercise}
 \begin{proof}
-fill
+This statement is not true.
+Consider a sequence $(f_1, f_2, \dots)$ of functionals, where each $f_i = f$, and $f: X \to \C$ is unbounded.
+Clearly $f_n \to f$.
+Then, the converse of Lemma 8.1-2, tells us that $f$ is not compact, and thus $f$, the limit is non compact.
+
+To make the statement true, we can add the assumption that each $T_n$ is bounded, in which case we could use Theorem 8.1-4.a to conclude that each $T_n$ is compact and then use Theorem 8.1-5 to conclude that the limit is compact too.
 \end{proof} 
 
 \begin{exercise}{11}
 Show that the projection of a Hilbert space $H$ onto a finite dimensional subspace of $H$ is compact.
 \end{exercise}
 \begin{proof}
-fill
+First, notice that the projection operator of a Hilbert space $H$ onto a finite dimensional space is bounded.
+Let $P: X \to Y$ be the projection of $X$ into the subspace $A$ and a Hamel basis $(x_i)_{i \in \cI}$.
+For any $x$, we have 
+\begin{align*}
+    \norm{Px} 
+    = \norm{P(\sum a_i x_i)} 
+    = \norm{\sum_{x_i \in A} a_i x_i} 
+    \leq \norm{\sum a_i x_i}
+    = \norm{x},
+\end{align*}
+where the second sum is over the vector that are part of $A$, and the inequality follows by the Pythagorean relation.
+Furthermore, we assume that the range is finite dimensional, so that we can use Theorem 8.1-4.a concluding that $P$ is compact.
 \end{proof} 
 
 \begin{exercise}{12}
 Show that $T: \ell^2 \to \ell^2$ defined by $Tx = y = y_i$, $y_i = x_i/2^i$, is compact.
 \end{exercise}
 \begin{proof}
-fill
+We can follow a similar strategy to example 8.16.
+Consider the sequence of operators $T_n: \ell^2 \to \ell^2$ given by $T_n x = (x_1 / 2, x^2 / 2^2, \dots, x^n / 2^n, 0,  \dots)$.
+Each $T_n$ is linear, bounded, and has finite rank, so that by 8.1-4.a, each $T_n$ is compact.
+We have
+\begin{align*}
+    \norm{(T - T_n) x}^2
+    = \sum_{i = n+1}^\infty \frac{\absoluteValue{x_i}^2}{2^i}
+    = \frac{1}{2^{n+1}}\sum_{i = n+1}^\infty \absoluteValue{x_i}^2
+    \leq \frac{\norm{x}^2}{2^{n+1}}.
+\end{align*}
+Taking the supremum over all $x$ of norm 1, we get that $\norm{T - T_n} \leq 1/2^{n+1}$ so that $T_n \to T$ and so $T$ is compact by Theorem 8.1-5.
 \end{proof} 
 
 \begin{exercise}{13}
 Show that $T: \ell^p \to \ell^p$, $1 \leq p < \infty$ with $T$ defined by $y = (y_i) = Tx$, $y_i = x_i / i$ is compact.
 \end{exercise}
 \begin{proof}
-fill
+This follows the same strategy, mutatis mutandis, of example 8.1-6.
 \end{proof} 
 
 \begin{exercise}{14}
 Show that $T: \ell^\infty \to \ell^\infty$ with $T$ defined by $y = (y_i) = Tx$, $y_i = x_i/i$, is compact.
 \end{exercise}
 \begin{proof}
-fill
+We can follow a similar strategy to example 8.16.
+Consider the sequence of operators $T_n: \ell^\infty \to \ell^\infty$ given by $T_n x = (x_1, x^2 / 2, \dots, x^n / n, 0,  \dots)$.
+Each $T_n$ is linear, bounded, and has finite rank, so that by 8.1-4.a, each $T_n$ is compact.
+We have
+\begin{align*}
+    \norm{(T - T_n) x}
+    = \sup_{i > n + 1} \absoluteValue{\frac{x_i}{i}}
+    \leq \frac{1}{n+1}\sup_{i \geq 1} \absoluteValue{x_i}
+    = \frac{1}{n+1}\norm{x}.
+\end{align*}
+Taking the supremum over all $x$ of norm 1, we get that $\norm{T - T_n} \leq 1/(n+1)$ so that $T_n \to T$ and so $T$ is compact by Theorem 8.1-5.
 \end{proof} 
 
 \begin{exercise}{15 (Continuous mapping)}
 If $T: X \to Y$ is a continuous mapping of a metric space $X$ into a metric space $Y$, show that the image of a relatively compact set $A \subseteq X$ is relatively compact.
 \end{exercise}
 \begin{proof}
-fill
+Suppose $A$ is a relatively compact set, so that $\overline{A}$ is compact, meaning that any sequence in $\overline{A}$ contains a convergent subsequence.
+Now consider a sequence $(T x_n)$ in $\overline{T(A)}$.
+By the assumption that $A$ is relatively compact, $x_n$ has a convergent subsequence, say $(x_{n_k})$, with $x_{n_k} \to x$.
+Since $T$ is continuous, it is the case that $T x_{n_k} \to T x$, which implies that $(T x_n)$ indeed contains a convergent subsequence thus proving that the image of $A$ under a continuous function is relatively compact.
 \end{proof} 
