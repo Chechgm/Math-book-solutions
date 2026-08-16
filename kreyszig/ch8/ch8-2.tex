@@ -1,37 +1,79 @@
 \section{Further properties of compact linear operators}
 
-6 if the formula for eta looks familiar it is because it matrix multiplication. The T here is in fact encoding an infinity by infinity matrix. Notice that the condition of the squares of $alpha_jk$ is necessary for the multiplication with the matrix by x to be well-defined (Cauchy-Schwartz). This exercise shows that such matrices are only powerful enough to encode compact operators. General infinite matrices are not a very popular tool in FA for this reason
-7 in fact not all compact operators are matrices either!
-8 No: $l^infty$ is a huge space! Much bigger than $l²$. Why?
-10 Notice this is actually also an infinite matrix, it is actually an infinity-by-infinity diagonal matrix! These are sometimes called diagonal operators. It turns out this exercise is actually an iff. That is, if T is compact, then $lambda_n -> 0$. If you want to prove this:
-Step 1) All continuous functionals on l² are of the form < ., z>
-Step 2) $e_n$ converge weakly to 0, since for every z, $<e_n, z> -> 0$. This follows from Parseval's equality and the fact the series in Parseval's equality converges
-Step 3) Now apply Theorem 8.1-7
 
 \begin{exercise}{6}
-fill
+Define $T: \ell^2 \to \ell^2$ by $T x = y = (y_j)$, where $x = (x_j)$ and $y_j = \sum_k^\infty \alpha_{j k} x_k$, with $\sum_j^\infty \sum_k^\infty \absoluteValue{\alpha_{jk}}^2 < \infty$.
+Show that $T$ is compact.
+(Use 8.1-5).
 \end{exercise}
 \begin{proof}
-fill
+We will use the same strategy as in the previous chapter. 
+First, notice that since $\sum_j^\infty \sum_k^\infty \absoluteValue{\alpha_{jk}}^2$ converges and $x, y \in \ell^2$, it means that both $\alpha_{j k} \to 0$ as $j \to \infty$ for a fixed $k$ and as $k \to \infty$ for a fixed $j$.
+Thus, we can define a sequence of operators $(T_n)$ in the following way:
+$T_n x = (y_1, y_2, \dots, y_n, 0, \dots)$ with $y_j$ as defined in the problem statement.
+We have that each $T_n$ is bounded, linear and has finite rank, so that by 8.1-4.a, it is compact. 
+Furthermore,
+\begin{align*}
+    \norm{(T - T_n) x}^2
+    =& \sum_{i = n+1}^\infty \absoluteValue{y_i}^2\\
+    =& \sum_{i = n+1}^\infty \absoluteValue{\sum_{k = 1}^\infty \alpha_{i k} x_k}^2\\
+    \leq& \sum_{i = n+1}^\infty \sqrBrackets{\sum_{k = 1}^\infty \absoluteValue{\alpha_{i k}}^2} \sqrBrackets{\sum_{k = 1}^\infty \absoluteValue{x_k}^2}\\
+    \leq& \norm{x} \sum_{i = n+1}^\infty \sum_{k = 1}^\infty \absoluteValue{\alpha_{i k}}^2,
+\end{align*}
+where the first inequality is the Cauchy-Schwarz inequality.
+Taking the supremum over all $x$ of norm 1, we get that $\norm{T - T_n}^2 \leq \sum_{i = n+1}^\infty \sum_{k = 1}^\infty \absoluteValue{\alpha_{i k}}^2$ so that $T_n \to T$ and so $T$ is compact by Theorem 8.1-5.
 \end{proof} 
 
 \begin{exercise}{7}
-fill
+Show that the operators of the kind defined in the previous exercise constitute a subspace of $B(\ell^2, \ell^2)$.
+Illustrate with an example that the condition in exercise 6 is sufficient for compactness but not necessary. 
 \end{exercise}
 \begin{proof}
-fill
+Let $T$ and $S$ be as in the previous exercise where $T$ has coefficients $(\alpha_{jk})$ and $S$ has coefficients $(\beta_{jk})$.
+We have that $T + S$ is an operator with the same properties, given that $(\sum_j^\infty \sum_k^\infty \absoluteValue{\alpha_{jk} + \beta_{jk}}^2)^{1/2} \leq (\sum_j^\infty \sum_k^\infty \absoluteValue{\alpha_{jk}}^2)^{1/2} + (\sum_j^\infty \sum_k^\infty \absoluteValue{\beta_{jk}}^2)^{1/2} < \infty$ by Minkowski's inequality.
+In a similar way we can prove that for any scalar $\gamma$, $(\gamma T)$ is an operator with the same property.
+Since compact operators are bounded (8.1-2), and we proved in the previous exercise that these operators are compact, then the space of all such operators constitutes a subspace of $B(\ell^2, \ell^2)$.
+
+To see the condition is not necessary, consider an operator with coefficients $\alpha_{j k} = 1/(j+k)^{1/2}$.
+Using Theorem 1.8-5 we can prove that such operator would be compact (since the condition that we require is actually that $\alpha_{j k} \to 0$ for a fixed $j$ or a fixed $k$), but $\sum_j^\infty \sum_k^\infty \absoluteValue{\alpha_{j k}}^2$ diverges.
 \end{proof} 
 
 \begin{exercise}{8}
-fill
+Does there exist a surjective compact linear operator $T: \ell^\infty \to \ell^\infty$
 \end{exercise}
 \begin{proof}
-fill
+No, the contrapositive of Theorem 8.2-3 tells us that if the range of a linear operator is not separable, then the linear operator is not compact.
+In 1.3-9 we proved that $\ell^\infty$ is not separable.
+Hence, there exist no surjective compact linear operator onto $\ell^\infty$.
 \end{proof} 
 
 \begin{exercise}{10}
-fill
+Let $(\lambda_n)$ be a sequence of scalars such that $\lambda_n \to 0$ as $n \to \infty$.
+Define $T: \ell^2 \to \ell^2$ by $T x = y = (y_i)$ where $x = (x_i)$ and $y = (\lambda_i x_i)$.
+Show that $T$ is compact.
 \end{exercise}
 \begin{proof}
-fill
+We will use the same strategy as in the previous chapter. 
+Define a sequence of operators $(T_n)$ in the following way:
+$T_n x = (y_1, y_2, \dots, y_n, 0, \dots)$ with $y_j$ as defined in the problem statement.
+We have that each $T_n$ is bounded, linear and has finite rank, so that by 8.1-4.a, it is compact. 
+Furthermore,
+\begin{align*}
+    \norm{(T - T_n) x}^2
+    =& \sum_{i = n+1}^\infty \absoluteValue{y_i}^2\\
+    =& \sum_{i = n+1}^\infty  \absoluteValue{\lambda_{i} x_i}^2\\
+    \leq& \sqrBrackets{\sum_{i = n+1}^\infty \absoluteValue{\lambda_{i}}^2} \sqrBrackets{\sum_{i = n+1}^\infty \absoluteValue{x_i}^2}\\
+    \leq& \norm{x} \sum_{i = n+1}^\infty  \absoluteValue{\lambda_{i}}^2,
+\end{align*}
+where the first inequality is the Cauchy-Schwarz inequality.
+Taking the supremum over all $x$ of norm 1, we get that $\norm{T - T_n}^2 \leq \sum_{i = n+1}^\infty \absoluteValue{\lambda_{i}}^2$ so that $T_n \to T$ and so $T$ is compact by Theorem 8.1-5.
+
+We will now prove the converse;
+that is, that if $T$ is compact, then $\lambda_n \to 0$.
+First, notice that all continuous functionals in $\ell^2$ are of the form $f(x) = \brackets{x, z}$ for some $z \in \ell^2$ (3.8-1).
+Now consider the sequence (of sequences) $e_n$ in $\ell^2$ where $e_n = (0, 0, \dots, 1, 0, \dots )$, where the 1 occurs in the $n$'th position.
+We have that $e_n \xrightarrow[]{w} 0$, since for all $z \in \ell^2$, $\brackets{e_n, z} \to 0$, given that $z \to 0$ (because $z \in \ell^2$, and this is required for $\sum \absoluteValue{z}^2 < \infty$).
+Now we can use Theorem 8.1-7, to conclude that $(T e_n) = (\lambda_n e_n) \to T0 = 0$ (where the convergence is strong convergence).
+Consider the sequence of the norms of $(\lambda_n e_n)$, that is $(\norm{\lambda_n e_n}) = (\absoluteValue{\lambda_n})$.
+Since the norm is a continuous function, we have that $\absoluteValue{\lambda_n} \to 0$, completing the proof.
 \end{proof} 

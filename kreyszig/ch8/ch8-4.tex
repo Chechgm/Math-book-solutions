@@ -1,6 +1,5 @@
-\section{fill}
+\section{Further spectral properties of compact linear operators}
 
-Kreyszig 8.4 Further Spectral Properties of Compact Linear Operators
 4
 5
 6 Some specific examples 
@@ -9,134 +8,67 @@ Kreyszig 8.4 Further Spectral Properties of Compact Linear Operators
 9 In fact, what would the compact operators T:C[0,1] -> C[0,1] with Tx = vx be? Like for what v would T be compact? Notice also this is also a kind of diagonal operator. On l² a diagonal operator had the form $(x_j) ->(a_j x_j) for some a_j$. Now it has the form x(t) -> v(t) x(t). So the function v(t) is the diagonal of the "matrix". One popular form of the spectral theorem would then say that any self-adjoint operator is equivalent to one of the form Tx = vx for a certain v!
 10 Actually, what did Axler call $N(T_lambda^r)$? What if r=1?
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{4}
+Show that $T: \ell^2 \to \ell^2$ defined by $T x = (x_2 / 1, x_3 / 2, x_4 / 3, \dots)$ is compact and $\sigma_p(T) = \set{0}$, here $x = (x_1, x_2, \dots)$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{5}
+In Theorem 8.4-4 we had to include the phrase ``if it exists'' since a compact linear operator may not have eigenvalues.
+Show that an operator of that kind if $T: \ell^2 \to \ell^2$ defined by $T x = (0, x_1 / 1, x_2 / 2, x_3 / 3, \dots)$, where $x = (x_1, x_2, x_3, \dots)$.
+Show that $\sigma(T) = \sigma_r(T) = \set{0}$.
+(Note that exercise 4 shows that 0 may belong to the point spectrum.
+0 may also belong to the continuous spectrum, as we shall see in section 9.2, exercise 7).
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{6}
+Find the eigenvalues of $T_n: \R^n \to \R^n$ defined by $T_n x = (0, x_1 / 1, x_2 / 2, \dots, x_{n-1} / (n-1))$, where $x = (x_1, \dots, x_n)$.
+Compare with exercise 5 and explain what happens as $n \to \infty$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{7}
+Let $T: \ell^2 \to \ell^2$ be defined by $y = T x = (x_i), y = (y_i), y_i = \alpha_i x_i$, where $(\alpha_i)$ is dense on $[0, 1]$.
+Show that $T$ is not compact.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{8}
+Let $T: \ell^2 \to \ell^2$ be defined by $x = (x_1, x_2, \dots) \mapsto T x = (x_2, x_3, \dots)$.
+Let $m = m_0$ and $n = n_0$ be the smallest numbers such that we have $\cN(T^m) = \cN(T^{m+1})$ and $T^{n+1}(X) = T^n (X)$.
+Find $\cN(T^m)$.
+Does there exist a finite $m_0$?
+Find $n_0$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{9}
+Let $T: C[0, 1] \to C[0, 1]$ be defined by $T x = v x$, where $v(t) = t$.
+Show that $T$ is not compact.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
+\begin{exercise}{10}
+Derive the representation (equation 13 in the text; $X = \cN(T_\lambda^r) \oplus T_\lambda^r(X)$) in the case of the linear operator $T: \R^2 \to \R^2$ represented by the matrix
+\begin{align}
+    \begin{bmatrix}
+        1  & -1\\
+        -1 &  1
+    \end{bmatrix}.
+\end{align}
 \end{exercise}
 \begin{proof}
 fill
