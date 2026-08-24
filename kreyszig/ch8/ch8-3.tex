@@ -1,27 +1,21 @@
 \section{Spectral properties of compact linear operators on normed spaces}
 
-2 This shows that the set of compact operators is a Banach algebra
-3 Nice structure of compact operators which is reminiscent of the finite dimensional case. Sadly, I have looked hard in Kreyszig for a spectal theorem for compact self-adjoint operators and didn't really find anything. The idea would be that they would indeed have a "basis" of eigenvectors, but Kreyszig doesn't seem to have this. Disappointing. We will do it later on as an exercise then 
-4 This shows that compact operators form a two-sided ideal
-6
-7 In usual numbers: If an element is infinitesimal, then its complex conjugate and its modulus is too. Obviously. 
-8 Notice that this exercise specifies infinite dimensional space and not Banach space. In fact, this entire exercise is vacuous in case of a Banach space. There simply cannot be a compact linear operator on a Banach space whose inverse is defined on all of X. Why not?
-14 Important exercise that shows that in infinite dimensions, 0 is always in the spectrum. 0 also needs not be an eigenvalue. It is the only point in the spectrum which might not be an eigenvalue of T. The others all have to be.
-15 
 
 \begin{exercise}{2}
 Let $X, Y$ and $Z$ be normed spaces, and let $T: X \to Y$ and $S: Y \to Z$.
 If $T$ and $S$ are compact linear operators, show that $S T: X \to Z$ is a compact linear operator.
 \end{exercise}
 \begin{proof}
-fill
+We have that $T$ is bounded (8.1-2) so that for a bounded set $B \subseteq X$, $T(B)$ is bounded, thus $S T(B)$ is relatively compact, meaning that $S T$ is compact (8.3-2), as required.
 \end{proof} 
 
 \begin{exercise}{3}
-If $T$ is a compact linear operator, show that for any given number $k > 0$ there are at most finitely many liearly independent eigenvectors of $T$ corresponding to eigenvalues of absolute value greater than $k$.
+If $T$ is a compact linear operator, show that for any given number $k > 0$ there are at most finitely many linearly independent eigenvectors of $T$ corresponding to eigenvalues of absolute value greater than $k$.
 \end{exercise}
 \begin{proof}
-fill
+In 8.3-1 we proved that there are finitely many eigenvalues with $\absoluteValue{\lambda} > k$.
+Moreover, in 8.3-3 we proved that the null space of $T_\lambda$ (for $\lambda \neq 0$ is finite dimensional.
+Since this null space corresponds to the eigenvectors, the union of all eigenvectors (for a fixed $k$) is finite, completing the proof.
 \end{proof} 
 
 \begin{exercise}{4}
@@ -29,29 +23,52 @@ Let $T_j: X_j \to X_{j+1}$, $j = 1, 2, 3$ be bounded linear operators on normed 
 If $T_2$ is compact, show that $T = T_3 T_2 T_1: X_1 \to X_4$ is compact.
 \end{exercise}
 \begin{proof}
-fill
+Lemma 8.3-2 tells us that $T_2 T_1$ is compact.
+Applying the same principle to $T_3 (T_2 T_1)$ proves the desired result.
 \end{proof} 
 
 \begin{exercise}{6}
-Let $H$ be a Hilbert space, $T: H \to H$ is a bounded linear operator and $T^*$ the Hilbert-adjoint operator of $T$.
-Show that $T$ is compact if and only if $T^* T$ is compact.
+Let $H$ be a Hilbert space, $T: H \to H$ is a bounded linear operator and $T^\ast$ the Hilbert-adjoint operator of $T$.
+Show that $T$ is compact if and only if $T^\ast T$ is compact.
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$)
+Suppose $T$ is compact, so that by Lemma 8.1-2 it is bounded. 
+By 8.3-2, we get that $T^\ast$ is bounded.
+We can then apply Lemma 8.3-2 to $T^\ast T$ to conclude it is compact.
+
+($\Leftarrow$)
+Suppose $T^\ast T$ is compact.
+Let $(x_k)$ be a bounded sequence (by $K > 0$) in $H$, so that $T^\ast T (x_n)$ contains a convergent subsequence $(T^\ast T (x_{n_k}))$.
+We have 
+\begin{align*}
+    \norm{T x_{n_k} - T x_{n_l}}^2
+    =& \brackets{T x_{n_k} - T x_{n_l}, T x_{n_k} - T x_{n_l}}\\
+    =& \brackets{T (x_{n_k} - x_{n_l}), T (x_{n_k} - x_{n_l})}\\
+    =& \brackets{x_{n_k} - x_{n_l}, T^\ast T (x_{n_k} - x_{n_l})}\\
+    \leq& \norm{x_{n_k} - x_{n_l}} \norm{T^\ast T (x_{n_k} - x_{n_l})}\\
+    \leq& 2K \norm{T^\ast T (x_{n_k} - x_{n_l})} \to 0,
+\end{align*}
+where the first inequality is the Schwarz inequality.
+Thus, $T x_{n_k}$ is also Cauchy, and since $H$ is a Hilbert space, it converges. 
+That is, $T$ is compact.
 \end{proof} 
 
 \begin{exercise}{7}
-If $T$ in exercise 6 is compact, show that $T^*$ is compact.
+If $T$ in exercise 6 is compact, show that $T^\ast$ is compact.
 \end{exercise}
 \begin{proof}
-fill
+We have that $T^\ast$ is bounded (3.9-2), so that $T T^\ast$ is compact (8.3-2) and, using the previous exercise (replacing $T$ by $T^\ast$ in the statement), we get that $T^\ast$ is compact, since $T T^\ast = (T^\ast)^\ast T^\ast$.
 \end{proof} 
 
 \begin{exercise}{8}
 If a compact linear operator $T: X \to X$ on an infinite dimensional normed space $X$ has an inverse which is defined on all of $X$, show that the inverse cannot be bounded.
 \end{exercise}
 \begin{proof}
-fill
+Suppose, for the sake of contradiction, that the inverse $T^{-1}$ is bounded.
+Then by 8.3-2, $I = T T^{-1}: X \to X$ would be compact.
+However, in 8.1-2.b, we proved that $I$ defined on an infinite dimensional space is not compact, arising a contradiction.
+Thus, $T^{-1}$ must not be bounded.
 \end{proof} 
 
 \begin{exercise}{14}
@@ -59,7 +76,9 @@ Let $T: X \to X$ be a compact linear operator on a normed space.
 If $\dim X = \infty$ show that $0 \in \sigma(T)$.
 \end{exercise}
 \begin{proof}
-fill
+Suppose, for the sake of contradiction, this is not the case, so that $0 \notin \sigma(T)$.
+This means that $(T - 0I)^{-1} = T^{-1}$ exists, is defined on all of $X$, and is bounded.
+Thus, $T T^{-1} = I$ would be compact (8.3-2), but this contradicts 8.1-2.b, about $I$ defined on $X$ not being compact whenever $X$ is infinite dimensional.
 \end{proof} 
 
 \begin{exercise}{15}
@@ -68,5 +87,9 @@ Find $\cN(T_\lambda^n)$.
 Is $T$ compact?
 \end{exercise}
 \begin{proof}
-fill
+We have that $(T - \lambda I)x = (-\lambda, x_2 - \lambda, - \lambda, x_4 - \lambda, \dots)$.
+For $\lambda \neq 0$, $\cN(T_\lambda^n) = \set{0}$, for $\lambda = 0$, then $\cN(T_\lambda^n)$ would be all the vectors of the form $(x_1, 0, x_3, 0, \dots)$
+
+Note we can think of $T$ as an operator of the form $(T x)_i = \alpha_i x_i$, where $(\alpha_n) = (0, 1, 0, 1, 0, \dots)$.
+We proved (exercise 8.2.10) that such an operator would be compact if and only if $\alpha_n \to 0$, which is not the case here, so that $T$ is not compact.
 \end{proof} 
