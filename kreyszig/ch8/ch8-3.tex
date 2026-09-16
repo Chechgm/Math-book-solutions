@@ -87,9 +87,14 @@ Find $\cN(T_\lambda^n)$.
 Is $T$ compact?
 \end{exercise}
 \begin{proof}
-We have that $(T - \lambda I)x = (-\lambda, x_2 - \lambda, - \lambda, x_4 - \lambda, \dots)$.
-For $\lambda \neq 0$, $\cN(T_\lambda^n) = \set{0}$, for $\lambda = 0$, then $\cN(T_\lambda^n)$ would be all the vectors of the form $(x_1, 0, x_3, 0, \dots)$
+We have that $(T - \lambda I)x = (-\lambda x_1, (1 - \lambda) x_2, - \lambda, (1 - \lambda) x_4, \dots)$.
+For $\lambda \neq 0$, $\cN(T_\lambda^n) = \set{0}$; 
+for $\lambda = 0$, then $\cN(T_\lambda^n)$ would be all the vectors of the form $(x_1, 0, x_3, 0, \dots)$;
+finally, for $\lambda = 1$, $\cN(T_\lambda^n)$ are the vectors of the form $(0, x_2, 0, x_4, \dots)$.
 
 Note we can think of $T$ as an operator of the form $(T x)_i = \alpha_i x_i$, where $(\alpha_n) = (0, 1, 0, 1, 0, \dots)$.
 We proved (exercise 8.2.10) that such an operator would be compact if and only if $\alpha_n \to 0$, which is not the case here, so that $T$ is not compact.
+
+Another way to conclude that $T$ is not compact, if by noting that $\cN(T_\lambda)$ must be finite dimensional for $\lambda \neq 0$ (8.3-3).
+This does not hold, as preivously shown.
 \end{proof} 

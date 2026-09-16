@@ -1,8 +1,5 @@
 \section{Further theorems of Fredholm type}
 
-1
-2 Is this something already known from finite-dimensional linear algebra?
-3
 4 
 5 
 6
@@ -27,15 +24,17 @@ This is direct from the linearity of $g$.
 What does Theorem 8.5-1 imply in the case of a system of $n$ linear algebraic equations in $n$ unknowns?
 \end{exercise}
 \begin{proof}
-fill
+A system of $n$ linear algebraic equations in $n$ unknowns can be represented as a matrix $A$ with $n$ rows and $n$ columns.
+Thus, Theorem 8.5-1 says that the system $A x - \lambda x = (A - \lambda I) x = y$ has a solution if and only if $y$ is a vector such that for all $f \in X' = \C^n$ satisfying $A^\times f - \lambda f = A^T f - \lambda f = 0$ is such that $f(y) = \brackets{f, y} = 0$, that is, $f$ is orthogonal to $y$.
+The inner product in here is the dot product, since in finite dimensions, all inner products are isomorphic to the dot product (3.6-5).
 \end{proof} 
 
 \begin{exercise}{3}
-Consider a system $Ax - y$ consisting of $n$ linear equations in $n$ unknowns.
+Consider a system $Ax = y$ consisting of $n$ linear equations in $n$ unknowns.
 Assuming that the system  has a solution $x$, show that $y$ must satisfy a condition of the form $f(y) = 0$ for all $f \in X'$ satisfying $T^\times f - \lambda f = 0$.
 \end{exercise}
 \begin{proof}
-fill
+This is precisely the content of Theorem 8.5-1.
 \end{proof} 
 
 \begin{exercise}{4}
@@ -47,77 +46,92 @@ fill
 \end{proof} 
 
 \begin{exercise}{5}
-fill
+A system $Ax = y$ consisting of $n$ linear equations in $n$ unknowns has a solution $x$ if and only if the augmented matrix 
+\begin{align*}
+    \begin{bmatrix}
+        \alpha_{1 1} & \alpha_{1 2} & \dots & \alpha_{1 n} & y_1\\
+        \alpha_{2 1} & \alpha_{2 2} & \dots & \alpha_{2 n} & y_2\\
+        \cdot        & \cdot        & \dots & \cdot        & \cdot\\
+        \alpha_{n 1} & \alpha_{n 2} & \dots & \alpha_{n n} & y_n\\
+    \end{bmatrix}
+\end{align*}
+has the same rank as the coefficient matrix $A = (\alpha_{jk})$.
+Obtain this familiar criterion from Theorem 8.5-1.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{6}
-fill
+If $Tx - \lambda x = 0$ has a solution $x \neq 0$ and $T x - \lambda x = y$ is solvable, show that the solution of $T x - \lambda x = y$ is not unique;
+similarly, if $T^\times f - \lambda f = 0$ has a solution $f \neq 0$ and $T^\times f - \lambda f = g$ is solvable, show that the solution of $T^\times f - \lambda f = g$ cannot be unique.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{7}
-fill
+Show that the first statement in Theorem 8.6-1 may also be formulated as follows.
+$R_\lambda(T): X \to X$ with $\lambda \neq 0$ exists if and only if $Tx = \lambda x$ implies $x = 0$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{8}
-fill
+Two sequences $(z_1, z_2, \dots)$ in a normed space $X$ and $(f_1, f_2, \dots)$ in the dual space $X'$ are called a biorthogonal system if they satisfy $f_j(z_k) = \delta_{jk}$, where $j, k = 1, 2, \dots$.
+Given $(z_k)$, show that there is a sequence $(f_j)$ in $X'$ such that $(z_k)$, $(f_j)$ is a biorthogonal system if and only if $z_m \notin \overline{A}_m$ for all $m \in \N$, where $A_m = \vecspan \set{z_k: k = 1, 2, \dots, k \neq m}$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{9}
-fill
+Show that for a finite biorthogonal system, as defined in the text, the condition in the previous exercise is automatically satisfied.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{10}
-fill
+If two sets $\set{z_1, \dots, z_n}$ and $\set{y_1, \dots, y_n}$ in an inner product space satisfy $\brackets{z_k, y_j} = \delta_{kj}$, show that each one of them is linearly independent.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{11}
-fill
+What form does a biorthogonal system assume in a Hilbert space?
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{12}
-fill
+State and prove Lemma 8.6-2 if $X$ is a Hilbert space $H$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{13}
-fill
+What does Theorem 8.6-3 imply in the case of a system of $n$ linear equation in $n$ unknowns?
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{14}
-fill
+If a linear operator $T: X \to Y$ on a normed space $X$ has a finite dimensional range $\cR(T) = T(X)$, show that $T$ has a representation of the form $Tx = f_1(x) y_1 + \dots + f_n(x) y_n$ where $\set{y_1, \dots y_n}$ and $\set{f_1, \dots f_n}$ are linearly independent sets in $Y$ and $X'$ (the dual space of $X$), respectively.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{15}
-fill
+We may wonder what would happen to our present theorems if $\lambda = 0$, so that (1) and (2) would be $Tx = y$ and $Tx = 0$.
+For these equations, Theorem 8.6-1 may no longer hold.
+To see this, consider $T: C[0, \pi] \to C[0, \pi]$ defined by $T x(s) = \int_0^\pi k(s, t) x(t) dt$, with $k(s, t) = \sum (1/n^2) \sin (ns) \sin (nt)$.
 \end{exercise}
 \begin{proof}
 fill

@@ -1,0 +1,252 @@
+\section{Categories and functors}
+
+
+\begin{exercise}{1 (Micro)}
+For $P = M \times N$ (the usual cartesian product of sets): 
+Verify in detail that the map does factor uniquely. 
+That is, prove that there is some $f$ such that $\mu' = \mu \circ f$ and $\nu' = \nu \circ f$, and that such an $f$ is unique.
+\end{exercise}
+\begin{proof}
+Let $f(x) = (\mu'(x), \nu'(x))$, we then have $(\mu \circ f)(x) = \mu((\mu'(x), \nu'(x)) = \mu'(x)$ so that $\mu' = \mu \circ f$, the proof that $\nu' = \nu \circ f$ holds analogously.
+
+To see $f$ is unique, suppose there is a $g$ such that $\mu' = \mu \circ g$ and $\nu' = \nu \circ g$, this implies that both the first and second coordinate of $g(x)$ and $f(x)$ are the same (since they map to a specific element in $M$ and $N$.
+Since this holds true for all $x \in P'$, then $f = g$ proving the uniqueness of $f$.
+\end{proof} 
+
+\begin{exercise}{2 (Micro)}
+Take a theory you know well, such as groups, rings, topological spaces, vector spaces. 
+You have no doubt also define products here. 
+Verify that the same property talked about in this page also holds in this context. 
+For example, in vectors spaces, the product of two vector spaces $V \times W$ has two linear maps $\mu: V \times W \to V$ and $\nu: V \times W \to W$ such that for any linear maps $\mu': P \to V$ and $\nu': P \to W$ , there is a unique linear map $f: P \to V \times W$ such that $\mu' = \mu \circ f$ and $\nu' = \nu \circ f$.
+Furthermore, show that the argument of 1.0.1 indeed shows that products are unique up to isomorphism.
+\end{exercise}
+\begin{proof}
+We will take the category of groups with homomorphisms as its maps.
+Let $(P = (G \times G'), \mu, \nu)$ and $(P', \mu', \nu')$ be given with $P'$ an arbitrary group.
+Consider the function $f: P' \to P$ given by $f(x) = (\mu'(x), \nu'(x))$.
+We have to prove $f$ is a homomorphism.
+To see this is the case, let $x, y \in P'$, we have 
+\begin{align*}
+    f(x y) 
+    =& (\mu'(x y), \nu'(x y))\\
+    =& (\mu'(x) \mu'(y), \nu'(x) \nu'(y))\\
+    =& (\mu'(x), \nu'(x)) (\mu'(y), \nu'(y))
+    = f(x) f(y),
+\end{align*}
+where the second equality follows because $\mu'$ and $\nu'$ are homomorphisms.
+
+To show products are unique up to isomorphism, let $(P, \mu, \nu)$ and $(P', \mu', \nu')$ be products.
+Then there exists a unique homomorphism $f: P' \to P$ such that $\mu' = \mu \circ f$ and $\nu' = \nu \circ f$ and a unique homomorphism $g: P \to P'$ such that $\mu = \mu' \circ g$ and $\nu = \nu' \circ g$.
+Thus, $f \circ g = id_P$ and $g \circ f = id_{P'}$;
+meaning that $f$ and $g$ are invertible homomorphisms: an isomorphism between $P$ and $P'$.
+\end{proof} 
+
+\begin{exercise}{3 (Micro)}
+List as many (interesting) categories (ie objects + set of morphisms) that you can, and find what the isomorphisms are in each 
+\end{exercise}
+\begin{proof}
+Vector spaces: Linear maps; Groups: Group homomorphisms; Rings: Ring homomorphisms; Topological spaces: Continuous functions; Sets: Set functions...
+\end{proof} 
+
+\begin{exercise}{4 (Micro)}
+Show that the identity morphism is unique.
+\end{exercise}
+\begin{proof}
+Let $A, B$ be elements of a category and $id_A, id_A'$ be identities of $A$.
+We have $id_A = id_A \circ id_A' = id_A'$ so that the identity is unique.
+\end{proof} 
+
+\begin{exercise}{5 (Micro)}
+Show that the inverse of a morphism is unique.
+\end{exercise}
+\begin{proof}
+Let $f: A \to B$ be a morphism and $h^{-1}: B \to A$, $g^{-1}: B \to A$ be inverses of $f$.
+We have $h = h \circ id_A = h \circ f \circ g = id_A \circ g = g$, as required.
+\end{proof} 
+
+\begin{exercise}{1.1.A}
+A category in which each morphism is an isomorphism is called a grupoid.
+(This notion is not important in what we will discuss. 
+The point of this exercise is to give you some practice with categories by relating them to an object you know well.)
+\begin{enumerate}
+    \item A perverse definition of a group is: a groupoid with one object.
+    Make sense of this.
+    (Similarly, in case you care, a perverse definition of a monoid is: a category with one object).
+    \item Describe a groupoid that is not a group.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+\begin{enumerate}
+    \item The point is that most of the heavy lifting of the definition of a category is about the morphisms between the objects in the category.
+    Thus, the objects of the category is a single object.
+    Generically, the set (class) of objects is: $\set{\ast}$, moreover, the morphisms are $Hom(\ast, \ast) = G$, the group we are defining as the category.
+    For any $g \in G$, we have that $g: \ast \to \ast$.
+    Note that the axioms of a group, in particular associativity and the identity element guarantee that $G$ is indeed a category.
+    \item fill
+\end{enumerate}
+\end{proof} 
+
+\begin{exercise}{1.1.B}
+If $A$ is an object in a category $\cC$, show that the invertible elements of $Hom(A, A)$ form a group (called the automorphism group of $A$, denoted by $Aut(A)$).
+What are the automorphism groups of the objects in Examples 1.1.2 and 1.1.3?
+Show that two isomorphic objects have isomorphic automorphism groups.
+\end{exercise}
+\begin{proof}
+The fact that $Aut(A)$ is a group follows directly from the axioms of categories in addition to the fact that we are taking the invertible elements of $Hom(A, A)$, which gives us the axioms of groups that is missing in the axioms of a category.
+
+In the category of sets, the group of automorphisms are simply the set of invertible functions of a set, the set of permutations.
+In the category of vector spaces, the group of automorphisms is the set of invertible linear operators.
+
+To see that two isomorphic objects have isomorphic automorphisms groups, let $A$ and $B$ be isomorphic, so that there exists a bijection $f: A \to B$ (with inverse $f^{-1}$) between them.
+I claim that the function $F: Aut(A) \to Aut(B)$ defined by $g \mapsto f \circ g \circ f^{-1}$ is a bijection.
+Suppose 
+\begin{align*}
+    f \circ g \circ f^{-1}
+    &= F(g)\\
+    &= F(g') = f \circ g' \circ f^{-1},
+\end{align*}
+thus 
+\begin{align*}
+    g 
+    =& f^{-1} \circ f \circ g \circ f^{-1} \circ f\\
+    =& f^{-1} \circ f \circ g' \circ f^{-1} \circ f = g',
+\end{align*}
+so that $F$ is injective.
+Let $h \in Aut(B)$, we have that $f^{-1} \circ h \circ f \in Aut(A)$, so that $F(f^{-1} \circ h \circ f) = h$, and $F$ is surjective.
+Since $F$ is both injective and surjective, it is a bijection and thus $Aut(A)$ and $Aut(B)$ are isomorphic.
+\end{proof} 
+
+\begin{exercise}{6 (Micro)}
+Show that the antisymmetry axiom of a partially ordered set is not necessary for the category entailed by the order to be a valid category.
+\end{exercise}
+\begin{proof}
+Let $(S, \geq)$ be a partially ordered set without the antisymmetry assumption.
+Let $S$ be the category defined by it with $x, y \in S$ and $Hom(x, y) = f$ if $x \geq y$ and $Hom(x, y) = \emptyset$ otherwise.
+For $w, x, y, z \in S$, and $f \in Hom(w, x)$, $g \in Hom(x, y)$, and $h \in Hom(y, z)$, we have $w \geq x \geq y \geq z$, so that $h \circ g \in Hom(x, z)$ and $g \circ f \in Hom(w, y)$.
+Thus, $(h \circ g) \circ f = h \circ (g \circ f)$, so that associativity holds.
+Naturally for every element there is an identity $id_x$, since $x \geq x$ and $x \leq x$, and the identity composes in the natural way.
+Note that we haven't used the antisymmetry property to prove the axioms of a category, so that this property is not necessary for the category to be valid.
+\end{proof} 
+
+\begin{exercise}{7 (Micro)}
+What is the product in the category entailed by a partially ordered set?
+\end{exercise}
+\begin{proof}
+Let $(p, \mu, \nu)$ be a product in $\C$, so that $p \geq x$ and $p \geq y$. 
+Then for any other product $(p', \mu', \nu')$ so that $p' \geq x$ and $p' \geq y$ and there exists a unique morphism from $p'$ to $p$, which in this category translates to $p' \geq p$.
+Thus, $p = \sup(x, y)$, the lower upper bound of $x$, and $y$, given that any other $p'$ which is an upper bound of $x$ and $y$, is greater than $p$.
+\end{proof} 
+
+\begin{exercise}{8 (Micro)}
+Verify example 1.1.14 in detail.
+\end{exercise}
+\begin{proof}
+Let $A$ be an object in a category $\cC$.
+Then there is a functor $h^A: \cC \to Sets$ sending $B \in \cC$ to $Hom(A, B)$ and sending $f: B_1 \to B_2$ to $Hom(A, B_1) \to Hom(A, B_2)$, described by $[g: A \to B_1] \mapsto [f \circ g: A \to B_1 \to B_2]$.
+
+Let $B \in \cC$ and $id_B$ be the identity of $B$. 
+We have $F(id_B)$ is defined by 
+\begin{align*}
+    [g: A \to B] \mapsto [id_B \circ g: A \to B \to B] = [g: A \to B],
+\end{align*}
+the identity on $Hom(A, B)$.
+
+Now, let $f \in Hom(B_1, B_2)$ and $h \in Hom(B_2, B_3)$ we define $F(h \circ f)$ by 
+\begin{align*}
+    [g: A \to B] \mapsto [(h \circ f) \circ g: A \to B_1 \to B_2 \to B_3].
+\end{align*}
+We know that $F(f)$ is mapped to 
+\begin{align*}
+    [g: A \to B_1] \mapsto [f \circ g: A \to B_1 \to B_2],
+\end{align*}
+and 
+Furthermore, we have seen that $F(h)$ is mapped to 
+\begin{align*}
+    [g: A \to B_2] \mapsto [h \circ g: A \to B_2 \to B_3].
+\end{align*}
+So that for any map $g: A \to B_1$, $F(h) \circ F(f)$ maps to $F(h) \circ (f \circ g) = h \circ f \circ g$, which is precisely $F(h \circ f)$, so that the functor is associative.
+\end{proof}
+
+
+\begin{exercise}{9 (Micro)}
+A group is a category with one object, take two such cats, describe the functors between these cats
+\end{exercise}
+\begin{proof}
+The functors between two categories defined by groups are the homomorphisms between the groups that define them.
+In slightly more detail, let $\cG$ and $\cG'$ be categories defined by the groups $G$ and $G'$.
+As we have seen before, $Obj(\cG) = \set{\ast}$ and $Hom(\ast, \ast) = G$ and likewise for $\cG'$.
+Then letting $F$ be any homomorphism between $G$ and $G'$, we have that for $g, h \in G$, $F(g, h) = F(g) F(h)$ and $F(id_\ast) = F(e) = id_{\ast'}$ (both results by the properties of homomorphisms).
+\end{proof} 
+
+\begin{exercise}{10 (Micro)}
+Take two posets and consider them as cats, describe the functor between these cats
+\end{exercise}
+\begin{proof}
+Let $P$ and $P'$ be posets, and $\cP$ an $\cP'$ the categories entailed by them.
+For $id_x$, we have that $F(id_x) = id_{F(x)}$, since $F(x) = F(x)$ in $\cP'$.
+Furthermore, if $x, y \in \cP$ and $x \geq y$ (so that $Hom(x, y)$ is not empty), then $F(x) \geq F(y)$ (so that $Hom(F(x), F(y))$ is not empty).
+This is the set of monotonic increasing functions.
+\end{proof} 
+
+1) 
+2) 
+
+\begin{exercise}{11 (Micro)}
+Verify 1.1.20 in detail
+\end{exercise}
+\begin{proof}
+The analysis is similar to that of 1.1.4:
+
+Let $A$ be an object in a category $\cC$.
+Then there is a contravariant functor $h_A: \cC \to Sets$ sending $B \in \cC$ to $Hom(B, A)$ and sending $f: B_1 \to B_2$ to $Hom(B_2, A) \to Hom(B_1, A)$, described by $[g: B_2 \to A] \mapsto [g \circ f: B_1 \to B_2 \to A]$.
+
+Let $B \in \cC$ and $id_B$ be the identity of $B$. 
+We have $F(id_B)$ is defined by 
+\begin{align*}
+    [g: B \to A] \mapsto [g \circ id_B: B \to A] = [g: B \to A],
+\end{align*}
+the identity on $Hom(B, A)$.
+
+Now, let $f \in Hom(B_1, B_2)$ and $h \in Hom(B_2, B_3)$ we define $F(h \circ f)$ by 
+\begin{align*}
+    [g: B_3 \to A] \mapsto [g \circ (h \circ f) : B_1 \to B_2 \to B_3 \to A].
+\end{align*}
+We know that $F(f)$ is mapped to 
+\begin{align*}
+    [g: B_1 \to A] \mapsto [g \circ f: B_2 \to B_1 \to A],
+\end{align*}
+and 
+Furthermore, we have seen that $F(h)$ is mapped to 
+\begin{align*}
+    [g: B_2 \to A] \mapsto [g \circ h: B_3 \to B_2 \to A].
+\end{align*}
+So that for any map $g: B_1 \to A$, $F(h) \circ F(f)$ maps to $(g \circ h) \circ F(f) = g \circ h \circ f$, which is precisely $F(h \circ f)$, so that the functor is associative.
+\end{proof} 
+
+\begin{exercise}{12 (Micro)}
+Show how 1.1.17 and 1.1.19 are special cases of 1.1.20
+\end{exercise}
+\begin{proof}
+The way that 1.1.17 is a special case of 1.1.20 is more or less straightforward from the definition of the contravariant functor, since $(f \circ g)^\lor = g^\lor \circ f^\lor$ (here $g$ plays the same role as in example 1.1.20).
+In this case, $A$ is $k$, the field in which the vector space is defined.
+
+1.1.19 is a special case of 1.1.20 in a similar fashion.
+We first note that $A$ in this case is $X$, and that if $f, g \in Hom(X, Y)$, then the contravariant functor maps $F(f \circ g)$ to $g \circ f$...
+\end{proof} 
+
+\begin{exercise}{13 (Micro)}
+If $G$ and $H$ are groups, what functions $f : G \to H$ induce a functor between the one-object categories of $G$ and $H$.
+\end{exercise}
+\begin{proof}
+If we define the categories as in exercise 9 (Micro), then we have that, if $f, g \in Hom(\ast, \ast) = G$, then $F(f \circ g) = g \circ f$;
+that is, we invert the order of the operation.
+\end{proof} 
+
+\begin{exercise}{14 (Micro)}
+If $P$ and $P'$ are posets, what functions $f: P \to P'$ induce a functor between the categories induced by $P$ and $P'$.
+\end{exercise}
+\begin{proof}
+Using the formalism of exercise 10 (Micro), we have that for $x, y \in P$, we have that $F(x) \leq F(y)$ (that is, $Hom(F(y), F(x))$ is not empty) if and only if $x \geq y$.
+In words, we invert the partial order.
+These are the set of monotonically decreasing functions.
+\end{proof} 

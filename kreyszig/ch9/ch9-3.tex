@@ -1,133 +1,116 @@
-\section{fill}
+\section{Positive operators}
 
-\begin{exercise}{x}
-fill
+As you can guess, in the dictionary we have been building (like where self-adjoint operator corresponds to real number), the idea of a positive operator corresponds to a positve real number. And the ordering built in this section is the usual ordering on the real numbers.
+1
+2
+3 These are all rules we know are true in the real numbers, but which are true in this general context
+4 The nice thing about positive operators is that an operator is positive if and only if there is a T such that the operator has the form TT*
+5 Note that a similar thing holds for self-adjoint <-> real spectrum 
+6
+9
+10
+11 What famous result from real analysis is 9.3-3 generalizing?
+12 Also here the converse holds that every  positive oprator is of the form T²
+13
+14 In other words, if T is infinitesimal, then any smaller value is too! 
+15
+
+\begin{exercise}{1}
+Let $S$ and $T$ be bounded self-adjoint linear operators on a complex Hilbert space.
+If $S \leq T$ and $S \geq T$, show that $S = T$.
+\end{exercise}
+\begin{proof}
+IF $S \leq T$, then $T - S \geq 0$, so that $\brackets{(T - S)x, x} \geq 0$, likewise, $\brackets{(S -T) x, x}  \geq 0$, thus $\brackets{(T - S) x, x} = 0$, by Lemma 3.8-2, we have that $T - S = 0$, as required.
+\end{proof} 
+
+\begin{exercise}{2}
+Show that $T_1 \leq T_2$ if and only if $\brackets{T_1 x, x} \leq \brackets{T_2 x, x}$ defines a partial order relation on the set of all bounded self-adjoint linear operators on a complex Hilbert space $H$, and for any such operator $T$, $T_1 \leq T_2$ implies $T_1 + T \leq T_2 + T$ and $\alpha T_1 \leq \alpha T_2$ for a nonnegative $\alpha$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{3}
+Let $A, B, T$ be bounded self-adjoint linear operators on a complex Hilbert space $H$.
+If $T \geq 0$ and commutes with $A$ and $B$, show that $A \leq B$ implies $AT \leq BT$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{4}
+If $T: H \to H$ is a bounded linear operator on a complex Hilbert space $H$, show that $T T^\ast$ and $T^\ast T$ are self-adjoint and positive.
+Show that the spectra of $T T^\ast$ and $T^\ast T$ are real and cannot contain negative values.
+What are the consequences of the second statement for a square matrix $A$?
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{5}
+Show that a bounded self-adjoint linear operator $T$ on a complex Hilbert space is positive if and only if its spectrum consists of nonnegative real values only.
+What does this imply for a matrix?
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{6}
+Let $T: H \to H$ and $W: H \to H$ be bounded linear operators on a complex Hilbert space $H$ and $S = W^\ast T W$.
+Show that if $T$ is self-adjoint and positive, so is $S$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{9}
+Show that if $T \geq 0$, then $(I + T)^{-1}$ exists.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{10}
+Let $T$ be any bounded linear operator on a complex Hilbert space.
+Show that the inverse of $I + T^\ast T$ exists.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{11}
+Show that an illustrative example for Theorem 9.3-3 is given by the sequence $(P_n)$, where $P_n$ is the projection of $\ell^2$ onto the subspace consisting of all sequences $x = (x_n) \in \ell^2$ such that $x_j = 0$ for all $j > n$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{12}
+If $T$ is a bounded self-adjoint linear operator on a complex Hilbert space $H$, show that $T^2$ is positive.
+What does this imply for a matrix?
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{13}
+If $T$ is a bounded self-adjoint linear operator on a complex Hilbert space $H$, show that the spectrum of $T^2$ cannot contain a negative value.
+What theorem on matrices does this generalise?
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{14}
+IF $T: H \to H$ and $S: H \to H$ are bounded linear operators and $T$ is compact and $S^\ast S \leq T^ast T$, show that $S$ is compact.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
+\begin{exercise}{15}
+Let $T: H \to H$ be a bounded linear operator on an infinite dimensional complex Hilbert space $H$.
+IF there is a $c > 0$ such that we have $\norm{Tx} \geq c \norm{x}$ for all $x \in H$, show that $T$ is not compact.
 \end{exercise}
 \begin{proof}
 fill

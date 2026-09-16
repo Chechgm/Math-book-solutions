@@ -1,18 +1,24 @@
 \section{Further spectral properties of compact linear operators}
 
-4
-5
-6 Some specific examples 
-7 This should be obvious by now, since compactness would imply a certain thing about $alpha_j$
-8
-9 In fact, what would the compact operators T:C[0,1] -> C[0,1] with Tx = vx be? Like for what v would T be compact? Notice also this is also a kind of diagonal operator. On l² a diagonal operator had the form $(x_j) ->(a_j x_j) for some a_j$. Now it has the form x(t) -> v(t) x(t). So the function v(t) is the diagonal of the "matrix". One popular form of the spectral theorem would then say that any self-adjoint operator is equivalent to one of the form Tx = vx for a certain v!
-10 Actually, what did Axler call $N(T_lambda^r)$? What if r=1?
 
 \begin{exercise}{4}
 Show that $T: \ell^2 \to \ell^2$ defined by $T x = (x_2 / 1, x_3 / 2, x_4 / 3, \dots)$ is compact and $\sigma_p(T) = \set{0}$, here $x = (x_1, x_2, \dots)$.
 \end{exercise}
 \begin{proof}
-fill
+Consider $T_n: \ell^2 \to \ell^2$ given by $T_n x = (x_2 / 1, x_3 / 2, \dots, x_n / (n-1), 0, \dots)$.
+For each $n$, $T_n$ is linear and bounded, so by 8.1-4.a, compact.
+Furthermore,
+\begin{align*}
+    \norm{(T - T_n) x}^2
+    = \sum_{j = n + 1}^\infty \frac{\absoluteValue{x_j}^2}{(j - 1)^2}
+    \leq \frac{1}{(n + 1)^2} \sum_{j = n + 1}^\infty \absoluteValue{x_j}^2
+    \leq \frac{\norm{x}^2}{(n + 1)^2}.
+\end{align*}
+Taking the supremum over all $x$ of norm 1 we see that $\norm{T - T_n} \leq 1 / (n + 1)$ so that $T_n \to T$ is compact by Theorem 8.1-5.
+
+To see the point spectrum is $\set{0}$, note that for $\lambda = 0$, we are looking for $x \in \ell^2$, with $x \neq 0$, such that $T x = \lambda x$.
+Any $x$ of the form $(x_1, 0, 0, \dots)$ satisfies this, showing that $0 \in \sigma_p$.
+The equality would not hold for $\lambda \neq 0$, since then (by equating terms in the sequences), we would obtain $x_1 = \lambda x_2,\, x_2 = \lambda x_3 / 2,\, \dots$, and by a recursive substitution we get that $x_n = (n-1)! x_1 / \lambda^{n-1}$, which diverges, so that $\lambda \notin \sigma_p$, completing the proof.
 \end{proof} 
 
 \begin{exercise}{5}
@@ -23,7 +29,9 @@ Show that $\sigma(T) = \sigma_r(T) = \set{0}$.
 0 may also belong to the continuous spectrum, as we shall see in section 9.2, exercise 7).
 \end{exercise}
 \begin{proof}
-fill
+The equality $Tx = \lambda x$ holds for no $x \neq 0$ for all $\lambda$, so that $\sigma_p(T)$ is empty.
+To see $0 \in \sigma_r(T)$, $T^{-1}$ exists because $T^{-1} x = (x_2, 2x_3, 3x_4, \dots)$.
+However, we have that $R_0(T) = T^{-1}: T(X) \to X$ is not dense in $X$, since $T(X)$ is the subspace consisting of all $y$ with $y_1 = 0$.
 \end{proof} 
 
 \begin{exercise}{6}
@@ -31,7 +39,7 @@ Find the eigenvalues of $T_n: \R^n \to \R^n$ defined by $T_n x = (0, x_1 / 1, x_
 Compare with exercise 5 and explain what happens as $n \to \infty$.
 \end{exercise}
 \begin{proof}
-fill
+For $\lambda = 0$, the only $x$ that satisfies $T_n x = \lambda x$ has the form $x_n = (0, \dots, 0, x_n')$, as $n \to \infty$, $x_n \to 0$.
 \end{proof} 
 
 \begin{exercise}{7}
@@ -39,7 +47,9 @@ Let $T: \ell^2 \to \ell^2$ be defined by $y = T x = (x_i), y = (y_i), y_i = \alp
 Show that $T$ is not compact.
 \end{exercise}
 \begin{proof}
-fill
+We concluded in exercise 7.4.4 and 7.4.5 that $\sigma_p(T) = (\alpha_i)$ and that $\sigma_c(T) = [0, 1] \setminus \sigma_p(T)$.
+8.4-4 tells us that for a compact operator, every elements of the spectrum (besides 0) is an eigenvalue.
+Thus, $T$ cannot be compact given its spectrum.
 \end{proof} 
 
 \begin{exercise}{8}
@@ -50,7 +60,9 @@ Does there exist a finite $m_0$?
 Find $n_0$.
 \end{exercise}
 \begin{proof}
-fill
+Note that $T^m = (x_{m+1}, x_{m+2}, \dots)$, so that $N(T^m)$ are the vectors of the form $x = (x_1, x_2, \dots, x_m, 0, \dots)$.
+From this we can conclude that $m_0$ is not finite.
+Likewise $n_0 = 0$, since for any $y \in X$, we can write $y = Tx$ for some $x \in X$ and thus $X = I(X) = T^0(X) = T(X)$
 \end{proof} 
 
 \begin{exercise}{9}
@@ -58,7 +70,9 @@ Let $T: C[0, 1] \to C[0, 1]$ be defined by $T x = v x$, where $v(t) = t$.
 Show that $T$ is not compact.
 \end{exercise}
 \begin{proof}
-fill
+In exercise 7.3-1 we concluded that the eigenvalues of $T$ are the range of $v$;
+that is, $[0, 1]$.
+But this implies $T$ has a noncountable number of eigenvalues so that by $8.3-1$ it cannot be compact.
 \end{proof} 
 
 \begin{exercise}{10}
@@ -71,5 +85,9 @@ Derive the representation (equation 13 in the text; $X = \cN(T_\lambda^r) \oplus
 \end{align}
 \end{exercise}
 \begin{proof}
-fill
+First, the characteristic polynomial of $T$ is $\lambda (\lambda - 2)$, so that the eigenvalues of $T$ are 0 and 2.
+Second, the nullspace of $T_0$ is $\vecspan([1, 1]^T)$, which we find through the following operation $T_0 [x, y]^T = [x-y, y-x] = 0$, which holds whenever $x = y$, or $\vecspan([1, 1]^T)$.
+Finally, the range of $T_0$ is $\vecspan([1, -1]^T)$, which we can find by performing row-reduction on $T_0^T$ and taking the non-zero rows.
+Since $T_0$ is symmetric we can simply row-reduce $T_0$, by summing the first row to the second row and then the range corresponds to the first row.
+Thus $\R^2 = \vecspan([1, 1]^T) \oplus \vecspan([1, -1]^T)$, which we know is correct given that there are as many vectors as the dimension of the space we are building and the linear independence of such vectors.
 \end{proof} 

@@ -1,134 +1,85 @@
-\section{fill}
+\section{Further spectral properties of bounded self-adjoint linear operators}
 
-\begin{exercise}{x}
-fill
+2 Refering back to the finite dimensional case
+3 Application
+4
+5 Well, we already knew a spectrum is never empty, but the proof was nonconstructive and relied on the Liouville theorem! Now we actually get a constructive proof! 
+6
+7 Application to compact operators and their spectrum in the self-adjoint case 
+9 This is pretty cool since we get an explicit formula for EVERY eigenvalue of the a finite-dimensional operator. This is very useful in practice
+10 If we ever do Hubbard, we'll actually do the full Perron-Frobenius theorem!
+EXTRA EX.
+
+\begin{exercise}{2}
+What Theorem about the eigenvalues of a Hermitian matrix $A$ do we obtain from Theorem 9.2-1?
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{3}
+Find $m = \inf_{\norm{x}=1} \brackets{Tx, x}$ and $M = \sup_{\norm{x}=1} \brackets{Tx, x}$ (Theorem 9.2-1) if $T$ is the projection operator of a Hilbert space $H$ onto a proper subspace $Y \neq \set{0}$ of $H$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{4}
+Prove that $m \in \sigma(T)$ in Theorem 9.2-3.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{5}
+Show that the spectrum of a bounded self-adjoint linear operator on a complex Hilbert space $H \neq \set{0}$ is not empty, using one of the theorems of the present section.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{6}
+Show that a compact self-adjoint linear operator $T: H \to H$ on a complex Hilbert space $H \neq \set{0}$ has at least one eigenvalue.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{7}
+Consider the operator $T: \ell^2 \to \ell^2$ defined by $y = T x$, where $x = (x_n)$, $y = (y_n)$ and $y_n = x_n/n$, for $n = 1, 2, \dots$.
+It was shown in 8.1-6 that $T$ is compact.
+Find the spectrum of $T$.
+Show that $0 \in \sigma_c(T)$ and, actually, $\sigma_c(T) = \set{0}$.
+(For compact operators with $0 \in \sigma_p(T)$ or $0 \in \sigma_r(T)$.
+See exercises 4 and 5 in section 8.4).
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{9}
+If $\lambda_1 \geq \lambda_2 \geq \dots \geq \lambda_n$ are the eigenvalues of a Hermitian matrix $A$, show that $\lambda_1 \max_{x \neq 0} q(x)$, $\lambda_n = \min_{x \neq 0} q(x)$, where $q(x) = (\bar{x}^T A x) / (\bar{x}^T x)$.
+Show that, furthermore, $\lambda_j = \max_{x \in Y_j, x \neq 0} q(x)$, for $j = 2, 3, \dots$, where $Y_j$ is the subspace of $\C^n$ consisting of all vectors that are orthogonal to the eigenvectors corresponding to $\lambda_1, \dots, \lambda_{j-1}$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{10}
+Show that a real symmetric square matrix $A$ with positive elements has a positive eigenvalue.
+(It can be shown that the statement holds even without the assumption of symmetry;
+this is part of a famous Theorem by Perron and Frobenius).
 \end{exercise}
 \begin{proof}
-fill
+Notice that a real symmetric square matrix is hermitian because it equals its conjugate transpose.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{Extra exercise}
+EXTRA: Let T be a self-adjoint compact operator on a separable Hilbert space, let |lambda1| >= |lambda2| >= ... be the nonzero eigenvalues of T with corresponding orthonormal eigenvectors (uk), then (uk) is an orthonormal basis of closure(Range(T)). If we let (vk) be a basis for the kernel of T, then (uk) Union (vk) is an orthonormal basis of H. Deduce then that we can find a basis of H consisting of eigenvectors, which is essentially a perfect reproduction of the finite dim spectral theorem! 
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
+Process: assume that orthonormal eigenvectors (u1, ..., uk) has already be found, then we can find the next one by sup |<T(u), u>| where the sup runs over the orthogonal complement of span(u1,...,uk). Show this ends up with an orthonormal list of eigenvectors. 
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
+Case 1: T has finite rank: the process finishes, the proof is easy in this case 
+Case 2: T has infinite rank: Show the process never terminates. Show tat the resulting lambdan converge to 0. It remains to be shown we have an orthonormal basis. Do this by taking v in Range(T) that is orthogonal to all $u_k$. Write v = T(u) and show u is orthogonal to all uk. Show that x -> T(x) - SUM lambdak <x, uk> uk (with a finite sum from 1 to some n) is a compact self-adjoint operator that has lambda(n+1) as its biggest eigenvalue. Deduce that |v| <= |lambda(n+1)| |u| where n is arbitrary, then take limits n-> infinity
+\end{proof}
