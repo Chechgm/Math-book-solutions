@@ -15,98 +15,114 @@
 15 This is a crucial step in proving the finite-dimensional version of the spectral theorem. The idea is to first find an eigenvector, and pick Y = the span of this eigenvector. Then T splits up into two smaller-dimensional operators, on which we can induct!
 
 \begin{exercise}{1}
-fill
+Illustrate the various equivalent statements in Theorem 9.6-1 by simple examples of projections in Euclidean space $\R^3$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{2}
-fill
+Show that the difference $P = P_2 - P_1$ of two projections on a Hilbert space $H$ is a projection on $H$ if and only if $P_1 \leq P_2$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{4}
-fill
+\begin{exercise}{4 (Limit of projections)}
+If $(P_n)$ is a sequence of projections defined on a Hilbert space $H$ and $P_n \to P$, show that $P$ is a projection defined on $H$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{5}
-fill
+let $P_n(H)$ in Theorem 9.6-3 be finite dimensional for every $n$.
+Show that, nevertheless, $P(H)$ may be infinite dimensional.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{6}
-fill
+Let $(P_n)$ be strongly operator convergent with limit $P$, where the $P_n$'s are projections on a Hilbert space $H$.
+Suppose that $P_n(H)$ is infinite dimensional.
+Show by an example that, nevertheless, $P(H)$ may be finite dimensional.
+(We mention that this irregularity as well as that in exercise 5 cannot happen in the case of uniform operator convergence).
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{7}
-fill
+What is $P(H)$ in Theorem 9.6-3 in the case of a monotone decreasing sequence $(P_n)$?
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{8}
-fill
+If $Q_1, Q_2, \dots$ are projections on a Hilbert space $H$ such that we have $Q_j(H) \perp Q_k(H)$ (for $j \neq k$), show that for every $x \in H$ the series $Qx = \sum Q_j x$ converges (in the norm on $H$) and $Q$ is a projection.
+Onto what subspace of $H$ does $Q$ project?
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{9}
-fill
+\begin{exercise}{9 (Invariant subspace)}
+Let $T: H \to H$ be a bounded linear operator.
+Then a subspace $Y \subseteq H$ is said to be invariant under $T$ if $T(Y) \subseteq Y$.
+Show that a closed subspace $Y$ of $H$ is invariant under $T$ if and only if $Y^\perp$ is invariant under $T^\ast$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{10}
-fill
+\begin{exercise}{10 (Reduction of an operator)}
+A closed subspace $Y$ of a Hilbert space $H$ is said to reduce a linear operator $T: H \to H$ if $T(Y) \subseteq Y$ and $T(Y^\perp) \subseteq Y^\perp$, that is, if both $Y$ and $Y^\perp$ are invariant under $T$.
+(The point is that then the investigation of $T$ can be facilitated by considering $T|_Y$ and $T|_{Y^\perp}$ separately).
+If $P_1$ is the projection of $H$ onto $Y$ and $P_1 T = T P_1$, show that $Y$ reduces $T$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{11}
-fill
+If $\operatorname{dim} H < \infty$ in exercise 10 and $Y$ reduces $T$, what can we say about a matrix representing $T$?
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{12}
-fill
+Prove the converse of the statement in exercise 10, that is, if $Y$ reduces $T$, then $P_1 T = T P_1$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{13}
-fill
+If $Y$ in exercise 10 reduces $T$, show that $T P_2 = P_2 T$, where $P_2$ is the projection of $H$ onto $Y^\perp$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{14}
-fill
+Let $(e_k)$ be a total orthonormal sequence in a separable Hilbert space $H$.
+Let $T: H \to H$ be a linear operator defined at $e_k$ by $T e_k = e_{k+1}$, $k = 1, 2, \dots$ and then continuously extended to $H$.
+Let $Y_n$ be the closure of $\vecspan \set{e_n, e_{n+1}, \dots}$, where $n > 1$.
+Show that $T$ is not self-adjoint.
+Show that $Y_n$ does not reduce $T$;
+(a) use exercise 12, (b) give a direct proof.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{15}
-fill
+Let $T: H \to H$ be a bounded linear operator on a Hilbert space $H$ and $Y$ a closed subspace of $H$ such that $T(Y) \subseteq Y$.
+If $T$ is self-adjoint, show that $T(Y^\perp) \subseteq Y^\perp$, so that in this case, $Y$ reduces $T$.
+(Note that $T$ in exercise 14 is not self-adjoint).
 \end{exercise}
 \begin{proof}
 fill
