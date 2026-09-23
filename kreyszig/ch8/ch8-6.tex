@@ -1,17 +1,5 @@
 \section{Further theorems of Fredholm type}
 
-4 
-5 
-6
-7 In finite dimensions, this is where the characteristic polynomial eventually comes from
-8
-9
-10
-11
-12
-13 Is this something already known from finite-dimensional linear algebra?
-14 What does this look like in a Hilbert space and from what theorem of chapter 3 does this follow?
-15 So lambda=0 is also a weird case here
 
 \begin{exercise}{1}
 Show that $f_0(y) = f_0(T_\lambda x) = g(x)$, for a given $g \in X'$, in the proof of Theorem 8.5-3 is linear.
@@ -42,7 +30,7 @@ A system $Ax = y$ of $n$ linear equations in $n$ unknowns has a (unique) solutio
 How does this follow from one of our present theorems?
 \end{exercise}
 \begin{proof}
-fill
+This would follow by Theorem 8.6-1.a by considering $A = (T - \lambda I)$, because we concluded there that $Tx - \lambda x = Ax = y$ has a solution $x \in X$ for all $y$ if and only if the equation $Tx - \lambda x = 0$ has only the trivial solution $x = 0$, which is precisely what is stated in this problem.
 \end{proof} 
 
 \begin{exercise}{5}
@@ -59,7 +47,12 @@ has the same rank as the coefficient matrix $A = (\alpha_{jk})$.
 Obtain this familiar criterion from Theorem 8.5-1.
 \end{exercise}
 \begin{proof}
-fill
+Let $A = (T - \lambda I)$ for some $\lambda \neq 0$.
+Theorem 8.5-1 tells us that $Ax = y$ has a solution if and only if $y$ is such that if $A^\times f = A^T f = 0$ holds then $f(y) = \brackets{f, y} = 0$ (we used the equality $(T - \lambda I)^T = T^T - \lambda I$).
+
+Now consider the augmented matrix $B = [A^T \mid y]$, so that $B f = 0$, given that $\brackets{f, y} = 0$.
+This means that both $A^T$ and $B$ have the same null space and thus the same rank, by the rank-nullity Theorem. 
+Since the row and column rank of a matrix is the same, we get the desired result.
 \end{proof} 
 
 \begin{exercise}{6}
@@ -67,7 +60,16 @@ If $Tx - \lambda x = 0$ has a solution $x \neq 0$ and $T x - \lambda x = y$ is s
 similarly, if $T^\times f - \lambda f = 0$ has a solution $f \neq 0$ and $T^\times f - \lambda f = g$ is solvable, show that the solution of $T^\times f - \lambda f = g$ cannot be unique.
 \end{exercise}
 \begin{proof}
-fill
+Let $x_1$ be a solution to equation (1), that is, $T x_1 - \lambda x_1 = y$ holds.
+Likewise let $x_2 \neq 0$ be a solution to equation (2) so that $T x_2 - \lambda x_2 = 0$.
+Let $x' = x_1 + x_2$.
+We have 
+\begin{align*}
+    Tx' - \lambda x'
+    = T x_1 + T x_2 - \lambda x_1 - \lambda x_2
+    = T x_1 - \lambda x_1 = y,
+\end{align*}
+so that $x'$ is also a solution to (1) and thus $x_1$ is not unique.
 \end{proof} 
 
 \begin{exercise}{7}
@@ -75,7 +77,9 @@ Show that the first statement in Theorem 8.6-1 may also be formulated as follows
 $R_\lambda(T): X \to X$ with $\lambda \neq 0$ exists if and only if $Tx = \lambda x$ implies $x = 0$.
 \end{exercise}
 \begin{proof}
-fill
+We can write (1), $T x - \lambda x = y$, as $(T - \lambda I)x = y$ so that $x = (T - \lambda I)^{-1} y$.
+Thus, $R_\lambda(T)$ existing and (1) having a solution are equivalent.
+The implication of the statement is the same, since (2), $T x - \lambda x = 0$ can be written as $T x = \lambda x$.
 \end{proof} 
 
 \begin{exercise}{8}
@@ -83,56 +87,76 @@ Two sequences $(z_1, z_2, \dots)$ in a normed space $X$ and $(f_1, f_2, \dots)$ 
 Given $(z_k)$, show that there is a sequence $(f_j)$ in $X'$ such that $(z_k)$, $(f_j)$ is a biorthogonal system if and only if $z_m \notin \overline{A}_m$ for all $m \in \N$, where $A_m = \vecspan \set{z_k: k = 1, 2, \dots, k \neq m}$.
 \end{exercise}
 \begin{proof}
-fill
+($\Rightarrow$) 
+By contradiction, if $z_m \in \overline{A}_m$, then there exists a sequence $(y_n)$ in $A_m$ such that $y_n \to z_m$.
+We have $f_m(y_n) \to f_m(z_m)$ since $f_m \in X'$ (and thus bounded, so continuous).
+But $f_m(z_m) = 1$ and $f_m(y_n) = 0$ for all $y_n$, contradicting the limit statement.
+
+($\Leftarrow$)
+Note that $\overline{A}_m$ is a closed subspace of $X$ and that $z_m \notin \overline{A}_m$.
+Thus, Lemma 4.6-7 tells us that there is a functional $f_m \in X'$ with $f_m(z_m) = \delta$ (where $\delta$ is the distance form $z_m$ to $\overline{A}_m$).
+We can normalize $f_m$ to have $f_m(z_m) = 1$, giving us the desired sequence.
 \end{proof} 
 
 \begin{exercise}{9}
 Show that for a finite biorthogonal system, as defined in the text, the condition in the previous exercise is automatically satisfied.
 \end{exercise}
 \begin{proof}
-fill
+If this condition didn't hold, then $z_m = \alpha_1 z_1 + \dots \alpha_n z_n$ and $1 = f_m(z_m) = \alpha_1 f_m(z_1) + \dots + \alpha_m(z_n) = 0$, a contradiction.
 \end{proof} 
 
 \begin{exercise}{10}
 If two sets $\set{z_1, \dots, z_n}$ and $\set{y_1, \dots, y_n}$ in an inner product space satisfy $\brackets{z_k, y_j} = \delta_{kj}$, show that each one of them is linearly independent.
 \end{exercise}
 \begin{proof}
-fill
+Suppose $z_m = \alpha_1 z_1 + \dots + \alpha_n z_n$.
+We have
+\begin{align*}
+    1 = \brackets{z_m, y_m}
+    = \brackets{\alpha_1 z_1 + \dots + \alpha_n z_n, y_m}
+    = \alpha_1 \brackets{z_1, y_m} + \dots + \alpha_m \brackets{z_n, y_m} = 0,
+\end{align*}
+a contradiction.
+We can reason in an analogous way to conclude $y_1, \dots, y_n$ is linearly independent.
 \end{proof} 
 
 \begin{exercise}{11}
 What form does a biorthogonal system assume in a Hilbert space?
 \end{exercise}
 \begin{proof}
-fill
+By the Riesz representation Theorem, we can write $f_m(z_m) = \brackets{z_m, x}$ for a unique $x$.
+Thus a Biorthogonal system would be $\brackets{z_m, x_n} = \delta_{m, n}$.
 \end{proof} 
 
 \begin{exercise}{12}
 State and prove Lemma 8.6-2 if $X$ is a Hilbert space $H$.
 \end{exercise}
 \begin{proof}
-fill
+The statement would be:
+Given a linearly independent set $\set{x_1, \dots, x_m}$ in $X$, there are elements in $X$ $\set{z_1, \dots, z_m}$ such that $\brackets{z_m, x_n} = \delta_{n, m}$.
+The proof of the statement is essentially the same as that of 8.6-2, where instead of considering the functionals directly, we can look the inner product between vectors.
 \end{proof} 
 
 \begin{exercise}{13}
 What does Theorem 8.6-3 imply in the case of a system of $n$ linear equation in $n$ unknowns?
 \end{exercise}
 \begin{proof}
-fill
+This can be thought in a couple of ways.
+First, if $A$ is a matrix representing a system of $n$ linear equations in $n$ unknowns, then $A$ and $A^T$ have the same rank, since $Ax = 0$ and $A^T x = 0$ have the same number of linearly independent solutions, according to the Theorem.
+A second way to interpret the Theorem is that $A$ and its transpose have the same eigenvalues and the same dimension of eigenvectors, since we say that $Ax - \lambda Ix = 0$ and $A^T f - \lambda I f = 0$ have the same number of linearly independent solutions.
 \end{proof} 
 
 \begin{exercise}{14}
 If a linear operator $T: X \to Y$ on a normed space $X$ has a finite dimensional range $\cR(T) = T(X)$, show that $T$ has a representation of the form $Tx = f_1(x) y_1 + \dots + f_n(x) y_n$ where $\set{y_1, \dots y_n}$ and $\set{f_1, \dots f_n}$ are linearly independent sets in $Y$ and $X'$ (the dual space of $X$), respectively.
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
+Suppose $T(X)$ is $n$-dimensional.
+Let $y_1, \dots y_n$ be a basis for $T(X)$, so that the list is linearly independent.
+Let $x \in T(X)$ so that $x = \alpha_1 y_1 + \dots + \alpha_n y_n$ and define the functional $p_j(x) = \alpha_j$ for $j =1, \dots, n$.
+Finally, define the linear functional given by $f_j = p_j \circ T$.
+We have that $Tx = \alpha_1 y_1 + \dots + \alpha_n y_n = p_1(Tx) y_1 + \dots + p_n(Tx) y_n$, which is precisely the representation we are asked for.
 
-\begin{exercise}{15}
-We may wonder what would happen to our present theorems if $\lambda = 0$, so that (1) and (2) would be $Tx = y$ and $Tx = 0$.
-For these equations, Theorem 8.6-1 may no longer hold.
-To see this, consider $T: C[0, \pi] \to C[0, \pi]$ defined by $T x(s) = \int_0^\pi k(s, t) x(t) dt$, with $k(s, t) = \sum (1/n^2) \sin (ns) \sin (nt)$.
-\end{exercise}
-\begin{proof}
-fill
+Furthermore, $f_j = p_j \circ T$ are linearly independent.
+To see this, consider $x \in X$ such that $Tx = y_j$, then $\beta_1 f_1 + \dots + \beta_n f_n = 0$ implies that $\beta_1 p_1 (Tx) + \dots + \beta_n p_n (Tx) = 0$ and $\beta_j = 0$.
+Since we can find an $x \in X$, so that $Tx = y_j$ for all $j$, then all $\beta_j = 0$, which implies the linear independence of the $f_j$, completing the proof.
 \end{proof} 

@@ -16,7 +16,8 @@ What does this imply for matrices?
 What familiar theorem on matrices does Theorem 9.1-1 include as a special case?
 \end{exercise}
 \begin{proof}
-fill
+Let $A$ be the matrix representing the operator $T$.
+If $\brackets{Ax, x}$ is real, then $\bar{x}^T A x$ is real, furthermore, since $T$ is self-adjoint, $A$ is Hermitian (the name for self-adjoint in matrices) so that its eigenvalues are all real and the corresponding eigenvectors are orthogonal.
 \end{proof} 
 
 \begin{exercise}{2}
@@ -24,7 +25,15 @@ If in the finite dimensional case, a self-adjoint linear operator $T$ is represe
 What is the spectrum of $T$?
 \end{exercise}
 \begin{proof}
-fill
+Let $x, y \in X$, where $X$ is finite dimensional.
+Thus, the inner product in $X$ is equivalent to the dot product:
+$\brackets{x, y} = \sum x_i y_i$. 
+Let $T$ be a self-adjoint linear operator whose matrix is diagonal.
+We have $\brackets{Tx, y} = \sum \lambda_i x_i y_i$ and $\brackets{x, Ty} = \sum \overline{\lambda_i} x_i y_i$.
+For these expressions to be equal, we compare the coefficients of the products $x_i y_i$ for each $i$ (since this has to hold for all $x$ and $y$ and we can simply choose elements of the canonical basis individually).
+We need $\lambda_i = \overline{\lambda_i}$, so that the elements of the diagonal are real.
+The chosen notation for the elements of the diagonal was suggestive: 
+the spectrum of $T$ are the diagonal elements of the matrix.
 \end{proof} 
 
 \begin{exercise}{4}
@@ -32,7 +41,8 @@ Illustrate Theorem 9.1-2 by an operator whose spectrum consists of a single give
 What is the largest $c$ in this case?
 \end{exercise}
 \begin{proof}
-fill
+In a finite dimensional space of any fixed dimension, the identity matrix (which is self-adjoint) has a single eigenvalue, namely 1.
+In this case, the largest $c$ is 0, since $I_1 = 0$, so that $\norm{I_1 x} = 0 \geq c \norm{x}$ holds for all $x$ only when $c = 0$. 
 \end{proof} 
 
 \begin{exercise}{5}
@@ -40,7 +50,14 @@ Let $T: H \to H$ and $W: H \to H$ be bounded linear operators on a complex Hilbe
 If $T$ is self-adjoint, show that $S = W^\ast T W$ is self-adjoint.
 \end{exercise}
 \begin{proof}
-fill
+We have 
+\begin{align*}
+    \brackets{W^\ast T W x, x}
+    = \brackets{T W x, W x}
+    = \brackets{W x, T W x}
+    = \brackets{x, W^\ast T W x},
+\end{align*}
+where in the second equality we used that $T$ is self-adjoint, thus proving the desired result.
 \end{proof} 
 
 \begin{exercise}{6}
@@ -50,7 +67,7 @@ Self-adjoint?
 Find $S: \ell^2 \to \ell^2$ such that $T = S^2$.
 \end{exercise}
 \begin{proof}
-fill
+
 \end{proof} 
 
 \begin{exercise}{7}
