@@ -27,7 +27,14 @@ IF $S \leq T$, then $T - S \geq 0$, so that $\brackets{(T - S)x, x} \geq 0$, lik
 Show that $T_1 \leq T_2$ if and only if $\brackets{T_1 x, x} \leq \brackets{T_2 x, x}$ defines a partial order relation on the set of all bounded self-adjoint linear operators on a complex Hilbert space $H$, and for any such operator $T$, $T_1 \leq T_2$ implies $T_1 + T \leq T_2 + T$ and $\alpha T_1 \leq \alpha T_2$ for a nonnegative $\alpha$.
 \end{exercise}
 \begin{proof}
-fill
+(Reflexivity) Clearly $T \geq T$ for all $T$.
+
+(Antisymmetry) This is the content of the previous exercise.
+
+(Transitivity) If $T_1 \geq T_2$ and $T_2 \geq T_3$, we have $\brackets{T_1 x, x} \geq \brackets{T_2 x, x}$ and $\brackets{T_2 x, x} \geq \brackets{T_3 x, x}$ for all $x$, then $\brackets{T_1 x, x} \geq \brackets{T_3 x, x}$ and $T_1 \geq T_3$.
+
+For the second part, suppose $T_2 \geq T_1$, so that $\brackets{T_2 x, x} \geq \brackets{T_1 x, x}$, then $\brackets{T_2 x, x} + \brackets{Tx, x} \geq \brackets{T_1 x, x} + \brackets{Tx, x}$, which is the same as $\brackets{(T_2 + T) x, x} \geq \brackets{(T_1 + T) x, x}$ so that $T_2 + T \geq T_1 + T$.
+The second statement can be proven in a similar way using (positive) scalar multiplication instead of addition.
 \end{proof} 
 
 \begin{exercise}{3}
@@ -35,7 +42,9 @@ Let $A, B, T$ be bounded self-adjoint linear operators on a complex Hilbert spac
 If $T \geq 0$ and commutes with $A$ and $B$, show that $A \leq B$ implies $AT \leq BT$.
 \end{exercise}
 \begin{proof}
-fill
+Since $B \geq A$, then $B - A \geq 0$, furthermore, $T$ commutes with $B - A$, since $T(B - A) = TB - TA = BT - AT = (B - A)T$.
+By 9.3-1, the product of positive operators is positive, so that $T(B - A) \geq 0$;
+that is, $TB - TA \geq 0$ which is the same as $TB \geq TA$.
 \end{proof} 
 
 \begin{exercise}{4}
@@ -44,7 +53,13 @@ Show that the spectra of $T T^\ast$ and $T^\ast T$ are real and cannot contain n
 What are the consequences of the second statement for a square matrix $A$?
 \end{exercise}
 \begin{proof}
-fill
+We have $\brackets{T T^\ast x, y} = \brackets{T^\ast x, T^\ast y} = \brackets{x, TT^\ast y}$, so that $T T^\ast$ is self-adjoint.
+Furthermore, $\brackets{T T^\ast x, x} = \brackets{T^\ast x, T^\ast x} = \norm{T^\ast x}^2 \geq 0$, so that $T T^\ast$ is positive.
+The fact that $\sigma(T T^\ast)$ is real follows from 9.2-1, and the fact that $\sigma(T T^\ast)$ is nonnegative follows from the fact that $\inf_{\norm{x} = 1} \brackets{T T^\ast x, x} \geq 0$ and 9.2-1.
+
+The implication for a square matrix $A$, is that $\bar{A}^T A = A A = A^2$ has nonnegative eigenvalues.
+
+The proof for $T^\ast T$ follows using the same strategy mutatis mutandis.
 \end{proof} 
 
 \begin{exercise}{5}
@@ -52,7 +67,11 @@ Show that a bounded self-adjoint linear operator $T$ on a complex Hilbert space 
 What does this imply for a matrix?
 \end{exercise}
 \begin{proof}
-fill
+We proved the necessary condition in the previous exercise.
+We prove the sufficient condition by contrapositive.
+Thus, suppose $T$ is not positive, so that there exists an $y \in H$ such that $\brackets{Ty, y} < 0$.
+Then $\inf_{\norm{x} = 1} \brackets{Tx, x} < 0$ (this holds at least for $y$ normalised), and by 9.2-3, such infimum is a spectral value;
+that is, not all the spectrum is nonnegative.
 \end{proof} 
 
 \begin{exercise}{6}
@@ -60,14 +79,17 @@ Let $T: H \to H$ and $W: H \to H$ be bounded linear operators on a complex Hilbe
 Show that if $T$ is self-adjoint and positive, so is $S$.
 \end{exercise}
 \begin{proof}
-fill
+We proved the fact that $S$ is self-adjoint in exercise 9.1.5.
+To see $S$ is positive, we have $\brackets{Sx, x} = \brackets{TWx, Wx} = \brackets{Ty, y} \geq 0$ because $T$ is positive, so that $S$ is both self-adjoint and positive, completing the proof.
 \end{proof} 
 
 \begin{exercise}{9}
 Show that if $T \geq 0$, then $(I + T)^{-1}$ exists.
 \end{exercise}
 \begin{proof}
-fill
+We have $(I + T)x = x + Tx$ so that $Tx = -x$.
+Moreover, $\brackets{Tx, x} = -\brackets{x, x} = -\norm{x}^2 \leq 0$, and $\brackets{Tx, x} \geq 0$, so that $-\norm{x}^2 = 0$, which implies $x = 0$.
+Since $(I + T)0 = 0$, 2.6-10 tells us that $I + T$ has an inverse, as required.
 \end{proof} 
 
 \begin{exercise}{10}
@@ -75,14 +97,15 @@ Let $T$ be any bounded linear operator on a complex Hilbert space.
 Show that the inverse of $I + T^\ast T$ exists.
 \end{exercise}
 \begin{proof}
-fill
+This is a Corollary to exercises 9.3.4 and 9.3.9, since we proved there that $T^\ast T$ is positive
 \end{proof} 
 
 \begin{exercise}{11}
 Show that an illustrative example for Theorem 9.3-3 is given by the sequence $(P_n)$, where $P_n$ is the projection of $\ell^2$ onto the subspace consisting of all sequences $x = (x_n) \in \ell^2$ such that $x_j = 0$ for all $j > n$.
 \end{exercise}
 \begin{proof}
-fill
+We have that $K = I$ is bounded and self-adjoint and $\brackets{(I - P_n)x, x} = (\sum \absoluteValue{x_i}^2)^2 \geq 0$, so that $P_n \leq I$.
+The limit of $(P_n)$ is $I$ so that, as expected, the conclusion of the Theorem holds.
 \end{proof} 
 
 \begin{exercise}{12}
@@ -90,7 +113,8 @@ If $T$ is a bounded self-adjoint linear operator on a complex Hilbert space $H$,
 What does this imply for a matrix?
 \end{exercise}
 \begin{proof}
-fill
+We have $\brackets{T^2 x, x} = \brackets{Tx, Tx} = \norm{Tx}^2 \geq 0$, so that $T^2$ is positive.
+For a matrix, this implies that its square is a positive semi definite matrix.
 \end{proof} 
 
 \begin{exercise}{13}
@@ -98,20 +122,29 @@ If $T$ is a bounded self-adjoint linear operator on a complex Hilbert space $H$,
 What theorem on matrices does this generalise?
 \end{exercise}
 \begin{proof}
-fill
+If we combine exercise 5 and exercise 12, we get that $T^2$ has a nonnegative spectrum.
+For matrices, this implies that $A^2 = A^T A$ has only nonnegative eigenvalues.
 \end{proof} 
 
 \begin{exercise}{14}
 IF $T: H \to H$ and $S: H \to H$ are bounded linear operators and $T$ is compact and $S^\ast S \leq T^ast T$, show that $S$ is compact.
 \end{exercise}
 \begin{proof}
-fill
+Let $(x_n)$ be a bounded sequence.
+We want to prove $(Sx_n)$ contains a convergent subsequence.
+We have $\brackets{(SS^\ast - TT^\ast) x, x} \leq 0$ so that $\brackets{Sx, Sx} \leq \brackets{Tx, Tx}$ which in turn implies $\norm{Sx}^2 \leq \norm{Tx}^2$.
+In particular, this holds for all $x_n$, so that $\norm{Sx_n} \leq \norm{Tx_n}$
+Since $T$ is compact, then $(Tx_n)$ contains a convergent subsequence, say $(Tx_{n_k})$, with $Tx_{n_k} \to Tx$.
+We have that $\norm{Sx_{n_k} - Sx}$
+
+FILL
 \end{proof} 
 
 \begin{exercise}{15}
 Let $T: H \to H$ be a bounded linear operator on an infinite dimensional complex Hilbert space $H$.
-IF there is a $c > 0$ such that we have $\norm{Tx} \geq c \norm{x}$ for all $x \in H$, show that $T$ is not compact.
+If there is a $c > 0$ such that we have $\norm{Tx} \geq c \norm{x}$ for all $x \in H$, show that $T$ is not compact.
 \end{exercise}
 \begin{proof}
-fill
+By Theorem 9.1-2, if there exists $c > 0$ such that $\norm{T_0 x} = \norm{Tx} \geq c \norm{x}$, then $0 \in \rho(T)$.
+But we know from 8.4-4, that if $T$ is a compact operator defined on an infinite dimensional space, then 0 is in the spectrum, thus, it cannot be the case that $T$ is compact, as required.
 \end{proof} 

@@ -14,35 +14,39 @@ EXTRA EX.
 What Theorem about the eigenvalues of a Hermitian matrix $A$ do we obtain from Theorem 9.2-1?
 \end{exercise}
 \begin{proof}
-fill
+We get that the eigenvalues of a Hermitian matrix are real.
 \end{proof} 
 
 \begin{exercise}{3}
 Find $m = \inf_{\norm{x}=1} \brackets{Tx, x}$ and $M = \sup_{\norm{x}=1} \brackets{Tx, x}$ (Theorem 9.2-1) if $T$ is the projection operator of a Hilbert space $H$ onto a proper subspace $Y \neq \set{0}$ of $H$.
 \end{exercise}
 \begin{proof}
-fill
+Let $x \in Y$ and $\norm{x} = 1$, then $\brackets{Tx, x} = \brackets{x, x} = \norm{x}^2 = 1$.
+Likewise, if $x \notin Y$, then $\brackets{Tx, x} = 0$, so that $m = 0$ and $M = 1$.
 \end{proof} 
 
 \begin{exercise}{4}
 Prove that $m \in \sigma(T)$ in Theorem 9.2-3.
 \end{exercise}
 \begin{proof}
-fill
+TODO: re write the proof for $m$.
 \end{proof} 
 
 \begin{exercise}{5}
 Show that the spectrum of a bounded self-adjoint linear operator on a complex Hilbert space $H \neq \set{0}$ is not empty, using one of the theorems of the present section.
 \end{exercise}
 \begin{proof}
-fill
+This is a consequence of 9.2.3, since $m$ and $M$ belong to the spectrum of the operator.
 \end{proof} 
 
 \begin{exercise}{6}
 Show that a compact self-adjoint linear operator $T: H \to H$ on a complex Hilbert space $H \neq \set{0}$ has at least one eigenvalue.
 \end{exercise}
 \begin{proof}
-fill
+We know that for all $\lambda \in \sigma(T)$ (besides 0) are eigenvalues in a compact operator (8.4-4).
+Next, we know from 9.2-3, that $m = \inf_{\norm{x} = 1} \brackets{Tx, x}$ and $M = \sup_{\norm{x} = 1} \brackets{Tx, x}$ are both part of the spectrum of $T$.
+Thus, as long as $m, M \neq 0$ then $\sigma_p(T)$ is not empty.
+The only case in which both $M$ and $m$ would be zero is if $T = 0$, giving us the desired result.
 \end{proof} 
 
 \begin{exercise}{7}
@@ -54,7 +58,12 @@ Show that $0 \in \sigma_c(T)$ and, actually, $\sigma_c(T) = \set{0}$.
 See exercises 4 and 5 in section 8.4).
 \end{exercise}
 \begin{proof}
-fill
+Note that $T$ is self- adjoint, since for any $x, y \in \ell^2$, we have $\brackets{Tx, y} = \sum_i (x_i / i) \bar{y_i} = \brackets{x, Ty}$.
+Furthermore, we have that $\sup_{\norm{x} = 1} \brackets{Tx, x} = 1$ (choose $x = (1, 0, \dots)$ and $\inf_{\norm{x} = 1} \brackets{Tx, x} = 0$, (consider the sequence of sequences, where $x_n$ is given by $x_n = (0, \dots, 0, 1, 0, \dots)$, the 1 appearing in the $n$'th position).
+Thus, the spectrum of $T$ lies in $[0, 1]$, and furthermore, $0, 1 \in \sigma(T)$.
+Moreover, $0 \notin \sigma_p(T)$, if this were the case, $Tx = 0$ would have a nontrivial solution, which is not the case.
+Finally, 9.2-4 tells us that $\sigma_r(T)$ is empty.
+Putting everything together, we get that $0 \in \sigma_c(T)$.
 \end{proof} 
 
 \begin{exercise}{9}
@@ -62,7 +71,28 @@ If $\lambda_1 \geq \lambda_2 \geq \dots \geq \lambda_n$ are the eigenvalues of a
 Show that, furthermore, $\lambda_j = \max_{x \in Y_j, x \neq 0} q(x)$, for $j = 2, 3, \dots$, where $Y_j$ is the subspace of $\C^n$ consisting of all vectors that are orthogonal to the eigenvectors corresponding to $\lambda_1, \dots, \lambda_{j-1}$.
 \end{exercise}
 \begin{proof}
-fill
+We have 
+\begin{align*}
+    \brackets{Ax, x} 
+    =& \brackets{x, Ax}\\
+    =& x^T (\overline{Ax})\\ 
+    =& [x^T (\overline{A x})]^T \\
+    =& \bar{x}^T \bar{A}^T
+    = x^T A x,
+\end{align*}
+and
+\begin{align*}
+    \frac{\brackets{Ax, x}}{\brackets{x, x}}
+    = \frac{\brackets{Ax, x}}{\norm{x}^2}
+    = \brackets{Ax / \norm{x}^2, x / \norm{x}^2},
+\end{align*}
+so that taking the supremum (and infimum) over all $x \neq 0$ is equivalent to taking the supremum (and infimum) of $\brackets{Ax, x}$ over all $x$ with $\norm{x} = 1$.
+In other words, $M = \sup_{x \neq 0} q(x)$ and $m = \inf_{x \neq 0} q(x)$.
+Theorem 9.2-3 tells us that $m = \lambda_n$ and $M = \lambda_1$.
+
+Now let $x \in Y_j$.
+Then $\brackets{x, e_i} = 0$ for an eigenvector corresponding to $\lambda_i$.
+Since $Y_j$ is invariant under $A$, then the previous result implies that $\lambda_j = \sup_{x \in Y_j, x \neq 0} q(x)$.
 \end{proof} 
 
 \begin{exercise}{10}
@@ -72,10 +102,14 @@ this is part of a famous Theorem by Perron and Frobenius).
 \end{exercise}
 \begin{proof}
 Notice that a real symmetric square matrix is hermitian because it equals its conjugate transpose.
+Moreover, consider $x = (1, 0, \dots, 0)$.
+Then $\bar{x}^T A x = a_1 \geq 0$, so that $\lambda_j = \sup_{x \neq 0} \brackets{Ax, x} / \brackets{x, x} \geq a_i$, and thus $A$ has a positive real eigenvalue.
 \end{proof} 
 
-\begin{exercise}{Extra exercise}
-EXTRA: Let T be a self-adjoint compact operator on a separable Hilbert space, let |lambda1| >= |lambda2| >= ... be the nonzero eigenvalues of T with corresponding orthonormal eigenvectors (uk), then (uk) is an orthonormal basis of closure(Range(T)). If we let (vk) be a basis for the kernel of T, then (uk) Union (vk) is an orthonormal basis of H. Deduce then that we can find a basis of H consisting of eigenvectors, which is essentially a perfect reproduction of the finite dim spectral theorem! 
+\begin{exercise}{Extra exercise (Spectral Theorem for compact self-adjoint operators)}
+Let $T$ be a self-adjoint compact operator on a separable Hilbert space, let $\absoluteValue{\lambda_1} \geq \absoluteValue{\lambda_2} \geq \dots$ be the nonzero eigenvalues of $T$ with corresponding orthonormal eigenvectors $(u_k)$, then $(u_k)$ is an orthonormal basis of $\overline{\range(T)}$. 
+If we let $(v_k)$ be a basis for the kernel of $T$, then $(u_k) \cup (v_k)$ is an orthonormal basis of $H$. 
+Deduce then that we can find a basis of $H$ consisting of eigenvectors, which is essentially a perfect reproduction of the finite dimemsional spectral theorem.
 \end{exercise}
 \begin{proof}
 Process: assume that orthonormal eigenvectors (u1, ..., uk) has already be found, then we can find the next one by sup |<T(u), u>| where the sup runs over the orthogonal complement of span(u1,...,uk). Show this ends up with an orthonormal list of eigenvectors. 

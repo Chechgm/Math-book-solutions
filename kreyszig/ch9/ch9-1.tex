@@ -1,12 +1,5 @@
 \section{Spectral properties of bounded self-adjoint linear operators}
 
-1
-2 Callback to the finite spectral theorem! 
-4
-5 Recall from Axler that S = W * TW is equivalence of matrices. They are intuitively the same thing "up to a change of orthonormal basis". So naturally we wish self-adjointnes to be preserved
-6
-7 Extra: give an exact criterion for when such a diagonal operator is self-adjoint.
-8
 9 Notice that operators like this would be the analogue of diagonal matrices. So we're definitely not in Kansas anymore, not even "diagonal operators" would have eigenvalues! Gone is the nice spectral theorem we got in the finite-dim or compact case.
 10 This is a very famous result called the Hellinger-Toeplitz theorem. It is not a nice result, it actually shows that quantum mechanics is inherently very difficult. Self-adjointness is something we really do want in QM, but most QM operators tend not to be bounded (bounded operators actually are the experiments whose outcomes are a bounded set). So the only thing we can do is to take operators which are not everywhere defined! Because of this theorem, the entire chapter of Kreyszig on unbounded operators exists and is immensely important in physics! I recommend you to check out the wiki of Helling-Toeplitz for more information
 
@@ -67,7 +60,9 @@ Self-adjoint?
 Find $S: \ell^2 \to \ell^2$ such that $T = S^2$.
 \end{exercise}
 \begin{proof}
-
+$T$ is bounded, since $\norm{Tx} = (\sum \absoluteValue{x_i})^{1/2} = \norm{x}$ for all $x$.
+Furthermore, for $y \in \ell^2$, we have $\brackets{Tx, y} = \sum x_n y_{n+2} \neq \sum x_{n+2} y_n = \brackets{x, Ty}$, so that $T$ is not self-adjoint.
+The operator $S: \ell^2 \to \ell^2$ given by $S = (0, x_1, x_2, \dots)$ is such that $S^2 = T$.
 \end{proof} 
 
 \begin{exercise}{7}
@@ -76,14 +71,22 @@ Show that each $\lambda_j$ is an eigenvalue of $T$.
 Under what condition will $[a, b] \subseteq \sigma(T)$.
 \end{exercise}
 \begin{proof}
-fill
+For $\lambda_j$, consider $x = (0, \dots, 0, x_j, 0, \dots)$.
+We have $Tx = (0, \dots, 0, \lambda_j x_j, 0, \dots) = \lambda_j x$, so that $\lambda_j$ is an eigenvalue.
+For $[a, b]$ to be contained in the spectrum of $T$, we need $(\lambda_n)$ to be dense in $[a, b]$.
 \end{proof} 
 
 \begin{exercise}{8}
 Using Theorem 9.1-2, prove that the spectrum of the operator $T$ in exercise 7 is the closure of the set of eigenvalues.
 \end{exercise}
 \begin{proof}
-fill
+We will prove this by double containment.
+We have that the eigenvalues are in the spectrum and that the spectrum is closed, so that the closure of the eigenvalues is in the spectrum itself;
+that is $\overline{\set{\lambda_n}} \subseteq \sigma(T)$.
+We will prove the other direction by contrapositive.
+Thus, let $\mu$ be an element outside of the closure of the eigenvalues so that there exists a $\epsilon > 0$, such that $\absoluteValue{\mu - \lambda_i} > \epsilon$.
+But this means that $(Sx)_j = x_j/(\mu - \lambda_j)$ (the $j$'th element of the sequence defined by the map) is bounded and well defined for all $j$.
+Thus $\mu$ is in the resolvent, giving us the desired result.
 \end{proof} 
 
 \begin{exercise}{9}
@@ -91,13 +94,42 @@ From 2.2-7 and 3.1-5 we know that the Hilbert space $L^2 [0, 1]$ is the completi
 Show that $T: L^2 [0, 1] \to L^2 [0, 1]$ defined by $y(t) = T x(t) = t x(t)$ is a bounded self-adjoint linear operator without eigenvalues.
 \end{exercise}
 \begin{proof}
-fill
+$T$ is self-adjoint because 
+\begin{align*}
+    \brackets{Tx, y} 
+    = \int_0^1 t x(t) \overline{y(t)} dt 
+    = \int_0^1 x(t) \overline{t y(x)} dt 
+    = \brackets{x, Ty}.
+\end{align*}
+
+To see $T$ is bounded, note
+\begin{align*}
+    \norm{T x}^2
+    = \brackets{Tx, Tx}
+    = \int_0^1 t x(t) \overline{t x(t)} dt
+    = \int_0^1 t^2 \absoluteValue{x(t)}^2 dt
+    \leq \int_0^1 \absoluteValue{x(t)}^2 dt
+    = \norm{x}^2.
+\end{align*}
+
+Furthermore, from 7.3-4, we know $\sigma(T) \subset [0, 1]$, since $\norm{T} \leq 1$.
+Now consider $Tx - \lambda x = (t - \lambda) x(t) = 0$.
+This equality holds only whenever $x(t) = 0$ for all $t$, so that $\lambda$ is not an eigenvalue.
 \end{proof} 
 
-\begin{exercise}{10}
+\begin{exercise}{10 (Hoellinger-Topelitz)}
 It is interesting to note that a linear operator $T$ which is defined on all of a complex Hilbert space $H$ and satisfies $\brackets{Tx, y} = \brackets{x, Ty}$ for all $x, y \in H$ must be bounded (so that our assumption of boundedness at the beginning of the text would not be necessary).
 Prove this fact.
 \end{exercise}
 \begin{proof}
-fill
+Let $H \times H$ be the direct product of $H$ with itself with the norm being the max between the norm in $H$ for the two arguments.
+From the closed graph Theorem (4.13-2), if suffices to show that $G_T = \set{(x, Tx) \in H \times H}$, the graph of $T$, is closed.
+
+Let $((x_n, T x_n))$ be a sequence in $G_T$ converging to $(x, y) \in H \times H$.
+We have $x_n \to x$ and $Tx_n \to y$ (sketch: suppose this is not the case and notice we cannot make the max between the norms arbitrarily small).
+We prove that $Tx = y$.
+Let $z \in H$, we have $\brackets{Tx_n, z} = \brackets{x_n, Tz}$, we have that $\brackets{y, z} = \brackets{x, Tz}$ as $n \to \infty$.
+Furthermore, we have $\brackets{x, Tz} = \brackets{Tx, z}$, so that $\brackets{Tx - y, z} = 0$ for all $z$.
+Hence $Tx = y$ (3.8-2);
+that is, $G_T$ is closed and by the closed graph Theorem, $T$ is bounded.
 \end{proof} 
