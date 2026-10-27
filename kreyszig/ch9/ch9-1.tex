@@ -1,7 +1,5 @@
 \section{Spectral properties of bounded self-adjoint linear operators}
 
-9 Notice that operators like this would be the analogue of diagonal matrices. So we're definitely not in Kansas anymore, not even "diagonal operators" would have eigenvalues! Gone is the nice spectral theorem we got in the finite-dim or compact case.
-10 This is a very famous result called the Hellinger-Toeplitz theorem. It is not a nice result, it actually shows that quantum mechanics is inherently very difficult. Self-adjointness is something we really do want in QM, but most QM operators tend not to be bounded (bounded operators actually are the experiments whose outcomes are a bounded set). So the only thing we can do is to take operators which are not everywhere defined! Because of this theorem, the entire chapter of Kreyszig on unbounded operators exists and is immensely important in physics! I recommend you to check out the wiki of Helling-Toeplitz for more information
 
 \begin{exercise}{1}
 It was mentioned in the text that for all self-adjoint linear operator $T$ the inner product $\brackets{Tx, x}$ is real.
@@ -112,9 +110,9 @@ To see $T$ is bounded, note
     = \norm{x}^2.
 \end{align*}
 
-Furthermore, from 7.3-4, we know $\sigma(T) \subset [0, 1]$, since $\norm{T} \leq 1$.
+Furthermore, from 7.3-4, we know $\sigma(T) \subseteq [0, 1]$, since $\norm{T} \leq 1$.
 Now consider $Tx - \lambda x = (t - \lambda) x(t) = 0$.
-This equality holds only whenever $x(t) = 0$ for all $t$, so that $\lambda$ is not an eigenvalue.
+This equality holds only whenever $x(t) = 0$ (we would need a function $x(t) = 0$ everywhere but whenever $t = \lambda$, which is equivalent to the zero function in $L^2$) for all $t$, so that $\lambda$ is not an eigenvalue.
 \end{proof} 
 
 \begin{exercise}{10 (Hoellinger-Topelitz)}

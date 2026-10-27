@@ -23,7 +23,9 @@ Let $T: L^2[0, 1] \to L^2[0, 1]$ be defined by $(Tx)(t) = t x(t)$.
 Show that $T$ is self-adjoint and positive and find its positive square root.
 \end{exercise}
 \begin{proof}
-fill
+In exercise 9.1.9 we proved that $T$ is self-adjoint.
+$T$ is positive since $\brackets{Tx, x} = \int t x(t) \overline{x(t)} dt = \int t x^2(t) dt \leq 0$.
+The square root of $T$ is $Sx = t^{1/2} x(t)$, since $S(Sx) = t^{1/2} (t^{1/2} x(t)) = Tx$.
 \end{proof} 
 
 \begin{exercise}{3}
@@ -34,14 +36,18 @@ Positive?
 Find a square root of $T$.
 \end{exercise}
 \begin{proof}
-fill
+$T$ is bounded since $\norm{Tx}^2 = \sum_{i=3}x_i^2 \leq \norm{x}^2$.
+$T$ is self-adjoint, since $\brackets{Tx, y} = \sum_{i=3}x_i \overline{y_i} = \brackets{x, Ty}$.
+$T$ is positive, to see this, note that $\brackets{Tx, x} = \sum_{i=3}x_i \overline{x_i} = \sum_{i=3} x_i^2 \leq 0$.
+$T$ is a square root of itself.
 \end{proof} 
 
 \begin{exercise}{4}
 Show that for the square root in Theorem 9.4-2 we have $\norm{T^{1/2}} = \norm{T}^{1/2}$.
 \end{exercise}
 \begin{proof}
-fill
+We know that $\norm{T^2} = \norm{T}^2$ (exercise 3.10.15, and the fact that a self-adjoint operator is normal), so that $(\norm{T^{1/2}})^2  = \norm{(T^{-1/2})^2} = \norm{T}$.
+Taking square roots on both sides the equality gives us the desired result.
 \end{proof} 
 
 \begin{exercise}{5}
@@ -49,14 +55,28 @@ Let $T: H \to H$ be a bounded positive self-adjoint linear operator on a complex
 Using the positive square root of $T$, show that for all $x, y \in H$, $\absoluteValue{\brackets{Tx, y}} \leq \brackets{Tx, x}^{1/2} \brackets{Ty, y}^{1/2}$.
 \end{exercise}
 \begin{proof}
-fill
+We have $\brackets{Tx, y} = \brackets{T^{1/2}x, T^{1/2}y}$.
+By the Schwarz inequality, and the fact that $T^{1/2}$ is itself self-adjoint,
+\begin{align*}
+    \absoluteValue{\brackets{Tx, y}}
+    \leq& \norm{T^{1/2}x} \norm{T^{1/2}y}\\
+    =& \brackets{T^{1/2}x, T^{1/2}x}^{1/2} \brackets{T^{1/2}y, T^{1/2}y}^{1/2}\\
+    =& \brackets{Tx, x}^{1/2} \brackets{Ty, y}^{1/2}
+\end{align*}
 \end{proof} 
 
 \begin{exercise}{7}
 Show that in exercise 5, for all $x \in H$, $\norm{Tx} \leq \norm{T}^{1/2} \brackets{Tx, x}^{1/2}$, so that $\brackets{Tx, x} = 0$ if and only if $Tx = 0$.
 \end{exercise}
 \begin{proof}
-fill
+We have 
+\begin{align*}
+    \norm{Tx}
+    =& \norm{T^{1/2} T^{1/2} x}\\
+    \leq& \norm{T^{1/2}} \norm{T^{1/2}x}\\
+    =& \norm{T^{1/2}} \brackets{T^{1/2}x, T^{1/2}x}^{1/2}\\
+    =& \norm{T^{1/2}} \brackets{Tx, x}^{1/2}
+\end{align*}
 \end{proof} 
 
 \begin{exercise}{8}
@@ -64,7 +84,13 @@ Let $B$ be a nonsingular $n$-rowed real square matrix and $C = B B^T$.
 Show that $C$ has a nonsingular positive square root $A$.
 \end{exercise}
 \begin{proof}
-fill
+We have $\brackets{B B^T x, y} = \brackets{B^T x, B^T y} = \brackets{x, B B^T y}$, where we used the fact, that real matrices $B^\ast = B^T$.
+Thus, $B B^T$ is self-adjoint.
+
+Furthermore, $\brackets{B B^T x, x} = \brackets{B^T x, B^T x} = \norm{B^T x}^2 \leq 0$, so that $B B^T$ is positive.
+
+Since $B B^T$ is defined on a finite dimensional space, then it is bounded (2.7-8).
+Thus, we have all the required conditions for 9.4-2 to apply so that $C = B B^T$ has a positive square root $A$.
 \end{proof} 
 
 \begin{exercise}{9}

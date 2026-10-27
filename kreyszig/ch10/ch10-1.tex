@@ -1,134 +1,160 @@
 \section{Unbounded linear operators and their Hilbert-adjoint operators}
 
-\begin{exercise}{x}
-fill
+
+\begin{exercise}{1}
+Prove that the Hilbert-adjoint operator $T^\ast$ of a linear operator $T$ is linear.
 \end{exercise}
 \begin{proof}
-fill
+Let $v, w \in \cD(T^\ast)$ there are $v^\ast, w^\ast \in H$ with $v^\ast = T^\ast v$, $w^\ast = T^\ast w$, $\brackets{Tx, v} = \brackets{x, T^\ast v}$ and $\brackets{Tx, w} = \brackets{x, T^\ast w}$, for all $x \in \cD(T)$.
+Then 
+\begin{align*}
+    \brackets{x, T^\ast (v + w)} 
+    =& \brackets{Tx, v + w}\\
+    =& \brackets{Tx, v} + \brackets{Tx, w}\\
+    =& \brackets{x, v^\ast} + \brackets{x, w^\ast}
+    = \brackets{x, v^\ast + w^\ast},
+\end{align*}
+so that $(v + w)^\ast = T^\ast (v + w)$, again for all $x \in \cD(T)$.
+We can use a similar technique to show that for a scalar $\alpha$, $\alpha v^\ast = T^\ast (\alpha v)$, so that $T^\ast$ is linear.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{2}
+Show that for a bounded linear operator, our present definition of the Hilbert-adjoint operator yields definition 3.9-1 with $H_1 = H_2 = H$.
 \end{exercise}
 \begin{proof}
-fill
+Since $T$ is bounded and $\cD(T)$ is dense in $H$, we can extend it to a bounded linear operator defined in all $H$ (Theorem 2.7-11).
+Then Theorem 3.9-2 guarantees the existence of the Hilbert-adjoint operator $T^\ast$, which is precisely defined as $T^\ast$ so that $\brackets{Tx, y} = \brackets{x, T^\ast y}$, for all $x \in H$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{3}
+Show that $(T_1 T_2) T_3 = T_1 (T_2 T_3)$ continues to holds for operators which may be unbounded.
 \end{exercise}
 \begin{proof}
-fill
+We will prove containment in one direction, the other containment will follow using a similar strategy.
+Suppose $x \in \cD(T_3)$, so that $T_3(x) \in \cD(T_1 T_2)$.
+Hence $x \in \cD(T_3)$, $T_3(x) \in \cD(T_2)$, and $T_2 (T_3 (x)) \in \cD(T_1)$.
+But this implies that $x \in \cD(T_2 T_3)$ and that $(T_2 T_3)x \in \cD(T_1)$;
+that is, $x \in T_1(T_2 T_3)$, as required.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{4}
+Show that $(T_1 + T_2) T_3 = T_1 T_3 + T_2 T_3$ and $T_1 (T_2 + T_3) \supseteq T_1 T_2 + T_1 T_3$.
+Give a condition sufficient for equality in the second formula.
 \end{exercise}
 \begin{proof}
-fill
+We will prove the equality using double containment.
+For the $\subseteq$ direction, suppose $x \in \cD(T_3)$ and $T_3 (x) \in \cD(T_1 + T_2) = \cD(T_1) \cap \cD(T_2)$.
+This means $T_3 (x) \in \cD(T_1)$ and $T_3 (x) \in \cD(T_2)$, so that $x \in \cD(T_1 T_3) \cap \cD(T_2 T_3)$ which is precisely $\cD(T_1 T_3 + T_2 T_3)$.
+
+For the $\supseteq$ direction, suppose $x \in \cD(T_1 T_3 + T_2 T_3) = \cD(T_1 T_3) \cap \cD(T_2 T_3)$, so that $x \in \cD(T_3)$ and $T_3 (x) \in \cD(T_1)$ and at the same time $x \in \cD(T_3)$ and $T_3 (x) \in \cD(T_2)$.
+Putting these together, $T_3 (x) \in \cD(T_1) \cap \cD(T_2) = \cD(T_1 + T_2)$, so that $x \in \cD((T_1 + T_2) T_3)$.
+
+For the inequality, let $x \in \cD(T_1 T_2 + T_1 T_3) = \cD(T_1 T_2) \cap \cD(T_1 T_3)$.
+This means that $x \in \cD(T_2)$ and $T_2 (x) \in \cD(T_1)$ and at the same time $x \in \cD(T_3)$ and $T_3 (x) \in \cD(T_1)$.
+But this means that $x \in \cD(T_2) \cap \cD(T_3) = \cD(T_2 + T_3)$ and that $(T_2 + T_3)x \in \cD(T_1)$, so that $x \in \cD(T_1 (T_2 + T_3))$.
+
+Let's try proving it in the other direction.
+Thus, let $x \in \cD(T_1 (T_2 + T_3))$, so that $x \in \cD(T_2 + T_3) = \cD(T_2) \cap \cD(T_3)$ and $(T_2 + T_3)x \in \cD(T_1)$.
+However, it is not guaranteed that both $T_2 (x)$ and $T_3 (x)$ will be individually in $\cD(T_1)$.
+Thus, one condition that we can establish to guarantee that, is $\cR(T_2) \subseteq \cD(T_1)$ and $\cR(T_3) \subseteq \cD(T_1)$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{5}
+Show that $(\alpha T)^\ast = \bar{\alpha} T^\ast$ and $(S + T)^\ast \supseteq S^\ast + T^\ast$.
+What condition must we require for the second of these relations to be meaningful?
 \end{exercise}
 \begin{proof}
-fill
+We will prove the first statement by double containment.
+First, let $y \in \cD((\alpha T)^\ast)$, so that for all $x \in \cD(\alpha T)$ we have that $\brackets{(\alpha T) x, y} = \brackets{x, (\alpha T)^\ast y}$, from the left hand side and properties of the inner product, we have $\alpha \brackets{T x, y} = \alpha \brackets{x, T^\ast y} = \brackets{x, \bar{\alpha} T^\ast y}$, so that $(\alpha T)^\ast \subseteq \bar{\alpha} T^\ast$ (of course if $x \in \cD(\alpha T)$, then $x \in \cD(T)$, as otherwise the lienarity of $T$ would not be properly defined).
+
+Conversely, suppose $y \in \cD(\bar{\alpha} T^\ast)$, so that for all $x \in \cD(\alpha T)$ we have $\brackets{(\alpha T) x, y} = \brackets{x, (\bar{\alpha} T^\ast) y}$.
+Starting from the right hand side and using the properties of the inner product, we have 
+\begin{align*}
+    \brackets{x, (\bar{\alpha} T^\ast) y} 
+    = \alpha \brackets{x, T^\ast y} 
+    = \alpha \brackets{Tx, y}
+    = \brackets{(\alpha T)x, y}
+    = \brackets{x, (\alpha T)^\ast y},
+\end{align*}
+as required.
+
+For the second statement, let $y \in S^\ast + T^\ast$, so that for all $x \in \cD(S) \cap \cD(T)$, we have $\brackets{(T + S) x, y} = \brackets{x, (T^\ast + S^\ast)y}$.
+By the additivity of the inner product on both terms, we have 
+\begin{align*}
+    \brackets{x, T^\ast y} + \brackets{x, S^\ast y} 
+    = \brackets{T x, y} + \brackets{Sx, y} 
+    = \brackets{(T + S)x, y},
+\end{align*}
+so that $y \in (T + S)^\ast$.
+For this statement to make sense, we need $\cD(T + S)$ to be dense in $H$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{6}
+Show that if $S$ in exercise 5 is defined on all $H$ and bounded, then $(S + T)^\ast = S^\ast + T^\ast$.
 \end{exercise}
 \begin{proof}
-fill
+In exercise 5 we have proved the containment in one direction.
+For the other direction, let $y \in (S + T)^\ast$, so that there exists $y^\ast \in H$ with $y^\ast = (S + T)^\ast y$ and $\brackets{(S + T)x, y} = \brackets{x, (S + T)^\ast y}$ for all $x \in \cD(S + T)$.
+Expanding the left hand side, we obtain
+\begin{align*}
+    \brackets{(S + T)x, y}
+    = \brackets{Sx, y} + \brackets{Tx, y}
+    = \brackets{x, S^\ast y} + \brackets{Tx, y},
+\end{align*}
+where the last equality follows from the fact that $S$ is defined on all $H$, so that it has an adjoint. 
+We now have
+\begin{align*}
+    \brackets{Tx, y}
+    = \brackets{x, (S + T)^\ast y} - \brackets{x, S^\ast y}
+    = \brackets{x, [(S + T)^\ast - S^\ast] y},
+\end{align*}
+meaning that for all $x \in \cD(T)$, there exists a $y^\ast \in H$, namely $[(S + T)^\ast - S^\ast] y$, such that $\brackets{Tx, y} = \brackets{x, y^\ast}$.
+Thus, $(S + T)^\ast y = S^\ast y+ T^\ast y$, completing the proof.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{7}
+Show that a bounded linear operator $T: \cD(T) \to H$ whose domain is not dense in $H$ always has a bounded linear extension to $H$ whose norm equals $\norm{T}$.
 \end{exercise}
 \begin{proof}
-fill
+We can extend $T$ to a linear operator in $\overline{\cD(T)}$ where the new operator will have the same norm as $T$.
+Note (almost trivially) that $\overline{\cD(T)}$ is a closed set in $H$, so that $H$ can be written as $H = \overline{\cD(T)} \oplus \overline{\cD(T)}^\perp$.
+Furthermore, there is a total orthonormal set of $H$ (4.1-8).
+Putting all of these together, we can define $T x = 0$ for all the vectors in the total orthonormal set that spans $\overline{\cD(T)}^\perp$, this is certainly a linear extension, and moreover, the norm of the operator defined on all of $H$ is still the norm of $T$, as required.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{8}
+Let $T: \cD(T) \to \ell^2$ be defined by $y = (y_n) = T x$, where $y_n = n x_n$, $x = (x_n)$ and $\cD(T) \subseteq \ell^2$ consists of all $x = (x_n)$ with only finitely many nonzero terms $x_n$.
+\begin{enumerate}
+    \item Show that $T$ is unbounded.
+    \item Does $T$ have proper linear extensions?
+    \item Can $T$ be linearly extended to the whole space $\ell^2$?
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item Let $K$ be a potential bound of $T$, so that we would have that $\sup_{\norm{x}=1} \norm{Tx} \leq K$.
+    Let $N > K$, and define $x \in \cD(T)$ to be 1 in the $N$'th position and 0 otherwise, so that $\norm{x} = 1$.
+    We have that $\norm{Tx} = N > K$, contradicting $K$ as a bound for $T$.
+    \item Yes, we can extend $T$ to a subspace of $\ell^2$ with $(x_n)$ having possibly finitely many zeros, as long as the sequence decreases at a faster rate than $1/n^2$ after certain $N \in \N$.
+    \item No, let $x = (x_n) \in \ell^2$ with $x_n = 1/n$. 
+    If we could extend $T$ to all $\ell^2$, then that would imply that $Tx$, which is the sequence of 1 belongs to $\ell^2$, which is not the case.
+\end{enumerate}
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{9}
+If a linear operator $T$ is defined everywhere on a complex Hilbert space $H$, show that its Hilbert-adjoint operator $T^\ast$ is bounded.
 \end{exercise}
 \begin{proof}
-fill
+The Hellinger-Toeplitz Theorem (10.1-1) tells us that if $T$ is defined everywhere on $H$, then it is bounded.
+Furthermore, if $T^\ast$ exists, then it is unique and has the same norm as $T$ (3.9-2).
+Therefore, $T^\ast$ is bounded, since $T$ is also bounded, completing the proof.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{10}
+Let $S$ and $T$ be linear operators which are defined on all of $H$ and satisfy $\brackets{Ty, x} = \brackets{y, Sx}$ for all $x, y \in H$.
+Show that then $T$ is bounded and $S$ is its Hilbert-adjoint operator.
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
+Note that if $T$ is defined on all of $H$, then its Hilbert-adjoint operator exists and is defined as the operator so that for all $x, y \in H$, it holds that $\brackets{Tx, y} = \brackets{x, T^\ast y}$ (3.9-1).
+Since this operator is unique (3.9-2) it means that $S = T^\ast$, as required.
 \end{proof} 

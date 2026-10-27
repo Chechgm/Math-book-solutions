@@ -1,0 +1,265 @@
+\section{Categories}
+
+
+\begin{exercise}{1 (Micro)}
+Prove that the \Rel and \Matrix categories (examples 1.4.4) are indeed categories.
+\end{exercise}
+\begin{proof}
+(\Rel)
+The objects of \Rel are sets and the arrows are binary relations.
+That is, an arrow $f: A \to B$ is a subset $f \subseteq A \times B$.
+The identity arrow on $A$ is the identity relation $1_A = \set{(a, a) \in A \times A: a \in A} \subseteq A \times A$.
+Given $R \subseteq A \times B$ and $S \subseteq B \times C$ we define composition $S \circ R$ by $(a, c) \in S \circ R$ if and only there exists a $b$ with $(a, b) \in R$ and $(b, c) \in S$.
+
+To see this is indeed a category, we need to prove associativity and the unit property.
+To see associativity holds, consider $T \subseteq C \times D$.
+We have $(a, d) \in T \circ (S \circ R)$ if and only if there exists $c$ with $(a, c) \in (S \circ R)$ (which means there exists $b$ with $(a,b) \in R$ and $(b, c) \in S$) and $(c, d) \in T$.
+Together, this means that $(a, d) \in T \circ (S \circ R)$ if there exists $b$ and $c$ with $(a, b) \in R$, $(b, c) \in S$ and $(c, d) \in T$.
+We can analyse $(T \circ S) \circ R$ to arrive to at the same result, proving that the operation is associative.
+
+To see the unit property holds, we have that $(a, b) \in id_A \circ f$ if and only if there exists an $a' \in A$, such that $(a, a') \in A \times A$, and $(a', b) \in A \times B$, $a$ itself is such element.
+Thus, $id_A \circ f = f$, since $id_A \circ f$ contains exactly the elements of $f$.
+We can prove in a similar way, mutatis mutandis, that $f \circ id_B = f$, finishing the proof that \Rel is a category.
+
+(\Matrix)
+In \Matrix, we defined finite sets as objects and and arrow $F: A \to B$ is a rectangular matrix $F = (n_{ij})_{i, j \in \N}$ of natural numbers with $i = \absoluteValue{A}$ and $j = \absoluteValue{B}$, where $\absoluteValue{\cdot}$ denotes the number of elements in a set.
+Composition of arrows is matrix multiplication and the identities in this category are defined to be the usual identity matrices.
+
+\Matrix is a category by the usual associativity of matrix multiplication and the unit property follows from the usual multiplication between a matrix and the identity matrix.
+\end{proof} 
+
+\begin{exercise}{2 (Micro)}
+Show that if a category has at most one arrow between any two objects, it is actually coming from a preorder.
+\end{exercise}
+\begin{proof}
+Let $\cC$ be a category with at most one arrow between any two objects.
+Define an order $\leq$ on $\cC$ by letting $x \leq y$ if the arrow $f: x \to y$ exists.
+Since for any object $a \in \cC$ we have $id_a: a \to a$, then $a \leq a$ so that the order is reflexive.
+Furthermore, let $a, b, c \in \C$ and $f: a \to b$ and $g: b \to c$, so that $a \leq b$ and $b \leq c$.
+By the composition of arrows, we have that $h = g \circ f: a \to c$, so that $a \leq c$ and the order is transitive.
+Thus, $\leq$ is indeed a preorder on $\cC$.
+\end{proof} 
+
+\begin{exercise}{3 (Micro, Topology, using Wilansky)}
+Let $(X, d)$ be a metric space, then the notion of an open set has already been defined as those sets $U$ such that for any point $p \in U$, there is some radius $r > 0$ such that the ball $B(p,r)$ is a subset of $U$.
+Show that this collection of open sets establishes a topology on $X$.
+\end{exercise}
+\begin{proof}
+It holds trivially that both $\emptyset$ and $X$ are open sets, since one does not contain points (so that it doesn't need to hold any ball around any point), and the other contains all points (so it contains all balls around every point).
+
+Now take a collection of open sets $U_{i \in \cI}$ and let $x \in \bigcup U_i$.
+Since $x \in U_i$ for some $i$, then there is an $r > 0$ such that $B(x, r) \subseteq U$, so that $B(x, r) \subseteq \bigcup U_i$, and $\bigcup U_i$ is open.
+
+Finally, consider $U_i \cap U_j$ for open sets $U_i$ and $U_j$.
+Let $x \in U_i \cap U_j$.
+Since $x \in U_i$, then there exists $r_i > 0$ such that $B(x, r_i) \subseteq U_i$.
+Likewise, there exists $r_j > 0$ such that $B(x, r_j \subseteq U_j$.
+Let $r = \min \set{r_i, r_j}$.
+We have that $B(x, r) \subseteq U_i \cap U_j$, this can be analysed by cases: 
+for example, if $r_i > r_j = r$, then $B(x, r_j) \subseteq U_i$, since $U_i$ contains all elements within a radius $r_i$ from $x$, which includes all elements within a radius of $r_j$ from $x$.
+Thus $U_i \cap U_j$ is open and thus the defined open sets form a topology.
+\end{proof} 
+
+\begin{exercise}{4 (Micro, Topology, using Wilansky)}
+Prove that $x \in \bar{S}$ if and only if every neighborhood of $x$ meets $S$.
+\end{exercise}
+\begin{proof}
+($\Rightarrow$)
+We will prove this by contrapositive.
+Thus, suppose there exists a neighborhood, say $N$, of $x$ such that $S \cap N = \emptyset$.
+This means there is an open set $G$ with $x \in G \subseteq N$ and $S \cap G = \emptyset$.
+This means there is a closed set $G^c$ containing $S$ of which $x$ is not an element.
+Therefore, $x \notin \bar{S} = \bigcap F_i$, since $F_i = G^c$ for some $i$.
+
+($\Leftarrow$)
+Suppose every neighborhood of $x$ meets $S$ at point other than $x$.
+Then $x$ is an accumulation point of $S$.
+By Theorem 2.5.2, any closed set that contains $S$ must contain $x$, so that $\bar{S} = \bigcap F_i$, for a family of closed sets $F_i$ with $S \subseteq F_i$, for all $i \in \cI$. 
+Thus $x \in \bar{S}$.
+\end{proof} 
+
+\begin{exercise}{5 Micro}
+\begin{enumerate}
+    \item Show that specialisation is a preorder.
+    \item Show that a space is a $T_0$ space if and only if the specialisation is a partial order.
+    \item Show that the order in a $T_1$ space is trivial.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+\begin{enumerate}
+    \item Let $X$ be a topological space. 
+    We can order the points in $X$ by specialisation by setting $x \leq y$ if and only if $x \in U$ implies $y \in U$.
+    To prove $\leq$ is a preorder we need to prove it is reflexive and transitive.
+    Clearly $\leq$ is reflexive, since $x \in U$ implies $x \in U$, so that $x \leq x$.
+    Furthermore, let $x \leq y$ and $y \leq z$, so that $x \in U$ implies $y \in U$ and $y \in U$ implies $z \in U$, both of this statements at the same time result in $x \in U$ implies $z \in U$ so that $x \leq z$, as required.
+    \item ($\Rightarrow$)
+    Suppose $X$ is $T_0$, so that for each pair of points $x \neq y$, there is either a neighborhood of $x$ not containing $y$ or a neighborhood of $y$ not containing $x$.
+    We already proved that specialisation is a preorder, and since we can order any topological space by specialisation, it certainly holds for a $T_0$ space.
+    Thus, we need to prove that the order entailed by specialisation is symmetric.
+    Thus, suppose $x \leq y$ so that $x \in U$ implies $y \in U$, and $y \leq x$ so that $y \in U$ implies $x \in U$.
+    Since $X$ is $T_0$ this can only hold if $x = y$, since otherwise, there should exist an open set such that $x \in U$ but $y \notin U$, or $y \in U$ but $x \notin U$.
+    Thus, $\leq$ is a partial order.
+
+    ($\Leftarrow$)
+    Suppose the order entailed by specialisation is a partial order, so that $\leq$ is reflexive, symmetric and transitive.
+    Let $x \neq y$, then either we cannot compare $x$ and $y$, in which case there exists an open set for which $x \in U$ but $y \notin U$, or $y \in U$ and $x \notin U$, both cases resulting in $X$ being $T_0$.
+    Or, if we can compare $x$ and $y$, say $x \leq y$ (but not $y \leq x$), then $x \in U$ implies $y \in U$, but since the implication does not hold in the other direction, then there must be an open set so that $y \in U$ but $x \notin U$, in which case $X$ is $T_0$.
+    \item If $X$ is $T_1$, then for every $x \neq y$ there is a neighborhood of $x$ not containing $y$, so that $x \in U$ does not imply $y \in U$, so that $x \leq y$ does not hold.
+    Inverting the role of $x$ and $y$, we see that no two elements in $X$ can be compared, giving us a trivial order.
+\end{enumerate}
+\end{proof} 
+
+\begin{exercise}{6 Micro}
+\begin{enumerate}
+    \item Show that finite topological spaces and finite preordered sets are ``the same thing''. 
+    That is: 
+    given a finite preordered set, show there is a finite topological space whose specialization preorder is that finite preordered set.
+    \item Under this, show that continuous mappings between finite topological spaces are the same thing as monotone mappings between preordered set.
+    \item Write the above two points in functorial language.
+    \item This actually works for a great deal more spaces that finite spaces, characterize exactly those spaces which are the same as preordered sets.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+\begin{enumerate}
+    \item Let $X$ be a finite preordered set.
+    We define a subset $U \subseteq X$ to be open, if whenever $x \leq y$ and $x \in U$, then $y \in U$.
+
+    We will now prove that the open sets form a topology.
+    First, both $X$ and $\emptyset$ are both trivially open sets.
+    
+    Second, take a (finite) collection of open sets $U_i$, we want to prove $\bigcup U_i$ is still in the topology. 
+    To see this is the case, we need to confirm that the union of open sets respect the order relations in the preordered set;
+    that is, if $x \leq y$ and $x \in \bigcup U_i$, then $y \in \bigcup U_i$.
+    This follows directly by the fact that if $x \in \bigcup U_i$, then $x \in U_i$ and by they way we constructed the open sets, then $y \in U_i \subseteq \bigcup U_i$.
+    
+    Finally, we want to prove that if $U_i$ and $U_j$ are open sets, then so is $U_i \cap U_j$.
+    As above, this means we want to verify that if $x \leq y$ and $x \in U_i \cap U_j$, then $y \in U_i \cap U_j$. 
+    This is easy to see, as if $x \in U_i \cap U_j$, then $x \in U_i$ and $x \in U_j$ implying that $y \in U_i$ and $y \in U_j$, which results in $y \in U_i \cap U_j$, completing the proof.
+    \item Continuous mappings between topological spaces are mappings with the property that the preimage of an open set is an open set.
+    Likewise, mappings between preordered sets are maps that preserve the relation between the elements of the set.
+
+    Let $f: X \to Y$ be a continuous function between topological spaces, so that if $U$ is open in $Y$, then $f^{-1}(U)$ is open in $X$. 
+    We have identified $X$ and $Y$ with their respective preordered sets, so that if $x 
+    \leq y$ in $Y$, and $x \in U$, then $y \in U$, which implies that if $f^{-1}(x) \in f^{-1}(U)$, then $f^{-1}(y) \in f^{-1}(U)$, that is $f^{-1}(x) \leq f^{-1}(y)$ in $X$, which means precisely that $f$ preserves the order relation between the sets.
+    \item In functorial language, $F: \Top \to \Preorder$ (here understood as finite ones), with $F((X, \TTT)) = (X, \leq)$, where $\TTT$ is the topology constructed in the first numeral, and $\leq$ the ordering by specialisation.
+    Moreover, $F(f: (X, \TTT) \to (Y, \SSS)) = f': (X, \leq) \to (Y, \leq')$, as in the second numeral.
+    \item The requirement for a space to be identified with a preorder is that the space can be organised into a directed graph;
+    that is, we could potentially (but not necessarily) draw an arrow between any two elements of the space).
+\end{enumerate}
+\end{proof} 
+
+\begin{exercise}{3}
+\begin{enumerate}
+    \item Show that in \Set, the isomorphisms are exactly the bijections.
+    \item Show that in \Monoid, the isomorphisms are exactly the bijective homomorphisms.
+    \item Show that in \Poset, the isomorphisms are not the same as the bijective homomorphisms.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+The first two follow by the usual set and abstract algebraic arguments.
+\end{proof} 
+
+\begin{exercise}{x}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof} 
+
+\begin{exercise}{x}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof} 
+
+\begin{exercise}{x}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof} 
+
+\begin{exercise}{x}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof} 
+
+\begin{exercise}{x}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof} 
+
+\begin{exercise}{x}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof} 
+
+\begin{exercise}{x}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof} 
+
+\begin{exercise}{x}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof} 
+
+\begin{exercise}{x}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof} 
+
+\begin{exercise}{x}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof} 
+
+\begin{exercise}{x}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof} 
+
+\begin{exercise}{x}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof} 
+
+\begin{exercise}{x}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof} 
+
+\begin{exercise}{x}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof} 
+
+\begin{exercise}{x}
+fill
+\end{exercise}
+\begin{proof}
+fill
+\end{proof} 

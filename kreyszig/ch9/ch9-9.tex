@@ -1,6 +1,5 @@
-\section{fill}
+\section{Spectral representation of bounded self-adjoint linear operators}
 
-Kreyszig 9.9 Spectral Representation of Bounded Self-Adjoint Linear Operators
 1 First some easy examples
 2
 3
@@ -13,70 +12,117 @@ Kreyszig 9.9 Spectral Representation of Bounded Self-Adjoint Linear Operators
 10
 
 \begin{exercise}{1}
-fill
+Verify $T = \int_{m-0}^M \lambda d E_\lambda$ for the zero operator $T = 0: H \to H$.
 \end{exercise}
 \begin{proof}
-fill
+We have
+\begin{align*}
+    \int_{0 - 0}^0 \lambda d E_\lambda 
+    = 0 E_0 + 0 E_{0 - 0} = 0 I
+\end{align*}
 \end{proof} 
 
 \begin{exercise}{2}
-fill
+Consider real numbers $\lambda_1 < \lambda_2 < \dots < \lambda_n$ and projections $P_1, \dots, P_n$ of a Hilbert space $H$ onto $n$ pairwise orthogonal subspaces of $H$.
+Assuming that $P_1 + \dots + P_n = I$, show that $E_\lambda = \sum_{\lambda_k \leq \lambda} P_k$ defines a spectral family and list some of the properties of the corresponding operator $T = \int_{-\infty}^\infty \lambda d E_\lambda$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{3}
-fill
+Verify $T = \int_{m-0}^M \lambda d E_\lambda$ if $T = I: H \to H$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{4}
-fill
+If an operator $T: \R^3 \to \R^3$ is represented, with respect to an orthonormal basis, by a matrix
+\begin{align*}
+    \begin{bmatrix}
+        0 & 1 & 0\\
+        1 & 0 & 0\\
+        0 & 0 & 1
+    \end{bmatrix},
+\end{align*}
+what is the corresponding spectral family?
+Using the result, verify $T = \int_{m-0}^M \lambda dE_\lambda$ for this operator.
 \end{exercise}
 \begin{proof}
-fill
+The eigenvalues of $T$ are 1 and $-1$.
+We will compute $B_\lambda$, $T_\lambda^+$ and $\cN(T_\lambda^+)$.
+First, 
+\begin{align*}
+    B_1 =
+    \begin{bmatrix}
+        2 & -2 & 0\\
+        -2 & 2 & 0\\
+        0 & 0 & 0
+    \end{bmatrix}^{1/2}
+    =
+    \begin{bmatrix}
+        1 & -1 & 0\\
+        -1 & 1 & 0\\
+        0 & 0 & 0
+    \end{bmatrix},
+\end{align*}
+which we can verified with $\brackets{Tx, x}$ with a generic $x \in \R^3$.
+Thus, $T_1^+ = \frac{1}{2}[B_1 + T_1] = 0$ and $\cN(T^+_1) = \R^3$.
 \end{proof} 
 
 \begin{exercise}{5}
-fill
+What spectral family $(E_k)$ corresponds to an $n$-rowed Hermitian matrix?
+Verify $T = \int_{m-0}^M \lambda dE_\lambda$ for this case.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{6}
-fill
+If we make the additional assumption that the self-adjoint operator $T$ is compact, show that $T = \int_{m-0}^M \lambda dE_\lambda$ takes the form of an infinite series or a finite sum.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{7}
-fill
+Consider the multiplication operator $T: L^2[0, 1] \to L^2[0,1]$ defined by $y(t) = T x(t) = t x(t)$.
+Conclude from exercise 9.1.9 and Theorem 9.2-4 that $\sigma(T) = \sigma_c(T) = [0, 1]$. 
+Show that the corresponding spectral family is defined by
+\begin{align*}
+    E_\lambda x = 
+    \begin{cases}
+        0   &\text{ if } \lambda < 0\\
+        v_x &\text{ if } 0 \leq \lambda \geq 1\\
+        x   &\text{ if } \lambda > 1\\
+    \end{cases},
+\end{align*}
+where $v_\lambda(t) = x(t)$ if $0 \leq t \leq \lambda$ and 0 if $\lambda < t \leq 1$.
+(It may be helpful to sketch the projections in the case of simple examples, such as $x(t) = t^2$ or $x(t) = \sin 2 \pi t$.)
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{8}
-fill
+Find the spectral family of the operator $T^2: \ell^2 \to \ell^2$ defined by $(x_1, x_2, x_3, \dots) \mapsto (x_1/1, x_2/2, x_3/3, \dots)$.
+Find an orthonormal set of eigenvectors.
+What form does $T = \int_{m-0}^M \lambda dE_\lambda$ take in this case?
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{9}
-fill
+Prove that in exercise 8 $T = \sum_{j=1}^\infty (1/j) P_j$ where $P_j$ is the projection of $\ell^2$ onto the span fo $e_j = (\delta_{jn}$ and the series is convergent in the norm of $B(\ell^2, \ell^2)$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
 \begin{exercise}{10}
-fill
+How could we use the idea of the proof given in the answer to exercise 9 in the case of an arbitrary compact self-adjoint linear operator $T$ having infinitely many different nonzero eigenvalues?
 \end{exercise}
 \begin{proof}
 fill

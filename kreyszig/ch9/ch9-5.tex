@@ -23,7 +23,10 @@ Show that a projection $P$ on a Hilbert space $H$ satisfies $0 \leq P \leq I$.
 Under what conditions will (i) $P = 0$ and (ii) $P = I$?
 \end{exercise}
 \begin{proof}
-fill
+Since $I - P$ is a projection, we have $\brackets{(I-P) x, x} = \brackets{(I-P) x, (I-P) x} = \norm{(I-P) x}^2 \leq 0$, so that $I - P \geq 0$, and $I \geq P$.
+We proved $P \geq 0$ in Theorem 9.5-2.
+
+For i), $P = 0$ if it projects to the closed subspace $\set{0}$, and for ii), $P = I$ if it projects to $H$.
 \end{proof} 
 
 \begin{exercise}{2}
@@ -31,43 +34,92 @@ Let $Q = S^{-1} P S: H \to H$, where $S$ and $P$ are bounded and linear.
 If $P$ is a projection and $S$ is unitary, show that $Q$ is a projection.
 \end{exercise}
 \begin{proof}
-fill
+We have that $Q$ is unitary equivalent to $P$, and $P$ is self-adjoint, so that $Q$ is self-adjoint (exercise 3.10.11).
+To see $Q$ is idempotent, we have $Q^2 = S^{-1} P S S^{-1} P S = S^{-1} P^2 s = S^{-1} P S$.
+These two conditions imply $Q$ is a projection.
 \end{proof} 
 
 \begin{exercise}{3}
 Find linear operators $T: \R^2 \to \R^2$ which are idempotent but not self-adjoint (so that they are not projections).
 \end{exercise}
 \begin{proof}
-fill
+Consider the linear operator whose matrix can be represented with
+\begin{align*}
+    A = \begin{bmatrix}
+        1 & 1\\
+        0 & 0
+    \end{bmatrix}.
+\end{align*}
+Then $A^2 = A$.
+Furthermore,
+\begin{align*}
+    \brackets{A 
+    \begin{bmatrix}
+        x\\
+        y
+    \end{bmatrix},
+    \begin{bmatrix}
+        w\\
+        z
+    \end{bmatrix}}
+    = w (x + y),
+\end{align*}
+whereas
+\begin{align*}
+    \brackets{
+    \begin{bmatrix}
+        x\\
+        y
+    \end{bmatrix},
+    A
+    \begin{bmatrix}
+        w\\
+        z
+    \end{bmatrix}}
+    = x (w + z),
+\end{align*}
+so that $A$ is not self-adjoint.
 \end{proof} 
 
 \begin{exercise}{5}
 Extend Theorem 9.5-4 to sums $P = P_1 + \dots + P_m$.
 \end{exercise}
 \begin{proof}
-fill
+Let $P_1, \dots, P_n$ be projections on a Hilbert space.
+Then:
+\begin{enumerate}
+    \item The sum $P = P_1 + \dots + P_n$ is a projection on $H$ if and only if $Y_1 = P_1(H), \dots, Y_n = P_n(H)$ are all orthogonal to each other.
+    \item If $P$ is a projection, $P$ projects $H$ onto $Y = Y_1 \oplus \dots \oplus Y_n$.
+\end{enumerate}
 \end{proof} 
 
 \begin{exercise}{6}
 In exercise 5, let $Y_j = P_j(H)$, $j = 1, \dots, m$, and $Y = P(H)$.
-Show that every $x \in Y$ has a representation $x = x_1 + \dots x_m$, where $x_j = P_j x \in Y_j$, and, conversely, if $x \in H$ can be represented in this form, then $x \in Y$ nad the representation is unique.
+Show that every $x \in Y$ has a representation $x = x_1 + \dots + x_m$, where $x_j = P_j x \in Y_j$, and, conversely, if $x \in H$ can be represented in this form, then $x \in Y$ and the representation is unique.
 \end{exercise}
 \begin{proof}
-fill
+The fact that such representation exists and is unique follows from the definition of a direct sum.
 \end{proof} 
 
 \begin{exercise}{7}
 Give a simple example which illustrates that the sum of two projections need not be a projection.
 \end{exercise}
 \begin{proof}
-fill
+Consider $P, P': \R^3 \to \R^2$ given by $(x, y z) \mapsto (x, y, 0)$ and $(x, y, z) \mapsto (0, y, z)$, respectively. Then $(P + P')(x, y, z) = (x, 2y, z)$ and since $(P + P')(x, y, z) \neq (x, y, z)$, then $P + P'$ is not a projection.
 \end{proof} 
 
 \begin{exercise}{8}
 If a sum $P_1 + \dots + P_k$ of projections $P_j: H \to H$ ($H$ a Hilbert space) is a projection, show that $\norm{P_1 x}^2 + \dots + \norm{P_k x}^2 \leq \norm{x}^2$.
 \end{exercise}
 \begin{proof}
-fill
+We have 
+\begin{align*}
+    \norm{P_1 x}^2 + \dots + \norm{P_k x}^2
+    = \norm{(P_1 + \dots + P_k)x}^2
+    \leq \norm{P_1 + \dots + P_k}^2 \norm{x}^2
+    \leq \norm{x}^2,
+\end{align*}
+because the norm of a projection is bounded by 1 (9.5-2), proving the desired result.
 \end{proof} 
 
 \begin{exercise}{10}
@@ -75,5 +127,42 @@ Let $P_1$ and $P_2$ be projections of a Hilbert space $H$ onto $Y_1$ and $Y_2$, 
 Show that $P_1 + P_2 - P_1 P_2$ is a projection, namely, the projection of $H$ onto $Y_1 + Y_2$.
 \end{exercise}
 \begin{proof}
-fill
+We will first prove that $P = P_1 + P_2 - P_1 P_2$ is self-adjoint.
+We have
+\begin{align*}
+    \brackets{(P_1 + P_2 - P_1 P_2)x, y}
+    =& \brackets{P_1 x, y} + \brackets{P_2 x, y} - \brackets{(P_1 P_2) x, y}\\
+    =& \brackets{x, P_1 y} + \brackets{x, P_2 y} - \brackets{x, (P_1 P_2) y}\\
+    =& \brackets{x, (P_1 + P_2 - P_1 P_2)y},
+\end{align*}
+where we used the commutativity of $P_1$ and $P_2$ in the last term of the second equality.
+Thus, $P$ is self-adjoint.
+
+Furthermore, 
+\begin{align*}
+    P^2
+    =& (P_1 + P_2 - P_1 P_2)^2\\
+    =& P_1^2 + P_1 P_2 - P_1^2 P_2 + P_2 P_1 + P_2^2 - P_2 P_1 P_2 - P_1 P_2 P_1 - P_1 P_2^2 + (P_1 P_2)^2\\
+    =& P_1 + P_2 - P_1 P_2,\\
+\end{align*}
+so that $P$ is idempotent, and consequently, a projection.
+
+To see $P$ projects $H$ onto $Y = Y_1 + Y_2$, let $x \in H$ so that $y = Px = P_1 x + P_2 x - P_1 (P_2 x)$.
+We can analyse this by cases:
+\begin{enumerate}
+    \item if $x \notin Y_2$, then $P x = P_1 x \in Y_1 \subseteq Y$.
+    \item if $x \in Y_2$ and $x \notin Y_1$, then $P x = P_2 x \in Y_2 \subseteq Y$.
+    \item If $x \in Y_2$ and $x \in Y_1$, then $P x = P_1 x + P_2 x - P_1 x = P_2 x \in Y_2 \subset Y$.
+\end{enumerate}
+These exhaust all the cases, so that $y \in Y$, and $P(H) \subseteq Y$.
+
+To see the other containment, let $y = y_1 + y_2 \in Y = Y_1 + Y_2$.
+We have $P y = P_1 (y_1 + y_2) + P_2 (y_1 + y_2) - P_1 (P_2 (y_1 + y_2))$, which we analyse by cases:
+\begin{enumerate}
+    \item If $y_1 \in Y_2$ and $y_2 \in Y_1$, then $Py = y_1 + y_2$.
+    \item If $y_1 \in Y_2$ and $y_2 \notin Y_1$, then $Py = y_1 + y_2$.
+    \item If $y_1 \notin Y_2$ and $y_2 \in Y_1$, then $Py = y_1 + y_2$.
+    \item If $y_1 \notin Y_2$ and $y_2 \notin Y_1$, then $Py = y_1 + y_2$.
+\end{enumerate}
+That is, in all cases $Py = y_1 + y_2$, so that $y \in P(H)$, meaning that $Y \subseteq P(H)$ and completing the proof.
 \end{proof} 

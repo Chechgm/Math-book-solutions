@@ -18,21 +18,30 @@
 Illustrate the various equivalent statements in Theorem 9.6-1 by simple examples of projections in Euclidean space $\R^3$.
 \end{exercise}
 \begin{proof}
-fill
+Consider $P_1 v = (x, 0, 0)$ and $P_2 v = (x, y, 0)$.
+We have $P_2 (P_1 v) = P_2 (x, 0, 0) = (x, 0, 0)$, also $P_1 (P_2 v) = P_1 (x, y, 0) = (x, 0, 0)$, both of which equal $P_1$.
+Also, $P_1(H) = \vecspan\set{(x, 0, 0)} \subset \vecspan\set{(x, y, 0)} = P_2(H)$.
+Furthermore, $\cN(P_2) = \vecspan\set{(0, 0, z)} \subseteq \vecspan\set{(0, y, z)} = 
+\cN(P_1)$.
+For (4), $\norm{P_1 v} = x \leq (x^2 + y_2)^{1/2} = \norm{P_2 v}$.
+Finally, $\brackets{P_1 v, v} = x^2 \leq x^2 + y^2 = \brackets{P_2 v, v}$, so that $P_1 \leq P_2$, completing the exercise.
 \end{proof} 
 
 \begin{exercise}{2}
 Show that the difference $P = P_2 - P_1$ of two projections on a Hilbert space $H$ is a projection on $H$ if and only if $P_1 \leq P_2$.
 \end{exercise}
 \begin{proof}
-fill
+Theorem 9.6-2 tells us that $P_2 - P_1$ is a projection if and only if $P_1(H) \subseteq P_2(H)$ and Theorem 9.6-1 tells us that $P_1(H) \subseteq P_2(H)$ if and only if $P_1 \leq P_2$.
+Thus, we get that $P_2 - P_1$ is a projection if and only if $P_1 \leq P_2$, as required.
 \end{proof} 
 
 \begin{exercise}{4 (Limit of projections)}
 If $(P_n)$ is a sequence of projections defined on a Hilbert space $H$ and $P_n \to P$, show that $P$ is a projection defined on $H$.
 \end{exercise}
 \begin{proof}
-fill
+Taking the adjoint is a continuous function, so that $P_n^\ast \to P^\ast$ and since $P_n^\ast = P_n \to P^\ast$, then $P = P^\ast$, so that $P$ is self-adjoint.
+Likewise, squaring an operator is a continuous function, so that $P_n^2 \to P^2$, so that $P_n^2 = P_n \to P$, meaning that $P^2 = P$, meaning that $P$ is idempotent.
+Putting these two results together tells us that $P$ is a projection, as required.
 \end{proof} 
 
 \begin{exercise}{5}
@@ -40,7 +49,8 @@ let $P_n(H)$ in Theorem 9.6-3 be finite dimensional for every $n$.
 Show that, nevertheless, $P(H)$ may be infinite dimensional.
 \end{exercise}
 \begin{proof}
-fill
+Consider the sequence of projections given by $P_n x = (x_1, x_2, \dots, x_n, 0, \dots)$.
+We have that $P_n(H)$ is finite dimensional for all $n$, but $\lim P_n = I$, which has an infinite dimensional range.
 \end{proof} 
 
 \begin{exercise}{6}
@@ -50,14 +60,17 @@ Show by an example that, nevertheless, $P(H)$ may be finite dimensional.
 (We mention that this irregularity as well as that in exercise 5 cannot happen in the case of uniform operator convergence).
 \end{exercise}
 \begin{proof}
-fill
+Consider the sequence $P_n x = (0, 0, \dots, x_n, x_{n+1}, \dots)$ which has an infinite dimensional range for all $n$.
+Note, however, that $P_n \to 0$ whose range is finite dimensional.
 \end{proof} 
 
 \begin{exercise}{7}
 What is $P(H)$ in Theorem 9.6-3 in the case of a monotone decreasing sequence $(P_n)$?
 \end{exercise}
 \begin{proof}
-fill
+$P(H)$ would be $\bigcap P_n(H)$, the proof is similar to that of 9.6-3.b
+
+FILL...
 \end{proof} 
 
 \begin{exercise}{8}
@@ -65,7 +78,11 @@ If $Q_1, Q_2, \dots$ are projections on a Hilbert space $H$ such that we have $Q
 Onto what subspace of $H$ does $Q$ project?
 \end{exercise}
 \begin{proof}
-fill
+Notice that we can think of the partial sums of $Q_j$ as an increasing sequence of projections.
+For a fixed $N$, let $P_N = \sum_{i=1}^N Q_i$ which projects to $Y_1 \oplus \dots \oplus Y_N$, where $Y_i = Q_i(H)$ (this follows by 9.5-4 and exercise 9.5.5).
+Then by the partial order in projections (9.6-1), we have that since $P_M(H) \subseteq P_N(H)$ for all $M \leq N$, then $P_M \leq P_N$ so that we have a monotone increasing sequence of projections as required by 9.6-3.
+
+By the second part of the theorem, $Q(H) = \bigoplus_{i=1}^\infty Q_i(H) = Q_1(H) \oplus Q_2(H) \oplus Q_3(H) \dots$.
 \end{proof} 
 
 \begin{exercise}{9 (Invariant subspace)}
@@ -74,7 +91,10 @@ Then a subspace $Y \subseteq H$ is said to be invariant under $T$ if $T(Y) \subs
 Show that a closed subspace $Y$ of $H$ is invariant under $T$ if and only if $Y^\perp$ is invariant under $T^\ast$.
 \end{exercise}
 \begin{proof}
-fill
+Suppose $Y$ is invariant under $T$.
+Then for $y \in Y$, and $y' \in Y^\perp$, we have $\brackets{Ty, y'} = 0$, since $Ty \in Y$.
+But this means $\brackets{y, T^\ast y'} = 0$, so that $Ty' \in Y^\perp$ and $T(Y^\perp) \subseteq Y^\perp$, as required.
+The converse to the proposition is proved in the same way, mutatis mutandis.
 \end{proof} 
 
 \begin{exercise}{10 (Reduction of an operator)}
@@ -83,28 +103,37 @@ A closed subspace $Y$ of a Hilbert space $H$ is said to reduce a linear operator
 If $P_1$ is the projection of $H$ onto $Y$ and $P_1 T = T P_1$, show that $Y$ reduces $T$.
 \end{exercise}
 \begin{proof}
-fill
+We prove this by contrapositive.
+Suppose $Y$ does not reduce $T$, so that there exists $y \in Y$ with $Ty \notin Y$.
+Since $Y$ is a closed subspace of $H$, then by 3.3-4 we have $H = Y \oplus Y^\perp$, so that $Ty = z + z'$, where $z \in Y$ and $z' in Y^\perp$.
+We have $T (P_1 y) = T y = z + z'$, but $P_1 (T y) = P_1 (z + z') = z$, so that $P_1$ and $T$ do not commute.
 \end{proof} 
 
 \begin{exercise}{11}
 If $\operatorname{dim} H < \infty$ in exercise 10 and $Y$ reduces $T$, what can we say about a matrix representing $T$?
 \end{exercise}
 \begin{proof}
-fill
+Without loss of generality, we can write $T$ as a block matrix with two blocks:
+one corresponding to the vectors that span $Y$ and the other corresponding to those that span $Y^\perp$.
 \end{proof} 
 
 \begin{exercise}{12}
 Prove the converse of the statement in exercise 10, that is, if $Y$ reduces $T$, then $P_1 T = T P_1$.
 \end{exercise}
 \begin{proof}
-fill
+Suppose $Y$ reduces $T$.
+Let $y \in Y$, we have $T P_1 y = T y$.
+Likewise, $P_1 T y = T y$, since $Ty \in Y$ and $P_1|_Y = I|_Y$.
+We can analyse the case for $y' \in Y^\perp$ in a similar way.
+Since $H = Y \oplus Y^\perp$ (3.3-4), we have exhausted all cases, completing the proof.
 \end{proof} 
 
 \begin{exercise}{13}
 If $Y$ in exercise 10 reduces $T$, show that $T P_2 = P_2 T$, where $P_2$ is the projection of $H$ onto $Y^\perp$.
 \end{exercise}
 \begin{proof}
-fill
+Our proof for exercise 12 works for this exercise too.
+The critical point is that $H = Y \oplus Y^\perp$.
 \end{proof} 
 
 \begin{exercise}{14}
@@ -116,7 +145,13 @@ Show that $Y_n$ does not reduce $T$;
 (a) use exercise 12, (b) give a direct proof.
 \end{exercise}
 \begin{proof}
-fill
+Consider $x = e_1$, and $y = e_2$, where $e_i = 1$ in position $i$ and 0 otherwise.
+We have $\brackets{Tx, y} \brackets{e_2, e_2} = 1 \neq 0 = \brackets{e_1, e_3} = \brackets{x, Ty}$, thus, $T$ is not self-adjoint.
+
+We will not prove that $Y_n$ does not reduce $T$.
+Note that $Y_n^\perp = \overline{\vecspan\set{e_1, \dots, e_{n-1}}}$, so that $T e_{n-1} = e_n \in Y_n$, meaning that $Y_n^\perp$ is not invariant under $T$.
+
+The proof through the commutativity of $T$ with $P_Y$ would use a similar idea ($T P_{Y_n} (e_{n-1}) = 0$, whereas $P_{Y_n} T (e_{n-1}) = e_n$).
 \end{proof} 
 
 \begin{exercise}{15}
@@ -125,5 +160,9 @@ If $T$ is self-adjoint, show that $T(Y^\perp) \subseteq Y^\perp$, so that in thi
 (Note that $T$ in exercise 14 is not self-adjoint).
 \end{exercise}
 \begin{proof}
-fill
+By contrapositive. 
+Suppose $Y^\perp$ is not invariant under $T$.
+Then there exists $y' \in Y^\perp$ such that $y' = z + z'$ with $z \in Y$ and $z' \in Y^\perp$.
+We have $\brackets{Tz, y'} = \brackets{z, y'} = 0$, however, $\brackets{z, Ty'} = \brackets{z, z + z'} = \norm{z}^2$.
+Thus, $T$ is not self-adjoint, completing the proof.
 \end{proof} 

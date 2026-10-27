@@ -1,13 +1,5 @@
 \section{Further spectral properties of bounded self-adjoint linear operators}
 
-2 Refering back to the finite dimensional case
-3 Application
-4
-5 Well, we already knew a spectrum is never empty, but the proof was nonconstructive and relied on the Liouville theorem! Now we actually get a constructive proof! 
-6
-7 Application to compact operators and their spectrum in the self-adjoint case 
-9 This is pretty cool since we get an explicit formula for EVERY eigenvalue of the a finite-dimensional operator. This is very useful in practice
-10 If we ever do Hubbard, we'll actually do the full Perron-Frobenius theorem!
 EXTRA EX.
 
 \begin{exercise}{2}
@@ -21,15 +13,26 @@ We get that the eigenvalues of a Hermitian matrix are real.
 Find $m = \inf_{\norm{x}=1} \brackets{Tx, x}$ and $M = \sup_{\norm{x}=1} \brackets{Tx, x}$ (Theorem 9.2-1) if $T$ is the projection operator of a Hilbert space $H$ onto a proper subspace $Y \neq \set{0}$ of $H$.
 \end{exercise}
 \begin{proof}
-Let $x \in Y$ and $\norm{x} = 1$, then $\brackets{Tx, x} = \brackets{x, x} = \norm{x}^2 = 1$.
-Likewise, if $x \notin Y$, then $\brackets{Tx, x} = 0$, so that $m = 0$ and $M = 1$.
+Since $T$ is a projection, then for any $x \in H$, we can write $x = y + y'$, where $y \in Y$ and $y' \in Y^\perp$.
+Thus, we have 
+\begin{align*}
+    \brackets{Tx, x}
+    = \brackets{T(y + y'), y + y'}
+    = \brackets{y, y + y'}
+    = \norm{y}^2,
+\end{align*}
+since $y$ and $y'$ are orthogonal to each other.
+If $\norm{x} = 1$, then $\norm{x}^2 = \norm{y}^2 + \norm{y'}^2$ (by the Pythagorean Theorem), so that $\norm{y}^2 \leq 1$.
+Thus, $M = 1$ since the supremum is attained whenever $x \in Y$ and $m = 0$ since the infimum is attained whenever $x \in Y^\perp$.
 \end{proof} 
 
 \begin{exercise}{4}
 Prove that $m \in \sigma(T)$ in Theorem 9.2-3.
 \end{exercise}
 \begin{proof}
-TODO: re write the proof for $m$.
+This is a Corollary to Theorem 9.2-3 by noting that $m \in \sigma(T)$ if and only if $-m \in \sigma(-T)$ by the spectral mapping Theorem for polynomials (7.4-2).
+We then know that $-m = \sup_{\norm{x} = 1} \brackets{-Tx, x}$ by the usual properties of the supremum and infimum.
+Then Theorem 9.2-3 tells us that $-m$ is in $\sigma(T)$ so that $m \in \sigma(T)$, completing the proof.
 \end{proof} 
 
 \begin{exercise}{5}
@@ -102,17 +105,22 @@ this is part of a famous Theorem by Perron and Frobenius).
 \end{exercise}
 \begin{proof}
 Notice that a real symmetric square matrix is hermitian because it equals its conjugate transpose.
-Moreover, consider $x = (1, 0, \dots, 0)$.
-Then $\bar{x}^T A x = a_1 \geq 0$, so that $\lambda_j = \sup_{x \neq 0} \brackets{Ax, x} / \brackets{x, x} \geq a_i$, and thus $A$ has a positive real eigenvalue.
+Moreover, consider $x^T = (1, 0, \dots, 0)$.
+Then $\bar{x}^T A x =  a_{1, 1} \geq 0$, so that $\lambda_j = \sup_{x \neq 0} \brackets{Ax, x} / \brackets{x, x} \geq a_i$, and thus $A$ has a positive real eigenvalue.
 \end{proof} 
 
-\begin{exercise}{Extra exercise (Spectral Theorem for compact self-adjoint operators)}
+\begin{exercise}{Extra (Spectral Theorem for compact self-adjoint operators)}
 Let $T$ be a self-adjoint compact operator on a separable Hilbert space, let $\absoluteValue{\lambda_1} \geq \absoluteValue{\lambda_2} \geq \dots$ be the nonzero eigenvalues of $T$ with corresponding orthonormal eigenvectors $(u_k)$, then $(u_k)$ is an orthonormal basis of $\overline{\range(T)}$. 
 If we let $(v_k)$ be a basis for the kernel of $T$, then $(u_k) \cup (v_k)$ is an orthonormal basis of $H$. 
-Deduce then that we can find a basis of $H$ consisting of eigenvectors, which is essentially a perfect reproduction of the finite dimemsional spectral theorem.
+Deduce then that we can find a basis of $H$ consisting of eigenvectors, which is essentially a perfect reproduction of the finite dimensional spectral theorem.
 \end{exercise}
 \begin{proof}
-Process: assume that orthonormal eigenvectors (u1, ..., uk) has already be found, then we can find the next one by sup |<T(u), u>| where the sup runs over the orthogonal complement of span(u1,...,uk). Show this ends up with an orthonormal list of eigenvectors. 
+Suppose that a list of orthonormal eigenvectors $(u_1, \dots u_k)$ has already been found.
+We can find the next orthonormal vector using the eigenvalue given by $\sup \absoluteValue{\brackets{Tu, u}}$, where the supremum is taken over the orthogonal complement of $U_k = \vecspan (u_1, \dots, u_k)$.
+This is true, given that $U_k^\perp$ is itself a Hilbert space in which $T|_{U_k}$ is defined so that its spectrum lies in the interval $[\inf_{\norm{x} = 1} \brackets{Tx, x}, \sup_{\norm{x} = 1} \brackets{Tx, x}]$ (Theorem 9.2-1), both ends of the interval are spectral values of $T$ (Theorem 9.2-3), and eigenvectors corresponding to different eigenvalues of $T$ are orthogonal (Theorem 9.1-1).
+Of course eigenvalues and eigenvectors of $T|_{U_k}$ are also eigenvectors and eigenvalues of $T$, so that the found eigenvector is orthogonal to $\vecspan (u_1, \dots, u_k)$.
+
+If $T$ has finite rank, the process finishes at some point
 
 Case 1: T has finite rank: the process finishes, the proof is easy in this case 
 Case 2: T has infinite rank: Show the process never terminates. Show tat the resulting lambdan converge to 0. It remains to be shown we have an orthonormal basis. Do this by taking v in Range(T) that is orthogonal to all $u_k$. Write v = T(u) and show u is orthogonal to all uk. Show that x -> T(x) - SUM lambdak <x, uk> uk (with a finite sum from 1 to some n) is a compact self-adjoint operator that has lambda(n+1) as its biggest eigenvalue. Deduce that |v| <= |lambda(n+1)| |u| where n is arbitrary, then take limits n-> infinity

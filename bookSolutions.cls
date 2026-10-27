@@ -4,7 +4,6 @@
 % book is our base class
 \LoadClass{book}
 
-
 \usepackage{mathtools} % Improved amsmath
 \usepackage{amsfonts}
 \usepackage{amsthm} % For the proof environment
@@ -67,7 +66,9 @@
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cR}{\mathcal{R}}
 \newcommand{\cS}{\mathcal{S}}
+\newcommand{\SSS}{\mathcal{S}}
 \newcommand{\cT}{\mathcal{T}}
+\newcommand{\TTT}{\mathcal{T}}
 \newcommand{\cU}{\mathcal{U}}
 
 \newcommand{\bx}{\mathbf{x}}

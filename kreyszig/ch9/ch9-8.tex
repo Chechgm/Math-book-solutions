@@ -24,7 +24,15 @@ fill
 Prove that $T^- T = T T^-$.
 \end{exercise}
 \begin{proof}
-fill
+Suppose $TS = ST$, then $T^2 S = T S T = S T^2$, it then follows by 9.4-2, that $SB = BS$.
+Hence, 
+\begin{align*}
+    T^- S
+    = \frac{1}{2} (BS - TS)
+    = \frac{1}{2} (SB + ST)
+    = ST^-,
+\end{align*}
+as required.
 \end{proof} 
 
 \begin{exercise}{4}
@@ -37,27 +45,73 @@ Find $T^+, T^-, (T^2)^{1/2}$ and the other square roots of $T^2$ if
 \end{align*}
 \end{exercise}
 \begin{proof}
-fill
+We have
+\begin{align*}
+    T^2 = \begin{bmatrix}
+        4 & 0  \\
+        0 & 9
+    \end{bmatrix},
+    \text{ and }
+    (T^2)^{1/2} = \begin{bmatrix}
+        2 & 0  \\
+        0 & 3
+    \end{bmatrix}.
+\end{align*}
+Another square root of $T^2$ is
+\begin{align*}
+    \begin{bmatrix}
+        -2 & 0  \\
+        0 & -3
+    \end{bmatrix}.
+\end{align*}
+Furthermore,
+\begin{align*}
+    T^+ 
+    = \frac{1}{2} (B + T)
+    = \frac{1}{2}
+    \begin{bmatrix}
+        4 & 0  \\
+        0 & 0
+    \end{bmatrix},
+    \text{ and }
+    T^- 
+    = \frac{1}{2} (B - T)
+    = \begin{bmatrix}
+        0 & 0  \\
+        0 & 6
+    \end{bmatrix}.
+\end{align*}
 \end{proof} 
 
 \begin{exercise}{5}
-If in the finite dimensiona lcase a linear operator $T$ is represented by a real diagonal matrix $\tilde{T}$, what is the spectrum of $T$?
+If in the finite dimensional case a linear operator $T$ is represented by a real diagonal matrix $\tilde{T}$, what is the spectrum of $T$?
 How do we obtain $\tilde{T}$ from the matrix
-a) $\tilde{T}^+$ (representing $T^+$,
-b) $\tilde{T}^-$ (representing $T^-$,
-c) $\tilde{B}$ (representing $B$)?
+\begin{enumerate}
+    \item $\tilde{T}^+$ (representing $T^+$,
+    \item $\tilde{T}^-$ (representing $T^-$,
+    \item $\tilde{B}$ (representing $B$)?
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item These are the positive elements of the diagonal multiplied by 2.
+    \item These are the negative elements of the diagonal multiplied by -2.
+    \item This would be the elementwise absolute value of $T$.
+\end{enumerate}
 \end{proof} 
 
 \begin{exercise}{6}
 In exercise 5, how can we obtain the matrix representing the projection of $H$
-a) onto $\cN(T^+)$,
-b) onto $\cN(T^+_\lambda)$?
+\begin{enumerate}
+    \item onto $\cN(T^+)$,
+    \item onto $\cN(T^+_\lambda)$?
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item The matrix for $N(T^+)$ would be a diagonal matrix with 1 whenever the original matrix had a negative or 0 value on the diagonal, and 0 everywhere else.
+    \item For $N(T_\lambda^+)$ would also be a diagonal matrix, where in this case, there is a 1 on the entries where $\lambda$ equals any positive value of the original matrix and 0 otherwise.
+\end{enumerate}
 \end{proof} 
 
 \begin{exercise}{7}
@@ -69,11 +123,14 @@ d) $B_\lambda$,
 e) $E_\lambda$.
 \end{exercise}
 \begin{proof}
-fill
+This is essentially the same as in the previous exercises, where instead of looking at the original values of the diagonal of $T$, we consider them subtracted by $\lambda$.
+We will now construct $E_\lambda$.
+Without loss of generality, reorganise $T$ so that the eigenvalues are in descending order.
+Then $E_\lambda$ would be the diagonal matrix so that it has 1 on all the elements of the diagonal such that $\lambda$ is less than them and 0 otherwise.
 \end{proof} 
 
 \begin{exercise}{Extra}
-Take any function $f: [0,1] \to \R$, let's say $f(x) = x - 1/2$, and compute the same quantities as in 5, 6, 7 and the $E_\lambda$, for the operator $T:L² \to L²: g \to fg$.
+Take any function $f: [0,1] \to \R$, let's say $f(x) = x - 1/2$, and compute the same quantities as in 5, 6, 7 and the $E_\lambda$, for the operator $T:L^2 \to L^2: g \to fg$.
 \end{exercise}
 \begin{proof}
 fill
@@ -83,14 +140,23 @@ fill
 Show that if a bounded self-adjoint linear operator $T: H \to H$ is positive, then $T = T^+$ and $T^- = 0$.
 \end{exercise}
 \begin{proof}
-fill
+We know that $T$ is positive and it is one of the square roots of $T^2$.
+Particularly, it is the unique square root of $T^2$ (9.4-2), so that $B = (T^2)^{1/2} = T$.
+Thus, $T^+ = (1/2)(B + T) = T$ and $T^- = (1/2)(B - T) = 0$, as required.
 \end{proof} 
 
 \begin{exercise}{9}
 Find the spectral family of the zero operator $T = 0: H \to H$, where $H \neq \set{0}$.
 \end{exercise}
 \begin{proof}
-fill
+The spectral family of $T = 0$ is $E_\lambda = 0$, if $\lambda < 0$ and $E_\lambda = I$ If $\lambda \geq 0$.
+There are many ways in which we can see this, for example, note that 
+\begin{align*}
+    M = \sup_{\norm{x} = 1} \brackets{0x, x} 
+    = \inf_{\norm{x} = 1} \brackets{0x, x} = m 
+    = 0,
+\end{align*}
+so that by 9.2-1, the spectrum of 0 lies in $\set{0}$, from which we can compute the spectral family using Theorem 9.8-3.
 \end{proof} 
 
 \begin{exercise}{10}
@@ -98,5 +164,11 @@ Let $T = I: H \to H$.
 Find $B_\lambda = (T^2_\lambda)^{1/2}$, $T^+_\lambda$, $\cN(T^+_\lambda)$ and $E_\lambda$.
 \end{exercise}
 \begin{proof}
-fill
+We have that 
+\begin{align*}
+    M = \sup_{\norm{x} = 1} \brackets{Ix, x} 
+    = \inf_{\norm{x} = 1} \brackets{Ix, x} = m 
+    = 1,
+\end{align*}
+so that $B_1(I_1) = 0$, $T_\lambda^+ = (1/2) (B_\lambda + I_\lambda) = 0$, $N(T_\lambda^+) = H$ and $E_\lambda = 0$ if $\lambda < 1$ and $E_\lambda = I$ if $\lambda \geq 1$.
 \end{proof} 
