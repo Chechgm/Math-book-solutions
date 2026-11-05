@@ -1,6 +1,5 @@
 \section{Further spectral properties of bounded self-adjoint linear operators}
 
-EXTRA EX.
 
 \begin{exercise}{2}
 What Theorem about the eigenvalues of a Hermitian matrix $A$ do we obtain from Theorem 9.2-1?
@@ -110,18 +109,88 @@ Then $\bar{x}^T A x =  a_{1, 1} \geq 0$, so that $\lambda_j = \sup_{x \neq 0} \b
 \end{proof} 
 
 \begin{exercise}{Extra (Spectral Theorem for compact self-adjoint operators)}
-Let $T$ be a self-adjoint compact operator on a separable Hilbert space, let $\absoluteValue{\lambda_1} \geq \absoluteValue{\lambda_2} \geq \dots$ be the nonzero eigenvalues of $T$ with corresponding orthonormal eigenvectors $(u_k)$, then $(u_k)$ is an orthonormal basis of $\overline{\range(T)}$. 
-If we let $(v_k)$ be a basis for the kernel of $T$, then $(u_k) \cup (v_k)$ is an orthonormal basis of $H$. 
+Let $T$ be a self-adjoint compact operator on a separable Hilbert space, let $\absoluteValue{\lambda_1} \geq \absoluteValue{\lambda_2} \geq \dots$ be the nonzero eigenvalues of $T$ with corresponding orthonormal eigenvectors $(x_k)$, then $(x_k)$ is an orthonormal basis of $\overline{\range(T)}$. 
+If we let $(v_k)$ be a basis for the kernel of $T$, then $(x_k) \cup (v_k)$ is an orthonormal basis of $H$. 
 Deduce then that we can find a basis of $H$ consisting of eigenvectors, which is essentially a perfect reproduction of the finite dimensional spectral theorem.
 \end{exercise}
 \begin{proof}
-Suppose that a list of orthonormal eigenvectors $(u_1, \dots u_k)$ has already been found.
-We can find the next orthonormal vector using the eigenvalue given by $\sup \absoluteValue{\brackets{Tu, u}}$, where the supremum is taken over the orthogonal complement of $U_k = \vecspan (u_1, \dots, u_k)$.
-This is true, given that $U_k^\perp$ is itself a Hilbert space in which $T|_{U_k}$ is defined so that its spectrum lies in the interval $[\inf_{\norm{x} = 1} \brackets{Tx, x}, \sup_{\norm{x} = 1} \brackets{Tx, x}]$ (Theorem 9.2-1), both ends of the interval are spectral values of $T$ (Theorem 9.2-3), and eigenvectors corresponding to different eigenvalues of $T$ are orthogonal (Theorem 9.1-1).
-Of course eigenvalues and eigenvectors of $T|_{U_k}$ are also eigenvectors and eigenvalues of $T$, so that the found eigenvector is orthogonal to $\vecspan (u_1, \dots, u_k)$.
+We will adapt a proof due to Casey Rodriguez on MIT's introduction to functional analysis course notes, including the results we have derived in Kreyszig and details whenever we feel they are needed.
 
-If $T$ has finite rank, the process finishes at some point
+We start by proving the \textbf{maximum principle}:
+Let $T$ be a self-adjoint compact operator.
+We can order the nonzero eigenvalues of $T$ as $\absoluteValue{\lambda_1} \geq \absoluteValue{\lambda_2} \geq \dots$ (including multiplicity), such that we have pairwise orthonormal eigenvectors $\set{u_k}$ for $\lambda_k$ satisfying 
+\begin{align*}
+    \absoluteValue{\lambda_j} 
+    = \sup_{\norm{x} =1, x \in \vecspan(x_1, \dots, x_{j-1})^\perp} 
+    = \absoluteValue{\brackets{Tx, x}} = \absoluteValue{\brackets{T x_j, x_j}}.
+\end{align*}
+Furthermore, we have $\absoluteValue{\lambda_j} \to 0$ as $j \to \infty$ if the sequence of nonzero eigenvalues does not terminate.
 
-Case 1: T has finite rank: the process finishes, the proof is easy in this case 
-Case 2: T has infinite rank: Show the process never terminates. Show tat the resulting lambdan converge to 0. It remains to be shown we have an orthonormal basis. Do this by taking v in Range(T) that is orthogonal to all $u_k$. Write v = T(u) and show u is orthogonal to all uk. Show that x -> T(x) - SUM lambdak <x, uk> uk (with a finite sum from 1 to some n) is a compact self-adjoint operator that has lambda(n+1) as its biggest eigenvalue. Deduce that |v| <= |lambda(n+1)| |u| where n is arbitrary, then take limits n-> infinity
+\textit{Proof}.
+Since $T$ is compact, it has countably many eigenvalues (8.3-1), and by the same Theorem, the only potential point of accumulation for the eigenvalues is 0, so that the second part of the maximum principle has been already been proven. 
+Furthermore, 8.3-3 tells us that the eigenspace of each eigenvalue is finite.
+
+We will show that the equation holds by constructing our eigenvalues inductively.
+The base case is the content of Theorem 9.2-3, were we proved that $m = \inf_{\norm{x}=1} \brackets{Tx, x}$ and $M = \sup_{\norm{x}=1} \brackets{Tx, x}$ are spectral values (in the case of compact operators, eigenvalues) of $T$.
+Furthermore, we know that eigenvectors of numerically distinct eigenvalues of self-adjoint operators are orthogonal (9.1-1.b), we can normalise the eigenvectors to form orthonormal eigenvectors.
+
+For the inductive step, suppose we have found $\lambda_1, \dots, \lambda_n$ and their corresponding orthonormal eigenvectors $x_1, \dots, x_n$ satisfying the equation of the maximum principle. 
+We explore two cases, in the first case we have $Tx = \sum_{k=1}^n \lambda_k \brackets{x, x_k} u_k$, meaning we found all of the eigenvalues and process terminates (because $T$ is a finite-rank operator).
+In the case where $T$ is not finite-rank, the equation does not hold so in order to find $\lambda_{n+1}$, we can define a linear operator $T_n$ via $T_n x = Tx - \sum_{k=1}^n \lambda_k \brackets{x, x_k} x_k$.
+$T_n$ is a self-adjoint compact operator (since $T$ is self-adjoint, the $\lambda_k$ are real values by 9.1-1.a, and $T_n$ is a sum of a compact operator $T$ and a finite-rank operator so that it is itself compact by exercise 8.1.2).
+Thus, if $x \in \vecspan(x_1, \dots x_n)$, then 
+\begin{align*}
+    T_n x 
+    = T(\sum_{k=1}^n a_k x_k) - \sum_{k=1}^n \lambda_k \brackets{x, x_k} x_k
+    = \sum_{k=1}^n a_k T(x_k) - \sum_{k=1}^n \lambda_k a_k x_k
+    = 0,
+\end{align*}
+since $Tx_k = \lambda_k x_k$.
+Furthermore, for any $x \in \vecspan(x_1, \dots, x_n)^\perp$, we have $T_n x = Tx$ because the sum term is 0.
+
+Therefore, for any $x \in H$ and any $v \in \vecspan(x_1, \dots x_n)$, we have $\brackets{T_n x, v} = \brackets{x, T_n v} = 0$ (the first step due to the self-adjointness of $T_n$ and the second step because our reasoning above).
+This is the same as saying that $T_n x$ is always in the orthogonal complement of $\vecspan(x_1, \dots x_n)$, so $\range(T_n) \subseteq \vecspan(x_1, \dots x_n)^\perp$.
+From this fact, we learn that if $T_n x = \lambda x$ for some nonzero $\lambda x$, then $x = T_n(x / \lambda)$ is in the range of $T_n$, so it is in $\vecspan(x_1, \dots x_n)^\perp$.
+From our previous conclusions, this means that $T_n x = Tx = \lambda x$, so any nonzero eigenvalue of $T_n$ is also a nonzero eigenvalue of $T$.
+
+Thus, we can apply 9.2-3 again to conclude that $T_n$ has a nonzero eigenvalue $\lambda_{n+1}$ with unit eigenvector $x_{n+1}$ orthogonal to the span of $(x_1, \dots x_n$) (since $T_n$ is zero on that span), with $\absoluteValue{\lambda_{n+1}} = \sup_{\norm{x}=1} \absoluteValue{\brackets{T_n x, x}}$.
+
+Since we are still working in the same Hilbert space, this expression can be written in terms of $T$ as well.
+To see this is the case, note that 
+\begin{align*}
+    \absoluteValue{\lambda_{n+1}}
+    = \sup_{\norm{x}=1, x \in \vecspan(x_1, \dots, x_n)^\perp} \absoluteValue{\brackets{T_n x, x}},
+\end{align*}
+since $T_n x$ is zero on $\vecspan(x_1, \dots, x_n)$, and then when we restrict to those $x$, we have $T_n x = Tx$ so the expression above equals $\sup_{\norm{x}=1, x \in \vecspan(x_1, \dots, x_n)^\perp} \absoluteValue{\brackets{T x, x}}$, which gives us the desired equation.
+We also preserve the ordering of the eigenvalues because 
+\begin{align*}
+    \absoluteValue{\lambda_{n+1}}
+    =& \sup_{\norm{x}=1, x \in \vecspan(x_1, \dots, x_n)^\perp} \absoluteValue{\brackets{T x, x}}\\
+    \leq& \sup_{\norm{x}=1, x \in \vecspan(x_1, \dots, x_{n-1})^\perp} \absoluteValue{\brackets{T x, x}}
+    =\absoluteValue{\lambda_n}.
+\end{align*}
+Finally because $\absoluteValue{\lambda_{n+1}} = \absoluteValue{\brackets{Tx_{n+1}, x_{n+1}}}$, we have shown all the desired results, and finished the proof of the maximum principle $\square$.
+
+We will now prove the spectral theorem.
+First, note that the process described in the proof of the maximum principle terminates if and only if $T$ has finite rank, meaning that there is some $n$ with $Tx = \sum_{k=1}^n \lambda_k \brackets{x, x_k} x_k$.
+In such case, $\range(T) \subseteq \vecspan(x_1, \dots, x_k)$, and thus $\set{x_k}$ do indeed form an orthonormal basis for $\range(T)$ and also of $\overline{\range(T))}$.
+
+Otherwise, the process does not terminate, and thus we have countably infinitely many nonzero eigenvalues $(\lambda_n)$ counter with multiplicity.
+We know that $\absoluteValue{\lambda_k} \to 0$, and that the $x_k$ form an orthonormal subset of $\range(T)$.
+To show this is a basis, we must show that if $u \in \range(T)$ and $\brackets{u, x_k} = 0$ for all $k$, then $u = 0$.
+To see this is the case, we first write $u = Tx$ for some $x \in H$, meaning that $\brackets{Tx, x_k} = 0$ for all $k$.
+Since $T$ is self-adjoint, this means (because $\lambda_k$ is real) that $\lambda_k \brackets{x, x_k} = \brackets{x, \lambda_k x_k} = \brackets{Tx, x_k} = 0$.
+Therefore $x$ is orthogonal to all $x_k$, so by the maximum principle, 
+\begin{align*}
+    \norm{u} 
+    = \norm{Tx} 
+    = \norm{(A - \sum_{k=1}^n \lambda_k \brackets{x, x_k} x_k) x}
+\end{align*}
+(since each term in the sum is zero), meaning that we can write this as $\norm{T_n x} \leq \absoluteValue{\lambda_{n+1}} \norm{x}$.
+Taking $n \to \infty$ and noting that the $\lambda$ converge to 0, we must have $\norm{u} = 0$.
+This proves that the eigenvectors indeed form an orthonormal basis for the range of $T$.
+
+To show that they also form an orthonormal basis for the closure of the range, notice that $\overline{\range(T)} \subseteq \overline{\vecspan(\set{x_k}})$ and that the closure of the span can be written as $\set{\sum_k a_k x_k: \sum_k \absoluteValue{a_k}^2 < \infty}$.
+Therefore $\set{x_k}$ must indeed be an orthonormal basis for $\overline{\range(T)}$.
+This means we have an orthonormal basis of $\overline{\range(T)} = (\range(T)^\perp)^\perp = (\nullspace(T))^\perp$, so to complete the orthonormal basis of $H$, we need an orthonormal basis of $\nullspace(T)$, which exists because $H$ is separable and thus $\nullspace(T)$ is also separable (3.2-4.c).
 \end{proof}

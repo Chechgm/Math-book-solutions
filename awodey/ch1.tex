@@ -1,6 +1,129 @@
 \section{Categories}
 
 
+\begin{exercise}{1}
+The objects of \Rel are sets, and an arrow $A \to B$ is a relation from $A$ to $B$, that is, a subset $R \subseteq A \times B$.
+The equality relation $\set{(a, a) \in A \times A: a \in A}$ is the identity arrow on a set $A$.
+Composition in \Rel is to be given by 
+\begin{align*}
+    S \circ R 
+    = \{(a, c) \in &A \times C:\\ 
+    &\text{ there exists } b \in B \text{ with } (a, b) \in R\\ 
+    &\text{ and } (b, c) \in S\},
+\end{align*}
+for $R \subseteq A \times B$ and $S \subseteq B \times C$.
+\begin{enumerate}
+    \item Show that \Rel is a category.
+    \item Show also that there is a functor $G: \Set \to \Rel$ taking objects to themselves and each function $f: A \to B$ to its graph,
+    \begin{align*}
+        G(f) = \set{(a, f(a)) \in A \times B: a \in A}.
+    \end{align*}
+    \item Finally, show that there is a functor $C: \Rel^{op} \to \Rel$ taking each relation $R \subseteq A \times B$ to its converse $R^c \subseteq B \times A$, where $(a, b) \in R^c$ if and only if $(b, a) \in R$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+\begin{enumerate}
+    \item We proved this in exercise 1 (Micro).
+    
+    \item We prove that $G$ as defined in the exercise is indeed a functor.
+    Thus, let $f = id_A$, so that $G(id_A) = \set{(a, id_A(a)) = (a, a) \in A \times A: a \in A}$, which is precisely $id_A$ in \Rel, so that the identity is preserved by the functor. 
+    Furthermore, let $f: A \to B$ and $g: B \to C$.
+    We have $G(g \circ f) = \set{(a, g(f(a))) \in A \times C: a \in A, f(a) \in B}$.
+    To be explicit, the second element of the ordered pair runs only through the image of $f$, a subset of $B$.
+    
+    Likewise, 
+    \begin{align*}
+        G(g) \circ G(f) 
+        = \{(a, g(b)) \in& A \times C:\\ 
+        &\text{ there exists } b \in B \text{ with } (a, b) \in G(f) \\
+        &\text{ and } (b, c) \in G(g)\}\\
+        = \{(a, g(f(a))) \in& A \times C:\\
+        &\text{ there exists } f(a) \in B \text{ with } (a, f(a)) \in A \times B\\ 
+        &\text{ and } (f(a), g(f(a)) \in B \times C\},
+    \end{align*}
+    which turns out to be exactly the same set as above precisely because it is defined only for elements of the image of $f$.
+    
+    \item It is clear that both the identity and composition is preserved by the functor since the functor only flips the elements of the ordered pairs.
+\end{enumerate}
+\end{proof} 
+
+\begin{exercise}{3}
+\begin{enumerate}
+    \item Show that in \Set, the isomorphisms are exactly the bijections.
+    \item Show that in \Monoid, the isomorphisms are exactly the bijective homomorphisms.
+    \item Show that in \Poset, the isomorphisms are not the same as the bijective homomorphisms.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+\begin{enumerate}
+    \item We have that two sets $A$ and $B$ are isomorphic if and only if there exists functions $f: A \to B$ and (suggestively) $f^{-1}: B \to A$ with $f \circ f^{-1} = i_B$ and $f^{-1} \circ f = i_A$, by the usual set theoretic results, we know that these functions exists if and only if they are both injective and surjective, which is the same as being bijective.
+    \item Since monoids are sets with more structure, then the bijection condition follows from the previous numeral.
+    Thus, for us to have $f \circ f^{-1} = i_B$, we need to guarantee that the operation is preserved both by $f$ and $f^{-1}$.
+    In particular, if $x, y \in B$ and $f$ respects the monoid operation, then we must have 
+    \begin{align*}
+        f^{-1}(ab)
+        &= f^{-1}(f(f^{-1}(a) f(f^{-1}(b))\\
+        &= f^{-1}(f(f^{-1}(a) f^{-1}(b)))\\
+        &= f^{-1}(a) f^{-1}(b),
+    \end{align*}
+    where the second equality follows precisely because $f$ respect the monoid operation.
+    Thus, $f^{-1}$ must respect the monoid operation, as required.
+    \item Let $X = \set{x,y}$ and define two posets on it, the first one, $(A, \leq_A)$, where the only relation is  $x \leq_A y$ and the second one, $B$, with no relation between $x$ and $y$. 
+    Then the identity $i: B \to A$ is a bijective homomorphism (because in the direction $B \to A$ the relations are respected; 
+    that is, if a relation exists in $B$ it exists in $A$, but since not relations exist in $B$, we demand no relations in $i(B)$), however, $i^{-1} = i : A \to B$ is not a bijective homomorphism, precisely because relations in $A$ are not respected in $B$.
+\end{enumerate}
+\end{proof} 
+
+\begin{exercise}{4}
+\begin{enumerate}
+    \item Show that specialisation is a preorder.
+    \item Show that a space is a $T_0$ space if and only if the specialisation is a partial order.
+    \item Show that the order in a $T_1$ space is trivial.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+\begin{enumerate}
+    \item Let $X$ be a topological space. 
+    We can order the points in $X$ by specialisation by setting $x \leq y$ if and only if $x \in U$ implies $y \in U$.
+    To prove $\leq$ is a preorder we need to prove it is reflexive and transitive.
+    Clearly $\leq$ is reflexive, since $x \in U$ implies $x \in U$, so that $x \leq x$.
+    Furthermore, let $x \leq y$ and $y \leq z$, so that $x \in U$ implies $y \in U$ and $y \in U$ implies $z \in U$, both of this statements at the same time result in $x \in U$ implies $z \in U$ so that $x \leq z$, as required.
+    \item ($\Rightarrow$)
+    Suppose $X$ is $T_0$, so that for each pair of points $x \neq y$, there is either a neighborhood of $x$ not containing $y$ or a neighborhood of $y$ not containing $x$.
+    We already proved that specialisation is a preorder, and since we can order any topological space by specialisation, it certainly holds for a $T_0$ space.
+    Thus, we need to prove that the order entailed by specialisation is symmetric.
+    Thus, suppose $x \leq y$ so that $x \in U$ implies $y \in U$, and $y \leq x$ so that $y \in U$ implies $x \in U$.
+    Since $X$ is $T_0$ this can only hold if $x = y$, since otherwise, there should exist an open set such that $x \in U$ but $y \notin U$, or $y \in U$ but $x \notin U$.
+    Thus, $\leq$ is a partial order.
+
+    ($\Leftarrow$)
+    Suppose the order entailed by specialisation is a partial order, so that $\leq$ is reflexive, symmetric and transitive.
+    Let $x \neq y$, then either we cannot compare $x$ and $y$, in which case there exists an open set for which $x \in U$ but $y \notin U$, or $y \in U$ and $x \notin U$, both cases resulting in $X$ being $T_0$.
+    Or, if we can compare $x$ and $y$, say $x \leq y$ (but not $y \leq x$), then $x \in U$ implies $y \in U$, but since the implication does not hold in the other direction, then there must be an open set so that $y \in U$ but $x \notin U$, in which case $X$ is $T_0$.
+    \item If $X$ is $T_1$, then for every $x \neq y$ there is a neighborhood of $x$ not containing $y$, so that $x \in U$ does not imply $y \in U$, so that $x \leq y$ does not hold.
+    Inverting the role of $x$ and $y$, we see that no two elements in $X$ can be compared, giving us a trivial order.
+\end{enumerate}
+\end{proof} 
+
+\begin{exercise}{5}
+For any category $\CCC$ define a functor $U: \quot{\CCC}{C} \to \CCC$ from the slice category over an object $C$ that ``forgets'' about $C$.
+Find a functor $F: \quot{\CCC}{C} \to \CCC^\to$ to the arrow category such that $\dom \circ F = U$.
+\end{exercise}
+\begin{proof}
+We begin by recalling some definitions so that the functors defined here are clear. 
+The objects of the slice category $\quot{\CCC}{C} \to \CCC$ are the arrows of $\CCC$ such that $\cod(f) = C$.
+An arrow in such category, say $a: X \to X'$, corresponds to an arrow in $\CCC$ with the property that for $f: X \to C$ and $f': X' \to C$, it holds that $f' \circ a = f$.
+Thus, the forgetful functor, $U$ in the slice category, would be defined by $U(f) = X$ and $U(a) = a$, which agrees with the axioms of a functor, since $U(a \circ b) = a \circ b = U(a) \circ U(b)$, and $U(id_X) = id_X$.
+
+The objects of the arrow category $\CCC^\to$ are the arrows of $\CCC$, and the arrows in $\CCC^\to$, say from $f: A \to B$ to $f': A' \to B'$ is a pair $g = (g_1, g_2)$ with $g_1: A \to A'$ and $g_2: B \to B'$, and the property that $g_2 \circ f = f' \circ g_1$.
+Thus, the functor $\dom$ is defined by $\dom(f) = A$ and $\dom(g_1, g_2) = g_1$, which agrees with the axioms of a functor, and can be proven in a similar way as above.
+
+Now define $F: \quot{\CCC}{C} \to \CCC^\to$ as $F(f) = f$ and $F(a) = (a, id_C)$.
+The fact that $F$ is indeed a functor follows from similar arguments as above.
+To see $F$ has the desired property, let $f \in \quot{\CCC}{C}$, then $(\dom \circ F)(f) = \dom(f) = U(f)$.
+Furthermore, if $a$ is an arrow in the slice category, we have $(\dom \circ F)(a) = \dom(a, id_C) = a = U(a)$, as required.
+\end{proof} 
+
 \begin{exercise}{1 (Micro)}
 Prove that the \Rel and \Matrix categories (examples 1.4.4) are indeed categories.
 \end{exercise}
@@ -76,40 +199,9 @@ Suppose every neighborhood of $x$ meets $S$ at point other than $x$.
 Then $x$ is an accumulation point of $S$.
 By Theorem 2.5.2, any closed set that contains $S$ must contain $x$, so that $\bar{S} = \bigcap F_i$, for a family of closed sets $F_i$ with $S \subseteq F_i$, for all $i \in \cI$. 
 Thus $x \in \bar{S}$.
-\end{proof} 
+\end{proof}
 
-\begin{exercise}{5 Micro}
-\begin{enumerate}
-    \item Show that specialisation is a preorder.
-    \item Show that a space is a $T_0$ space if and only if the specialisation is a partial order.
-    \item Show that the order in a $T_1$ space is trivial.
-\end{enumerate}
-\end{exercise}
-\begin{proof}
-\begin{enumerate}
-    \item Let $X$ be a topological space. 
-    We can order the points in $X$ by specialisation by setting $x \leq y$ if and only if $x \in U$ implies $y \in U$.
-    To prove $\leq$ is a preorder we need to prove it is reflexive and transitive.
-    Clearly $\leq$ is reflexive, since $x \in U$ implies $x \in U$, so that $x \leq x$.
-    Furthermore, let $x \leq y$ and $y \leq z$, so that $x \in U$ implies $y \in U$ and $y \in U$ implies $z \in U$, both of this statements at the same time result in $x \in U$ implies $z \in U$ so that $x \leq z$, as required.
-    \item ($\Rightarrow$)
-    Suppose $X$ is $T_0$, so that for each pair of points $x \neq y$, there is either a neighborhood of $x$ not containing $y$ or a neighborhood of $y$ not containing $x$.
-    We already proved that specialisation is a preorder, and since we can order any topological space by specialisation, it certainly holds for a $T_0$ space.
-    Thus, we need to prove that the order entailed by specialisation is symmetric.
-    Thus, suppose $x \leq y$ so that $x \in U$ implies $y \in U$, and $y \leq x$ so that $y \in U$ implies $x \in U$.
-    Since $X$ is $T_0$ this can only hold if $x = y$, since otherwise, there should exist an open set such that $x \in U$ but $y \notin U$, or $y \in U$ but $x \notin U$.
-    Thus, $\leq$ is a partial order.
-
-    ($\Leftarrow$)
-    Suppose the order entailed by specialisation is a partial order, so that $\leq$ is reflexive, symmetric and transitive.
-    Let $x \neq y$, then either we cannot compare $x$ and $y$, in which case there exists an open set for which $x \in U$ but $y \notin U$, or $y \in U$ and $x \notin U$, both cases resulting in $X$ being $T_0$.
-    Or, if we can compare $x$ and $y$, say $x \leq y$ (but not $y \leq x$), then $x \in U$ implies $y \in U$, but since the implication does not hold in the other direction, then there must be an open set so that $y \in U$ but $x \notin U$, in which case $X$ is $T_0$.
-    \item If $X$ is $T_1$, then for every $x \neq y$ there is a neighborhood of $x$ not containing $y$, so that $x \in U$ does not imply $y \in U$, so that $x \leq y$ does not hold.
-    Inverting the role of $x$ and $y$, we see that no two elements in $X$ can be compared, giving us a trivial order.
-\end{enumerate}
-\end{proof} 
-
-\begin{exercise}{6 Micro}
+\begin{exercise}{5 (Micro)}
 \begin{enumerate}
     \item Show that finite topological spaces and finite preordered sets are ``the same thing''. 
     That is: 
@@ -148,43 +240,66 @@ Thus $x \in \bar{S}$.
 \end{enumerate}
 \end{proof} 
 
-\begin{exercise}{3}
-\begin{enumerate}
-    \item Show that in \Set, the isomorphisms are exactly the bijections.
-    \item Show that in \Monoid, the isomorphisms are exactly the bijective homomorphisms.
-    \item Show that in \Poset, the isomorphisms are not the same as the bijective homomorphisms.
-\end{enumerate}
+\begin{exercise}{6 (Micro)}
+Prove that every category $\CCC$ with a set of arrows is isomorphic to one in which the objects are sets and the arrows are functions.
 \end{exercise}
 \begin{proof}
-The first two follow by the usual set and abstract algebraic arguments.
+Define the Cayley representation of $\overline{\CCC}$ of $\CCC$ to be the category where the objects are sets of the form $\bar{C} = \set{f \in \CCC: \cod(f) = C}$ for all $C \in \CCC$.
+In $\overline{\CCC}$ arrows are defined to be functions $\bar{g}: \bar{C} \to \bar{D}$ for $g: C \to D$ in $\CCC$, defined for any $f: X \to C$ in $\CCC$ by $\bar{g}(f) = g \circ f$.
+
+We need to prove that for every object there is a unit in this category, and that the composition of arrows is associative.
+For the unit, note that for any $\overline{C} \in \overline{\CCC}$, we have $\overline{id}_{\overline{C}}: \overline{C} \to \overline{C}$ with $\overline{id}_{\overline{C}}(f) = id_C \circ f = f$.
+Thus, for any $\overline{g}: \overline{C} \to \overline{D}$, we have 
+\begin{align*}
+    (\overline{g} \circ \overline{id}_{\overline{C}})(f) 
+    = \overline{g}(\overline{id}_{\overline{C}}(f)) 
+    = \overline{g}(f) 
+    = \overline{g},
+\end{align*}
+as required.
+Defining $\overline{id}_{\overline{D}}$ in a similar way allows us to prove that $\overline{id}_{\overline{D}} \circ \overline{g} = \overline{g}$.
+
+To see composition is associative, define $\overline{g}: \overline{A} \to \overline{B}$, $\overline{h}: \overline{B} \to \overline{C}$ and $\overline{k}: \overline{C} \to \overline{D}$ in a similar way as above.
+For $f: A \to B$, we have,
+\begin{align*}
+    [\overline{g} \circ (\overline{h} \circ \overline{k})](f)
+    &= \overline{g}[(\overline{h} \circ \overline{k})(f)]\\
+    &= \overline{g}((\overline{h}(\overline{k}(f))\\
+    &= (g \circ h \circ k)(f)\\
+    &= [(\overline{g} \circ \overline{h})(\overline{k}(f))
+    = [(\overline{g} \circ \overline{h}) \circ \overline{k}](f),
+\end{align*}
+so that the operation is associative, as required.
+
+To see $\CCC$ and $\overline{\CCC}$ are isomorphic, we prove there are functors $F: \CCC \to \overline{\CCC}$ and $G: \overline{\CCC} \to \CCC$ so that $F \circ G = id$ and $G \circ F = id$ (for both objects and arrows).
+
+Thus, define $F(C) = \overline{C}$ and $F(g) = \overline{g}$, as defined in $\overline{\CCC}$.
+Likewise, define $G(\overline{C}) = C$ (the codomain of the arrows that compose $\overline{C}$) and $G(\overline{g}) = g$.
+We have $(F \circ G)(\overline{C}) = F(G(\overline{C})) = F(C) = \overline{C}$ and $(G \circ F)(C) = G(F(C)) = G(\overline{C}) = C$, and $(F \circ G)(\overline{C}) = F(G(\overline{C})) = F(C) = \overline{C}$.
+
+Moreover, $(F \circ G)(\overline{g}) = F(G(\overline{g})) = F(g) = \overline{g}$ and $(G \circ F)(g) = G(F(g)) = G(\overline{g}) = g$, and $(F \circ G)(\overline{g}) = F(G(\overline{g})) = F(g) = \overline{g}$,
+so that $\CCC$ and $\overline{\CCC}$ are isomorphic.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{7 (Micro)}
+Prove $\Set_\ast \simeq \quot{1}{\Set}$, that is, the category of pointed sets is isomorphic to the coslice category of Sets under any singleton $1 = \set{\ast}$.
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
+We start by giving the definition of the categories at hand.
+The objects in $\Set_\ast$ are sets $A$ with a distinguished element, say $a$ and the arrows $f: (A, a) \to (B, b)$ are functions $f: A \to B$ that preserve the points $f(a) = b$.
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
+On the other hand, objects in $\quot{1}{\Set}$ are all arrows in $\Set$ so that $\dom(f) = 1$ (for example $a: 1 \to A$ corresponds to $a(\ast) = a \in A$, so that these arrows correspond to elements in $A$). 
+An arrow between $a: 1 \to A$ and $b: 1 \to B$ in the coslice category corresponds to arrows $f: A \to B$ in $\Set$, so that $f \circ a = b$.
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
+Consider the functor $F: \Set_\ast \to \quot{1}{\Set}$ given by $F(A, a) := a : 1 \to A$, with $a(\ast) = a$, and $F(f) := f: A \to B$ with $f(a) = b$ (here the domain of $f$ is only $a \in A$).
+From the definition it is easy to see that $F$ preserves identities.
+Furthermore, if $f: A \to B$ and $g: B \to C$, we have $F(g \circ f) := g \circ f: A \to C$ with $(g \circ f)(a) = c$, which is precisely $F(g) \circ F(f) := (g \circ f)(a) = g(f(a)) = g(b) = c$.
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
+Now consider the functor $G: \quot{1}{\Set} \to \Set_\ast$ given by $G(a) := (\cod(a), a(\ast))$, and $G(f) = f$. 
+We have that $G$ preserves identities and composition of arrows, straight from the definition.
+
+Now $(F \circ G)(a) = F(G(a)) = F(\cod(a), a(\ast)) = F(A, a) = a$, and $(F \circ G)(f) = F(G(f)) = F(f) = f$, so that $F$ is a left inverse of $G$.
+Likewise $(G \circ F)(A, a) = G(F(A, a)) = G(a) = (\cod(a), a(\ast)) = (A, a)$ and $(G \circ F)(f) = G(F(f)) = G(f) = f$, so that $F$ is also a right inverse of $G$, giving us the desired isomorphism.
 \end{proof} 
 
 \begin{exercise}{x}
