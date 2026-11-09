@@ -124,6 +124,45 @@ To see $F$ has the desired property, let $f \in \quot{\CCC}{C}$, then $(\dom \ci
 Furthermore, if $a$ is an arrow in the slice category, we have $(\dom \circ F)(a) = \dom(a, id_C) = a = U(a)$, as required.
 \end{proof} 
 
+\begin{exercise}{9}
+Describe the free categories of the following graphs by determining their objects, arrows, and composition operators.
+\begin{enumerate}
+    \item
+    \begin{tikzcd}
+        a \arrow[r, "e"] & b
+    \end{tikzcd}
+
+    \item
+    \begin{tikzcd}
+        a \arrow[r, shift left=0.5ex, "e"] & b \arrow[l, shift left=0.5ex, "f"]
+    \end{tikzcd}
+
+    \item
+    \begin{tikzcd}
+        a \arrow[r, "e"] \arrow[dr, swap, "g"] & b \arrow[d, "f"] \\
+        & c
+    \end{tikzcd}
+
+    \item
+    \begin{tikzcd}
+        a \arrow[r, shift left=0.7ex, "e"] \arrow[dr, swap, "g"] & b \arrow[l, shift left=0.7ex, "h"] \arrow[d, "f"] & d \\
+        & c &
+    \end{tikzcd}
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+\begin{enumerate}
+    \item The objects are $a$ and $b$ and the arrows are $e$.
+    \item The objects are $a$ and $b$ and the arrows are all sequences intercalating $e$ and $f$ (e.g., $e$, $f$, $ef$, $fe$, etc.), composition of the arrows is the concatenation between these arrows, making sure that no $ee$ or $ff$ occurs.
+    \item The objects are $a$, $b$ and $c$, the arrows are $e$, $f$, $fe$ and $g$.
+    Composition between arrows are simply concatenation between any of the arrows, making sure that the domain and the codomain make sense.
+    In particular, only $e$ and $f$ can be concatenated (apart from the identities).
+    \item Here the objects are $a$, $b$, $c$, and $d$.
+    The arrows are $e$, $h$, $f$ and $g$, all the sequences between $e$ and $h$ as in the second numeral and all the sequences between $e$ and $h$ which terminate in $f$ or $g$.
+    Composition is the same as in the second numeral, plus concatenation with $g$ and $f$, in which case the arrows cannot be concatenated further.
+\end{enumerate}
+\end{proof} 
+
 \begin{exercise}{1 (Micro)}
 Prove that the \Rel and \Matrix categories (examples 1.4.4) are indeed categories.
 \end{exercise}
@@ -302,22 +341,26 @@ Now $(F \circ G)(a) = F(G(a)) = F(\cod(a), a(\ast)) = F(A, a) = a$, and $(F \cir
 Likewise $(G \circ F)(A, a) = G(F(A, a)) = G(a) = (\cod(a), a(\ast)) = (A, a)$ and $(G \circ F)(f) = G(F(f)) = G(f) = f$, so that $F$ is also a right inverse of $G$, giving us the desired isomorphism.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{8 (Micro)}
+Show directly that $\N$ satisfies the UMP for a free monoid with one generator.
 \end{exercise}
 \begin{proof}
-fill
+Let $M$ be any monoid.
+Furthermore, let $i : \set{\ast} \to \N$ with $\ast \mapsto 1$ and $f : \set{\ast} \to M$ with $\ast \mapsto m$ be any function.
+We want to prove there exists a unique $g$ such that $g \circ i = f$.
+
+We define $g: \N \to M$ with $g(1) = m$ and $g(n) = m \dots m$ ($n$ times).
+We have that $(g \circ i)(\ast) = g(i(\ast)) = g(1) = m = f(\ast)$.
+Furthermore, suppose $g'$ satisfies the same property;
+that is, suppose $g' \circ i = f$, then $(g' \circ i)(\ast) = (g \circ i)(\ast)$, which implies $g'(1) = g(1)$, and since $g$ is a homomorphism, and 1 is a generator, then $g' = g$.
 \end{proof} 
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
+\begin{exercise}{11}
+Show that the free monoid functor $M: \Set \to \Monoid$ exists in two different ways:
+a) Assume the particular choice $M(X) = X^\ast$, and define its effect $M(f): M(A) \to M(B)$ on a function $f: A \to B$ to be $M(f)(a_1 \dots a_k) = f(a_1) \dots f(a_k)$, for $a_1, \dots, a_k \in A$.
+b) Assume only the UMP of the free monoid and use it to determine $M$ on functions, showing the result to be a functor.
 
-\begin{exercise}{x}
-fill
+How are these two approaches related?
 \end{exercise}
 \begin{proof}
 fill

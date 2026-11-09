@@ -1,26 +1,12 @@
 \section{Positive operators}
 
-As you can guess, in the dictionary we have been building (like where self-adjoint operator corresponds to real number), the idea of a positive operator corresponds to a positve real number. And the ordering built in this section is the usual ordering on the real numbers.
-1
-2
-3 These are all rules we know are true in the real numbers, but which are true in this general context
-4 The nice thing about positive operators is that an operator is positive if and only if there is a T such that the operator has the form TT*
-5 Note that a similar thing holds for self-adjoint <-> real spectrum 
-6
-9
-10
-11 What famous result from real analysis is 9.3-3 generalizing?
-12 Also here the converse holds that every  positive oprator is of the form T²
-13
-14 In other words, if T is infinitesimal, then any smaller value is too! 
-15
 
 \begin{exercise}{1}
 Let $S$ and $T$ be bounded self-adjoint linear operators on a complex Hilbert space.
 If $S \leq T$ and $S \geq T$, show that $S = T$.
 \end{exercise}
 \begin{proof}
-IF $S \leq T$, then $T - S \geq 0$, so that $\brackets{(T - S)x, x} \geq 0$, likewise, $\brackets{(S -T) x, x}  \geq 0$, thus $\brackets{(T - S) x, x} = 0$, by Lemma 3.8-2, we have that $T - S = 0$, as required.
+If $S \leq T$, then $T - S \geq 0$, so that $\brackets{(T - S)x, x} \geq 0$, likewise, $\brackets{(S -T) x, x}  \geq 0$, thus $\brackets{(T - S) x, x} = 0$, by Lemma 3.8-2, we have that $T - S = 0$, as required.
 \end{proof} 
 
 \begin{exercise}{2}
@@ -127,17 +113,14 @@ For matrices, this implies that $A^2 = A^T A$ has only nonnegative eigenvalues.
 \end{proof} 
 
 \begin{exercise}{14}
-IF $T: H \to H$ and $S: H \to H$ are bounded linear operators and $T$ is compact and $S^\ast S \leq T^ast T$, show that $S$ is compact.
+If $T: H \to H$ and $S: H \to H$ are bounded linear operators and $T$ is compact and $S^\ast S \leq T^\ast T$, show that $S$ is compact.
 \end{exercise}
 \begin{proof}
 Let $(x_n)$ be a bounded sequence.
 We want to prove $(Sx_n)$ contains a convergent subsequence.
 We have $\brackets{(SS^\ast - TT^\ast) x, x} \leq 0$ so that $\brackets{Sx, Sx} \leq \brackets{Tx, Tx}$ which in turn implies $\norm{Sx}^2 \leq \norm{Tx}^2$.
-In particular, this holds for all $x_n$, so that $\norm{Sx_n} \leq \norm{Tx_n}$
 Since $T$ is compact, then $(Tx_n)$ contains a convergent subsequence, say $(Tx_{n_k})$, with $Tx_{n_k} \to Tx$.
-We have that $\norm{Sx_{n_k} - Sx}$
-
-FILL
+We have that $\brackets{(SS^\ast - TT^\ast) (x_{n_k} - x), (x_{n_k} - x)} \leq 0$, so that $\brackets{S (x_{n_k} - x), S(x_{n_k} - x)} \leq \brackets{T (x_{n_k} - x), T(x_{n_k} - x)}$ and $\norm{Sx_{n_k} - Sx}^2 \leq \norm{Tx_{n_k} - Tx}^2 \to 0$, meaning that $S x_{n_k} \to Sx$ too, completing the proof.
 \end{proof} 
 
 \begin{exercise}{15}
