@@ -1,14 +1,5 @@
 \section{Square Roots of a Positive Operator}
 
-1
-2
-3
-4 Recall that we already had proven for normal operators that $|T^2| = |T|^2$
-5
-7
-8 This is actually equivalent to being positive
-9
-10 So squaring is an injective function on positive operators, just like it is on positive numbers
 
 \begin{exercise}{1}
 Find operators $T: \R^2 \to \R^2$ such that $T^2 = I$, the identity operator.
@@ -16,6 +7,7 @@ Indicate which of the square roots is the positive square root of $I$.
 \end{exercise}
 \begin{proof}
 $I$ and $-I$ are square roots of $I$, $I$ being the positive one.
+Other possible cases are rotation matrices.
 \end{proof} 
 
 \begin{exercise}{2}
@@ -24,7 +16,7 @@ Show that $T$ is self-adjoint and positive and find its positive square root.
 \end{exercise}
 \begin{proof}
 In exercise 9.1.9 we proved that $T$ is self-adjoint.
-$T$ is positive since $\brackets{Tx, x} = \int t x(t) \overline{x(t)} dt = \int t x^2(t) dt \leq 0$.
+$T$ is positive since $\brackets{Tx, x} = \int t x(t) \overline{x(t)} dt = \int t x^2(t) dt \geq 0$.
 The square root of $T$ is $Sx = t^{1/2} x(t)$, since $S(Sx) = t^{1/2} (t^{1/2} x(t)) = Tx$.
 \end{proof} 
 
@@ -38,7 +30,7 @@ Find a square root of $T$.
 \begin{proof}
 $T$ is bounded since $\norm{Tx}^2 = \sum_{i=3}x_i^2 \leq \norm{x}^2$.
 $T$ is self-adjoint, since $\brackets{Tx, y} = \sum_{i=3}x_i \overline{y_i} = \brackets{x, Ty}$.
-$T$ is positive, to see this, note that $\brackets{Tx, x} = \sum_{i=3}x_i \overline{x_i} = \sum_{i=3} x_i^2 \leq 0$.
+$T$ is positive, to see this, note that $\brackets{Tx, x} = \sum_{i=3}x_i \overline{x_i} = \sum_{i=3} x_i^2 \geq 0$.
 $T$ is a square root of itself.
 \end{proof} 
 
@@ -87,7 +79,7 @@ Show that $C$ has a nonsingular positive square root $A$.
 We have $\brackets{B B^T x, y} = \brackets{B^T x, B^T y} = \brackets{x, B B^T y}$, where we used the fact, that real matrices $B^\ast = B^T$.
 Thus, $B B^T$ is self-adjoint.
 
-Furthermore, $\brackets{B B^T x, x} = \brackets{B^T x, B^T x} = \norm{B^T x}^2 \leq 0$, so that $B B^T$ is positive.
+Furthermore, $\brackets{B B^T x, x} = \brackets{B^T x, B^T x} = \norm{B^T x}^2 \geq 0$, so that $B B^T$ is positive.
 
 Since $B B^T$ is defined on a finite dimensional space, then it is bounded (2.7-8).
 Thus, we have all the required conditions for 9.4-2 to apply so that $C = B B^T$ has a positive square root $A$.
@@ -97,12 +89,41 @@ Thus, we have all the required conditions for 9.4-2 to apply so that $C = B B^T$
 Show that $D = A^{-1} B$ with $A$ and $B$ given in exercise 8 is an orthogonal matrix.
 \end{exercise}
 \begin{proof}
-fill
+We have $C = B B^T = A A$, so that 
+\begin{align*}
+    B^{-1} A A (B^T)^{-1} 
+    = I 
+    = I^{-1} 
+    = B^T A^{-1} A^{-1} B,
+\end{align*}
+since $B$ is nonsingular.
+Furthermore, $A = A^T$, so that 
+\begin{align*}
+    A^{-1} 
+    = (A^T)^{-1} 
+    = (A^{-1})^T,
+\end{align*}
+since $A$ is positive and nonsingular.
+Using this, we conclude,
+\begin{align*}
+    D D^T 
+    = (A^{-1} B) (A^{-1} B)^T 
+    = A^{-1} B B^T (A^{-1})^T 
+    = A^{-1} A A A^{-1}
+    = I,
+\end{align*}
+and in a similar way 
+\begin{align*}
+    D^T D 
+    = (A^{-1} B)^T (A^{-1} B)
+    = B^T (A^{-1})^T A^{-1} B,
+\end{align*}
+completing the proof.
 \end{proof} 
 
 \begin{exercise}{10}
 If $S$ and $T$ are positive bounded self-adjoint linear operators on a complex Hilbert space $H$ and $S^2 = T^2$, show that $S = T$.
 \end{exercise}
 \begin{proof}
-fill
+Note that $S$ and $T$ are positive square roots of $S^2$ and of $T^2$, since positive square roots are unique (9.4-2), then $S = T$, as required.
 \end{proof} 

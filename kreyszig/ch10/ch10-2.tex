@@ -1,11 +1,9 @@
 \section{Hilbert-adjoint operators, symmetric and self-adjoint linear operators}
 
-1 Very important. Self-adjoint is here a much much stronger version than symmetric. In the bounded case they obviously are the same concept
 2 Again some arithmetical rules 
 3 Remember you did this for self-adjoint bounded operators already, it is not quite sufficient for unbounded since it "only" leads to symmetric 
 4
 5 So the adjoint of a densely defined operator can only really be expected to be also densely defined
-6 Concrete example
 7 We already said that bounded operators could be defined on the entire domain without any problem, this shows that symmetricity is also not disturbed in doing this
 8
 9 This gives a bit more intuition for self-adjoint as those being symmetric and not further extendable to something that remains symmetric 
@@ -16,7 +14,8 @@
 Show that a self-adjoint linear operator is symmetric.
 \end{exercise}
 \begin{proof}
-fill
+By Lemma 10.2-4, we have that a densely defined linear operator $T$ is symmetric if and only if $T \subseteq T^\ast$.
+By definition, $T: \cD(T) \to H$ densely defined in $H$ is self-adjoint if $T = T^\ast$, so that if $T$ is self-adjoint, then it must be symmetric.
 \end{proof} 
 
 \begin{exercise}{2}
@@ -31,7 +30,7 @@ Let $H$ be a complex Hilbert space and $T: \cD(T) \to H$ linear and densely defi
 Show that $T$ is symmetric if and only if $\brackets{Tx, x}$ is real for all $x \in \cD(T)$.
 \end{exercise}
 \begin{proof}
-fill
+Try to reproduce the proof of 3.10-3 in this case.
 \end{proof} 
 
 \begin{exercise}{4}
@@ -52,7 +51,26 @@ fill
 Show that $y = (y_n) = Tx = (x_n / n)$ defines a bounded self-adjoint linear operator $T: \ell^2 \to \ell^2$ which has an unbounded self-adjoint inverse.
 \end{exercise}
 \begin{proof}
-fill
+We will first prove that $T$ is bounded.
+Note,
+\begin{align*}
+    \norm{Tx}^2
+    = \sum \frac{\absoluteValue{x_n}^2}{n^2}
+    \leq \sum \absoluteValue{x_n}^2
+    = \norm{x}^2,
+\end{align*}
+so that $\norm{T} \leq 1$.
+Now consider $x = (1, 0, \dots)$, so that $\norm{Tx} = 1$, giving us that $\norm{T} = 1$.
+Furthermore, 
+\begin{align*}
+    \brackets{Tx, y} 
+    = \sum (x_n / n) \bar{y_n} 
+    = \sum x_n (\bar{y_n} / n)
+    = \brackets{x, Ty}, 
+\end{align*}
+so that $T$ is self-adjoint.
+
+The inverse of $T$ is $T^{-1}y = (x_n)$, where $x_n = n y_n$, which we proved is unbounded in exercise 10.1.8.
 \end{proof} 
 
 \begin{exercise}{7}
