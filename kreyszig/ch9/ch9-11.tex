@@ -15,21 +15,22 @@
 What can we conclude from Theorem 9.11-1 in the case of a Hermitian matrix?
 \end{exercise}
 \begin{proof}
-fill
+Since matrices have a finite number of eigenvalues, then $E_\lambda$ for a Hermitian matrix has a finite number of discontinuities.
 \end{proof} 
 
 \begin{exercise}{2}
 If $T$ in Theorem 9.11-1 is compact and has infinitely many eigenvalues, what can we conclude about $(E_k)$ from Theorems 9.11-1 and 9.11-2?
 \end{exercise}
 \begin{proof}
-fill
+From 9.11-1 and 9.11-2, we can conclude that $E_\lambda$ is a step function with countably many jumps.
+In particular, for $\lambda < \norm{T}$, we have $E_\lambda = 0$ and for $\lambda \geq \norm{T}$, we have $E_\lambda = I$.
 \end{proof} 
 
 \begin{exercise}{3}
 Verify that the spectral family in exercise 9.9.7 satisfies the three theorems in the present section.
 \end{exercise}
 \begin{proof}
-fill
+Note that $E_\lambda$, as a function of $\lambda$ has no discontinuities (consistent with the fact that $T$ has no eigenvalues), and is not constant between 0 and 1 (consistent with the fact that $\sigma(T) = \sigma_c(T) = [0,1]$).
 \end{proof} 
 
 \begin{exercise}{4}
@@ -37,7 +38,8 @@ We know that if $m$ in Theorem 9.2-1 is positive, then $T$ is positive.
 How does this follow from the spectral representation $T = \int_{m-0}^M \lambda dE_\lambda$ in section 9.9?
 \end{exercise}
 \begin{proof}
-fill
+We write $\brackets{Tx, x} = \int_{m-0}^M \lambda d w(\lambda)$, where $w(\lambda) = \brackets{E_\lambda x, x}$.
+Since $\sigma(T) \subseteq [m, M]$, then $E_\lambda = 0$ for $\lambda \leq 0$ so that $\int_{m-0}^M \lambda d w(\lambda) \geq \int_{m-0}^M d w(\lambda) = m \brackets{x, x} \geq 0$, so that $T$ is positive.
 \end{proof} 
 
 \begin{exercise}{5}
@@ -45,7 +47,8 @@ We know that the spectrum of a bounded self-adjoint linear operator is closed.
 How does this follow from theorems in this section?
 \end{exercise}
 \begin{proof}
-fill
+Note that 9.11-2 tells us that $\lambda_0 \in \rho(T)$, if and only if there exists $\gamma > 0$ such that $E_\lambda$ is constant in $[\lambda_0 - \gamma, \lambda_0 + \gamma]$ but note this defines an open set, since we can take any other point in the interval, and it will still satisfy the same property.
+Thus $\rho(T)$ is an open set so that $\sigma(T)$ is closed.
 \end{proof} 
 
 \begin{exercise}{6}
@@ -61,7 +64,8 @@ A bounded self-adjoint linear operator $T: H \to H$ on a Hilbert space $H \neq \
 Illustrate with an example that this does not imply $\sigma_c(T)$ (so that this terminology, which is generally used, may confuse the beginner for a moment).
 \end{exercise}
 \begin{proof}
-fill
+An example would be $T: \ell^2 \to \ell^2$ given by $(x_1, x_2, \dots) \mapsto (x_1, x_2/2, x_3/3, \dots)$.
+We have proved that the eigenvalues of $T$ are $(e_n)$ which is a total orthonormal set in $\ell^2$.
 \end{proof} 
 
 \begin{exercise}{8}

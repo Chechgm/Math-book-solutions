@@ -22,7 +22,14 @@ By definition, $T: \cD(T) \to H$ densely defined in $H$ is self-adjoint if $T = 
 If $S$ and $T$ are such that $ST$ is densely defined in $H$, show that $T^\ast S^\ast \subseteq (ST)^\ast$, and if $S$ is defined on all of $H$ and is bounded, then $(S T)^\ast = T^\ast S^\ast $
 \end{exercise}
 \begin{proof}
-fill
+Let $y \in \cD(S^\ast)$ so that there exists $y^\ast$ with $\brackets{Sx, y} = \brackets{x, y^\ast}$ with $y^\ast = S^\ast y$ for all $x \in \cD(S)$.
+Furthermore, let $S^\ast y \in \cD(T^\ast)$, so that $\brackets{TSx, y} = \brackets{x, T^\ast(S^\ast y)}$ for all $x \in \cD(T)$.
+This is the same as saying that $T^\ast S^\ast \subseteq (ST)^\ast$
+
+
+and $S^\ast y \in \cD(T^\ast)$, so that there exists $y^\ast$ with $\brackets{Tx, y} = \brackets{x, y^\ast}$, with $y^\ast = T^\ast(S^\ast y)$ and $\brackets{Tx, y} = \brackets{x, y^\ast}$, with $y^\ast = T^\ast(S^\ast y)$, but note that this is the same as saying that $y^\ast \in \cD((ST)^\ast)$, as required.
+
+Now suppose 
 \end{proof} 
 
 \begin{exercise}{3}

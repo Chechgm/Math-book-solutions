@@ -76,14 +76,16 @@ What spectral family $(E_k)$ corresponds to an $n$-rowed Hermitian matrix?
 Verify $T = \int_{m-0}^M \lambda dE_\lambda$ for this case.
 \end{exercise}
 \begin{proof}
-fill
+$E_\lambda$ is the projection onto the eigenspace with eigenvalue less than $\lambda$.
 \end{proof} 
 
 \begin{exercise}{6}
 If we make the additional assumption that the self-adjoint operator $T$ is compact, show that $T = \int_{m-0}^M \lambda dE_\lambda$ takes the form of an infinite series or a finite sum.
 \end{exercise}
 \begin{proof}
-fill
+We proved that the set of eigenvalues of a compact operator is finite or countable (8.3-1), and that the eigenspace for each value has finite dimension (8.3-3).
+Moreover, we know that eigenspaces of different eigenvalues are linearly independent (7.4-3) and orthogonal (9.1-1), so that we can construct an orthonormal list of vectors using the Gram-Scyhmidt procedure.
+We can then define a spectral family by the projection of $H$ onto the eigenspaces $P_\lambda$, so that $\int_{-\norm{T} - 0}^{\norm{T}} \lambda dE_\lambda = \sum \lambda P_\lambda$, as required.
 \end{proof} 
 
 \begin{exercise}{7}
@@ -108,22 +110,27 @@ fill
 \begin{exercise}{8}
 Find the spectral family of the operator $T^2: \ell^2 \to \ell^2$ defined by $(x_1, x_2, x_3, \dots) \mapsto (x_1/1, x_2/2, x_3/3, \dots)$.
 Find an orthonormal set of eigenvectors.
-What form does $T = \int_{m-0}^M \lambda dE_\lambda$ take in this case?
+What form does $T = \int_{m-0}^M \lambda d E_\lambda$ take in this case?
 \end{exercise}
 \begin{proof}
-fill
+The eigenvalues of $T$ is the sequence $(1/n)$, since for any $\lambda = 1/n$, we can choose $x_n = 1$ in the $n$th position and 0 otherwise, from which we would obtain $Tx_n = (1/n)x_n$.
+$(x_n)$ is an orthonormal set of eigenvectors, so that $T = \int_{0-0}^\infty \lambda d E_\lambda = \sum (1/n) P_n$, where $P_n$ projects $\ell^2$ onto $x_n$.
 \end{proof} 
 
 \begin{exercise}{9}
 Prove that in exercise 8 $T = \sum_{j=1}^\infty (1/j) P_j$ where $P_j$ is the projection of $\ell^2$ onto the span fo $e_j = (\delta_{jn}$ and the series is convergent in the norm of $B(\ell^2, \ell^2)$.
 \end{exercise}
 \begin{proof}
-fill
+We proved the representation in exercise 8.
+To see $\sum (1/n) P_n$ converges to $T$ in $B(\ell^2, \ell^2)$, fix $\epsilon > 0$ and let $N \in \N$ so that $1/N < \epsilon$.
+We have $\norm{(T - \sum_{n=1}^N (1/n) P_n) x}^2 = \sum_{n=N+1}^\infty (1/n) \absoluteValue{x_n}^2$.
+Taking the supremum with respect to all $x \in \ell^2$ with $\norm{x} = 1$ gives us $\norm{(T - \sum_{n=1}^N (1/n) P_n) x} < \epsilon$, so that $\sum_{n=1}^N (1/n) |_n \to T$, completing the proof.
 \end{proof} 
 
 \begin{exercise}{10}
 How could we use the idea of the proof given in the answer to exercise 9 in the case of an arbitrary compact self-adjoint linear operator $T$ having infinitely many different nonzero eigenvalues?
 \end{exercise}
 \begin{proof}
-fill
+This is precisely what we did in exercises 8 and 9:
+find the eigenvalues and eigenvectors, define the projections on the eigenspaces of each eigenvalue, and represent the operator as the sum of the scalar product between each eigenvalue and its corresponding projection.
 \end{proof} 
