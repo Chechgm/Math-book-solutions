@@ -1,134 +1,72 @@
-\section{fill}
+\section{Closed Linear Operators and Closures}
 
+1 A concrete example of a nonclosed opeator
+4 So essentially inverses of closed operators are also closed
+5 A concrete example of a closed extension
+6 So for symmetric operators, it turns out that to make it closed is particularly easy 
+7 Lemma for 8 and 9
+8 A particularly important fact about closdd operators that their adjoint is also densely defined
+9 An alternative proof of the closed graph theorem as well as perhaps also a bit of a more natural interpretation of it with the language of closed operators
+10 This is going to be important for making spectral theory work
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{1}
+Let $T: \cD(T) \to \ell^2$, where $\cD(T) \subseteq \ell^2$ consists of all $x = (x_n)$ with only finitely many nonzero terms $x_n$ and $y = (y_n) = Tx = (n x_n)$.
+This operator is unbounded (exercise 10.1.8).
+Show that $T$ is not closed.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{4}
+Let $T: \cD(T) \to H$ be a closed linear operator.
+If $T$ is injective, show that $T^{-1}$ is closed.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{5}
+Show that $T$ in exercise 1 is a closed linear extension $T_1$ to $\cD(T_1) = \set{x = (x_n) \in \ell^2: \sum n^2 \absoluteValue{x_n}^2 < \infty}$ defined by $T_1 x = (n x_n)$.
+[Hint: use exercise 4].
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{6}
+If $T$ is a symmetric linear operator, show that $T^{\ast \ast}$ is a closed symmetric linear extension of $T$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{7}
+Show that the graph $\cG(T^\ast)$ of the Hilbert-adjoint operator of a linear operator $T$ is related to $\cG(T)$ by $\cG(T^\ast) = [U(\cG(T))]^\perp$, where $U: H \times H \to H \times H$ is defined by $(x, y) \mapsto (y, -x)$.
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{8}
+If $T: \cD(T) \to H$ is a densely defined closed linear operator, show that $T^\ast$ is densely defined and $T^{\ast \ast} = T$.
+[Hint: use exercise 7].
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
+\begin{exercise}{9 (Closed graph Theorem)}
+Show that a closed linear operator $T: H \to H$ on a complex Hilbert space $H$ is bounded.
+[Hint: Use exercise 8.
+Of course, give an independent proof, without using 4.13-2].
 \end{exercise}
 \begin{proof}
 fill
 \end{proof} 
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
+\begin{exercise}{10}
+If $T$ is closed, show that $T_\lambda = T - \lambda I$ is closed, and if $T_\lambda^{-1}$ exists, then $T_\lambda^{-1}$ is closed.
 \end{exercise}
 \begin{proof}
 fill

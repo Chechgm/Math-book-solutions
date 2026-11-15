@@ -65,19 +65,29 @@ Illustrate with an example that this does not imply $\sigma_c(T)$ (so that this 
 \end{exercise}
 \begin{proof}
 An example would be $T: \ell^2 \to \ell^2$ given by $(x_1, x_2, \dots) \mapsto (x_1, x_2/2, x_3/3, \dots)$.
-We have proved that the eigenvalues of $T$ are $(e_n)$ which is a total orthonormal set in $\ell^2$.
+We have proved that the eigenvalues of $T$ are $(e_n)$ which is a total orthonormal set in $\ell^2$, but also $0 \in \sigma_p(T)$, as we proved in exercise 9.7.2.
 \end{proof} 
 
 \begin{exercise}{8}
 Give examples of compact self-adjoint linear operators $T: \ell^2 \to \ell^2$ having a pure point spectrum such that the set of the nonzero eigenvalues 
-(a) is a finite point set,
-(b) is an infinite point set and the corresponding eigenvectors form a dense set in $\ell^2$,
-(c) is an infinite point set and the corresponding eigenvectors span a subspace of $\ell^2$ such that the orthogonal complement of the closure of that subspace is finite dimensional,
-(d) as in (c) but that complement is infinite dimensional.
+\begin{enumerate}
+    \item is a finite point set,
+    \item is an infinite point set and the corresponding eigenvectors form a dense set in $\ell^2$,
+    \item is an infinite point set and the corresponding eigenvectors span a subspace of $\ell^2$ such that the orthogonal complement of the closure of that subspace is finite dimensional,
+    \item as in the previous numeral but that complement is infinite dimensional.
 In each case find a total orthonormal set of eigenvectors.
+\end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item $I: \ell^2 \to \ell^2$ has $\set{1} = \sigma_p(I)$.
+    \item fill
+    \item Consider $T: \ell^2 \to \ell^2$ given by $(x_1, x_2, x_3, \dots) \mapsto (x_1, x_1, x_3/3, \dots )$.
+    We have as eigenvectors $(e_n)_{n=3}^\infty$, and $(1, 1, 0, \dots)$.
+    The orthogonal complement of the subspace spanned by these eigenvectors is $\vecspan\set{(1, -1, 0, \dots)}$, which is finite dimensional.
+    \item We can use a similar technique as in the previous numeral, by defining the operator $(x_1, x_2, \dots) \mapsto (x_1, x_1, x_3/3, x_4/4, x_4/4, x_6/6, x_7/7, x_7/7, \dots)$.
+    We will obtain a set of eigenvectors given by $(e_{3n})_{n=1}^\infty$ and $\set{(1, 1, 0, \dots), (0, 0, 0, 1, 1, 0, \dots), \dots}$ whose span closure has as orthogonal complement the subspace spanned by $\set{(1, -1, 0, \dots), (0, 0, 0, 1, -1, 0, \dots), \dots}$, which is infinite dimensional.
+\end{enumerate}
 \end{proof} 
 
 \begin{exercise}{9 (Purely continuous spectrum)}
@@ -86,12 +96,17 @@ If $T$ is any bounded self-adjoint operator on $H$, show that there is a closed 
 (This reduction facilitated the investigation of $T$).
 \end{exercise}
 \begin{proof}
-fill
+Take the closure of the span of the eigenvectors of $T$ in $H$.
+This space is closed by definition and the set of eigenvectors is total in it.
+If the eigenvectors are not orthonormal, we can make them orthonormal through the Gram-Schmidt procedure.
+The complement of this space is orthogonal to it, and by construction it has no eigenvalues, as required.
 \end{proof} 
 
 \begin{exercise}{10}
 What can we say about the spectral families $(E_{\lambda 1})$ and $(E_{\lambda 2})$ of $T_1$ and $T_2$ in exercise 9 in terms of the spectral family $(E_\lambda)$ of $T$?
 \end{exercise}
 \begin{proof}
-fill
+The spectral family of the subspace with the pure point spectrum would be a step function between 0 and $I$, where the jump discontinuities happen at the eigenvalues.
+On the other hand, the spectrum of the purely continuous subspace is a continuous monotonic function between 0 and $I$.
+Of course these are derived from the original spectral family.
 \end{proof} 

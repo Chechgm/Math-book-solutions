@@ -17,7 +17,9 @@ Suppose $E_\lambda$ satisfies all conditions to be a spectral family (9.7-1) exc
 Find $\tilde{E}_\lambda$ satisfying all those conditions, including the limit condition.
 \end{exercise}
 \begin{proof}
-fill
+Let $\tilde{E}_\lambda = \lim_{\mu \to \lambda + 0} E_\mu x$, it follows directly that $\tilde{E}$ satisfies the limit condition. 
+For $\lambda \leq \mu$, we still have that $\tilde{E}_\lambda \leq \tilde{E}_\mu$, giving the order properties of limits. 
+Finally, since originally we had $\lim_{\lambda \to -\infty} E_\lambda x = 0$ and $\lim_{\lambda \to \infty} E_\lambda x = x$, this property does not change in our definition $\tilde{E}_\lambda$.
 \end{proof}
 
 \begin{exercise}{3}

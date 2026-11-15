@@ -1,14 +1,5 @@
 \section{Hilbert-adjoint operators, symmetric and self-adjoint linear operators}
 
-2 Again some arithmetical rules 
-3 Remember you did this for self-adjoint bounded operators already, it is not quite sufficient for unbounded since it "only" leads to symmetric 
-4
-5 So the adjoint of a densely defined operator can only really be expected to be also densely defined
-7 We already said that bounded operators could be defined on the entire domain without any problem, this shows that symmetricity is also not disturbed in doing this
-8
-9 This gives a bit more intuition for self-adjoint as those being symmetric and not further extendable to something that remains symmetric 
-10
-
 
 \begin{exercise}{1}
 Show that a self-adjoint linear operator is symmetric.
@@ -22,14 +13,19 @@ By definition, $T: \cD(T) \to H$ densely defined in $H$ is self-adjoint if $T = 
 If $S$ and $T$ are such that $ST$ is densely defined in $H$, show that $T^\ast S^\ast \subseteq (ST)^\ast$, and if $S$ is defined on all of $H$ and is bounded, then $(S T)^\ast = T^\ast S^\ast $
 \end{exercise}
 \begin{proof}
-Let $y \in \cD(S^\ast)$ so that there exists $y^\ast$ with $\brackets{Sx, y} = \brackets{x, y^\ast}$ with $y^\ast = S^\ast y$ for all $x \in \cD(S)$.
-Furthermore, let $S^\ast y \in \cD(T^\ast)$, so that $\brackets{TSx, y} = \brackets{x, T^\ast(S^\ast y)}$ for all $x \in \cD(T)$.
-This is the same as saying that $T^\ast S^\ast \subseteq (ST)^\ast$
+Let $y \in \cD(S^\ast)$, so that $\brackets{Sx, y} = \brackets{x, y^\ast}$, for all $x \in H$ and $y^\ast = S^\ast y$.
+Moreover, if $z \in \cD(T^\ast)$, then $\brackets{Tx, z} = \brackets{x, z^\ast}$, for all $x \in H$ and $z^\ast = T^\ast z$.
+Thus, if $y \in \cD(T^\ast S^\ast)$, we have
+\begin{align*}
+    \brackets{STx, y}
+    = \brackets{Tx, S^\ast y}
+    = \brackets{x, T^\ast S^\ast y},
+\end{align*}
+for all $x \in H$, so that $y \in \cD((ST)^\ast)$.
 
-
-and $S^\ast y \in \cD(T^\ast)$, so that there exists $y^\ast$ with $\brackets{Tx, y} = \brackets{x, y^\ast}$, with $y^\ast = T^\ast(S^\ast y)$ and $\brackets{Tx, y} = \brackets{x, y^\ast}$, with $y^\ast = T^\ast(S^\ast y)$, but note that this is the same as saying that $y^\ast \in \cD((ST)^\ast)$, as required.
-
-Now suppose 
+For the second part, suppose $S$ is defined on all of $H$, so that $S^\ast$ corresponds to the usual adjoint of $S$.
+Let $y \in \cD((ST)^\ast)$, so that $\brackets{ST x, y} = \brackets{Tx, S^\ast y} = \brackets{x, y^\ast}$, for all $x \in H$ and $y^\ast = T^\ast (S^\ast y)$.
+But note again, this is precisely the same as $y \in \cD(T^\ast S^\ast)$, completing the proof.
 \end{proof} 
 
 \begin{exercise}{3}
@@ -37,21 +33,39 @@ Let $H$ be a complex Hilbert space and $T: \cD(T) \to H$ linear and densely defi
 Show that $T$ is symmetric if and only if $\brackets{Tx, x}$ is real for all $x \in \cD(T)$.
 \end{exercise}
 \begin{proof}
-Try to reproduce the proof of 3.10-3 in this case.
+We will follow the same strategy as in 3.10-3.
+
+($\Rightarrow$)
+Suppose $T$ is symmetric, so that for all $x, y \in \cD(T)$, we have $\overline{\brackets{Tx, y}} = \brackets{y, Tx} = \brackets{Tx, y}$. 
+In particular, this holds for $y = x$, so that $\overline{\brackets{Tx, x}} = \brackets{Tx, x}$;
+that is, $\brackets{Tx, x}$ is real for all $x$.
+
+($\Leftarrow$)
+Suppose $\brackets{Tx, x}$ is real for all $x \in \cD(T)$, then 
+\begin{align*}
+    \brackets{Tx, x} 
+    = \overline{\brackets{Tx, x}} 
+    = \overline{\brackets{x, T^\ast x}}
+    = \brackets{T^\ast x, x}.
+\end{align*}
+Thus $\brackets{(T - T^\ast)x, x} = 0$, so that $T = T^\ast$ by Lemma 3.9-3.b  (since $H$ is complex), proving the desired result.
+
 \end{proof} 
 
 \begin{exercise}{4}
 If $T$ is symmetric, show that $T^{\ast \ast}$ is symmetric.
 \end{exercise}
 \begin{proof}
-fill
+Since $T$ is symmetric, we know $T \subseteq T^\ast$ (10.2-4), so that $T^{\ast \ast} \subseteq T^\ast$ (10.2-1.a), and also $T^{\ast \ast} \subseteq T^{\ast \ast \ast}$, applying the same rule again.
+Letting $T^{\ast \ast} = S$, we have $S \subseteq S^\ast$, so that by 10.2-4 we get that $S = T^{\ast \ast}$ is symmetric too.
 \end{proof} 
 
 \begin{exercise}{5}
 If a linear operator $T$ is densely defined in $H$ and its adjoint is defined on all of $H$, show that $T$ is bounded.
 \end{exercise}
 \begin{proof}
-fill
+We have that $T \subseteq T^{\ast \ast}$ (10.2-1.b), and we proved in exercise 10.1.9 that if an operator is defined everywhere, then its adjoint is bounded, so that $T^{\ast \ast}$ is bounded.
+Since $T^{\ast \ast}$ is an extension of $T$, then it must be the case that $T$ itself is bounded, completing the proof.
 \end{proof} 
 
 \begin{exercise}{6}
@@ -85,14 +99,19 @@ Let $T: \cD(T) \to H$ be a bounded symmetric linear operator.
 Show that $T$ has a bounded symmetric linear extension $\bar{T}$ to $\overline{\cD(T)}$.
 \end{exercise}
 \begin{proof}
-fill
+Since $T$ is bounded we can extend it to a bounded linear operator $\bar{T}: \overline{\cD(T)} \to H$ (2.7-11).
+To see $\bar{T}$ is symmetric, let $x, y \in \overline{\cD(T))}$, so that there exists sequences $(x_n)$ and $(y_n)$ in $\cD(T)$ with $x_n \to x$ and $y_n \to y$.
+We then have $\brackets{\bar{T}x_n, y_n} = \brackets{x_n, \bar{T}y_n}$ since $T$ is symmetric.
+Taking limits as $n \to \infty$ and the fact that the inner product is continuous gives us that $\bar{T}$ is indeed symmetric, as required.
 \end{proof} 
 
 \begin{exercise}{8}
-If $T$ is symmetric and $T'$ is a symmetric extension of $T$, show that $T' \subseteq T^\ast$.
+If $T$ is symmetric and $\bar{T}$ is a symmetric extension of $T$, show that $\bar{T} \subseteq T^\ast$.
 \end{exercise}
 \begin{proof}
-fill
+By hypothesis, $T \subseteq \bar{T}$, so that by 10.2-1, we have $\bar{T}^\ast \subseteq T^\ast$.
+Furthermore, since $\bar{T}$ is symmetric, we have that $\bar{T} \subseteq \bar{T}^\ast$ (10.2-4).
+Putting these results together, we have that $\bar{T} \subseteq \bar{T}^\ast \subseteq T^\ast$, implying the desired result.
 \end{proof} 
 
 \begin{exercise}{9}
@@ -100,16 +119,32 @@ A maximally symmetric linear operator is defined to be a symmetric linear operat
 Show that a self-adjoint linear operator $T$ is maximally symmetric.
 \end{exercise}
 \begin{proof}
-fill
+This is a corollary to the previous exercise. 
+To see this, suppose $T$ is a maximally symmetric operator and $\bar{T}$ is a symmetric extension of $T$.
+Thus, $T^\ast = T \subseteq \bar{T}$ and by the previous exercise $\bar{T} \subseteq T^\ast = T$.
+Hence, it must be the case that $\bar{T} = T$, as required.
 \end{proof} 
 
 \begin{exercise}{10}
 If a self-adjoint linear operator $T: \cD(T) \to H$ is injective, show that 
 \begin{enumerate}
-    \item $\overline{\cR(T) = H}$ and
+    \item $\overline{\cR(T)} = H$ and
     \item $T^{-1}$ is self-adjoint.
 \end{enumerate}
 \end{exercise}
 \begin{proof}
-fill
+\begin{enumerate}
+    \item First, note that since $T$ is injective, then $\nullspace(T) = \set{0}$.
+    
+    Furthermore, $\nullspace(T^\ast) = \cR(T)^\perp$.
+    To see this, let $y \in \nullspace(T^\ast)$ with $y \neq 0$, then for all $x \in \cD(T)$, we have $\brackets{Tx, y} = \brackets{x, T^\ast y} = 0$, so that $y \in \cR(T)^\perp$ and $\nullspace(T^\ast) = \cR(T)^\perp$.
+    Conversely, let $y \in \cR(T)^\perp$, then for all $x$, we have $0 = \brackets{Tx, y} = \brackets{x, T^\ast y}$, so that $y \in \nullspace(T^\ast)$ and $\cR(T)^\perp \subseteq \nullspace(T^\ast)$.
+
+    Since $T = T^\ast$, given that $T$ is self-adjoint, we have that $\nullspace(T) = \nullspace(T^\ast)$.
+
+    Putting these together, we have that $\cR(T)^\perp = \nullspace(T^\ast) = \nullspace(T) = \set{0}$.
+    The closure of $\cR(T)^\perp$ is simply $\set{0}$, meaning that $\overline{\cR(T)} = H$, as required.
+    
+    \item By 10.2-2, we have that $T^\ast$ is injective and $(T^\ast)^{-1} = (T^{-1})^\ast$, however, since $T = T^\ast$ due to $T$'s self-adjointness, we have $T^{-1} = (T^{-1})^\ast$, which means precisely that $T^{-1}$ is self-adjoint.
+\end{enumerate}
 \end{proof} 

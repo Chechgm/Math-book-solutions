@@ -70,7 +70,14 @@ What is $P(H)$ in Theorem 9.6-3 in the case of a monotone decreasing sequence $(
 \begin{proof}
 $P(H)$ would be $\bigcap P_n(H)$, the proof is similar to that of 9.6-3.b
 
-FILL...
+We will follow in a similar way as in 9.6-3.b.
+Let $m < n$, so that $P_m \geq P_n$, that is, $P_m - P_n \geq 0$ and $\brackets{(P_m - P_n)x, x} \geq 0$ by definition.
+Letting $n \to \infty$, we get $\brackets{(P_m - P)x, x} \geq 0$ by the continuity of the inner product, that is, $P_m \geq P$ and 9.6-1 gives us $P(H) \subseteq P_m(H)$ for every $m$.
+Hence $P(H) \subseteq \bigcap P_m(H)$.
+
+In 9.6-3.b we could go beyond a prove that $P(H) = \overline{\bigcup P_n(H)}$ for an increasing sequence, first by proving that $\bigcup P_n(H) \subseteq P(H) \subseteq \overline{\bigcup P_n(H)}$ and then concluding the equality since $P(H) = \cN(I - P)$, which by 2.7-10.b is closed.
+We don't need this here, since $P_m(H) = \cN(I - P_m)$ is closed for each $m$ and an arbitrary intersection of closed sets is closed;
+that is $\bigcap P_m(H) = \overline{\bigcap P_m(H)}$.
 \end{proof} 
 
 \begin{exercise}{8}
