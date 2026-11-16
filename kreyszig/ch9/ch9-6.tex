@@ -1,29 +1,21 @@
 \section{Further properties of projections}
 
-1 Also, what would the analogies with characteristic functions look like
-2 Is this also true for characteristic functions? 
-4 Is this also true for characteristic functions?
-5
-6
-7
-8 Again, make the link between characteristic functions. What should perpendicular characteristic functions translate to?
-9
-10 So reduction can be stated in terms of projection operators, making projection operators particularly powerful. Does this make sense for characteristic functions too?
-11
-10
-14
-15 This is a crucial step in proving the finite-dimensional version of the spectral theorem. The idea is to first find an eigenvector, and pick Y = the span of this eigenvector. Then T splits up into two smaller-dimensional operators, on which we can induct!
 
 \begin{exercise}{1}
 Illustrate the various equivalent statements in Theorem 9.6-1 by simple examples of projections in Euclidean space $\R^3$.
 \end{exercise}
 \begin{proof}
 Consider $P_1 v = (x, 0, 0)$ and $P_2 v = (x, y, 0)$.
+
 We have $P_2 (P_1 v) = P_2 (x, 0, 0) = (x, 0, 0)$, also $P_1 (P_2 v) = P_1 (x, y, 0) = (x, 0, 0)$, both of which equal $P_1$.
+
 Also, $P_1(H) = \vecspan\set{(x, 0, 0)} \subset \vecspan\set{(x, y, 0)} = P_2(H)$.
+
 Furthermore, $\cN(P_2) = \vecspan\set{(0, 0, z)} \subseteq \vecspan\set{(0, y, z)} = 
 \cN(P_1)$.
+
 For (4), $\norm{P_1 v} = x \leq (x^2 + y_2)^{1/2} = \norm{P_2 v}$.
+
 Finally, $\brackets{P_1 v, v} = x^2 \leq x^2 + y^2 = \brackets{P_2 v, v}$, so that $P_1 \leq P_2$, completing the exercise.
 \end{proof} 
 
@@ -88,8 +80,7 @@ Onto what subspace of $H$ does $Q$ project?
 Notice that we can think of the partial sums of $Q_j$ as an increasing sequence of projections.
 For a fixed $N$, let $P_N = \sum_{i=1}^N Q_i$ which projects to $Y_1 \oplus \dots \oplus Y_N$, where $Y_i = Q_i(H)$ (this follows by 9.5-4 and exercise 9.5.5).
 Then by the partial order in projections (9.6-1), we have that since $P_M(H) \subseteq P_N(H)$ for all $M \leq N$, then $P_M \leq P_N$ so that we have a monotone increasing sequence of projections as required by 9.6-3.
-
-By the second part of the theorem, $Q(H) = \bigoplus_{i=1}^\infty Q_i(H) = Q_1(H) \oplus Q_2(H) \oplus Q_3(H) \dots$.
+$Q$ projects $H$ into the smallest closed subspace that contains all of $Q_j(H)$.
 \end{proof} 
 
 \begin{exercise}{9 (Invariant subspace)}

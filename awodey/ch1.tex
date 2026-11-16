@@ -357,67 +357,51 @@ that is, suppose $g' \circ i = f$, then $(g' \circ i)(\ast) = (g \circ i)(\ast)$
 
 \begin{exercise}{11}
 Show that the free monoid functor $M: \Set \to \Monoid$ exists in two different ways:
-a) Assume the particular choice $M(X) = X^\ast$, and define its effect $M(f): M(A) \to M(B)$ on a function $f: A \to B$ to be $M(f)(a_1 \dots a_k) = f(a_1) \dots f(a_k)$, for $a_1, \dots, a_k \in A$.
-b) Assume only the UMP of the free monoid and use it to determine $M$ on functions, showing the result to be a functor.
+\begin{enumerate}
+    \item Assume the particular choice $M(X) = X^\ast$, and define its effect $M(f): M(A) \to M(B)$ on a function $f: A \to B$ to be $M(f)(a_1 \dots a_k) = f(a_1) \dots f(a_k)$, for $a_1, \dots, a_k \in A$.
+    \item Assume only the UMP of the free monoid and use it to determine $M$ on functions, showing the result to be a functor.
+\end{enumerate}
 
 How are these two approaches related?
 \end{exercise}
 \begin{proof}
-fill
-\end{proof} 
+\begin{enumerate}
+    \item We need to prove that $M(f: A \to B) = M(f): M(A) \to M(b)$,
+    Let $A$ and $B$ be sets, $A^\ast$ and $B^\ast$ their corresponding Kleene closures, and $f: A \to B$ a function between them.
+    We have that $M(f)(a_1 \dots a_k) = f(a_1) \dots f(a_k)$ as defined in the problem statement is a homomorphism between monoids:
+    ``-'' is preserved (we should define it as such, since in the problem statement it is not defined) and concatenation in $B^\ast$ is also preserved.
+    Furthermore, $M(id_A) = M(id_A)(a_1 \dots a_k) =a_1 \dots a_k$, so that $M(id_a) = id_{A^\ast}$.
+    Finally, let $g: B \to C$.
+    We have 
+    \begin{align*}
+        M(g \circ f)(a_1 \dots a_k) 
+        =& g(f(a_1)) \dots g(f(a_k))\\
+        =& g(b_1) \dots g(b_k)\\
+        =& c_1 \dots c_k,
+    \end{align*}
+    on the other hand
+    \begin{align*}
+        (M(g) \circ M(f))(a_1 \dots a_k)
+        =& M(g)(f(a_1) \dots f(a_k))\\
+        =& M(g)(b_1 \dots b_k)\\
+        =& g(b_1) \dots g(b_k)\\
+        =& c_1 \dots c_k,
+    \end{align*}
+    as required.
+    \item Let $N$ be an arbitrary monoid, and assume $A^\ast$ has the UMP of the free monoid on an arbitrary set $A$.
+    Then for $f: A \to \absoluteValue{N}$ and $i: A \to \absoluteValue{M(a)}$, there exists a monoid function $\bar{f}: A^\ast \to N$, so that $\absoluteValue{\bar{f}} \circ i = f$.
+    Then we can determine $M$ on functions by replacing $N$ with $M(B)$ for an arbitrary set and $M(f: A \to B) = \bar{f}$, which as we proved in Proposition 1.9, is a homomorphism between monoids. 
 
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
-\end{proof} 
-
-\begin{exercise}{x}
-fill
-\end{exercise}
-\begin{proof}
-fill
+    % SOLUTION
+    so take A and B sets and A * and B * the Kleene closures
+    then I can actually consider first following f : A->B and then embedding B into B *
+    meaning if j : B -> B * is the embedding
+    I can consider the map F : A -> B * by   F = j o f
+    so now F : A -> B * is a map from the set A into the monoid B *
+    now apply the UMP for A * on that
+    doing that gives us a map f * : A * -> B * such that f * o i = F = j o f
+    this is how you'd construct M(f) = f * purely with the UMP
+\end{enumerate}
+The approaches are related by the definition in the first numeral:
+this is the ``obvious'' choice that makes the mapping of a function a monoid homomorphism under the functor, whereas the homomorphism defined by the UMP is ``forced'' to be a homomorphism from the definition itself.
 \end{proof} 

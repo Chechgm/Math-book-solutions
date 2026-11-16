@@ -15,7 +15,10 @@ This operator is unbounded (exercise 10.1.8).
 Show that $T$ is not closed.
 \end{exercise}
 \begin{proof}
-fill
+Consider the sequence $(x_n)$ where each $x_n \in \cD(T)$ is defined as $x_n = (1, 1/2^2, 1/3^2, \dots, 1/n^2, 0, \dots)$.
+We have $x_n \to x = (1, 1/2^2, 1/3^, \dots)$, which is not in $\cD(T)$, since it has infinitely many nonzero entries.
+Furthermore, $Tx = (1, 1/2, 1/3, \dots)$, which does not even belong to $\ell^2$, since the series associated to the sequence does not converge.
+Thus, $T$ is not closed.
 \end{proof} 
 
 \begin{exercise}{4}
@@ -38,7 +41,10 @@ fill
 If $T$ is a symmetric linear operator, show that $T^{\ast \ast}$ is a closed symmetric linear extension of $T$.
 \end{exercise}
 \begin{proof}
-fill
+This is a combination of some previous results.
+We know that $T^\ast$ is closed (10.3-3) and applying the same result again, we can conclude $T^{\ast \ast}$ is closed too (this is even independent of whether $T$ is closed or not).
+We also proved that if $T$ is symmetric, then $T^{\ast \ast}$ is symmetric (exercise 10.2.4).
+To see $T^{\ast \ast}$ is a linear extension of $T$, note that since $T$ is symmetric $T \subseteq T^\ast$ (10.2-4), and since $T$ is densely defined, in $H$, so is $T^\ast$, so that we can apply 10.2-1.b, which tells us that $T \subseteq T^{\ast \ast}$, completing the proof.
 \end{proof} 
 
 \begin{exercise}{7}
@@ -69,5 +75,8 @@ fill
 If $T$ is closed, show that $T_\lambda = T - \lambda I$ is closed, and if $T_\lambda^{-1}$ exists, then $T_\lambda^{-1}$ is closed.
 \end{exercise}
 \begin{proof}
-fill
+This follows by the continuity of transforming $T$ into $T - \lambda I$:
+we have that $x_n \to x$ and $Tx_n \to y = Tx$, with $x \in \cD(T)$ and $Tx = y$ (10.3-2).
+Suppose $T_\lambda x_n \to y$, then $T x_n - \lambda x_n \to Tx - \lambda x = T_\lambda x$, so that $T_\lambda$ is closed.
+
 \end{proof} 
