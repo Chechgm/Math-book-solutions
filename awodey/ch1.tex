@@ -388,20 +388,10 @@ How are these two approaches related?
         =& c_1 \dots c_k,
     \end{align*}
     as required.
-    \item Let $N$ be an arbitrary monoid, and assume $A^\ast$ has the UMP of the free monoid on an arbitrary set $A$.
-    Then for $f: A \to \absoluteValue{N}$ and $i: A \to \absoluteValue{M(a)}$, there exists a monoid function $\bar{f}: A^\ast \to N$, so that $\absoluteValue{\bar{f}} \circ i = f$.
-    Then we can determine $M$ on functions by replacing $N$ with $M(B)$ for an arbitrary set and $M(f: A \to B) = \bar{f}$, which as we proved in Proposition 1.9, is a homomorphism between monoids. 
-
-    % SOLUTION
-    so take A and B sets and A * and B * the Kleene closures
-    then I can actually consider first following f : A->B and then embedding B into B *
-    meaning if j : B -> B * is the embedding
-    I can consider the map F : A -> B * by   F = j o f
-    so now F : A -> B * is a map from the set A into the monoid B *
-    now apply the UMP for A * on that
-    doing that gives us a map f * : A * -> B * such that f * o i = F = j o f
-    this is how you'd construct M(f) = f * purely with the UMP
+    \item Let $A$ and $B$ be sets, and $A^\ast$ $B^\ast$ be their respective Kleene closures. 
+    Furthermore, let $f: A \to B$ be an arrow in $\Set$.
+    Note that $f(A) \subseteq B^\ast$ is an embedding of $B$ into $B^\ast$, so that if $j: B \to B^\ast$ is the canonical embedding.
+    Thus, consider the map $F: A \to B^\ast$, given by $j \circ f = F$, so that $F: A \to B^\ast$ is a map from the set $A$ to the monoid whose set is $B^\ast$.
+    If we apply the UMP for $A^\ast$ using this map we get the map $f^\ast: A^\ast \to B^\ast$ such that $f^\ast \circ i = F = f \circ j$, giving us exactly $M(f) = f^\ast$.
 \end{enumerate}
-The approaches are related by the definition in the first numeral:
-this is the ``obvious'' choice that makes the mapping of a function a monoid homomorphism under the functor, whereas the homomorphism defined by the UMP is ``forced'' to be a homomorphism from the definition itself.
 \end{proof} 

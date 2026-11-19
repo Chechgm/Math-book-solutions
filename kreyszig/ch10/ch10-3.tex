@@ -1,7 +1,6 @@
 \section{Closed Linear Operators and Closures}
 
 1 A concrete example of a nonclosed opeator
-4 So essentially inverses of closed operators are also closed
 5 A concrete example of a closed extension
 6 So for symmetric operators, it turns out that to make it closed is particularly easy 
 7 Lemma for 8 and 9
@@ -26,7 +25,8 @@ Let $T: \cD(T) \to H$ be a closed linear operator.
 If $T$ is injective, show that $T^{-1}$ is closed.
 \end{exercise}
 \begin{proof}
-fill
+Since $T$ is injective, then we can identify any pair $(x, Tx) = (x, y) \in \cG(T)$ with a pair $(y, x) = (Tx, T^{-1}(Tx)) \in \cG(T^{-1})$ (there are no two $x \in \cD(T)$ that map into $y$).
+Since $\cG(T)$ is closed in $H \times H$, then so is $\cG(T^{-1})$.
 \end{proof} 
 
 \begin{exercise}{5}
@@ -34,7 +34,12 @@ Show that $T$ in exercise 1 is a closed linear extension $T_1$ to $\cD(T_1) = \s
 [Hint: use exercise 4].
 \end{exercise}
 \begin{proof}
-fill
+Let $S: \cD(T_1) \to H$ defined by $(x_1, x_2, \dots) \mapsto (x_1, x_2/2, x_3/3, \dots)$.
+$S$ is injective.
+Moreover, $S$ is closed, since if $(x^k)$ is a sequence in $\cD(T_1)$, then the series associated with $S x^k$ will have the property that $\sum_n^\infty n \absoluteValue{x_n^k} \leq \sum_n^\infty n^2 \absoluteValue{x_n^k} < \infty$, so that 
+
+
+FILL
 \end{proof} 
 
 \begin{exercise}{6}
@@ -51,7 +56,25 @@ To see $T^{\ast \ast}$ is a linear extension of $T$, note that since $T$ is symm
 Show that the graph $\cG(T^\ast)$ of the Hilbert-adjoint operator of a linear operator $T$ is related to $\cG(T)$ by $\cG(T^\ast) = [U(\cG(T))]^\perp$, where $U: H \times H \to H \times H$ is defined by $(x, y) \mapsto (y, -x)$.
 \end{exercise}
 \begin{proof}
-fill
+First, we will define the inner product on $H \times H$ as $\brackets{(x, y), (u, v)} = \brackets{x, u} + \brackets{y, v}$.
+With this, we will prove the statement by double containment:
+
+($\subseteq$)
+Let $(y, T^\ast y) \in \cG(T^\ast)$.
+We want to prove $0 = \brackets{(Tx, -x), (y, T^\ast y)}$ for all $(x, Tx) \in \cG(T)$.
+We have $\brackets{(Tx, -x), (y, T^\ast y)} = \brackets{Tx, y} - \brackets{x, T^\ast y}$, which is precisely 0 by the definition of $T^\ast$.
+
+($\supseteq$)
+Let $(y, y^\ast) \in [U(\cG(T))]^\perp$.
+We want to show that for all $x \in \cD(T)$, we have $\brackets{Tx, y} = \brackets{x, y^\ast}$, where $y^\ast = T^\ast y$.
+We have that for all $(x, Tx)$, it holds that 
+\begin{align*}
+    0 
+    = \brackets{U(x, Tx), (y, y^\ast)} 
+    = \brackets{(Tx, -x), (y, y^\ast)}
+    = \brackets{Tx, y} - \brackets{x, y^\ast},
+\end{align*}
+so that $\brackets{Tx, y} = \brackets{x, y^\ast}$, which is precisely what we wanted to prove.
 \end{proof} 
 
 \begin{exercise}{8}
@@ -68,7 +91,10 @@ Show that a closed linear operator $T: H \to H$ on a complex Hilbert space $H$ i
 Of course, give an independent proof, without using 4.13-2].
 \end{exercise}
 \begin{proof}
-fill
+From the statement, I assume $\cD(T) = H$.
+Thus, $T^\ast$ is bounded (exercise 10.1.9) and closed (10.3-3).
+This means that $\cD(T^\ast) = H$, and applying exercise 10.1-9 again we get that $T^{\ast \ast}$ is bounded.
+We have all the conditions for exercise 8 to hold, so that $T = T^{\ast \ast}$, meaning that $T$ is bounded too.
 \end{proof} 
 
 \begin{exercise}{10}

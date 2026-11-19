@@ -1,16 +1,5 @@
 \section{Spectral family of a bounded self-adjoint linear operator}
 
-2
-3
-4
-The spectral family is pretty abstract, the following exercises are meant to compute it in a concrete case:
-5
-6
-7 Also compute the $E_lambda$ !
-Extra: Take any function $f:[0,1]->R$, let's say $f(x) = x - 1/2$, and compute the same quantities as in 5,6,7 and the $E_lambda$, for the operator $T:L^2 \to L^2: g \to fg$
-8 Explains the name $T^+$
-9
-10 Two more computations in trivial cases
 
 \begin{exercise}{2}
 Suppose $E_\lambda$ satisfies all conditions to be a spectral family (9.7-1) except for $E_{\lambda + 0} x = \lim_{\mu \to \lambda + 0} E_\mu x = E_\lambda x$.
@@ -87,17 +76,18 @@ Furthermore,
 
 \begin{exercise}{5}
 If in the finite dimensional case a linear operator $T$ is represented by a real diagonal matrix $\tilde{T}$, what is the spectrum of $T$?
-How do we obtain $\tilde{T}$ from the matrix
+How do we obtain the following matrices
 \begin{enumerate}
     \item $\tilde{T}^+$ (representing $T^+$),
     \item $\tilde{T}^-$ (representing $T^-$),
-    \item $\tilde{B}$ (representing $B$)?
+    \item $\tilde{B}$ (representing $B$),
 \end{enumerate}
+from $\tilde{T}$?
 \end{exercise}
 \begin{proof}
 \begin{enumerate}
-    \item These are the positive elements of the diagonal multiplied by 2.
-    \item These are the negative elements of the diagonal multiplied by -2.
+    \item These are the positive elements of the diagonal.
+    \item These are the negative elements of the diagonal.
     \item This would be the elementwise absolute value of $T$.
 \end{enumerate}
 \end{proof} 
